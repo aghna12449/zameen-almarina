@@ -1,0 +1,72 @@
+#custom-breadcrumbs {
+    display: flex;
+    align-items: center;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 0.875rem;
+    color: white;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.breadcrumb-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: text-decoration 0.1s ease-in-out;
+    display: flex; /* For vertical alignment */
+    align-items: center; /* Vertical alignment */
+}
+
+.breadcrumb-link:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb-separator {
+    margin: 0 8px;
+    color: inherit;
+}
+
+.breadcrumb-current {
+    font-weight: 500;
+    display: flex; /* For vertical alignment */
+    align-items: center; /* Vertical alignment */
+}
+
+/* MUI-like styling */
+.mui-breadcrumb-root {
+    display: flex;
+    align-items: center;
+}
+
+.mui-breadcrumb-link {
+    color: white;
+    text-decoration: none;
+    display: flex; /* For vertical alignment */
+    align-items: center; /* Vertical alignment */
+}
+
+.mui-breadcrumb-link:hover {
+    text-decoration: underline;
+}
+
+.mui-breadcrumb-separator {
+    margin: 0 8px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.mui-breadcrumb-current {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.87); /* Primary text color */
+    display: flex; /* For vertical alignment */
+    align-items: center; /* Vertical alignment */
+}
+
+.mui-breadcrumb-icon {
+    margin-right: 8px; /* Spacing for the icon */
+    font-size: 1.2rem; /* Adjust icon size as needed */
+}
