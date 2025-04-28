@@ -16,7 +16,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
     />
     <!-- adding style sheet -->
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css" />
     <!-- Add Material-UI (MUI) CSS -->
     <link
       rel="stylesheet"
@@ -40,11 +40,6 @@
         z-index: 9999;
         /* Make sure it's above other content */
         cursor: pointer;
-
-
-
-
-      
       }
 
       .material-icons {
@@ -72,25 +67,15 @@
   </head>
 
   <body>
+    <button id="toggle-button" onclick="toggleHotspotColor()">
+      Toggle Hotspot Color
+    </button>
 
     <div id="custom-breadcrumbs" class="mui-breadcrumb-root">
-      <a href="#" class="breadcrumb-link mui-breadcrumb-link" data-scene="scene_AL_MARINA_aerial">
-          <i class="material-icons mui-breadcrumb-icon">home</i>
-          Al Marina
-      </a>
-      <span class="breadcrumb-separator mui-breadcrumb-separator">&gt;</span>
-      <a href="#" class="breadcrumb-link mui-breadcrumb-link" data-scene="scene_zone_2">
-          <i class="material-icons mui-breadcrumb-icon">whatshot</i>
-          Zone 2
-      </a>
-      <span class="breadcrumb-separator mui-breadcrumb-separator">&gt;</span>
-      <span class="breadcrumb-current mui-breadcrumb-current">
-          <i class="material-icons mui-breadcrumb-icon">grain</i>
-          Zone 4
-      </span>
-  </div>
-  
-  
+      <div class="breadcrumb-wrapper" id="breadcrumb-wrapper">
+        <!-- Dynamic breadcrumbs addition -->
+      </div>
+    </div>
 
     <script src="tour.js"></script>
     <script src="data.js"></script>
@@ -115,12 +100,117 @@
         </table>
       </noscript>
       <script>
+        let block_number = "";
         embedpano({
           xml: "tour.xml",
           target: "pano",
           html5: "only",
           mobilescale: 1.0,
           passQueryParameters: "startscene,startlookat",
+        });
+
+        let breadcrumbTrail = [
+          { scene: "scene_AL_MARINA_aerial", title: "Al Marina", icon: "home" },
+        ];
+
+        // Mapping scene to readable name (if needed)
+        const sceneTitleMap = {
+          scene_AL_MARINA_aerial: { title: "Al Marina", icon: "home" },
+          scene_zone_2: { title: "Zone 2", icon: "whatshot" },
+          scene_zone_4: { title: "Zone 4", icon: "grain" },
+          scene_zone_5: { title: "Zone 5", icon: "place" },
+          // Add more mappings here
+        };
+
+        // Render the breadcrumbs dynamically
+        function renderBreadcrumbs() {
+          console.log("renderBreadcrumbs");
+          const wrapper = document.getElementById("breadcrumb-wrapper");
+          wrapper.innerHTML = ""; // Clear previous breadcrumbs
+
+          breadcrumbTrail.forEach((crumb, index) => {
+            if (index !== 0) {
+              // Add separator
+              const separator = document.createElement("span");
+              separator.className =
+                "breadcrumb-separator mui-breadcrumb-separator";
+              separator.innerHTML = "&gt;";
+              wrapper.appendChild(separator);
+            }
+
+            if (index !== breadcrumbTrail.length - 1) {
+              // Not the last one - make it a link
+              const link = document.createElement("a");
+              link.href = "#";
+              link.className = "breadcrumb-link mui-breadcrumb-link";
+              link.setAttribute("data-scene", crumb.scene);
+              link.setAttribute("data-index", index); // Save index for back navigation
+              link.innerHTML = `<i class="material-icons mui-breadcrumb-icon">${crumb.icon}</i> ${crumb.title}`;
+              wrapper.appendChild(link);
+            } else {
+              // Last one - current breadcrumb
+              const current = document.createElement("span");
+              current.className = "breadcrumb-current mui-breadcrumb-current";
+              current.innerHTML = `<i class="material-icons mui-breadcrumb-icon">${crumb.icon}</i> ${crumb.title}`;
+              wrapper.appendChild(current);
+            }
+          });
+
+          attachBreadcrumbClickEvents(); // Re-attach click events
+        }
+
+        // Attach click listeners to breadcrumb links
+        function attachBreadcrumbClickEvents() {
+          console.log("attachBreadcrumbClickEvents");
+          const breadcrumbLinks = document.querySelectorAll(".breadcrumb-link");
+          var krpano = document.getElementById("krpanoSWFObject");
+          breadcrumbLinks.forEach((link) => {
+            link.addEventListener("click", function (e) {
+              e.preventDefault();
+
+              const sceneName = this.getAttribute("data-scene");
+              console.log("sceneName", sceneName);
+              const crumbIndex = parseInt(this.getAttribute("data-index"));
+              if (sceneName) {
+                loadScene(sceneName);
+
+                // Slice the breadcrumb trail up to clicked crumb
+                breadcrumbTrail = breadcrumbTrail.slice(0, crumbIndex + 1);
+
+                renderBreadcrumbs(); // Rerender updated trail
+
+                krpano.call(`loadscene(${sceneName}, null, MERGE, BLEND(1))`);
+              }
+            });
+          });
+        }
+
+        // Load a new scene and update breadcrumb trail
+        function loadScene(sceneName) {
+          console.log(`Loading scene: ${sceneName}`);
+
+          // Example krpano call if available
+          if (window.krpano) {
+            krpano.call(`loadscene(${sceneName}, null, MERGE, BLEND(1))`);
+          }
+
+          // Find scene info
+          const sceneInfo = sceneTitleMap[sceneName];
+          if (sceneInfo) {
+            breadcrumbTrail.push({
+              scene: sceneName,
+              title: sceneInfo.title,
+              icon: sceneInfo.icon,
+            });
+            // renderBreadcrumbs();
+          } else {
+            console.warn("Scene title not found for:", sceneName);
+          }
+        }
+
+        // Initial render
+        document.addEventListener("DOMContentLoaded", function () {
+          renderBreadcrumbs();
         });
 
         function addCustomDivToHotspot(hotspotName) {
@@ -196,79 +286,114 @@
 
         const zone3houseData = parseHotspots(zone3hotspotXML);
         const zone2houseData = parseHotspots(zone2hotspotXML);
-        console.log("parseHotspots ===>>>> ", zone2houseData);
 
-        
-        const  dynamicZoneRendering = (zoneData,response,krpano) => {
+        let toggleState = false; // Global state for toggling colors (false = color1, true = color2)
 
+        function toggleHotspotColor(color1 = "0xFF0000", color2 = "0x00FF00") {
+          const krpano = document.getElementById("krpanoSWFObject");
+          if (!krpano) {
+            console.error("Krpano instance not found");
+            return;
+          }
+
+          // Loop through each house data in zone3houseData
+          zone3houseData.forEach((house) => {
+            const hotspotName = `hs_${house.id}`; // Assuming house.id is unique
+            console.log("hotspotName", hotspotName);
+
+            // Get the current color based on the global toggle state
+            const selectedColor = toggleState ? color2 : color1;
+
+            // Set the color of the hotspot
+            krpano.call(
+              `set(hotspot[${hotspotName}].fillcolor, ${selectedColor})`
+            );
+            console.log(
+              `Hotspot ${hotspotName} color changed to ${selectedColor}`
+            );
+          });
+
+          // Toggle the state for next change
+          toggleState = !toggleState;
+        }
+
+        function getRandomColor() {
+          const letters = "0123456789ABCDEF";
+          let color = "#";
+          for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+          }
+          return "0xFF0000";
+        }
+        const dynamicZoneRendering = (zoneData, response, krpano) => {
           zoneData.forEach((house) => {
-              console.log("houseData", house);
-              // Create a unique name for each house hotspot
-              const hotspotName = `hs_${house.id}`;
+            console.log("houseData", house);
+            // Create a unique name for each house hotspot
+            const hotspotName = `hs_${house.id}`;
 
-              // Generate hotspot with points dynamically
-              let hotspotXML = `<hotspot name="${hotspotName}" style="mypolygonalhotspotstylename">`;
+            const hotspotColor = getRandomColor();
+            const hotspotColorHex = hotspotColor.replace("#", "0x");
+            // Generate hotspot with points dynamically
+            let hotspotXML = `<hotspot name="${hotspotName}" style="mypolygonalhotspotstylename">`;
 
-              house.coordinates.forEach((point) => {
-                hotspotXML += `<point ath="${point.ath}" atv="${point.atv}" />`;
-              });
-              hotspotXML += `</hotspot>`;
+            house.coordinates.forEach((point) => {
+              hotspotXML += `<point ath="${point.ath}" atv="${point.atv}" />`;
+            });
+            hotspotXML += `</hotspot>`;
 
-              const cords = house.coordinates[0];
+            const cords = house.coordinates[0];
 
-              console.log("showTooltip", hotspotName);
+            console.log("showTooltip", hotspotName);
 
-              // Set the onclick action to show a Bootstrap tooltip
-              krpano.call(`
+            krpano.call(
+              `set(hotspot[${hotspotName}].fillcolor, ${hotspotColorHex})`
+            );
+
+            // Set the onclick action to show a Bootstrap tooltip
+            krpano.call(`
                         set(hotspot[${hotspotName}].onhover, js(showTooltip('${hotspotName}', '${house.plot_number}','${cords.ath},${cords.atv}')));
                         set(hotspot[${hotspotName}].onout, js(hideTooltip()));
                       `);
 
-              console.log("response", response);
+            console.log("response", response);
 
+            krpano.call(
+              `set(hotspot[${hotspotName}].onclick, js(showHouseDetails('${response}', '${house.plot_number}')));`
+            );
+
+            // Add hotspot to Krpano dynamically
+            krpano.call(`addhotspot(${hotspotName})`);
+            krpano.call(
+              `set(hotspot[${hotspotName}].loadstyle, mypolygonalhotspotstylename)`
+            );
+
+            // const count = krpano.get("hotspot.count");
+
+            // for (let i = count - 1; i >= 0; i--) {
+            //   const name = krpano.get(`hotspot[${i}].name`);
+
+            //   if (name && name.startsWith("zone3")) {
+            //     console.log("Removing hotspot:", name);
+            //     // krpano.call(`removehotspot(${name})`);
+            //   }
+            // }
+
+            house.coordinates.forEach((point, index) => {
               krpano.call(
-                `set(hotspot[${hotspotName}].onclick, js(showHouseDetails('${response}', '${house.plot_number}')));`
+                `set(hotspot[${hotspotName}].point[${index}].ath, ${point.ath})`
               );
-
-              // Add hotspot to Krpano dynamically
-              krpano.call(`addhotspot(${hotspotName})`);
               krpano.call(
-                `set(hotspot[${hotspotName}].loadstyle, mypolygonalhotspotstylename)`
+                `set(hotspot[${hotspotName}].point[${index}].atv, ${point.atv})`
               );
-
-              // const count = krpano.get("hotspot.count");
-
-              // for (let i = count - 1; i >= 0; i--) {
-              //   const name = krpano.get(`hotspot[${i}].name`);
-
-              //   if (name && name.startsWith("zone3")) {
-              //     console.log("Removing hotspot:", name);
-              //     // krpano.call(`removehotspot(${name})`);
-              //   }
-              // }
-
-              house.coordinates.forEach((point, index) => {
-                krpano.call(
-                  `set(hotspot[${hotspotName}].point[${index}].ath, ${point.ath})`
-                );
-                krpano.call(
-                  `set(hotspot[${hotspotName}].point[${index}].atv, ${point.atv})`
-                );
-              });
             });
-          }
+          });
+        };
 
         const addLandHotspotsToKrpano = async () => {
-    
-
           const krpano = document.getElementById("krpanoSWFObject");
           const response = await onInitalLoad();
 
-
-
           localStorage.setItem("response", JSON.stringify(response));
-
-       
 
           if (krpano) {
             const currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
@@ -276,20 +401,26 @@
 
             // Only proceed if we're in Zone 3
             if (currentScene === "scene_al_marina_zone_3") {
-              dynamicZoneRendering(zone3houseData,response, krpano)
-                        
-          } else if  (currentScene === "scene_al_marina_zone_2") {
-             // dynamicZoneRendering(zone3houseData,response, krpano)
-                        
-          } 
+              breadcrumbTrail.push({
+                scene: "scene_zone_3",
+                title: "Zone 3",
+                icon: "grain",
+              });
+              renderBreadcrumbs();
+              dynamicZoneRendering(zone3houseData, response, krpano);
+            } else if (currentScene === "scene_al_marina_zone_2") {
+              console.log("Current Scene:", currentScene);
+              dynamicZoneRendering(zone2houseData, response, krpano);
+              breadcrumbTrail.push({
+                scene: "scene_zone_2",
+                title: "Zone 2",
+                icon: "grain",
+              });
+              renderBreadcrumbs();
+            }
+          }
         };
 
-
-
-
-        }
-
-        
         const fetchAlMarinaData = async () => {
           return fetch("http://localhost:5000/api/getAlMarinaData")
             .then((res) => res.json()) // Parse JSON
@@ -304,14 +435,24 @@
         function createCard(title, description, imageUrl, response) {
           console.log("Creating Card:", response);
 
+          // block_number = response[0].block_number;
+          // breadcrumbTrail.push({
+          //       scene: "scene_zone_3",
+          //       title: `Block # ${block_number}`,
+          //       icon: "grain",
+          //     });
+          //     renderBreadcrumbs()
+
           let unitDetails = {
             zone: response[0].zone,
             plot_number: response[0].plot_number,
+            block_number: response[0].block_number,
             total_area: response[0].total_area,
             usage: response[0].usage,
             south: response[0]["الجنوب "],
             west: response[0].west,
             north: response[0].north,
+            east: response[0].east,
           };
 
           console.log("unitDetails", unitDetails);
@@ -342,12 +483,15 @@
       <h3 style="margin: 0; color: #ffffff;">🏙️ Al Marina City -  ${unitDetails.zone}</h3>
       
     </div>
-    <p style="margin: 6px 0;"><strong>📍 Plot Number:</strong> ${unitDetails.plot_number}</p>
-    <p style="margin: 6px 0;"><strong>📏 Total Area:</strong> ${unitDetails.total_area} sq.m</p>
-    <p style="margin: 6px 0;"><strong>🏢 Usage:</strong> ${unitDetails.usage}</p>
+    <p style="margin: 6px 0;"><strong>🏡 Plot Number:</strong> ${unitDetails.plot_number}</p>
+    <p style="margin: 6px 0;"><strong>🏢 Block Number:</strong> ${unitDetails.block_number}</p>
+    <p style="margin: 6px 0;"><strong>📊 Total Area:</strong> ${unitDetails.total_area} sq.m</p>
+    <p style="margin: 6px 0;"><strong>🗂️ Usage:</strong> ${unitDetails.usage}</p>
     <p style="margin: 6px 0;"><strong>⬇️ South:</strong> ${unitDetails.south}</p>
+     <p style="margin: 6px 0;"><strong>⬆️ North:</strong> ${unitDetails.north}</p>
+      <p style="margin: 6px 0;"><strong>⬆️ East:</strong> ${unitDetails.east}</p>
     <p style="margin: 6px 0;"><strong>⬅️ West:</strong> ${unitDetails.west}</p>
-    <p style="margin: 6px 0;"><strong>⬆️ North:</strong> ${unitDetails.north}</p>
+   
     <button onclick="closeCard()" style="
       margin-top: 12px;
       padding: 8px 16px;
@@ -481,270 +625,7 @@
           }
         }
 
-        //   const addHotspotsToKrpano = async () => {
-        //     console.log("Adding Hotspots:");
-        //     const houseData = [
-        //       {
-        //         id: "hs1", // Match hotspot name
-        //         land_number: "hs1", // Use hotspot name or a unique ID
-        //         coordinates: [
-        //           { ath: -0.20749842851529365, atv: -0.18901278917099884 },
-        //           { ath: -0.19902712016346413, atv: -0.18496685856283002 },
-        //           { ath: -0.19182018534064582, atv: -0.1813002269496493 },
-        //           { ath: -0.1837281941215565, atv: -0.1786450879979304 },
-        //           { ath: -0.178038513286765, atv: -0.1770014305631895 },
-        //           { ath: -0.16754420646486778, atv: -0.17169111939821258 },
-        //           { ath: -0.15957864933972132, atv: -0.16739228947336102 },
-        //           { ath: -0.153509655241578, atv: -0.16435781966708418 },
-        //           { ath: -0.14579697565153538, atv: -0.15967967222568927 },
-        //           { ath: -0.13606129840775338, atv: -0.15007048998042716 },
-        //           { ath: -0.13327967670414864, atv: -0.14589807957638526 },
-        //           { ath: -0.13218507978382377, atv: -0.1425543990552539 },
-        //           { ath: -0.1317373943922462, atv: -0.1407636699205812 },
-        //           { ath: -0.1317373943922462, atv: -0.1407636699205812 },
-        //           { ath: -0.13015545694645425, atv: -0.13229989304870118 },
-        //           { ath: -0.1295817174441254, atv: -0.12943121532776353 },
-        //           { ath: -0.12900797825693644, atv: -0.12675378300440177 },
-        //           { ath: -0.1112221254884389, atv: -0.12732752165034128 },
-        //           { ath: -0.11045714061935996, atv: -0.1342123489799209 },
-        //           { ath: -0.11026589386807473, atv: -0.1374635179206514 },
-        //           { ath: -0.11160461387123632, atv: -0.14147966847048976 },
-        //           { ath: -0.11217835080230998, atv: -0.1453045739375226 },
-        //           { ath: -0.11504703948850192, atv: -0.15008570632891116 },
-        //           { ath: -0.12212314354161435, atv: -0.15888298942245072 },
-        //           { ath: -0.13627536168297638, atv: -0.16806275521751507 },
-        //           { ath: -0.15788619414604455, atv: -0.1781987205715735 },
-        //           { ath: -0.20397654937914922, atv: -0.19235069523233655 },
-        //           { ath: -0.20512402508245486, atv: -0.192350689253248 },
-        //           { ath: -0.20608025290124488, atv: -0.19196819403060314 },
-        //           { ath: -0.20741897341230242, atv: -0.19177694181277927 },
-        //           { ath: -0.21067014970896025, atv: -0.19101194380110667 },
-        //           { ath: -0.2106701477343904, atv: -0.19062945366545583 },
-        //         ],
-        //       },
-        //       {
-        //         id: "hs2", // Match hotspot name
-        //         land_number: "hs2", // Use hotspot name or a unique ID
-        //         coordinates: [
-        //           { ath: -0.20130523187134486, atv: -0.1749899519087644 },
-        //           { ath: -0.19153955164932768, atv: -0.17157200814713627 },
-        //           { ath: -0.1749378966636641, atv: -0.16559059156563766 },
-        //           { ath: -0.16663706960406444, atv: -0.1615622785902225 },
-        //           { ath: -0.15797003073697624, atv: -0.15533669423007257 },
-        //           { ath: -0.14966920872495848, atv: -0.1475241904059397 },
-        //           { ath: -0.14661743705045183, atv: -0.14142066975135273 },
-        //           { ath: -0.1462512166717147, atv: -0.13922339356113692 },
-        //           { ath: -0.14600707604756735, atv: -0.1387351194605659 },
-        //           { ath: -0.1458850052289904, atv: -0.1383689082090817 },
-        //           { ath: -0.14588500521847436, atv: -0.13824683778936153 },
-        //           { ath: -0.14588500517652392, atv: -0.1377585561129356 },
-        //           { ath: -0.1458850051135414, atv: -0.13702613360578259 },
-        //           { ath: -0.14588500506107493, atv: -0.13641578152350284 },
-        //           { ath: -0.1458850049875764, atv: -0.13556128861930328 },
-        //           { ath: -0.14588500489310263, atv: -0.1344626549047347 },
-        //           { ath: -0.14588500478612332, atv: -0.1333640018107405 },
-        //           { ath: -0.14600707544929037, atv: -0.13238743860041713 },
-        //           { ath: -0.14588500457608689, atv: -0.13092259384273203 },
-        //           { ath: -0.14570476597651805, atv: -0.12273525623807338 },
-        //           { ath: -0.14485545938691757, atv: -0.12069692595566599 },
-        //           { ath: -0.14366643041125826, atv: -0.11950789999261059 },
-        //           { ath: -0.14230754052005068, atv: -0.11611068310831126 },
-        //           { ath: -0.14162809559690004, atv: -0.115601100560894 },
-        //           { ath: -0.140269205891002, atv: -0.1144120746186009 },
-        //           { ath: -0.13704184371783867, atv: -0.11101485772430397 },
-        //           { ath: -0.12319209149535482, atv: -0.10162808702853063 },
-        //           { ath: -0.10836346773299965, atv: -0.09435366331152469 },
-        //           { ath: -0.09213593820646793, atv: -0.08456117180457748 },
-        //           { ath: -0.09213593820646793, atv: -0.08456117180457748 },
-        //           { ath: -0.09185615498682864, atv: -0.08372181693760394 },
-        //           { ath: -0.09129658728511458, atv: -0.08260267691871209 },
-        //           { ath: -0.09045723585740006, atv: -0.08092396700726526 },
-        //           { ath: -0.09017745208143424, atv: -0.08036439706854097 },
-        //           { ath: -0.09045724127565791, atv: -0.07868568880569633 },
-        //           { ath: -0.09045724271976496, atv: -0.07840590536574524 },
-        //           { ath: -0.09070177232126753, atv: -0.0772867668088221 },
-        //           { ath: -0.09070177567241444, atv: -0.07588784309188779 },
-        //           { ath: -0.09098156275422298, atv: -0.07504848924197167 },
-        //           { ath: -0.09266027387889153, atv: -0.07476870650766217 },
-        //           { ath: -0.09321984468971323, atv: -0.07448892242623831 },
-        //           { ath: -0.09433898567351662, atv: -0.07420913896633895 },
-        //           { ath: -0.09517834157117022, atv: -0.07392935516633783 },
-        //           { ath: -0.09741662415774499, atv: -0.0730900033628556 },
-        //           { ath: -0.09825598004908898, atv: -0.07281021949312125 },
-        //           { ath: -0.09937512104806956, atv: -0.07253043588067637 },
-        //           { ath: -0.10189318765401367, atv: -0.07225065354933552 },
-        //           { ath: -0.10301232868607713, atv: -0.07197086983268883 },
-        //           { ath: -0.1041314712238659, atv: -0.07085173189591619 },
-        //           { ath: -0.10525061367906119, atv: -0.0697325939606126 },
-        //           { ath: -0.10636975652352021, atv: -0.06833367132927123 },
-        //           { ath: -0.10748889879693024, atv: -0.06721453341505237 },
-        //           { ath: -0.10832825589415052, atv: -0.0660953953096551 },
-        //           { ath: -0.10944740524183771, atv: -0.06385711597519553 },
-        //           { ath: -0.10972719330072778, atv: -0.061898623827439325 },
-        //           { ath: -0.10972719500801986, atv: -0.06077948544154714 },
-        //           { ath: -0.10712564403581837, atv: -0.04246631934873307 },
-        //           { ath: -0.10712564403581837, atv: -0.04246631934873307 },
-        //           { ath: -0.10712564403581837, atv: -0.04246631934873307 },
-        //           { ath: -0.10003862863078439, atv: -0.024942753214558206 },
-        //           { ath: -0.09343637537250515, atv: -0.017631750260054972 },
-        //           { ath: -0.08448196706564204, atv: -0.00939368720273892 },
-        //           { ath: -0.060484169052813286, atv: 0.004217009814395617 },
-        //           { ath: -0.007932273702522252, atv: 0.021528546908487604 },
-        //           { ath: 0.04720185435303392, atv: 0.0697708515004909 },
-        //           { ath: 0.0895854078218008, atv: 0.12500820587073547 },
-        //           { ath: 0.09166877963190245, atv: 0.13177914145097125 },
-        //           { ath: 0.09271046509661574, atv: 0.1354250278550923 },
-        //           { ath: 0.09427299723927263, atv: 0.13646670446421608 },
-        //           { ath: 0.0963563719802778, atv: 0.13907090214872392 },
-        //           { ath: 0.0989605915813172, atv: 0.14063341447655425 },
-        //           { ath: 0.1020856558462242, atv: 0.14115424194578238 },
-        //           { ath: 0.10573156565624231, atv: 0.13959170297025617 },
-        //           { ath: 0.11041916355179637, atv: 0.13698747678347717 },
-        //           { ath: 0.11614844629298204, atv: 0.13542492688433994 },
-        //           { ath: 0.11927350956398186, atv: 0.13386238881804793 },
-        //           { ath: 0.11510676746200943, atv: 0.12813315516903565 },
-        //           { ath: 0.1114608657777012, atv: 0.12396643887228108 },
-        //           { ath: 0.10833580630924189, atv: 0.12032055923042057 },
-        //           { ath: 0.10625243581654331, atv: 0.11511214690558849 },
-        //           { ath: 0.1036482222707491, atv: 0.10834120560422106 },
-        //           { ath: 0.09791894171291915, atv: 0.10157026863472189 },
-        //           { ath: 0.09427303482942762, atv: 0.09688269181928384 },
-        //           { ath: 0.09010628072462623, atv: 0.09375764338280514 },
-        //           { ath: 0.08750206063331234, atv: 0.09115343783819772 },
-        //           { ath: 0.08125193786099771, atv: 0.0856774287361208 },
-        //           { ath: 0.07708518010514354, atv: 0.07810353079810253 },
-        //           { ath: 0.06927250606258895, atv: 0.06977003248807785 },
-        //           { ath: 0.060938981289893945, atv: 0.06404075118891171 },
-        //           { ath: 0.05729306420687408, atv: 0.05935315047288341 },
-        //           { ath: 0.052605456196658906, atv: 0.05362385790983146 },
-        //           { ath: 0.04635531112876379, atv: 0.04424864745946089 },
-        //           { ath: 0.043751083997563, atv: 0.03710735891765889 },
-        //           { ath: 0.04062600941125538, atv: 0.0318989022150003 },
-        //           { ath: 0.03698008877859138, atv: 0.026169598992436698 },
-        //           { ath: 0.029688242632744277, atv: 0.022523678429496603 },
-        //           { ath: 0.019271317452307812, atv: 0.01575267968830847 },
-        //           { ath: 0.00781269651065486, atv: 0.01575268043291109 },
-        //           { ath: -0.0057293110577916195, atv: 0.010023371163921973 },
-        //           { ath: -0.021354704476948427, atv: 0.0068982925824468385 },
-        //           { ath: -0.027604861377881207, atv: 0.005335753289943576 },
-        //           { ath: -0.035938403431885035, atv: 0.0032523681427612905 },
-        //           { ath: -0.043230251587658586, atv: 0.0011689827415040197 },
-        //           { ath: -0.055209715264936676, atv: -0.005602018347853217 },
-        //           { ath: -0.07552271024735546, atv: -0.017060629529898248 },
-        //           { ath: -0.08073116836328609, atv: -0.020185703587754164 },
-        //           { ath: -0.09010639739068438, atv: -0.03581107587760732 },
-        //           { ath: -0.09271063059270546, atv: -0.044665452572842324 },
-        //           { ath: -0.09271063405788027, atv: -0.04935306480852744 },
-        //           { ath: -0.09323148172296669, atv: -0.05247813868972486 },
-        //           { ath: -0.09323148404610038, atv: -0.055603213142415536 },
-        //           { ath: -0.09323148675639459, atv: -0.05924913311462053 },
-        //           { ath: -0.09323148830515038, atv: -0.061332515837517844 },
-        //           { ath: -0.09271063873239882, atv: -0.06393674515711256 },
-        //           { ath: -0.09271063959204184, atv: -0.06530312946411751 },
-        //           { ath: -0.09114811029633074, atv: -0.06790735784331271 },
-        //           { ath: -0.0901064220677199, atv: -0.07207412438458304 },
-        //           { ath: -0.08593966271928366, atv: -0.08040766097206696 },
-        //           { ath: -0.08437712695672417, atv: -0.08249104608963352 },
-        //           { ath: -0.0807312066524446, atv: -0.08249105365286578 },
-        //           { ath: -0.07760613158444585, atv: -0.08249105986978289 },
-        //           { ath: -0.07448105646716385, atv: -0.08405360156275758 },
-        //           { ath: -0.07448105729588406, atv: -0.08561613810946403 },
-        //           { ath: -0.07500190437008314, atv: -0.08769951898734844 },
-        //           { ath: -0.07604359711746156, atv: -0.08926205315675245 },
-        //           { ath: -0.07812698195084522, atv: -0.09134543022998447 },
-        //           { ath: -0.08021036634193024, atv: -0.09290796152435697 },
-        //           { ath: -0.08385628792439093, atv: -0.09447048869786015 },
-        //           { ath: -0.08593967182906681, atv: -0.096033019056001 },
-        //           { ath: -0.08750220988252977, atv: -0.09759555036760004 },
-        //           { ath: -0.09271066798339689, atv: -0.10072060618602384 },
-        //           { ath: -0.09427320523394656, atv: -0.1017622914798796 },
-        //           { ath: -0.09791912478385711, atv: -0.10384565979258868 },
-        //           { ath: -0.10104419797926312, atv: -0.10540818405090709 },
-        //           { ath: -0.1041692702566479, atv: -0.10644986298072379 },
-        //           { ath: -0.10469011583978727, atv: -0.10697070580067143 },
-        //           { ath: -0.10677349670072545, atv: -0.10781459268982496 },
-        //           { ath: -0.10937772368470178, atv: -0.10989796121096895 },
-        //           { ath: -0.11354448548934215, atv: -0.11250216717757851 },
-        //           { ath: -0.1213571590368474, atv: -0.1166688881190165 },
-        //           { ath: -0.1234405382363093, atv: -0.117710566913014 },
-        //           { ath: -0.12864898492597376, atv: -0.12031476221760523 },
-        //           { ath: -0.13385742871423645, atv: -0.12187726795105355 },
-        //           { ath: -0.13541995016566943, atv: -0.12448147188831919 },
-        //           { ath: -0.1354199535005023, atv: -0.1285826532761514 },
-        //           { ath: -0.13541995403181772, atv: -0.1337910819032264 },
-        //           { ath: -0.13541996004374823, atv: -0.1410828826553011 },
-        //           { ath: -0.13750333915777446, atv: -0.14472876904116738 },
-        //           { ath: -0.13958671558845026, atv: -0.14837465060154856 },
-        //           { ath: -0.14167009447436385, atv: -0.1525413752808555 },
-        //           { ath: -0.14635769189777648, atv: -0.15722892142505743 },
-        //           { ath: -0.15156613148434417, atv: -0.16243730032772655 },
-        //           { ath: -0.15677456331695794, atv: -0.1650414633690941 },
-        //           { ath: -0.16406636646939887, atv: -0.16712476849912083 },
-        //           { ath: -0.17135816705786056, atv: -0.1718122719160657 },
-        //           { ath: -0.1812541693745402, atv: -0.1738955413643257 },
-        //           { ath: -0.18698343227219993, atv: -0.17806220443645376 },
-        //           { ath: -0.19635857862249395, atv: -0.18170798267537333 },
-        //           { ath: -0.20052530704811034, atv: -0.1832704542725319 },
-        //           { ath: -0.20990043924717838, atv: -0.1874370561956783 },
-        //           { ath: -0.21458800068728578, atv: -0.18899951445772323 },
-        //           { ath: -0.21823387900832358, atv: -0.18952030720728538 },
-        //           { ath: -0.22240059351815944, atv: -0.18899941618125002 },
-        //           { ath: -0.22500478659975442, atv: -0.18691603061513323 },
-        //           { ath: -0.22708813980500508, atv: -0.184832651629403 },
-        //           { ath: -0.2276089773207559, atv: -0.18379096874930353 },
-        //           { ath: -0.2276089773207559, atv: -0.18379096874930353 },
-        //           { ath: -0.22865065222055136, atv: -0.1817076028432602 },
-        //         ],
-        //       },
-        //     ];
-
-        //     const krpano = document.getElementById("krpanoSWFObject");
-
-        //     if (krpano) {
-        //       houseData.forEach((house) => {
-        //         const hotspotName = house.id; // Use the provided hotspot name (hs1, hs2, etc.)
-        //         console.log("Adding Hotspot:", hotspotName);
-
-        //         // Generate hotspot with points dynamically
-        //         let hotspotXML = `<hotspot name="${hotspotName}" style="mypolygonalhotspotstylename" fillcolor="0xD28F5C" fillalpha="0.5" bordercolor="0xD28F5C" borderwidth="1">`;
-        //         house.coordinates.forEach((point) => {
-        //           hotspotXML += `<point ath="${point.ath}" atv="${point.atv}" />`;
-        //         });
-        //         hotspotXML += `</hotspot>`;
-
-        //         const cords = house.coordinates[0];
-
-        //         // Set the onclick action to show a Bootstrap tooltip
-        //         krpano.call(`
-        //   set(hotspot[${hotspotName}].onhover, js(showTooltip('${hotspotName}', '${house.land_number}','${cords.ath},${cords.atv}')));
-        //   set(hotspot[${hotspotName}].onout, js(hideTooltip()));
-        // `);
-
-        //         //   krpano.call(
-        //         //     `set(hotspot[${hotspotName}].onclick, js(showHouseDetails('${response}', '${house.land_number}')));`
-        //         //   );
-
-        //         // Add hotspot to Krpano dynamically
-        //         krpano.call(`addhotspot(${hotspotName})`);
-        //         krpano.call(
-        //           `set(hotspot[${hotspotName}].loadstyle, mypolygonalhotspotstylename)`
-        //         );
-
-        //         // Set coordinates for each point
-        //         house.coordinates.forEach((point, index) => {
-        //           krpano.call(
-        //             `set(hotspot[${hotspotName}].point[${index}].ath, ${point.ath})`
-        //           );
-        //           krpano.call(
-        //             `set(hotspot[${hotspotName}].point[${index}].atv, ${point.atv})`
-        //           );
-        //         });
-        //       });
-        //     } else {
-        //       console.error("Krpano instance not found!");
-        //     }
-        //   };
-
+        
         window.onload = function () {
           console.log("Krpano Loaded");
           console.log("Krpano Object:");

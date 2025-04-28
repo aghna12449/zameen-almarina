@@ -13,6 +13,13 @@
     border-radius: 4px;
 }
 
+.breadcrumb-wrapper {
+    display: flex;       /* Horizontal Flexbox */
+    align-items: center; /* Vertically center items */
+    flex-wrap: nowrap;   /* Prevent wrapping to next line */
+    overflow-x: auto;    /* Enable horizontal scroll if necessary */
+  }
+
 .breadcrumb-link {
     text-decoration: none;
     color: inherit;
@@ -69,4 +76,26 @@
 .mui-breadcrumb-icon {
     margin-right: 8px; /* Spacing for the icon */
     font-size: 1.2rem; /* Adjust icon size as needed */
+}
+
+
+
+#toggle-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 16px;
+  background-color: #007bff; /* Bootstrap primary blue */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 2000; /* Higher than hotspot tooltips */
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.3);
+  transition: background-color 0.3s;
+}
+
+#toggle-button:hover {
+  background-color: #0056b3; /* darker blue on hover */
 }
