@@ -42,7 +42,7 @@
 	               layout_maxwidth="814"
 	               controlbar_width="-24"
 	               controlbar_height="40"
-	               controlbar_offset="20"
+	               controlbar_offset="-80"
 	               controlbar_offset_closed="-40"
 	               controlbar_overlap.no-fractionalscaling="10"
 	               controlbar_overlap.fractionalscaling="0"

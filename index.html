@@ -27,6 +27,11 @@
       href="https://cdn.jsdelivr.net/npm/@mui/material@5.0.0-beta.4/dist/material-ui.min.css"
     />
 
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
     <style>
       .icon-container {
         position: fixed;
@@ -43,7 +48,7 @@
       }
 
       .material-icons {
-        font-size: 48px;
+        font-size: 54px;
         /* Customize size */
         color: white;
         /* Customize color */
@@ -68,7 +73,7 @@
 
   <body>
     <button id="toggle-button" onclick="toggleHotspotColor()">
-      Toggle Hotspot Color
+      <span id="toggle-icon" class="material-icons">toggle_off</span>
     </button>
 
     <div id="custom-breadcrumbs" class="mui-breadcrumb-root">
@@ -83,8 +88,7 @@
     <script src="zone3.js"></script>
 
     <div class="icon-container" id="homeIcon">
-      <i class="material-icons">home</i>
-      <!-- Home icon -->
+      <span id="arrow-icon" class="material-icons">arrow_circle_left</span>
     </div>
 
     <div id="pano" style="width: 100%; height: 100%">
@@ -163,28 +167,27 @@
         function attachBreadcrumbClickEvents() {
           console.log("attachBreadcrumbClickEvents");
           const breadcrumbLinks = document.querySelectorAll(".breadcrumb-link");
-          var krpano = document.getElementById("krpanoSWFObject");
+
           breadcrumbLinks.forEach((link) => {
             link.addEventListener("click", function (e) {
               e.preventDefault();
-
               const sceneName = this.getAttribute("data-scene");
-              console.log("sceneName", sceneName);
               const crumbIndex = parseInt(this.getAttribute("data-index"));
-              if (sceneName) {
-                loadScene(sceneName);
-
-                // Slice the breadcrumb trail up to clicked crumb
-                breadcrumbTrail = breadcrumbTrail.slice(0, crumbIndex + 1);
-
-                renderBreadcrumbs(); // Rerender updated trail
-
-                krpano.call(`loadscene(${sceneName}, null, MERGE, BLEND(1))`);
-              }
+              removeBreadCrumbItem(sceneName, crumbIndex);
             });
           });
         }
 
+        function removeBreadCrumbItem(sceneName, crumbIndex) {
+          var krpano = document.getElementById("krpanoSWFObject");
+
+          if (sceneName) {
+            loadScene(sceneName);
+            breadcrumbTrail = breadcrumbTrail.slice(0, crumbIndex + 1);
+            renderBreadcrumbs();
+            krpano.call(`loadscene(${sceneName}, null, MERGE, BLEND(1))`);
+          }
+        }
         // Load a new scene and update breadcrumb trail
         function loadScene(sceneName) {
           console.log(`Loading scene: ${sceneName}`);
@@ -295,7 +298,14 @@
             console.error("Krpano instance not found");
             return;
           }
-
+          const icon = document.getElementById("toggle-icon");
+          if (icon.innerText === "toggle_off") {
+            icon.innerText = "toggle_on";
+            // Here you can also trigger your hotspot color ON logic
+          } else {
+            icon.innerText = "toggle_off";
+            // Here you can also trigger your hotspot color OFF logic
+          }
           // Loop through each house data in zone3houseData
           zone3houseData.forEach((house) => {
             const hotspotName = `hs_${house.id}`; // Assuming house.id is unique
@@ -397,8 +407,11 @@
 
           if (krpano) {
             const currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
-            console.log("Current Scene:", currentScene);
 
+            let card = document.getElementById("krpano-card");
+            if (card) {
+              card.remove();
+            }
             // Only proceed if we're in Zone 3
             if (currentScene === "scene_al_marina_zone_3") {
               breadcrumbTrail.push({
@@ -467,20 +480,20 @@
           cardContainer.style.position = "absolute";
           cardContainer.style.top = "50px";
           cardContainer.style.right = "20px";
-          cardContainer.style.width = "320px";
+          cardContainer.style.width = "280px";
           cardContainer.style.zIndex = "1000";
           cardContainer.style.background =
-            "linear-gradient(135deg, #3a3a3a, #4b4b4b)";
+            "linear-gradient(135deg, rgb(58, 58, 58), rgb(0 0 0 / 68%))";
 
-          cardContainer.style.borderRadius = "16px";
-          cardContainer.style.boxShadow = "0 12px 24px rgba(0,0,0,0.15)";
+          cardContainer.style.borderRadius = "13px";
+          cardContainer.style.boxShadow = "0 12px 24px rgba(0, 0, 0, 0.15)";
           cardContainer.style.padding = "20px";
           cardContainer.style.fontFamily = "'Segoe UI', sans-serif";
           cardContainer.style.color = "#ffffff"; // White text
 
           cardContainer.innerHTML = `
     <div style="border-bottom: 2px solid #ccc; padding-bottom: 10px; margin-bottom: 10px;">
-      <h3 style="margin: 0; color: #ffffff;">🏙️ Al Marina City -  ${unitDetails.zone}</h3>
+      <h3 style="margin: 0; color: #ffffff;">🏙️ Al Marina City - ${unitDetails.zone}</h3>
       
     </div>
     <p style="margin: 6px 0;"><strong>🏡 Plot Number:</strong> ${unitDetails.plot_number}</p>
@@ -494,11 +507,11 @@
    
     <button onclick="closeCard()" style="
       margin-top: 12px;
-      padding: 8px 16px;
-      background-color: #2980b9;
-      color: white;
+      padding: 5px 14px;
+      background-color: #2980b98f;
+      color: #ffffffbf;
       border: none;
-      border-radius: 6px;
+      border-radius: 9px;
       cursor: pointer;
       font-size: 14px;
     ">Close</button>
@@ -625,7 +638,6 @@
           }
         }
 
-        
         window.onload = function () {
           console.log("Krpano Loaded");
           console.log("Krpano Object:");
@@ -643,6 +655,15 @@
 
               if (krpano_obj && krpano_obj.call) {
                 // Load new scene
+                breadcrumbTrail = [
+                  {
+                    scene: "scene_AL_MARINA_aerial",
+                    title: "Al Marina",
+                    icon: "home",
+                  },
+                ];
+                renderBreadcrumbs();
+
                 krpano_obj.call(
                   "loadscene(scene_AL_MARINA_aerial, null, MERGE);"
                 );
@@ -667,7 +688,7 @@
             if (typeof krpano !== "undefined" && krpano !== null) {
               console.log("setTimeout Krpano Initialized");
 
-              addLandHotspotsToKrpano();
+              //addLandHotspotsToKrpano();
             }
             krpano.call("set(tooltip_pos.x, 0)");
             krpano.call("set(tooltip_pos.y, 0)");
