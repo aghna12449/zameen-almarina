@@ -108,3 +108,43 @@
     line-height: 1;
   }
   
+  .time-toggle {
+
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 9999;
+    padding: 4px;
+    border-radius: 7px;
+  }
+  
+  .time-toggle .label {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, color 0.3s;
+    color: #333333;
+  }
+
+  .toggle-option {
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 8px;
+    background: #ebd8d8;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .time-toggle .active {
+    background: #373a3d;
+    color: white;
+  }
+  .toggle-option .material-icons {
+    font-size: 20px;             /* Smaller icon */
+  }
+  

@@ -76,6 +76,15 @@
       <span id="toggle-icon" class="material-icons">toggle_off</span>
     </button>
 
+    <div class="time-toggle" onclick="toggleTimeView(this)">
+      <div class="toggle-option now active">
+        <span class="material-icons">access_time</span> Now
+      </div>
+      <div class="toggle-option future">
+        <span class="material-icons">event</span> Future
+      </div>
+    </div>
+
     <div id="custom-breadcrumbs" class="mui-breadcrumb-root">
       <div class="breadcrumb-wrapper" id="breadcrumb-wrapper">
         <!-- Dynamic breadcrumbs addition -->
@@ -125,6 +134,25 @@
           scene_zone_5: { title: "Zone 5", icon: "place" },
           // Add more mappings here
         };
+
+        function toggleTimeView(element) {
+          const now = element.querySelector(".now");
+          const future = element.querySelector(".future");
+
+          const isNowActive = now.classList.contains("active");
+
+          if (isNowActive) {
+            now.classList.remove("active");
+            future.classList.add("active");
+            console.log("Future view");
+            // Add your future-view logic here
+          } else {
+            future.classList.remove("active");
+            now.classList.add("active");
+            console.log("Now view");
+            // Add your now-view logic here
+          }
+        }
 
         // Render the breadcrumbs dynamically
         function renderBreadcrumbs() {
@@ -291,28 +319,28 @@
         const zone2houseData = parseHotspots(zone2hotspotXML);
 
         let toggleState = false; // Global state for toggling colors (false = color1, true = color2)
+        let toggleColorOn = false;
 
         function toggleHotspotColor(color1 = "0xFF0000", color2 = "0x00FF00") {
+          toggleColorOn = !toggleColorOn;
+
           const krpano = document.getElementById("krpanoSWFObject");
           if (!krpano) {
             console.error("Krpano instance not found");
             return;
           }
           const icon = document.getElementById("toggle-icon");
-          if (icon.innerText === "toggle_off") {
-            icon.innerText = "toggle_on";
-            // Here you can also trigger your hotspot color ON logic
-          } else {
-            icon.innerText = "toggle_off";
-            // Here you can also trigger your hotspot color OFF logic
-          }
+          icon.textContent = toggleColorOn ? "toggle_on" : "toggle_off";
+          console.log("hotspotColorOn", toggleColorOn);
+          icon.style.color = toggleColorOn ? "#808e92  " : "#dee2e6";
+
           // Loop through each house data in zone3houseData
           zone3houseData.forEach((house) => {
             const hotspotName = `hs_${house.id}`; // Assuming house.id is unique
             console.log("hotspotName", hotspotName);
 
             // Get the current color based on the global toggle state
-            const selectedColor = toggleState ? color2 : color1;
+            const selectedColor = toggleState ? color1 : color2;
 
             // Set the color of the hotspot
             krpano.call(
