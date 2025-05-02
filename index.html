@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
   <head>
-    <title>krpano - AL MARINA zone 4</title>
+    <title>AL MARINA</title>
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover"
@@ -76,6 +76,10 @@
       <span id="toggle-icon" class="material-icons">toggle_off</span>
     </button>
 
+    <button id="zoomOutBtn">-</button>
+    <button id="zoomInBtn">+</button>
+    <button id="fullScreenBtn" title="Toggle Fullscreen">⛶</button>
+
     <div class="time-toggle" onclick="toggleTimeView(this)">
       <div class="toggle-option now active">
         <span class="material-icons">access_time</span> Now
@@ -135,7 +139,39 @@
           // Add more mappings here
         };
 
-        function toggleTimeView(element) {
+        function toggleFullScreen() {
+          const elem = document.documentElement;
+          const btn = document.getElementById("fullScreenBtn");
+
+          if (
+            !document.fullscreenElement &&
+            !document.webkitFullscreenElement &&
+            !document.msFullscreenElement
+          ) {
+            // Enter fullscreen
+            if (elem.requestFullscreen) {
+              elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) {
+              elem.webkitRequestFullscreen(); // Safari
+            } else if (elem.msRequestFullscreen) {
+              elem.msRequestFullscreen(); // IE11
+            }
+
+            btn.innerHTML = "🗗";
+          } else {
+            // Exit fullscreen
+            if (document.exitFullscreen) {
+              document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+              document.webkitExitFullscreen(); // Safari
+            } else if (document.msExitFullscreen) {
+              document.msExitFullscreen(); // IE11
+            }
+            btn.innerHTML = "⛶";
+          }
+        }
+
+        const toggleTimeView = (element) => {
           const now = element.querySelector(".now");
           const future = element.querySelector(".future");
 
@@ -152,10 +188,10 @@
             console.log("Now view");
             // Add your now-view logic here
           }
-        }
+        };
 
         // Render the breadcrumbs dynamically
-        function renderBreadcrumbs() {
+        const renderBreadcrumbs = () => {
           console.log("renderBreadcrumbs");
           const wrapper = document.getElementById("breadcrumb-wrapper");
           wrapper.innerHTML = ""; // Clear previous breadcrumbs
@@ -189,11 +225,10 @@
           });
 
           attachBreadcrumbClickEvents(); // Re-attach click events
-        }
+        };
 
         // Attach click listeners to breadcrumb links
-        function attachBreadcrumbClickEvents() {
-          console.log("attachBreadcrumbClickEvents");
+        const attachBreadcrumbClickEvents = () => {
           const breadcrumbLinks = document.querySelectorAll(".breadcrumb-link");
 
           breadcrumbLinks.forEach((link) => {
@@ -204,9 +239,9 @@
               removeBreadCrumbItem(sceneName, crumbIndex);
             });
           });
-        }
+        };
 
-        function removeBreadCrumbItem(sceneName, crumbIndex) {
+        const removeBreadCrumbItem = (sceneName, crumbIndex) => {
           var krpano = document.getElementById("krpanoSWFObject");
 
           if (sceneName) {
@@ -215,11 +250,9 @@
             renderBreadcrumbs();
             krpano.call(`loadscene(${sceneName}, null, MERGE, BLEND(1))`);
           }
-        }
+        };
         // Load a new scene and update breadcrumb trail
-        function loadScene(sceneName) {
-          console.log(`Loading scene: ${sceneName}`);
-
+        const loadScene = (sceneName) => {
           // Example krpano call if available
           if (window.krpano) {
             krpano.call(`loadscene(${sceneName}, null, MERGE, BLEND(1))`);
@@ -237,32 +270,20 @@
           } else {
             console.warn("Scene title not found for:", sceneName);
           }
-        }
+        };
 
         // Initial render
         document.addEventListener("DOMContentLoaded", function () {
           renderBreadcrumbs();
         });
 
-        function addCustomDivToHotspot(hotspotName) {
+        const addCustomDivToHotspot = (hotspotName) => {
           var krpano = document.getElementById("krpanoSWFObject"); // Get krpano instance
-
           if (krpano) {
-            // Create a new layer (div inside the hotspot)
-            // krpano.call(`
-            //         addlayer(${hotspotName}_label);
-            //         set(layer[${hotspotName}_label].parent, ${hotspotName});
-            //         set(layer[${hotspotName}_label].type, text);
-            //         set(layer[${hotspotName}_label].html, "<div style='padding: 5px; background: rgba(0,0,0,0.7); color: white; border-radius: 5px;'><a href='https://sakani.sa/app/offplan-projects/1462?csrt=11980081491072285301' target='_blank' style='color: white; text-decoration: none;'>Open Sakani</a></div>");
-            //         set(layer[${hotspotName}_label].align, center);
-            //         set(layer[${hotspotName}_label].x, 0);
-            //         set(layer[${hotspotName}_label].y, -30);
-            //         set(layer[${hotspotName}_label].zorder, 2);
-            //     `);
           } else {
             console.error("Krpano instance not found");
           }
-        }
+        };
 
         // Function to  call the API and fetch data on inital load
         const onInitalLoad = async () => {
@@ -273,14 +294,11 @@
           }
 
           const apiData = await fetchAlMarinaData();
-          console.log("apiData", apiData);
           if (!apiData) {
             return;
           }
           return apiData;
         };
-
-        console.log("zone 3", zone3hotspotXML);
 
         const parseHotspots = (xmlString) => {
           const parser = new DOMParser();
@@ -365,7 +383,6 @@
         }
         const dynamicZoneRendering = (zoneData, response, krpano) => {
           zoneData.forEach((house) => {
-            console.log("houseData", house);
             // Create a unique name for each house hotspot
             const hotspotName = `hs_${house.id}`;
 
@@ -393,8 +410,6 @@
                         set(hotspot[${hotspotName}].onout, js(hideTooltip()));
                       `);
 
-            console.log("response", response);
-
             krpano.call(
               `set(hotspot[${hotspotName}].onclick, js(showHouseDetails('${response}', '${house.plot_number}')));`
             );
@@ -404,17 +419,6 @@
             krpano.call(
               `set(hotspot[${hotspotName}].loadstyle, mypolygonalhotspotstylename)`
             );
-
-            // const count = krpano.get("hotspot.count");
-
-            // for (let i = count - 1; i >= 0; i--) {
-            //   const name = krpano.get(`hotspot[${i}].name`);
-
-            //   if (name && name.startsWith("zone3")) {
-            //     console.log("Removing hotspot:", name);
-            //     // krpano.call(`removehotspot(${name})`);
-            //   }
-            // }
 
             house.coordinates.forEach((point, index) => {
               krpano.call(
@@ -463,8 +467,9 @@
         };
 
         const fetchAlMarinaData = async () => {
-          return fetch("http://localhost:5000/api/getAlMarinaData")
-            .then((res) => res.json()) // Parse JSON
+          const baseUrl = "http://localhost:5000/api/getAlMarinaData";
+          return fetch(baseUrl)
+            .then((res) => res.json())
             .then((data) => {
               return data;
             })
@@ -474,16 +479,6 @@
         // Function to show Bootstrap tooltip
 
         function createCard(title, description, imageUrl, response) {
-          console.log("Creating Card:", response);
-
-          // block_number = response[0].block_number;
-          // breadcrumbTrail.push({
-          //       scene: "scene_zone_3",
-          //       title: `Block # ${block_number}`,
-          //       icon: "grain",
-          //     });
-          //     renderBreadcrumbs()
-
           let unitDetails = {
             zone: response[0].zone,
             plot_number: response[0].plot_number,
@@ -495,8 +490,6 @@
             north: response[0].north,
             east: response[0].east,
           };
-
-          console.log("unitDetails", unitDetails);
 
           let existingCard = document.getElementById("krpano-card");
           if (existingCard) {
@@ -548,29 +541,22 @@
           document.body.appendChild(cardContainer);
         }
 
-        function closeCard() {
+        const closeCard = () => {
           let card = document.getElementById("krpano-card");
           if (card) {
             card.remove();
           }
-        }
+        };
 
         // Function to display house details
-        function showHouseDetails(response, plot_number) {
-          console.log("Show House Details:", response, plot_number);
+        const showHouseDetails = (response, plot_number) => {
           const unitData = localStorage.getItem("response");
 
           const parsedData = JSON.parse(unitData);
 
-          console.log("uparsedData", parsedData);
           const filteredData = parsedData?.data?.filter(
             (unit) => unit.plot_number === plot_number
           );
-
-          console.log();
-          console.log("Filtered Data:", filteredData);
-
-          console.log("plot_number", plot_number, unitData);
 
           //   Assuming the first element in the response array corresponds to the clicked house
           if (unitData && unitData.length > 0) {
@@ -583,7 +569,7 @@
           } else {
             console.error("House details not found in the response.");
           }
-        }
+        };
 
         const showTooltip = (hotspotName, houseId, cords) => {
           // Convert string back to an array
@@ -597,12 +583,6 @@
             existingTooltip.remove(); // Remove existing tooltip if it exists
           }
 
-          // console.log(
-          //   "Current LookAt:",
-          //   krpano.get("view.hlookat"),
-          //   krpano.get("view.vlookat"),
-          //   krpano.get("view.fov")
-          // );
           if (krpano && krpano.get) {
             console.log("IF WORKING");
           }
@@ -613,20 +593,6 @@
           }
           // Convert hotspot position to screen coordinates
 
-          // krpano.call(`spheretoscreen(${x}, ${y}, 'tooltip_pos')`);
-          // console.log("CHECK HERE");
-
-          // const isVisible = krpano.get("tooltip_pos.visible");
-
-          // console.log("isVisible", isVisible);
-          // const screenX = krpano.get("tooltip_pos.x");
-          // const screenY = krpano.get("tooltip_pos.y");
-
-          // console.log("screenX", screenX, "screenY", screenY);
-
-          // console.log("CORDS", cords, "X", x, "Y", y, cords);
-
-          // Create a Bootstrap tooltip container
           const tooltip = document.createElement("div");
           tooltip.id = "hotspot-tooltip";
           tooltip.className = "tooltip bs-tooltip-top show"; // Bootstrap tooltip classes
@@ -659,16 +625,47 @@
           }, 3000);
         };
         // Function to hide the tooltip when the mouse leaves
-        function hideTooltip() {
+        const hideTooltip = () => {
           let existingTooltip = document.getElementById("hotspot-tooltip");
           if (existingTooltip) {
             existingTooltip.remove();
           }
-        }
+        };
 
-        window.onload = function () {
-          console.log("Krpano Loaded");
-          console.log("Krpano Object:");
+        // Zoom in function
+        const zoomIn = () => {
+          const krpano = document.getElementById("krpanoSWFObject");
+
+          krpano.call("set(fov_moveforce,-1);");
+        };
+
+        const zoomOut = () => {
+          const krpano = document.getElementById("krpanoSWFObject");
+
+          krpano.call("set(fov_moveforce,+1);");
+          // Wait briefly to ensure the scene is ready, then zoom
+        };
+        const enableZoomControls = () => {
+          document
+            .getElementById("zoomInBtn")
+            .addEventListener("click", function () {
+              zoomIn();
+            });
+
+          document
+            .getElementById("zoomOutBtn")
+            .addEventListener("click", function () {
+              zoomOut();
+            });
+
+          document
+            .getElementById("fullScreenBtn")
+            .addEventListener("click", function () {
+              toggleFullScreen();
+            });
+        };
+
+        window.onload = () => {
           setTimeout(() => {
             if (typeof krpano !== "undefined" && krpano !== null) {
               console.log("setTimeout Krpano Initialized");
@@ -708,10 +705,9 @@
               }
             });
           const krpano = document.getElementById("krpanoSWFObject");
+
           addCustomDivToHotspot("hs1"); // Replace 'hs1' with your hotspot ID
 
-          console.log("Krpano Object:", krpano);
-          // Ensure Krpano is initialized before calling addHotspotsToKrpano
           setTimeout(() => {
             if (typeof krpano !== "undefined" && krpano !== null) {
               console.log("setTimeout Krpano Initialized");
@@ -746,7 +742,7 @@
             console.log("Krpano onloadcomplete");
             krpano.set(
               "events.onloadcomplete",
-              `js(addLandHotspotsToKrpano());`
+              "js(enableZoomControls()); js(addLandHotspotsToKrpano());"
             );
           }
         };

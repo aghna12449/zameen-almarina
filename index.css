@@ -118,7 +118,8 @@
     cursor: pointer;
     z-index: 9999;
     padding: 4px;
-    border-radius: 7px;
+    border-radius: 10px;
+   
   }
   
   .time-toggle .label {
@@ -136,15 +137,67 @@
     align-items: center;
     gap: 6px;
     font-size: 8px;
-    background: #ebd8d8;
+    background:rgb(0 0 0 / 45%);
     transition: background-color 0.3s, color 0.3s;
+
   }
   
   .time-toggle .active {
-    background: #373a3d;
+    background: rgb(0 0 0 / 82%);
     color: white;
   }
   .toggle-option .material-icons {
     font-size: 20px;             /* Smaller icon */
   }
+
+  #zoomInBtn{
+    position: fixed;
+    bottom: 185px;
+    right: 40px;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgb(0 0 0 / 41%);
+    color: white;
+    cursor: pointer;
+    z-index: 9999;
+    margin-bottom: 5px;
+  }
+
+  #zoomOutBtn {
+    position: fixed;
+    bottom: 227px;
+    right: 40px;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    border-radius: 50%;
+    border: none;
+    background-color:rgb(0 0 0 / 41%);
+    color: white;
+    cursor: pointer;
+    z-index: 9999;
+    margin-bottom: 5px;
+  }
   
+  #fullScreenBtn {
+    position: fixed;
+    bottom: 270px;
+    right: 40px;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    border-radius: 50%;
+    border: none;
+    background-color:rgb(0 0 0 / 41%);
+    color: white;
+    cursor: pointer;
+    z-index: 9999;
+    margin-bottom: 5px;        /* Ensure it's above all other elements */
+  }
+
+   
+ 
+
