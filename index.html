@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>AL MARINA</title>
-    <link rel="icon" href="F:\Aghna\AL-marina\marinacityui\images\icons8-home.png">
+    <link rel="icon"  href="F:\Aghna\AL-marina\marinacityui\images\icons8-home.png">
   </head>
   <body>
     <meta
@@ -101,9 +101,13 @@
 
     <script src="tour.js"></script>
     <script src="data.js"></script>
+    <script src="zone1.js"></script>
     <script src="zone2.js"></script>
     <script src="zone3.js"></script>
 
+    <script src="zone4.js"></script>
+    
+    <script src="zone5.js"></script>
     <div class="icon-container" id="homeIcon">
       <span id="arrow-icon" class="material-icons">arrow_circle_left</span>
     </div>
@@ -337,8 +341,11 @@
           return houseData;
         };
 
+        const zone1houseData = parseHotspots(zone1hotspotXML);
         const zone3houseData = parseHotspots(zone3hotspotXML);
         const zone2houseData = parseHotspots(zone2hotspotXML);
+        const zone4houseData = parseHotspots(zone4hotspotXML);
+        const zone5houseData = parseHotspots(zone5hotspotXML);
 
         let toggleState = false; // Global state for toggling colors (false = color1, true = color2)
         let toggleColorOn = false;
@@ -449,7 +456,17 @@
               card.remove();
             }
             // Only proceed if we're in Zone 3
-            if (currentScene === "scene_al_marina_zone_3") {
+          
+            if (currentScene === "scene_al_marina_zone_1__") {
+              breadcrumbTrail.push({
+                scene: "scene_zone_1",
+                title: "Zone 1",
+                icon: "grain",
+              });
+              renderBreadcrumbs();
+              dynamicZoneRendering(zone1houseData, response, krpano);
+            } 
+            else if (currentScene === "scene_al_marina_zone_3") {
               breadcrumbTrail.push({
                 scene: "scene_zone_3",
                 title: "Zone 3",
@@ -466,7 +483,27 @@
                 icon: "grain",
               });
               renderBreadcrumbs();
+            } else if (currentScene === "scene_al_marina_zone_4") {
+              console.log("Current Scene:", currentScene);
+              dynamicZoneRendering(zone4houseData, response, krpano);
+              breadcrumbTrail.push({
+                scene: "scene_zone_4",
+                title: "Zone 4",
+                icon: "grain",
+              });
+              renderBreadcrumbs();
+            }else if (currentScene === "scene_al_marina_zone__5") {
+              console.log("Current Scene:", currentScene);
+              dynamicZoneRendering(zone5houseData, response, krpano);
+              breadcrumbTrail.push({
+                scene: "scene_zone_5",
+                title: "Zone 5",
+                icon: "grain",
+              });
+              renderBreadcrumbs();
             }
+//  
+           
           }
         };
 
