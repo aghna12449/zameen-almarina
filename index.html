@@ -508,7 +508,7 @@
         };
 
         const fetchAlMarinaData = async () => {
-          const baseUrl = "http://localhost:5001/api/getAlMarinaData";
+          const baseUrl = "http://localhost:5000/api/getAlMarinaData";
           return fetch(baseUrl)
             .then((res) => res.json())
             .then((data) => {
