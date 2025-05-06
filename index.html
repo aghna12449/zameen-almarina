@@ -108,7 +108,8 @@
       </span>
       <input
         type="text"
-        placeholder="Search..."
+        placeholder="Search Plot..."
+        oninput="handleSearch(this.value)"
         style="
           background: black;
           border: none;
@@ -192,6 +193,11 @@
           scene_zone_5: { title: "Zone 5", icon: "place" },
           // Add more mappings here
         };
+
+        function handleSearch(value) {
+          console.log("value", value)
+    // You can replace alert with your own search logic
+  }
 
         function toggleFullScreen() {
           const elem = document.documentElement;
