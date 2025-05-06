@@ -36,6 +36,9 @@
       rel="stylesheet"
     />
 
+   
+    
+
     <style>
       .icon-container {
         position: fixed;
@@ -76,6 +79,49 @@
   </head>
 
   <body>
+
+    <div
+    style="
+      display: flex;
+      justify-content: center;
+      padding-top: 10px;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      z-index: 1000;
+    "
+  >
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        border: 1px solid #666;
+        border-radius: 30px;
+        padding: 6px 14px;
+        width: 100%;
+        max-width: 450px;
+        background: black;
+      "
+    >
+      <span class="material-icons" style="color: white; margin-right: 10px;">
+        search
+      </span>
+      <input
+        type="text"
+        placeholder="Search..."
+        style="
+          background: black;
+          border: none;
+          outline: none;
+          color: white;
+          font-size: 16px;
+          flex: 1;
+        "
+      />
+    </div>
+  </div>
+  
+
     <button id="toggle-button" onclick="toggleHotspotColor()">
       <span id="toggle-icon" class="material-icons">toggle_off</span>
     </button>
