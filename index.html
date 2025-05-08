@@ -65,66 +65,7 @@
     }
 
 
-    /* Modal Overlay */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      animation: fadeIn 0.3s ease-in-out;
-    }
-
-    /* Modal Box */
-    .modal-box {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: white;
-      padding: 30px;
-      width: 300px;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      text-align: center;
-    }
-
-    .modal-box h2 {
-      margin-bottom: 10px;
-      color: #f44336;
-    }
-
-    .modal-box p {
-      margin-bottom: 20px;
-      color: #555;
-    }
-
-    .modal-box button {
-      padding: 10px 20px;
-      background-color: #f44336;
-      color: white;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .modal-box button:hover {
-      background-color: #d32f2f;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
-    }
+  
   </style>
   </head>
 
@@ -287,7 +228,7 @@
                 (house) => house.plot_number === value
               );
               break;
-              case "scene_al_marina_zone_2":
+            case "scene_al_marina_zone_2":
               matchedHouse = zone2houseData.find(
                 (house) => house.plot_number === value
               );
@@ -298,13 +239,13 @@
               );
               break;
 
-              case "scene_al_marina_zone_4":
+            case "scene_al_marina_zone_4":
               matchedHouse = zone4houseData.find(
                 (house) => house.plot_number === value
               );
               break;
 
-              case "scene_al_marina_zone_5":
+            case "scene_al_marina_zone_5":
               matchedHouse = zone5houseData.find(
                 (house) => house.plot_number === value
               );
@@ -317,13 +258,29 @@
           }
 
 
-          
+
 
 
           if (matchedHouse) {
             const hotspotName = `${matchedHouse.id}`;
             console.log("Hotspot found:", hotspotName);
             blinkHotspot(hotspotName);
+
+            let center = matchedHouse.coordinates?.[0]; // Default to first
+            if (matchedHouse.coordinates && matchedHouse.coordinates.length > 1) {
+              const total = matchedHouse.coordinates.reduce((acc, point) => {
+                acc.ath += parseFloat(point.ath);
+                acc.atv += parseFloat(point.atv);
+                return acc;
+              }, { ath: 0, atv: 0 });
+              center = {
+                ath: total.ath / matchedHouse.coordinates.length,
+                atv: total.atv / matchedHouse.coordinates.length,
+              };
+            }
+
+            console.log("center", center);
+            krpano.call(`lookat(${center.ath}, ${center.atv}, 20)`); // 70 = moderate zoom
           } else {
             console.log("Hotspot not found for plot number:", value);
             document.getElementById("notFoundModal").style.display = "block";
@@ -765,8 +722,8 @@
           let cardContainer = document.createElement("div");
           cardContainer.id = "krpano-card";
           cardContainer.style.position = "absolute";
-          cardContainer.style.top = "50px";
-          cardContainer.style.right = "20px";
+          cardContainer.style.top = "155px";
+          cardContainer.style.left = "20px";
           cardContainer.style.width = "280px";
           cardContainer.style.zIndex = "1000";
           cardContainer.style.background =
