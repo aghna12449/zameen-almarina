@@ -7,6 +7,7 @@
    
 }
 
+
 #custom-breadcrumbs {
     display: flex;
     align-items: center;
@@ -51,6 +52,98 @@
     font-weight: 500;
     display: flex; /* For vertical alignment */
     align-items: center; /* Vertical alignment */
+}
+
+/* ===== Search Bar Styles ===== */
+#searchBarContainer {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  padding: '20px';
+  z-index: 1000;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid #666;
+  border-radius: 15px;
+  padding: 5px 6px;
+  background: rgba(0, 0, 0, 0.41);
+  position: relative;
+  max-width: 100%;
+  margin-top: 8px;
+}
+
+
+.search-icon {
+  color: rgba(0, 0, 0, 0.64);
+  margin-right: 5px;
+}
+
+.input-wrapper {
+  background: rgb(0 0 0 / 57%);
+              border: none;
+              outline: none;
+         
+          
+              flex: 1;
+              border-radius: 15px;
+              padding: 12px;
+              padding-right: 30px; /* Leave space for icon */
+
+
+    
+      
+              color: rgba(182, 171, 171, 0.712); 
+              font-size: 10px;
+}
+
+#clearIcon{
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+}
+/* ===== Responsive Styles ===== */
+@media (max-width: 768px) {
+  #custom-breadcrumbs {
+    top: 10px;
+    left: 10px;
+    font-size: 0.75rem;
+    padding: 6px;
+    max-width: 80%;
+    flex-wrap: wrap;
+  }
+
+  #searchBarContainer {
+    top: 100px;
+    right: 10px;
+    left: 10px;
+    justify-content: flex-end;
+  }
+
+  .search-bar {
+    flex: 1;
+    padding: 4px;
+    left: 0;
+    margin-left: 10px; /* Optional: add some breathing room */
+    margin-right: 10px;
+  }
+
+  #searchBox {
+    font-size: 10px;
+    padding: 8px 10px 8px 10px;
+  }
+
+  .clear-icon {
+    font-size: 16px;
+  }
 }
 
 /* MUI-like styling */
@@ -198,16 +291,6 @@
     margin-bottom: 5px;        /* Ensure it's above all other elements */
   }
 
-  input {
-    /* padding-left: 10px;  */
-    /* width: 250px;
-    height: 40px; */
-    border: none;
-    /* border-radius: 20px; */
-    /* background-color: rgba(0, 0, 0, 0.6); */
-    color: rgba(182, 171, 171, 0.712); 
-    font-size: 10px;
-  }
 
 
 

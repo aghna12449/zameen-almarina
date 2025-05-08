@@ -67,53 +67,22 @@
   </head>
 
   <body>
-    <div id="searchBarContainer"  style="
-    display: flex;
-    justify-content: center;
-    padding-top: 10px;
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    z-index: 1000;
-  ">
-      <div style="
-      display: flex;
-      align-items: center;
-      border: 1px solid #666;
-      border-radius: 15px;
-      padding: 5px 6px;
-      margin-top: 8px;
-      max-width: 100%;
-      background: rgb(0 0 0 / 41%);
-      position: relative;
-    ">
-        <span class="material-icons" style="color: rgb(0 0 0 / 64%); margin-right: 0px;">
+    <div id="searchBarContainer"  >
+      <div class="search-bar">
+        <span class="material-icons search-icon" >
           search
         </span>
         <div style="position: relative; flex: 1; display: flex; align-items: center;">
           <input type="text" id="searchBox" placeholder="   Search Plot" oninput="toggleClearIcon(this)"
-            onchange="handleSearch(this.value)" style="
-              background: rgb(0 0 0 / 57%);
-              border: none;
-              outline: none;
-              color: white;
-              font-size: 12px;
-              flex: 1;
-              border-radius: 15px;
-              padding: 12px;
-              padding-right: 30px; /* Leave space for icon */
-            " />
+            onchange="handleSearch(this.value)"
+            class="input-wrapper"
+            
+           />
 
-          <span id="clearIcon" class="material-icons" onclick="clearSearch()" style="
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: white;
-      
-            font-size: 18px;
-          ">
+          <span id="clearIcon" class="material-icons" onclick="clearSearch()"
+          
+          
+         >
             close
           </span>
         </div>
