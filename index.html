@@ -67,7 +67,7 @@
   </head>
 
   <body>
-    <div style="
+    <div id="searchBarContainer"  style="
     display: flex;
     justify-content: center;
     padding-top: 10px;
@@ -207,7 +207,15 @@
           // Add more mappings here
         };
 
-
+        function updateSearchVisibility(currentScene) {
+          console.log('updateSearchVisibility', currentScene);
+          const searchBar = document.getElementById('searchBarContainer');
+          if (currentScene === 'scene_al_marina_aerial') {
+            searchBar.style.display = 'none';
+          } else {
+            searchBar.style.display = 'flex';
+          }
+        }
 
         function checkRecord() {
           console.log("checkRecord");
@@ -327,7 +335,7 @@
           } else {
             console.log("Hotspot not found for plot number:", value);
             document.getElementById("notFoundModal").style.display = "block";
-            //  closeCard(); // Close any existing card
+            closeCard(); // Close any existing card
 
             // Stop blinking and reset color if a previous hotspot was blinking
             if (currentBlinkInterval && currentBlinkingHotspot) {
@@ -683,6 +691,7 @@
             }
             // Only proceed if we're in Zone 3
             console.log("Current Scene:", currentScene);
+            updateSearchVisibility(currentScene);
             if (currentScene === "scene_al_marina_zone_1__") {
               breadcrumbTrail.push({
                 scene: "scene_zone_1",
@@ -702,7 +711,7 @@
               dynamicZoneRendering(zone3houseData, response, krpano);
 
             } else if (currentScene === "scene_al_marina_zone_2") {
-
+            
               console.log("Current Scene:", currentScene);
               dynamicZoneRendering(zone2houseData, response, krpano);
               breadcrumbTrail.push({
@@ -1005,9 +1014,13 @@
           }, 1000);
 
           // Delay to ensure Krpano loads
-
+          updateSearchVisibility(krpano.get("xml.scene"));
+        
           if (typeof krpano !== "undefined" && krpano !== null) {
             console.log("Krpano onloadcomplete");
+          
+    // or however your app provides scene name
+
             krpano.set(
               "events.onloadcomplete",
               "js(enableZoomControls()); js(addLandHotspotsToKrpano());"
