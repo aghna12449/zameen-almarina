@@ -63,50 +63,66 @@
       color: #ffffff;
       background-color: #000000;
     }
-
-
-  
   </style>
   </head>
 
   <body>
-
     <div style="
-      display: flex;
-      justify-content: center;
-      padding-top: 10px;
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      z-index: 1000;
-    ">
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    z-index: 1000;
+  ">
       <div style="
-        display: flex;
-        align-items: center;
-        border: 1px solid #666;
-        border-radius: 15px;
-        padding: 5px 6px;
-        margin-top: 8px;
-        max-width: 100%;
-        background: rgb(0 0 0 / 41%);
-      ">
-        <span class="material-icons" style="color: rgb(0 0 0 / 64%);;
-    margin-right: 0px;">
+      display: flex;
+      align-items: center;
+      border: 1px solid #666;
+      border-radius: 15px;
+      padding: 5px 6px;
+      margin-top: 8px;
+      max-width: 100%;
+      background: rgb(0 0 0 / 41%);
+      position: relative;
+    ">
+        <span class="material-icons" style="color: rgb(0 0 0 / 64%); margin-right: 0px;">
           search
         </span>
-        <input type="text" id="searchBox" placeholder="   Search Plot" onchange="handleSearch(this.value)" style="
-       background: rgb(0 0 0 / 57%);
-      border: none;
-      outline: none;
-      color: white;
-      font-size: 12px;
-      margin-right: 15px;
-      flex: 1;
-      border-radius: 15px;
-      padding: 12px;
-        " />
+        <div style="position: relative; flex: 1; display: flex; align-items: center;">
+          <input type="text" id="searchBox" placeholder="   Search Plot" oninput="toggleClearIcon(this)"
+            onchange="handleSearch(this.value)" style="
+              background: rgb(0 0 0 / 57%);
+              border: none;
+              outline: none;
+              color: white;
+              font-size: 12px;
+              flex: 1;
+              border-radius: 15px;
+              padding: 12px;
+              padding-right: 30px; /* Leave space for icon */
+            " />
+
+          <span id="clearIcon" class="material-icons" onclick="clearSearch()" style="
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: white;
+      
+            font-size: 18px;
+          ">
+            close
+          </span>
+        </div>
 
       </div>
+    </div>
+
+
+
     </div>
 
 
@@ -196,7 +212,7 @@
         function checkRecord() {
           console.log("checkRecord");
           const input = document.getElementById("searchBox").value.toLowerCase();
-          console.log("input", input)
+
           if (input === "notfound" || input === "") {
             document.getElementById("notFoundModal").style.display = "block";
           }
@@ -206,11 +222,24 @@
           document.getElementById("notFoundModal").style.display = "none";
         }
 
+        function toggleClearIcon(input) {
+          const clearIcon = document.getElementById('clearIcon');
+          clearIcon.style.display = input.value ? 'block' : 'none';
+        }
+
+        function clearSearch() {
+          const searchBox = document.getElementById('searchBox');
+          searchBox.value = '';
+          document.getElementById('clearIcon').style.display = 'none';
+          // handleSearch(''); // optional: re-trigger search with empty value
+        }
+
         let currentBlinkInterval = null;
         let currentBlinkingHotspot = null;
 
         function handleSearch(value) {
-          console.log("value", value)
+          const unitData = localStorage.getItem("response");
+          const parsedData = JSON.parse(unitData);
 
           const krpano = document.getElementById("krpanoSWFObject");
 
@@ -279,11 +308,26 @@
               };
             }
 
+            const filteredData = parsedData?.data?.filter(
+              (unit) => unit.plot_number === value
+            );
+
+
+            if (unitData && unitData.length > 0) {
+              createCard(
+                "Title",
+                "Description",
+                "https://via.placeholder.com/150",
+                filteredData
+              );
+            }
+
             console.log("center", center);
             krpano.call(`lookat(${center.ath}, ${center.atv}, 20)`); // 70 = moderate zoom
           } else {
             console.log("Hotspot not found for plot number:", value);
             document.getElementById("notFoundModal").style.display = "block";
+            //  closeCard(); // Close any existing card
 
             // Stop blinking and reset color if a previous hotspot was blinking
             if (currentBlinkInterval && currentBlinkingHotspot) {
@@ -781,6 +825,7 @@
             (unit) => unit.plot_number === plot_number
           );
 
+          console.log("showHouseDetails filteredData", filteredData);
           //   Assuming the first element in the response array corresponds to the clicked house
           if (unitData && unitData.length > 0) {
             createCard(
@@ -796,7 +841,7 @@
 
         const showTooltip = (hotspotName, houseId, cords) => {
           // Convert string back to an array
-          console.log("cords", cords);
+
           const coordinatesString = cords;
           const coordinatesArray = coordinatesString.split(",").map(Number);
           const krpano = document.getElementById("krpanoSWFObject");
@@ -806,9 +851,9 @@
             existingTooltip.remove(); // Remove existing tooltip if it exists
           }
 
-          if (krpano && krpano.get) {
-            console.log("IF WORKING");
-          }
+          // if (krpano && krpano.get) {
+          //   console.log("IF WORKING");
+          // }
 
           if (!krpano || !krpano.get) {
             console.error("Krpano is not ready yet.");
