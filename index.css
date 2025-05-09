@@ -358,3 +358,39 @@
       opacity: 1;
     }
   }
+  
+  /* Show cross icon on mobile, hide on desktop */
+@media (max-width: 768px) {
+  
+  .close-button {
+    display: none !important;
+  }
+  .extra-details {
+    display: none;
+  }
+  .show-details-button {
+    display: inline-block !important;
+  }
+
+  .card-header {
+    border-bottom: none !important;
+  }
+  .card-title {
+    display: none !important;
+  }
+  
+  #zoomOutBtn,
+  #zoomInBtn {
+    display: none !important;
+  }
+}
+
+/* On desktop, show full close button, hide icon */
+@media (min-width: 769px) {
+  .close-icon {
+    display: none !important;
+  }
+ 
+
+  
+}

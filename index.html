@@ -758,30 +758,45 @@
           cardContainer.style.color = "#ffffff"; // White text
 
           cardContainer.innerHTML = `
-    <div style="border-bottom: 2px solid #ccc; padding-bottom: 10px; margin-bottom: 10px;">
-      <h3 style="margin: 0; color: #ffffff;">🏙️ Al Marina City - ${unitDetails.zone}</h3>
-      
-    </div>
-    <p style="margin: 6px 0;"><strong>🏡 Plot Number:</strong> ${unitDetails.plot_number}</p>
-    <p style="margin: 6px 0;"><strong>🏢 Block Number:</strong> ${unitDetails.block_number}</p>
-    <p style="margin: 6px 0;"><strong>📊 Total Area:</strong> ${unitDetails.total_area} sq.m</p>
+  <div  class="card-header" style="display: flex; align-items: center; border-bottom: 2px solid #ccc; padding-bottom: 10px; margin-bottom: 10px;">
+    <button onclick="closeCard()" style="
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 0;
+      margin-right: 10px;
+      line-height: 1;
+       display: inline-block 
+    ">&times;</button>
+    <h3 class="card-title" style="margin: 0; color: #ffffff;">🏙️ Al Marina City</h3>
+  </div>
+
+  <p style="margin: 6px 0;"><strong>🏡 Plot Number:</strong> ${unitDetails.plot_number}</p>
+  <p style="margin: 6px 0;"><strong>🏢 Block Number:</strong> ${unitDetails.block_number}</p>
+  <p style="margin: 6px 0;"><strong>📊 Total Area:</strong> ${unitDetails.total_area} sq.m</p>
+
+  <button class="show-details-button" onclick="toggleDetails()" style="
+    margin: 10px 0;
+    padding: 6px 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: none;
+  ">Show Details</button>
+
+  <div class="extra-details">
     <p style="margin: 6px 0;"><strong>🗂️ Usage:</strong> ${unitDetails.usage}</p>
     <p style="margin: 6px 0;"><strong>⬇️ South:</strong> ${unitDetails.south}</p>
-     <p style="margin: 6px 0;"><strong>⬆️ North:</strong> ${unitDetails.north}</p>
-      <p style="margin: 6px 0;"><strong>⬆️ East:</strong> ${unitDetails.east}</p>
+    <p style="margin: 6px 0;"><strong>⬆️ North:</strong> ${unitDetails.north}</p>
+    <p style="margin: 6px 0;"><strong>⬆️ East:</strong> ${unitDetails.east}</p>
     <p style="margin: 6px 0;"><strong>⬅️ West:</strong> ${unitDetails.west}</p>
-   
-    <button onclick="closeCard()" style="
-      margin-top: 12px;
-      padding: 5px 14px;
-      background-color: #2980b98f;
-      color: #ffffffbf;
-      border: none;
-      border-radius: 9px;
-      cursor: pointer;
-      font-size: 14px;
-    ">Close</button>
-  `;
+  </div>
+ 
+`;
 
           document.body.appendChild(cardContainer);
         }
@@ -792,6 +807,19 @@
             card.remove();
           }
         };
+
+        const toggleDetails=() =>{
+  const details = document.querySelector('.extra-details');
+  const btn = document.querySelector('.show-details-button');
+
+  if (details.style.display === 'block') {
+    details.style.display = 'none';
+    btn.textContent = 'Show Details';
+  } else {
+    details.style.display = 'block';
+    btn.textContent = 'Hide Details';
+  }
+}
 
         // Function to display house details
         const showHouseDetails = (response, plot_number) => {
