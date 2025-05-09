@@ -360,11 +360,9 @@
   }
   
   /* Show cross icon on mobile, hide on desktop */
-@media (max-width: 768px) {
+@media (max-width: 764px) {
   
-  .close-button {
-    display: none !important;
-  }
+
   .extra-details {
     display: none;
   }
@@ -378,7 +376,10 @@
   .card-title {
     display: none !important;
   }
-  
+  .hideDetails {
+    display:  inline-block !important;
+  } 
+
   #zoomOutBtn,
   #zoomInBtn {
     display: none !important;
@@ -386,11 +387,49 @@
 }
 
 /* On desktop, show full close button, hide icon */
-@media (min-width: 769px) {
+@media (min-width: 765px) {
   .close-icon {
     display: none !important;
   }
- 
+  .hideDetails {
+    display: none !important;
+  } 
 
   
+}
+@media (max-width: 768px) and (orientation: landscape) {
+  #searchBarContainer {
+    top: 0; /* Slightly closer to the top */
+    right: 5px;
+    left: 5px;
+    padding: 5px; /* Reduced padding around the container */
+    justify-content: flex-start;
+    z-index: 1001;
+  }
+
+  .search-bar {
+    flex: none; /* Prevent it from automatically filling the width */
+    width: 40%; /* Adjust this percentage to control the width */
+    max-width: none; /* Override the default max-width */
+    padding: 2px 3px;
+    margin-left: 0;
+    margin-right: auto; /* Push it to the left if needed, or adjust based on desired alignment */
+    border-radius: 8px;
+    left: 360px;
+  }
+
+  .search-icon {
+    font-size: 14px; /* Smaller search icon */
+    margin-right: 3px;
+  }
+
+  #searchBox {
+    font-size: 10px; /* Back to the original smaller font size */
+    padding: 4px 6px 4px 6px; /* Reduced padding inside the input */
+  }
+
+  #clearIcon {
+    font-size: 14px; /* Smaller clear icon */
+    right: 5px; /* Adjust position of clear icon */
+  }
 }

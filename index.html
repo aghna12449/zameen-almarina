@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>AL MARINA</title>
-  <link rel="icon" href="F:\Aghna\AL-marina\marinacityui\images\icons8-home.png">
+  
 </head>
 
 <body>
@@ -67,22 +67,17 @@
   </head>
 
   <body>
-    <div id="searchBarContainer"  >
+    
+    <div id="searchBarContainer">
       <div class="search-bar">
-        <span class="material-icons search-icon" >
+        <span class="material-icons search-icon">
           search
         </span>
         <div style="position: relative; flex: 1; display: flex; align-items: center;">
           <input type="text" id="searchBox" placeholder="   Search Plot" oninput="toggleClearIcon(this)"
-            onchange="handleSearch(this.value)"
-            class="input-wrapper"
-            
-           />
+            onchange="handleSearch(this.value)" class="input-wrapper" />
 
-          <span id="clearIcon" class="material-icons" onclick="clearSearch()"
-          
-          
-         >
+          <span id="clearIcon" class="material-icons" onclick="clearSearch()">
             close
           </span>
         </div>
@@ -92,7 +87,7 @@
 
 
 
-    </div>
+    
 
 
     <!-- Modal -->
@@ -680,7 +675,7 @@
               dynamicZoneRendering(zone3houseData, response, krpano);
 
             } else if (currentScene === "scene_al_marina_zone_2") {
-            
+
               console.log("Current Scene:", currentScene);
               dynamicZoneRendering(zone2houseData, response, krpano);
               breadcrumbTrail.push({
@@ -744,22 +739,23 @@
           let cardContainer = document.createElement("div");
           cardContainer.id = "krpano-card";
           cardContainer.style.position = "absolute";
-          cardContainer.style.top = "155px";
+          cardContainer.style.top = "195px";
           cardContainer.style.left = "20px";
-          cardContainer.style.width = "280px";
+          cardContainer.style.width = "210px";
           cardContainer.style.zIndex = "1000";
           cardContainer.style.background =
             "linear-gradient(135deg, rgb(58, 58, 58), rgb(0 0 0 / 68%))";
 
           cardContainer.style.borderRadius = "13px";
           cardContainer.style.boxShadow = "0 12px 24px rgba(0, 0, 0, 0.15)";
-          cardContainer.style.padding = "20px";
+          cardContainer.style.padding = "9px";
           cardContainer.style.fontFamily = "'Segoe UI', sans-serif";
           cardContainer.style.color = "#ffffff"; // White text
 
           cardContainer.innerHTML = `
   <div  class="card-header" style="display: flex; align-items: center; border-bottom: 2px solid #ccc; padding-bottom: 10px; margin-bottom: 10px;">
     <button onclick="closeCard()" style="
+    position: absolute; top: 10px; right: 10px;
       background: transparent;
       border: none;
       color: #fff;
@@ -767,35 +763,35 @@
       cursor: pointer;
       padding: 0;
       margin-right: 10px;
-      line-height: 1;
+      // line-height: 1;
        display: inline-block 
     ">&times;</button>
-    <h3 class="card-title" style="margin: 0; color: #ffffff;">🏙️ Al Marina City</h3>
+    <h5 class="card-title" style="margin: 0; color: #ffffff;">🏙️ Al Marina City</h5>
   </div>
 
-  <p style="margin: 6px 0;"><strong>🏡 Plot Number:</strong> ${unitDetails.plot_number}</p>
-  <p style="margin: 6px 0;"><strong>🏢 Block Number:</strong> ${unitDetails.block_number}</p>
-  <p style="margin: 6px 0;"><strong>📊 Total Area:</strong> ${unitDetails.total_area} sq.m</p>
+  <p style="margin: 6px 0;">🏡 Plot Number:</strong> ${unitDetails.plot_number}</p>
+  <p style="margin: 6px 0;">🏢 Block Number:</strong> ${unitDetails.block_number}</p>
+  <p style="margin: 6px 0;">📊 Total Area:</strong> ${unitDetails.total_area} sq.m</p>
 
-  <button class="show-details-button" onclick="toggleDetails()" style="
-    margin: 10px 0;
-    padding: 6px 12px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    display: none;
-  ">Show Details</button>
+  
 
   <div class="extra-details">
-    <p style="margin: 6px 0;"><strong>🗂️ Usage:</strong> ${unitDetails.usage}</p>
-    <p style="margin: 6px 0;"><strong>⬇️ South:</strong> ${unitDetails.south}</p>
-    <p style="margin: 6px 0;"><strong>⬆️ North:</strong> ${unitDetails.north}</p>
-    <p style="margin: 6px 0;"><strong>⬆️ East:</strong> ${unitDetails.east}</p>
-    <p style="margin: 6px 0;"><strong>⬅️ West:</strong> ${unitDetails.west}</p>
+    <p style="margin: 6px 0;">🗂️ Usage:</strong> ${unitDetails.usage}</p>
+    <p style="margin: 6px 0;">⬇️ South:</strong> ${unitDetails.south}</p>
+    <p style="margin: 6px 0;">⬆️ North:</strong> ${unitDetails.north}</p>
+    <p style="margin: 6px 0;">⬆️ East:</strong> ${unitDetails.east}</p>
+    <p style="margin: 6px 0;">⬅️ West:</strong> ${unitDetails.west}</p>
   </div>
- 
+ <div class="hideDetails" onclick="toggleDetails()" style="
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #dee2e6;
+    margin: 10px 0;
+    font-weight: bold;
+">
+    <span  id="toggleArrow" style="margin-left: 5px; font-size: 14px; position: absolute; right: 100px; ">▼</span>
+</div>
 `;
 
           document.body.appendChild(cardContainer);
@@ -808,18 +804,23 @@
           }
         };
 
-        const toggleDetails=() =>{
-  const details = document.querySelector('.extra-details');
-  const btn = document.querySelector('.show-details-button');
+        const toggleDetails = () => {
+          const arrow = document.getElementById('toggleArrow');
 
-  if (details.style.display === 'block') {
-    details.style.display = 'none';
-    btn.textContent = 'Show Details';
-  } else {
-    details.style.display = 'block';
-    btn.textContent = 'Hide Details';
-  }
-}
+          const details = document.querySelector('.extra-details');
+          const btn = document.querySelector('.show-details-button');
+
+          const isHidden = details.style.display === 'none' || details.style.display === '';
+          arrow.textContent = isHidden ? '▲' : '▼';
+
+          if (details.style.display === 'block') {
+            details.style.display = 'none';
+       
+          } else {
+            details.style.display = 'block';
+      
+          }
+        }
 
         // Function to display house details
         const showHouseDetails = (response, plot_number) => {
@@ -1012,11 +1013,11 @@
 
           // Delay to ensure Krpano loads
           updateSearchVisibility(krpano.get("xml.scene"));
-        
+
           if (typeof krpano !== "undefined" && krpano !== null) {
             console.log("Krpano onloadcomplete");
-          
-    // or however your app provides scene name
+
+            // or however your app provides scene name
 
             krpano.set(
               "events.onloadcomplete",
