@@ -447,10 +447,10 @@
 
 #zoomOutBtn,
   #zoomInBtn {
-    display: none !important;
+    /* display: none !important; */
   }
 #fullScreenBtn{
-  top: 201px;
+  /* top: 201px; */
 }
 
 

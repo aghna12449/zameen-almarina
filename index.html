@@ -239,8 +239,17 @@
     
     // Load the corresponding scene
     krpano.call(`loadscene(${'scene_al_marina_zone_1__'}, null, MERGE, BLEND(1))`);
-  } else {
+  } else if (Unit.zone === "ZONE 2")  {
     console.log("Plot number not found in any zone.");
+     krpano.call(`loadscene(${'scene_al_marina_zone_2'}, null, MERGE, BLEND(1))`);
+   // document.getElementById("notFoundModal").style.display = "block";
+  }else if (Unit.zone === "ZONE 3")  {
+    console.log("Plot number not found in any zone.");
+     krpano.call(`loadscene(${'scene_al_marina_zone_3'}, null, MERGE, BLEND(1))`);
+   // document.getElementById("notFoundModal").style.display = "block";
+  }else if (Unit.zone === "ZONE 7")  {
+    console.log("Plot number not found in any zone.");
+     krpano.call(`loadscene(${'scene_al_marina_zone_4'}, null, MERGE, BLEND(1))`);
    // document.getElementById("notFoundModal").style.display = "block";
   }
 
@@ -706,7 +715,7 @@ if (currentScene !== 'scene_al_marina_aerial') {
 
             let card = document.getElementById("krpano-card");
             if (card) {
-              card.remove();
+             // card.remove();
             }
             // Only proceed if we're in Zone 3
             console.log("Current Scene:", currentScene);
@@ -788,7 +797,7 @@ if (currentScene !== 'scene_al_marina_aerial') {
 
           let existingCard = document.getElementById("krpano-card");
           if (existingCard) {
-            existingCard.remove();
+           // existingCard.remove();
           }
 
           let cardContainer = document.createElement("div");
@@ -853,6 +862,7 @@ if (currentScene !== 'scene_al_marina_aerial') {
         }
 
         const closeCard = () => {
+          console.log()
           let card = document.getElementById("krpano-card");
           if (card) {
             card.remove();

@@ -1,7 +1,7 @@
 ﻿<krpano version="1.20.11" title="Virtual Tour" debugmode="false" showerrors="false" logkey="false" info="false">
 
 	<include url="skin/vtourskin.xml" />
-	<include url="plugins/polygon.xml" />
+	<!-- <include url="plugins/polygon.xml" /> -->
 
 
 	<!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
