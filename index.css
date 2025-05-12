@@ -1,3 +1,4 @@
+/* styling for arrow icon */
 #arrow-icon {
     font-size: 55px;
     color: #dee2e6;
@@ -7,7 +8,7 @@
    
 }
 
-
+/* styling for breadcrumbs */
 #custom-breadcrumbs {
     display: flex;
     align-items: center;
@@ -110,6 +111,11 @@
   color: white;
   font-size: 18px;
 }
+
+/* styling for cards  */
+
+
+
 /* ===== Responsive Styles ===== */
 @media (max-width: 768px) {
   #custom-breadcrumbs {
@@ -276,7 +282,7 @@
   }
   
   #fullScreenBtn {
-    position: fixed;
+    position: absolute;
     bottom: 270px;
     right: 40px;
     width: 32px;
@@ -384,6 +390,11 @@
   #zoomInBtn {
     display: none !important;
   }
+
+  #fullScreenBtn{
+    
+    top: 201px;
+  }
 }
 
 /* On desktop, show full close button, hide icon */
@@ -431,5 +442,21 @@
   #clearIcon {
     font-size: 14px; /* Smaller clear icon */
     right: 5px; /* Adjust position of clear icon */
+  }
+}
+
+#zoomOutBtn,
+  #zoomInBtn {
+    display: none !important;
+  }
+#fullScreenBtn{
+  top: 201px;
+}
+
+
+
+@media (max-width: 768px) and (orientation: portrait){
+  #fullScreenBtn{
+    top: 75%
   }
 }
