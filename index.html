@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>AL MARINA</title>
-  
+
 </head>
 
 <body>
@@ -67,7 +67,7 @@
   </head>
 
   <body>
-    
+
     <div id="searchBarContainer">
       <div class="search-bar">
         <span class="material-icons search-icon">
@@ -87,7 +87,7 @@
 
 
 
-    
+
 
 
     <!-- Modal -->
@@ -162,6 +162,7 @@
           { scene: "scene_AL_MARINA_aerial", title: "Al Marina", icon: "home" },
         ];
 
+       
         // Mapping scene to readable name (if needed)
         const sceneTitleMap = {
           scene_AL_MARINA_aerial: { title: "Al Marina", icon: "home" },
@@ -175,20 +176,20 @@
           console.log('updateSearchVisibility', currentScene);
           const searchBar = document.getElementById('searchBarContainer');
           if (currentScene === 'scene_al_marina_aerial') {
-            searchBar.style.display = 'none';
+           // searchBar.style.display = 'none';
           } else {
             searchBar.style.display = 'flex';
           }
         }
 
-        function checkRecord() {
-          console.log("checkRecord");
-          const input = document.getElementById("searchBox").value.toLowerCase();
+        // function checkRecord() {
+        //   console.log("checkRecord");
+        //   const input = document.getElementById("searchBox").value.toLowerCase();
 
-          if (input === "notfound" || input === "") {
-            document.getElementById("notFoundModal").style.display = "block";
-          }
-        }
+        //   if (input === "notfound" || input === "") {
+        //     document.getElementById("notFoundModal").style.display = "block";
+        //   }
+        // }
 
         function closeModal() {
           document.getElementById("notFoundModal").style.display = "none";
@@ -213,40 +214,84 @@
           const unitData = localStorage.getItem("response");
           const parsedData = JSON.parse(unitData);
 
+          console.log('parsedData', parsedData);
+
+          
+       
+
           const krpano = document.getElementById("krpanoSWFObject");
 
-          const currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
+          let currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
+
+          let zone;
 
 
+          if (currentScene === 'scene_al_marina_aerial') {
+          const unitData = localStorage.getItem("response");
+          const parsedData = JSON.parse(unitData);
+
+                const Unit = parsedData.data.find(
+                  (house) => house.plot_number === value
+                );
+               console.log('Zone found:', Unit);
+  if (Unit.zone === "ZONE 1") {
+    console.log('Zone found:',);
+    
+    // Load the corresponding scene
+    krpano.call(`loadscene(${'scene_al_marina_zone_1__'}, null, MERGE, BLEND(1))`);
+  } else {
+    console.log("Plot number not found in any zone.");
+   // document.getElementById("notFoundModal").style.display = "block";
+  }
+
+ 
+} else {
+  // Handle other scenes here...
+}
+
+         
           // Only proceed if we're in Zone 3
           console.log("Current Scene:", currentScene);
+
+         
+       
           let matchedHouse;
 
-          switch (currentScene) {
-            case "scene_al_marina_zone_1__":
+          currentScene = krpano.get("xml.scene")
 
+          switch (currentScene) {
+           
+            case "scene_al_marina_zone_1__":
+            console.log('scene_al_marina_zone_1__');
               matchedHouse = zone1houseData.find(
                 (house) => house.plot_number === value
               );
+
+              const sceneName = matchedHouse;
+              console.log('sceneName', sceneName)
               break;
             case "scene_al_marina_zone_2":
+            console.log('scene_al_marina_zone_2');
               matchedHouse = zone2houseData.find(
                 (house) => house.plot_number === value
               );
               break;
             case "scene_al_marina_zone_3":
+            console.log('scene_al_marina_zone_3');
               matchedHouse = zone3houseData.find(
                 (house) => house.plot_number === value
               );
               break;
 
             case "scene_al_marina_zone_4":
+            console.log('scene_al_marina_zone_4');
               matchedHouse = zone4houseData.find(
                 (house) => house.plot_number === value
               );
               break;
 
             case "scene_al_marina_zone_5":
+            console.log('scene_al_marina_zone_5');
               matchedHouse = zone5houseData.find(
                 (house) => house.plot_number === value
               );
@@ -263,6 +308,7 @@
 
 
           if (matchedHouse) {
+            console.log("matchedHouse", matchedHouse);
             const hotspotName = `${matchedHouse.id}`;
             console.log("Hotspot found:", hotspotName);
             blinkHotspot(hotspotName);
@@ -316,8 +362,15 @@
 
 
         function blinkHotspot(hotspotName) {
+          console.log("hotspotName", hotspotName)
           const krpano = document.getElementById("krpanoSWFObject");
 
+          let currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
+
+
+
+
+if (currentScene !== 'scene_al_marina_aerial') { 
           // Stop previous blinking if any
           if (currentBlinkInterval && currentBlinkingHotspot) {
             clearInterval(currentBlinkInterval);
@@ -337,6 +390,8 @@
           currentBlinkingHotspot = hotspotName;
         }
 
+}
+  
 
 
 
@@ -707,7 +762,7 @@
         };
 
         const fetchAlMarinaData = async () => {
-          const baseUrl = "http://localhost:5000/api/getAlMarinaData";
+          const baseUrl = "https://erth-al-marina.zameengeomatics.com/api/getAlMarinaData";
           return fetch(baseUrl)
             .then((res) => res.json())
             .then((data) => {
@@ -815,10 +870,10 @@
 
           if (details.style.display === 'block') {
             details.style.display = 'none';
-       
+
           } else {
             details.style.display = 'block';
-      
+
           }
         }
 
