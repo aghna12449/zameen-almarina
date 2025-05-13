@@ -782,6 +782,43 @@ if (currentScene !== 'scene_al_marina_aerial') {
 
         // Function to show Bootstrap tooltip
 
+        let cardContainer = document.createElement("div");
+
+// Media query for mobile portrait
+const portraitQuery = window.matchMedia('(max-width: 768px) and (orientation: portrait)');
+
+// Media query for mobile and tablet landscape
+const landscapeQuery = window.matchMedia('(max-width: 1024px) and (orientation: landscape)');
+
+function applyStyles() {
+  if (portraitQuery.matches) {
+    // Mobile portrait
+    cardContainer.style.top = "195px";
+    cardContainer.style.height = "200px";
+    cardContainer.style.overflowY = "auto";
+    cardContainer.style.bottom = ""; // Clear bottom if needed
+  } else if (landscapeQuery.matches) {
+    // Mobile or tablet in landscape
+    cardContainer.style.bottom = "100px";
+    cardContainer.style.height = "200px";
+    cardContainer.style.overflowY = "auto";
+    cardContainer.style.top = "";
+  } else {
+    // Other devices / orientations
+    cardContainer.style.top = "195px";
+    cardContainer.style.height = "";
+    cardContainer.style.overflowY = "";
+    cardContainer.style.bottom = "";
+  }
+}
+
+// Initial check
+  applyStyles();
+
+// Listen for changes
+  portraitQuery.addListener(applyStyles);
+  landscapeQuery.addListener(applyStyles);
+
         function createCard(title, description, imageUrl, response) {
           let unitDetails = {
             zone: response[0].zone,
@@ -795,15 +832,17 @@ if (currentScene !== 'scene_al_marina_aerial') {
             east: response[0].east,
           };
 
+          
           let existingCard = document.getElementById("krpano-card");
           if (existingCard) {
            // existingCard.remove();
           }
 
-          let cardContainer = document.createElement("div");
+          
+         
           cardContainer.id = "krpano-card";
           cardContainer.style.position = "absolute";
-          cardContainer.style.top = "195px";
+       
           cardContainer.style.left = "20px";
           cardContainer.style.width = "210px";
           cardContainer.style.zIndex = "1000";
@@ -815,6 +854,10 @@ if (currentScene !== 'scene_al_marina_aerial') {
           cardContainer.style.padding = "9px";
           cardContainer.style.fontFamily = "'Segoe UI', sans-serif";
           cardContainer.style.color = "#ffffff"; // White text
+     
+
+        
+          
 
           cardContainer.innerHTML = `
   <div  class="card-header" style="display: flex; align-items: center; border-bottom: 2px solid #ccc; padding-bottom: 10px; margin-bottom: 10px;">

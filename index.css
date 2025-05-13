@@ -366,7 +366,7 @@
   }
   
   /* Show cross icon on mobile, hide on desktop */
-@media (max-width: 764px) {
+@media (max-width: 767px) {
   
 
   .extra-details {
@@ -393,12 +393,12 @@
 
   #fullScreenBtn{
     
-    top: 201px;
+    top: 70%;
   }
 }
 
 /* On desktop, show full close button, hide icon */
-@media (min-width: 765px) {
+@media (min-width: 768px) {
   .close-icon {
     display: none !important;
   }
@@ -443,20 +443,18 @@
     font-size: 14px; /* Smaller clear icon */
     right: 5px; /* Adjust position of clear icon */
   }
+  #fullScreenBtn{
+    top: 40%;
+    /* top: 201px; */
+  }
+
 }
 
-#zoomOutBtn,
-  #zoomInBtn {
-    /* display: none !important; */
-  }
-#fullScreenBtn{
-  /* top: 201px; */
-}
 
 
 
 @media (max-width: 768px) and (orientation: portrait){
   #fullScreenBtn{
-    top: 75%
+    top: 70%,
   }
 }
