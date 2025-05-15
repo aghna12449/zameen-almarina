@@ -855,10 +855,6 @@ function applyStyles() {
           cardContainer.style.fontFamily = "'Segoe UI', sans-serif";
           cardContainer.style.color = "#ffffff"; // White text
      
-
-        
-          
-
           cardContainer.innerHTML = `
   <div  class="card-header" style="display: flex; align-items: center; border-bottom: 2px solid #ccc; padding-bottom: 10px; margin-bottom: 10px;">
     <button onclick="closeCard()" style="
@@ -932,6 +928,11 @@ function applyStyles() {
 
         // Function to display house details
         const showHouseDetails = (response, plot_number) => {
+
+          let card = document.getElementById("krpano-card");
+            if (card) {
+            card.remove();
+            }
           const unitData = localStorage.getItem("response");
 
           const parsedData = JSON.parse(unitData);
@@ -940,7 +941,6 @@ function applyStyles() {
             (unit) => unit.plot_number === plot_number
           );
 
-          console.log("showHouseDetails filteredData", filteredData);
           //   Assuming the first element in the response array corresponds to the clicked house
           if (unitData && unitData.length > 0) {
             createCard(
