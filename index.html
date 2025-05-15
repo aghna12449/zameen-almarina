@@ -180,9 +180,7 @@
         // Mapping scene to readable name (if needed)
         const sceneTitleMap = {
           "scene_b-AL_MARINA_aerial": { title: "Al Marina", icon: "home" },
-          scene_zone_2: { title: "Zone 2", icon: "whatshot" },
-          scene_zone_4: { title: "Zone 4", icon: "grain" },
-          scene_zone_5: { title: "Zone 8", icon: "place" },
+       
           // Add more mappings here
         };
 
@@ -747,37 +745,57 @@
               });
               renderBreadcrumbs();
               dynamicZoneRendering(zone1houseData, response, krpano);
-            } else if (currentScene === "scene_al_marina_zone_3") {
+            } else if (currentScene === "scene_d-zone_2") {
+              breadcrumbTrail.push({
+                scene: "scene_d-zone_2",
+                title: "Zone 2",
+                icon: "grain",
+              });
+              renderBreadcrumbs();
+              dynamicZoneRendering(zone2houseData, response, krpano);
+            } else if (currentScene === "scene_e-zone_3") {
+              console.log("Current Scene:", currentScene);
+              dynamicZoneRendering(zone3houseData, response, krpano);
               breadcrumbTrail.push({
                 scene: "scene_zone_3",
                 title: "Zone 3",
                 icon: "grain",
               });
               renderBreadcrumbs();
-              dynamicZoneRendering(zone3houseData, response, krpano);
-            } else if (currentScene === "scene_al_marina_zone_2") {
-              console.log("Current Scene:", currentScene);
-              dynamicZoneRendering(zone2houseData, response, krpano);
-              breadcrumbTrail.push({
-                scene: "scene_zone_2",
-                title: "Zone 2",
-                icon: "grain",
-              });
-              renderBreadcrumbs();
-            } else if (currentScene === "scene_al_marina_zone_4") {
+            } else if (currentScene === "scene_f-zone_4") {
               console.log("Current Scene:", currentScene);
               dynamicZoneRendering(zone4houseData, response, krpano);
               breadcrumbTrail.push({
-                scene: "scene_zone_4",
+                scene: "scene_f-zone_4",
                 title: "Zone 7",
                 icon: "grain",
               });
               renderBreadcrumbs();
-            } else if (currentScene === "scene_al_marina_zone__5") {
+            } else if (currentScene === "scene_g-zone_5") {
               console.log("Current Scene:", currentScene);
               dynamicZoneRendering(zone5houseData, response, krpano);
               breadcrumbTrail.push({
-                scene: "scene_zone_5",
+                scene: "scene_g-zone_5",
+                title: "Zone 8",
+                icon: "grain",
+              });
+              renderBreadcrumbs();
+            }
+            else if (currentScene === "scene_h-building_1") {
+              console.log("Current Scene:", currentScene);
+              dynamicZoneRendering(zone5houseData, response, krpano);
+              breadcrumbTrail.push({
+                scene: "scene_h-building_1",
+                title: "Zone 8",
+                icon: "grain",
+              });
+              renderBreadcrumbs();
+            }
+            else if (currentScene === "scene_i-building_2") {
+              console.log("Current Scene:", currentScene);
+              dynamicZoneRendering(zone5houseData, response, krpano);
+              breadcrumbTrail.push({
+                scene: "scene_i-building_2",
                 title: "Zone 8",
                 icon: "grain",
               });
