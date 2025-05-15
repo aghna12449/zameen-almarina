@@ -1118,9 +1118,18 @@
               const homeIcon = document.getElementById("homeIcon");
 
               if (krpano_obj && krpano_obj.get && krpano_obj.call) {
+
+                 breadcrumbTrail = [
+                  {
+                    scene: "scene_b-AL_MARINA_aerial",
+                    title: "Al Marina",
+                    icon: "home",
+                  },
+                ];
+                renderBreadcrumbs();
                 const currentScene = krpano_obj.get("xml.scene");
 
-                console.log("Current Scene:", currentScene);
+              
 
                 if (currentScene === "scene_a-initial") {
                   // Hide home icon on initial screen
