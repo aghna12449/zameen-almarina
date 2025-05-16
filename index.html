@@ -18,6 +18,7 @@
     />
     <!-- adding style sheet -->
     <link rel="stylesheet" href="index.css" />
+      <link rel="stylesheet" href="initalCard.css" />
     <!-- Add Material-UI (MUI) CSS -->
     <link
       rel="stylesheet"
@@ -72,7 +73,7 @@
   </head>
   <body>
     <script src="tour.js"></script>
-    <script src="data.js"></script>
+   
     <script src="zone1.js"></script>
     <script src="zone2.js"></script>
     <script src="zone3.js"></script>
@@ -170,6 +171,55 @@
       </script>
 
       <script>
+        const arialView = () => {
+  console.log('arialView');
+
+  const krpano = document.getElementById("krpanoSWFObject");
+  if (krpano) {
+    krpano.call('loadscene(scene_b-AL_MARINA_aerial, null, MERGE, BLEND(1));');
+  }
+
+  const sceneCardWrapper = document.getElementById("scene-card-wrapper");
+  if (sceneCardWrapper) {
+    sceneCardWrapper.style.display = "none";
+  }
+};
+
+const createSceneCard = () => {
+  const krpano = document.getElementById("krpanoSWFObject");
+  if (!krpano || typeof krpano.get !== "function") return;
+
+  const currentScene = krpano.get("xml.scene");
+  console.log("createSceneCard - current scene:", currentScene);
+
+  let wrapper = document.getElementById("scene-card-wrapper");
+
+  if (currentScene === "scene_a-initial") {
+    if (!wrapper) {
+      wrapper = document.createElement("div");
+      wrapper.id = "scene-card-wrapper";
+      wrapper.innerHTML = `
+        <div id="scene-card" onclick="arialView()">
+          <div class="scene-card-content">
+            <h4>🏙️ Aerial View</h4>
+            <p>Click here to explore</p>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(wrapper);
+    } else {
+      wrapper.style.display = "block"; // re-show if hidden
+    }
+  } else {
+    // Hide if card exists
+    if (wrapper) wrapper.style.display = "none";
+  }
+};
+
+
+       
+
+        //
         let block_number = "";
 
         let breadcrumbTrail = [
@@ -189,16 +239,20 @@
 
         function updateSearchVisibility() {
           const searchBar = document.getElementById("searchBarContainer");
+        const sceneCardWrapper = document.getElementById("scene-card-wrapper");
+          //scene-card-wrapper
           console.log("searchBar", searchBar);
           const krpano = document.getElementById("krpanoSWFObject");
           const currentScene = krpano.get("xml.scene");
 
-          console.log("updateSearchVisibility", currentScene);
+          console.log("sceneCardWrapper", sceneCardWrapper);
           if (currentScene === "scene_a-initial") {
-            console.log("here it is");
+          
             searchBar.style.display = "none";
+          
           } else {
             searchBar.style.display = "block";
+           // sceneCardWrapper.style.display = "none";
           }
         }
 
@@ -1012,6 +1066,14 @@
           }
         };
 
+        window.onload = function () {
+          const krpano = document.getElementById("krpanoSWFObject");
+          if (krpano && krpano.call) {
+            console.log("Krpano is ready");
+            //createSceneCard();
+          }
+        };
+
         // Function to display house details
         const showHouseDetails = (response, plot_number) => {
           let card = document.getElementById("krpano-card");
@@ -1218,7 +1280,7 @@
 
             krpano.set(
               "events.onloadcomplete",
-              "js(enableZoomControls()); js(addLandHotspotsToKrpano()); js(updateSearchVisibility());"
+              "js(enableZoomControls()); js(addLandHotspotsToKrpano()); js(updateSearchVisibility()); ;   js(createSceneCard());"
             );
           }
         };
