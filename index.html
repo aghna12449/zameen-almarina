@@ -18,7 +18,7 @@
     />
     <!-- adding style sheet -->
     <link rel="stylesheet" href="index.css" />
-      <link rel="stylesheet" href="initalCard.css" />
+    <link rel="stylesheet" href="initalCard.css" />
     <!-- Add Material-UI (MUI) CSS -->
     <link
       rel="stylesheet"
@@ -73,7 +73,7 @@
   </head>
   <body>
     <script src="tour.js"></script>
-   
+
     <script src="zone1.js"></script>
     <script src="zone2.js"></script>
     <script src="zone3.js"></script>
@@ -172,33 +172,34 @@
 
       <script>
         const arialView = () => {
-  console.log('arialView');
+          const krpano = document.getElementById("krpanoSWFObject");
+          if (krpano) {
+            krpano.call(
+              "loadscene(scene_b-AL_MARINA_aerial, null, MERGE, BLEND(1));"
+            );
+          }
 
-  const krpano = document.getElementById("krpanoSWFObject");
-  if (krpano) {
-    krpano.call('loadscene(scene_b-AL_MARINA_aerial, null, MERGE, BLEND(1));');
-  }
+          const sceneCardWrapper =
+            document.getElementById("scene-card-wrapper");
+          if (sceneCardWrapper) {
+            sceneCardWrapper.style.display = "none";
+          }
+        };
 
-  const sceneCardWrapper = document.getElementById("scene-card-wrapper");
-  if (sceneCardWrapper) {
-    sceneCardWrapper.style.display = "none";
-  }
-};
+        const createSceneCard = () => {
+          const krpano = document.getElementById("krpanoSWFObject");
+          if (!krpano || typeof krpano.get !== "function") return;
 
-const createSceneCard = () => {
-  const krpano = document.getElementById("krpanoSWFObject");
-  if (!krpano || typeof krpano.get !== "function") return;
+          const currentScene = krpano.get("xml.scene");
 
-  const currentScene = krpano.get("xml.scene");
-  console.log("createSceneCard - current scene:", currentScene);
+          let wrapper = document.getElementById("scene-card-wrapper");
 
-  let wrapper = document.getElementById("scene-card-wrapper");
-
-  if (currentScene === "scene_a-initial") {
-    if (!wrapper) {
-      wrapper = document.createElement("div");
-      wrapper.id = "scene-card-wrapper";
-      wrapper.innerHTML = `
+          if (currentScene === "scene_a-initial") {
+            if (!wrapper) {
+              console.log("wrapper", wrapper);
+              wrapper = document.createElement("div");
+              wrapper.id = "scene-card-wrapper";
+              wrapper.innerHTML = `
         <div id="scene-card" onclick="arialView()">
           <div class="scene-card-content">
             <h4>🏙️ Aerial View</h4>
@@ -206,20 +207,17 @@ const createSceneCard = () => {
           </div>
         </div>
       `;
-      document.body.appendChild(wrapper);
-    } else {
-      wrapper.style.display = "block"; // re-show if hidden
-    }
-  } else {
-    // Hide if card exists
-    if (wrapper) wrapper.style.display = "none";
-  }
-};
+              document.body.appendChild(wrapper);
+            } else {
+              wrapper.style.display = "block"; // re-show if hidden
+            }
+          } else {
+            // Hide if card exists
+            if (wrapper) wrapper.style.display = "none";
+          }
+        };
 
-
-       
-
-        //
+        
         let block_number = "";
 
         let breadcrumbTrail = [
@@ -239,20 +237,18 @@ const createSceneCard = () => {
 
         function updateSearchVisibility() {
           const searchBar = document.getElementById("searchBarContainer");
-        const sceneCardWrapper = document.getElementById("scene-card-wrapper");
+          const sceneCardWrapper =
+            document.getElementById("scene-card-wrapper");
           //scene-card-wrapper
-          console.log("searchBar", searchBar);
+
           const krpano = document.getElementById("krpanoSWFObject");
           const currentScene = krpano.get("xml.scene");
 
-          console.log("sceneCardWrapper", sceneCardWrapper);
           if (currentScene === "scene_a-initial") {
-          
             searchBar.style.display = "none";
-          
           } else {
             searchBar.style.display = "block";
-           // sceneCardWrapper.style.display = "none";
+            // sceneCardWrapper.style.display = "none";
           }
         }
 
@@ -272,6 +268,7 @@ const createSceneCard = () => {
         function toggleClearIcon(input) {
           const clearIcon = document.getElementById("clearIcon");
           clearIcon.style.display = input.value ? "block" : "none";
+          //blinkHotspot(false); // Stop blinking when input changes
         }
 
         function clearSearch() {
@@ -293,6 +290,8 @@ const createSceneCard = () => {
           let currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
 
           let zone;
+
+          // global search from arial view
           if (currentScene === "scene_b-al_marina_aerial") {
             const unitData = localStorage.getItem("response");
             const parsedData = JSON.parse(unitData);
@@ -300,116 +299,88 @@ const createSceneCard = () => {
             const Unit = parsedData.data.find(
               (house) => house.plot_number === value
             );
-            console.log("CHECK HERE", Unit);
-            if (Unit.zone === "ZONE 1") {
-              console.log("Zone found:");
 
+            if (Unit.zone === "ZONE 1") {
               // Load the corresponding scene
               krpano.call(
                 `loadscene(${"scene_c-zone_1"}, null, MERGE, BLEND(1))`
               );
             } else if (Unit.zone === "ZONE 2") {
-              console.log("Plot number not found in any zone.");
               krpano.call(
                 `loadscene(${"scene_e-zone_3"}, null, MERGE, BLEND(1))`
               );
-              // document.getElementById("notFoundModal").style.display = "block";
             } else if (Unit.zone === "ZONE 3") {
-              console.log("Plot number not found in any zone.");
               krpano.call(
                 `loadscene(${"scene_al_marina_zone_3"}, null, MERGE, BLEND(1))`
               );
-              // document.getElementById("notFoundModal").style.display = "block";
             } else if (Unit.zone === "ZONE 7") {
-              console.log("Plot number not found in any zone.");
               krpano.call(
                 `loadscene(${"scene_f-zone_4"}, null, MERGE, BLEND(1))`
               );
-              // document.getElementById("notFoundModal").style.display = "block";
             } else if (Unit.zone === "ZONE 5") {
-              console.log("Plot number not found in any zone.");
               krpano.call(
                 `loadscene(${"scene_g-zone_5"}, null, MERGE, BLEND(1))`
               );
-
-              // document.getElementById("notFoundModal").style.display = "block";
             } else if (Unit.zone === "ZONE 6") {
-              console.log("Plot number not found in any zone.");
               krpano.call(
                 `loadscene(${"scene_h-building_1"}, null, MERGE, BLEND(1))`
               );
-
-              // document.getElementById("notFoundModal").style.display = "block";
             } else if (Unit.zone === "ZONE 7") {
-              console.log("Plot number not found in any zone.");
               krpano.call(
                 `loadscene(${"scene_i-building_2"}, null, MERGE, BLEND(1))`
               );
-
-              // document.getElementById("notFoundModal").style.display = "block";
             }
           } else {
             // Handle other scenes here...
           }
 
-          // Only proceed if we're in Zone 3
-          console.log("Current Scene:", currentScene);
-
           let matchedHouse;
 
           currentScene = krpano.get("xml.scene");
 
-          console.log("currentScene", currentScene);
           switch (currentScene) {
             case "scene_b-al_marina_aerial":
               matchedHouse = null;
 
               break;
             case "scene_c-zone_1":
-              console.log("scene_c-zone_1");
               matchedHouse = zone1houseData.find(
                 (house) => house.plot_number === value
               );
 
               const sceneName = matchedHouse;
-              console.log("sceneName", sceneName);
+
               break;
             case "scene_d-zone_2":
-              console.log("scene_d-zone_2");
               matchedHouse = zone2houseData.find(
                 (house) => house.plot_number === value
               );
               break;
             case "scene_e-zone_3":
-              console.log("scene_e-zone_3");
               matchedHouse = zone3houseData.find(
                 (house) => house.plot_number === value
               );
               break;
 
             case "scene_f-zone_4":
-              console.log("scene_f-zone_4");
               matchedHouse = zone4houseData.find(
                 (house) => house.plot_number === value
               );
               break;
 
             case "scene_g-zone_5":
-              console.log("scene_g-zone_5");
               matchedHouse = zone5houseData.find(
                 (house) => house.plot_number === value
               );
               break;
 
             case "scene_h-building_1":
-              console.log("scene_h-building_1");
               matchedHouse = building1houseData.find(
                 (house) => house.plot_number === value
               );
               break;
 
             case "scene_i-building_2":
-              console.log("scene_i-building_2");
               matchedHouse = building2houseData.find(
                 (house) => house.plot_number === value
               );
@@ -422,9 +393,8 @@ const createSceneCard = () => {
           }
 
           if (matchedHouse) {
-            console.log("matchedHouse", matchedHouse);
             const hotspotName = `${matchedHouse.id}`;
-            console.log("Hotspot found:", hotspotName);
+
             blinkHotspot(hotspotName);
 
             let center = matchedHouse.coordinates?.[0]; // Default to first
@@ -459,10 +429,8 @@ const createSceneCard = () => {
               );
             }
 
-            console.log("center", center);
             krpano.call(`lookat(${center.ath}, ${center.atv}, 20)`); // 70 = moderate zoom
           } else {
-            console.log("Hotspot not found for plot number:", value);
             document.getElementById("notFoundModal").style.display = "block";
             closeCard(); // Close any existing card
 
@@ -481,15 +449,12 @@ const createSceneCard = () => {
         }
 
         function blinkHotspot(hotspotName) {
-          console.log("hotspotName", hotspotName);
           const krpano = document.getElementById("krpanoSWFObject");
 
           let currentScene = krpano.get("xml.scene");
 
           // Case 1: If we're back at the aerial scene or hotspotName is false — stop everything
           if (currentScene === "scene_b-al_marina_aerial" || !hotspotName) {
-            console.log("Stopping blinking...");
-
             if (currentBlinkInterval && currentBlinkingHotspot) {
               clearInterval(currentBlinkInterval);
 
@@ -520,6 +485,7 @@ const createSceneCard = () => {
 
           currentBlinkInterval = setInterval(() => {
             const color = blinkColors[blinkIndex];
+
             krpano.call(`set(hotspot[${hotspotName}].fillcolor, ${color})`);
             blinkIndex = (blinkIndex + 1) % blinkColors.length;
           }, 500);
@@ -580,7 +546,6 @@ const createSceneCard = () => {
 
         // Render the breadcrumbs dynamically
         const renderBreadcrumbs = () => {
-          console.log("renderBreadcrumbs");
           const wrapper = document.getElementById("breadcrumb-wrapper");
           wrapper.innerHTML = ""; // Clear previous breadcrumbs
 
@@ -701,7 +666,7 @@ const createSceneCard = () => {
           Array.from(hotspotElements).forEach((hotspot) => {
             const id = hotspot.getAttribute("name");
             const plot_number = hotspot.getAttribute("plot_number");
-            const block_number = hotspot.getAttribute("block_number");
+            // const block_number = hotspot.getAttribute("block_number");
 
             const points = Array.from(
               hotspot.getElementsByTagName("point")
@@ -713,7 +678,7 @@ const createSceneCard = () => {
             houseData.push({
               id,
               plot_number,
-              block_number,
+              //  block_number,
               coordinates: points,
             });
           });
@@ -746,7 +711,7 @@ const createSceneCard = () => {
           }
           const icon = document.getElementById("toggle-icon");
           icon.textContent = toggleColorOn ? "toggle_on" : "toggle_off";
-          console.log("hotspotColorOn", toggleColorOn);
+
           icon.style.color = toggleColorOn ? "#808e92  " : "#dee2e6";
 
           const totalHotspots = krpano.get("hotspot.count");
@@ -828,19 +793,20 @@ const createSceneCard = () => {
 
             let card = document.getElementById("krpano-card");
             if (card) {
-              // card.remove();
+               card.remove();
             }
 
-            //updateSearchVisibility(currentScene);
+            
 
             const homeIcon = document.getElementById("homeIcon");
 
             if (currentScene === "scene_a-initial") {
-              console.log("initial", currentScene);
               // Hide home icon on initial screen
               homeIcon.style.display = "none";
             } else if (currentScene === "scene_b-al_marina_aerial") {
               // Show home icon and go to initial scene
+              
+           // closeCard();
               homeIcon.style.display = "block";
               // krpano.call("loadscene(scene_a-initial, null, MERGE);");
             } else {
@@ -868,7 +834,6 @@ const createSceneCard = () => {
               renderBreadcrumbs();
               dynamicZoneRendering(zone2houseData, response, krpano);
             } else if (currentScene === "scene_e-zone_3") {
-              console.log("Current Scene:", currentScene);
               dynamicZoneRendering(zone3houseData, response, krpano);
               breadcrumbTrail.push({
                 scene: "scene_zone_3",
@@ -877,7 +842,6 @@ const createSceneCard = () => {
               });
               renderBreadcrumbs();
             } else if (currentScene === "scene_f-zone_4") {
-              console.log("Current Scene:", currentScene);
               dynamicZoneRendering(zone4houseData, response, krpano);
               breadcrumbTrail.push({
                 scene: "scene_f-zone_4",
@@ -886,7 +850,6 @@ const createSceneCard = () => {
               });
               renderBreadcrumbs();
             } else if (currentScene === "scene_g-zone_5") {
-              console.log("Current Scene:", currentScene);
               dynamicZoneRendering(zone5houseData, response, krpano);
               breadcrumbTrail.push({
                 scene: "scene_g-zone_5",
@@ -895,7 +858,6 @@ const createSceneCard = () => {
               });
               renderBreadcrumbs();
             } else if (currentScene === "scene_h-building_1") {
-              console.log("Current Scene:", currentScene);
               dynamicZoneRendering(building1houseData, response, krpano);
               breadcrumbTrail.push({
                 scene: "scene_h-building_1",
@@ -904,7 +866,6 @@ const createSceneCard = () => {
               });
               renderBreadcrumbs();
             } else if (currentScene === "scene_i-building_2") {
-              console.log("Current Scene:", currentScene);
               dynamicZoneRendering(building2houseData, response, krpano);
               breadcrumbTrail.push({
                 scene: "scene_i-building_2",
@@ -1042,7 +1003,6 @@ const createSceneCard = () => {
         }
 
         const closeCard = () => {
-          console.log();
           let card = document.getElementById("krpano-card");
           if (card) {
             card.remove();
@@ -1070,7 +1030,7 @@ const createSceneCard = () => {
           const krpano = document.getElementById("krpanoSWFObject");
           if (krpano && krpano.call) {
             console.log("Krpano is ready");
-            //createSceneCard();
+            createSceneCard();
           }
         };
 
@@ -1266,16 +1226,12 @@ const createSceneCard = () => {
             // Get screen X, Y
             const screenX = krpano.get("tooltip_pos.x");
             const screenY = krpano.get("tooltip_pos.y");
-
-            console.log("Screen position:", screenX, screenY);
           }, 1000);
 
           // Delay to ensure Krpano loads
           updateSearchVisibility();
 
           if (typeof krpano !== "undefined" && krpano !== null) {
-            console.log("Krpano onloadcomplete");
-
             // or however your app provides scene name
 
             krpano.set(
