@@ -25,6 +25,8 @@
     <!-- adding style sheet -->
     <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="initalCard.css" />
+    <link rel="stylesheet" href="slider.css" />
+
     <!-- Add Material-UI (MUI) CSS -->
     <link
       rel="stylesheet"
@@ -168,20 +170,19 @@
                   <label class="form-label fw-semibold">
                     Total Area: From</label
                   >
-                  <span id="areaMin">100</span> to
-                  <span id="areaMax">20000</span>
+                  <span id="areaValue">100</span> to
+                  <span id="areaMax">20000</span> sq m
                 </label>
                 <input
                   type="range"
                   class="form-range"
+                  min="100"
                   max="20000"
                   step="50"
                   id="totalArea"
                   value="500"
                   oninput="updateAreaAndSearch(this.value)"
                 />
-
-                Current <span id="areaValue">100</span>
               </div>
 
               <!-- Search Button -->
@@ -270,6 +271,33 @@
         </div>
       </div>
 
+      <div class="slider-container_1">
+        <div class="card-slider_1">
+          <div class="card_1">
+            <img
+              src="https://via.placeholder.com/200x150?text=Property+1"
+              alt="Bristol Tower Complex"
+            />
+            <div class="details_1">
+              <p class="address_1">180 Grant Avenue, Orton</p>
+              <div class="property-info_1">
+                <div class="info-item_1">
+                  <span class="label_1">Area</span>
+                  <span class="value_1"></span>
+                </div>
+                <div class="info-item_1">
+                  <span class="label_1">plot Number</span>
+                  <span class="value_1"></span>
+                </div>
+                <div class="info-item_1">
+                  <span class="label_1">Block Number</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <script>
         embedpano({
           xml: "tour.xml",
@@ -292,22 +320,17 @@
               // availabilitySelected = selectedValue;
             });
           });
+        var area = 500; // you can change this value dynamically later
+        document.getElementById("areaValue").textContent = `${area} sq m`;
 
         function resetFilters() {
           // Reset the total area slider
           const slider = document.getElementById("totalArea");
-          const plot = document.getElementById("plotNumber");
-          // slider.value = ""; // or whatever your default value is
+          const plot = document.getElementById("totalArea");
+          slider.value = ""; // or whatever your default value is
           plot.value = "";
-
-          const defaultArea = 170; // your min/default value
-
-          // Reset values
-          slider.value = defaultArea;
-
           document.getElementById("areaValue").innerText = slider.value;
 
-          document.getElementById("areaMax").textContent = `${20000} sq m`;
           // Clear other filters here if you have them
 
           // Call search again with reset values
@@ -559,106 +582,6 @@
 
           return unit;
         }
-
-        let zone3max , zone3min; 
-        const setTotalAreaParsedData = () => {
-          const unitData = localStorage.getItem("response");
-          const parsedData = JSON.parse(unitData);
-
-          const filteredZone3 = parsedData.data.filter(
-            (item) => item.zone === "ZONE 3"
-          );
-
-          console.log("setTotalAreaParsedData", filteredZone3);
-
-          zone3houseData = zone3houseData.map((house) => {
-            const match = filteredZone3.find(
-              (item) => item.plot_number === house.plot_number
-            );
-            return {
-              ...house,
-              total_area: match ? parseInt(match.total_area) : null, // or undefined if you prefer
-            };
-          });
-
-          const areas = zone3houseData
-            .map((house) => house.total_area)
-            .filter((area) => area !== null); // Remove nulls or non-numbers
-
-          console.log("areas", areas);
-          zone3min = areas[0];
-          zone3max = areas[0];
-
-          areas.forEach((area) => {
-            if (area < zone3min) zone3min = area;
-            if (area > zone3max) zone3max = area;
-          });
-
-          console.log("Min total_area:", zone3min);
-          console.log("Max total_area:", zone3max);
-
-          console.log("zone3houseData", zone3houseData, zone3min, zone3max);
-
-          const filteredZone4 = parsedData.data.filter(
-            (item) => item.zone === "ZONE 4"
-          );
-
-          zone4houseData = zone4houseData.map((house) => {
-            const match = filteredZone4.find(
-              (item) => item.plot_number === house.plot_number
-            );
-            return {
-              ...house,
-              total_area: match ? match.total_area : null, // or undefined if you prefer
-            };
-          });
-
-          const filteredZone5 = parsedData.data.filter(
-            (item) => item.zone === "ZONE 5"
-          );
-
-          zone5houseData = zone5houseData.map((house) => {
-            const match = filteredZone5.find(
-              (item) => item.plot_number === house.plot_number
-            );
-            return {
-              ...house,
-              total_area: match ? match.total_area : null, // or undefined if you prefer
-            };
-          });
-
-          const filteredZone6 = parsedData.data.filter(
-            (item) => item.zone === "ZONE 5"
-          );
-          building1houseData = building1houseData.map((house) => {
-            const match = filteredZone6.find(
-              (item) => item.plot_number === house.plot_number
-            );
-            return {
-              ...house,
-              total_area: match ? match.total_area : null, // or undefined if you prefer
-            };
-          });
-
-          const filteredZone7 = parsedData.data.filter(
-            (item) => item.zone === "ZONE 7"
-          );
-          building2houseData = building2houseData.map((house) => {
-            const match = filteredZone7.find(
-              (item) => item.plot_number === house.plot_number
-            );
-            return {
-              ...house,
-              total_area: match ? match.total_area : null, // or undefined if you prefer
-            };
-          });
-
-          //
-
-          //
-
-          console.log("updatedZone3HouseData", zone5houseData);
-        };
         function getSpeificUnitsByArea() {
           const area = document.getElementById("totalArea").value;
 
@@ -680,7 +603,7 @@
             );
           }
 
-          console.log("getSpeificUnitsByArea", zone3houseData);
+          console.log("getSpeificUnitsByArea", filteredHouses);
 
           const houses = [
             {
@@ -875,41 +798,12 @@
         function updateSliderRange(zone) {
           const slider = document.getElementById("totalArea");
 
-          /// var area = 500; // you can change this value dynamically later
-
           console.log("updateSliderRange", zone);
           if (zone === "1") {
-            //slider.min  = 900;
-
-            //slider.max = 3300;
-            document.getElementById("areaValue").textContent = `${500} sq m`;
-
-            document.getElementById("areaMin").textContent = `${700} sq m`;
-
-            document.getElementById("areaMax").textContent = `${20000} sq m`;
-          } else if (zone === "2") {
-            console.log("zone 5", zone);
-
-            document.getElementById("areaValue").textContent = `${800} sq m`;
-
-            document.getElementById("areaMin").textContent = `${650} sq m`;
-            document.getElementById("areaMax").textContent = `${3000} sq m`;
-          } else if (zone === "3") {
-            //slider.min  = 900;
-            console.log("check here", zone , zone3min, zone3max );
-            slider.max = zone3max;
-
-            document.getElementById("areaValue").textContent = `${900} sq m`;
-
-            document.getElementById("areaMin").textContent = `${zone3min} sq m`;
-            document.getElementById("areaMax").textContent = `${zone3max} sq m`;
+            slider.max = 20000;
           } else if (zone === "5") {
             console.log("zone 5", zone);
-            // slider.max = 2500;
-
-            document.getElementById("areaValue").textContent = `${930} sq m`;
-            document.getElementById("areaMin").textContent = `${229} sq m`;
-            document.getElementById("areaMax").textContent = `${2500} sq m`;
+            slider.max = 20000;
           } else {
             slider.max = 150000; // default max
           }
@@ -951,7 +845,7 @@
 
               // Reset color of the previous hotspot
               krpano.call(
-                `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFFFF)`
+                `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFF00)`
               );
 
               // Clear references
@@ -1223,13 +1117,15 @@
         };
 
         const zone1houseData = parseHotspots(zone1hotspotXML);
-        let zone3houseData = parseHotspots(zone3hotspotXML);
-        let zone2houseData = parseHotspots(zone2hotspotXML);
-        let zone4houseData = parseHotspots(zone4hotspotXML);
-        let zone5houseData = parseHotspots(zone5hotspotXML);
-        let building1houseData = parseHotspots(zone6_building_1_hotspotXML);
-        let building2houseData = parseHotspots(zone7_building_2_hotspotXML);
+        const zone3houseData = parseHotspots(zone3hotspotXML);
+        const zone2houseData = parseHotspots(zone2hotspotXML);
+        const zone4houseData = parseHotspots(zone4hotspotXML);
+        const zone5houseData = parseHotspots(zone5hotspotXML);
 
+        console.log("zone2houseData", zone1houseData);
+
+        const building1houseData = parseHotspots(zone6_building_1_hotspotXML);
+        const building2houseData = parseHotspots(zone7_building_2_hotspotXML);
         let toggleState = false; // Global state for toggling colors (false = color1, true = color2)
         let toggleColorOn = false;
 
@@ -1261,12 +1157,13 @@
         }
 
         function getRandomColor() {
+          //fillcolor="0x00FF00" fillalpha="0.1" bordercolor="0x228B22" borderwidth="1"
           const letters = "0123456789ABCDEF";
           let color = "#";
           for (let i = 0; i < 6; i++) {
             color += letters[Math.floor(Math.random() * 16)];
           }
-          return "0xFF0000";
+          return "0x00FF00";
         }
         const dynamicZoneRendering = (zoneData, response, krpano) => {
           zoneData.forEach((house) => {
@@ -1285,10 +1182,12 @@
 
             const cords = house.coordinates[0];
 
-            krpano.call(
-              `set(hotspot[${hotspotName}].fillcolor, ${hotspotColorHex})`
-            );
-
+            krpano.call(`
+  set(hotspot[${hotspotName}].fillcolor, ${hotspotColorHex});
+  set(hotspot[${hotspotName}].fillalpha, 0.1);
+  set(hotspot[${hotspotName}].bordercolor, 0x228B22);
+  set(hotspot[${hotspotName}].borderwidth, 1);
+`);
             if (cords) {
               // Set the onclick action to show a Bootstrap tooltip
               krpano.call(`
@@ -1362,7 +1261,7 @@
               });
               //onSceneChange(currentScene,unit)
 
-              updateSliderRange("1");
+              //updateSliderRange('1');
               renderBreadcrumbs();
               dynamicZoneRendering(zone1houseData, response, krpano);
             } else if (currentScene === "scene_d-zone_2") {
@@ -1380,8 +1279,6 @@
                 title: "Zone 3",
                 icon: "grain",
               });
-
-              updateSliderRange("3");
               renderBreadcrumbs();
             } else if (currentScene === "scene_f-zone_4") {
               dynamicZoneRendering(zone4houseData, response, krpano);
@@ -1400,7 +1297,7 @@
               });
               renderBreadcrumbs();
 
-              updateSliderRange("5");
+              // updateSliderRange('5');
 
               // onSceneChange(currentScene,unit)
             } else if (currentScene === "scene_h-building_1") {
@@ -1778,8 +1675,6 @@
 
           // Delay to ensure Krpano loads
           updateSearchVisibility();
-
-          setTotalAreaParsedData();
 
           const unit = getSpecificUnit();
 

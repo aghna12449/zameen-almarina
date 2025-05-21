@@ -1,0 +1,140 @@
+.slider-container_1 {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1);
+  padding: 2px 0;
+  z-index: 1000;
+}
+
+.card-slider_1 {
+  display: flex;
+  gap: 10px;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  padding: 0 10px;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.card-slider_1:hover {
+  animation: scroll 8s linear infinite;
+}
+
+.card_1 {
+  position: relative;
+  min-width: 250px; /* Increased width significantly */
+  height: 170px; /* Reduced height */
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex; /* Changed to flex to arrange image and details side-by-side */
+  flex-direction: row; /* Arrange children in a row */
+  overflow: hidden;
+}
+
+.card_1 img {
+  width: 100px; /* Fixed width for the image */
+  height: 100%; /* Image takes full height of the card */
+  object-fit: cover;
+  border-radius: 6px 0 0 6px; /* Rounded left corners only */
+  margin-right: 0px; /* No margin right, use padding on details */
+}
+
+/* .card .price-tag {
+  position: absolute;
+  top: 0px;
+  left: 0px; 
+  background-color: #3b5998;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px 0 6px 0;
+  font-weight: bold;
+  font-size: 11px;
+  z-index: 2;
+} */
+
+.card_1 .details {
+  padding: 40px 12px; /* Padding for the text details section */
+  display: flex;
+  flex-direction: column; /* Stack details vertically */
+  flex-grow: 1; /* Allow details to take remaining width */
+  justify-content: space-between; /* Push property-info to the bottom */
+  font-size: 10px;
+  color: #333;
+  white-space: normal;
+}
+
+.card_1 h4 {
+  margin: 0;
+  font-size: 14px; /* Title font size remains readable */
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card_1 .address {
+  margin: 4px 0 8px 0;
+  font-size: 11px; /* Address font size remains readable */
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card_1 .property-info {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 0px;
+  border-top: none;
+  margin-top: auto;
+  border-top: 1px solid #eee;
+  gap: 20px;
+  padding: 0 5px;
+}
+
+.card_1 .info-item {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  flex: 1;
+  padding-top: 8px;
+}
+
+.card_1 .info-item .label {
+  font-size: 12px;
+  color: #292828;
+  margin-bottom: 2px;
+  font-weight: bold;
+}
+
+.card_1 .info-item .value {
+  font-size: 10px;
+
+  color: #333;
+}
+
+/* Styles for customizing the scrollbar (Webkit browsers) */
+.card_1-slider::-webkit-scrollbar {
+  height: 3px; /* Reduced scrollbar height significantly */
+}
+
+.card_1-slider::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.card_1-slider::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.card_1-slider::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
