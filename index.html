@@ -113,8 +113,8 @@
         <span id="arrow-icon" class="material-icons">arrow_circle_left</span>
       </div>
 
-     <div id="searchBarContainer">
-        <div class="container mt-5" >
+      <div id="searchBarContainer">
+        <div class="container mt-5">
           <div class="card shadow rounded-4 compact-search-card">
             <div class="card-body">
               <h5 class="card-title mb-4 fw-semibold">Search Filter</h5>
@@ -153,24 +153,26 @@
                 </div>
               </div>
 
+              <!-- Total Area Slider -->
               <div class="mb-3">
                 <label for="totalArea" class="form-label">
                   <label class="form-label fw-semibold">
                     Total Area: From</label
                   >
                   <span id="areaValue">100</span> to
-                  <span id="areaMax">20000</span> sq m
+                  <span id="areaMax">20000</span>
                 </label>
                 <input
                   type="range"
                   class="form-range"
-                  min="100"
                   max="20000"
                   step="50"
                   id="totalArea"
                   value="500"
                   oninput="updateAreaAndSearch(this.value)"
                 />
+
+                 <!-- <span id="areaValue"></span> -->
               </div>
 
               <button
@@ -187,6 +189,14 @@
                   onclick="resetFilters()"
                 >
                   <i class="fas fa-sync-alt me-2"></i> Reset Filters
+                </button>
+
+                <button
+                  class="btn btn-link p-0 ml-5 text-decoration-none"
+                  type="button"
+                  onclick="displayHorizontalSlider()"
+                >
+                  <i class=" me-2"></i> Details
                 </button>
               </div>
 
@@ -216,8 +226,6 @@
           </div>
         </div>
       </div>
-
-      
 
       <!-- Modal -->
       <div id="notFoundModal" class="modal-overlay">
@@ -251,61 +259,11 @@
         </div>
       </div>
 
-        <div class="slider-container_1">
-  <div class="card-slider_1">
-    <div class="card_1">
-      <!-- <div class="price-tag_1">$45,900</div> -->
-      <img
-        src="https://via.placeholder.com/200x170?text=Family+Villa"
-        alt="Family Villa"
-      />
-      <div class="details_1">
-        <h4>Family Villa</h4>
-        <p class="address_1">593 Grove Place, Crawfordsville</p>
-        <div class="property-info_1">
-          <div class="info-item_1">
-            <span class="label_1">Area</span>
-            <span class="value_1">1500m²</span>
-          </div>
-          <div class="info-item_1">
-            <span class="label_1">Bedrooms</span>
-            <span class="value_1">2</span>
-          </div>
-          <div class="info-item_1">
-            <span class="label_1">Bathrooms</span>
-            <span class="value_1">3</span>
-          </div>
-        </div>
+      <div class="slider-container_1">
+        <div class="card-slider_1"></div>
       </div>
-    </div>
 
-    <div class="card_1">
-        <!-- <div class="price-tag_1">$85,900</div> -->
-        <img
-            src="https://via.placeholder.com/200x170?text=Bristol+Tower"
-            alt="Bristol Tower Complex"
-        />
-        <div class="details_1">
-            <h4>Bristol Tower Complex</h4>
-            <p class="address_1">180 Grant Avenue, Orton</p>
-            <div class="property-info_1">
-                <div class="info-item_1">
-                    <span class="label_1">Area</span>
-                    <span class="value_1">1850m²</span>
-                </div>
-                <div class="info-item_1">
-                    <span class="label_1">Bedrooms</span>
-                    <span class="value_1">5</span>
-                </div>
-                <div class="info-item_1">
-                    <span class="label_1">Bathrooms</span>
-                    <span class="value_1">3</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</div>
+     
 
       <script>
         embedpano({
@@ -363,6 +321,42 @@
           }
         };
 
+        let slidersHotspot = [];
+      
+
+const displayHorizontalSlider = () => {
+  const sliderContainer = document.querySelector('.card-slider_1');
+  sliderContainer.innerHTML = ''; // Clear previous content if needed
+
+  slidersHotspot.forEach((house, index) => {
+    const cardHTML = `
+      <div class="card_1">
+        <img src="/skin/icons/erth_logo_white.png" height="100px" width="100px"  />
+        <div class="details_1">
+          <h4>Plot #${house.plot_number}</h4>
+          <p class="address_1">Sample Address</p>
+          <div class="property-info_1">
+            <div class="info-item_1">
+              <span class="label_1">Area</span>
+              <span class="value_1">${house.total_area} m²</span>
+            </div>
+            <div class="info-item_1">
+              <span class="label_1">East</span>
+              <span class="value_1">2</span>
+            </div>
+            <div class="info-item_1">
+              <span class="label_1">West</span>
+              <span class="value_1">3</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    sliderContainer.insertAdjacentHTML('beforeend', cardHTML);
+  });
+};
+
         function toggleMoreOptions() {
           const moreOptions = document.getElementById("moreOptions");
           moreOptions.style.display =
@@ -370,6 +364,10 @@
         }
 
         let previouslyVisibleHotspots = [];
+        let currentAppearingHotpsots = [];
+
+        const newHotspotArray = [];
+       
 
         function updateAreaAndSearch(value) {
           console.log("updateAreaAndSearch", value);
@@ -398,17 +396,77 @@
           // //  krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
           // });
 
-          for (let i = 0; i < previouslyVisibleHotspots.length; i++) {
-                  const hsName = krpano.get(`hotspot[${i}].name`);
-                  console.log("NAME ============", hsName)
-            krpano.set(`hotspot[${'hs1'}].visible`, false);
+          const areaHouses = getSpeificUnitsByArea();
+          console.log("areaHouses ==>>>", areaHouses);
 
-            krpano.set(`hotspot[${'hs4'}].visible`, false);
+          let initial = areaHouses[0];
+          const startId = parseInt(initial?.id.replace("hs", "")); // e.g. 18
 
-            krpano.set(`hotspot[${'hs7'}].visible`, false);
-                  //krpano.set(`hs1.visible`, false);
-                //  krpano.set(`hs1.visible`, false);
-                }
+          // Create a lookup map from existing hotspot IDs for quick checking
+          const existingIds = new Set(
+            areaHouses.map((house) => parseInt(house.id.replace("hs", "")))
+          );
+
+          // Make a new array including only valid sequential hotspots starting from startId
+        
+          const missingHotspots = [];
+
+          const notFound = [];
+          for (let i = startId; i <= areaHouses.length; i++) {
+            // change 100 to your max expected id
+            if (existingIds.has(i)) {
+              const found = areaHouses.find(
+                (house) => parseInt(house.id.replace("hs", "")) === i
+              );
+              console.log("FOUND", found);
+              if (found) {
+                newHotspotArray.push(found.id);
+                slidersHotspot.push(found)
+              }
+            } else {
+              missingHotspots.push(`hs${i}`);
+            }
+          }
+
+          console.log("Filtered Hotspots:", newHotspotArray, missingHotspots);
+
+          let idNumber = initial?.id.replace("hs", ""); // "18" as a string
+          let idInt = parseInt(idNumber);
+
+          console.log("currentAppearingHotpsots", currentAppearingHotpsots);
+          missingHotspots.forEach((hotspotId) => {
+            krpano.set(`hotspot[${hotspotId}].visible`, false);
+            krpano.call(`set(hotspot[${hotspotId}].visible, false)`);
+            krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0.00001)`);
+            krpano.call(`set(hotspot[${hotspotId}].borderwidth, 000)`);
+          });
+
+          // for (let i = 0; i < missingHotspots.length; i++) {
+
+          //     const hsName = krpano.get(`hotspot[${i}].name`);
+          //  console.log("NAME ============", hsName)
+
+          //                 krpano.set(`hotspot[${'hs34'}].visible`, false);
+          // krpano.set(`hotspot[${'hs37'}].visible`, false);
+          //                 krpano.set(`hotspot[${'hs1'}]`.fillalpha, 0.0);
+          //                 krpano.set(`hotspot[${'hs4'}]`.fillalpha, 0.0);
+          //                 krpano.set(`hotspot[${'hs7'}]`.fillalpha, 0.0);
+          //                 krpano.set(`hotspot[${'hs31'}]`.fillalpha, 0.0);
+          //                 krpano.set(`hotspot[${'hs34'}]`.fillalpha, 0.0);
+          //                 krpano.set(`hotspot[${'hs37'}]`.fillalpha, 0.0);
+          //                // krpano.set(`hotspot[${'hs1'}]`.fillalpha, 0.0);
+          //                 krpano.set(`hotspot[${'hs1'}]`.borderalpha, 0.0);
+          //                 krpano.set(`hotspot[${'hs4'}]`.borderalpha, 0.0);
+          //                 krpano.set(`hotspot[${'hs7'}]`.borderalpha, 0.0);
+          // krpano.set(`hotspot[${'hs1'}]`.bordercolor, 0x228B22);
+          //  krpano.set(`hotspot[${'hs1'}]`.bordercolor, 0x000000);
+          //  krpano.set(`hotspot[${'hs4'}]`.bordercolor, 0x000000);
+          //  krpano.set(`hotspot[${'hs7'}]`.bordercolor, 0x000000);
+          //  krpano.set(`hotspot[${'hs1'}]`.borderwidth, 0);
+          //  krpano.set(`hotspot[${'hs4'}]`.borderwidth, 0);
+          //  krpano.set(`hotspot[${'hs7'}]`.borderwidth, 0);
+          //krpano.set(`hs1.visible`, false);
+          //  krpano.set(`hs1.visible`, false);
 
           handleSearchFilters();
         }
@@ -429,7 +487,8 @@
               wrapper.innerHTML = `
         <div id="scene-card" onclick="arialView()">
           <div class="scene-card-content">
-            <img src="/skin/icons/AlMarina.png" width="200px" height="100px" class="breadcrumb-icon" />
+            <img src="/skin/icons/AlMarina_white.png" width="100%" height="100%" class="breadcrumb-icon" />
+            <img src="/skin/icons/erth_logo_white.png" width="50%" height="50%" class="breadcrumb-icon" />
             <h4>🏙️ 
               
               
@@ -618,7 +677,6 @@
 
           console.log("getSpeificUnitsByArea", filteredHouses);
 
-
           return filteredHouses;
         }
 
@@ -638,7 +696,7 @@
 
             areaHouses.forEach((house) => {
               const hotspotName = `${house.id}`;
-              blinkHotspot(hotspotName);
+              //blinkHotspot(hotspotName);
 
               previouslyVisibleHotspots.push({ id: hotspotName });
             });
@@ -768,23 +826,46 @@
         function updateSliderRange(zone) {
           const slider = document.getElementById("totalArea");
 
+          /// var area = 500; // you can change this value dynamically later
+
           console.log("updateSliderRange", zone);
           if (zone === "1") {
             slider.max = 20000;
+            //slider.min  = 900;
+
+            //slider.max = 3300;
+            document.getElementById("areaValue").textContent = `${500} sq m`;
+
+            document.getElementById("areaMin").textContent = `${200} sq m`;
+
+            document.getElementById("areaMax").textContent = `${20000} sq m`;
+          } else if (zone === "2") {
+            console.log("zone 5", zone);
+
+            document.getElementById("areaValue").textContent = `${800} sq m`;
+
+            document.getElementById("areaMin").textContent = `${650} sq m`;
+            document.getElementById("areaMax").textContent = `${3000} sq m`;
+          } else if (zone === "3") {
+            console.log("check here", zone, zone3min, zone3max);
+            slider.max = zone3max;
+
+            document.getElementById("areaValue").textContent = `${900} sq m`;
+
+            document.getElementById("areaMin").textContent = `${zone3min} sq m`;
+            document.getElementById("areaMax").textContent = `${zone3max} sq m`;
           } else if (zone === "5") {
             console.log("zone 5", zone);
             slider.max = 20000;
+            // slider.max = 2500;
+
+            document.getElementById("areaValue").textContent = `${930} sq m`;
+            document.getElementById("areaMin").textContent = `${229} sq m`;
+            document.getElementById("areaMax").textContent = `${2500} sq m`;
           } else {
             slider.max = 150000; // default max
           }
-
-          // Reset value and label if it exceeds the new max
-          if (parseInt(slider.value) > parseInt(slider.max)) {
-            slider.value = slider.max;
-            document.getElementById("areaValue").innerText = slider.max;
-          }
         }
-
         // Globals (declare these outside your function, at top level)
         let currentBlinkingHotspotsByArea = [];
         let currentBlinkIntervalsByArea = [];
@@ -1152,8 +1233,9 @@
 
             const cords = house.coordinates[0];
 
+            //set(hotspot[${hotspotName}].fillcolor, ${hotspotColorHex});
+
             krpano.call(`
-  set(hotspot[${hotspotName}].fillcolor, ${hotspotColorHex});
   set(hotspot[${hotspotName}].fillalpha, 0.1);
   set(hotspot[${hotspotName}].bordercolor, 0x228B22);
   set(hotspot[${hotspotName}].borderwidth, 1);
