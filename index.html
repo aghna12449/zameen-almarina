@@ -160,10 +160,10 @@
                     Total Area: From</label
                   >
                   <span id="areaValue">100</span> to
-                  <span id="areaMax">20000</span>
+                  <span id="areaMax">20000</span> sq m
                 </label>
                 <input
-                  type="range"
+                  type="range"  
                   class="form-range"
                   max="20000"
                   step="50"
@@ -172,7 +172,7 @@
                   oninput="updateAreaAndSearch(this.value)"
                 />
 
-                 <!-- <span id="areaValue"></span> -->
+                <!-- <span id="areaValue"></span> -->
               </div>
 
               <button
@@ -191,13 +191,13 @@
                   <i class="fas fa-sync-alt me-2"></i> Reset Filters
                 </button>
 
-                <button
+                <!-- <button
                   class="btn btn-link p-0 ml-5 text-decoration-none"
                   type="button"
                   onclick="displayHorizontalSlider()"
                 >
-                  <i class=" me-2"></i> Details
-                </button>
+                  <i class="me-2"></i> Details
+                </button> -->
               </div>
 
               <div id="moreOptions" style="display: none">
@@ -263,8 +263,6 @@
         <div class="card-slider_1"></div>
       </div>
 
-     
-
       <script>
         embedpano({
           xml: "tour.xml",
@@ -321,41 +319,48 @@
           }
         };
 
+
         let slidersHotspot = [];
-      
 
-const displayHorizontalSlider = () => {
-  const sliderContainer = document.querySelector('.card-slider_1');
-  sliderContainer.innerHTML = ''; // Clear previous content if needed
+        let currentAppearingHotpsots = [];
 
-  slidersHotspot.forEach((house, index) => {
-    const cardHTML = `
+        let  areaHouses ;
+
+        //currentAppearingHotpsots
+        const displayHorizontalSlider = () => {
+          console.log('displayHorizontalSlider', areaHouses);
+          const sliderContainer = document.querySelector(".card-slider_1");
+          sliderContainer.innerHTML = ""; // Clear previous content if needed
+//currentAppearingHotpsots
+
+    areaHouses.forEach((house, index) => {
+            const cardHTML = `
       <div class="card_1">
-        <img src="/skin/icons/erth_logo_white.png" height="100px" width="100px"  />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv94OIn-sX93PJMNosZCYZzXFO8Qk1FB2x3A&s" height="100px" width="100px"  />
         <div class="details_1">
-          <h4>Plot #${house.plot_number}</h4>
-          <p class="address_1">Sample Address</p>
+          <h4>Plot # ${house.plot_number}</h4>
+       
           <div class="property-info_1">
             <div class="info-item_1">
-              <span class="label_1">Area</span>
+              <span class="label_1"> Total Area</span>
               <span class="value_1">${house.total_area} m²</span>
             </div>
             <div class="info-item_1">
-              <span class="label_1">East</span>
-              <span class="value_1">2</span>
+            <span class="label_1">Availibility</span>
+             <span class="value_1">Available</span>
             </div>
             <div class="info-item_1">
-              <span class="label_1">West</span>
-              <span class="value_1">3</span>
+            
             </div>
           </div>
         </div>
       </div>
     `;
-
-    sliderContainer.insertAdjacentHTML('beforeend', cardHTML);
-  });
-};
+  // <span class="label_1">Wt</span>
+              // <span class="value_1">3</span>
+            sliderContainer.insertAdjacentHTML("beforeend", cardHTML);
+          });
+        };
 
         function toggleMoreOptions() {
           const moreOptions = document.getElementById("moreOptions");
@@ -364,13 +369,12 @@ const displayHorizontalSlider = () => {
         }
 
         let previouslyVisibleHotspots = [];
-        let currentAppearingHotpsots = [];
-
-        const newHotspotArray = [];
        
 
+        const newHotspotArray = [];
+
         function updateAreaAndSearch(value) {
-          console.log("updateAreaAndSearch", value);
+     
           const krpano = document.getElementById("krpanoSWFObject");
 
           document.getElementById("areaValue").innerText = value;
@@ -396,9 +400,12 @@ const displayHorizontalSlider = () => {
           // //  krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
           // });
 
-          const areaHouses = getSpeificUnitsByArea();
-          console.log("areaHouses ==>>>", areaHouses);
+           areaHouses = getSpeificUnitsByArea();
 
+          console.log("areaHouses ==>>>", areaHouses);
+          //currentAppearingHotpsots.push(...areaHouses)
+
+          //  slidersHotspot.push(found);
           let initial = areaHouses[0];
           const startId = parseInt(initial?.id.replace("hs", "")); // e.g. 18
 
@@ -407,8 +414,9 @@ const displayHorizontalSlider = () => {
             areaHouses.map((house) => parseInt(house.id.replace("hs", "")))
           );
 
+          console.log('existingIds')
           // Make a new array including only valid sequential hotspots starting from startId
-        
+
           const missingHotspots = [];
 
           const notFound = [];
@@ -421,7 +429,7 @@ const displayHorizontalSlider = () => {
               console.log("FOUND", found);
               if (found) {
                 newHotspotArray.push(found.id);
-                slidersHotspot.push(found)
+              
               }
             } else {
               missingHotspots.push(`hs${i}`);
@@ -433,12 +441,23 @@ const displayHorizontalSlider = () => {
           let idNumber = initial?.id.replace("hs", ""); // "18" as a string
           let idInt = parseInt(idNumber);
 
-          console.log("currentAppearingHotpsots", currentAppearingHotpsots);
+          // find minimum and maximum 
+
+          
+          // newHotspotArray.forEach((hotspotId) => {
+          //   krpano.set(`hotspot[${hotspotId}].visible`, true);
+          //   krpano.call(`set(hotspot[${hotspotId}].visible, true)`);
+          //   krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0)`);
+          //   krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
+          // })
+
+          //  0.1
           missingHotspots.forEach((hotspotId) => {
+            console.log("missingHotspots", hotspotId )
             krpano.set(`hotspot[${hotspotId}].visible`, false);
             krpano.call(`set(hotspot[${hotspotId}].visible, false)`);
-            krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0.00001)`);
-            krpano.call(`set(hotspot[${hotspotId}].borderwidth, 000)`);
+            krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0.00000)`);
+            krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
           });
 
           // for (let i = 0; i < missingHotspots.length; i++) {
@@ -468,6 +487,7 @@ const displayHorizontalSlider = () => {
           //krpano.set(`hs1.visible`, false);
           //  krpano.set(`hs1.visible`, false);
 
+          displayHorizontalSlider();
           handleSearchFilters();
         }
 
@@ -528,27 +548,21 @@ const displayHorizontalSlider = () => {
           const searchBar = document.getElementById("searchBarContainer");
           const sceneCardWrapper =
             document.getElementById("scene-card-wrapper");
-          //scene-card-wrapper
+          
 
           const krpano = document.getElementById("krpanoSWFObject");
           const currentScene = krpano.get("xml.scene");
 
-          if (currentScene === "scene_a-initial") {
+          console.log('currentScene', currentScene)
+          if (currentScene === "scene_a-initial" ||  currentScene ===  "scene_b-al_marina_aerial") {
             searchBar.style.display = "none";
           } else {
             searchBar.style.display = "block";
-            // sceneCardWrapper.style.display = "none";
+          
           }
         }
 
-        // function checkRecord() {
-        //   console.log("checkRecord");
-        //   const input = document.getElementById("searchBox").value.toLowerCase();
-
-        //   if (input === "notfound" || input === "") {
-        //     document.getElementById("notFoundModal").style.display = "block";
-        //   }
-        // }
+      
 
         function closeModal() {
           document.getElementById("notFoundModal").style.display = "none";
