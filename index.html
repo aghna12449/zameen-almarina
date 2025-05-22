@@ -75,7 +75,7 @@
         padding: 0;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 16px;
-        color: #ffffff;
+        /* color: #ffffff; */
         background-color: #000000;
       }
     </style>
@@ -271,32 +271,61 @@
         </div>
       </div>
 
-      <div class="slider-container_1">
-        <div class="card-slider_1">
-          <div class="card_1">
-            <img
-              src="https://via.placeholder.com/200x150?text=Property+1"
-              alt="Bristol Tower Complex"
-            />
-            <div class="details_1">
-              <p class="address_1">180 Grant Avenue, Orton</p>
-              <div class="property-info_1">
-                <div class="info-item_1">
-                  <span class="label_1">Area</span>
-                  <span class="value_1"></span>
-                </div>
-                <div class="info-item_1">
-                  <span class="label_1">plot Number</span>
-                  <span class="value_1"></span>
-                </div>
-                <div class="info-item_1">
-                  <span class="label_1">Block Number</span>
-                </div>
-              </div>
-            </div>
+        <div class="slider-container_1">
+  <div class="card-slider_1">
+    <div class="card_1">
+      <!-- <div class="price-tag_1">$45,900</div> -->
+      <img
+        src="https://via.placeholder.com/200x170?text=Family+Villa"
+        alt="Family Villa"
+      />
+      <div class="details_1">
+        <h4>Family Villa</h4>
+        <p class="address_1">593 Grove Place, Crawfordsville</p>
+        <div class="property-info_1">
+          <div class="info-item_1">
+            <span class="label_1">Area</span>
+            <span class="value_1">1500m²</span>
+          </div>
+          <div class="info-item_1">
+            <span class="label_1">Bedrooms</span>
+            <span class="value_1">2</span>
+          </div>
+          <div class="info-item_1">
+            <span class="label_1">Bathrooms</span>
+            <span class="value_1">3</span>
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="card_1">
+        <!-- <div class="price-tag_1">$85,900</div> -->
+        <img
+            src="https://via.placeholder.com/200x170?text=Bristol+Tower"
+            alt="Bristol Tower Complex"
+        />
+        <div class="details_1">
+            <h4>Bristol Tower Complex</h4>
+            <p class="address_1">180 Grant Avenue, Orton</p>
+            <div class="property-info_1">
+                <div class="info-item_1">
+                    <span class="label_1">Area</span>
+                    <span class="value_1">1850m²</span>
+                </div>
+                <div class="info-item_1">
+                    <span class="label_1">Bedrooms</span>
+                    <span class="value_1">5</span>
+                </div>
+                <div class="info-item_1">
+                    <span class="label_1">Bathrooms</span>
+                    <span class="value_1">3</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
 
       <script>
         embedpano({
@@ -389,13 +418,17 @@
           // //  krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
           // });
 
-          // for (let i = 0; i < previouslyVisibleHotspots.length; i++) {
-          //         const hsName = krpano.get(`hotspot[${i}].name`);
-          //         console.log("NAME ============", hsName)
+          for (let i = 0; i < previouslyVisibleHotspots.length; i++) {
+                  const hsName = krpano.get(`hotspot[${i}].name`);
+                  console.log("NAME ============", hsName)
+            krpano.set(`hotspot[${'hs1'}].visible`, false);
 
-          //         krpano.set(`hs1.visible`, false);
-          //       //  krpano.set(`hs1.visible`, false);
-          //       }
+            krpano.set(`hotspot[${'hs4'}].visible`, false);
+
+            krpano.set(`hotspot[${'hs7'}].visible`, false);
+                  //krpano.set(`hs1.visible`, false);
+                //  krpano.set(`hs1.visible`, false);
+                }
 
           handleSearchFilters();
         }
