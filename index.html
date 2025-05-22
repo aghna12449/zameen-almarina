@@ -1,283 +1,223 @@
 ﻿<!DOCTYPE html>
 <html>
+  <head>
+    <title>Al Marina</title>
 
-<head>
-  <title>Al Marina</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
 
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-  <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <!-- adding style sheet -->
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="initalCard.css" />
+    <link rel="stylesheet" href="slider.css" />
+    <link rel="stylesheet" href="searchFilter.css" />
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-  <!-- adding style sheet -->
-  <link rel="stylesheet" href="index.css" />
-  <link rel="stylesheet" href="initalCard.css" />
-  <link rel="stylesheet" href="slider.css" />
+    <!-- Add Material-UI (MUI) CSS -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@mui/material@5.0.0-beta.4/dist/material-ui.min.css"
+    />
 
-  <!-- Add Material-UI (MUI) CSS -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mui/material@5.0.0-beta.4/dist/material-ui.min.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
 
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <style>
+      .icon-container {
+        position: fixed;
+        /* Fix the position relative to the viewport */
+        bottom: 20px;
+        /* Distance from the bottom of the screen */
+        left: 20px;
+        /* Distance from the left of the screen */
+        font-size: 40px;
+        /* Icon size */
+        z-index: 9999;
+        /* Make sure it's above other content */
+        cursor: pointer;
+      }
 
-  <style>
-    .icon-container {
-      position: fixed;
-      /* Fix the position relative to the viewport */
-      bottom: 20px;
-      /* Distance from the bottom of the screen */
-      left: 20px;
-      /* Distance from the left of the screen */
-      font-size: 40px;
-      /* Icon size */
-      z-index: 9999;
-      /* Make sure it's above other content */
-      cursor: pointer;
-    }
+      .material-icons {
+        font-size: 54px;
+        /* Customize size */
+        color: white;
+        /* Customize color */
+      }
 
-    .material-icons {
-      font-size: 54px;
-      /* Customize size */
-      color: white;
-      /* Customize color */
-    }
+      html {
+        height: 100%;
+      }
 
-    html {
-      height: 100%;
-    }
+      body {
+        height: 100%;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        /* color: #ffffff; */
+        background-color: #000000;
+      }
+    </style>
+  </head>
 
-    body {
-      height: 100%;
-      overflow: hidden;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 16px;
-      /* color: #ffffff; */
-      background-color: #000000;
-    }
-  </style>
-</head>
+  <body>
+    <script src="tour.js"></script>
 
-<body>
-  <script src="tour.js"></script>
+    <script src="zone1.js"></script>
+    <script src="zone2.js"></script>
+    <script src="zone3.js"></script>
 
-  <script src="zone1.js"></script>
-  <script src="zone2.js"></script>
-  <script src="zone3.js"></script>
+    <script src="zone4.js"></script>
 
-  <script src="zone4.js"></script>
+    <script src="zone5.js"></script>
 
-  <script src="zone5.js"></script>
+    <script src="zone6_building1.js"></script>
+    <script src="zone7_building7.js"></script>
 
-  <script src="zone6_building1.js"></script>
-  <script src="zone7_building7.js"></script>
+    <div id="pano" style="width: 100%; height: 100%">
+      <noscript>
+        <table style="width: 100%; height: 100%">
+          <tr style="vertical-align: middle">
+            <td>
+              <div style="text-align: center">
+                ERROR:<br /><br />Javascript not activated<br /><br />
+              </div>
+            </td>
+          </tr>
+        </table>
+      </noscript>
 
-  <div id="pano" style="width: 100%; height: 100%">
-    <noscript>
-      <table style="width: 100%; height: 100%">
-        <tr style="vertical-align: middle">
-          <td>
-            <div style="text-align: center">
-              ERROR:<br /><br />Javascript not activated<br /><br />
-            </div>
-          </td>
-        </tr>
-      </table>
-    </noscript>
-
-    <div class="icon-container" id="homeIcon">
-      <span id="arrow-icon" class="material-icons">arrow_circle_left</span>
-    </div>
-
-    <div class="container-fluid house-list-panel">
-      <div class="row">
-        <!-- Left Panel -->
-        <div class="col-md-12">
-          <div id="houseList"></div>
-        </div>
+      <div class="icon-container" id="homeIcon">
+        <span id="arrow-icon" class="material-icons">arrow_circle_left</span>
       </div>
-    </div>
 
-    <div id="searchBarContainer">
-      <div class="container mt-5">
-        <div class="card shadow rounded-4">
-          <div class="card-body">
-            <h5 class="card-title mb-4 fw-semibold">Search Filter</h5>
+     <div id="searchBarContainer">
+        <div class="container mt-5" >
+          <div class="card shadow rounded-4 compact-search-card">
+            <div class="card-body">
+              <h5 class="card-title mb-4 fw-semibold">Search Filter</h5>
 
-            <!-- Plot Number Input -->
-            <div class="mb-3">
-              <div class="input-group">
-                <span class="input-group-text">
-                  <i class="fas fa-search"></i>
-                </span>
-                <input type="text" class="form-control" id="plotNumber" placeholder="Search by Plot Number" />
+              <div class="mb-3">
+                <div class="input-group">
+                  <span class="input-group-text">
+                    <i class="fas fa-search"></i>
+                  </span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="plotNumber"
+                    placeholder="Search by Plot Number"
+                  />
+                </div>
               </div>
-            </div>
 
-            <div>
-              <!-- Availability Label -->
-              <div class="mt-2">
-                <label class="form-label fw-semibold">Availability</label>
+              <div>
+                <div class="mt-2">
+                  <label class="form-label fw-semibold">Availability</label>
+                </div>
+                <div class="mt-1 mb-3" id="availabilityButtons">
+                  <button
+                    class="btn btn-outline-success me-2"
+                    data-value="Available"
+                  >
+                    Available
+                  </button>
+                  <button class="btn btn-outline-danger me-2" data-value="Sold">
+                    Sold
+                  </button>
+                  <button class="btn btn-outline-warning" data-value="Reserved">
+                    Reserved
+                  </button>
+                </div>
               </div>
-              <!-- Availability Buttons -->
-              <div class="mt-1 mb-3" id="availabilityButtons">
-                <button class="btn btn-outline-success me-2" data-value="Available">
-                  Available
-                </button>
-                <button class="btn btn-outline-danger me-2" data-value="Sold">
-                  Sold
-                </button>
-                <button class="btn btn-outline-warning" data-value="Reserved">
-                  Reserved
-                </button>
+
+              <div class="mb-3">
+                <label for="totalArea" class="form-label">
+                  <label class="form-label fw-semibold">
+                    Total Area: From</label
+                  >
+                  <span id="areaValue">100</span> to
+                  <span id="areaMax">20000</span> sq m
+                </label>
+                <input
+                  type="range"
+                  class="form-range"
+                  min="100"
+                  max="20000"
+                  step="50"
+                  id="totalArea"
+                  value="500"
+                  oninput="updateAreaAndSearch(this.value)"
+                />
               </div>
-            </div>
 
-            <!-- Total Area Slider -->
-            <div class="mb-3">
-              <label for="totalArea" class="form-label">
-                <label class="form-label fw-semibold">
-                  Total Area: From</label>
-                <span id="areaMin">100</span> to
-                <span id="areaMax">20000</span>
-              </label>
-              <input type="range" class="form-range" max="20000" step="50" id="totalArea" value="500"
-                oninput="updateAreaAndSearch(this.value)" />
-
-              Current <span id="areaValue">100</span>
-            </div>
-
-            <!-- Search Button -->
-            <button class="btn btn-primary w-100" onclick="handleSearchFilters()">
-              Search
-            </button>
-
-            <!-- More Options Button -->
-            <div class="mt-3 d-flex justify-content-center my-3">
-              <!-- <button class="btn btn-link p-0 text-decoration-none" type="button" onclick="toggleMoreOptions()">
-                <i class="fa fa-plus-circle ts-text-color-primary mr-2 ts-visible-on-collapsed"></i>
-                More Options
-              </button> -->
-
-              <!-- Reset Filters Button -->
-              <button class="btn btn-link p-0 ml-5 text-decoration-none" type="button" onclick="resetFilters()">
-                <i class="fas fa-sync-alt me-2"></i> Reset Filters
+              <button
+                class="btn btn-primary w-100"
+                onclick="handleSearchFilters()"
+              >
+                Search
               </button>
-            </div>
 
-            <div id="moreOptions" style="display: none">
-              <!-- Availability Label -->
-              <div class="mt-2">
-                <label class="form-label fw-semibold">Availability</label>
-              </div>
-              <!-- Availability Buttons -->
-              <div class="mt-1 mb-3" id="availabilityButtons">
-                <button class="btn btn-outline-primary me-2" data-value="Available">
-                  Available
-                </button>
-                <button class="btn btn-outline-success me-2" data-value="Sold">
-                  Sold
-                </button>
-                <button class="btn btn-outline-warning" data-value="Reserved">
-                  Reserved
+              <div class="mt-3 d-flex justify-content-center my-3">
+                <button
+                  class="btn btn-link p-0 ml-5 text-decoration-none"
+                  type="button"
+                  onclick="resetFilters()"
+                >
+                  <i class="fas fa-sync-alt me-2"></i> Reset Filters
                 </button>
               </div>
-            </div>
-          </div>
-        </div>
 
-      </div>
-    </div>
-
-    <!-- Modal -->
-    <div id="notFoundModal" class="modal-overlay">
-      <div class="modal-box">
-        <h2>Plot Not Found In This Zone</h2>
-        <p>We couldn’t find any matching results.</p>
-        <button onclick="closeModal()">Close</button>
-      </div>
-    </div>
-
-    <button id="toggle-button" onclick="toggleHotspotColor()">
-      <span id="toggle-icon" class="material-icons">toggle_off</span>
-    </button>
-
-    <button id="zoomOutBtn">-</button>
-    <button id="zoomInBtn">+</button>
-    <button id="fullScreenBtn" title="Toggle Fullscreen">⛶</button>
-
-    <div class="time-toggle" onclick="toggleTimeView(this)">
-      <div class="toggle-option now active">
-        <span class="material-icons">access_time</span> Now
-      </div>
-      <div class="toggle-option future">
-        <span class="material-icons">event</span> Future
-      </div>
-    </div>
-
-    <div id="custom-breadcrumbs" class="mui-breadcrumb-root">
-      <div class="breadcrumb-wrapper" id="breadcrumb-wrapper">
-        <!-- Dynamic breadcrumbs addition -->
-      </div>
-    </div>
-
-    <div class="slider-container_1">
-      <div class="card-slider_1">
-        <div class="card_1">
-          <!-- <div class="price-tag_1">$45,900</div> -->
-          <img src="https://via.placeholder.com/200x170?text=Family+Villa" alt="Family Villa" />
-          <div class="details_1">
-            <h4>Family Villa</h4>
-            <p class="address_1">593 Grove Place, Crawfordsville</p>
-            <div class="property-info_1">
-              <div class="info-item_1">
-                <span class="label_1">Area</span>
-                <span class="value_1">1500m²</span>
-              </div>
-              <div class="info-item_1">
-                <span class="label_1">Bedrooms</span>
-                <span class="value_1">2</span>
-              </div>
-              <div class="info-item_1">
-                <span class="label_1">Bathrooms</span>
-                <span class="value_1">3</span>
-              </div>
-
-            </div>
-          </div>
-
-
-          <div class="card_1">
-            <!-- <div class="price-tag_1">$85,900</div> -->
-            <img src="https://via.placeholder.com/200x170?text=Bristol+Tower" alt="Bristol Tower Complex" />
-            <div class="details_1">
-              <h4>Bristol Tower Complex</h4>
-              <p class="address_1">180 Grant Avenue, Orton</p>
-              <div class="property-info_1">
-                <div class="info-item_1">
-                  <span class="label_1">Area</span>
-                  <span class="value_1">1850m²</span>
+              <div id="moreOptions" style="display: none">
+                <div class="mt-2">
+                  <label class="form-label fw-semibold">Availability</label>
                 </div>
-                <div class="info-item_1">
-                  <span class="label_1">Bedrooms</span>
-                  <span class="value_1">5</span>
-                </div>
-                <div class="info-item_1">
-                  <span class="label_1">Bathrooms</span>
-                  <span class="value_1">3</span>
+                <div class="mt-1 mb-3" id="availabilityButtons">
+                  <button
+                    class="btn btn-outline-primary me-2"
+                    data-value="Available"
+                  >
+                    Available
+                  </button>
+                  <button
+                    class="btn btn-outline-success me-2"
+                    data-value="Sold"
+                  >
+                    Sold
+                  </button>
+                  <button class="btn btn-outline-warning" data-value="Reserved">
+                    Reserved
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      
 
       <!-- Modal -->
       <div id="notFoundModal" class="modal-overlay">
@@ -311,6 +251,62 @@
         </div>
       </div>
 
+        <div class="slider-container_1">
+  <div class="card-slider_1">
+    <div class="card_1">
+      <!-- <div class="price-tag_1">$45,900</div> -->
+      <img
+        src="https://via.placeholder.com/200x170?text=Family+Villa"
+        alt="Family Villa"
+      />
+      <div class="details_1">
+        <h4>Family Villa</h4>
+        <p class="address_1">593 Grove Place, Crawfordsville</p>
+        <div class="property-info_1">
+          <div class="info-item_1">
+            <span class="label_1">Area</span>
+            <span class="value_1">1500m²</span>
+          </div>
+          <div class="info-item_1">
+            <span class="label_1">Bedrooms</span>
+            <span class="value_1">2</span>
+          </div>
+          <div class="info-item_1">
+            <span class="label_1">Bathrooms</span>
+            <span class="value_1">3</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card_1">
+        <!-- <div class="price-tag_1">$85,900</div> -->
+        <img
+            src="https://via.placeholder.com/200x170?text=Bristol+Tower"
+            alt="Bristol Tower Complex"
+        />
+        <div class="details_1">
+            <h4>Bristol Tower Complex</h4>
+            <p class="address_1">180 Grant Avenue, Orton</p>
+            <div class="property-info_1">
+                <div class="info-item_1">
+                    <span class="label_1">Area</span>
+                    <span class="value_1">1850m²</span>
+                </div>
+                <div class="info-item_1">
+                    <span class="label_1">Bedrooms</span>
+                    <span class="value_1">5</span>
+                </div>
+                <div class="info-item_1">
+                    <span class="label_1">Bathrooms</span>
+                    <span class="value_1">3</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
       <script>
         embedpano({
           xml: "tour.xml",
@@ -333,22 +329,17 @@
               // availabilitySelected = selectedValue;
             });
           });
+        var area = 500; // you can change this value dynamically later
+        document.getElementById("areaValue").textContent = `${area} sq m`;
 
         function resetFilters() {
           // Reset the total area slider
           const slider = document.getElementById("totalArea");
-          const plot = document.getElementById("plotNumber");
-          // slider.value = ""; // or whatever your default value is
+          const plot = document.getElementById("totalArea");
+          slider.value = ""; // or whatever your default value is
           plot.value = "";
-
-          const defaultArea = 170; // your min/default value
-
-          // Reset values
-          slider.value = defaultArea;
-
           document.getElementById("areaValue").innerText = slider.value;
 
-          document.getElementById("areaMax").textContent = `${20000} sq m`;
           // Clear other filters here if you have them
 
           // Call search again with reset values
@@ -386,7 +377,6 @@
 
           document.getElementById("areaValue").innerText = value;
 
-
           const totalHotspots = krpano.get("hotspot.count");
           // console.log("totalHotspots", totalHotspots)
           // for (let i = 0; i < totalHotspots; i++) {q
@@ -409,62 +399,19 @@
           // });
 
           for (let i = 0; i < previouslyVisibleHotspots.length; i++) {
-            const hsName = krpano.get(`hotspot[${i}].name`);
-            console.log("NAME ============", hsName)
+                  const hsName = krpano.get(`hotspot[${i}].name`);
+                  console.log("NAME ============", hsName)
             krpano.set(`hotspot[${'hs1'}].visible`, false);
 
             krpano.set(`hotspot[${'hs4'}].visible`, false);
 
             krpano.set(`hotspot[${'hs7'}].visible`, false);
-            //krpano.set(`hs1.visible`, false);
-            //  krpano.set(`hs1.visible`, false);
-          }
+                  //krpano.set(`hs1.visible`, false);
+                //  krpano.set(`hs1.visible`, false);
+                }
 
           handleSearchFilters();
         }
-
-
-        //   for (let i = 0; i < previouslyVisibleHotspots.length; i++) {
-        //           const hsName = krpano.get(`hotspot[${i}].name`);
-        //           console.log("NAME ============", hsName)
-        //     krpano.set(`hotspot[${'hs1'}].visible`, false);
-        //     krpano.set(`hotspot[${'hs4'}].visible`, false);
-        //     krpano.set(`hotspot[${'hs7'}].visible`, false);
-        //           //krpano.set(`hs1.visible`, false);
-        //         //  krpano.set(`hs1.visible`, false);
-        //         }
-
-        //   // const totalHotspots = krpano.get("hotspot.count");
-        //   // console.log("totalHotspots", totalHotspots)
-        //   // for (let i = 0; i < totalHotspots; i++) {q
-        //   //   console.log("inside here");
-        //   //   krpano.set(`hotspot[${hs1}].visible`, false);
-        //   // }
-
-        //   console.log("previouslyVisibleHotspots", previouslyVisibleHotspots);
-
-        //  // Hide previously visible hotspots
-        //   //       console.log("previouslyVisibleHotspots", previouslyVisibleHotspots)
-        //   //  previouslyVisibleHotspots.forEach((hotspotName) => {
-        //   //   console.log('previouslyVisibleHotspots', hotspotName)
-        //   //   krpano.set(`hotspot[${hotspotName.id}].visible`, false);
-
-        //   //  })
-
-        //     //krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
-        //   //  krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
-        // //  });
-
-        //   for (let i = 0; i < previouslyVisibleHotspots.length; i++) {
-        //           const hsName = krpano.get(`hotspot[${i}].name`);
-        //           console.log("NAME ============", hsName)
-
-        //           krpano.set(`hs1.visible`, false);
-        //         //  krpano.set(`hs1.visible`, false);
-        //         }
-
-        //   handleSearchFilters();
-        // }
 
         const createSceneCard = () => {
           const krpano = document.getElementById("krpanoSWFObject");
@@ -474,7 +421,6 @@
 
           let wrapper = document.getElementById("scene-card-wrapper");
 
-
           if (currentScene === "scene_a-initial") {
             if (!wrapper) {
               console.log("wrapper", wrapper);
@@ -483,9 +429,7 @@
               wrapper.innerHTML = `
         <div id="scene-card" onclick="arialView()">
           <div class="scene-card-content">
-            <img src="/skin/icons/AlMarina_white.png" width="150px" height="100px" class="breadcrumb-icon" />
-            <img src="/skin/icons/erth_logo_white.png" width="150px" height="100px" class="breadcrumb-icon" />
-        
+            <img src="/skin/icons/AlMarina.png" width="200px" height="100px" class="breadcrumb-icon" />
             <h4>🏙️ 
               
               
@@ -574,6 +518,14 @@
 
           const krpano = document.getElementById("krpanoSWFObject");
 
+          console.log("filteredHouses", Unit);
+          if (Unit.zone === "ZONE 1") {
+            // Load the corresponding scene
+
+            krpano.call(
+              `loadscene(${"scene_c-zone_1"}, null, MERGE, BLEND(1))`
+            );
+          }
 
           if (currentScene === "scene_b-al_marina_aerial") {
             const Unit = parsedData.data.find(
@@ -643,146 +595,6 @@
 
           return unit;
         }
-
-
-
-        function getSpecificUnit() {
-          const area = document.getElementById("totalArea").value;
-
-          const unitData = localStorage.getItem("response");
-
-          const plot = document.getElementById("plotNumber").value;
-          const parsedData = JSON.parse(unitData);
-
-          const krpano = document.getElementById("krpanoSWFObject");
-
-          let currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
-
-          let zone;
-
-          console.log("PARSED DATA", parsedData);
-
-          let unit;
-
-          unit = parsedData.data.find((house) => (house.plot_number = plot));
-
-          console.log("filteredHouses", unit);
-
-          return unit;
-        }
-
-        let zone3max, zone3min;
-        const setTotalAreaParsedData = () => {
-          const unitData = localStorage.getItem("response");
-
-          let parsedData;
-          if (unitData && unitData !== "undefined") {
-            try {
-              parsedData= JSON.parse(unitData);
-              // proceed with parsedData
-            } catch (err) {
-              console.error("Invalid JSON:", err);
-            }
-          } else {
-            console.warn("unitData is undefined or not set.");
-          }
-
-          const filteredZone3 = parsedData.data.filter(
-            (item) => item.zone === "ZONE 3"
-          );
-
-          console.log("setTotalAreaParsedData", filteredZone3);
-
-          zone3houseData = zone3houseData.map((house) => {
-            const match = filteredZone3.find(
-              (item) => item.plot_number === house.plot_number
-            );
-            return {
-              ...house,
-              total_area: match ? parseInt(match.total_area) : null, // or undefined if you prefer
-            };
-          });
-
-          const areas = zone3houseData
-            .map((house) => house.total_area)
-            .filter((area) => area !== null); // Remove nulls or non-numbers
-
-          console.log("areas", areas);
-          zone3min = areas[0];
-          zone3max = areas[0];
-
-          areas.forEach((area) => {
-            if (area < zone3min) zone3min = area;
-            if (area > zone3max) zone3max = area;
-          });
-
-          console.log("Min total_area:", zone3min);
-          console.log("Max total_area:", zone3max);
-
-          console.log("zone3houseData", zone3houseData, zone3min, zone3max);
-
-          const filteredZone4 = parsedData.data.filter(
-            (item) => item.zone === "ZONE 4"
-          );
-
-          zone4houseData = zone4houseData.map((house) => {
-            const match = filteredZone4.find(
-              (item) => item.plot_number === house.plot_number
-            );
-            return {
-              ...house,
-              total_area: match ? match.total_area : null, // or undefined if you prefer
-            };
-          });
-
-          const filteredZone5 = parsedData.data.filter(
-            (item) => item.zone === "ZONE 5"
-          );
-
-          zone5houseData = zone5houseData.map((house) => {
-            const match = filteredZone5.find(
-              (item) => item.plot_number === house.plot_number
-            );
-            return {
-              ...house,
-              total_area: match ? match.total_area : null, // or undefined if you prefer
-            };
-          });
-
-          const filteredZone6 = parsedData.data.filter(
-            (item) => item.zone === "ZONE 5"
-          );
-          building1houseData = building1houseData.map((house) => {
-            const match = filteredZone6.find(
-              (item) => item.plot_number === house.plot_number
-            );
-            return {
-              ...house,
-              total_area: match ? match.total_area : null, // or undefined if you prefer
-            };
-          });
-
-          const filteredZone7 = parsedData.data.filter(
-            (item) => item.zone === "ZONE 7"
-          );
-          building2houseData = building2houseData.map((house) => {
-            const match = filteredZone7.find(
-              (item) => item.plot_number === house.plot_number
-            );
-            return {
-              ...house,
-              total_area: match ? match.total_area : null, // or undefined if you prefer
-            };
-          });
-
-          //
-
-          //
-
-          console.log("updatedZone3HouseData", zone5houseData);
-        };
-
-
         function getSpeificUnitsByArea() {
           const area = document.getElementById("totalArea").value;
 
@@ -805,7 +617,6 @@
           }
 
           console.log("getSpeificUnitsByArea", filteredHouses);
-          console.log("getSpeificUnitsByArea", zone3houseData);
 
           const houses = [
             {
@@ -1000,42 +811,12 @@
         function updateSliderRange(zone) {
           const slider = document.getElementById("totalArea");
 
-
-          /// var area = 500; // you can change this value dynamically later
-
           console.log("updateSliderRange", zone);
           if (zone === "1") {
-            //slider.min  = 900;
-
-            //slider.max = 3300;
-            document.getElementById("areaValue").textContent = `${500} sq m`;
-
-            document.getElementById("areaMin").textContent = `${700} sq m`;
-
-            document.getElementById("areaMax").textContent = `${20000} sq m`;
-          } else if (zone === "2") {
-            console.log("zone 5", zone);
-
-            document.getElementById("areaValue").textContent = `${800} sq m`;
-
-            document.getElementById("areaMin").textContent = `${650} sq m`;
-            document.getElementById("areaMax").textContent = `${3000} sq m`;
-          } else if (zone === "3") {
-
-            console.log("check here", zone, zone3min, zone3max);
-            slider.max = zone3max;
-
-            document.getElementById("areaValue").textContent = `${900} sq m`;
-
-            document.getElementById("areaMin").textContent = `${zone3min} sq m`;
-            document.getElementById("areaMax").textContent = `${zone3max} sq m`;
+            slider.max = 20000;
           } else if (zone === "5") {
             console.log("zone 5", zone);
-            // slider.max = 2500;
-
-            document.getElementById("areaValue").textContent = `${930} sq m`;
-            document.getElementById("areaMin").textContent = `${229} sq m`;
-            document.getElementById("areaMax").textContent = `${2500} sq m`;
+            slider.max = 20000;
           } else {
             slider.max = 150000; // default max
           }
@@ -1078,7 +859,6 @@
               // Reset color of the previous hotspot
               krpano.call(
                 `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFF00)`
-
               );
 
               // Clear references
@@ -1349,20 +1129,20 @@
           return houseData;
         };
 
-        let zone1houseData = parseHotspots(zone1hotspotXML);
-        let zone3houseData = parseHotspots(zone3hotspotXML);
-        let zone2houseData = parseHotspots(zone2hotspotXML);
-        let zone4houseData = parseHotspots(zone4hotspotXML);
-        let zone5houseData = parseHotspots(zone5hotspotXML);
+        const zone1houseData = parseHotspots(zone1hotspotXML);
+        const zone3houseData = parseHotspots(zone3hotspotXML);
+        const zone2houseData = parseHotspots(zone2hotspotXML);
+        const zone4houseData = parseHotspots(zone4hotspotXML);
+        const zone5houseData = parseHotspots(zone5hotspotXML);
 
         console.log("zone2houseData", zone1houseData);
 
-        let building1houseData = parseHotspots(zone6_building_1_hotspotXML);
-        let building2houseData = parseHotspots(zone7_building_2_hotspotXML);
+        const building1houseData = parseHotspots(zone6_building_1_hotspotXML);
+        const building2houseData = parseHotspots(zone7_building_2_hotspotXML);
         let toggleState = false; // Global state for toggling colors (false = color1, true = color2)
         let toggleColorOn = false;
 
-
+        let hotspotsVisible = true;
 
         function toggleHotspotColor(color1 = "0xFF0000", color2 = "0x00FF00") {
           toggleColorOn = !toggleColorOn;
@@ -1398,45 +1178,6 @@
           }
           return "0x00FF00";
         }
-
-
-
-
-        // let hotspotsVisible = true;
-
-        // function toggleHotspotColor(color1 = "0xFF0000", color2 = "0x00FF00") {
-        //   toggleColorOn = !toggleColorOn;
-
-        //   hotspotsVisible = !hotspotsVisible;
-
-        //   const krpano = document.getElementById("krpanoSWFObject");
-        //   if (!krpano) {
-        //     console.error("Krpano instance not found");
-        //     return;
-        //   }
-        //   const icon = document.getElementById("toggle-icon");
-        //   icon.textContent = toggleColorOn ? "toggle_on" : "toggle_off";
-
-        //   icon.style.color = toggleColorOn ? "#808e92  " : "#dee2e6";
-
-        //   const totalHotspots = krpano.get("hotspot.count");
-        //   for (let i = 0; i < totalHotspots; i++) {
-        //     const hsName = krpano.get(`hotspot[${i}].name`);
-        //     krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
-        //   }
-
-        //   // Toggle the state for next change
-        //   toggleState = !toggleState;
-        // }
-
-        function getRandomColor() {
-          const letters = "0123456789ABCDEF";
-          let color = "#";
-          for (let i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-          }
-          return "0xFF0000";
-        }
         const dynamicZoneRendering = (zoneData, response, krpano) => {
           zoneData.forEach((house) => {
             // Create a unique name for each house hotspot
@@ -1453,13 +1194,6 @@
             hotspotXML += `</hotspot>`;
 
             const cords = house.coordinates[0];
-
-            // krpano.call(
-            //   `set(hotspot[${hotspotName}].fillcolor, ${hotspotColorHex})`
-            // );
-
-            krpano.call(`set(hotspot[${hotspotName}].fillalpha, 0.1)`);
-
 
             krpano.call(`
   set(hotspot[${hotspotName}].fillcolor, ${hotspotColorHex});
@@ -1481,8 +1215,6 @@
 
             // Add hotspot to Krpano dynamically
             krpano.call(`addhotspot(${hotspotName})`);
-
-
             krpano.call(
               `set(hotspot[${hotspotName}].loadstyle, mypolygonalhotspotstylename)`
             );
@@ -1542,7 +1274,7 @@
               });
               //onSceneChange(currentScene,unit)
 
-              updateSliderRange("1");
+              //updateSliderRange('1');
               renderBreadcrumbs();
               dynamicZoneRendering(zone1houseData, response, krpano);
             } else if (currentScene === "scene_d-zone_2") {
@@ -1551,7 +1283,6 @@
                 title: "Zone 2",
                 icon: "grain",
               });
-              updateSliderRange("2");
               renderBreadcrumbs();
               dynamicZoneRendering(zone2houseData, response, krpano);
             } else if (currentScene === "scene_e-zone_3") {
@@ -1561,8 +1292,6 @@
                 title: "Zone 3",
                 icon: "grain",
               });
-
-              updateSliderRange("3");
               renderBreadcrumbs();
             } else if (currentScene === "scene_f-zone_4") {
               dynamicZoneRendering(zone4houseData, response, krpano);
@@ -1571,8 +1300,6 @@
                 title: "Zone 7",
                 icon: "grain",
               });
-              updateSliderRange("4");
-
               renderBreadcrumbs();
             } else if (currentScene === "scene_g-zone_5") {
               dynamicZoneRendering(zone5houseData, response, krpano);
@@ -1581,11 +1308,9 @@
                 title: "Zone 8",
                 icon: "grain",
               });
-
               renderBreadcrumbs();
 
-              updateSliderRange("5");
-
+              // updateSliderRange('5');
 
               // onSceneChange(currentScene,unit)
             } else if (currentScene === "scene_h-building_1") {
@@ -1596,8 +1321,6 @@
                 icon: "grain",
               });
               renderBreadcrumbs();
-              updateSliderRange("6");
-
             } else if (currentScene === "scene_i-building_2") {
               dynamicZoneRendering(building2houseData, response, krpano);
               breadcrumbTrail.push({
@@ -1605,8 +1328,6 @@
                 title: "Zone 7",
                 icon: "grain",
               });
-              updateSliderRange("7");
-
               renderBreadcrumbs();
             } else {
               blinkHotspot(false);
@@ -1968,8 +1689,6 @@
           // Delay to ensure Krpano loads
           updateSearchVisibility();
 
-          setTotalAreaParsedData();
-
           const unit = getSpecificUnit();
 
           // onSceneChange(currentScene, unit)
@@ -1985,6 +1704,5 @@
         };
       </script>
     </div>
-</body>
-
+  </body>
 </html>
