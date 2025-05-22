@@ -618,49 +618,6 @@
 
           console.log("getSpeificUnitsByArea", filteredHouses);
 
-          const houses = [
-            {
-              price: "$83,000",
-              title: "Big Luxury Apartment",
-              address: "859 Stuart Street",
-              area: "356",
-              image:
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC-ojG0--Rp76r0ZyHn3u7C1-yF1fv8oIUAw&s",
-              directions: { east: 2, west: 1, south: 1 },
-            },
-            {
-              price: "$42,500",
-              title: "Modern Flat",
-              address: "442 King Street",
-              area: "290",
-              image:
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC-ojG0--Rp76r0ZyHn3u7C1-yF1fv8oIUAw&s",
-              directions: { east: 1, west: 2, south: 0 },
-            },
-            // Add more houses here
-          ];
-
-          const container = document.getElementById("houseList");
-
-          houses.forEach((house) => {
-            const card = `
-        <div class="card mb-3">
-          <img src="${house.image}" class="card-img-top" alt="House Image">
-          <div class="card-body">
-            <h5 class="card-title text-success">${house.price}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">${house.title}</h6>
-            <p class="mb-1"><strong>Address:</strong> ${house.address}</p>
-            <p class="mb-1"><strong>Area:</strong> ${house.area}m²</p>
-            <div class="row">
-              <div class="col-4"><strong>East</strong><br>${house.directions.east}</div>
-              <div class="col-4"><strong>West</strong><br>${house.directions.west}</div>
-              <div class="col-4"><strong>South</strong><br>${house.directions.south}</div>
-            </div>
-          </div>
-        </div>
-      `;
-            container.innerHTML += card;
-          });
 
           return filteredHouses;
         }
