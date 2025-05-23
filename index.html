@@ -213,6 +213,9 @@
                 </div>
               </div>
             </div>
+            <div class="toggle-details" onclick="toggleSearchFilter()">
+     <span id="toggleArrow">▶</span>
+  </div>
           </div>
         </div>
       </div>
@@ -1465,6 +1468,26 @@
           }
         };
 
+const toggleSearchFilter = () => {
+  const arrow = document.getElementById("toggleArrow_1");
+  const searchBarContainer = document.getElementById("searchBarContainer");
+
+  // Get all child nodes inside the container (except the toggle button container)
+  const card = searchBarContainer.querySelector(".card");
+
+  const isVisible = card.style.display !== "none";
+
+  if (isVisible) {
+    card.style.display = "none";
+    arrow.textContent = "▲";
+  } else {
+    card.style.display = "block";
+    arrow.textContent = "▼";
+  }
+};
+
+
+
         const toggleDetails = () => {
           const arrow = document.getElementById("toggleArrow");
 
@@ -1473,7 +1496,7 @@
 
           const isHidden =
             details.style.display === "none" || details.style.display === "";
-          arrow.textContent = isHidden ? "▲" : "▼";
+          arrow.textContent = isHidden ? "▶" : "◀";
 
           if (details.style.display === "block") {
             details.style.display = "none";

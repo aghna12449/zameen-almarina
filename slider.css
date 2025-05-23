@@ -1,7 +1,7 @@
 .slider-container_1 {
   position: fixed;
   bottom: 0; /* Position at the bottom of the viewport */
-  left: 0;
+  left: 80px;
   width: 100%;
    background: transparent; 
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1); /* Clearer shadow from the bottom */
