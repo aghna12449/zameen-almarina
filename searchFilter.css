@@ -1,41 +1,46 @@
 /* Custom styles for the compact search filter card */
 .compact-search-card {
-    max-width: 280px; /* Adjust this width to match your desired compact size */
-    margin-top: 20px !important; /* Adjust margin-top as needed to position it */
-    margin-left: 10px !important; /* Adjust margin-left if you want it off center */
-    position: fixed; /* Keep it fixed on the screen */
-   top: 190px !important; /* Changed from 0px to 80px to bring it down */
-    left: 10px !important;
-    z-index: 1050; /* Ensure it's above other content like panorama */
-    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent background */
-    border-radius: 8px; /* Slightly rounded corners */
+    max-width: 280px; 
+    margin-top: 20px !important; 
+    margin-left: 20px !important; 
+    position: fixed; 
+    top: 190px !important; 
+    left: -300px !important; 
+    z-index: 1050; 
+    background-color: rgba(255, 255, 255, 0.95); 
+    border-radius: 8px; 
+    transition: left 0.3s ease-in-out;
+}
+
+/* When the checkbox is checked, move the card into view */
+#toggleFilter:checked ~ .container .compact-search-card {
+    left: 20px !important; 
 }
 
 .compact-search-card .card-body {
-    padding: 10px !important; /* Reduce internal padding */
-    margin-top: 10px;
-}
+    padding: 10px !important; 
+    margin-top: 10px;}
 
 .compact-search-card .card-title {
-    font-size: 1.1rem !important; /* Smaller title font size */
-    margin-bottom: 10px !important; /* Reduce margin below title */
+    font-size: 1.1rem !important; 
+    margin-bottom: 10px !important; 
 }
 
 .compact-search-card .form-label {
-    font-size: 0.8rem !important; /* Smaller label font size */
-    margin-bottom: 5px !important; /* Reduce margin below labels */
+    font-size: 0.9rem !important; 
+    margin-bottom: 5px !important; 
 }
 
 .compact-search-card .input-group .form-control,
 .compact-search-card .input-group-text {
-    height: 35px !important; /* Reduce height of input fields */
-    font-size: 0.9rem !important; /* Smaller font in input fields */
+    height: 35px !important;
+    font-size: 0.9rem !important; 
 }
 
 .compact-search-card #availabilityButtons .btn {
-    font-size: 0.8rem !important; /* Smaller font for buttons */
-    padding: 5px 10px !important; /* Adjust button padding */
-    margin-bottom: 5px !important; /* Adjust margin for buttons */
+    font-size: 0.8rem !important; 
+    padding: 5px 10px !important; 
+    margin-bottom: 5px !important; 
 }
 
 .compact-search-card .form-range {
@@ -64,4 +69,99 @@
 
 .compact-search-card .mt-1 {
     margin-top: 5px !important; /* Override Bootstrap's default margin-top */
+}
+
+/* Toggle button styling (now a label) */
+.toggle-container {
+    position: fixed;
+    top: 190px; /* Align with the top of the card */
+    left: 0; /* Position at the very left */
+    z-index: 1060; /* Higher z-index to be above the card */
+    cursor: pointer;
+    font-size: 1.8em;
+    font-size: 1.8em;
+    line-height: 1;
+    padding: 5px 10px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 372px;
+    color: #333;
+    transition: left 0.3s ease-in-out; /* Smooth transition for the toggle button's left property */
+}
+
+.toggle-icon-wrapper {
+    width: 30px; /* Width of the blue square */
+    height: 30px; /* Height of the blue square */
+    background-color: #007bff; /* Blue color for the square */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* Position it absolutely within the red bar */
+    top: 50%; /* Center vertically within the red bar */
+    left: -15px; /* Adjust to half of its width to align its center with the edge of the red bar */
+    transform: translateY(-50%); /* Adjust for vertical centering */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Shadow for the blue square */
+    border-radius: 2px; /* Slight border-radius for the blue square if needed */
+}
+/* When the checkbox is checked, move the toggle button */
+#toggleFilter:checked ~ .toggle-container {
+    left: 280px; /* Moves the toggle button to the right of the open card (card width + offset) */
+}
+
+/* The '▶'/'▼' arrow */
+#toggleArrow {
+    display: inline-block;
+    transition: transform 0.3s ease-in-out;
+    transform: rotate(0deg); 
+    color: white;
+}
+
+/* Rotate '▶' to '▼' when checkbox is checked */
+#toggleFilter:checked ~ .toggle-container #toggleArrow {
+    transform: rotate(180deg);
+}
+
+/* The container for the vertical line and its arrow - initially hidden for the closed state */
+.vertical-connector {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out;
+    height: 0; /* Hidden by default */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Show the connector when checkbox is checked */
+#toggleFilter:checked ~ .toggle-container .vertical-connector {
+    opacity: 1;
+    height: 21px; /* 15px (line) + 6px (arrow) */
+}
+
+/* The vertical line itself */
+.vertical-connector .line {
+    width: 2px;
+    height: 15px;
+    background-color: #555;
+    transition: height 0.3s ease-in-out;
+}
+
+/* The arrow head at the bottom of the line */
+.vertical-connector .line-arrow {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #555;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.hidden-checkbox {
+    display: none;
 }
