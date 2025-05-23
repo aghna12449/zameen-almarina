@@ -97,9 +97,21 @@
       <span id="arrow-icon" class="material-icons">arrow_circle_left</span>
     </div>
 
+    
+
     <div id="searchBarContainer">
+      <input type="checkbox" id="toggleFilter" class="hidden-checkbox">
+
+      <label for="toggleFilter" class="toggle-container" onclick="toggleSearchFilter()" id="toggleFilterButton">
+        <span id="toggleArrow_1">▶</span>
+        <div class="vertical-connector">
+
+
+        </div>
+      </label>
+
       <div class="container mt-5">
-        <div class="card shadow rounded-4 compact-search-card">
+        <div class="card shadow rounded-4 compact-search-card" id="searchFilterCard">
           <div class="card-body">
             <h5 class="card-title mb-4 fw-semibold">Search Filter</h5>
 
@@ -129,7 +141,6 @@
               </div>
             </div>
 
-            <!-- Total Area Slider -->
             <div class="mb-3">
               <label for="totalArea" class="form-label">
                 <label class="form-label fw-semibold">
@@ -137,10 +148,8 @@
                 <span id="areaValue">100</span> to
                 <span id="areaMax">20000</span> sq m
               </label>
-              <input type="range" class="form-range" max="20000" step="50" id="totalArea" value="500"
+              <input type="range" class="form-range" min="100" max="20000" step="50" id="totalArea" value="500"
                 oninput="updateAreaAndSearch(this.value)" />
-
-              <!-- <span id="areaValue"></span> -->
             </div>
 
             <button class="btn btn-primary w-100" onclick="handleSearchFilters()">
@@ -151,14 +160,6 @@
               <button class="btn btn-link p-0 ml-5 text-decoration-none" type="button" onclick="resetFilters()">
                 <i class="fas fa-sync-alt me-2"></i> Reset Filters
               </button>
-
-              <!-- <button
-                  class="btn btn-link p-0 ml-5 text-decoration-none"
-                  type="button"
-                  onclick="displayHorizontalSlider()"
-                >
-                  <i class="me-2"></i> Details
-                </button> -->
             </div>
 
             <div id="moreOptions" style="display: none">
@@ -181,6 +182,10 @@
         </div>
       </div>
     </div>
+
+
+
+
 
     <!-- Modal -->
     <div id="notFoundModal" class="modal-overlay">
@@ -215,7 +220,11 @@
     </div>
 
     <div class="slider-container_1">
-      <div class="card-slider_1"></div>
+      <div class="card-slider_1">
+       
+
+      
+      </div>
     </div>
 
     <script>
@@ -234,7 +243,7 @@
         .forEach((button) => {
           button.addEventListener("click", function () {
             const selectedValue = this.getAttribute("data-value");
-
+            console.log("Selected Availability:", selectedValue);
 
             // Example: Store in a variable or send to server
             // availabilitySelected = selectedValue;
@@ -255,8 +264,6 @@
 
         // Call search again with reset values
         //handleSearchFilters();
-        areaHouses = [];
-        displayHorizontalSlider();
         stopAllBlinkingHotspots();
         blinkHotspot();
       }
@@ -275,6 +282,115 @@
           sceneCardWrapper.style.display = "none";
         }
       };
+
+
+      function toggleMoreOptions() {
+        const moreOptions = document.getElementById("moreOptions");
+        moreOptions.style.display =
+          moreOptions.style.display === "none" ? "block" : "none";
+      }
+
+      let previouslyVisibleHotspots = [];
+
+      function updateAreaAndSearch(value) {
+        const krpano = document.getElementById("krpanoSWFObject");
+        document.getElementById("areaValue").innerText = value;
+        const totalHotspots = krpano.get("hotspot.count");
+        // console.log("totalHotspots", totalHotspots)
+        // for (let i = 0; i < totalHotspots; i++) {q
+        //   console.log("inside here");
+        //   krpano.set(`hotspot[${hsName}].visible`, false);
+        // }
+        // Hide previously visible hotspots
+        //       console.log("previouslyVisibleHotspots", previouslyVisibleHotspots)
+        //  previouslyVisibleHotspots.forEach((hotspotName) => {
+        //   console.log('previouslyVisibleHotspots', hotspotName)
+        //   krpano.set(`hotspot[${hotspotName.id}].visible`, false);
+        //  })
+        //   //krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
+        // //  krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
+        // });
+        areaHouses = getSpeificUnitsByArea();
+        //currentAppearingHotpsots.push(...areaHouses)
+        //  slidersHotspot.push(found);
+        let initial = areaHouses[0];
+        const startId = parseInt(initial?.id?.replace("hs", "")); // e.g. 18
+        // Create a lookup map from existing hotspot IDs for quick checking
+        const existingIds = new Set(
+          areaHouses.map((house) => parseInt(house?.id?.replace("hs", "")))
+        );
+        // Make a new array including only valid sequential hotspots starting from startId
+        const missingHotspots = [];
+        const notFound = [];
+        for (let i = startId; i <= areaHouses.length; i++) {
+          // change 100 to your max expected id
+          if (existingIds.has(i)) {
+            const found = areaHouses.find(
+              (house) => parseInt(house?.id?.replace("hs", "")) === i
+            );
+            if (found) {
+              newHotspotArray.push(found.id);
+            }
+          } else {
+            missingHotspots.push(`hs${i}`);
+          }
+        }
+        let idNumber = initial?.id?.replace("hs", ""); // "18" as a string
+        let idInt = parseInt(idNumber);
+        // find minimum and maximum
+        newHotspotArray.forEach((hotspotId) => {
+          krpano.set(`hotspot[${hotspotId}].visible`, true);
+          krpano.call(`set(hotspot[${hotspotId}].visible, true)`);
+          krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0)`);
+          krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
+        })
+        //  0.1
+        // missingHotspots.forEach((hotspotId) => {
+        //   krpano.set(`hotspot[${hotspotId}].visible`, false);
+        //   krpano.call(`set(hotspot[${hotspotId}].visible, false)`);
+        //   krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0.00000)`);
+        //   krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
+        // });
+        // for (let i = 0; i < missingHotspots.length; i++) {
+        //     const hsName = krpano.get(`hotspot[${i}].name`);
+        //  console.log("NAME ============", hsName)
+        //                 krpano.set(`hotspot[${'hs34'}].visible`, false);
+        // krpano.set(`hotspot[${'hs37'}].visible`, false);
+        //                 krpano.set(`hotspot[${'hs1'}]`.fillalpha, 0.0);
+        //                 krpano.set(`hotspot[${'hs4'}]`.fillalpha, 0.0);
+        //                 krpano.set(`hotspot[${'hs7'}]`.fillalpha, 0.0);
+        //                 krpano.set(`hotspot[${'hs31'}]`.fillalpha, 0.0);
+        //                 krpano.set(`hotspot[${'hs34'}]`.fillalpha, 0.0);
+        //                 krpano.set(`hotspot[${'hs37'}]`.fillalpha, 0.0);
+        //                // krpano.set(`hotspot[${'hs1'}]`.fillalpha, 0.0);
+        //                 krpano.set(`hotspot[${'hs1'}]`.borderalpha, 0.0);
+        //                 krpano.set(`hotspot[${'hs4'}]`.borderalpha, 0.0);
+        //                 krpano.set(`hotspot[${'hs7'}]`.borderalpha, 0.0);
+        // krpano.set(`hotspot[${'hs1'}]`.bordercolor, 0x228B22);
+        //  krpano.set(`hotspot[${'hs1'}]`.bordercolor, 0x000000);
+        //  krpano.set(`hotspot[${'hs4'}]`.bordercolor, 0x000000);
+        //  krpano.set(`hotspot[${'hs7'}]`.bordercolor, 0x000000);
+        //  krpano.set(`hotspot[${'hs1'}]`.borderwidth, 0);
+        //  krpano.set(`hotspot[${'hs4'}]`.borderwidth, 0);
+        //  krpano.set(`hotspot[${'hs7'}]`.borderwidth, 0);
+        //krpano.set(`hs1.visible`, false);
+        //  krpano.set(`hs1.visible`, false);
+        displayHorizontalSlider();
+        handleSearchFilters();
+      }
+
+      // const createSceneCard = () => {
+      //   const krpano = document.getElementById("krpanoSWFObject");
+      //   if (!krpano || typeof krpano.get !== "function") return;
+
+      //   const currentScene = krpano.get("xml.scene");
+
+      //   let wrapper = document.getElementById("scene-card-wrapper");
+
+      //   if (currentScene === "scene_a-initial") {
+      //     if (!wrapper) {
+      //       console.log("wrapper", wrapper);
+
 
       let slidersHotspot = [];
 
@@ -318,13 +434,9 @@
         });
       };
 
-      function toggleMoreOptions() {
-        const moreOptions = document.getElementById("moreOptions");
-        moreOptions.style.display =
-          moreOptions.style.display === "none" ? "block" : "none";
-      }
+     
 
-      let previouslyVisibleHotspots = [];
+   
 
       const newHotspotArray = [];
 
@@ -339,6 +451,7 @@
         //   console.log("inside here");
         //   krpano.set(`hotspot[${hsName}].visible`, false);
         // }
+
 
 
 
@@ -396,21 +509,21 @@
 
         // find minimum and maximum
 
-        // newHotspotArray.forEach((hotspotId) => {
-        //   krpano.set(`hotspot[${hotspotId}].visible`, true);
-        //   krpano.call(`set(hotspot[${hotspotId}].visible, true)`);
-        //   krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0)`);
-        //   krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
-        // })
-
-        //  0.1
-        missingHotspots.forEach((hotspotId) => {
-
+        newHotspotArray.forEach((hotspotId) => {
           krpano.set(`hotspot[${hotspotId}].visible`, false);
           krpano.call(`set(hotspot[${hotspotId}].visible, false)`);
-          krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0.00000)`);
+          krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0)`);
           krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
-        });
+        })
+
+        //  0.1
+        // missingHotspots.forEach((hotspotId) => {
+
+        //   krpano.set(`hotspot[${hotspotId}].visible`, false);
+        //   krpano.call(`set(hotspot[${hotspotId}].visible, false)`);
+        //   krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0.00000)`);
+        //   krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
+        // });
 
         // for (let i = 0; i < missingHotspots.length; i++) {
 
@@ -453,6 +566,7 @@
 
         if (currentScene === "scene_a-initial") {
           if (!wrapper) {
+
 
             wrapper = document.createElement("div");
             wrapper.id = "scene-card-wrapper";
@@ -501,6 +615,9 @@
         const sceneCardWrapper =
           document.getElementById("scene-card-wrapper");
 
+        //scene-card-wrapper
+
+
         const krpano = document.getElementById("krpanoSWFObject");
         const currentScene = krpano.get("xml.scene");
 
@@ -514,6 +631,21 @@
           searchBar.style.display = "block";
         }
       }
+
+      // function checkRecord() {
+      //   console.log("checkRecord");
+      //   const input = document.getElementById("searchBox").value.toLowerCase();
+
+      //   if (input === "notfound" || input === "") {
+      //     document.getElementById("notFoundModal").style.display = "block";
+      //   }
+      // }
+
+
+
+       
+      
+
 
       function closeModal() {
         document.getElementById("notFoundModal").style.display = "none";
@@ -536,6 +668,7 @@
       let currentBlinkingHotspot = null;
 
       function onSceneChange(currentScene, Unit) {
+
 
         const unitData = localStorage.getItem("response");
         const parsedData = JSON.parse(unitData);
@@ -603,6 +736,7 @@
 
         const plot = document.getElementById("plotNumber").value;
 
+
         let parsedData;
             let unit;
         if (unitData && unitData !== "undefined") {
@@ -620,232 +754,167 @@
         }
 
 
-        const krpano = document.getElementById("krpanoSWFObject");
 
-        let currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
+       // const krpano = document.getElementById("krpanoSWFObject");
 
-        let zone;
+       // let currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
+
+       // let zone;
 
 
-
-       
 
 
         return unit;
       }
+
+
       function getSpeificUnitsByArea() {
         const area = document.getElementById("totalArea").value;
-
         const unitData = localStorage.getItem("response");
         const parsedData = JSON.parse(unitData);
-
         previouslyVisibleHotspots = [];
-
         const krpano = document.getElementById("krpanoSWFObject");
-
         let currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
-
         let zone;
-
         let filteredHouses;
-
         let matchedZone;
         let latestArrayZone2 = [],
           latestArrayZone3 = [],
           latestArrayZone6 = [];
         latestArrayZone5 = [];
         (latestArrayZone7 = []), (latestArrayZone8 = []);
-
         const zone3 = parsedData.data.filter(
           (house) => house.zone === "ZONE 3"
         );
-
         const zone7 = parsedData.data.filter(
           (house) => house.zone === "ZONE 7"
         );
-
         if (area) {
           switch (currentScene) {
             case "scene_c-zone_1":
               filteredHouses = zone1houseData.filter(
                 (house) => parseFloat(house.total_area) <= parseFloat(area)
               );
-
               break;
             case "scene_d-zone_2":
-
-
               const zone2 = parsedData.data.filter(
                 (house) => house.zone === "Zone 2"
               );
-
               const updatedZone2houseData = zone2.map((house) => {
-
-
                 matchedZone = zone2houseData.find(
                   (zone) =>
                     parseInt(house.plot_number) === parseInt(zone.plot_number)
                 );
-
                 latestArrayZone2.push({
                   ...house,
                   total_area: house?.total_area,
                 });
               });
-
-
-
               filteredHouses = latestArrayZone2.filter(
                 (house) => parseFloat(house.total_area) <= parseFloat(area)
               );
-
               break;
             case "scene_e-zone_3":
-
-
               const updatedZone3houseData = zone3.map((house) => {
                 matchedZone = zone3houseData.find(
                   (zone) =>
                     parseInt(house.plot_number) === parseInt(zone.plot_number)
                 );
-
-
                 latestArrayZone3.push({
                   ...house,
                   total_area: house?.total_area,
                   id: matchedZone?.id,
                 });
               });
-
               filteredHouses = latestArrayZone3.filter(
                 (house) => parseFloat(house.total_area) <= parseFloat(area)
               );
-
               break;
-
             case "scene_f-zone_4":
               const updatedZone7houseData = zone7.map((house) => {
-
-
                 matchedZone = zone4houseData.find(
                   (zone) =>
                     parseInt(house.plot_number) === parseInt(zone.plot_number)
                 );
-
                 latestArrayZone7.push({
                   ...house,
                   total_area: house?.total_area,
                   id: matchedZone?.id,
                 });
               });
-
               filteredHouses = latestArrayZone7.filter(
                 (house) => parseFloat(house.total_area) <= parseFloat(area)
               );
-
               break;
-
             case "scene_g-zone_5":
               const zone8 = parsedData.data.filter(
                 (house) => house.zone === "ZONE 8"
               );
-
-
-
               const updatedZone5houseData = zone8.map((house) => {
-
-
                 matchedZone = zone5houseData.find(
                   (zone) =>
                     parseInt(house.plot_number) === parseInt(zone.plot_number)
                 );
-
                 latestArrayZone8.push({
                   ...house,
                   total_area: house?.total_area,
                   id: matchedZone?.id,
                 });
               });
-
               filteredHouses = latestArrayZone8.filter(
                 (house) => parseFloat(house.total_area) <= parseFloat(area)
               );
-
               break;
-
             case "scene_h-building_1":
               const zone6 = parsedData.data.filter(
                 (house) => house.zone === "ZONE 6"
               );
-
-
-
               const updatedbuilding1houseData = zone6.map((house) => {
-
-
                 matchedZone = latestArrayZone6.find(
                   (zone) =>
                     parseInt(house.plot_number) === parseInt(zone.plot_number)
                 );
-
                 latestArrayZone6.push({
                   ...house,
                   total_area: house?.total_area,
                   id: matchedZone?.id,
                 });
               });
-
               filteredHouses = latestArrayZone6.filter(
                 (house) => parseFloat(house.total_area) <= parseFloat(area)
               );
-
               break;
-
               // latestArrayZone6
               // filteredHouses = building1houseData.filter(
               //   (house) => parseFloat(house.total_area) <= parseFloat(area)
               // );
-
               break;
-
             case "scene_i-building_2":
               const zone5 = parsedData.data.filter(
                 (house) => house.zone === "ZONE 5"
               );
-
-
-
               const updatedbuilding2houseData = zone5.map((house) => {
-
-
                 matchedZone = latestArrayZone5.find(
                   (zone) =>
                     parseInt(house.plot_number) === parseInt(zone.plot_number)
                 );
-
                 latestArrayZone5.push({
                   ...house,
                   total_area: house?.total_area,
                   id: matchedZone?.id,
                 });
               });
-
               filteredHouses = latestArrayZone5.filter(
                 (house) => parseFloat(house.total_area) <= parseFloat(area)
               );
-
             // filteredHouses = building2houseData.filter(
             //   (house) => parseFloat(house.total_area) <= parseFloat(area)
             // );
-
             // You can add more zones here if needed
             default:
               break;
           }
         }
-
-
-
         return filteredHouses;
       }
 
@@ -861,11 +930,11 @@
           stopAllBlinkingHotspots();
 
           const areaHouses = getSpeificUnitsByArea();
-
+          console.log("Unit =>", areaHouses);
 
           areaHouses.forEach((house) => {
             const hotspotName = `${house.id}`;
-            //blinkHotspot(hotspotName);
+            // blinkHotspot(hotspotName);
 
             previouslyVisibleHotspots.push({ id: hotspotName });
           });
@@ -933,7 +1002,7 @@
             break;
         }
 
-
+        console.log("SLIDER", matchedHouse);
         const hotspotName = `${matchedHouse?.id}`;
         if (matchedHouse) {
           blinkHotspot(hotspotName);
@@ -973,7 +1042,7 @@
           krpano.call(`lookat(${center?.ath}, ${center?.atv}, 20)`); // 70 = moderate zoom
         } else {
           if (plot) {
-            document.getElementById("notFoundModal").style.display = "block";
+            //document.getElementById("notFoundModal").style.display = "block";
           }
 
           closeCard(); // Close any existing card
@@ -991,6 +1060,10 @@
 
         // You can replace alert with your own search logic
       }
+
+    
+
+   
 
       function updateSliderRange(zone) {
         const slider = document.getElementById("totalArea");
@@ -1177,6 +1250,134 @@
         }
       }
 
+
+ 
+
+
+
+     
+
+   
+
+      function blinkHotspot(hotspotName) {
+        const krpano = document.getElementById("krpanoSWFObject");
+
+        let currentScene = krpano.get("xml.scene");
+
+        // Case 1: If we're back at the aerial scene or hotspotName is false — stop everything
+        if (currentScene === "scene_b-al_marina_aerial" || !hotspotName) {
+          if (currentBlinkInterval && currentBlinkingHotspot) {
+            clearInterval(currentBlinkInterval);
+
+            // Reset color of the previous hotspot
+            krpano.call(
+              `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFF00)`
+            );
+
+            // Clear references
+            currentBlinkInterval = null;
+            currentBlinkingHotspot = null;
+          }
+
+          return;
+        }
+
+        // Case 2: Stop any previous blinking before starting new one
+
+        const area = document.getElementById("totalArea").value;
+
+        const plot = document.getElementById("plotNumber").value;
+
+        let previousArea;
+
+        if (!area) {
+          if (currentBlinkInterval && currentBlinkingHotspot) {
+            clearInterval(currentBlinkInterval);
+            krpano.call(
+              `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFFFF)`
+            );
+
+            currentBlinkingHotspot = null;
+            currentBlinkInterval = null;
+          }
+
+          previousArea = area;
+        }
+
+        if (area) {
+          // Case 3: Start blinking for the new hotspot
+          const blinkColors = ["0x00FFFF", "0xFFA500"];
+          let blinkIndex = 0;
+
+          interval = setInterval(() => {
+            const color = blinkColors[blinkIndex];
+
+            krpano.call(`set(hotspot[${hotspotName}].fillcolor, ${color})`);
+            blinkIndex = (blinkIndex + 1) % blinkColors.length;
+          }, 500);
+
+          currentBlinkingHotspotsByArea.push(hotspotName);
+          currentBlinkIntervalsByArea.push(interval);
+        }
+
+        if (plot) {
+          if (currentBlinkInterval && currentBlinkingHotspot) {
+            clearInterval(currentBlinkInterval);
+            krpano.call(
+              `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFFFF)`
+            );
+
+            currentBlinkingHotspot = null;
+            currentBlinkInterval = null;
+          }
+
+          // Case 3: Start blinking for the new hotspot
+          const blinkColors = ["0x00FFFF", "0xFFA500"];
+          let blinkIndex = 0;
+
+          currentBlinkInterval = setInterval(() => {
+            const color = blinkColors[blinkIndex];
+
+            krpano.call(`set(hotspot[${hotspotName}].fillcolor, ${color})`);
+            blinkIndex = (blinkIndex + 1) % blinkColors.length;
+          }, 500);
+
+          currentBlinkingHotspot = hotspotName;
+        }
+      }
+
+      function toggleFullScreen() {
+        const elem = document.documentElement;
+        const btn = document.getElementById("fullScreenBtn");
+
+        if (
+          !document.fullscreenElement &&
+          !document.webkitFullscreenElement &&
+          !document.msFullscreenElement
+        ) {
+          // Enter fullscreen
+          if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+          } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen(); // Safari
+          } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen(); // IE11
+          }
+
+          btn.innerHTML = "🗗";
+        } else {
+          // Exit fullscreen
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen(); // Safari
+          } else if (document.msExitFullscreen) {
+            document.msExitFullscreen(); // IE11
+          }
+          btn.innerHTML = "⛶";
+        }
+      }
+
       const toggleTimeView = (element) => {
         const now = element.querySelector(".now");
         const future = element.querySelector(".future");
@@ -1212,27 +1413,31 @@
           }
 
           if (index !== breadcrumbTrail.length - 1) {
+            console.log("index", index);
             // Not the last one - make it a link
             const link = document.createElement("a");
             link.href = "#";
             link.className = "breadcrumb-link mui-breadcrumb-link";
             link.setAttribute("data-scene", crumb.scene);
             link.setAttribute("data-index", index); // Save index for back navigation
-            link.innerHTML = `<i class="material-icons mui-breadcrumb-icon">${crumb.icon}</i> ${crumb.title}`;
+
+            link.innerHTML = `<i class="material-icons mui-breadcrumb-icon">${!index ? crumb.icon : ''}</i> ${crumb.title}`;
+
+
             wrapper.appendChild(link);
           } else {
             // Last one - current breadcrumb
             const current = document.createElement("span");
             current.className = "breadcrumb-current mui-breadcrumb-current";
-            current.innerHTML = `<i class="material-icons mui-breadcrumb-icon">${crumb.icon}</i> ${crumb.title}`;
+
+            current.innerHTML = `<i class="material-icons mui-breadcrumb-icon">${!index ? crumb.icon : ''}</i> ${crumb.title}`;
+
             wrapper.appendChild(current);
           }
         });
 
         attachBreadcrumbClickEvents(); // Re-attach click events
       };
-
-
 
       // Attach click listeners to breadcrumb links
       const attachBreadcrumbClickEvents = () => {
@@ -1248,16 +1453,6 @@
         });
       };
 
-      const removeBreadCrumbItem = (sceneName, crumbIndex) => {
-        var krpano = document.getElementById("krpanoSWFObject");
-
-        if (sceneName) {
-          loadScene(sceneName);
-          breadcrumbTrail = breadcrumbTrail.slice(0, crumbIndex + 1);
-          renderBreadcrumbs();
-          krpano.call(`loadscene(${sceneName}, null, MERGE, BLEND(1))`);
-        }
-      };
       // Load a new scene and update breadcrumb trail
       const loadScene = (sceneName) => {
         // Example krpano call if available
@@ -1281,6 +1476,26 @@
 
       // Initial render
       document.addEventListener("DOMContentLoaded", function () {
+        renderBreadcrumbs();
+      });
+
+     
+
+    
+      const removeBreadCrumbItem = (sceneName, crumbIndex) => {
+        var krpano = document.getElementById("krpanoSWFObject");
+
+        if (sceneName) {
+          loadScene(sceneName);
+          breadcrumbTrail = breadcrumbTrail.slice(0, crumbIndex + 1);
+          renderBreadcrumbs();
+          krpano.call(`loadscene(${sceneName}, null, MERGE, BLEND(1))`);
+        }
+      };
+    
+
+      // Initial render
+      document.addEventListener("DOMContentLoaded", function () {
          renderBreadcrumbs();
       });
 
@@ -1301,6 +1516,7 @@
         }
 
         const apiData = await fetchAlMarinaData();
+
 
         if (!apiData) {
           return;
@@ -1408,11 +1624,10 @@
 
           const cords = house.coordinates[0];
 
-          //set(hotspot[${hotspotName}].fillcolor, ${hotspotColorHex});
-
           krpano.call(`
+  
   set(hotspot[${hotspotName}].fillalpha, 0.1);
-  set(hotspot[${hotspotName}].bordercolor, 0x228B22);
+  set(hotspot[${hotspotName}].bordercolor, 0x39FF14);
   set(hotspot[${hotspotName}].borderwidth, 1);
 `);
           if (cords) {
@@ -1447,6 +1662,9 @@
       const addLandHotspotsToKrpano = async () => {
         const krpano = document.getElementById("krpanoSWFObject");
         const response = await onInitalLoad();
+
+        console.log("RESPONSE", response);
+        localStorage.setItem("response", JSON.stringify(response));
 
 
         localStorage.setItem("response", JSON.stringify(response));
@@ -1500,10 +1718,6 @@
             renderBreadcrumbs();
             dynamicZoneRendering(zone2houseData, response, krpano);
           } else if (currentScene === "scene_e-zone_3") {
-            const unitData = localStorage.getItem("response");
-
-            const parsedData = JSON.parse(unitData);
-
             dynamicZoneRendering(zone3houseData, response, krpano);
             breadcrumbTrail.push({
               scene: "scene_zone_3",
@@ -1543,6 +1757,7 @@
             dynamicZoneRendering(building2houseData, response, krpano);
             breadcrumbTrail.push({
               scene: "scene_i-building_2",
+              title: "Zone 7",
               title: "Zone 5",
               icon: "grain",
             });
@@ -1683,6 +1898,38 @@
         }
       };
 
+      const toggleSearchFilter = () => {
+        const arrow = document.getElementById("toggleArrow_1");
+        const searchBarContainer = document.getElementById("searchBarContainer");
+        let card = searchBarContainer.querySelector(".card-body");
+
+        // Check computed visibility (not just inline style)
+        //const isVisible = window.getComputedStyle(card).display !== "none";
+
+        const isHidden1 =
+          card.style.display === "none" || card.style.display === "";
+        arrow.textContent = !isHidden1 ? "▶" : "◀";
+
+
+        console.log("isVisible", isHidden1);
+        if (card.style.display === "block") {
+          console.log("if");
+          card.style.display = "none";
+      
+
+        } else {
+          console.log("else");
+          card.style.display = "block";
+
+
+        }
+
+
+
+      };
+
+
+
       const toggleDetails = () => {
         const arrow = document.getElementById("toggleArrow");
 
@@ -1722,7 +1969,7 @@
           (unit) => unit.plot_number === plot_number
         );
 
-
+        console.log("filteredData", filteredData);
         //   Assuming the first element in the response array corresponds to the clicked house
         if (unitData && unitData.length > 0) {
           createCard(
