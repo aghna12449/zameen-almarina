@@ -1,0 +1,156 @@
+.slider-container_1 {
+  position: fixed;
+  bottom: 0; /* Position at the bottom of the viewport */
+  left: 0;
+  width: 100%;
+   background: transparent; 
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1); /* Clearer shadow from the bottom */
+  padding: 4px 0; /* More padding for a consistent look */
+  z-index: 1000;
+  box-sizing: border-box; /* Include padding in width */
+}
+
+.card-slider_1 {
+  display: flex;
+  gap: 10px; /* Adjusted gap to match reference image more closely */
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  padding: 0 10px; /* Adjusted padding */
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.card-slider_1:hover {
+  animation: scroll_1 7s linear infinite; /* Animation specifically for this slider */
+}
+
+.card_1 {
+  position: relative;
+  min-width: 230px; /* Wider card to match the reference */
+  height: 160px; /* Height adjusted to match reference */
+  background-color: #fff;
+  border-radius: 6px; /* Subtle border-radius */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Clear shadow for cards */
+  flex-shrink: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.card_1 img {
+  width: 90px; /* Image width to fit the design */
+  height: 100%; /* Image takes full height of the card */
+  object-fit: cover;
+  border-radius: 6px 0 0 6px; /* Rounded left corners only */
+  margin-right: 0px;
+}
+
+/* .price-tag_1 {
+  position: absolute;
+  top: 0px; 
+  left: 0px; 
+  background-color: #3b5998; 
+  color: white;
+  padding: 3px 6px; 
+  border-radius: 6px 0 6px 0; 
+  font-weight: bold;
+  font-size: 10px; 
+  z-index: 2; 
+} */
+
+.card_1 .details_1 {
+  padding: 30px 10px; /* Ample padding for the text details section */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between; /* Pushes property-info to the bottom */
+  font-size: 9px; /* Base font size for details */
+  color: #333;
+  white-space: normal;
+}
+
+.card_1 h4 {
+  margin: 0;
+  font-size: 13px; /* Larger font for title */
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card_1 .address_1 {
+  margin: 3px 0 8px 0; /* Margin for address and space from the line */
+  font-size: 10px; /* Clear font size for address */
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card_1 .property-info_1 {
+  display: flex;
+  /* justify-content: space-around; */ /* Removed as the image shows more even distribution with padding */
+  justify-content: flex-start; /* Align items to the start of the flex container */
+  align-items: center; /* Center items vertically */
+  padding-top: 6px; /* Space above the horizontal line */
+  border-top: 1px solid #eee; /* Horizontal line */
+  margin-top: auto; /* Pushes this section to the bottom */
+  /* Remove gap and horizontal padding from here, individual info-items will handle spacing */
+  width: 100%; /* Ensure it spans full width for border */
+}
+
+.card_1 .info-item_1 {
+  display: flex;
+  flex-direction: column;
+  text-align: left; /* Text alignment from reference image */
+  /* flex: 1; */ /* Removed flex:1 as it distorts smaller labels when no vertical lines */
+  padding: 0 10px; /* Horizontal padding for spacing between items (adjust as needed) */
+  border-right: none !important; /* Ensure no vertical border */
+  box-sizing: border-box; /* Include padding in item width */
+}
+
+/* Ensure no border for the last info item as well */
+.card_1 .info-item_1:not(:last-child) {
+  border-right: none !important;
+}
+.card_1 .info-item_1:last-child {
+  border-right: none !important;
+}
+
+
+.card_1 .info-item_1 .label_1 {
+  font-size: 11px; /* Clear font size for labels */
+  color: #888;
+  margin-bottom: 0px; /* No margin below label for tight fit */
+  font-weight: bold;
+}
+
+.card_1 .info-item_1 .value_1 {
+  font-size: 13px; /* Clear font size for values */
+  font-weight: normal; /* Non-bold values */
+  color: #333;
+}
+
+
+
+/* Styles for customizing the scrollbar (Webkit browsers) */
+.card-slider_1::-webkit-scrollbar {
+  height: 5px; /* Slightly thicker scrollbar for usability, thinner than default */
+  background-color: transparent; /* Make scrollbar background transparent */
+}
+
+.card-slider_1::-webkit-scrollbar-track {
+  background: transparent; /* Transparent track */
+  border-radius: 10px;
+}
+
+.card-slider_1::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3); /* Semi-transparent thumb */
+  border-radius: 10px;
+}
+
+.card-slider_1::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5); /* Darker on hover */
+}

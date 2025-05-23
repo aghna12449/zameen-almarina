@@ -1,3 +1,279 @@
+
+
+#krpano-card {
+  position: absolute;
+  top: 195px;
+  left: 20px;
+  width: 260px;
+  z-index: 1000;
+  background: linear-gradient(135deg, #FFFFFF, #F5F5F5);
+  border-radius: 13px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  padding:14px;
+  font-family: 'Segoe UI', sans-serif;
+  color: black;
+  font-size: 14px;
+ transition: transform 0.2s ease-in-out;
+  backdrop-filter: blur(12px);
+}
+#krpano-card:hover {
+  transform: scale(1.015);
+}
+#krpano-card .card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  margin-bottom: 8px;
+  border-radius: 13px 13px 0 0;
+  overflow: hidden;
+  position: relative;
+}
+.details-row {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    border-bottom: 2px solid #eee;
+  }
+  .details-row1{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  .detail-item {
+    text-align: center;
+  }
+  .detail-label {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 2px;
+  }
+  .detail-value {
+    font-weight: bold;
+    font-size: 14px;
+  }
+ .card-image-container {
+    width: 100%;
+    height: 120px;
+    background-color: #ddd;
+    position: relative;
+  }
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    color: #555;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    z-index: 10; /* Ensure it's above other elements in the container */
+  }
+   .image-placeholder {
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    color: #aaa;
+    font-weight: bold;
+  }
+  .like-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: blue;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+   .unit-specs {
+    padding: 10px;
+  }
+  .unit-specs p {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+  }
+ #krpano-card .extra-details  {
+display: none;
+ padding: 10px;
+}
+.extra-details p {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+  }
+#krpano-card .hideDetails {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #DEE2E6;
+  margin: 10px 0;
+  font-weight: bold;
+  justify-content: center;
+  transition: color 0.3s ease;
+  margin: 8px 0 0;
+/* Centers content horizontally */
+}
+#krpano-card .hideDetails:hover {
+  color: #fff;
+}
+#krpano-card #toggleArrow {
+  margin-left: 5px;
+  font-size: 14px;
+cursor: pointer;
+  right: 100px;
+  display: flex;
+justify-content: center;
+}#krpano-card {
+  position: absolute;
+  top: 195px;
+  left: 20px;
+  width: 260px;
+  z-index: 1000;
+  background: linear-gradient(135deg, #FFFFFF, #F5F5F5);
+  border-radius: 13px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  padding:14px;
+  font-family: 'Segoe UI', sans-serif;
+  color: black;
+  font-size: 14px;
+ transition: transform 0.2s ease-in-out;
+  backdrop-filter: blur(12px);
+}
+#krpano-card:hover {
+  transform: scale(1.015);
+}
+#krpano-card .card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  margin-bottom: 8px;
+  border-radius: 13px 13px 0 0;
+  overflow: hidden;
+  position: relative;
+}
+.details-row {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    border-bottom: 2px solid #eee;
+  }
+  .details-row1{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  .detail-item {
+    text-align: center;
+  }
+  .detail-label {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 2px;
+  }
+  .detail-value {
+    font-weight: bold;
+    font-size: 14px;
+  }
+ .card-image-container {
+    width: 100%;
+    height: 120px;
+    background-color: #ddd;
+    position: relative;
+  }
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    color: #555;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    z-index: 10; /* Ensure it's above other elements in the container */
+  }
+   .image-placeholder {
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    color: #aaa;
+    font-weight: bold;
+  }
+  .like-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: blue;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+   .unit-specs {
+    padding: 10px;
+  }
+  .unit-specs p {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+  }
+ #krpano-card .extra-details  {
+display: none;
+ padding: 10px;
+}
+.extra-details p {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+  }
+#krpano-card .hideDetails {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #DEE2E6;
+  margin: 10px 0;
+  font-weight: bold;
+  justify-content: center;
+  transition: color 0.3s ease;
+  margin: 8px 0 0;
+/* Centers content horizontally */
+}
+#krpano-card .hideDetails:hover {
+  color: #fff;
+}
+#krpano-card #toggleArrow {
+  margin-left: 5px;
+  font-size: 14px;
+cursor: pointer;
+  right: 100px;
+  display: flex;
+justify-content: center;
+}
+
+
+/* styling for arrow icon */
 #arrow-icon {
     font-size: 55px;
     color: #dee2e6;
@@ -7,17 +283,18 @@
    
 }
 
+/* styling for breadcrumbs */
 #custom-breadcrumbs {
     display: flex;
     align-items: center;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     font-size: 0.875rem;
-    color: white;
+    color: rgb(190, 183, 183);
     position: absolute;
     top: 20px;
-    left: 20px;
+    left: 30px !important;
     z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: hsl(0deg 0% 100% / 10%);
     padding: 10px;
     border-radius: 4px;
 }
@@ -53,6 +330,103 @@
     align-items: center; /* Vertical alignment */
 }
 
+/* ===== Search Bar Styles ===== */
+#searchBarContainer {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  padding: '20px';
+  z-index: 1000;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid #666;
+  border-radius: 15px;
+  padding: 5px 6px;
+  background: rgba(0, 0, 0, 0.41);
+  position: relative;
+  max-width: 100%;
+  margin-top: 8px;
+}
+
+
+.search-icon {
+  color: rgba(0, 0, 0, 0.64);
+  margin-right: 5px;
+}
+
+.input-wrapper {
+  background: rgb(0 0 0 / 57%);
+              border: none;
+              outline: none;
+         
+          
+              flex: 1;
+              border-radius: 15px;
+              padding: 12px;
+              padding-right: 30px; /* Leave space for icon */
+
+
+    
+      
+              color: rgba(182, 171, 171, 0.712); 
+              font-size: 10px;
+}
+
+#clearIcon{
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+}
+
+/* styling for cards  */
+
+
+
+/* ===== Responsive Styles ===== */
+@media (max-width: 768px) {
+  #custom-breadcrumbs {
+    top: 10px;
+    left: 10px;
+    font-size: 0.75rem;
+    padding: 6px;
+    max-width: 80%;
+    flex-wrap: wrap;
+  }
+
+  #searchBarContainer {
+    top: 100px;
+    right: 10px;
+    left: 10px;
+    justify-content: flex-end;
+  }
+
+  .search-bar {
+    flex: 1;
+    padding: 4px;
+    left: 0;
+    margin-left: 10px; /* Optional: add some breathing room */
+    margin-right: 10px;
+  }
+
+  #searchBox {
+    font-size: 10px;
+    padding: 8px 10px 8px 10px;
+  }
+
+  .clear-icon {
+    font-size: 16px;
+  }
+}
+
 /* MUI-like styling */
 .mui-breadcrumb-root {
     display: flex;
@@ -60,6 +434,7 @@
 }
 
 .mui-breadcrumb-link {
+     font-weight: bolder;
     color: white;
     text-decoration: none;
     display: flex; /* For vertical alignment */
@@ -72,12 +447,12 @@
 
 .mui-breadcrumb-separator {
     margin: 0 8px;
-    color: rgba(255, 255, 255, 0.7);
+    color: white;
 }
 
 .mui-breadcrumb-current {
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.87); /* Primary text color */
+    font-weight: bolder;
+    color: white;
     display: flex; /* For vertical alignment */
     align-items: center; /* Vertical alignment */
 }
@@ -118,7 +493,8 @@
     cursor: pointer;
     z-index: 9999;
     padding: 4px;
-    border-radius: 7px;
+    border-radius: 10px;
+   
   }
   
   .time-toggle .label {
@@ -136,15 +512,214 @@
     align-items: center;
     gap: 6px;
     font-size: 8px;
-    background: #ebd8d8;
+    background:rgb(0 0 0 / 45%);
     transition: background-color 0.3s, color 0.3s;
+
   }
   
   .time-toggle .active {
-    background: #373a3d;
+    background: rgb(0 0 0 / 82%);
     color: white;
   }
   .toggle-option .material-icons {
     font-size: 20px;             /* Smaller icon */
   }
+
+  #zoomInBtn{
+    position: fixed;
+    bottom: 185px;
+    right: 40px;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgb(0 0 0 / 41%);
+    color: white;
+    cursor: pointer;
+    z-index: 9999;
+    margin-bottom: 5px;
+  }
+
+  #zoomOutBtn {
+    position: fixed;
+    bottom: 227px;
+    right: 40px;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    border-radius: 50%;
+    border: none;
+    background-color:rgb(0 0 0 / 41%);
+    color: white;
+    cursor: pointer;
+    z-index: 9999;
+    margin-bottom: 5px;
+  }
   
+  #fullScreenBtn {
+    position: absolute;
+    bottom: 270px;
+    right: 40px;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    border-radius: 50%;
+    border: none;
+    background-color:rgb(0 0 0 / 41%);
+    color: white;
+    cursor: pointer;
+    z-index: 9999;
+    margin-bottom: 5px;        /* Ensure it's above all other elements */
+  }
+
+
+
+
+  input::placeholder {
+    color: rgb(190, 186, 186)
+  }
+ 
+  /* Modal Overlay */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  /* Modal Box */
+  .modal-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgb(0 0 0 / 59%);
+    padding: 30px;
+    width: 300px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+
+  .modal-box h2 {
+    margin-bottom: 10px;
+    color: #dee2e6e6;
+  }
+
+  .modal-box p {
+    margin-bottom: 20px;
+    color: #dee2e6;
+  }
+
+  .modal-box button {
+    padding: 4px 17px;
+    background-color: hsla(240, 7%, 62%, 1);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .modal-box button:hover {
+    background-color: rgba(151, 151, 165, 0.575);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Show cross icon on mobile, hide on desktop */
+@media (max-width: 767px) {
+  
+
+  .extra-details {
+    display: none;
+  }
+  .show-details-button {
+    display: inline-block !important;
+  }
+
+  .card-header {
+    border-bottom: none !important;
+  }
+  .card-title {
+    display: none !important;
+  }
+  .hideDetails {
+    display:  inline-block !important;
+  } 
+
+}
+
+/* On desktop, show full close button, hide icon */
+@media (min-width: 768px) {
+  .close-icon {
+    display: none !important;
+  }
+  .hideDetails {
+    display: none !important;
+  } 
+
+  
+}
+@media (max-width: 768px) and (orientation: landscape) {
+  #searchBarContainer {
+    top: 0; /* Slightly closer to the top */
+    right: 5px;
+    left: 5px;
+    padding: 5px; /* Reduced padding around the container */
+    justify-content: flex-start;
+    z-index: 1001;
+  }
+
+  .search-bar {
+    flex: none; /* Prevent it from automatically filling the width */
+    width: 40%; /* Adjust this percentage to control the width */
+    max-width: none; /* Override the default max-width */
+    padding: 2px 3px;
+    margin-left: 0;
+    margin-right: auto; /* Push it to the left if needed, or adjust based on desired alignment */
+    border-radius: 8px;
+    left: 360px;
+  }
+
+  .search-icon {
+    font-size: 14px; /* Smaller search icon */
+    margin-right: 3px;
+  }
+
+  #searchBox {
+    font-size: 10px; /* Back to the original smaller font size */
+    padding: 4px 6px 4px 6px; /* Reduced padding inside the input */
+  }
+
+  #clearIcon {
+    font-size: 14px; /* Smaller clear icon */
+    right: 5px; /* Adjust position of clear icon */
+  }
+  #fullScreenBtn{
+    top: 40%;
+    /* top: 201px; */
+  }
+
+}
+
+
+@media (max-width: 768px) and (orientation: portrait){
+  #fullScreenBtn{
+    top: 70%,
+  }
+}
