@@ -67,14 +67,14 @@
   flex-grow: 1;
   justify-content: space-between; /* Pushes property-info to the bottom */
   font-size: 9px; /* Base font size for details */
-  color: #333;
+  color: white;
   white-space: normal;
 }
 
 .card_1 h4 {
   margin: 0;
   font-size: 13px; /* Larger font for title */
-  color: #333;
+  color: white;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -130,7 +130,7 @@
 .card_1 .info-item_1 .value_1 {
   font-size: 13px; /* Clear font size for values */
   font-weight: normal; /* Non-bold values */
-  color: #333;
+  color: white;
 }
 
 

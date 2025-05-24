@@ -88,7 +88,7 @@
     align-items: center;
     width: 20px;
     height: 372px;
-    color: #333;
+    color: white;
     transition: left 0.3s ease-in-out; /* Smooth transition for the toggle button's left property */
 }
 
@@ -109,6 +109,8 @@
 /* When the checkbox is checked, move the toggle button */
 #toggleFilter:checked ~ .toggle-container {
     left: 280px; /* Moves the toggle button to the right of the open card (card width + offset) */
+
+    color: white;
 }
 
 /* The '▶'/'▼' arrow */
