@@ -93,7 +93,7 @@
     <script src="zone6_building1.js"></script>
     <script src="zone7.js"></script>
     <script src="zone8.js"></script>
-    
+
     <script src="zone9.js"></script>
 
     <div id="pano" style="width: 100%; height: 100%">
@@ -282,7 +282,6 @@
           .forEach((button) => {
             button.addEventListener("click", function () {
               const selectedValue = this.getAttribute("data-value");
-              
 
               // Example: Store in a variable or send to server
               // availabilitySelected = selectedValue;
@@ -335,6 +334,7 @@
 
         let previouslyVisibleHotspots = [];
 
+        let newHotspotArray = [];
         function updateAreaAndSearch(value) {
           const krpano = document.getElementById("krpanoSWFObject");
           document.getElementById("areaValue").innerText = `${value}`;
@@ -355,46 +355,101 @@
           // //  krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
           // });
           areaHouses = getSpeificUnitsByArea();
-         
 
           //currentAppearingHotpsots.push(...areaHouses)
           //  slidersHotspot.push(found);
-          let initial = areaHouses[0];
-          const startId = parseInt(initial?.id?.replace("hs", "")); // e.g. 18
+          //let initial = areaHouses[0];
+          //const startId = parseInt(initial?.id?.replace("hs", "")); // e.g. 18
+
           // Create a lookup map from existing hotspot IDs for quick checking
+          // const existingIds = new Set(
+          //   areaHouses.map((house) => parseInt(house?.id?.replace("hs", "")))
+          // );
+
+          // console.log("start id", startId ,  "areaHouses", areaHouses);
+          // // Make a new array including only valid sequential hotspots starting from startId
+          // const missingHotspots = [];
+          // const notFound = [];
+          // for (let i = startId; i <= areaHouses.length; i++) {
+          //   // change 100 to your max expected id
+          //   if (existingIds.has(i)) {
+          //     const found = areaHouses.find(
+          //       (house) => parseInt(house?.id?.replace("hs", "")) === i
+          //     );
+          //     if (found) {
+          //       newHotspotArray.push(found);
+          //     }
+          //   } else {
+          //     missingHotspots.push(`hs${i}`);
+          //   }
+          // }
+
+          //let idNumber = initial?.id?.replace("hs", ""); // "18" as a string
+          //  let idInt = parseInt(idNumber);
+
+          let initial = areaHouses[0];
+          const startId = parseInt(initial?.id?.replace("hs", "")); // e.g., 18
+
+          // Create a lookup map for existing hotspot IDs
           const existingIds = new Set(
             areaHouses.map((house) => parseInt(house?.id?.replace("hs", "")))
           );
-          // Make a new array including only valid sequential hotspots starting from startId
+
+          console.log("start id", startId, "areaHouses", areaHouses);
+
+          // Find the maximum ID in areaHouses to set loop bounds
+          const maxId = Math.max(...Array.from(existingIds));
+
+          // Filter and keep only sequential hotspots starting from startId
+          const newHotspotArray = [];
           const missingHotspots = [];
-          const notFound = [];
-          for (let i = startId; i <= areaHouses.length; i++) {
-            // change 100 to your max expected id
-            if (existingIds.has(i)) {
-              const found = areaHouses.find(
-                (house) => parseInt(house?.id?.replace("hs", "")) === i
-              );
-              if (found) {
-                newHotspotArray.push(found.id);
-              }
+
+          for (let i = startId; i <= maxId; i++) {
+            const hsId = `hs${i}`;
+            const foundHouse = areaHouses.find((house) => house.id === hsId);
+
+            if (foundHouse) {
+              newHotspotArray.push(foundHouse.id);
             } else {
-              missingHotspots.push(`hs${i}`);
+              missingHotspots.push(hsId);
             }
           }
-          let idNumber = initial?.id?.replace("hs", ""); // "18" as a string
-          let idInt = parseInt(idNumber);
 
-         
-          // find minimum and maximum
-          newHotspotArray.forEach((hotspotId) => {
+          console.log("Filtered Hotspots (Sequential):", newHotspotArray);
+          console.log("Missing Hotspots:", missingHotspots);
 
-            krpano.set(`hotspot[${hotspotId}].visible`, false);
-            krpano.call(`set(hotspot[${hotspotId}].visible, false)`);
-            krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0)`);
-            krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
-            krpano.call(`set(hotspot[${hotspotId}].bordercolor, 0x0039FF14)`);
-          });
+          console.log("new hotspot array ===", newHotspotArray);
 
+          const allowedHotspots = newHotspotArray;
+
+// Get total number of hotspots
+const hotspotCount = krpano.get('hotspot.count');
+
+for (let i = 0; i < hotspotCount; i++) {
+  const hotspotName = krpano.get(`hotspot[${i}].name`);
+
+  // If hotspot name is not in the allowed list, hide or remove it
+  if (!allowedHotspots.includes(hotspotName)) {
+    // Option 1: Just hide it
+   // krpano.set(`hotspot[${hotspotName}].visible`, false);
+
+    // Option 2: Remove it entirely
+    krpano.call(`removehotspot(${hotspotName})`);
+  }
+}
+
+          // // find minimum and maximum
+          // newHotspotArray.forEach((hotspotId) => {
+
+          //   krpano.set(`hotspot[${hotspotId}].visible`, false);
+          //   krpano.call(`set(hotspot[${hotspotId}].visible, false)`);
+          //   krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0)`);
+          //   krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
+          //   krpano.call(`set(hotspot[${hotspotId}].bordercolor, 0x0039FF14)`);
+          // });
+          // //newHotspotArray = [];
+
+          console.log("missingHotspots", missingHotspots);
           //  0.1
           // missingHotspots.forEach((hotspotId) => {
           //   krpano.set(`hotspot[${hotspotId}].visible`, false);
@@ -436,14 +491,15 @@
 
         //currentAppearingHotpsots
         const displayHorizontalSlider = () => {
+          console.log("displayHorizontalSlider");
           const sliderContainer = document.querySelector(".card-slider_1");
           sliderContainer.innerHTML = ""; // Clear previous content if needed
           //currentAppearingHotpsots
 
-
+          console.log("AREA houses", areaHouses);
           areaHouses.forEach((house, index) => {
-      
             const cardHTML = `
+             
       <div class="card_1">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv94OIn-sX93PJMNosZCYZzXFO8Qk1FB2x3A&s" height="100px" width="100px"  />
         <div class="details_1">
@@ -470,8 +526,6 @@
             sliderContainer.insertAdjacentHTML("beforeend", cardHTML);
           });
         };
-
-        const newHotspotArray = [];
 
         // function updateAreaAndSearch(value) {
         //   const krpano = document.getElementById("krpanoSWFObject");
@@ -846,7 +900,7 @@
             latestArrayZone3 = [],
             latestArrayZone6 = [];
           latestArrayZone5 = [];
-          latestArrayZone9= [];
+          latestArrayZone9 = [];
           (latestArrayZone7 = []), (latestArrayZone8 = []);
 
           const zone3 = parsedData.data.filter(
@@ -860,9 +914,8 @@
             document.getElementById("areaValue").textContent = `100 sq m`;
             document.getElementById("areaMax").textContent = `20000`;
 
-            console.log('currentScene', currentScene);
+            console.log("currentScene", currentScene);
             switch (currentScene) {
-             
               case "scene_c-zone_1":
                 //clearSliderRange();
                 updateSliderRange("1");
@@ -934,19 +987,25 @@
                 );
                 break;
 
-                case "scene_i-building_2":
-              console.log("building 2");
+              case "scene_i-building_2":
+                console.log("building 2");
                 updateSliderRange("5");
 
-                console.log("zone 5 = building 2 =", building2houseData);
+                console.log(
+                  "zone 5 = building 2 =",
+                  building2houseData,
+                  "all data",
+                  zoneFiveFilteredData()
+                );
 
                 const updatedbuilding2houseData = zoneFiveFilteredData().map(
                   (house) => {
-                    matchedZone = latestArrayZone5.find(
+                    matchedZone = building2houseData.find(
                       (zone) =>
                         parseInt(house.plot_number) ===
                         parseInt(zone.plot_number)
                     );
+                    console.log("matchedZone", matchedZone);
                     latestArrayZone5.push({
                       ...house,
                       total_area: house?.total_area,
@@ -954,11 +1013,13 @@
                     });
                   }
                 );
+
+                console.log("latestArrayZone5", latestArrayZone5);
                 filteredHouses = latestArrayZone5.filter(
                   (house) => parseFloat(house.total_area) <= parseFloat(area)
                 );
 
-                console.log("")
+                console.log("filteredHouses zone 5", filteredHouses);
                 break;
               case "scene_h-building_1":
                 console.log("building 1");
@@ -966,7 +1027,7 @@
 
                 const updatedbuilding1houseData = zoneSixFilteredData().map(
                   (house) => {
-                    matchedZone = latestArrayZone6.find(
+                    matchedZone = building1houseData.find(
                       (zone) =>
                         parseInt(house.plot_number) ===
                         parseInt(zone.plot_number)
@@ -983,10 +1044,6 @@
                 );
                 break;
 
-
-
-             
-              
               case "scene_f-zone_4":
                 updateSliderRange("7");
                 const updatedZone7houseData = zoneSevenFilteredData().map(
@@ -1029,8 +1086,7 @@
                 );
                 break;
 
-                case "scene_k_zone_9":
-
+              case "scene_k_zone_9":
                 updateSliderRange("9");
                 const updatedZone9houseData = zoneNineFilteredData().map(
                   (house) => {
@@ -1049,11 +1105,9 @@
                 filteredHouses = latestArrayZone8.filter(
                   (house) => parseFloat(house.total_area) <= parseFloat(area)
                 );
-             
-                
+
                 break;
 
-            
               default:
                 break;
             }
@@ -1073,7 +1127,6 @@
             stopAllBlinkingHotspots();
 
             const areaHouses = getSpeificUnitsByArea();
-           
 
             areaHouses.forEach((house) => {
               const hotspotName = `${house.id}`;
@@ -1145,7 +1198,6 @@
               break;
           }
 
-     
           const hotspotName = `${matchedHouse?.id}`;
           if (matchedHouse) {
             blinkHotspot(hotspotName);
@@ -1210,8 +1262,6 @@
             return;
           }
 
-        
-
           let maxArea = parseInt(zoneData[0].total_area);
           let minArea = parseInt(zoneData[0].total_area);
 
@@ -1253,13 +1303,11 @@
               break;
 
             case "5":
-           
               zoneHouses = zoneFiveFilteredData();
 
               break;
 
             case "6":
-             
               zoneHouses = zoneSixFilteredData();
               break;
 
@@ -1277,10 +1325,9 @@
             // add more cases for other zones
           }
 
-          console.log("zone houses", zoneHouses)
+          console.log("zone houses", zoneHouses);
           const { min, max } = findMaximumAndMinimum(zoneHouses);
 
-      
           // Update slider attributes
           const slider = document.getElementById("totalArea");
           slider.min = min;
@@ -1293,62 +1340,6 @@
           document.getElementById("areaMax").textContent = `${max}`;
         }
 
-        // function updateSliderRange(zone) {
-        //   const slider = document.getElementById("totalArea");
-
-        //   /// var area = 500; // you can change this value dynamically later
-
-        //   //default
-
-        //   if (zone === "1") {
-        //     const resultZoneOne = findMaximumAndMinimum(zoneOneFilteredData());
-
-        //     //const data = zoneOneFilteredData();
-
-        //     slider.max = 20000;
-
-        //     const value = slider?.value < resultZoneOne.maxArea  ?  slider?.value : resultZoneOne;
-
-        //     document.getElementById("areaValue").textContent = `${value} sq m`;
-        //     document.getElementById("areaMax").textContent = `${resultZoneOne.maxArea  }`;
-
-        //    // document.getElementById("areaMin").textContent = `${200} sq m`;
-
-        //   } else if (zone === "2") {
-
-        //     const resultZoneTwo = findMaximumAndMinimum(zoneTwoFilteredData());
-        //     console.log("ZONE 2 RESULT", resultZoneTwo)
-        //     const value = slider?.value < resultZoneTwo.maxArea  ?  slider?.value : resultZoneTwo;
-
-        //     console.log("value", value);
-
-        //     document.getElementById("areaValue").textContent = `${slider?.value} sq m`;
-        //     document.getElementById("areaMax").textContent = `${resultZoneTwo.maxArea  }`;
-
-        //     //document.getElementById("areaMin").textContent = `${650} sq m`;
-        //   } else if (zone === "3") {
-        //     slider.max = zone3max;
-
-        //     document.getElementById("areaValue").textContent = `${900} sq m`;
-
-        //     document.getElementById("areaMin").textContent = `${zone3min} sq m`;
-        //     document.getElementById("areaMax").textContent = `${zone3max} sq m`;
-        //   } else if (zone === "4") {
-        //     document.getElementById("areaValue").textContent = `${900} sq m`;
-
-        //     document.getElementById("areaMin").textContent = `${1000} sq m`;
-        //     document.getElementById("areaMax").textContent = `${120000} sq m`;
-        //   } else if (zone === "5") {
-        //     slider.max = 20000;
-        //     // slider.max = 2500;
-
-        //     document.getElementById("areaValue").textContent = `${930} sq m`;
-        //     document.getElementById("areaMin").textContent = `${229} sq m`;
-        //     document.getElementById("areaMax").textContent = `${2500} sq m`;
-        //   } else {
-        //     slider.max = 150000; // default max
-        //   }
-        // }
         // Globals (declare these outside your function, at top level)
         let currentBlinkingHotspotsByArea = [];
         let currentBlinkIntervalsByArea = [];
@@ -1640,7 +1631,6 @@
             }
 
             if (index !== breadcrumbTrail.length - 1) {
-         
               // Not the last one - make it a link
               const link = document.createElement("a");
               link.href = "#";
@@ -1781,7 +1771,7 @@
             });
           });
 
-          console.log("house data", houseData)
+          console.log("house data", houseData);
 
           return houseData;
         };
@@ -1793,12 +1783,12 @@
         let zone8houseData = parseHotspots(zone8hotspotXML);
 
         let building1houseData = parseHotspots(zone6_building_1_hotspotXML);
-        
+
         let zone7houseData = parseHotspots(zone7hotspotXML);
-      
+
         let building2houseData = parseHotspots(zone5_building_2_hotspotXML);
 
-        console.log("building2houseData", building2houseData)
+        console.log("building2houseData", building2houseData);
         let zone9houseData = parseHotspots(zone9hotspotXML);
 
         let toggleState = false; // Global state for toggling colors (false = color1, true = color2)
@@ -1899,7 +1889,6 @@
           const krpano = document.getElementById("krpanoSWFObject");
           const response = await onInitalLoad();
 
-   
           localStorage.setItem("response", JSON.stringify(response));
 
           localStorage.setItem("response", JSON.stringify(response));
@@ -1933,7 +1922,7 @@
               // );
             }
 
-            console.log("currentScene", currentScene)
+            console.log("currentScene", currentScene);
 
             if (currentScene === "scene_c-zone_1") {
               breadcrumbTrail.push({
@@ -1961,8 +1950,7 @@
                 icon: "grain",
               });
               renderBreadcrumbs();
-            }  else if (currentScene === "scene_l_al_marina_mall_day_aerial") {
-             
+            } else if (currentScene === "scene_l_al_marina_mall_day_aerial") {
               dynamicZoneRendering([], response, krpano);
               breadcrumbTrail.push({
                 scene: "scene_l_al_marina_mall_day_aerial",
@@ -1970,11 +1958,7 @@
                 icon: "grain",
               });
               renderBreadcrumbs();
-            } 
-            
-            
-            
-            else if (currentScene === "scene_f-zone_4") {
+            } else if (currentScene === "scene_f-zone_4") {
               dynamicZoneRendering(zone7houseData, response, krpano);
               breadcrumbTrail.push({
                 scene: "scene_f-zone_4",
@@ -1993,7 +1977,7 @@
 
               // onSceneChange(currentScene,unit)
             } else if (currentScene === "scene_h-building_1") {
-              console.log("building1houseData", building1houseData)
+              console.log("building1houseData", building1houseData);
               dynamicZoneRendering(building1houseData, response, krpano);
               breadcrumbTrail.push({
                 scene: "scene_h-building_1",
@@ -2002,7 +1986,7 @@
               });
               renderBreadcrumbs();
             } else if (currentScene === "scene_i-building_2") {
-              console.log("building2houseData", building2houseData)
+              console.log("building2houseData", building2houseData);
               dynamicZoneRendering(building2houseData, response, krpano);
               breadcrumbTrail.push({
                 scene: "scene_i-building_2",
@@ -2010,13 +1994,9 @@
                 icon: "grain",
               });
               renderBreadcrumbs();
-
             }
-            // 
-
-           
+            //
             else if (currentScene === "scene_k_zone_9") {
-       
               dynamicZoneRendering(zone9houseData, response, krpano);
               breadcrumbTrail.push({
                 scene: "scene_k_zone_9",
@@ -2024,16 +2004,17 @@
                 icon: "grain",
               });
               renderBreadcrumbs();
-            } 
-            else {
+            } else {
               blinkHotspot(false);
             }
           }
         };
 
         const fetchAlMarinaData = async () => {
-          const baseUrl =
-            "https://erth-al-marina.zameengeomatics.com/api/getAlMarinaData";
+          const baseUrl = 
+          "https://erth-al-marina.zameengeomatics.com/api/getAlMarinaData";
+
+          //"http://localhost:5001/api/getAlMarinaData";
           return fetch(baseUrl)
             .then((res) => res.json())
             .then((data) => {
@@ -2174,12 +2155,9 @@
             card.style.display === "none" || card.style.display === "";
           arrow.textContent = !isHidden1 ? "▶" : "◀";
 
-      
           if (card.style.display === "block") {
-     
             card.style.display = "none";
           } else {
-
             card.style.display = "block";
           }
         };
@@ -2223,7 +2201,6 @@
             (unit) => unit.plot_number === plot_number
           );
 
-      
           //   Assuming the first element in the response array corresponds to the clicked house
           if (unitData && unitData.length > 0) {
             createCard(

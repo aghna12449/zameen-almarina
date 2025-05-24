@@ -67,7 +67,7 @@
   flex-grow: 1;
   justify-content: space-between; /* Pushes property-info to the bottom */
   font-size: 9px; /* Base font size for details */
-  color: white;
+  color: black;
   white-space: normal;
 }
 
