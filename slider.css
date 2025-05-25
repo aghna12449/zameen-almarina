@@ -3,9 +3,9 @@
   bottom: 0; /* Position at the bottom of the viewport */
   left: 80px;
   width: 100%;
-   background: transparent; 
+  background: transparent;
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1); /* Clearer shadow from the bottom */
-  padding: 4px 0; /* More padding for a consistent look */
+  padding: 1px 0;
   z-index: 1000;
   box-sizing: border-box; /* Include padding in width */
 }
@@ -27,9 +27,9 @@
 .card_1 {
   position: relative;
   min-width: 230px; /* Wider card to match the reference */
-  height: 160px; /* Height adjusted to match reference */
+  height: 114px; /* Height adjusted to match reference */
   background-color: #fff;
-  border-radius: 6px; /* Subtle border-radius */
+  border-radius: 2px; /* Subtle border-radius */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Clear shadow for cards */
   flex-shrink: 0;
   padding: 0;
@@ -37,13 +37,15 @@
   display: flex;
   flex-direction: row;
   overflow: hidden;
+  justify-content: space-between;
+  padding: 1orem 1rem;
 }
 
 .card_1 img {
   width: 90px; /* Image width to fit the design */
   height: 100%; /* Image takes full height of the card */
   object-fit: cover;
-  border-radius: 6px 0 0 6px; /* Rounded left corners only */
+  border-radius: 2px 0 0 6px; /* Rounded left corners only */
   margin-right: 0px;
 }
 
@@ -61,23 +63,30 @@
 } */
 
 .card_1 .details_1 {
-  padding: 30px 10px; /* Ample padding for the text details section */
+  padding: 10px; /* Reduced padding to match the reference image */
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  justify-content: space-between; /* Pushes property-info to the bottom */
-  font-size: 9px; /* Base font size for details */
+  /* flex-grow: 1; */
+  /* justify-content: flex-start;  */
+
   color: black;
   white-space: normal;
+  opacity: 0.5;
+  font-size: 0.75rem;
+  background-color: transparent;
 }
 
 .card_1 h4 {
   margin: 0;
-  font-size: 13px; /* Larger font for title */
-  color: white;
-  white-space: nowrap;
+
+  color: black; /* Changed to black as per reference */
+  white-space: normal; /* Allow text to wrap if needed */
   overflow: hidden;
   text-overflow: ellipsis;
+
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+  line-height: 1.375rem;
 }
 
 .card_1 .address_1 {
@@ -119,12 +128,11 @@
   border-right: none !important;
 }
 
-
 .card_1 .info-item_1 .label_1 {
   font-size: 11px; /* Clear font size for labels */
-  color: #888;
+  color: #000;
   margin-bottom: 0px; /* No margin below label for tight fit */
-  font-weight: bold;
+  font-weight: bolder !important;
 }
 
 .card_1 .info-item_1 .value_1 {
@@ -133,12 +141,11 @@
   color: white;
 }
 
-
-
 /* Styles for customizing the scrollbar (Webkit browsers) */
 .card-slider_1::-webkit-scrollbar {
   height: 5px; /* Slightly thicker scrollbar for usability, thinner than default */
   background-color: transparent; /* Make scrollbar background transparent */
+  scroll-behavior: smooth;
 }
 
 .card-slider_1::-webkit-scrollbar-track {
