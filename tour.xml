@@ -78,6 +78,18 @@
             css="font-size:16px; color:#000000;"
             background="false"
             border="false" />
+
+			<textstyle name="textstyle_info"
+           fontsize="16"
+           bold="true"
+           background="true"
+           border="true"
+           textcolor="0xFFFFFF"
+           bgcolor="0x000000"
+           bordercolor="0xFF0000"
+           padding="5"
+           roundedge="5" />
+
     </layer>
 
 	
@@ -107,6 +119,7 @@
 			<flat url="panos/a-initial.tiles/l%l/%0v/l%l_%0v_%0h.jpg" multires="512,1024x630,2048x1260,4096x2518,8192x5034" />
 		</image>
 
+	
 	</scene>
 
 	<scene name="scene_b-AL_MARINA_aerial" title="b-AL MARINA aerial" onstart="" thumburl="panos/b-AL_MARINA_aerial.tiles/thumb.jpg" lat="" lng="" heading="">
@@ -950,8 +963,30 @@
 		<image hfov="1.00" vfov="0.562500" voffset="0.00">
 			<flat url="panos/f-ZONE_4.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1024x578,2048x1152,4096x2304" />
 		</image>
+
+			<action name="showtext">
+    <!-- If layer exists, just reuse it; else create it -->
+    if(isdefined(layer[infotext_layer]),
+        set(layer[infotext_layer].html, '%1'),
+        addlayer(infotext_layer);
+        set(layer[infotext_layer].parent, 'STAGE');
+        set(layer[infotext_layer].align, 'center');
+        set(layer[infotext_layer].vcenter, 'true');
+        set(layer[infotext_layer].x, '0');
+        set(layer[infotext_layer].y, '0');
+        set(layer[infotext_layer].onclick, 'tween(alpha,0,0.2,default,removelayer(infotext_layer));')
+    );
+
+   
+    set(layer[infotext_layer].html, '%1');
+    set(layer[infotext_layer].style, '%2');
+    set(layer[infotext_layer].visible, true);
+    set(layer[infotext_layer].alpha, 0);
+    set(layer[infotext_layer].onloaded, 'tween(alpha,1);');
+</action>
+
 <!-- hotspots for the houses in zone 4 -->
- <hotspot name="hs1" style="mypolygonalhotspotstylename" fillcolor="0x00FF00" fillalpha="0.1" bordercolor="0x228B22" borderwidth="1" > <point ath="0.2119299041114573" atv="0.11834872854444489" /> <point ath="0.19129994234583592" atv="0.13421787402140653" /> <point ath="0.19117786994326025" atv="0.1360489302297725" /> <point ath="0.2391517065454991" atv="0.15777746139657783" /> <point ath="0.25904922142092346" atv="0.1387344493561739" /> </hotspot>
+ <hotspot name="hs1" style="mypolygonalhotspotstylename"  onclick="showtext('Hello, visitor!', 'textstyle_info');"  fillcolor="0x00FF00" fillalpha="0.1" bordercolor="0x228B22" borderwidth="1" > <point ath="0.2119299041114573" atv="0.11834872854444489" /> <point ath="0.19129994234583592" atv="0.13421787402140653" /> <point ath="0.19117786994326025" atv="0.1360489302297725" /> <point ath="0.2391517065454991" atv="0.15777746139657783" /> <point ath="0.25904922142092346" atv="0.1387344493561739" /> </hotspot>
 
 <hotspot name="hs2" style="mypolygonalhotspotstylename" fillcolor="0x00FF00" fillalpha="0.1" bordercolor="0x228B22" borderwidth="1" > <point ath="0.23207702243303174" atv="0.10301587302787711" /> <point ath="0.21266777999016995" atv="0.11790844727613964" /> <point ath="0.26015328051812503" atv="0.13805008286700018" /> <point ath="0.27565625189055254" atv="0.12230298988001098" /> <point ath="0.2746796848727513" atv="0.12034986440541574" /> </hotspot>
 
