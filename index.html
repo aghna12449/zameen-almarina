@@ -93,9 +93,9 @@
       </table>
     </noscript>
 
-    <div class="icon-container" id="homeIcon">
+    <!-- <div class="icon-container" id="homeIcon">
       <span id="arrow-icon" class="material-icons">arrow_circle_left</span>
-    </div>
+    </div> -->
 
     <div id="searchBarContainer">
       <input type="checkbox" id="toggleFilter" class="hidden-checkbox" />
@@ -121,6 +121,20 @@
 
             <div>
               <div class="mt-2">
+                <label class="form-label fw-semibold" for="availabilityDropdown">Availability</label>
+              </div>
+              <div class="mt-1 mb-3">
+                <select class="form-select" id="availabilityDropdown" name="availability">
+                  <option value="">Select Availability</option>
+                  <option value="Available">Available</option>
+                  <option value="Sold">Sold</option>
+                  <option value="Reserved">Reserved</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- <div>
+              <div class="mt-2">
                 <label class="form-label fw-semibold">Availability</label>
               </div>
               <div class="mt-1 mb-3" id="availabilityButtons">
@@ -134,7 +148,7 @@
                   Reserved
                 </button>
               </div>
-            </div>
+            </div> -->
 
             <div class="mb-3">
               <label for="totalArea" class="form-label">
@@ -282,6 +296,8 @@
       let previouslyVisibleHotspots = [];
 
       let newHotspotArray = [];
+      let sliderSearchedHouses;
+
       function updateAreaAndSearch(value) {
         const krpano = document.getElementById("krpanoSWFObject");
         document.getElementById("areaValue").innerText = `${value}`;
@@ -301,26 +317,26 @@
         //   //krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
         // //  krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
         // });
-        areaHouses = getSpeificUnitsByArea();
+        sliderSearchedHouses = getSpeificUnitsByArea();
 
-        //currentAppearingHotpsots.push(...areaHouses)
+        //currentAppearingHotpsots.push(...sliderSearchedHouses)
         //  slidersHotspot.push(found);
-        //let initial = areaHouses[0];
+        //let initial = sliderSearchedHouses[0];
         //const startId = parseInt(initial?.id?.replace("hs", "")); // e.g. 18
 
         // Create a lookup map from existing hotspot IDs for quick checking
         // const existingIds = new Set(
-        //   areaHouses.map((house) => parseInt(house?.id?.replace("hs", "")))
+        //   sliderSearchedHouses.map((house) => parseInt(house?.id?.replace("hs", "")))
         // );
 
-        // console.log("start id", startId ,  "areaHouses", areaHouses);
+        // console.log("start id", startId ,  "sliderSearchedHouses", sliderSearchedHouses);
         // // Make a new array including only valid sequential hotspots starting from startId
         // const missingHotspots = [];
         // const notFound = [];
-        // for (let i = startId; i <= areaHouses.length; i++) {
+        // for (let i = startId; i <= sliderSearchedHouses.length; i++) {
         //   // change 100 to your max expected id
         //   if (existingIds.has(i)) {
-        //     const found = areaHouses.find(
+        //     const found = sliderSearchedHouses.find(
         //       (house) => parseInt(house?.id?.replace("hs", "")) === i
         //     );
         //     if (found) {
@@ -334,90 +350,126 @@
         //let idNumber = initial?.id?.replace("hs", ""); // "18" as a string
         //  let idInt = parseInt(idNumber);
 
-        let initial = areaHouses[0];
-        const startId = parseInt(initial?.id?.replace("hs", "")); // e.g., 18
+        if (sliderSearchedHouses) {
+          let initial = sliderSearchedHouses[0];
+          console.log("INITIAL", initial);
+          const startId = parseInt(initial?.id?.replace("hs", "")); // e.g., 18
 
-        // Create a lookup map for existing hotspot IDs
-        const existingIds = new Set(
-          areaHouses.map((house) => parseInt(house?.id?.replace("hs", "")))
-        );
+          // Create a lookup map for existing hotspot IDs
+          const existingIds = new Set(
+            sliderSearchedHouses.map((house) =>
+              parseInt(house?.id?.replace("hs", ""))
+            )
+          );
 
-        console.log("start id", startId, "areaHouses", areaHouses);
+          console.log("EXISTING IDS", existingIds);
+          // Find the maximum ID in sliderSearchedHouses to set loop bounds
+          const maxId = Math.max(...Array.from(existingIds));
 
-        // Find the maximum ID in areaHouses to set loop bounds
-        const maxId = Math.max(...Array.from(existingIds));
+          // Filter and keep only sequential hotspots starting from startId
+          const newHotspotArray = [];
+          const missingHotspots = [];
 
-        // Filter and keep only sequential hotspots starting from startId
-        const newHotspotArray = [];
-        const missingHotspots = [];
+          // console.log("sliderSearchedHouses == >>", sliderSearchedHouses , "start id ==>>>", startId, "maxId ==>>", maxId);
+          // for (let i = startId; i <= maxId; i++) {
 
-        for (let i = startId; i <= maxId; i++) {
-          const hsId = `hs${i}`;
-          const foundHouse = areaHouses.find((house) => house.id === hsId);
+          //   const hsId = `hs${i}`;
+          //   const foundHouse = sliderSearchedHouses.find((house) => house.id === hsId);
 
-          if (foundHouse) {
-            newHotspotArray.push(foundHouse.id);
-          } else {
-            missingHotspots.push(hsId);
+          //   if (foundHouse) {
+          //     newHotspotArray.push(foundHouse.id);
+          //   } else {
+          //     missingHotspots.push(hsId);
+          //   }
+          // }
+
+          // console.log("Filtered Hotspots (Sequential):", newHotspotArray);
+          // console.log("Missing Hotspots:", missingHotspots);
+
+          // console.log("new hotspot array ===", newHotspotArray);
+
+          let allowedHotspots = newHotspotArray;
+
+          // Get total number of hotspots
+          const hotspotCount = krpano.get("hotspot.count");
+
+          sliderSearchedHouses.forEach((data) => {
+            allowedHotspots.push(data.id);
+
+            //  const hotspotName = krpano.get(`hotspot[${data.id}].name`);
+
+            //  console.log("hotspotName", hotspotName);
+
+            // hotspotName  && krpano.call(`removehotspot(${hotspotName})`);
+          });
+
+
+
+
+          for (let i = 0; i < 30; i++) {
+            const hotspotName = krpano.get(`hotspot[${i}].name`);
+            // console.log("INSIDE", allowedHotspots[i])
+            // krpano.call(`removehotspot(${allowedHotspots[i]})`);
+
+            console.log("hotspotName", hotspotName);
+
+
+            //   If hotspot name is not in the allowed list, hide or remove it
+            if (!allowedHotspots.includes(hotspotName)) {
+              console.log("IF WORKING", hotspotName);
+              //Option 1: Just hide it
+              // krpano.set(`hotspot[${hotspotName}].visible`, false);
+
+              //Option 2: Remove it entirely
+              krpano.call(`removehotspot(${hotspotName})`);
+            }
           }
+
+          // // find minimum and maximum
+          // newHotspotArray.forEach((hotspotId) => {
+
+          //   krpano.set(`hotspot[${hotspotId}].visible`, false);
+          //   krpano.call(`set(hotspot[${hotspotId}].visible, false)`);
+          //   krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0)`);
+          //   krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
+          //   krpano.call(`set(hotspot[${hotspotId}].bordercolor, 0x0039FF14)`);
+          // });
+          // //newHotspotArray = [];
+
+          console.log("missingHotspots", missingHotspots);
+          //  0.1
+          // missingHotspots.forEach((hotspotId) => {
+          //   krpano.set(`hotspot[${hotspotId}].visible`, false);
+          //   krpano.call(`set(hotspot[${hotspotId}].visible, false)`);
+          //   krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0.00000)`);
+          //   krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
+          // });
+          // for (let i = 0; i < missingHotspots.length; i++) {
+          //     const hsName = krpano.get(`hotspot[${i}].name`);
+          //  console.log("NAME ============", hsName)
+          //                 krpano.set(`hotspot[${'hs34'}].visible`, false);
+
+          //  krpano.set(`hotspot[${'hs1'}]`.borderwidth, 0);
+          //  krpano.set(`hotspot[${'hs4'}]`.borderwidth, 0);
+          //  krpano.set(`hotspot[${'hs7'}]`.borderwidth, 0);
+          //krpano.set(`hs1.visible`, false);
+          //  krpano.set(`hs1.visible`, false);
         }
 
-        console.log("Filtered Hotspots (Sequential):", newHotspotArray);
-        console.log("Missing Hotspots:", missingHotspots);
+        allowedHotspots = [];
 
-        console.log("new hotspot array ===", newHotspotArray);
+        //  reDrawHotspots()
 
-        const allowedHotspots = newHotspotArray;
-
-        // Get total number of hotspots
-        const hotspotCount = krpano.get("hotspot.count");
-
-        for (let i = 0; i < hotspotCount; i++) {
-          const hotspotName = krpano.get(`hotspot[${i}].name`);
-
-          // If hotspot name is not in the allowed list, hide or remove it
-          if (!allowedHotspots.includes(hotspotName)) {
-            // Option 1: Just hide it
-            // krpano.set(`hotspot[${hotspotName}].visible`, false);
-
-            // Option 2: Remove it entirely
-            krpano.call(`removehotspot(${hotspotName})`);
-          }
-        }
-
-        // // find minimum and maximum
-        // newHotspotArray.forEach((hotspotId) => {
-
-        //   krpano.set(`hotspot[${hotspotId}].visible`, false);
-        //   krpano.call(`set(hotspot[${hotspotId}].visible, false)`);
-        //   krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0)`);
-        //   krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
-        //   krpano.call(`set(hotspot[${hotspotId}].bordercolor, 0x0039FF14)`);
-        // });
-        // //newHotspotArray = [];
-
-        console.log("missingHotspots", missingHotspots);
-        //  0.1
-        // missingHotspots.forEach((hotspotId) => {
-        //   krpano.set(`hotspot[${hotspotId}].visible`, false);
-        //   krpano.call(`set(hotspot[${hotspotId}].visible, false)`);
-        //   krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0.00000)`);
-        //   krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
-        // });
-        // for (let i = 0; i < missingHotspots.length; i++) {
-        //     const hsName = krpano.get(`hotspot[${i}].name`);
-        //  console.log("NAME ============", hsName)
-        //                 krpano.set(`hotspot[${'hs34'}].visible`, false);
-
-        //  krpano.set(`hotspot[${'hs1'}]`.borderwidth, 0);
-        //  krpano.set(`hotspot[${'hs4'}]`.borderwidth, 0);
-        //  krpano.set(`hotspot[${'hs7'}]`.borderwidth, 0);
-        //krpano.set(`hs1.visible`, false);
-        //  krpano.set(`hs1.visible`, false);
         displayHorizontalSlider();
         handleSearchFilters();
       }
 
+      const reDrawHotspots = () => {
+        const krpano = document.getElementById("krpanoSWFObject");
+        const arr = [building2houseData[5]];
+
+        dynamicZoneRendering(arr, "", krpano);
+      };
       // const createSceneCard = () => {
       //   const krpano = document.getElementById("krpanoSWFObject");
       //   if (!krpano || typeof krpano.get !== "function") return;
@@ -434,7 +486,10 @@
 
       let currentAppearingHotpsots = [];
 
-      let areaHouses;
+      const showBlinkingOfHouses = (hotspot) => {
+        console.log("showBlinkingOfHouses", hotspot);
+        blinkHotspot("hs25");
+      };
 
       //currentAppearingHotpsots
       const displayHorizontalSlider = () => {
@@ -442,31 +497,39 @@
         const sliderContainer = document.querySelector(".card-slider_1");
         sliderContainer.innerHTML = ""; // Clear previous content if needed
         //currentAppearingHotpsots
+        //      <h4> ${house.zone ? house.zone : ""}</h4>
 
-        console.log("AREA houses", areaHouses);
-        areaHouses.forEach((house, index) => {
+        sliderSearchedHouses.forEach((house, index) => {
           const cardHTML = `
-             
-      <div class="card_1">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv94OIn-sX93PJMNosZCYZzXFO8Qk1FB2x3A&s" height="100px" width="100px"  />
-        <div class="details_1">
-          <h4>Plot # ${house.plot_number}</h4>
-            <h4> ${house.zone ? house.zone : ""}</h4>
-          <div class="property-info_1">
-            <div class="info-item_1">
-              <span class="label_1"> Total Area</span>
-              <span class="value">${house.total_area} m²</span>
+  <div class="card-wrapper"> <div class="top-label-box"> SAR TBD</div>
+        <div class="card_1" onclick="showBlinkingOfHouses('${house.id}')">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv94OIn-sX93PJMNosZCYZzXFO8Qk1FB2x3A&s" height="100px" width="100px" />
+            <div class="details_1">
+                <h4>Plot ${house.plot_number}</h4>
+                 
+                <aside>
+                  <i class="fa fa-map-marker mr-2"></i>  
+                  
+                   <span class="zone">${house.zone}</span>, Al Marina
+               
+                  
+                  
+                  </aside>
+                <div class="property-info_1">
+                    <div class="info-item_1">
+                        <span class="label_1"> Total Area</span>
+                        <span class="value">${house.total_area} m²</span>
+                    </div>
+                    <div class="info-item_1">
+                        <span class="label_1">Availibility</span>
+                        <span class="value">Available</span>
+                    </div>
+                    <div class="info-item_1">
+                        </div>
+                </div>
             </div>
-            <div class="info-item_1">
-            <span class="label_1">Availibility</span>
-             <span class="value">Available</span>
-            </div>
-            <div class="info-item_1">
-            
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
     `;
           // <span class="label_1">Wt</span>
           // <span class="value_1">3</span>
@@ -623,10 +686,12 @@
       let breadcrumbTrail = [
         {
           scene: "scene_b-AL_MARINA_aerial",
-          title: "Al Marina",
-          icon: "home",
+          title: "",
+          icon: '<div><img src="/skin/icons/AlMarina_white.png" width="150px" height="100px" class="breadcrumb-icon" /></div>',
         },
       ];
+
+      //<img src="/skin/icons/AlMarina_white.png" width="100%" height="100%" class="breadcrumb-icon" />
 
       // Mapping scene to readable name (if needed)
       const sceneTitleMap = {
@@ -952,7 +1017,7 @@
                       parseInt(house.plot_number) ===
                       parseInt(zone.plot_number)
                   );
-                  console.log("matchedZone", matchedZone);
+
                   latestArrayZone5.push({
                     ...house,
                     total_area: house?.total_area,
@@ -1578,6 +1643,7 @@
           }
 
           if (index !== breadcrumbTrail.length - 1) {
+            console.log("IF WORKING");
             // Not the last one - make it a link
             const link = document.createElement("a");
             link.href = "#";
@@ -1590,6 +1656,8 @@
 
             wrapper.appendChild(link);
           } else {
+            console.log("ELSE WORKING");
+
             // Last one - current breadcrumb
             const current = document.createElement("span");
             current.className = "breadcrumb-current mui-breadcrumb-current";
@@ -1810,12 +1878,13 @@
           }
 
           krpano.call(
-            `set(hotspot[${hotspotName}].onclick, js(showHouseDetails('${response}', '${house.plot_number}', '${house.total_area}')));`
+            `set(hotspot[${hotspotName}].onclick, js(showHouseDetails('${""}', '${house.plot_number
+            }', '${house.total_area}')));`
           );
 
-          krpano.call(`
-         set(hotspot[${hotspotName}].onclick, "showtext(This is some info!, textstyle_info);");
-`);
+          //           krpano.call(`
+          //          set(hotspot[${hotspotName}].onclick, "showtext(This is some info!, textstyle_info);");
+          // `);
           // Add hotspot to Krpano dynamically
           krpano.call(`addhotspot(${hotspotName})`);
           // krpano.call(
@@ -1849,26 +1918,26 @@
             card.remove();
           }
 
-          const homeIcon = document.getElementById("homeIcon");
+          // const homeIcon = document.getElementById("homeIcon");
 
-          // const unit = getSpeificUnitsByArea()
+          // // const unit = getSpeificUnitsByArea()
 
-          if (currentScene === "scene_a-initial") {
-            // Hide home icon on initial screen
-            homeIcon.style.display = "none";
-          } else if (currentScene === "scene_b-al_marina_aerial") {
-            // Show home icon and go to initial scene
+          // if (currentScene === "scene_a-initial") {
+          //   // Hide home icon on initial screen
+          //   homeIcon.style.display = "none";
+          // } else if (currentScene === "scene_b-al_marina_aerial") {
+          //   // Show home icon and go to initial scene
 
-            // closeCard();
-            homeIcon.style.display = "block";
-            // krpano.call("loadscene(scene_a-initial, null, MERGE);");
-          } else {
-            // Show home icon and go to Al Marina
-            homeIcon.style.display = "block";
-            // krpano.call(
-            //   "loadscene(scene_b-AL_MARINA_aerial, null, MERGE);"
-            // );
-          }
+          //   // closeCard();
+          //   homeIcon.style.display = "block";
+          //   // krpano.call("loadscene(scene_a-initial, null, MERGE);");
+          // } else {
+          //   // Show home icon and go to Al Marina
+          //   homeIcon.style.display = "block";
+          //   // krpano.call(
+          //   //   "loadscene(scene_b-AL_MARINA_aerial, null, MERGE);"
+          //   // );
+          // }
 
           console.log("currentScene", currentScene);
 
@@ -1959,10 +2028,11 @@
       };
 
       const fetchAlMarinaData = async () => {
+        // const baseUrl ="http://localhost:5001/api/getAlMarinaData";
         const baseUrl =
           "https://erth-al-marina.zameengeomatics.com/api/getAlMarinaData";
 
-        //"http://localhost:5001/api/getAlMarinaData";
+        //
         return fetch(baseUrl)
           .then((res) => res.json())
           .then((data) => {
@@ -2268,37 +2338,37 @@
 
         const currentScene = krpano_obj.get("xml.scene");
 
-        document
-          .getElementById("homeIcon")
-          .addEventListener("click", function () {
-            const krpano_obj = document.getElementById("krpanoSWFObject");
-            const homeIcon = document.getElementById("homeIcon");
+        // document
+        //   .getElementById("homeIcon")
+        //   .addEventListener("click", function () {
+        //     const krpano_obj = document.getElementById("krpanoSWFObject");
+        //     const homeIcon = document.getElementById("homeIcon");
 
-            if (krpano_obj) {
-              breadcrumbTrail = [
-                {
-                  scene: "scene_b-AL_MARINA_aerial",
-                  title: "Al Marina",
-                  icon: "home",
-                },
-              ];
-              renderBreadcrumbs();
+        //     if (krpano_obj) {
+        //       breadcrumbTrail = [
+        //         {
+        //           scene: "scene_b-AL_MARINA_aerial",
+        //           title: "",
+        //           icon: '<img src="/skin/icons/AlMarina_white.png" width="100px" height="100px" class="breadcrumb-icon" />',
+        //         },
+        //       ];
+        //       renderBreadcrumbs();
 
-              if (currentScene === "scene_b-al_marina_aerial") {
-                // Show home icon and go to initial scene
+        //       if (currentScene === "scene_b-al_marina_aerial") {
+        //         // Show home icon and go to initial scene
 
-                krpano_obj.call("loadscene(scene_a-initial, null, MERGE);");
-              } else {
-                // Show home icon and go to Al Marina
+        //         krpano_obj.call("loadscene(scene_a-initial, null, MERGE);");
+        //       } else {
+        //         // Show home icon and go to Al Marina
 
-                krpano_obj.call(
-                  "loadscene(scene_b-AL_MARINA_aerial, null, MERGE);"
-                );
-              }
-            } else {
-              console.error("krpano instance not found or not ready.");
-            }
-          });
+        //         krpano_obj.call(
+        //           "loadscene(scene_b-AL_MARINA_aerial, null, MERGE);"
+        //         );
+        //       }
+        //     } else {
+        //       console.error("krpano instance not found or not ready.");
+        //     }
+        //   });
 
         const krpano = document.getElementById("krpanoSWFObject");
 

@@ -195,7 +195,10 @@
     padding: 10px;
     border-radius: 4px;
 }
-
+.logo_style{
+  width: 50%;
+  height: 50%;
+}
 .breadcrumb-wrapper {
     display: flex;       /* Horizontal Flexbox */
     align-items: center; /* Vertically center items */

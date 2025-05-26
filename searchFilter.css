@@ -110,7 +110,8 @@
 #toggleFilter:checked ~ .toggle-container {
     left: 280px; /* Moves the toggle button to the right of the open card (card width + offset) */
 
-    color: white;
+    color: rgb(126, 121, 121);
+  
 }
 
 /* The '▶'/'▼' arrow */
@@ -119,11 +120,14 @@
     transition: transform 0.3s ease-in-out;
     transform: rotate(0deg); 
     /* color: white; */
+
 }
 
 /* Rotate '▶' to '▼' when checkbox is checked */
 #toggleFilter:checked ~ .toggle-container #toggleArrow {
     transform: rotate(180deg);
+    color: rgb(104, 99, 99);
+    margin-top: 20px;
 }
 
 /* The container for the vertical line and its arrow - initially hidden for the closed state */
