@@ -121,6 +121,20 @@
 
             <div>
               <div class="mt-2">
+                <label class="form-label fw-semibold" for="availabilityDropdown">Availability</label>
+              </div>
+              <div class="mt-1 mb-3">
+                <select class="form-select" id="availabilityDropdown" name="availability"  style="width: 200px;">
+                  <option value="">Select Availability</option>
+                  <option value="Available">Available</option>
+                  <option value="Sold">Sold</option>
+                  <option value="Reserved">Reserved</option>
+                </select>
+              </div>
+            </div>
+            
+            <!-- <div>
+              <div class="mt-2">
                 <label class="form-label fw-semibold">Availability</label>
               </div>
               <div class="mt-1 mb-3" id="availabilityButtons">
@@ -134,7 +148,7 @@
                   Reserved
                 </button>
               </div>
-            </div>
+            </div> -->
 
             <div class="mb-3">
               <label for="totalArea" class="form-label">
@@ -501,7 +515,7 @@
         const sliderContainer = document.querySelector(".card-slider_1");
         sliderContainer.innerHTML = ""; // Clear previous content if needed
         //currentAppearingHotpsots
-
+//      <h4> ${house.zone ? house.zone : ""}</h4>
      
         sliderSearchedHouses.forEach((house, index) => {
           const cardHTML = `
@@ -509,8 +523,8 @@
       <div class="card_1" onclick="showBlinkingOfHouses('${house.id}')">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv94OIn-sX93PJMNosZCYZzXFO8Qk1FB2x3A&s" height="100px" width="100px"  />
         <div class="details">
-          <h4>Plot # ${house.plot_number}</h4>
-            <h4> ${house.zone ? house.zone : ""}</h4>
+          <h4 ">Plot  ${house.plot_number}</h4>
+       
           <div class="property-info_1">
             <div class="info-item_1">
               <span class="label_1"> Total Area</span>
@@ -682,10 +696,12 @@
       let breadcrumbTrail = [
         {
           scene: "scene_b-AL_MARINA_aerial",
-          title: "Al Marina",
-          icon: "home",
+          title: "",
+          icon: '<div><img src="/skin/icons/AlMarina_white.png" width="150px" height="100px" class="breadcrumb-icon" /></div>',
         },
       ];
+
+      //<img src="/skin/icons/AlMarina_white.png" width="100%" height="100%" class="breadcrumb-icon" />
 
       // Mapping scene to readable name (if needed)
       const sceneTitleMap = {
@@ -1637,6 +1653,7 @@
           }
 
           if (index !== breadcrumbTrail.length - 1) {
+            console.log("IF WORKING")
             // Not the last one - make it a link
             const link = document.createElement("a");
             link.href = "#";
@@ -1645,10 +1662,11 @@
             link.setAttribute("data-index", index); // Save index for back navigation
 
             link.innerHTML = `<i class="material-icons mui-breadcrumb-icon">${!index ? crumb.icon : ""
-              }</i> ${crumb.title}`;
+            }</i> ${crumb.title}`;
 
             wrapper.appendChild(link);
           } else {
+            console.log("ELSE WORKING")
             // Last one - current breadcrumb
             const current = document.createElement("span");
             current.className = "breadcrumb-current mui-breadcrumb-current";
@@ -2018,8 +2036,8 @@
       };
 
       const fetchAlMarinaData = async () => {
-        const baseUrl ="http://localhost:5001/api/getAlMarinaData";
-       //   "https://erth-al-marina.zameengeomatics.com/api/getAlMarinaData";
+       // const baseUrl ="http://localhost:5001/api/getAlMarinaData";
+       const baseUrl =  "https://erth-al-marina.zameengeomatics.com/api/getAlMarinaData";
 
         //
         return fetch(baseUrl)
@@ -2337,8 +2355,8 @@
               breadcrumbTrail = [
                 {
                   scene: "scene_b-AL_MARINA_aerial",
-                  title: "Al Marina",
-                  icon: "home",
+                  title: "",
+                  icon: '<img src="/skin/icons/AlMarina_white.png" width="100px" height="100px" class="breadcrumb-icon" />',
                 },
               ];
               renderBreadcrumbs();
