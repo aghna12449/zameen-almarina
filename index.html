@@ -336,8 +336,49 @@
         let newHotspotArray = [];
        // let sliderSearchedHouses;
 
+
+       const totalLength = (currentScene) =>{
+       
+        
+            if (currentScene === "scene_c-zone_1") {
+              return zone1houseData.length;
+
+          
+            } else if (currentScene === "scene_d-zone_2") {
+              return zone2houseData.length;
+
+            } else if (currentScene === "scene_e-zone_3") {
+              return zone3houseData.length;
+
+            } else if (currentScene === "scene_l_al_marina_mall_day_aerial") {
+              return 0; // No houses in this scene
+
+            } else if (currentScene === "scene_f-zone_4") {
+              return zone7houseData.length;
+
+            } else if (currentScene === "scene_g-zone_5") {
+              return zone8houseData.length;
+
+            } else if (currentScene === "scene_h-building_1") {
+              return building1houseData.length;
+
+            } else if (currentScene === "scene_i-building_2") {
+              return building2houseData.length;
+
+            } else if (currentScene === "scene_k_zone_9") {
+              return zone9houseData.length;
+        
+            }else{
+              return 0; // Default to 0 if scene is unknown
+            }
+
+            
+             
+      }
+
         function updateAreaAndSearch(value) {
           const krpano = document.getElementById("krpanoSWFObject");
+           const currentScene = krpano.get("xml.scene");
           document.getElementById("areaValue").innerText = `${value}`;
 
           const totalHotspots = krpano.get("hotspot.count");
@@ -399,9 +440,11 @@
               // hotspotName  && krpano.call(`removehotspot(${hotspotName})`);
             });
 
+            
+            const zoneTotalLength = totalLength(currentScene)
 
             // to be fixed
-            for (let i = 0; i < latestArrayZone5.length; i++) {
+            for (let i = 0; i < zoneTotalLength; i++) {
               const hotspotName = krpano.get(`hotspot[${i}].name`);
               // console.log("INSIDE", allowedHotspots[i])
               // krpano.call(`removehotspot(${allowedHotspots[i]})`);
@@ -455,7 +498,7 @@
 
         const showBlinkingOfHouses = (hotspot) => {
           console.log("showBlinkingOfHouses", hotspot);
-          blinkHotspot("hs25");
+          //blinkHotspot("hs25");
          // blinkIndividualHotspot(hotspot, true);
         };
 
@@ -1013,7 +1056,8 @@
           const krpano = document.getElementById("krpanoSWFObject");
           // const area = document.getElementById('totalArea').value;
           // const block = document.getElementById('blockNumber').value;
-
+  // 👉 Stop previous blinking
+  blinkIndividualHotspot('', false, true);
           if (area) {
             // Stop previous blinking first
             stopAllBlinkingHotspots();
@@ -1092,7 +1136,9 @@
 
           const hotspotName = `${matchedHouse?.id}`;
           if (matchedHouse) {
-            blinkHotspot(hotspotName);
+            // blinkHotspot(hotspotName);
+
+                blinkIndividualHotspot(hotspotName, true);
 
             let center = matchedHouse.coordinates?.[0]; // Default to first
             if (
@@ -1126,7 +1172,8 @@
               );
             }
 
-            krpano.call(`lookat(${center?.ath}, ${center?.atv}, 20)`); // 70 = moderate zoom
+             krpano.call(`lookto(${center?.ath}, ${center?.atv}, 90, smooth());`);
+            
           } else {
             if (plot) {
               //document.getElementById("notFoundModal").style.display = "block";
@@ -1135,14 +1182,7 @@
             closeCard(); // Close any existing card
 
             // Stop blinking and reset color if a previous hotspot was blinking
-            if (currentBlinkInterval && currentBlinkingHotspot) {
-              clearInterval(currentBlinkInterval);
-              krpano.call(
-                `set(hotspot[${hotspotName}].fillcolor,  "0x00FF00")`
-              );
-              currentBlinkInterval = null;
-              currentBlinkingHotspot = null;
-            }
+           
           }
 
           // You can replace alert with your own search logic
@@ -1691,6 +1731,7 @@
           return "0x00FF00";
         }
         const dynamicZoneRendering = (zoneData, response, krpano) => {
+          console.log(  "zoneData =>>>", zoneData);
           zoneData.forEach((house) => {
             // Create a unique name for each house hotspot
             const hotspotName = `hs_${house.id}`;
