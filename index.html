@@ -249,7 +249,7 @@
         </div>
       </div>
 
-      <div class="slider-container_1">
+      <div id="searchSliderFilters" class="slider-container_1">
         <div class="card-slider_1"></div>
       </div>
 
@@ -469,7 +469,7 @@
 
           sliderSearchedHouses.forEach((house, index) => {
             const cardHTML = `
-  <div class="card-wrapper"> <div class="top-label-box"> SAR TBD</div>
+  <div class="card-wrapper"> <div class="top-label-box"> Price: TBD</div>
         <div class="card_1" onclick="showBlinkingOfHouses('${house.id}')">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv94OIn-sX93PJMNosZCYZzXFO8Qk1FB2x3A&s" height="100px" width="100px" />
             <div class="details_1">
@@ -561,6 +561,12 @@
 
         function updateSearchVisibility() {
           const searchBar = document.getElementById("searchBarContainer");
+
+          const searchSliderFilters = document.getElementById("searchSliderFilters");
+          console.log("updateSearchVisibility");
+         sliderSearchedHouses = []
+          clearSliderRange()
+          
           const sceneCardWrapper =
             document.getElementById("scene-card-wrapper");
 
@@ -574,8 +580,10 @@
             currentScene === "scene_b-al_marina_aerial"
           ) {
             searchBar.style.display = "none";
+            searchSliderFilters.style.display = "none";
           } else {
             searchBar.style.display = "block";
+            searchSliderFilters.style.display = "block";
           }
         }
 
@@ -608,6 +616,7 @@
         let currentBlinkInterval = null;
         let currentBlinkingHotspot = null;
 
+        //sliderSearchedHouses
         function onSceneChange(currentScene, Unit) {
           const unitData = localStorage.getItem("response");
           const parsedData = JSON.parse(unitData);
@@ -751,9 +760,10 @@
           slider.min = 100;
           slider.max = 20000;
           // slider.value = 0;
-
-          document.getElementById("areaValue").textContent = "-";
-          document.getElementById("areaMax").textContent = "-";
+          sliderSearchedHouses = [];
+          displayHorizontalSlider()
+          //document.getElementById("areaValue").textContent = "-";
+          //document.getElementById("areaMax").textContent = "-";
         }
 
         let latestArrayZone1 = [],
@@ -796,7 +806,7 @@
             console.log("currentScene", currentScene);
             switch (currentScene) {
               case "scene_c-zone_1":
-                //clearSliderRange();
+      
                 updateSliderRange("1");
                 const updatedZone1houseData = zoneOneFilteredData().map(
                   (house) => {
@@ -820,7 +830,7 @@
                 break;
 
               case "scene_d-zone_2":
-                // clearSliderRange();
+             
                 updateSliderRange("2");
                 // const zone2 = parsedData.data.filter(
                 //   (house) => house.zone === "Zone 2"
@@ -845,6 +855,7 @@
                 );
                 break;
               case "scene_e-zone_3":
+  
                 updateSliderRange("3");
                 const updatedZone3houseData = zoneThreeFilteredData().map(
                   (house) => {
@@ -868,6 +879,7 @@
 
               case "scene_i-building_2":
                 console.log("building 2");
+         
                 updateSliderRange("5");
 
                 console.log(
@@ -902,6 +914,7 @@
                 break;
               case "scene_h-building_1":
                 console.log("building 1");
+               
                 updateSliderRange("6");
 
                 const updatedbuilding1houseData = zoneSixFilteredData().map(
@@ -2006,8 +2019,8 @@
  
     <div class="details">
       <div><span>Area</span><br>${unitDetails.total_area}m²</div>
-      <div><span>Plot</span><br>${unitDetails.plot_number || "N/A"}</div>
-      <div><span>Block</span><br>${unitDetails.block_number || "N/A"}</div>
+      <div><span>Plot</span><br>${unitDetails.plot_number || "-"}</div>
+      <div><span>Block</span><br>${unitDetails.block_number || "-"}</div>
     </div>
    
  
@@ -2017,19 +2030,19 @@
   <div class="details-row_extra">
     <div class="detail-item">
       <p class="detail-label_1">South</p>
-      <p class="detail-value">${unitDetails.south || "N/A"}</p>
+      <p class="detail-value">${unitDetails.south || "-"}</p>
     </div>
     <div class="detail-item">
       <p class="detail-label_1">North</p>
-      <p class="detail-value">${unitDetails.north || "N/A"}</p>
+      <p class="detail-value">${unitDetails.north || "-"}</p>
     </div>
     <div class="detail-item">
       <p class="detail-label_1">East</p>
-      <p class="detail-value">${unitDetails.east || "N/A"}</p>
+      <p class="detail-value">${unitDetails.east || "-"}</p>
     </div>
     <div class="detail-item">
       <p class="detail-label_1">West</p>
-      <p class="detail-value">${unitDetails.west || "N/A"}</p>
+      <p class="detail-value">${unitDetails.west || "-"}</p>
     </div>
   </div>
 </div>
