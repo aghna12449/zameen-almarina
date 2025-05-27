@@ -1864,10 +1864,9 @@
   
              
                 set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFF00);
-      
-  set(hotspot[${hotspotName}].fillalpha, 0);
-  set(hotspot[${hotspotName}].bordercolor, 0x39FF14);
-  set(hotspot[${hotspotName}].borderwidth, 1);
+                set(hotspot[${hotspotName}].fillalpha, 0);
+                set(hotspot[${hotspotName}].bordercolor, 0x39FF14);
+                set(hotspot[${hotspotName}].borderwidth, 1);
 `);
           if (cords) {
             // Set the onclick action to show a Bootstrap tooltip
@@ -1878,8 +1877,8 @@
           }
 
           krpano.call(
-            `set(hotspot[${hotspotName}].onclick, js(showHouseDetails('${""}', '${house.plot_number
-            }', '${house.total_area}')));`
+            `set(hotspot[${hotspotName}].onclick, js(handleHotspotClick('${""}', '${house.plot_number
+            }', '${cords.ath}', '${cords.atv}')));`
           );
 
           //           krpano.call(`
@@ -1901,6 +1900,55 @@
           });
         });
       };
+
+      // Add this new function to your existing JavaScript code (e.g., in the same script block as flyToHouse and showHouseDetails)
+      function handleHotspotClick(param1, plotNumber, ath, atv) {
+        
+        // First, call your showHouseDetails function
+        showHouseDetails("", plotNumber, totalArea);
+
+        // Then, call your flyToHouse function
+        flyToHouse(ath, atv); 
+      }
+
+      function flyToHouse(ath, atv) {
+        const krpano = document.getElementById("krpanoSWFObject");
+
+        // It's good practice to ensure ath and atv are numbers if krpano expects them as such
+        const numericAth = parseFloat(ath);
+        const numericAtv = parseFloat(atv);
+
+        
+
+        if (isNaN(numericAth) || isNaN(numericAtv)) {
+          console.error(
+            "Invalid ATH or ATV provided to flyToHouse:",
+            ath,
+            atv
+          );
+          return;
+        }
+
+        // Assuming a default FOV and animation speed
+        const fov = 90; // Or whatever default FOV you need
+        const animationSpeed = 50; // Smoothness value
+
+        // Use krpano.call to execute the lookto command
+        if (krpano) {
+          // Always check if krpano object exists
+
+          krpano.call(`lookto(${numericAth}, ${numericAtv}, 90, smooth());`);
+
+          console.log(
+            `Attempting to fly to ATH: ${numericAth}, ATV: ${numericAtv}`
+          );
+        } else {
+          console.error(
+            "krpano object not found. Cannot execute flyToHouse."
+          );
+        }
+      }
+
 
       const addLandHotspotsToKrpano = async () => {
         const krpano = document.getElementById("krpanoSWFObject");

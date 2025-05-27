@@ -1,7 +1,7 @@
 .slider-container_1 {
   position: fixed;
   bottom: 0; /* Position at the bottom of the viewport */
- 
+
   width: 100%;
   background: transparent;
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1); /* Clearer shadow from the bottom */
@@ -10,10 +10,6 @@
   box-sizing: border-box; /* Include padding in width */
 }
 
-.details_heading{
-  margin-left: '10px';
-  margin-top: '5px';
-}
 .card-slider_1 {
   display: flex;
   gap: 10px; /* Adjusted gap to match reference image more closely */
@@ -31,7 +27,7 @@
 .card_1 {
   position: relative;
   min-width: 230px; /* Wider card to match the reference */
-  height :10rem;
+  height: 10rem;
   background-color: #fff;
   border-radius: 2px; /* Subtle border-radius */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Clear shadow for cards */
@@ -42,7 +38,6 @@
   flex-direction: row;
   overflow: hidden;
   justify-content: space-between;
-
 }
 
 .card_1 img {
@@ -66,11 +61,11 @@
   z-index: 2; 
 } */
 
-  /* padding: 10px; 
+/* padding: 10px; 
   display: flex;
   flex-direction: column;
   /* flex-grow: 1; */
-  /* justify-content: flex-start;  
+/* justify-content: flex-start;  
 
   color: black;
   white-space: normal;
@@ -79,7 +74,6 @@
   background-color: transparent; */
 
 .card_1 .details_1 {
-
   width: 15rem;
 }
 
@@ -98,17 +92,13 @@
 
   margin-top: 20px;
   margin-left: 16px;
-
-  
 }
 
 .card_1 aside {
-     opacity: .5;
-    font-size: .75rem;
-    margin-left:  15px;
-    margin-bottom: 15px;
-
-  
+  opacity: 0.5;
+  font-size: 0.75rem;
+  margin-left: 15px;
+  margin-bottom: 15px;
 }
 
 .card_1 aside .zone {
@@ -145,8 +135,8 @@
   padding: 0 10px; /* Horizontal padding for spacing between items (adjust as needed) */
   border-right: none !important; /* Ensure no vertical border */
   box-sizing: border-box; /* Include padding in item width */
-  opacity: .5;
-  font-size: .85rem;
+  opacity: 0.5;
+  font-size: 0.85rem;
 }
 
 /* Ensure no border for the last info item as well */
@@ -162,17 +152,14 @@
   color: #000;
   margin-bottom: 0px; /* No margin below label for tight fit */
   font-weight: bolder !important;
- 
-
 }
 
 .card_1 .info-item_1 .value_1 {
-  
   color: white;
 
-     opacity: .5;
-    font-size: .75rem;
-     font-weight: 700;
+  opacity: 0.5;
+  font-size: 0.75rem;
+  font-weight: 700;
 }
 
 /* Styles for customizing the scrollbar (Webkit browsers) */
@@ -196,20 +183,19 @@
   background: rgba(0, 0, 0, 0.5); /* Darker on hover */
 }
 
-
 .top-label-box {
   position: relative;
-             /* Adjust how high it sits above the div */           /* Start from center of parent */
-  transform: translateX(-50%);/* Shift back by half width to center */
+  /* Adjust how high it sits above the div */ /* Start from center of parent */
+  transform: translateX(-50%); /* Shift back by half width to center */
   background-color: #a65c43; /* Blue background */
-  color: #fff;                /* White text */
-  padding: 4px 12px;          /* Size of the box */
+  color: #fff; /* White text */
+  padding: 4px 12px; /* Size of the box */
   border-radius: 4px;
   font-size: 12px;
-  z-index: 1000;                 /* Make sure it's above */
+  z-index: 1000; /* Make sure it's above */
 
   top: 15px;
   left: 50%;
-    width: fit-content;
-    margin-left: 10px;
+  width: fit-content;
+  margin-left: 10px;
 }
