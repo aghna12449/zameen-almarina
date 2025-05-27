@@ -377,6 +377,11 @@
       }
 
         function updateAreaAndSearch(value) {
+         const plotInput = document.getElementById("plotNumber");
+  if (plotInput) {
+    plotInput.value = "";
+  }
+
           const krpano = document.getElementById("krpanoSWFObject");
            const currentScene = krpano.get("xml.scene");
           document.getElementById("areaValue").innerText = `${value}`;
@@ -388,6 +393,7 @@
           
 
           if (sliderSearchedHouses) {
+         
             let initial = sliderSearchedHouses[0];
             console.log("INITIAL", initial);
             const startId = parseInt(initial?.id?.replace("hs", "")); // e.g., 18
