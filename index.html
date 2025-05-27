@@ -1,139 +1,177 @@
 ﻿<!DOCTYPE html>
 <html>
+  <head>
+    <title>Al Marina</title>
 
-<head>
-  <title>Al Marina</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
 
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-  <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <!-- adding style sheet -->
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="initalCard.css" />
+    <link rel="stylesheet" href="slider.css" />
+    <link rel="stylesheet" href="searchFilter.css" />
+    <link rel="stylesheet" href="houseCard.css" />
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-  <!-- adding style sheet -->
-  <link rel="stylesheet" href="index.css" />
-  <link rel="stylesheet" href="initalCard.css" />
-  <link rel="stylesheet" href="slider.css" />
-  <link rel="stylesheet" href="searchFilter.css" />
+    <!-- Add Material-UI (MUI) CSS -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@mui/material@5.0.0-beta.4/dist/material-ui.min.css"
+    />
 
-  <!-- Add Material-UI (MUI) CSS -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mui/material@5.0.0-beta.4/dist/material-ui.min.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
 
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <style>
+      .icon-container {
+        position: fixed;
+        /* Fix the position relative to the viewport */
+        bottom: 20px;
+        /* Distance from the bottom of the screen */
+        left: 20px;
+        /* Distance from the left of the screen */
+        font-size: 40px;
+        /* Icon size */
+        z-index: 9999;
+        /* Make sure it's above other content */
+        cursor: pointer;
+      }
 
-  <style>
-    .icon-container {
-      position: fixed;
-      /* Fix the position relative to the viewport */
-      bottom: 20px;
-      /* Distance from the bottom of the screen */
-      left: 20px;
-      /* Distance from the left of the screen */
-      font-size: 40px;
-      /* Icon size */
-      z-index: 9999;
-      /* Make sure it's above other content */
-      cursor: pointer;
-    }
+      .material-icons {
+        font-size: 54px;
+        /* Customize size */
+        color: white;
+        /* Customize color */
+      }
 
-    .material-icons {
-      font-size: 54px;
-      /* Customize size */
-      color: white;
-      /* Customize color */
-    }
+      html {
+        height: 100%;
+      }
 
-    html {
-      height: 100%;
-    }
+      body {
+        height: 100%;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        /* color: #ffffff; */
+        background-color: #000000;
+      }
+    </style>
+  </head>
 
-    body {
-      height: 100%;
-      overflow: hidden;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 16px;
-      /* color: #ffffff; */
-      background-color: #000000;
-    }
-  </style>
-</head>
+  <body>
+    <script src="tour.js"></script>
 
-<body>
-  <script src="tour.js"></script>
+    <script src="zone1.js"></script>
+    <script src="zone2.js"></script>
+    <script src="zone3.js"></script>
+    <script src="zone4_mall.js"></script>
+    <script src="zone5_building2.js"></script>
+    <script src="zone6_building1.js"></script>
+    <script src="zone7.js"></script>
+    <script src="zone8.js"></script>
 
-  <script src="zone1.js"></script>
-  <script src="zone2.js"></script>
-  <script src="zone3.js"></script>
-  <script src="zone4_mall.js"></script>
-  <script src="zone5_building2.js"></script>
-  <script src="zone6_building1.js"></script>
-  <script src="zone7.js"></script>
-  <script src="zone8.js"></script>
+    <script src="zone9.js"></script>
 
-  <script src="zone9.js"></script>
+    <div id="pano" style="width: 100%; height: 100%">
+      <noscript>
+        <table style="width: 100%; height: 100%">
+          <tr style="vertical-align: middle">
+            <td>
+              <div style="text-align: center">
+                ERROR:<br /><br />Javascript not activated<br /><br />
+              </div>
+            </td>
+          </tr>
+        </table>
+      </noscript>
 
-  <div id="pano" style="width: 100%; height: 100%">
-    <noscript>
-      <table style="width: 100%; height: 100%">
-        <tr style="vertical-align: middle">
-          <td>
-            <div style="text-align: center">
-              ERROR:<br /><br />Javascript not activated<br /><br />
-            </div>
-          </td>
-        </tr>
-      </table>
-    </noscript>
-
-    <!-- <div class="icon-container" id="homeIcon">
+      <!-- <div class="icon-container" id="homeIcon">
       <span id="arrow-icon" class="material-icons">arrow_circle_left</span>
     </div> -->
 
-    <div id="searchBarContainer">
-      <input type="checkbox" id="toggleFilter" class="hidden-checkbox" />
+      <div id="searchBarContainer">
+        <input type="checkbox" id="toggleFilter" class="hidden-checkbox" />
 
-      <label for="toggleFilter" class="toggle-container" onclick="toggleSearchFilter()" id="toggleFilterButton">
-        <span id="toggleArrow_1">▶</span>
-        <div class="vertical-connector"></div>
-      </label>
+        <label
+          for="toggleFilter"
+          class="toggle-container"
+          onclick="toggleSearchFilter()"
+          id="toggleFilterButton"
+        >
+          <span id="toggleArrow_1">▶</span>
+          <div class="vertical-connector"></div>
+        </label>
 
-      <div class="container mt-5">
-        <div class="card shadow rounded-4 compact-search-card" id="searchFilterCard">
-          <div class="card-body">
-            <h5 class="card-title mb-4 fw-semibold">Search Filter</h5>
+        <div class="container mt-5">
+          <div
+            class="card shadow rounded-4 compact-search-card"
+            id="searchFilterCard"
+          >
+            <div class="card-body">
+              <h5 class="card-title mb-4 fw-semibold">Search Filter</h5>
 
-            <div class="mb-3">
-              <div class="input-group">
-                <span class="input-group-text">
-                  <i class="fas fa-search"></i>
-                </span>
-                <input type="text" class="form-control" id="plotNumber" placeholder="Search by Plot Number" />
+              <div class="mb-3">
+                <div class="input-group">
+                  <span class="input-group-text">
+                    <i class="fas fa-search"></i>
+                  </span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="plotNumber"
+                    placeholder="Search by Plot Number"
+                  />
+                </div>
               </div>
-            </div>
 
-            <div>
-              <div class="mt-2">
-                <label class="form-label fw-semibold" for="availabilityDropdown">Availability</label>
+              <div>
+                <div class="mt-2">
+                  <label
+                    class="form-label fw-semibold"
+                    for="availabilityDropdown"
+                    >Availability</label
+                  >
+                </div>
+                <div class="mt-1 mb-3">
+                  <select
+                    class="form-select"
+                    id="availabilityDropdown"
+                    name="availability"
+                  >
+                    <option value="">Select Availability</option>
+                    <option value="Available">Available</option>
+                    <option value="Sold">Sold</option>
+                    <option value="Reserved">Reserved</option>
+                  </select>
+                </div>
               </div>
-              <div class="mt-1 mb-3">
-                <select class="form-select" id="availabilityDropdown" name="availability">
-                  <option value="">Select Availability</option>
-                  <option value="Available">Available</option>
-                  <option value="Sold">Sold</option>
-                  <option value="Reserved">Reserved</option>
-                </select>
-              </div>
-            </div>
 
-            <!-- <div>
+              <!-- <div>
               <div class="mt-2">
                 <label class="form-label fw-semibold">Availability</label>
               </div>
@@ -150,357 +188,374 @@
               </div>
             </div> -->
 
-            <div class="mb-3">
-              <label for="totalArea" class="form-label">
-                <label class="form-label fw-semibold"> Total Area: </label>
-                <span id="areaValue">100</span> to
-                <span id="areaMax">20000</span> sq m
-              </label>
-              <input type="range" class="form-range" min="100" max="20000" step="50" id="totalArea" value="100"
-                oninput="updateAreaAndSearch(this.value)" />
-            </div>
-
-            <button class="btn btn-primary w-100" onclick="handleSearchFilters()">
-              Search
-            </button>
-
-            <div class="mt-3 d-flex justify-content-center my-3">
-              <button class="btn btn-link p-0 ml-5 text-decoration-none" type="button" onclick="resetFilters()">
-                <i class="fas fa-sync-alt me-2"></i> Reset Filters
-              </button>
-            </div>
-
-            <div id="moreOptions" style="display: none">
-              <div class="mt-2">
-                <label class="form-label fw-semibold">Availability</label>
+              <div class="mb-3">
+                <label for="totalArea" class="form-label">
+                  <label class="form-label fw-semibold"> Total Area: </label>
+                  <span id="areaValue">100</span> to
+                  <span id="areaMax">20000</span> sq m
+                </label>
+                <input
+                  type="range"
+                  class="form-range"
+                  min="100"
+                  max="20000"
+                  step="50"
+                  id="totalArea"
+                  value="100"
+                  oninput="updateAreaAndSearch(this.value)"
+                />
               </div>
-              <div class="mt-1 mb-3" id="availabilityButtons">
-                <button class="btn btn-outline-primary me-2" data-value="Available">
-                  Available
+
+              <button
+                class="btn btn-primary w-100"
+                onclick="handleSearchFilters()"
+              >
+                Search
+              </button>
+
+              <div class="mt-3 d-flex justify-content-center my-3">
+                <button
+                  class="btn btn-link p-0 ml-5 text-decoration-none"
+                  type="button"
+                  onclick="resetFilters()"
+                >
+                  <i class="fas fa-sync-alt me-2"></i> Reset Filters
                 </button>
-                <button class="btn btn-outline-success me-2" data-value="Sold">
-                  Sold
-                </button>
-                <button class="btn btn-outline-warning" data-value="Reserved">
-                  Reserved
-                </button>
+              </div>
+
+              <div id="moreOptions" style="display: none">
+                <div class="mt-2">
+                  <label class="form-label fw-semibold">Availability</label>
+                </div>
+                <div class="mt-1 mb-3" id="availabilityButtons">
+                  <button
+                    class="btn btn-outline-primary me-2"
+                    data-value="Available"
+                  >
+                    Available
+                  </button>
+                  <button
+                    class="btn btn-outline-success me-2"
+                    data-value="Sold"
+                  >
+                    Sold
+                  </button>
+                  <button class="btn btn-outline-warning" data-value="Reserved">
+                    Reserved
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Modal -->
-    <div id="notFoundModal" class="modal-overlay">
-      <div class="modal-box">
-        <h2>Plot Not Found In This Zone</h2>
-        <p>We couldn’t find any matching results.</p>
-        <button onclick="closeModal()">Close</button>
+      <!-- Modal -->
+      <div id="notFoundModal" class="modal-overlay">
+        <div class="modal-box">
+          <h2>Plot Not Found In This Zone</h2>
+          <p>We couldn’t find any matching results.</p>
+          <button onclick="closeModal()">Close</button>
+        </div>
       </div>
-    </div>
 
-    <button id="toggle-button" onclick="toggleHotspotColor()">
-      <span id="toggle-icon" class="material-icons">toggle_off</span>
-    </button>
+      <button id="toggle-button" onclick="toggleHotspotColor()">
+        <span id="toggle-icon" class="material-icons">toggle_off</span>
+      </button>
 
-    <button id="zoomOutBtn">-</button>
-    <button id="zoomInBtn">+</button>
-    <button id="fullScreenBtn" title="Toggle Fullscreen">⛶</button>
+      <button id="zoomOutBtn">-</button>
+      <button id="zoomInBtn">+</button>
+      <button id="fullScreenBtn" title="Toggle Fullscreen">⛶</button>
 
-    <div class="time-toggle" onclick="toggleTimeView(this)">
-      <div class="toggle-option now active">
-        <span class="material-icons">access_time</span> Now
+      <div class="time-toggle" onclick="toggleTimeView(this)">
+        <div class="toggle-option now active">
+          <span class="material-icons">access_time</span> Now
+        </div>
+        <div class="toggle-option future">
+          <span class="material-icons">event</span> Future
+        </div>
       </div>
-      <div class="toggle-option future">
-        <span class="material-icons">event</span> Future
+
+      <div id="custom-breadcrumbs" class="mui-breadcrumb-root">
+        <div class="breadcrumb-wrapper" id="breadcrumb-wrapper">
+          <!-- Dynamic breadcrumbs addition -->
+        </div>
       </div>
-    </div>
 
-    <div id="custom-breadcrumbs" class="mui-breadcrumb-root">
-      <div class="breadcrumb-wrapper" id="breadcrumb-wrapper">
-        <!-- Dynamic breadcrumbs addition -->
+      <div class="slider-container_1">
+        <div class="card-slider_1"></div>
       </div>
-    </div>
 
-    <div class="slider-container_1">
-      <div class="card-slider_1"></div>
-    </div>
-
-    <script>
-      embedpano({
-        xml: "tour.xml",
-        target: "pano",
-        html5: "only",
-        mobilescale: 1.0,
-        passQueryParameters: "startscene,startlookat",
-      });
-    </script>
-
-    <script>
-      document
-        .querySelectorAll("#availabilityButtons button")
-        .forEach((button) => {
-          button.addEventListener("click", function () {
-            const selectedValue = this.getAttribute("data-value");
-
-            // Example: Store in a variable or send to server
-            // availabilitySelected = selectedValue;
-          });
+      <script>
+        embedpano({
+          xml: "tour.xml",
+          target: "pano",
+          html5: "only",
+          mobilescale: 1.0,
+          passQueryParameters: "startscene,startlookat",
         });
-      //var area = 500; // you can change this value dynamically later
-      //document.getElementById("areaValue").textContent = `${area} sq m`;
+      </script>
 
-      function resetFilters() {
-        // Reset the total area slider
-        const slider = document.getElementById("totalArea");
-        const plot = document.getElementById("totalArea");
-        slider.min = "100";
-        slider.value = "100"; // or whatever your default value is
-        plot.value = "";
+      <script>
+        document
+          .querySelectorAll("#availabilityButtons button")
+          .forEach((button) => {
+            button.addEventListener("click", function () {
+              const selectedValue = this.getAttribute("data-value");
 
-        document.getElementById("areaValue").textContent = "100";
-        document.getElementById("areaMax").textContent = "20000";
+              // Example: Store in a variable or send to server
+              // availabilitySelected = selectedValue;
+            });
+          });
+        //var area = 500; // you can change this value dynamically later
+        //document.getElementById("areaValue").textContent = `${area} sq m`;
 
-        // document.getElementById("areaValue").innerText = slider.value;
+        function resetFilters() {
+          // Reset the total area slider
+          const slider = document.getElementById("totalArea");
+          const plot = document.getElementById("totalArea");
+          slider.min = "100";
+          slider.value = "100"; // or whatever your default value is
+          plot.value = "";
 
-        // Clear other filters here if you have them
+          document.getElementById("areaValue").textContent = "100";
+          document.getElementById("areaMax").textContent = "20000";
 
-        // Call search again with reset values
-        //handleSearchFilters();
-        stopAllBlinkingHotspots();
-        blinkHotspot();
-      }
+          // document.getElementById("areaValue").innerText = slider.value;
 
-      const arialView = () => {
-        const krpano = document.getElementById("krpanoSWFObject");
-        if (krpano) {
-          krpano.call(
-            "loadscene(scene_b-AL_MARINA_aerial, null, MERGE, BLEND(1));"
-          );
+          // Clear other filters here if you have them
+
+          // Call search again with reset values
+          //handleSearchFilters();
+          stopAllBlinkingHotspots();
+          blinkHotspot();
         }
 
-        const sceneCardWrapper =
-          document.getElementById("scene-card-wrapper");
-        if (sceneCardWrapper) {
-          sceneCardWrapper.style.display = "none";
+        const arialView = () => {
+          const krpano = document.getElementById("krpanoSWFObject");
+          if (krpano) {
+            krpano.call(
+              "loadscene(scene_b-AL_MARINA_aerial, null, MERGE, BLEND(1));"
+            );
+          }
+
+          const sceneCardWrapper =
+            document.getElementById("scene-card-wrapper");
+          if (sceneCardWrapper) {
+            sceneCardWrapper.style.display = "none";
+          }
+        };
+
+        function toggleMoreOptions() {
+          const moreOptions = document.getElementById("moreOptions");
+          moreOptions.style.display =
+            moreOptions.style.display === "none" ? "block" : "none";
         }
-      };
 
-      function toggleMoreOptions() {
-        const moreOptions = document.getElementById("moreOptions");
-        moreOptions.style.display =
-          moreOptions.style.display === "none" ? "block" : "none";
-      }
+        let previouslyVisibleHotspots = [];
 
-      let previouslyVisibleHotspots = [];
+        let newHotspotArray = [];
+        let sliderSearchedHouses;
 
-      let newHotspotArray = [];
-      let sliderSearchedHouses;
+        function updateAreaAndSearch(value) {
+          const krpano = document.getElementById("krpanoSWFObject");
+          document.getElementById("areaValue").innerText = `${value}`;
 
-      function updateAreaAndSearch(value) {
-        const krpano = document.getElementById("krpanoSWFObject");
-        document.getElementById("areaValue").innerText = `${value}`;
+          const totalHotspots = krpano.get("hotspot.count");
+          // console.log("totalHotspots", totalHotspots)
+          // for (let i = 0; i < totalHotspots; i++) {q
+          //   console.log("inside here");
+          //   krpano.set(`hotspot[${hsName}].visible`, false);
+          // }
+          // Hide previously visible hotspots
+          //       console.log("previouslyVisibleHotspots", previouslyVisibleHotspots)
+          //  previouslyVisibleHotspots.forEach((hotspotName) => {
+          //   console.log('previouslyVisibleHotspots', hotspotName)
+          //   krpano.set(`hotspot[${hotspotName.id}].visible`, false);
+          //  })
+          //   //krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
+          // //  krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
+          // });
+          sliderSearchedHouses = getSpeificUnitsByArea();
 
-        const totalHotspots = krpano.get("hotspot.count");
-        // console.log("totalHotspots", totalHotspots)
-        // for (let i = 0; i < totalHotspots; i++) {q
-        //   console.log("inside here");
-        //   krpano.set(`hotspot[${hsName}].visible`, false);
-        // }
-        // Hide previously visible hotspots
-        //       console.log("previouslyVisibleHotspots", previouslyVisibleHotspots)
-        //  previouslyVisibleHotspots.forEach((hotspotName) => {
-        //   console.log('previouslyVisibleHotspots', hotspotName)
-        //   krpano.set(`hotspot[${hotspotName.id}].visible`, false);
-        //  })
-        //   //krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
-        // //  krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
-        // });
-        sliderSearchedHouses = getSpeificUnitsByArea();
+          //currentAppearingHotpsots.push(...sliderSearchedHouses)
+          //  slidersHotspot.push(found);
+          //let initial = sliderSearchedHouses[0];
+          //const startId = parseInt(initial?.id?.replace("hs", "")); // e.g. 18
 
-        //currentAppearingHotpsots.push(...sliderSearchedHouses)
-        //  slidersHotspot.push(found);
-        //let initial = sliderSearchedHouses[0];
-        //const startId = parseInt(initial?.id?.replace("hs", "")); // e.g. 18
+          // Create a lookup map from existing hotspot IDs for quick checking
+          // const existingIds = new Set(
+          //   sliderSearchedHouses.map((house) => parseInt(house?.id?.replace("hs", "")))
+          // );
 
-        // Create a lookup map from existing hotspot IDs for quick checking
-        // const existingIds = new Set(
-        //   sliderSearchedHouses.map((house) => parseInt(house?.id?.replace("hs", "")))
-        // );
-
-        // console.log("start id", startId ,  "sliderSearchedHouses", sliderSearchedHouses);
-        // // Make a new array including only valid sequential hotspots starting from startId
-        // const missingHotspots = [];
-        // const notFound = [];
-        // for (let i = startId; i <= sliderSearchedHouses.length; i++) {
-        //   // change 100 to your max expected id
-        //   if (existingIds.has(i)) {
-        //     const found = sliderSearchedHouses.find(
-        //       (house) => parseInt(house?.id?.replace("hs", "")) === i
-        //     );
-        //     if (found) {
-        //       newHotspotArray.push(found);
-        //     }
-        //   } else {
-        //     missingHotspots.push(`hs${i}`);
-        //   }
-        // }
-
-        //let idNumber = initial?.id?.replace("hs", ""); // "18" as a string
-        //  let idInt = parseInt(idNumber);
-
-        if (sliderSearchedHouses) {
-          let initial = sliderSearchedHouses[0];
-          console.log("INITIAL", initial);
-          const startId = parseInt(initial?.id?.replace("hs", "")); // e.g., 18
-
-          // Create a lookup map for existing hotspot IDs
-          const existingIds = new Set(
-            sliderSearchedHouses.map((house) =>
-              parseInt(house?.id?.replace("hs", ""))
-            )
-          );
-
-          console.log("EXISTING IDS", existingIds);
-          // Find the maximum ID in sliderSearchedHouses to set loop bounds
-          const maxId = Math.max(...Array.from(existingIds));
-
-          // Filter and keep only sequential hotspots starting from startId
-          const newHotspotArray = [];
-          const missingHotspots = [];
-
-          // console.log("sliderSearchedHouses == >>", sliderSearchedHouses , "start id ==>>>", startId, "maxId ==>>", maxId);
-          // for (let i = startId; i <= maxId; i++) {
-
-          //   const hsId = `hs${i}`;
-          //   const foundHouse = sliderSearchedHouses.find((house) => house.id === hsId);
-
-          //   if (foundHouse) {
-          //     newHotspotArray.push(foundHouse.id);
+          // console.log("start id", startId ,  "sliderSearchedHouses", sliderSearchedHouses);
+          // // Make a new array including only valid sequential hotspots starting from startId
+          // const missingHotspots = [];
+          // const notFound = [];
+          // for (let i = startId; i <= sliderSearchedHouses.length; i++) {
+          //   // change 100 to your max expected id
+          //   if (existingIds.has(i)) {
+          //     const found = sliderSearchedHouses.find(
+          //       (house) => parseInt(house?.id?.replace("hs", "")) === i
+          //     );
+          //     if (found) {
+          //       newHotspotArray.push(found);
+          //     }
           //   } else {
-          //     missingHotspots.push(hsId);
+          //     missingHotspots.push(`hs${i}`);
           //   }
           // }
 
-          // console.log("Filtered Hotspots (Sequential):", newHotspotArray);
-          // console.log("Missing Hotspots:", missingHotspots);
+          //let idNumber = initial?.id?.replace("hs", ""); // "18" as a string
+          //  let idInt = parseInt(idNumber);
 
-          // console.log("new hotspot array ===", newHotspotArray);
+          if (sliderSearchedHouses) {
+            let initial = sliderSearchedHouses[0];
+            console.log("INITIAL", initial);
+            const startId = parseInt(initial?.id?.replace("hs", "")); // e.g., 18
 
-          let allowedHotspots = newHotspotArray;
+            // Create a lookup map for existing hotspot IDs
+            const existingIds = new Set(
+              sliderSearchedHouses.map((house) =>
+                parseInt(house?.id?.replace("hs", ""))
+              )
+            );
 
-          // Get total number of hotspots
-          const hotspotCount = krpano.get("hotspot.count");
+            console.log("EXISTING IDS", existingIds);
+            // Find the maximum ID in sliderSearchedHouses to set loop bounds
+            const maxId = Math.max(...Array.from(existingIds));
 
-          sliderSearchedHouses.forEach((data) => {
-            allowedHotspots.push(data.id);
+            // Filter and keep only sequential hotspots starting from startId
+            const newHotspotArray = [];
+            const missingHotspots = [];
 
-            //  const hotspotName = krpano.get(`hotspot[${data.id}].name`);
+            // console.log("sliderSearchedHouses == >>", sliderSearchedHouses , "start id ==>>>", startId, "maxId ==>>", maxId);
+            // for (let i = startId; i <= maxId; i++) {
 
-            //  console.log("hotspotName", hotspotName);
+            //   const hsId = `hs${i}`;
+            //   const foundHouse = sliderSearchedHouses.find((house) => house.id === hsId);
 
-            // hotspotName  && krpano.call(`removehotspot(${hotspotName})`);
-          });
+            //   if (foundHouse) {
+            //     newHotspotArray.push(foundHouse.id);
+            //   } else {
+            //     missingHotspots.push(hsId);
+            //   }
+            // }
 
+            // console.log("Filtered Hotspots (Sequential):", newHotspotArray);
+            // console.log("Missing Hotspots:", missingHotspots);
 
+            // console.log("new hotspot array ===", newHotspotArray);
 
+            let allowedHotspots = newHotspotArray;
 
-          for (let i = 0; i < 30; i++) {
-            const hotspotName = krpano.get(`hotspot[${i}].name`);
-            // console.log("INSIDE", allowedHotspots[i])
-            // krpano.call(`removehotspot(${allowedHotspots[i]})`);
+            // Get total number of hotspots
+            const hotspotCount = krpano.get("hotspot.count");
 
-            console.log("hotspotName", hotspotName);
+            sliderSearchedHouses.forEach((data) => {
+              allowedHotspots.push(data.id);
 
+              //  const hotspotName = krpano.get(`hotspot[${data.id}].name`);
 
-            //   If hotspot name is not in the allowed list, hide or remove it
-            if (!allowedHotspots.includes(hotspotName)) {
-              console.log("IF WORKING", hotspotName);
-              //Option 1: Just hide it
-              // krpano.set(`hotspot[${hotspotName}].visible`, false);
+              //  console.log("hotspotName", hotspotName);
 
-              //Option 2: Remove it entirely
-              krpano.call(`removehotspot(${hotspotName})`);
+              // hotspotName  && krpano.call(`removehotspot(${hotspotName})`);
+            });
+
+            for (let i = 0; i < 30; i++) {
+              const hotspotName = krpano.get(`hotspot[${i}].name`);
+              // console.log("INSIDE", allowedHotspots[i])
+              // krpano.call(`removehotspot(${allowedHotspots[i]})`);
+
+              console.log("hotspotName", hotspotName);
+
+              //   If hotspot name is not in the allowed list, hide or remove it
+              if (!allowedHotspots.includes(hotspotName)) {
+             
+                //Option 1: Just hide it
+                // krpano.set(`hotspot[${hotspotName}].visible`, false);
+
+                //Option 2: Remove it entirely
+                krpano.call(`removehotspot(${hotspotName})`);
+              }
             }
+
+            // // find minimum and maximum
+            // newHotspotArray.forEach((hotspotId) => {
+
+            //   krpano.set(`hotspot[${hotspotId}].visible`, false);
+            //   krpano.call(`set(hotspot[${hotspotId}].visible, false)`);
+            //   krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0)`);
+            //   krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
+            //   krpano.call(`set(hotspot[${hotspotId}].bordercolor, 0x0039FF14)`);
+            // });
+            // //newHotspotArray = [];
+
+            console.log("missingHotspots", missingHotspots);
+            //  0.1
+            // missingHotspots.forEach((hotspotId) => {
+            //   krpano.set(`hotspot[${hotspotId}].visible`, false);
+            //   krpano.call(`set(hotspot[${hotspotId}].visible, false)`);
+            //   krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0.00000)`);
+            //   krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
+            // });
+            // for (let i = 0; i < missingHotspots.length; i++) {
+            //     const hsName = krpano.get(`hotspot[${i}].name`);
+            //  console.log("NAME ============", hsName)
+            //                 krpano.set(`hotspot[${'hs34'}].visible`, false);
+
+            //  krpano.set(`hotspot[${'hs1'}]`.borderwidth, 0);
+            //  krpano.set(`hotspot[${'hs4'}]`.borderwidth, 0);
+            //  krpano.set(`hotspot[${'hs7'}]`.borderwidth, 0);
+            //krpano.set(`hs1.visible`, false);
+            //  krpano.set(`hs1.visible`, false);
           }
 
-          // // find minimum and maximum
-          // newHotspotArray.forEach((hotspotId) => {
+          allowedHotspots = [];
 
-          //   krpano.set(`hotspot[${hotspotId}].visible`, false);
-          //   krpano.call(`set(hotspot[${hotspotId}].visible, false)`);
-          //   krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0)`);
-          //   krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
-          //   krpano.call(`set(hotspot[${hotspotId}].bordercolor, 0x0039FF14)`);
-          // });
-          // //newHotspotArray = [];
+          //  reDrawHotspots()
 
-          console.log("missingHotspots", missingHotspots);
-          //  0.1
-          // missingHotspots.forEach((hotspotId) => {
-          //   krpano.set(`hotspot[${hotspotId}].visible`, false);
-          //   krpano.call(`set(hotspot[${hotspotId}].visible, false)`);
-          //   krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0.00000)`);
-          //   krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
-          // });
-          // for (let i = 0; i < missingHotspots.length; i++) {
-          //     const hsName = krpano.get(`hotspot[${i}].name`);
-          //  console.log("NAME ============", hsName)
-          //                 krpano.set(`hotspot[${'hs34'}].visible`, false);
-
-          //  krpano.set(`hotspot[${'hs1'}]`.borderwidth, 0);
-          //  krpano.set(`hotspot[${'hs4'}]`.borderwidth, 0);
-          //  krpano.set(`hotspot[${'hs7'}]`.borderwidth, 0);
-          //krpano.set(`hs1.visible`, false);
-          //  krpano.set(`hs1.visible`, false);
+          displayHorizontalSlider();
+          handleSearchFilters();
         }
 
-        allowedHotspots = [];
+        const reDrawHotspots = () => {
+          const krpano = document.getElementById("krpanoSWFObject");
+          const arr = [building2houseData[5]];
 
-        //  reDrawHotspots()
+          dynamicZoneRendering(arr, "", krpano);
+        };
+        // const createSceneCard = () => {
+        //   const krpano = document.getElementById("krpanoSWFObject");
+        //   if (!krpano || typeof krpano.get !== "function") return;
 
-        displayHorizontalSlider();
-        handleSearchFilters();
-      }
+        //   const currentScene = krpano.get("xml.scene");
 
-      const reDrawHotspots = () => {
-        const krpano = document.getElementById("krpanoSWFObject");
-        const arr = [building2houseData[5]];
+        //   let wrapper = document.getElementById("scene-card-wrapper");
 
-        dynamicZoneRendering(arr, "", krpano);
-      };
-      // const createSceneCard = () => {
-      //   const krpano = document.getElementById("krpanoSWFObject");
-      //   if (!krpano || typeof krpano.get !== "function") return;
+        //   if (currentScene === "scene_a-initial") {
+        //     if (!wrapper) {
+        //       console.log("wrapper", wrapper);
 
-      //   const currentScene = krpano.get("xml.scene");
+        let slidersHotspot = [];
 
-      //   let wrapper = document.getElementById("scene-card-wrapper");
+        let currentAppearingHotpsots = [];
 
-      //   if (currentScene === "scene_a-initial") {
-      //     if (!wrapper) {
-      //       console.log("wrapper", wrapper);
+        const showBlinkingOfHouses = (hotspot) => {
+          console.log("showBlinkingOfHouses", hotspot);
+          blinkHotspot("hs25");
+        };
 
-      let slidersHotspot = [];
-
-      let currentAppearingHotpsots = [];
-
-      const showBlinkingOfHouses = (hotspot) => {
-        console.log("showBlinkingOfHouses", hotspot);
-        blinkHotspot("hs25");
-      };
-
-      //currentAppearingHotpsots
-      const displayHorizontalSlider = () => {
-        console.log("displayHorizontalSlider");
-        const sliderContainer = document.querySelector(".card-slider_1");
-        sliderContainer.innerHTML = ""; // Clear previous content if needed
         //currentAppearingHotpsots
-        //      <h4> ${house.zone ? house.zone : ""}</h4>
+        const displayHorizontalSlider = () => {
+          console.log("displayHorizontalSlider");
+          const sliderContainer = document.querySelector(".card-slider_1");
+          sliderContainer.innerHTML = ""; // Clear previous content if needed
+          //currentAppearingHotpsots
+          //      <h4> ${house.zone ? house.zone : ""}</h4>
 
-        sliderSearchedHouses.forEach((house, index) => {
-          const cardHTML = `
+          sliderSearchedHouses.forEach((house, index) => {
+            const cardHTML = `
   <div class="card-wrapper"> <div class="top-label-box"> SAR TBD</div>
         <div class="card_1" onclick="showBlinkingOfHouses('${house.id}')">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv94OIn-sX93PJMNosZCYZzXFO8Qk1FB2x3A&s" height="100px" width="100px" />
@@ -531,134 +586,134 @@
         </div>
     </div>
     `;
-          // <span class="label_1">Wt</span>
-          // <span class="value_1">3</span>
-          sliderContainer.insertAdjacentHTML("beforeend", cardHTML);
-        });
-      };
+            // <span class="label_1">Wt</span>
+            // <span class="value_1">3</span>
+            sliderContainer.insertAdjacentHTML("beforeend", cardHTML);
+          });
+        };
 
-      // function updateAreaAndSearch(value) {
-      //   const krpano = document.getElementById("krpanoSWFObject");
+        // function updateAreaAndSearch(value) {
+        //   const krpano = document.getElementById("krpanoSWFObject");
 
-      //   document.getElementById("areaValue").innerText = value;
+        //   document.getElementById("areaValue").innerText = value;
 
-      //   const totalHotspots = krpano.get("hotspot.count");
-      //   // console.log("totalHotspots", totalHotspots)
-      //   // for (let i = 0; i < totalHotspots; i++) {q
-      //   //   console.log("inside here");
-      //   //   krpano.set(`hotspot[${hsName}].visible`, false);
-      //   // }
+        //   const totalHotspots = krpano.get("hotspot.count");
+        //   // console.log("totalHotspots", totalHotspots)
+        //   // for (let i = 0; i < totalHotspots; i++) {q
+        //   //   console.log("inside here");
+        //   //   krpano.set(`hotspot[${hsName}].visible`, false);
+        //   // }
 
-      //   // Hide previously visible hotspots
-      //   //       console.log("previouslyVisibleHotspots", previouslyVisibleHotspots)
-      //   //  previouslyVisibleHotspots.forEach((hotspotName) => {
-      //   //   console.log('previouslyVisibleHotspots', hotspotName)
-      //   //   krpano.set(`hotspot[${hotspotName.id}].visible`, false);
+        //   // Hide previously visible hotspots
+        //   //       console.log("previouslyVisibleHotspots", previouslyVisibleHotspots)
+        //   //  previouslyVisibleHotspots.forEach((hotspotName) => {
+        //   //   console.log('previouslyVisibleHotspots', hotspotName)
+        //   //   krpano.set(`hotspot[${hotspotName.id}].visible`, false);
 
-      //   //  })
+        //   //  })
 
-      //   //   //krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
-      //   // //  krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
-      //   // });
+        //   //   //krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
+        //   // //  krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
+        //   // });
 
-      //   areaHouses = getSpeificUnitsByArea();
+        //   areaHouses = getSpeificUnitsByArea();
 
-      //   //currentAppearingHotpsots.push(...areaHouses)
+        //   //currentAppearingHotpsots.push(...areaHouses)
 
-      //   //  slidersHotspot.push(found);
-      //   let initial = areaHouses[0];
-      //   const startId = parseInt(initial?.id?.replace("hs", "")); // e.g. 18
+        //   //  slidersHotspot.push(found);
+        //   let initial = areaHouses[0];
+        //   const startId = parseInt(initial?.id?.replace("hs", "")); // e.g. 18
 
-      //   // Create a lookup map from existing hotspot IDs for quick checking
-      //   const existingIds = new Set(
-      //     areaHouses.map((house) => parseInt(house?.id?.replace("hs", "")))
-      //   );
+        //   // Create a lookup map from existing hotspot IDs for quick checking
+        //   const existingIds = new Set(
+        //     areaHouses.map((house) => parseInt(house?.id?.replace("hs", "")))
+        //   );
 
-      //   // Make a new array including only valid sequential hotspots starting from startId
+        //   // Make a new array including only valid sequential hotspots starting from startId
 
-      //   const missingHotspots = [];
+        //   const missingHotspots = [];
 
-      //   const notFound = [];
-      //   for (let i = startId; i <= areaHouses.length; i++) {
-      //     // change 100 to your max expected id
-      //     if (existingIds.has(i)) {
-      //       const found = areaHouses.find(
-      //         (house) => parseInt(house?.id?.replace("hs", "")) === i
-      //       );
+        //   const notFound = [];
+        //   for (let i = startId; i <= areaHouses.length; i++) {
+        //     // change 100 to your max expected id
+        //     if (existingIds.has(i)) {
+        //       const found = areaHouses.find(
+        //         (house) => parseInt(house?.id?.replace("hs", "")) === i
+        //       );
 
-      //       if (found) {
-      //         newHotspotArray.push(found.id);
-      //       }
-      //     } else {
-      //       missingHotspots.push(`hs${i}`);
-      //     }
-      //   }
+        //       if (found) {
+        //         newHotspotArray.push(found.id);
+        //       }
+        //     } else {
+        //       missingHotspots.push(`hs${i}`);
+        //     }
+        //   }
 
-      //   let idNumber = initial?.id?.replace("hs", ""); // "18" as a string
-      //   let idInt = parseInt(idNumber);
+        //   let idNumber = initial?.id?.replace("hs", ""); // "18" as a string
+        //   let idInt = parseInt(idNumber);
 
-      //   // find minimum and maximum
+        //   // find minimum and maximum
 
-      //   newHotspotArray.forEach((hotspotId) => {
-      //     krpano.set(`hotspot[${hotspotId}].visible`, false);
-      //     krpano.call(`set(hotspot[${hotspotId}].visible, false)`);
-      //     krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0)`);
-      //     krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
-      //   });
+        //   newHotspotArray.forEach((hotspotId) => {
+        //     krpano.set(`hotspot[${hotspotId}].visible`, false);
+        //     krpano.call(`set(hotspot[${hotspotId}].visible, false)`);
+        //     krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0)`);
+        //     krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
+        //   });
 
-      //   //  0.1
-      //   // missingHotspots.forEach((hotspotId) => {
+        //   //  0.1
+        //   // missingHotspots.forEach((hotspotId) => {
 
-      //   //   krpano.set(`hotspot[${hotspotId}].visible`, false);
-      //   //   krpano.call(`set(hotspot[${hotspotId}].visible, false)`);
-      //   //   krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0.00000)`);
-      //   //   krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
-      //   // });
+        //   //   krpano.set(`hotspot[${hotspotId}].visible`, false);
+        //   //   krpano.call(`set(hotspot[${hotspotId}].visible, false)`);
+        //   //   krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0.00000)`);
+        //   //   krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
+        //   // });
 
-      //   // for (let i = 0; i < missingHotspots.length; i++) {
+        //   // for (let i = 0; i < missingHotspots.length; i++) {
 
-      //   //     const hsName = krpano.get(`hotspot[${i}].name`);
-      //   //  console.log("NAME ============", hsName)
+        //   //     const hsName = krpano.get(`hotspot[${i}].name`);
+        //   //  console.log("NAME ============", hsName)
 
-      //   //                 krpano.set(`hotspot[${'hs34'}].visible`, false);
-      //   // krpano.set(`hotspot[${'hs37'}].visible`, false);
-      //   //                 krpano.set(`hotspot[${'hs1'}]`.fillalpha, 0.0);
-      //   //                 krpano.set(`hotspot[${'hs4'}]`.fillalpha, 0.0);
-      //   //                 krpano.set(`hotspot[${'hs7'}]`.fillalpha, 0.0);
-      //   //                 krpano.set(`hotspot[${'hs31'}]`.fillalpha, 0.0);
-      //   //                 krpano.set(`hotspot[${'hs34'}]`.fillalpha, 0.0);
-      //   //                 krpano.set(`hotspot[${'hs37'}]`.fillalpha, 0.0);
-      //   //                // krpano.set(`hotspot[${'hs1'}]`.fillalpha, 0.0);
-      //   //                 krpano.set(`hotspot[${'hs1'}]`.borderalpha, 0.0);
-      //   //                 krpano.set(`hotspot[${'hs4'}]`.borderalpha, 0.0);
-      //   //                 krpano.set(`hotspot[${'hs7'}]`.borderalpha, 0.0);
-      //   // krpano.set(`hotspot[${'hs1'}]`.bordercolor, 0x228B22);
-      //   //  krpano.set(`hotspot[${'hs1'}]`.bordercolor, 0x000000);
-      //   //  krpano.set(`hotspot[${'hs4'}]`.bordercolor, 0x000000);
-      //   //  krpano.set(`hotspot[${'hs7'}]`.bordercolor, 0x000000);
-      //   //  krpano.set(`hotspot[${'hs1'}]`.borderwidth, 0);
-      //   //  krpano.set(`hotspot[${'hs4'}]`.borderwidth, 0);
-      //   //  krpano.set(`hotspot[${'hs7'}]`.borderwidth, 0);
-      //   //krpano.set(`hs1.visible`, false);
-      //   //  krpano.set(`hs1.visible`, false);
+        //   //                 krpano.set(`hotspot[${'hs34'}].visible`, false);
+        //   // krpano.set(`hotspot[${'hs37'}].visible`, false);
+        //   //                 krpano.set(`hotspot[${'hs1'}]`.fillalpha, 0.0);
+        //   //                 krpano.set(`hotspot[${'hs4'}]`.fillalpha, 0.0);
+        //   //                 krpano.set(`hotspot[${'hs7'}]`.fillalpha, 0.0);
+        //   //                 krpano.set(`hotspot[${'hs31'}]`.fillalpha, 0.0);
+        //   //                 krpano.set(`hotspot[${'hs34'}]`.fillalpha, 0.0);
+        //   //                 krpano.set(`hotspot[${'hs37'}]`.fillalpha, 0.0);
+        //   //                // krpano.set(`hotspot[${'hs1'}]`.fillalpha, 0.0);
+        //   //                 krpano.set(`hotspot[${'hs1'}]`.borderalpha, 0.0);
+        //   //                 krpano.set(`hotspot[${'hs4'}]`.borderalpha, 0.0);
+        //   //                 krpano.set(`hotspot[${'hs7'}]`.borderalpha, 0.0);
+        //   // krpano.set(`hotspot[${'hs1'}]`.bordercolor, 0x228B22);
+        //   //  krpano.set(`hotspot[${'hs1'}]`.bordercolor, 0x000000);
+        //   //  krpano.set(`hotspot[${'hs4'}]`.bordercolor, 0x000000);
+        //   //  krpano.set(`hotspot[${'hs7'}]`.bordercolor, 0x000000);
+        //   //  krpano.set(`hotspot[${'hs1'}]`.borderwidth, 0);
+        //   //  krpano.set(`hotspot[${'hs4'}]`.borderwidth, 0);
+        //   //  krpano.set(`hotspot[${'hs7'}]`.borderwidth, 0);
+        //   //krpano.set(`hs1.visible`, false);
+        //   //  krpano.set(`hs1.visible`, false);
 
-      //   displayHorizontalSlider();
-      //   handleSearchFilters();
-      // }
+        //   displayHorizontalSlider();
+        //   handleSearchFilters();
+        // }
 
-      const createSceneCard = () => {
-        const krpano = document.getElementById("krpanoSWFObject");
-        if (!krpano || typeof krpano.get !== "function") return;
+        const createSceneCard = () => {
+          const krpano = document.getElementById("krpanoSWFObject");
+          if (!krpano || typeof krpano.get !== "function") return;
 
-        const currentScene = krpano.get("xml.scene");
+          const currentScene = krpano.get("xml.scene");
 
-        let wrapper = document.getElementById("scene-card-wrapper");
+          let wrapper = document.getElementById("scene-card-wrapper");
 
-        if (currentScene === "scene_a-initial") {
-          if (!wrapper) {
-            wrapper = document.createElement("div");
-            wrapper.id = "scene-card-wrapper";
-            wrapper.innerHTML = `
+          if (currentScene === "scene_a-initial") {
+            if (!wrapper) {
+              wrapper = document.createElement("div");
+              wrapper.id = "scene-card-wrapper";
+              wrapper.innerHTML = `
         <div id="scene-card" onclick="arialView()">
           <div class="scene-card-content">
             <img src="/skin/icons/AlMarina_white.png" width="100%" height="100%" class="breadcrumb-icon" />
@@ -671,103 +726,89 @@
           </div>
         </div>
       `;
-            document.body.appendChild(wrapper);
+              document.body.appendChild(wrapper);
+            } else {
+              wrapper.style.display = "block"; // re-show if hidden
+            }
           } else {
-            wrapper.style.display = "block"; // re-show if hidden
+            // Hide if card exists
+            if (wrapper) wrapper.style.display = "none";
           }
-        } else {
-          // Hide if card exists
-          if (wrapper) wrapper.style.display = "none";
-        }
-      };
+        };
 
-      let block_number = "";
+        let block_number = "";
 
-      let breadcrumbTrail = [
-        {
-          scene: "scene_b-AL_MARINA_aerial",
-          title: "",
-          icon: '<div><img src="/skin/icons/AlMarina_white.png" width="150px" height="100px" class="breadcrumb-icon" /></div>',
-        },
-      ];
+        let breadcrumbTrail = [
+          {
+            scene: "scene_b-AL_MARINA_aerial",
+            title: "",
+            icon: '<div><img src="/skin/icons/AlMarina_white.png" width="150px" height="100px" class="breadcrumb-icon" /></div>',
+          },
+        ];
 
-      //<img src="/skin/icons/AlMarina_white.png" width="100%" height="100%" class="breadcrumb-icon" />
+        //<img src="/skin/icons/AlMarina_white.png" width="100%" height="100%" class="breadcrumb-icon" />
 
-      // Mapping scene to readable name (if needed)
-      const sceneTitleMap = {
-        "scene_b-AL_MARINA_aerial": { title: "Al Marina", icon: "home" },
+        // Mapping scene to readable name (if needed)
+        const sceneTitleMap = {
+          "scene_b-AL_MARINA_aerial": { title: "Al Marina", icon: "home" },
 
-        // Add more mappings here
-      };
+          // Add more mappings here
+        };
 
-      function updateSearchVisibility() {
-        const searchBar = document.getElementById("searchBarContainer");
-        const sceneCardWrapper =
-          document.getElementById("scene-card-wrapper");
+        function updateSearchVisibility() {
+          const searchBar = document.getElementById("searchBarContainer");
+          const sceneCardWrapper =
+            document.getElementById("scene-card-wrapper");
 
-        //scene-card-wrapper
+          //scene-card-wrapper
 
-        const krpano = document.getElementById("krpanoSWFObject");
-        const currentScene = krpano.get("xml.scene");
+          const krpano = document.getElementById("krpanoSWFObject");
+          const currentScene = krpano.get("xml.scene");
 
-        if (
-          currentScene === "scene_a-initial" ||
-          currentScene === "scene_b-al_marina_aerial"
-        ) {
-          searchBar.style.display = "none";
-        } else {
-          searchBar.style.display = "block";
-        }
-      }
-
-      // function checkRecord() {
-      //   console.log("checkRecord");
-      //   const input = document.getElementById("searchBox").value.toLowerCase();
-
-      //   if (input === "notfound" || input === "") {
-      //     document.getElementById("notFoundModal").style.display = "block";
-      //   }
-      // }
-
-      function closeModal() {
-        document.getElementById("notFoundModal").style.display = "none";
-      }
-
-      function toggleClearIcon(input) {
-        const clearIcon = document.getElementById("clearIcon");
-        clearIcon.style.display = input.value ? "block" : "none";
-        //blinkHotspot(false); // Stop blinking when input changes
-      }
-
-      function clearSearch() {
-        const searchBox = document.getElementById("searchBox");
-        searchBox.value = "";
-        document.getElementById("clearIcon").style.display = "none";
-        // handleSearch(''); // optional: re-trigger search with empty value
-      }
-
-      let currentBlinkInterval = null;
-      let currentBlinkingHotspot = null;
-
-      function onSceneChange(currentScene, Unit) {
-        const unitData = localStorage.getItem("response");
-        const parsedData = JSON.parse(unitData);
-
-        const krpano = document.getElementById("krpanoSWFObject");
-
-        if (Unit.zone === "ZONE 1") {
-          // Load the corresponding scene
-
-          krpano.call(
-            `loadscene(${"scene_c-zone_1"}, null, MERGE, BLEND(1))`
-          );
+          if (
+            currentScene === "scene_a-initial" ||
+            currentScene === "scene_b-al_marina_aerial"
+          ) {
+            searchBar.style.display = "none";
+          } else {
+            searchBar.style.display = "block";
+          }
         }
 
-        if (currentScene === "scene_b-al_marina_aerial") {
-          const Unit = parsedData.data.find(
-            (house) =>
-              house.plot_number === value || house.total_area === value
-          );
+        // function checkRecord() {
+        //   console.log("checkRecord");
+        //   const input = document.getElementById("searchBox").value.toLowerCase();
+
+        //   if (input === "notfound" || input === "") {
+        //     document.getElementById("notFoundModal").style.display = "block";
+        //   }
+        // }
+
+        function closeModal() {
+          document.getElementById("notFoundModal").style.display = "none";
+        }
+
+        function toggleClearIcon(input) {
+          const clearIcon = document.getElementById("clearIcon");
+          clearIcon.style.display = input.value ? "block" : "none";
+          //blinkHotspot(false); // Stop blinking when input changes
+        }
+
+        function clearSearch() {
+          const searchBox = document.getElementById("searchBox");
+          searchBox.value = "";
+          document.getElementById("clearIcon").style.display = "none";
+          // handleSearch(''); // optional: re-trigger search with empty value
+        }
+
+        let currentBlinkInterval = null;
+        let currentBlinkingHotspot = null;
+
+        function onSceneChange(currentScene, Unit) {
+          const unitData = localStorage.getItem("response");
+          const parsedData = JSON.parse(unitData);
+
+          const krpano = document.getElementById("krpanoSWFObject");
 
           if (Unit.zone === "ZONE 1") {
             // Load the corresponding scene
@@ -775,1092 +816,1067 @@
             krpano.call(
               `loadscene(${"scene_c-zone_1"}, null, MERGE, BLEND(1))`
             );
-          } else if (Unit.zone === "ZONE 2") {
-            krpano.call(
-              `loadscene(${"scene_e-zone_3"}, null, MERGE, BLEND(1))`
-            );
-          } else if (Unit.zone === "ZONE 3") {
-            krpano.call(
-              `loadscene(${"scene_al_marina_zone_3"}, null, MERGE, BLEND(1))`
-            );
-          } else if (Unit.zone === "ZONE 7") {
-            krpano.call(
-              `loadscene(${"scene_f-zone_4"}, null, MERGE, BLEND(1))`
-            );
-          } else if (Unit.zone === "ZONE 5") {
-            krpano.call(
-              `loadscene(${"scene_g-zone_5"}, null, MERGE, BLEND(1))`
-            );
-          } else if (Unit.zone === "ZONE 6") {
-            krpano.call(
-              `loadscene(${"scene_h-building_1"}, null, MERGE, BLEND(1))`
-            );
-          } else if (Unit.zone === "ZONE 7") {
-            krpano.call(
-              `loadscene(${"scene_i-building_2"}, null, MERGE, BLEND(1))`
-            );
           }
-        } else {
-          // Handle other scenes here...
-        }
-      }
 
-      function getSpecificUnit() {
-        const area = document.getElementById("totalArea").value;
-
-        const unitData = localStorage.getItem("response");
-
-        const plot = document.getElementById("plotNumber").value;
-
-        let parsedData;
-        let unit;
-        if (unitData && unitData !== "undefined") {
-          try {
-            parsedData = JSON.parse(unitData);
-
-            unit = parsedData.data.find(
-              (house) => (house.plot_number = plot)
+          if (currentScene === "scene_b-al_marina_aerial") {
+            const Unit = parsedData.data.find(
+              (house) =>
+                house.plot_number === value || house.total_area === value
             );
-          } catch (error) {
-            console.error("❌ Failed to parse unitData:", error);
+
+            if (Unit.zone === "ZONE 1") {
+              // Load the corresponding scene
+
+              krpano.call(
+                `loadscene(${"scene_c-zone_1"}, null, MERGE, BLEND(1))`
+              );
+            } else if (Unit.zone === "ZONE 2") {
+              krpano.call(
+                `loadscene(${"scene_e-zone_3"}, null, MERGE, BLEND(1))`
+              );
+            } else if (Unit.zone === "ZONE 3") {
+              krpano.call(
+                `loadscene(${"scene_al_marina_zone_3"}, null, MERGE, BLEND(1))`
+              );
+            } else if (Unit.zone === "ZONE 7") {
+              krpano.call(
+                `loadscene(${"scene_f-zone_4"}, null, MERGE, BLEND(1))`
+              );
+            } else if (Unit.zone === "ZONE 5") {
+              krpano.call(
+                `loadscene(${"scene_g-zone_5"}, null, MERGE, BLEND(1))`
+              );
+            } else if (Unit.zone === "ZONE 6") {
+              krpano.call(
+                `loadscene(${"scene_h-building_1"}, null, MERGE, BLEND(1))`
+              );
+            } else if (Unit.zone === "ZONE 7") {
+              krpano.call(
+                `loadscene(${"scene_i-building_2"}, null, MERGE, BLEND(1))`
+              );
+            }
+          } else {
+            // Handle other scenes here...
           }
-        } else {
-          console.warn("⚠️ No valid unit data found in localStorage.");
         }
 
-        // const krpano = document.getElementById("krpanoSWFObject");
+        function getSpecificUnit() {
+          const area = document.getElementById("totalArea").value;
 
-        // let currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
+          const unitData = localStorage.getItem("response");
 
-        // let zone;
+          const plot = document.getElementById("plotNumber").value;
 
-        return unit;
-      }
+          let parsedData;
+          let unit;
+          if (unitData && unitData !== "undefined") {
+            try {
+              parsedData = JSON.parse(unitData);
 
-      const getParsedData = () => {
-        const unitData = localStorage.getItem("response");
-        const parsedData = JSON.parse(unitData);
-        return parsedData;
-      };
+              unit = parsedData.data.find(
+                (house) => (house.plot_number = plot)
+              );
+            } catch (error) {
+              console.error("❌ Failed to parse unitData:", error);
+            }
+          } else {
+            console.warn("⚠️ No valid unit data found in localStorage.");
+          }
 
-      const zoneOneFilteredData = () => {
-        const parsedData = getParsedData();
-        return parsedData.data.filter((house) => house.zone === "ZONE 1");
-      };
+          // const krpano = document.getElementById("krpanoSWFObject");
 
-      const zoneTwoFilteredData = () => {
-        const parsedData = getParsedData();
-        return parsedData.data.filter((house) => house.zone === "ZONE 2");
-      };
-      const zoneThreeFilteredData = () => {
-        const parsedData = getParsedData();
-        return parsedData.data.filter((house) => house.zone === "ZONE 3");
-      };
+          // let currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
 
-      const zoneFourFilteredData = () => {
-        const parsedData = getParsedData();
-        return parsedData.data.filter((house) => house.zone === "ZONE 4");
-      };
+          // let zone;
 
-      const zoneFiveFilteredData = () => {
-        const parsedData = getParsedData();
-        return parsedData.data.filter((house) => house.zone === "ZONE 5");
-      };
+          return unit;
+        }
 
-      const zoneSixFilteredData = () => {
-        const parsedData = getParsedData();
-        return parsedData.data.filter((house) => house.zone === "ZONE 6");
-      };
+        const getParsedData = () => {
+          const unitData = localStorage.getItem("response");
+          const parsedData = JSON.parse(unitData);
+          return parsedData;
+        };
 
-      const zoneSevenFilteredData = () => {
-        const parsedData = getParsedData();
-        return parsedData.data.filter((house) => house.zone === "ZONE 7");
-      };
+        const zoneOneFilteredData = () => {
+          const parsedData = getParsedData();
+          return parsedData.data.filter((house) => house.zone === "ZONE 1");
+        };
 
-      const zoneEightFilteredData = () => {
-        const parsedData = getParsedData();
-        return parsedData.data.filter((house) => house.zone === "ZONE 8");
-      };
+        const zoneTwoFilteredData = () => {
+          const parsedData = getParsedData();
+          return parsedData.data.filter((house) => house.zone === "ZONE 2");
+        };
+        const zoneThreeFilteredData = () => {
+          const parsedData = getParsedData();
+          return parsedData.data.filter((house) => house.zone === "ZONE 3");
+        };
 
-      const zoneNineFilteredData = () => {
-        const parsedData = getParsedData();
-        return parsedData.data.filter((house) => house.zone === "ZONE 9");
-      };
+        const zoneFourFilteredData = () => {
+          const parsedData = getParsedData();
+          return parsedData.data.filter((house) => house.zone === "ZONE 4");
+        };
 
-      function clearSliderRange() {
-        const slider = document.getElementById("totalArea");
-        slider.min = 100;
-        slider.max = 20000;
-        // slider.value = 0;
+        const zoneFiveFilteredData = () => {
+          const parsedData = getParsedData();
+          return parsedData.data.filter((house) => house.zone === "ZONE 5");
+        };
 
-        document.getElementById("areaValue").textContent = "-";
-        document.getElementById("areaMax").textContent = "-";
-      }
+        const zoneSixFilteredData = () => {
+          const parsedData = getParsedData();
+          return parsedData.data.filter((house) => house.zone === "ZONE 6");
+        };
 
-      function getSpeificUnitsByArea() {
-        const area = document.getElementById("totalArea").value;
-        const unitData = localStorage.getItem("response");
-        const parsedData = JSON.parse(unitData);
-        previouslyVisibleHotspots = [];
-        const krpano = document.getElementById("krpanoSWFObject");
-        let currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
-        let zone;
-        let filteredHouses;
-        let matchedZone;
-        let latestArrayZone1 = [],
-          latestArrayZone2 = [],
-          latestArrayZone3 = [],
-          latestArrayZone6 = [];
-        latestArrayZone5 = [];
-        latestArrayZone9 = [];
-        (latestArrayZone7 = []), (latestArrayZone8 = []);
+        const zoneSevenFilteredData = () => {
+          const parsedData = getParsedData();
+          return parsedData.data.filter((house) => house.zone === "ZONE 7");
+        };
 
-        const zone3 = parsedData.data.filter(
-          (house) => house.zone === "ZONE 3"
-        );
-        const zone7 = parsedData.data.filter(
-          (house) => house.zone === "ZONE 7"
-        );
+        const zoneEightFilteredData = () => {
+          const parsedData = getParsedData();
+          return parsedData.data.filter((house) => house.zone === "ZONE 8");
+        };
 
-        if (area) {
-          document.getElementById("areaValue").textContent = `100 sq m`;
-          document.getElementById("areaMax").textContent = `20000`;
+        const zoneNineFilteredData = () => {
+          const parsedData = getParsedData();
+          return parsedData.data.filter((house) => house.zone === "ZONE 9");
+        };
 
-          console.log("currentScene", currentScene);
+        function clearSliderRange() {
+          const slider = document.getElementById("totalArea");
+          slider.min = 100;
+          slider.max = 20000;
+          // slider.value = 0;
+
+          document.getElementById("areaValue").textContent = "-";
+          document.getElementById("areaMax").textContent = "-";
+        }
+
+        function getSpeificUnitsByArea() {
+          const area = document.getElementById("totalArea").value;
+          const unitData = localStorage.getItem("response");
+          const parsedData = JSON.parse(unitData);
+          previouslyVisibleHotspots = [];
+          const krpano = document.getElementById("krpanoSWFObject");
+          let currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
+          let zone;
+          let filteredHouses;
+          let matchedZone;
+          let latestArrayZone1 = [],
+            latestArrayZone2 = [],
+            latestArrayZone3 = [],
+            latestArrayZone6 = [];
+          latestArrayZone5 = [];
+          latestArrayZone9 = [];
+          (latestArrayZone7 = []), (latestArrayZone8 = []);
+
+          const zone3 = parsedData.data.filter(
+            (house) => house.zone === "ZONE 3"
+          );
+          const zone7 = parsedData.data.filter(
+            (house) => house.zone === "ZONE 7"
+          );
+
+          if (area) {
+            document.getElementById("areaValue").textContent = `100 sq m`;
+            document.getElementById("areaMax").textContent = `20000`;
+
+            console.log("currentScene", currentScene);
+            switch (currentScene) {
+              case "scene_c-zone_1":
+                //clearSliderRange();
+                updateSliderRange("1");
+                const updatedZone1houseData = zoneOneFilteredData().map(
+                  (house) => {
+                    matchedZone = zone1houseData.find(
+                      (zone) =>
+                        parseInt(house.plot_number) ===
+                        parseInt(zone.plot_number)
+                    );
+                    latestArrayZone1.push({
+                      ...house,
+                      total_area: house?.total_area,
+                      id: matchedZone?.id,
+                    });
+                  }
+                );
+                filteredHouses = latestArrayZone1.filter(
+                  (house) => parseFloat(house.total_area) <= parseFloat(area)
+                );
+
+                console.log("filteredHouses", filteredHouses);
+                break;
+
+              case "scene_d-zone_2":
+                // clearSliderRange();
+                updateSliderRange("2");
+                // const zone2 = parsedData.data.filter(
+                //   (house) => house.zone === "Zone 2"
+                // );
+
+                const updatedZone2houseData = zoneTwoFilteredData().map(
+                  (house) => {
+                    matchedZone = zone2houseData.find(
+                      (zone) =>
+                        parseInt(house.plot_number) ===
+                        parseInt(zone.plot_number)
+                    );
+                    latestArrayZone2.push({
+                      ...house,
+                      total_area: house?.total_area,
+                      id: matchedZone?.id,
+                    });
+                  }
+                );
+                filteredHouses = latestArrayZone2.filter(
+                  (house) => parseFloat(house.total_area) <= parseFloat(area)
+                );
+                break;
+              case "scene_e-zone_3":
+                updateSliderRange("3");
+                const updatedZone3houseData = zoneThreeFilteredData().map(
+                  (house) => {
+                    matchedZone = zone3houseData.find(
+                      (zone) =>
+                        parseInt(house.plot_number) ===
+                        parseInt(zone.plot_number)
+                    );
+                    latestArrayZone3.push({
+                      ...house,
+                      total_area: house?.total_area,
+                      id: matchedZone?.id,
+                    });
+                  }
+                );
+
+                filteredHouses = latestArrayZone3.filter(
+                  (house) => parseFloat(house.total_area) <= parseFloat(area)
+                );
+                break;
+
+              case "scene_i-building_2":
+                console.log("building 2");
+                updateSliderRange("5");
+
+                console.log(
+                  "zone 5 = building 2 =",
+                  building2houseData,
+                  "all data",
+                  zoneFiveFilteredData()
+                );
+
+                const updatedbuilding2houseData = zoneFiveFilteredData().map(
+                  (house) => {
+                    matchedZone = building2houseData.find(
+                      (zone) =>
+                        parseInt(house.plot_number) ===
+                        parseInt(zone.plot_number)
+                    );
+
+                    latestArrayZone5.push({
+                      ...house,
+                      total_area: house?.total_area,
+                      id: matchedZone?.id,
+                    });
+                  }
+                );
+
+                console.log("latestArrayZone5", latestArrayZone5);
+                filteredHouses = latestArrayZone5.filter(
+                  (house) => parseFloat(house.total_area) <= parseFloat(area)
+                );
+
+                console.log("filteredHouses zone 5", filteredHouses);
+                break;
+              case "scene_h-building_1":
+                console.log("building 1");
+                updateSliderRange("6");
+
+                const updatedbuilding1houseData = zoneSixFilteredData().map(
+                  (house) => {
+                    matchedZone = building1houseData.find(
+                      (zone) =>
+                        parseInt(house.plot_number) ===
+                        parseInt(zone.plot_number)
+                    );
+                    latestArrayZone6.push({
+                      ...house,
+                      total_area: house?.total_area,
+                      id: matchedZone?.id,
+                    });
+                  }
+                );
+                filteredHouses = latestArrayZone6.filter(
+                  (house) => parseFloat(house.total_area) <= parseFloat(area)
+                );
+                break;
+
+              case "scene_f-zone_4":
+                updateSliderRange("7");
+                const updatedZone7houseData = zoneSevenFilteredData().map(
+                  (house) => {
+                    matchedZone = zone7houseData.find(
+                      (zone) =>
+                        parseInt(house.plot_number) ===
+                        parseInt(zone.plot_number)
+                    );
+                    latestArrayZone7.push({
+                      ...house,
+                      total_area: house?.total_area,
+                      id: matchedZone?.id,
+                    });
+                  }
+                );
+                filteredHouses = latestArrayZone7.filter(
+                  (house) => parseFloat(house.total_area) <= parseFloat(area)
+                );
+                break;
+              case "scene_g-zone_5":
+                updateSliderRange("8");
+
+                const updatedZone8houseData = zoneEightFilteredData().map(
+                  (house) => {
+                    matchedZone = zone8houseData.find(
+                      (zone) =>
+                        parseInt(house.plot_number) ===
+                        parseInt(zone.plot_number)
+                    );
+                    latestArrayZone8.push({
+                      ...house,
+                      total_area: house?.total_area,
+                      id: matchedZone?.id,
+                    });
+                  }
+                );
+                filteredHouses = latestArrayZone8.filter(
+                  (house) => parseFloat(house.total_area) <= parseFloat(area)
+                );
+                break;
+
+              case "scene_k_zone_9":
+                updateSliderRange("9");
+                const updatedZone9houseData = zoneNineFilteredData().map(
+                  (house) => {
+                    matchedZone = zone9houseData.find(
+                      (zone) =>
+                        parseInt(house.plot_number) ===
+                        parseInt(zone.plot_number)
+                    );
+                    latestArrayZone9.push({
+                      ...house,
+                      total_area: house?.total_area,
+                      id: matchedZone?.id,
+                    });
+                  }
+                );
+                filteredHouses = latestArrayZone8.filter(
+                  (house) => parseFloat(house.total_area) <= parseFloat(area)
+                );
+
+                break;
+
+              default:
+                break;
+            }
+          }
+          return filteredHouses;
+        }
+
+        function handleSearchFilters() {
+          const plot = document.getElementById("plotNumber").value;
+          const area = document.getElementById("totalArea").value;
+          const krpano = document.getElementById("krpanoSWFObject");
+          // const area = document.getElementById('totalArea').value;
+          // const block = document.getElementById('blockNumber').value;
+
+          if (area) {
+            // Stop previous blinking first
+            stopAllBlinkingHotspots();
+
+            const areaHouses = getSpeificUnitsByArea();
+
+            areaHouses.forEach((house) => {
+              const hotspotName = `${house.id}`;
+              // blinkHotspot(hotspotName);
+
+              previouslyVisibleHotspots.push({ id: hotspotName });
+            });
+          }
+
+          // previouslyVisibleHotspots = []
+
+          const unitData = localStorage.getItem("response");
+          const parsedData = JSON.parse(unitData);
+
+          let matchedHouse;
+
+          currentScene = krpano.get("xml.scene");
+          // onSceneChange(currentScene, unit)
+
           switch (currentScene) {
-            case "scene_c-zone_1":
-              //clearSliderRange();
-              updateSliderRange("1");
-              const updatedZone1houseData = zoneOneFilteredData().map(
-                (house) => {
-                  matchedZone = zone1houseData.find(
-                    (zone) =>
-                      parseInt(house.plot_number) ===
-                      parseInt(zone.plot_number)
-                  );
-                  latestArrayZone1.push({
-                    ...house,
-                    total_area: house?.total_area,
-                    id: matchedZone?.id,
-                  });
-                }
-              );
-              filteredHouses = latestArrayZone1.filter(
-                (house) => parseFloat(house.total_area) <= parseFloat(area)
-              );
+            case "scene_b-al_marina_aerial":
+              matchedHouse = null;
 
-              console.log("filteredHouses", filteredHouses);
               break;
-
-            case "scene_d-zone_2":
-              // clearSliderRange();
-              updateSliderRange("2");
-              // const zone2 = parsedData.data.filter(
-              //   (house) => house.zone === "Zone 2"
-              // );
-
-              const updatedZone2houseData = zoneTwoFilteredData().map(
-                (house) => {
-                  matchedZone = zone2houseData.find(
-                    (zone) =>
-                      parseInt(house.plot_number) ===
-                      parseInt(zone.plot_number)
-                  );
-                  latestArrayZone2.push({
-                    ...house,
-                    total_area: house?.total_area,
-                    id: matchedZone?.id,
-                  });
-                }
+            case "scene_c-zone_1":
+              matchedHouse = zone1houseData.find(
+                (house) => house.plot_number === plot
               );
-              filteredHouses = latestArrayZone2.filter(
-                (house) => parseFloat(house.total_area) <= parseFloat(area)
+
+              break;
+            case "scene_d-zone_2":
+              matchedHouse = zone2houseData.find(
+                (house) => house.plot_number === plot
               );
               break;
             case "scene_e-zone_3":
-              updateSliderRange("3");
-              const updatedZone3houseData = zoneThreeFilteredData().map(
-                (house) => {
-                  matchedZone = zone3houseData.find(
-                    (zone) =>
-                      parseInt(house.plot_number) ===
-                      parseInt(zone.plot_number)
-                  );
-                  latestArrayZone3.push({
-                    ...house,
-                    total_area: house?.total_area,
-                    id: matchedZone?.id,
-                  });
-                }
-              );
-
-              filteredHouses = latestArrayZone3.filter(
-                (house) => parseFloat(house.total_area) <= parseFloat(area)
-              );
-              break;
-
-            case "scene_i-building_2":
-              console.log("building 2");
-              updateSliderRange("5");
-
-              console.log(
-                "zone 5 = building 2 =",
-                building2houseData,
-                "all data",
-                zoneFiveFilteredData()
-              );
-
-              const updatedbuilding2houseData = zoneFiveFilteredData().map(
-                (house) => {
-                  matchedZone = building2houseData.find(
-                    (zone) =>
-                      parseInt(house.plot_number) ===
-                      parseInt(zone.plot_number)
-                  );
-
-                  latestArrayZone5.push({
-                    ...house,
-                    total_area: house?.total_area,
-                    id: matchedZone?.id,
-                  });
-                }
-              );
-
-              console.log("latestArrayZone5", latestArrayZone5);
-              filteredHouses = latestArrayZone5.filter(
-                (house) => parseFloat(house.total_area) <= parseFloat(area)
-              );
-
-              console.log("filteredHouses zone 5", filteredHouses);
-              break;
-            case "scene_h-building_1":
-              console.log("building 1");
-              updateSliderRange("6");
-
-              const updatedbuilding1houseData = zoneSixFilteredData().map(
-                (house) => {
-                  matchedZone = building1houseData.find(
-                    (zone) =>
-                      parseInt(house.plot_number) ===
-                      parseInt(zone.plot_number)
-                  );
-                  latestArrayZone6.push({
-                    ...house,
-                    total_area: house?.total_area,
-                    id: matchedZone?.id,
-                  });
-                }
-              );
-              filteredHouses = latestArrayZone6.filter(
-                (house) => parseFloat(house.total_area) <= parseFloat(area)
+              matchedHouse = zone3houseData.find(
+                (house) => house.plot_number === plot
               );
               break;
 
             case "scene_f-zone_4":
-              updateSliderRange("7");
-              const updatedZone7houseData = zoneSevenFilteredData().map(
-                (house) => {
-                  matchedZone = zone7houseData.find(
-                    (zone) =>
-                      parseInt(house.plot_number) ===
-                      parseInt(zone.plot_number)
-                  );
-                  latestArrayZone7.push({
-                    ...house,
-                    total_area: house?.total_area,
-                    id: matchedZone?.id,
-                  });
-                }
-              );
-              filteredHouses = latestArrayZone7.filter(
-                (house) => parseFloat(house.total_area) <= parseFloat(area)
+              matchedHouse = zone7houseData.find(
+                (house) => house.plot_number === plot
               );
               break;
+
             case "scene_g-zone_5":
-              updateSliderRange("8");
-
-              const updatedZone8houseData = zoneEightFilteredData().map(
-                (house) => {
-                  matchedZone = zone8houseData.find(
-                    (zone) =>
-                      parseInt(house.plot_number) ===
-                      parseInt(zone.plot_number)
-                  );
-                  latestArrayZone8.push({
-                    ...house,
-                    total_area: house?.total_area,
-                    id: matchedZone?.id,
-                  });
-                }
-              );
-              filteredHouses = latestArrayZone8.filter(
-                (house) => parseFloat(house.total_area) <= parseFloat(area)
+              matchedHouse = zone8houseData.find(
+                (house) => house.plot_number === plot
               );
               break;
 
-            case "scene_k_zone_9":
-              updateSliderRange("9");
-              const updatedZone9houseData = zoneNineFilteredData().map(
-                (house) => {
-                  matchedZone = zone9houseData.find(
-                    (zone) =>
-                      parseInt(house.plot_number) ===
-                      parseInt(zone.plot_number)
-                  );
-                  latestArrayZone9.push({
-                    ...house,
-                    total_area: house?.total_area,
-                    id: matchedZone?.id,
-                  });
-                }
+            case "scene_h-building_1":
+              matchedHouse = building1houseData.find(
+                (house) => house.plot_number === plot
               );
-              filteredHouses = latestArrayZone8.filter(
-                (house) => parseFloat(house.total_area) <= parseFloat(area)
-              );
-
               break;
 
+            case "scene_i-building_2":
+              matchedHouse = building2houseData.find(
+                (house) => house.plot_number === plot
+              );
+              break;
+
+            // You can add more zones here if needed
             default:
+              matchedHouse = null;
               break;
           }
-        }
-        return filteredHouses;
-      }
 
-      function handleSearchFilters() {
-        const plot = document.getElementById("plotNumber").value;
-        const area = document.getElementById("totalArea").value;
-        const krpano = document.getElementById("krpanoSWFObject");
-        // const area = document.getElementById('totalArea').value;
-        // const block = document.getElementById('blockNumber').value;
+          const hotspotName = `${matchedHouse?.id}`;
+          if (matchedHouse) {
+            blinkHotspot(hotspotName);
 
-        if (area) {
-          // Stop previous blinking first
-          stopAllBlinkingHotspots();
+            let center = matchedHouse.coordinates?.[0]; // Default to first
+            if (
+              matchedHouse.coordinates &&
+              matchedHouse.coordinates.length > 1
+            ) {
+              const total = matchedHouse.coordinates.reduce(
+                (acc, point) => {
+                  acc.ath += parseFloat(point.ath);
+                  acc.atv += parseFloat(point.atv);
+                  return acc;
+                },
+                { ath: 0, atv: 0 }
+              );
+              center = {
+                ath: total.ath / matchedHouse.coordinates.length,
+                atv: total.atv / matchedHouse.coordinates.length,
+              };
+            }
 
-          const areaHouses = getSpeificUnitsByArea();
-
-          areaHouses.forEach((house) => {
-            const hotspotName = `${house.id}`;
-            // blinkHotspot(hotspotName);
-
-            previouslyVisibleHotspots.push({ id: hotspotName });
-          });
-        }
-
-        // previouslyVisibleHotspots = []
-
-        const unitData = localStorage.getItem("response");
-        const parsedData = JSON.parse(unitData);
-
-        let matchedHouse;
-
-        currentScene = krpano.get("xml.scene");
-        // onSceneChange(currentScene, unit)
-
-        switch (currentScene) {
-          case "scene_b-al_marina_aerial":
-            matchedHouse = null;
-
-            break;
-          case "scene_c-zone_1":
-            matchedHouse = zone1houseData.find(
-              (house) => house.plot_number === plot
+            const filteredData = parsedData?.data?.filter(
+              (unit) => unit.plot_number === plot
             );
 
-            break;
-          case "scene_d-zone_2":
-            matchedHouse = zone2houseData.find(
-              (house) => house.plot_number === plot
-            );
-            break;
-          case "scene_e-zone_3":
-            matchedHouse = zone3houseData.find(
-              (house) => house.plot_number === plot
-            );
-            break;
-
-          case "scene_f-zone_4":
-            matchedHouse = zone7houseData.find(
-              (house) => house.plot_number === plot
-            );
-            break;
-
-          case "scene_g-zone_5":
-            matchedHouse = zone8houseData.find(
-              (house) => house.plot_number === plot
-            );
-            break;
-
-          case "scene_h-building_1":
-            matchedHouse = building1houseData.find(
-              (house) => house.plot_number === plot
-            );
-            break;
-
-          case "scene_i-building_2":
-            matchedHouse = building2houseData.find(
-              (house) => house.plot_number === plot
-            );
-            break;
-
-          // You can add more zones here if needed
-          default:
-            matchedHouse = null;
-            break;
-        }
-
-        const hotspotName = `${matchedHouse?.id}`;
-        if (matchedHouse) {
-          blinkHotspot(hotspotName);
-
-          let center = matchedHouse.coordinates?.[0]; // Default to first
-          if (
-            matchedHouse.coordinates &&
-            matchedHouse.coordinates.length > 1
-          ) {
-            const total = matchedHouse.coordinates.reduce(
-              (acc, point) => {
-                acc.ath += parseFloat(point.ath);
-                acc.atv += parseFloat(point.atv);
-                return acc;
-              },
-              { ath: 0, atv: 0 }
-            );
-            center = {
-              ath: total.ath / matchedHouse.coordinates.length,
-              atv: total.atv / matchedHouse.coordinates.length,
-            };
-          }
-
-          const filteredData = parsedData?.data?.filter(
-            (unit) => unit.plot_number === plot
-          );
-
-          if (unitData && unitData.length > 0) {
-            createCard(
-              "Title",
-              "Description",
-              "https://via.placeholder.com/150",
-              filteredData
-            );
-          }
-
-          krpano.call(`lookat(${center?.ath}, ${center?.atv}, 20)`); // 70 = moderate zoom
-        } else {
-          if (plot) {
-            //document.getElementById("notFoundModal").style.display = "block";
-          }
-
-          closeCard(); // Close any existing card
-
-          // Stop blinking and reset color if a previous hotspot was blinking
-          if (currentBlinkInterval && currentBlinkingHotspot) {
-            clearInterval(currentBlinkInterval);
-            krpano.call(
-              `set(hotspot[${hotspotName}].fillcolor,  "0x00FF00")`
-            );
-            currentBlinkInterval = null;
-            currentBlinkingHotspot = null;
-          }
-        }
-
-        // You can replace alert with your own search logic
-      }
-
-      const findMaximumAndMinimum = (zoneData) => {
-        if (!zoneData || zoneData.length === 0) {
-          console.log("No data available.");
-          return;
-        }
-
-        let maxArea = parseInt(zoneData[0].total_area);
-        let minArea = parseInt(zoneData[0].total_area);
-
-        for (let i = 1; i < zoneData.length; i++) {
-          const currentArea = parseInt(zoneData[i].total_area);
-
-          if (currentArea > maxArea) {
-            maxArea = currentArea;
-          }
-
-          if (currentArea < minArea) {
-            minArea = currentArea;
-          }
-        }
-
-        console.log("Maximum totalArea:", maxArea);
-        console.log("Minimum totalArea:", minArea);
-
-        return { max: maxArea, min: minArea };
-      };
-
-      function updateSliderRange(zoneNumber) {
-        let zoneHouses = [];
-
-        switch (zoneNumber) {
-          case "1":
-            zoneHouses = zoneOneFilteredData();
-            break;
-          case "2":
-            zoneHouses = zoneTwoFilteredData();
-            break;
-
-          case "3":
-            zoneHouses = zoneThreeFilteredData();
-            break;
-
-          case "4":
-            zoneHouses = zoneFourFilteredData();
-            break;
-
-          case "5":
-            zoneHouses = zoneFiveFilteredData();
-
-            break;
-
-          case "6":
-            zoneHouses = zoneSixFilteredData();
-            break;
-
-          case "7":
-            zoneHouses = zoneSevenFilteredData();
-            break;
-
-          case "8":
-            zoneHouses = zoneEightFilteredData();
-            break;
-
-          case "9":
-            zoneHouses = zoneNineFilteredData();
-            break;
-          // add more cases for other zones
-        }
-
-        console.log("zone houses", zoneHouses);
-        const { min, max } = findMaximumAndMinimum(zoneHouses);
-
-        // Update slider attributes
-        const slider = document.getElementById("totalArea");
-        slider.min = min;
-        slider.max = max;
-
-        //slider.value = min;
-
-        // Update labels
-        document.getElementById("areaValue").textContent = `${slider.value}`;
-        document.getElementById("areaMax").textContent = `${max}`;
-      }
-
-      // Globals (declare these outside your function, at top level)
-      let currentBlinkingHotspotsByArea = [];
-      let currentBlinkIntervalsByArea = [];
-
-      function stopAllBlinkingHotspots() {
-        const krpano = document.getElementById("krpanoSWFObject");
-        if (currentBlinkIntervalsByArea.length > 0) {
-          currentBlinkIntervalsByArea.forEach((interval, i) => {
-            clearInterval(interval);
-            const hotspotName = currentBlinkingHotspotsByArea[i];
-            krpano.call(`set(hotspot[${hotspotName}].fillcolor, 0xFFFFFF)`);
-          });
-
-          currentBlinkingHotspotsByArea = [];
-          currentBlinkIntervalsByArea = [];
-        }
-      }
-
-      function blinkHotspot(hotspotName) {
-        const krpano = document.getElementById("krpanoSWFObject");
-
-        let currentScene = krpano.get("xml.scene");
-
-        // Case 1: If we're back at the aerial scene or hotspotName is false — stop everything
-        if (currentScene === "scene_b-al_marina_aerial" || !hotspotName) {
-          if (currentBlinkInterval && currentBlinkingHotspot) {
-            clearInterval(currentBlinkInterval);
-
-            // Reset color of the previous hotspot
-            krpano.call(
-              `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFF00)`
-            );
-
-            // Clear references
-            currentBlinkInterval = null;
-            currentBlinkingHotspot = null;
-          }
-
-          return;
-        }
-
-        // Case 2: Stop any previous blinking before starting new one
-
-        const area = document.getElementById("totalArea").value;
-
-        const plot = document.getElementById("plotNumber").value;
-
-        let previousArea;
-
-        if (!area) {
-          if (currentBlinkInterval && currentBlinkingHotspot) {
-            clearInterval(currentBlinkInterval);
-            krpano.call(
-              `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFFFF)`
-            );
-
-            currentBlinkingHotspot = null;
-            currentBlinkInterval = null;
-          }
-
-          previousArea = area;
-        }
-
-        if (area) {
-          // Case 3: Start blinking for the new hotspot
-          const blinkColors = ["0x00FFFF", "0xFFA500"];
-          let blinkIndex = 0;
-
-          interval = setInterval(() => {
-            const color = blinkColors[blinkIndex];
-
-            krpano.call(`set(hotspot[${hotspotName}].fillcolor, ${color})`);
-            blinkIndex = (blinkIndex + 1) % blinkColors.length;
-          }, 500);
-
-          currentBlinkingHotspotsByArea.push(hotspotName);
-          currentBlinkIntervalsByArea.push(interval);
-        }
-
-        if (plot) {
-          if (currentBlinkInterval && currentBlinkingHotspot) {
-            clearInterval(currentBlinkInterval);
-            krpano.call(
-              `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFFFF)`
-            );
-
-            currentBlinkingHotspot = null;
-            currentBlinkInterval = null;
-          }
-
-          // Case 3: Start blinking for the new hotspot
-          const blinkColors = ["0x00FFFF", "0xFFA500"];
-          let blinkIndex = 0;
-
-          currentBlinkInterval = setInterval(() => {
-            const color = blinkColors[blinkIndex];
-
-            krpano.call(`set(hotspot[${hotspotName}].fillcolor, ${color})`);
-            blinkIndex = (blinkIndex + 1) % blinkColors.length;
-          }, 500);
-
-          currentBlinkingHotspot = hotspotName;
-        }
-      }
-
-      function toggleFullScreen() {
-        const elem = document.documentElement;
-        const btn = document.getElementById("fullScreenBtn");
-
-        if (
-          !document.fullscreenElement &&
-          !document.webkitFullscreenElement &&
-          !document.msFullscreenElement
-        ) {
-          // Enter fullscreen
-          if (elem.requestFullscreen) {
-            elem.requestFullscreen();
-          } else if (elem.webkitRequestFullscreen) {
-            elem.webkitRequestFullscreen(); // Safari
-          } else if (elem.msRequestFullscreen) {
-            elem.msRequestFullscreen(); // IE11
-          }
-
-          btn.innerHTML = "🗗";
-        } else {
-          // Exit fullscreen
-          if (document.exitFullscreen) {
-            document.exitFullscreen();
-          } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen(); // Safari
-          } else if (document.msExitFullscreen) {
-            document.msExitFullscreen(); // IE11
-          }
-          btn.innerHTML = "⛶";
-        }
-      }
-
-      function blinkHotspot(hotspotName) {
-        const krpano = document.getElementById("krpanoSWFObject");
-
-        let currentScene = krpano.get("xml.scene");
-
-        // Case 1: If we're back at the aerial scene or hotspotName is false — stop everything
-        if (currentScene === "scene_b-al_marina_aerial" || !hotspotName) {
-          if (currentBlinkInterval && currentBlinkingHotspot) {
-            clearInterval(currentBlinkInterval);
-
-            // Reset color of the previous hotspot
-            krpano.call(
-              `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFF00)`
-            );
-
-            // Clear references
-            currentBlinkInterval = null;
-            currentBlinkingHotspot = null;
-          }
-
-          return;
-        }
-
-        // Case 2: Stop any previous blinking before starting new one
-
-        const area = document.getElementById("totalArea").value;
-
-        const plot = document.getElementById("plotNumber").value;
-
-        let previousArea;
-
-        if (!area) {
-          if (currentBlinkInterval && currentBlinkingHotspot) {
-            clearInterval(currentBlinkInterval);
-            krpano.call(
-              `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFFFF)`
-            );
-
-            currentBlinkingHotspot = null;
-            currentBlinkInterval = null;
-          }
-
-          previousArea = area;
-        }
-
-        if (area) {
-          // Case 3: Start blinking for the new hotspot
-          const blinkColors = ["0x00FFFF", "0xFFA500"];
-          let blinkIndex = 0;
-
-          interval = setInterval(() => {
-            const color = blinkColors[blinkIndex];
-
-            krpano.call(`set(hotspot[${hotspotName}].fillcolor, ${color})`);
-            blinkIndex = (blinkIndex + 1) % blinkColors.length;
-          }, 500);
-
-          currentBlinkingHotspotsByArea.push(hotspotName);
-          currentBlinkIntervalsByArea.push(interval);
-        }
-
-        if (plot) {
-          if (currentBlinkInterval && currentBlinkingHotspot) {
-            clearInterval(currentBlinkInterval);
-            krpano.call(
-              `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFFFF)`
-            );
-
-            currentBlinkingHotspot = null;
-            currentBlinkInterval = null;
-          }
-
-          // Case 3: Start blinking for the new hotspot
-          const blinkColors = ["0x00FFFF", "0xFFA500"];
-          let blinkIndex = 0;
-
-          currentBlinkInterval = setInterval(() => {
-            const color = blinkColors[blinkIndex];
-
-            krpano.call(`set(hotspot[${hotspotName}].fillcolor, ${color})`);
-            blinkIndex = (blinkIndex + 1) % blinkColors.length;
-          }, 500);
-
-          currentBlinkingHotspot = hotspotName;
-        }
-      }
-
-      function toggleFullScreen() {
-        const elem = document.documentElement;
-        const btn = document.getElementById("fullScreenBtn");
-
-        if (
-          !document.fullscreenElement &&
-          !document.webkitFullscreenElement &&
-          !document.msFullscreenElement
-        ) {
-          // Enter fullscreen
-          if (elem.requestFullscreen) {
-            elem.requestFullscreen();
-          } else if (elem.webkitRequestFullscreen) {
-            elem.webkitRequestFullscreen(); // Safari
-          } else if (elem.msRequestFullscreen) {
-            elem.msRequestFullscreen(); // IE11
-          }
-
-          btn.innerHTML = "🗗";
-        } else {
-          // Exit fullscreen
-          if (document.exitFullscreen) {
-            document.exitFullscreen();
-          } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen(); // Safari
-          } else if (document.msExitFullscreen) {
-            document.msExitFullscreen(); // IE11
-          }
-          btn.innerHTML = "⛶";
-        }
-      }
-
-      const toggleTimeView = (element) => {
-        const now = element.querySelector(".now");
-        const future = element.querySelector(".future");
-
-        const isNowActive = now.classList.contains("active");
-
-        if (isNowActive) {
-          now.classList.remove("active");
-          future.classList.add("active");
-          console.log("Future view");
-          // Add your future-view logic here
-        } else {
-          future.classList.remove("active");
-          now.classList.add("active");
-          console.log("Now view");
-          // Add your now-view logic here
-        }
-      };
-
-      // Render the breadcrumbs dynamically
-      const renderBreadcrumbs = () => {
-        const wrapper = document.getElementById("breadcrumb-wrapper");
-        wrapper.innerHTML = ""; // Clear previous breadcrumbs
-
-        breadcrumbTrail.forEach((crumb, index) => {
-          if (index !== 0) {
-            // Add separator
-            const separator = document.createElement("span");
-            separator.className =
-              "breadcrumb-separator mui-breadcrumb-separator";
-            separator.innerHTML = "&gt;";
-            wrapper.appendChild(separator);
-          }
-
-          if (index !== breadcrumbTrail.length - 1) {
-            console.log("IF WORKING");
-            // Not the last one - make it a link
-            const link = document.createElement("a");
-            link.href = "#";
-            link.className = "breadcrumb-link mui-breadcrumb-link";
-            link.setAttribute("data-scene", crumb.scene);
-            link.setAttribute("data-index", index); // Save index for back navigation
-
-            link.innerHTML = `<i class="material-icons mui-breadcrumb-icon">${!index ? crumb.icon : ""
-              }</i> ${crumb.title}`;
-
-            wrapper.appendChild(link);
+            if (unitData && unitData.length > 0) {
+              createCard(
+                "Title",
+                "Description",
+                "https://via.placeholder.com/150",
+                filteredData
+              );
+            }
+
+            krpano.call(`lookat(${center?.ath}, ${center?.atv}, 20)`); // 70 = moderate zoom
           } else {
-            console.log("ELSE WORKING");
+            if (plot) {
+              //document.getElementById("notFoundModal").style.display = "block";
+            }
 
-            // Last one - current breadcrumb
-            const current = document.createElement("span");
-            current.className = "breadcrumb-current mui-breadcrumb-current";
+            closeCard(); // Close any existing card
 
-            current.innerHTML = `<i class="material-icons mui-breadcrumb-icon">${!index ? crumb.icon : ""
+            // Stop blinking and reset color if a previous hotspot was blinking
+            if (currentBlinkInterval && currentBlinkingHotspot) {
+              clearInterval(currentBlinkInterval);
+              krpano.call(
+                `set(hotspot[${hotspotName}].fillcolor,  "0x00FF00")`
+              );
+              currentBlinkInterval = null;
+              currentBlinkingHotspot = null;
+            }
+          }
+
+          // You can replace alert with your own search logic
+        }
+
+        const findMaximumAndMinimum = (zoneData) => {
+          if (!zoneData || zoneData.length === 0) {
+            console.log("No data available.");
+            return;
+          }
+
+          let maxArea = parseInt(zoneData[0].total_area);
+          let minArea = parseInt(zoneData[0].total_area);
+
+          for (let i = 1; i < zoneData.length; i++) {
+            const currentArea = parseInt(zoneData[i].total_area);
+
+            if (currentArea > maxArea) {
+              maxArea = currentArea;
+            }
+
+            if (currentArea < minArea) {
+              minArea = currentArea;
+            }
+          }
+
+          console.log("Maximum totalArea:", maxArea);
+          console.log("Minimum totalArea:", minArea);
+
+          return { max: maxArea, min: minArea };
+        };
+
+        function updateSliderRange(zoneNumber) {
+          let zoneHouses = [];
+
+          switch (zoneNumber) {
+            case "1":
+              zoneHouses = zoneOneFilteredData();
+              break;
+            case "2":
+              zoneHouses = zoneTwoFilteredData();
+              break;
+
+            case "3":
+              zoneHouses = zoneThreeFilteredData();
+              break;
+
+            case "4":
+              zoneHouses = zoneFourFilteredData();
+              break;
+
+            case "5":
+              zoneHouses = zoneFiveFilteredData();
+
+              break;
+
+            case "6":
+              zoneHouses = zoneSixFilteredData();
+              break;
+
+            case "7":
+              zoneHouses = zoneSevenFilteredData();
+              break;
+
+            case "8":
+              zoneHouses = zoneEightFilteredData();
+              break;
+
+            case "9":
+              zoneHouses = zoneNineFilteredData();
+              break;
+            // add more cases for other zones
+          }
+
+          console.log("zone houses", zoneHouses);
+          const { min, max } = findMaximumAndMinimum(zoneHouses);
+
+          // Update slider attributes
+          const slider = document.getElementById("totalArea");
+          slider.min = min;
+          slider.max = max;
+
+          //slider.value = min;
+
+          // Update labels
+          document.getElementById("areaValue").textContent = `${slider.value}`;
+          document.getElementById("areaMax").textContent = `${max}`;
+        }
+
+        // Globals (declare these outside your function, at top level)
+        let currentBlinkingHotspotsByArea = [];
+        let currentBlinkIntervalsByArea = [];
+
+        function stopAllBlinkingHotspots() {
+          const krpano = document.getElementById("krpanoSWFObject");
+          if (currentBlinkIntervalsByArea.length > 0) {
+            currentBlinkIntervalsByArea.forEach((interval, i) => {
+              clearInterval(interval);
+              const hotspotName = currentBlinkingHotspotsByArea[i];
+              krpano.call(`set(hotspot[${hotspotName}].fillcolor, 0xFFFFFF)`);
+            });
+
+            currentBlinkingHotspotsByArea = [];
+            currentBlinkIntervalsByArea = [];
+          }
+        }
+
+        const blinkIndividualHotspot = (hotspotName, isShow = false, isHide = false) =>{
+        
+      
+          const krpano = document.getElementById("krpanoSWFObject");
+
+           // Stop blinking (on close or switching to aerial scene)
+  if (isHide || !hotspotName || krpano.get("xml.scene") === "scene_b-al_marina_aerial") {
+    if (currentBlinkInterval && currentBlinkingHotspot) {
+      clearInterval(currentBlinkInterval);
+      krpano.call(`set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFFFF)`); // Reset color
+      currentBlinkInterval = null;
+      currentBlinkingHotspot = null;
+    }
+    return;
+  }
+
+          if (isShow) {
+            if (currentBlinkInterval && currentBlinkingHotspot) {
+              clearInterval(currentBlinkInterval);
+              krpano.call(
+                `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xE87281)`
+              );
+              krpano.call(
+      `set(hotspot[${currentBlinkingHotspot}].fillalpha, 0.2)` // reset to default or less visible
+    );
+
+              currentBlinkInterval = null;
+              currentBlinkingHotspot = null;
+            }
+
+            // Start blinking for new hotspot
+            const blinkColors = ["0x00FFFF", "0xE87281"];
+            let blinkIndex = 0;
+
+            currentBlinkInterval = setInterval(() => {
+              const color = blinkColors[blinkIndex];
+              krpano.call(`set(hotspot[${hotspotName}].fillcolor, ${color})`);
+              krpano.call(`set(hotspot[${hotspotName}].fillalpha, 0.4)`); // increase opacity
+              blinkIndex = (blinkIndex + 1) % blinkColors.length;
+            }, 500);
+
+            currentBlinkingHotspot = hotspotName;
+          }
+        }
+
+        function blinkHotspot(hotspotName, isShow) {
+          console.log("hotspotName", hotspotName);
+          const krpano = document.getElementById("krpanoSWFObject");
+
+          let currentScene = krpano.get("xml.scene");
+
+          // Case 1: If we're back at the aerial scene or hotspotName is false — stop everything
+          if (currentScene === "scene_b-al_marina_aerial" || !hotspotName) {
+            if (currentBlinkInterval && currentBlinkingHotspot) {
+              clearInterval(currentBlinkInterval);
+
+              // Reset color of the previous hotspot
+              krpano.call(
+                `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFF00)`
+              );
+
+              // Clear references
+              currentBlinkInterval = null;
+              currentBlinkingHotspot = null;
+            }
+
+            return;
+          }
+
+          // Case 2: Stop any previous blinking before starting new one
+
+          const area = document.getElementById("totalArea").value;
+
+          const plot = document.getElementById("plotNumber").value;
+
+          let previousArea;
+
+          if (!area) {
+            if (currentBlinkInterval && currentBlinkingHotspot) {
+              clearInterval(currentBlinkInterval);
+              krpano.call(
+                `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFFFF)`
+              );
+
+              currentBlinkingHotspot = null;
+              currentBlinkInterval = null;
+            }
+
+            previousArea = area;
+          }
+
+          if (area) {
+            // Case 3: Start blinking for the new hotspot
+            const blinkColors = ["0x00FFFF", "0xFFA500"];
+            let blinkIndex = 0;
+
+            interval = setInterval(() => {
+              const color = blinkColors[blinkIndex];
+
+              krpano.call(`set(hotspot[${hotspotName}].fillcolor, ${color})`);
+              blinkIndex = (blinkIndex + 1) % blinkColors.length;
+            }, 500);
+
+            currentBlinkingHotspotsByArea.push(hotspotName);
+            currentBlinkIntervalsByArea.push(interval);
+          }
+
+          if (plot) {
+            if (currentBlinkInterval && currentBlinkingHotspot) {
+              clearInterval(currentBlinkInterval);
+              krpano.call(
+                `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFFFF)`
+              );
+
+              currentBlinkingHotspot = null;
+              currentBlinkInterval = null;
+            }
+
+            // Case 3: Start blinking for the new hotspot
+            const blinkColors = ["0x00FFFF", "0xFFA500"];
+            let blinkIndex = 0;
+
+            currentBlinkInterval = setInterval(() => {
+              const color = blinkColors[blinkIndex];
+
+              krpano.call(`set(hotspot[${hotspotName}].fillcolor, ${color})`);
+              blinkIndex = (blinkIndex + 1) % blinkColors.length;
+            }, 500);
+
+            currentBlinkingHotspot = hotspotName;
+          }
+        }
+
+        function toggleFullScreen() {
+          const elem = document.documentElement;
+          const btn = document.getElementById("fullScreenBtn");
+
+          if (
+            !document.fullscreenElement &&
+            !document.webkitFullscreenElement &&
+            !document.msFullscreenElement
+          ) {
+            // Enter fullscreen
+            if (elem.requestFullscreen) {
+              elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) {
+              elem.webkitRequestFullscreen(); // Safari
+            } else if (elem.msRequestFullscreen) {
+              elem.msRequestFullscreen(); // IE11
+            }
+
+            btn.innerHTML = "🗗";
+          } else {
+            // Exit fullscreen
+            if (document.exitFullscreen) {
+              document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+              document.webkitExitFullscreen(); // Safari
+            } else if (document.msExitFullscreen) {
+              document.msExitFullscreen(); // IE11
+            }
+            btn.innerHTML = "⛶";
+          }
+        }
+
+        function toggleFullScreen() {
+          const elem = document.documentElement;
+          const btn = document.getElementById("fullScreenBtn");
+
+          if (
+            !document.fullscreenElement &&
+            !document.webkitFullscreenElement &&
+            !document.msFullscreenElement
+          ) {
+            // Enter fullscreen
+            if (elem.requestFullscreen) {
+              elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) {
+              elem.webkitRequestFullscreen(); // Safari
+            } else if (elem.msRequestFullscreen) {
+              elem.msRequestFullscreen(); // IE11
+            }
+
+            btn.innerHTML = "🗗";
+          } else {
+            // Exit fullscreen
+            if (document.exitFullscreen) {
+              document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+              document.webkitExitFullscreen(); // Safari
+            } else if (document.msExitFullscreen) {
+              document.msExitFullscreen(); // IE11
+            }
+            btn.innerHTML = "⛶";
+          }
+        }
+
+        const toggleTimeView = (element) => {
+          const now = element.querySelector(".now");
+          const future = element.querySelector(".future");
+
+          const isNowActive = now.classList.contains("active");
+
+          if (isNowActive) {
+            now.classList.remove("active");
+            future.classList.add("active");
+            console.log("Future view");
+            // Add your future-view logic here
+          } else {
+            future.classList.remove("active");
+            now.classList.add("active");
+            console.log("Now view");
+            // Add your now-view logic here
+          }
+        };
+
+        // Render the breadcrumbs dynamically
+        const renderBreadcrumbs = () => {
+          const wrapper = document.getElementById("breadcrumb-wrapper");
+          wrapper.innerHTML = ""; // Clear previous breadcrumbs
+
+          breadcrumbTrail.forEach((crumb, index) => {
+            if (index !== 0) {
+              // Add separator
+              const separator = document.createElement("span");
+              separator.className =
+                "breadcrumb-separator mui-breadcrumb-separator";
+              separator.innerHTML = "&gt;";
+              wrapper.appendChild(separator);
+            }
+
+            if (index !== breadcrumbTrail.length - 1) {
+       
+              // Not the last one - make it a link
+              const link = document.createElement("a");
+              link.href = "#";
+              link.className = "breadcrumb-link mui-breadcrumb-link";
+              link.setAttribute("data-scene", crumb.scene);
+              link.setAttribute("data-index", index); // Save index for back navigation
+
+              link.innerHTML = `<i class="material-icons mui-breadcrumb-icon">${
+                !index ? crumb.icon : ""
               }</i> ${crumb.title}`;
 
-            wrapper.appendChild(current);
+              wrapper.appendChild(link);
+            } else {
+              console.log("ELSE WORKING");
+
+              // Last one - current breadcrumb
+              const current = document.createElement("span");
+              current.className = "breadcrumb-current mui-breadcrumb-current";
+
+              current.innerHTML = `<i class="material-icons mui-breadcrumb-icon">${
+                !index ? crumb.icon : ""
+              }</i> ${crumb.title}`;
+
+              wrapper.appendChild(current);
+            }
+          });
+
+          attachBreadcrumbClickEvents(); // Re-attach click events
+        };
+
+        // Attach click listeners to breadcrumb links
+        const attachBreadcrumbClickEvents = () => {
+          const breadcrumbLinks = document.querySelectorAll(".breadcrumb-link");
+
+          breadcrumbLinks.forEach((link) => {
+            link.addEventListener("click", function (e) {
+              e.preventDefault();
+              const sceneName = this.getAttribute("data-scene");
+              const crumbIndex = parseInt(this.getAttribute("data-index"));
+              removeBreadCrumbItem(sceneName, crumbIndex);
+            });
+          });
+        };
+
+        // Load a new scene and update breadcrumb trail
+        const loadScene = (sceneName) => {
+          // Example krpano call if available
+          if (window.krpano) {
+            krpano.call(`loadscene(${sceneName}, null, MERGE, BLEND(1))`);
           }
-        });
 
-        attachBreadcrumbClickEvents(); // Re-attach click events
-      };
+          // Find scene info
+          const sceneInfo = sceneTitleMap[sceneName];
+          if (sceneInfo) {
+            breadcrumbTrail.push({
+              scene: sceneName,
+              title: sceneInfo.title,
+              icon: sceneInfo.icon,
+            });
+            // renderBreadcrumbs();
+          } else {
+            console.warn("Scene title not found for:", sceneName);
+          }
+        };
 
-      // Attach click listeners to breadcrumb links
-      const attachBreadcrumbClickEvents = () => {
-        const breadcrumbLinks = document.querySelectorAll(".breadcrumb-link");
-
-        breadcrumbLinks.forEach((link) => {
-          link.addEventListener("click", function (e) {
-            e.preventDefault();
-            const sceneName = this.getAttribute("data-scene");
-            const crumbIndex = parseInt(this.getAttribute("data-index"));
-            removeBreadCrumbItem(sceneName, crumbIndex);
-          });
-        });
-      };
-
-      // Load a new scene and update breadcrumb trail
-      const loadScene = (sceneName) => {
-        // Example krpano call if available
-        if (window.krpano) {
-          krpano.call(`loadscene(${sceneName}, null, MERGE, BLEND(1))`);
-        }
-
-        // Find scene info
-        const sceneInfo = sceneTitleMap[sceneName];
-        if (sceneInfo) {
-          breadcrumbTrail.push({
-            scene: sceneName,
-            title: sceneInfo.title,
-            icon: sceneInfo.icon,
-          });
-          // renderBreadcrumbs();
-        } else {
-          console.warn("Scene title not found for:", sceneName);
-        }
-      };
-
-      // Initial render
-      document.addEventListener("DOMContentLoaded", function () {
-        renderBreadcrumbs();
-      });
-
-      const removeBreadCrumbItem = (sceneName, crumbIndex) => {
-        var krpano = document.getElementById("krpanoSWFObject");
-
-        if (sceneName) {
-          loadScene(sceneName);
-          breadcrumbTrail = breadcrumbTrail.slice(0, crumbIndex + 1);
+        // Initial render
+        document.addEventListener("DOMContentLoaded", function () {
           renderBreadcrumbs();
-          krpano.call(`loadscene(${sceneName}, null, MERGE, BLEND(1))`);
-        }
-      };
-
-      // Initial render
-      document.addEventListener("DOMContentLoaded", function () {
-        renderBreadcrumbs();
-      });
-
-      const addCustomDivToHotspot = (hotspotName) => {
-        var krpano = document.getElementById("krpanoSWFObject"); // Get krpano instance
-        if (krpano) {
-        } else {
-          console.error("Krpano instance not found");
-        }
-      };
-
-      // Function to  call the API and fetch data on inital load
-      const onInitalLoad = async () => {
-        const krpano = document.getElementById("krpanoSWFObject");
-        if (!krpano) {
-          console.error("Krpano not loaded yet.");
-          return;
-        }
-
-        const apiData = await fetchAlMarinaData();
-
-        if (!apiData) {
-          return;
-        }
-        return apiData;
-      };
-
-      const parseHotspots = (xmlString) => {
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(
-          `<root>${xmlString}</root>`,
-          "text/xml"
-        ); // wrap in <root> to make it valid XML
-
-        const hotspotElements = xmlDoc.getElementsByTagName("hotspot");
-        const houseData = [];
-
-        Array.from(hotspotElements).forEach((hotspot) => {
-          const id = hotspot.getAttribute("name");
-          const plot_number = hotspot.getAttribute("plot_number");
-          const total_area = hotspot.getAttribute("total_area");
-          // const block_number = hotspot.getAttribute("block_number");
-
-          const points = Array.from(
-            hotspot.getElementsByTagName("point")
-          ).map((point) => ({
-            ath: parseFloat(point.getAttribute("ath")),
-            atv: parseFloat(point.getAttribute("atv")),
-          }));
-
-          houseData.push({
-            id,
-            plot_number,
-            total_area,
-            //  block_number,
-            coordinates: points,
-          });
         });
 
-        console.log("house data", houseData);
+        const removeBreadCrumbItem = (sceneName, crumbIndex) => {
+          var krpano = document.getElementById("krpanoSWFObject");
 
-        return houseData;
-      };
+          if (sceneName) {
+            loadScene(sceneName);
+            breadcrumbTrail = breadcrumbTrail.slice(0, crumbIndex + 1);
+            renderBreadcrumbs();
+            krpano.call(`loadscene(${sceneName}, null, MERGE, BLEND(1))`);
+          }
+        };
 
-      let zone1houseData = parseHotspots(zone1hotspotXML);
-      let zone2houseData = parseHotspots(zone2hotspotXML);
-      let zone3houseData = parseHotspots(zone3hotspotXML);
-      let zone4houseData = parseHotspots(zoneMallhotspotXML);
-      let zone8houseData = parseHotspots(zone8hotspotXML);
+        // Initial render
+        document.addEventListener("DOMContentLoaded", function () {
+          renderBreadcrumbs();
+        });
 
-      let building1houseData = parseHotspots(zone6_building_1_hotspotXML);
+        const addCustomDivToHotspot = (hotspotName) => {
+          var krpano = document.getElementById("krpanoSWFObject"); // Get krpano instance
+          if (krpano) {
+          } else {
+            console.error("Krpano instance not found");
+          }
+        };
 
-      let zone7houseData = parseHotspots(zone7hotspotXML);
+        // Function to  call the API and fetch data on inital load
+        const onInitalLoad = async () => {
+          const krpano = document.getElementById("krpanoSWFObject");
+          if (!krpano) {
+            console.error("Krpano not loaded yet.");
+            return;
+          }
 
-      let building2houseData = parseHotspots(zone5_building_2_hotspotXML);
+          const apiData = await fetchAlMarinaData();
 
-      console.log("building2houseData", building2houseData);
-      let zone9houseData = parseHotspots(zone9hotspotXML);
+          if (!apiData) {
+            return;
+          }
+          return apiData;
+        };
 
-      let toggleState = false; // Global state for toggling colors (false = color1, true = color2)
-      let toggleColorOn = false;
+        const parseHotspots = (xmlString) => {
+          const parser = new DOMParser();
+          const xmlDoc = parser.parseFromString(
+            `<root>${xmlString}</root>`,
+            "text/xml"
+          ); // wrap in <root> to make it valid XML
 
-      let hotspotsVisible = true;
+          const hotspotElements = xmlDoc.getElementsByTagName("hotspot");
+          const houseData = [];
 
-      function toggleHotspotColor(color1 = "0xFF0000", color2 = "0x00FF00") {
-        toggleColorOn = !toggleColorOn;
+          Array.from(hotspotElements).forEach((hotspot) => {
+            const id = hotspot.getAttribute("name");
+            const plot_number = hotspot.getAttribute("plot_number");
+            const total_area = hotspot.getAttribute("total_area");
+            // const block_number = hotspot.getAttribute("block_number");
 
-        hotspotsVisible = !hotspotsVisible;
+            const points = Array.from(
+              hotspot.getElementsByTagName("point")
+            ).map((point) => ({
+              ath: parseFloat(point.getAttribute("ath")),
+              atv: parseFloat(point.getAttribute("atv")),
+            }));
 
-        const krpano = document.getElementById("krpanoSWFObject");
-        if (!krpano) {
-          console.error("Krpano instance not found");
-          return;
-        }
-        const icon = document.getElementById("toggle-icon");
-        icon.textContent = toggleColorOn ? "toggle_on" : "toggle_off";
-
-        icon.style.color = toggleColorOn ? "#808e92  " : "#dee2e6";
-
-        const totalHotspots = krpano.get("hotspot.count");
-        for (let i = 0; i < totalHotspots; i++) {
-          const hsName = krpano.get(`hotspot[${i}].name`);
-          krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
-        }
-
-        // Toggle the state for next change
-        toggleState = !toggleState;
-      }
-
-      function getRandomColor() {
-        //fillcolor="0x00FF00" fillalpha="0.1" bordercolor="0x228B22" borderwidth="1"
-        const letters = "0123456789ABCDEF";
-        let color = "#";
-        for (let i = 0; i < 6; i++) {
-          color += letters[Math.floor(Math.random() * 16)];
-        }
-        return "0x00FF00";
-      }
-      const dynamicZoneRendering = (zoneData, response, krpano) => {
-        zoneData.forEach((house) => {
-          // Create a unique name for each house hotspot
-          const hotspotName = `hs_${house.id}`;
-
-          const hotspotColor = getRandomColor();
-          const hotspotColorHex = hotspotColor.replace("#", "0x");
-          // Generate hotspot with points dynamically
-          let hotspotXML = `<hotspot name="${hotspotName}" style="mypolygonalhotspotstylename">`;
-
-          house.coordinates.forEach((point) => {
-            hotspotXML += `<point ath="${point.ath}" atv="${point.atv}" />`;
+            houseData.push({
+              id,
+              plot_number,
+              total_area,
+              //  block_number,
+              coordinates: points,
+            });
           });
-          hotspotXML += `</hotspot>`;
 
-          const cords = house.coordinates[0];
+          console.log("house data", houseData);
 
-          krpano.call(`
+          return houseData;
+        };
+
+        let zone1houseData = parseHotspots(zone1hotspotXML);
+        let zone2houseData = parseHotspots(zone2hotspotXML);
+        let zone3houseData = parseHotspots(zone3hotspotXML);
+        let zone4houseData = parseHotspots(zoneMallhotspotXML);
+        let zone8houseData = parseHotspots(zone8hotspotXML);
+
+        let building1houseData = parseHotspots(zone6_building_1_hotspotXML);
+
+        let zone7houseData = parseHotspots(zone7hotspotXML);
+
+        let building2houseData = parseHotspots(zone5_building_2_hotspotXML);
+
+        console.log("building2houseData", building2houseData);
+        let zone9houseData = parseHotspots(zone9hotspotXML);
+
+        let toggleState = false; // Global state for toggling colors (false = color1, true = color2)
+        let toggleColorOn = false;
+
+        let hotspotsVisible = true;
+
+        function toggleHotspotColor(color1 = "0xFF0000", color2 = "0x00FF00") {
+          toggleColorOn = !toggleColorOn;
+
+          hotspotsVisible = !hotspotsVisible;
+
+          const krpano = document.getElementById("krpanoSWFObject");
+          if (!krpano) {
+            console.error("Krpano instance not found");
+            return;
+          }
+          const icon = document.getElementById("toggle-icon");
+          icon.textContent = toggleColorOn ? "toggle_on" : "toggle_off";
+
+          icon.style.color = toggleColorOn ? "#808e92  " : "#dee2e6";
+
+          const totalHotspots = krpano.get("hotspot.count");
+          for (let i = 0; i < totalHotspots; i++) {
+            const hsName = krpano.get(`hotspot[${i}].name`);
+            krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
+          }
+
+          // Toggle the state for next change
+          toggleState = !toggleState;
+        }
+
+        function getRandomColor() {
+          //fillcolor="0x00FF00" fillalpha="0.1" bordercolor="0x228B22" borderwidth="1"
+          const letters = "0123456789ABCDEF";
+          let color = "#";
+          for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+          }
+          return "0x00FF00";
+        }
+        const dynamicZoneRendering = (zoneData, response, krpano) => {
+          zoneData.forEach((house) => {
+            // Create a unique name for each house hotspot
+            const hotspotName = `hs_${house.id}`;
+
+            const hotspotColor = getRandomColor();
+            const hotspotColorHex = hotspotColor.replace("#", "0x");
+            // Generate hotspot with points dynamically
+            let hotspotXML = `<hotspot name="${hotspotName}" style="mypolygonalhotspotstylename">`;
+
+            house.coordinates.forEach((point) => {
+              hotspotXML += `<point ath="${point.ath}" atv="${point.atv}" />`;
+            });
+            hotspotXML += `</hotspot>`;
+
+            const cords = house.coordinates[0];
+
+            krpano.call(`
   
              
                 set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFF00);
@@ -1868,604 +1884,612 @@
                 set(hotspot[${hotspotName}].bordercolor, 0x39FF14);
                 set(hotspot[${hotspotName}].borderwidth, 1);
 `);
-          if (cords) {
-            // Set the onclick action to show a Bootstrap tooltip
-            krpano.call(`
+            if (cords) {
+              // Set the onclick action to show a Bootstrap tooltip
+              krpano.call(`
 					set(hotspot[${hotspotName}].onhover, js(showTooltip('${hotspotName}', '${house.plot_number}','${cords.ath},${cords.atv}')));
 					set(hotspot[${hotspotName}].onout, js(hideTooltip()));
 				  `);
+            }
+
+            krpano.call(
+              `set(hotspot[${hotspotName}].onclick, js(handleHotspotClick('${hotspotName}', '${house.plot_number}', '${cords.ath}', '${cords.atv}')));`
+            );
+
+            //           krpano.call(`
+            //          set(hotspot[${hotspotName}].onclick, "showtext(This is some info!, textstyle_info);");
+            // `);
+            // Add hotspot to Krpano dynamically
+            krpano.call(`addhotspot(${hotspotName})`);
+            // krpano.call(
+            //   `set(hotspot[${hotspotName}].loadstyle, mypolygonalhotspotstylename)`
+            // );
+
+            house.coordinates.forEach((point, index) => {
+              krpano.call(
+                `set(hotspot[${hotspotName}].point[${index}].ath, ${point.ath})`
+              );
+              krpano.call(
+                `set(hotspot[${hotspotName}].point[${index}].atv, ${point.atv})`
+              );
+            });
+          });
+        };
+
+        // Add this new function to your existing JavaScript code (e.g., in the same script block as flyToHouse and showHouseDetails)
+        function handleHotspotClick(hotspotName, plotNumber, ath, atv) {
+          // First, call your showHouseDetails function
+          showHouseDetails("", plotNumber, totalArea);
+
+          // Then, call your flyToHouse function
+          flyToHouse(ath, atv);
+          const cleanedhotspotName = hotspotName.replace(/^hs_/, "");
+
+          blinkIndividualHotspot(cleanedhotspotName, true);
+        }
+
+        function flyToHouse(ath, atv) {
+          const krpano = document.getElementById("krpanoSWFObject");
+
+          // It's good practice to ensure ath and atv are numbers if krpano expects them as such
+          const numericAth = parseFloat(ath);
+          const numericAtv = parseFloat(atv);
+
+          if (isNaN(numericAth) || isNaN(numericAtv)) {
+            console.error(
+              "Invalid ATH or ATV provided to flyToHouse:",
+              ath,
+              atv
+            );
+            return;
           }
 
-          krpano.call(
-            `set(hotspot[${hotspotName}].onclick, js(handleHotspotClick('${""}', '${house.plot_number
-            }', '${cords.ath}', '${cords.atv}')));`
-          );
+          // Assuming a default FOV and animation speed
+          const fov = 90; // Or whatever default FOV you need
+          const animationSpeed = 50; // Smoothness value
 
-          //           krpano.call(`
-          //          set(hotspot[${hotspotName}].onclick, "showtext(This is some info!, textstyle_info);");
-          // `);
-          // Add hotspot to Krpano dynamically
-          krpano.call(`addhotspot(${hotspotName})`);
-          // krpano.call(
-          //   `set(hotspot[${hotspotName}].loadstyle, mypolygonalhotspotstylename)`
-          // );
+          // Use krpano.call to execute the lookto command
+          if (krpano) {
+            // Always check if krpano object exists
 
-          house.coordinates.forEach((point, index) => {
-            krpano.call(
-              `set(hotspot[${hotspotName}].point[${index}].ath, ${point.ath})`
+            krpano.call(`lookto(${numericAth}, ${numericAtv}, 90, smooth());`);
+
+            console.log(
+              `Attempting to fly to ATH: ${numericAth}, ATV: ${numericAtv}`
             );
-            krpano.call(
-              `set(hotspot[${hotspotName}].point[${index}].atv, ${point.atv})`
+          } else {
+            console.error(
+              "krpano object not found. Cannot execute flyToHouse."
             );
-          });
-        });
-      };
-
-      // Add this new function to your existing JavaScript code (e.g., in the same script block as flyToHouse and showHouseDetails)
-      function handleHotspotClick(param1, plotNumber, ath, atv) {
-        
-        // First, call your showHouseDetails function
-        showHouseDetails("", plotNumber, totalArea);
-
-        // Then, call your flyToHouse function
-        flyToHouse(ath, atv); 
-      }
-
-      function flyToHouse(ath, atv) {
-        const krpano = document.getElementById("krpanoSWFObject");
-
-        // It's good practice to ensure ath and atv are numbers if krpano expects them as such
-        const numericAth = parseFloat(ath);
-        const numericAtv = parseFloat(atv);
-
-        
-
-        if (isNaN(numericAth) || isNaN(numericAtv)) {
-          console.error(
-            "Invalid ATH or ATV provided to flyToHouse:",
-            ath,
-            atv
-          );
-          return;
+          }
         }
 
-        // Assuming a default FOV and animation speed
-        const fov = 90; // Or whatever default FOV you need
-        const animationSpeed = 50; // Smoothness value
+        const addLandHotspotsToKrpano = async () => {
+          const krpano = document.getElementById("krpanoSWFObject");
+          const response = await onInitalLoad();
 
-        // Use krpano.call to execute the lookto command
-        if (krpano) {
-          // Always check if krpano object exists
+          localStorage.setItem("response", JSON.stringify(response));
 
-          krpano.call(`lookto(${numericAth}, ${numericAtv}, 90, smooth());`);
+          localStorage.setItem("response", JSON.stringify(response));
 
-          console.log(
-            `Attempting to fly to ATH: ${numericAth}, ATV: ${numericAtv}`
-          );
-        } else {
-          console.error(
-            "krpano object not found. Cannot execute flyToHouse."
-          );
+          if (krpano) {
+            const currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
+
+            let card = document.getElementById("krpano-card");
+            if (card) {
+              card.remove();
+            }
+
+            // const homeIcon = document.getElementById("homeIcon");
+
+            // // const unit = getSpeificUnitsByArea()
+
+            // if (currentScene === "scene_a-initial") {
+            //   // Hide home icon on initial screen
+            //   homeIcon.style.display = "none";
+            // } else if (currentScene === "scene_b-al_marina_aerial") {
+            //   // Show home icon and go to initial scene
+
+            //   // closeCard();
+            //   homeIcon.style.display = "block";
+            //   // krpano.call("loadscene(scene_a-initial, null, MERGE);");
+            // } else {
+            //   // Show home icon and go to Al Marina
+            //   homeIcon.style.display = "block";
+            //   // krpano.call(
+            //   //   "loadscene(scene_b-AL_MARINA_aerial, null, MERGE);"
+            //   // );
+            // }
+
+            console.log("currentScene", currentScene);
+
+            if (currentScene === "scene_c-zone_1") {
+              breadcrumbTrail.push({
+                scene: "scene_c-zone_1",
+                title: "Zone 1",
+                icon: "grain",
+              });
+              //onSceneChange(currentScene,unit)
+
+              renderBreadcrumbs();
+              dynamicZoneRendering(zone1houseData, response, krpano);
+            } else if (currentScene === "scene_d-zone_2") {
+              breadcrumbTrail.push({
+                scene: "scene_d-zone_2",
+                title: "Zone 2",
+                icon: "grain",
+              });
+              renderBreadcrumbs();
+              dynamicZoneRendering(zone2houseData, response, krpano);
+            } else if (currentScene === "scene_e-zone_3") {
+              dynamicZoneRendering(zone3houseData, response, krpano);
+              breadcrumbTrail.push({
+                scene: "scene_zone_3",
+                title: "Zone 3",
+                icon: "grain",
+              });
+              renderBreadcrumbs();
+            } else if (currentScene === "scene_l_al_marina_mall_day_aerial") {
+              dynamicZoneRendering([], response, krpano);
+              breadcrumbTrail.push({
+                scene: "scene_l_al_marina_mall_day_aerial",
+                title: "Zone 4",
+                icon: "grain",
+              });
+              renderBreadcrumbs();
+            } else if (currentScene === "scene_f-zone_4") {
+              dynamicZoneRendering(zone7houseData, response, krpano);
+              breadcrumbTrail.push({
+                scene: "scene_f-zone_4",
+                title: "Zone 7",
+                icon: "grain",
+              });
+              renderBreadcrumbs();
+            } else if (currentScene === "scene_g-zone_5") {
+              dynamicZoneRendering(zone8houseData, response, krpano);
+              breadcrumbTrail.push({
+                scene: "scene_g-zone_5",
+                title: "Zone 8",
+                icon: "grain",
+              });
+              renderBreadcrumbs();
+
+              // onSceneChange(currentScene,unit)
+            } else if (currentScene === "scene_h-building_1") {
+              console.log("building1houseData", building1houseData);
+              dynamicZoneRendering(building1houseData, response, krpano);
+              breadcrumbTrail.push({
+                scene: "scene_h-building_1",
+                title: "Zone 6",
+                icon: "grain",
+              });
+              renderBreadcrumbs();
+            } else if (currentScene === "scene_i-building_2") {
+              console.log("building2houseData", building2houseData);
+              dynamicZoneRendering(building2houseData, response, krpano);
+              breadcrumbTrail.push({
+                scene: "scene_i-building_2",
+                title: "Zone 5",
+                icon: "grain",
+              });
+              renderBreadcrumbs();
+            }
+            //
+            else if (currentScene === "scene_k_zone_9") {
+              dynamicZoneRendering(zone9houseData, response, krpano);
+              breadcrumbTrail.push({
+                scene: "scene_k_zone_9",
+                title: "Zone 9",
+                icon: "grain",
+              });
+              renderBreadcrumbs();
+            } else {
+              blinkHotspot(false);
+            }
+          }
+        };
+
+        const fetchAlMarinaData = async () => {
+          // const baseUrl ="http://localhost:5001/api/getAlMarinaData";
+          const baseUrl =
+            "https://erth-al-marina.zameengeomatics.com/api/getAlMarinaData";
+
+          //
+          return fetch(baseUrl)
+            .then((res) => res.json())
+            .then((data) => {
+              return data;
+            })
+            .catch((err) => console.error("Error fetching data:", err));
+        };
+
+        // Function to show Bootstrap tooltip
+
+        let cardContainer = document.createElement("div");
+
+        // Media query for mobile portrait
+        const portraitQuery = window.matchMedia(
+          "(max-width: 768px) and (orientation: portrait)"
+        );
+
+        // Media query for mobile and tablet landscape
+        const landscapeQuery = window.matchMedia(
+          "(max-width: 1024px) and (orientation: landscape)"
+        );
+
+        function applyStyles() {
+          if (portraitQuery.matches) {
+            // Mobile portrait
+            // cardContainer.style.top = "195px";
+            // cardContainer.style.height = "200px";
+            // cardContainer.style.overflowY = "auto";
+            cardContainer.style.bottom = ""; // Clear bottom if needed
+          } else if (landscapeQuery.matches) {
+            // Mobile or tablet in landscape
+            // cardContainer.style.bottom = "100px";
+            // cardContainer.style.height = "200px";
+            // cardContainer.style.overflowY = "auto";
+            // cardContainer.style.top = "";
+          } else {
+            // Other devices / orientations
+            // cardContainer.style.top = "195px";
+            // cardContainer.style.height = "";
+            // cardContainer.style.overflowY = "";
+            // cardContainer.style.bottom = "";
+          }
         }
-      }
 
+        // Initial check
+        applyStyles();
 
-      const addLandHotspotsToKrpano = async () => {
-        const krpano = document.getElementById("krpanoSWFObject");
-        const response = await onInitalLoad();
+        // Listen for changes
+        portraitQuery.addListener(applyStyles);
+        landscapeQuery.addListener(applyStyles);
 
-        localStorage.setItem("response", JSON.stringify(response));
+        function createCard(title, description, imageUrl, response) {
+          let unitDetails = {
+            zone: response[0].zone,
+            plot_number: response[0].plot_number,
+            block_number: response[0].block_number,
+            total_area: response[0].total_area,
+            usage: response[0].usage,
+            south: response[0]["الجنوب "],
+            west: response[0].west,
+            north: response[0].north,
+            east: response[0].east,
+          };
 
-        localStorage.setItem("response", JSON.stringify(response));
+          let existingCard = document.getElementById("krpano-card");
+          if (existingCard) {
+            // existingCard.remove();
+          }
 
-        if (krpano) {
-          const currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
+          console.log("unitDetails", unitDetails);
+          cardContainer.id = "krpano-card";
+          cardContainer.innerHTML = `
+        <div class="property-card">
+  <div class="image-overlay">
+    <div class="price-tag"> Price: TBD</div>
+   
+    <button class="close-btn">×</button>
 
+     <button class="close-btn" onclick="closeCard()">&times;</button>
+  </div>
+  <div class="property-info">
+    <h2>Al Marina</h2>
+    <h2>   <i class="fa fa-map-marker mr-2"></i>   
+      
+        ${
+          unitDetails.zone.charAt(0).toUpperCase() +
+          unitDetails.zone.slice(1).toLowerCase()
+        }
+      <h2>
+     <div class="divider"></div>
+ 
+    <div class="details">
+      <div><span>Area</span><br>${unitDetails.total_area}m²</div>
+      <div><span>Plot</span><br>${unitDetails.plot_number || "N/A"}</div>
+      <div><span>Block</span><br>${unitDetails.block_number || "N/A"}</div>
+    </div>
+   
+ 
+    <div class="extra">
+
+      
+  <div class="details-row_extra">
+    <div class="detail-item">
+      <p class="detail-label_1">South</p>
+      <p class="detail-value">${unitDetails.south || "N/A"}</p>
+    </div>
+    <div class="detail-item">
+      <p class="detail-label_1">North</p>
+      <p class="detail-value">${unitDetails.north || "N/A"}</p>
+    </div>
+    <div class="detail-item">
+      <p class="detail-label_1">East</p>
+      <p class="detail-value">${unitDetails.east || "N/A"}</p>
+    </div>
+    <div class="detail-item">
+      <p class="detail-label_1">West</p>
+      <p class="detail-value">${unitDetails.west || "N/A"}</p>
+    </div>
+  </div>
+</div>
+
+  
+  </div>
+</div>
+`;
+
+          document.body.appendChild(cardContainer);
+        }
+
+        const closeCard = () => {
+        
+          blinkIndividualHotspot('', false, false); 
           let card = document.getElementById("krpano-card");
           if (card) {
             card.remove();
           }
-
-          // const homeIcon = document.getElementById("homeIcon");
-
-          // // const unit = getSpeificUnitsByArea()
-
-          // if (currentScene === "scene_a-initial") {
-          //   // Hide home icon on initial screen
-          //   homeIcon.style.display = "none";
-          // } else if (currentScene === "scene_b-al_marina_aerial") {
-          //   // Show home icon and go to initial scene
-
-          //   // closeCard();
-          //   homeIcon.style.display = "block";
-          //   // krpano.call("loadscene(scene_a-initial, null, MERGE);");
-          // } else {
-          //   // Show home icon and go to Al Marina
-          //   homeIcon.style.display = "block";
-          //   // krpano.call(
-          //   //   "loadscene(scene_b-AL_MARINA_aerial, null, MERGE);"
-          //   // );
-          // }
-
-          console.log("currentScene", currentScene);
-
-          if (currentScene === "scene_c-zone_1") {
-            breadcrumbTrail.push({
-              scene: "scene_c-zone_1",
-              title: "Zone 1",
-              icon: "grain",
-            });
-            //onSceneChange(currentScene,unit)
-
-            renderBreadcrumbs();
-            dynamicZoneRendering(zone1houseData, response, krpano);
-          } else if (currentScene === "scene_d-zone_2") {
-            breadcrumbTrail.push({
-              scene: "scene_d-zone_2",
-              title: "Zone 2",
-              icon: "grain",
-            });
-            renderBreadcrumbs();
-            dynamicZoneRendering(zone2houseData, response, krpano);
-          } else if (currentScene === "scene_e-zone_3") {
-            dynamicZoneRendering(zone3houseData, response, krpano);
-            breadcrumbTrail.push({
-              scene: "scene_zone_3",
-              title: "Zone 3",
-              icon: "grain",
-            });
-            renderBreadcrumbs();
-          } else if (currentScene === "scene_l_al_marina_mall_day_aerial") {
-            dynamicZoneRendering([], response, krpano);
-            breadcrumbTrail.push({
-              scene: "scene_l_al_marina_mall_day_aerial",
-              title: "Zone 4",
-              icon: "grain",
-            });
-            renderBreadcrumbs();
-          } else if (currentScene === "scene_f-zone_4") {
-            dynamicZoneRendering(zone7houseData, response, krpano);
-            breadcrumbTrail.push({
-              scene: "scene_f-zone_4",
-              title: "Zone 7",
-              icon: "grain",
-            });
-            renderBreadcrumbs();
-          } else if (currentScene === "scene_g-zone_5") {
-            dynamicZoneRendering(zone8houseData, response, krpano);
-            breadcrumbTrail.push({
-              scene: "scene_g-zone_5",
-              title: "Zone 8",
-              icon: "grain",
-            });
-            renderBreadcrumbs();
-
-            // onSceneChange(currentScene,unit)
-          } else if (currentScene === "scene_h-building_1") {
-            console.log("building1houseData", building1houseData);
-            dynamicZoneRendering(building1houseData, response, krpano);
-            breadcrumbTrail.push({
-              scene: "scene_h-building_1",
-              title: "Zone 6",
-              icon: "grain",
-            });
-            renderBreadcrumbs();
-          } else if (currentScene === "scene_i-building_2") {
-            console.log("building2houseData", building2houseData);
-            dynamicZoneRendering(building2houseData, response, krpano);
-            breadcrumbTrail.push({
-              scene: "scene_i-building_2",
-              title: "Zone 5",
-              icon: "grain",
-            });
-            renderBreadcrumbs();
-          }
-          //
-          else if (currentScene === "scene_k_zone_9") {
-            dynamicZoneRendering(zone9houseData, response, krpano);
-            breadcrumbTrail.push({
-              scene: "scene_k_zone_9",
-              title: "Zone 9",
-              icon: "grain",
-            });
-            renderBreadcrumbs();
-          } else {
-            blinkHotspot(false);
-          }
-        }
-      };
-
-      const fetchAlMarinaData = async () => {
-        // const baseUrl ="http://localhost:5001/api/getAlMarinaData";
-        const baseUrl =
-          "https://erth-al-marina.zameengeomatics.com/api/getAlMarinaData";
-
-        //
-        return fetch(baseUrl)
-          .then((res) => res.json())
-          .then((data) => {
-            return data;
-          })
-          .catch((err) => console.error("Error fetching data:", err));
-      };
-
-      // Function to show Bootstrap tooltip
-
-      let cardContainer = document.createElement("div");
-
-      // Media query for mobile portrait
-      const portraitQuery = window.matchMedia(
-        "(max-width: 768px) and (orientation: portrait)"
-      );
-
-      // Media query for mobile and tablet landscape
-      const landscapeQuery = window.matchMedia(
-        "(max-width: 1024px) and (orientation: landscape)"
-      );
-
-      function applyStyles() {
-        if (portraitQuery.matches) {
-          // Mobile portrait
-          // cardContainer.style.top = "195px";
-          // cardContainer.style.height = "200px";
-          // cardContainer.style.overflowY = "auto";
-          cardContainer.style.bottom = ""; // Clear bottom if needed
-        } else if (landscapeQuery.matches) {
-          // Mobile or tablet in landscape
-          // cardContainer.style.bottom = "100px";
-          // cardContainer.style.height = "200px";
-          // cardContainer.style.overflowY = "auto";
-          // cardContainer.style.top = "";
-        } else {
-          // Other devices / orientations
-          // cardContainer.style.top = "195px";
-          // cardContainer.style.height = "";
-          // cardContainer.style.overflowY = "";
-          // cardContainer.style.bottom = "";
-        }
-      }
-
-      // Initial check
-      applyStyles();
-
-      // Listen for changes
-      portraitQuery.addListener(applyStyles);
-      landscapeQuery.addListener(applyStyles);
-
-      function createCard(title, description, imageUrl, response) {
-        let unitDetails = {
-          zone: response[0].zone,
-          plot_number: response[0].plot_number,
-          block_number: response[0].block_number,
-          total_area: response[0].total_area,
-          usage: response[0].usage,
-          south: response[0]["الجنوب "],
-          west: response[0].west,
-          north: response[0].north,
-          east: response[0].east,
         };
 
-        let existingCard = document.getElementById("krpano-card");
-        if (existingCard) {
-          // existingCard.remove();
-        }
+        const toggleSearchFilter = () => {
+          const arrow = document.getElementById("toggleArrow_1");
+          const searchBarContainer =
+            document.getElementById("searchBarContainer");
+          let card = searchBarContainer.querySelector(".card-body");
 
-        cardContainer.id = "krpano-card";
-        cardContainer.innerHTML = `
- <div  class="card-header">
-     <div class="card-image-container">
-      <button class="close-btn" onclick="closeCard()">&times;</button>
-      <div class="image-placeholder">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv94OIn-sX93PJMNosZCYZzXFO8Qk1FB2x3A&s" width="100px" height="100px" class="unit-image" alt="Unit Image">
-      </div>
-    </div>
-  </div>
-    <div class="details-row">
-    <div class="detail-item">
-      <p class="detail-label">Total Area</p>
-      <p class="detail-value">${unitDetails.total_area} sqm</p>
-    </div>
-    <div class="detail-item">
-      <p class="detail-label">Plot</p>
-      <p class="detail-value">${unitDetails.plot_number || "N/A"}</p>
-    </div>
-    <div class="detail-item">
-      <p class="detail-label">Block</p>
-      <p class="detail-value">${unitDetails.block_number || "N/A"}</p>
-    </div>
-  </div>
-  <div class="extra-details">
-      <div class="details-row1">
-      <div class="detail-item">
-      <p class="detail-label">South</p>
-      <p class="detail-value">${unitDetails.south || "N/A"}</p>
-    </div>
-     <div class="detail-item">
-      <p class="detail-label">North</p>
-      <p class="detail-value">${unitDetails.north || "N/A"}</p>
-    </div>
-    <div class="detail-item">
-      <p class="detail-label">East</p>
-      <p class="detail-value">${unitDetails.east || "N/A"}</p>
-    </div>
-       <div class="detail-item">
-      <p class="detail-label">West</p>
-      <p class="detail-value">${unitDetails.west || "N/A"}</p>
-    </div>
-   </div>
-  </div>
-  <div class="toggle-details" onclick="toggleDetails()">
-     <span id="toggleArrow">▼</span>
-  </div>`;
+          // Check computed visibility (not just inline style)
+          //const isVisible = window.getComputedStyle(card).display !== "none";
 
-        document.body.appendChild(cardContainer);
-      }
+          const isHidden1 =
+            card.style.display === "none" || card.style.display === "";
+          arrow.textContent = !isHidden1 ? "▶" : "◀";
 
-      const closeCard = () => {
-        let card = document.getElementById("krpano-card");
-        if (card) {
-          card.remove();
-        }
-      };
+          if (card.style.display === "block") {
+            card.style.display = "none";
+          } else {
+            card.style.display = "block";
+          }
+        };
 
-      const toggleSearchFilter = () => {
-        const arrow = document.getElementById("toggleArrow_1");
-        const searchBarContainer =
-          document.getElementById("searchBarContainer");
-        let card = searchBarContainer.querySelector(".card-body");
+        const toggleDetails = () => {
+          const arrow = document.getElementById("toggleArrow");
 
-        // Check computed visibility (not just inline style)
-        //const isVisible = window.getComputedStyle(card).display !== "none";
+          const details = document.querySelector(".extra-details");
+          const btn = document.querySelector(".show-details-button");
 
-        const isHidden1 =
-          card.style.display === "none" || card.style.display === "";
-        arrow.textContent = !isHidden1 ? "▶" : "◀";
+          const isHidden =
+            details.style.display === "none" || details.style.display === "";
+          arrow.textContent = isHidden ? "▲" : "▼";
 
-        if (card.style.display === "block") {
-          card.style.display = "none";
-        } else {
-          card.style.display = "block";
-        }
-      };
+          if (details.style.display === "block") {
+            details.style.display = "none";
+          } else {
+            details.style.display = "block";
+          }
+        };
 
-      const toggleDetails = () => {
-        const arrow = document.getElementById("toggleArrow");
+        window.onload = function () {
+          const krpano = document.getElementById("krpanoSWFObject");
+          if (krpano && krpano.call) {
+            console.log("Krpano is ready");
+            createSceneCard();
+          }
+        };
 
-        const details = document.querySelector(".extra-details");
-        const btn = document.querySelector(".show-details-button");
+        // Function to display house details
+        const showHouseDetails = (response, plot_number, total_area) => {
+          let card = document.getElementById("krpano-card");
+          if (card) {
+            card.remove();
+          }
+          const unitData = localStorage.getItem("response");
 
-        const isHidden =
-          details.style.display === "none" || details.style.display === "";
-        arrow.textContent = isHidden ? "▲" : "▼";
+          const parsedData = JSON.parse(unitData);
 
-        if (details.style.display === "block") {
-          details.style.display = "none";
-        } else {
-          details.style.display = "block";
-        }
-      };
-
-      window.onload = function () {
-        const krpano = document.getElementById("krpanoSWFObject");
-        if (krpano && krpano.call) {
-          console.log("Krpano is ready");
-          createSceneCard();
-        }
-      };
-
-      // Function to display house details
-      const showHouseDetails = (response, plot_number, total_area) => {
-        let card = document.getElementById("krpano-card");
-        if (card) {
-          card.remove();
-        }
-        const unitData = localStorage.getItem("response");
-
-        const parsedData = JSON.parse(unitData);
-
-        const filteredData = parsedData?.data?.filter(
-          (unit) => unit.plot_number === plot_number
-        );
-
-        //   Assuming the first element in the response array corresponds to the clicked house
-        if (unitData && unitData.length > 0) {
-          createCard(
-            "Title",
-            "Description",
-            "https://via.placeholder.com/150",
-            filteredData
+          const filteredData = parsedData?.data?.filter(
+            (unit) => unit.plot_number === plot_number
           );
-        } else {
-          console.error("House details not found in the response.");
-        }
-      };
 
-      const showTooltip = (hotspotName, houseId, cords) => {
-        // Convert string back to an array
+          //   Assuming the first element in the response array corresponds to the clicked house
+          if (unitData && unitData.length > 0) {
+            createCard(
+              "Title",
+              "Description",
+              "https://via.placeholder.com/150",
+              filteredData
+            );
+          } else {
+            console.error("House details not found in the response.");
+          }
+        };
 
-        const coordinatesString = cords;
-        const coordinatesArray = coordinatesString.split(",").map(Number);
-        const krpano = document.getElementById("krpanoSWFObject");
+        const showTooltip = (hotspotName, houseId, cords) => {
+          // Convert string back to an array
+if(false){
+          // blinkHotspot(hotspotName)
+          const coordinatesString = cords;
+          const coordinatesArray = coordinatesString.split(",").map(Number);
+          const krpano = document.getElementById("krpanoSWFObject");
 
-        let existingTooltip = document.getElementById("hotspot-tooltip");
-        if (existingTooltip) {
-          existingTooltip.remove(); // Remove existing tooltip if it exists
-        }
+          let existingTooltip = document.getElementById("hotspot-tooltip");
+          if (existingTooltip) {
+            existingTooltip.remove(); // Remove existing tooltip if it exists
+          }
 
-        // if (krpano && krpano.get) {
-        //   console.log("IF WORKING");
-        // }
 
-        if (!krpano || !krpano.get) {
-          console.error("Krpano is not ready yet.");
-          return;
-        }
-        // Convert hotspot position to screen coordinates
+          if (!krpano || !krpano.get) {
+            console.error("Krpano is not ready yet.");
+            return;
+          }
+          // Convert hotspot position to screen coordinates
 
-        const tooltip = document.createElement("div");
-        tooltip.id = "hotspot-tooltip";
-        tooltip.className = "tooltip bs-tooltip-top show"; // Bootstrap tooltip classes
-        tooltip.setAttribute("role", "tooltip");
+          const tooltip = document.createElement("div");
+          tooltip.id = "hotspot-tooltip";
+          tooltip.className = "tooltip bs-tooltip-top show"; // Bootstrap tooltip classes
+          tooltip.setAttribute("role", "tooltip");
 
-        // Tooltip inner content
-        tooltip.innerHTML = `
+          // Tooltip inner content
+          tooltip.innerHTML = `
 				<div class="tooltip-arrow"></div>
 				  <div class="tooltip-inner">
 				  🏠 Plot: ${houseId} <br> Click for details
 				  </div>
 			  `;
 
-        // Apply Bootstrap styles
-        tooltip.style.position = "absolute";
+          // Apply Bootstrap styles
+          tooltip.style.position = "absolute";
 
-        tooltip.style.top = "500px"; // Adjust as necessary
-        tooltip.style.left = "50%";
+          tooltip.style.top = "500px"; // Adjust as necessary
+          tooltip.style.left = "50%";
 
-        // tooltip.style.top = `${y}px`;
-        // tooltip.style.left = `${x}px`;
-        tooltip.style.transform = "translateX(-50%)";
-        tooltip.style.zIndex = "1000";
+          // tooltip.style.top = `${y}px`;
+          // tooltip.style.left = `${x}px`;
+          tooltip.style.transform = "translateX(-50%)";
+          tooltip.style.zIndex = "1000";
 
-        document.body.appendChild(tooltip);
+          document.body.appendChild(tooltip);
 
-        // Remove the tooltip after 3 seconds
-        setTimeout(() => {
-          tooltip.remove();
-        }, 3000);
-      };
-      // Function to hide the tooltip when the mouse leaves
-      const hideTooltip = () => {
-        let existingTooltip = document.getElementById("hotspot-tooltip");
-        if (existingTooltip) {
-          existingTooltip.remove();
-        }
-      };
+          // Remove the tooltip after 3 seconds
+          setTimeout(() => {
+            tooltip.remove();
+          }, 3000);
 
-      // Zoom in function
-      const zoomIn = () => {
-        const krpano = document.getElementById("krpanoSWFObject");
-
-        krpano.call("set(fov_moveforce,-1);");
-      };
-
-      const zoomOut = () => {
-        const krpano = document.getElementById("krpanoSWFObject");
-
-        krpano.call("set(fov_moveforce,+1);");
-        // Wait briefly to ensure the scene is ready, then zoom
-      };
-      const enableZoomControls = () => {
-        document
-          .getElementById("zoomInBtn")
-          .addEventListener("click", function () {
-            zoomIn();
-          });
-
-        document
-          .getElementById("zoomOutBtn")
-          .addEventListener("click", function () {
-            zoomOut();
-          });
-
-        document
-          .getElementById("fullScreenBtn")
-          .addEventListener("click", function () {
-            toggleFullScreen();
-          });
-      };
-
-      window.onload = () => {
-        var krpano_obj = document.getElementById("krpanoSWFObject");
-
-        setTimeout(() => {
-          if (typeof krpano_obj !== "undefined" && krpano_obj !== null) {
-            console.log("setTimeout Krpano Initialized");
-            onInitalLoad();
+}
+        };
+        // Function to hide the tooltip when the mouse leaves
+        const hideTooltip = () => {
+          let existingTooltip = document.getElementById("hotspot-tooltip");
+          if (existingTooltip) {
+            existingTooltip.remove();
           }
-        }, 1000);
+        };
 
-        const currentScene = krpano_obj.get("xml.scene");
+        // Zoom in function
+        const zoomIn = () => {
+          const krpano = document.getElementById("krpanoSWFObject");
 
-        // document
-        //   .getElementById("homeIcon")
-        //   .addEventListener("click", function () {
-        //     const krpano_obj = document.getElementById("krpanoSWFObject");
-        //     const homeIcon = document.getElementById("homeIcon");
+          krpano.call("set(fov_moveforce,-1);");
+        };
 
-        //     if (krpano_obj) {
-        //       breadcrumbTrail = [
-        //         {
-        //           scene: "scene_b-AL_MARINA_aerial",
-        //           title: "",
-        //           icon: '<img src="/skin/icons/AlMarina_white.png" width="100px" height="100px" class="breadcrumb-icon" />',
-        //         },
-        //       ];
-        //       renderBreadcrumbs();
+        const zoomOut = () => {
+          const krpano = document.getElementById("krpanoSWFObject");
 
-        //       if (currentScene === "scene_b-al_marina_aerial") {
-        //         // Show home icon and go to initial scene
+          krpano.call("set(fov_moveforce,+1);");
+          // Wait briefly to ensure the scene is ready, then zoom
+        };
+        const enableZoomControls = () => {
+          document
+            .getElementById("zoomInBtn")
+            .addEventListener("click", function () {
+              zoomIn();
+            });
 
-        //         krpano_obj.call("loadscene(scene_a-initial, null, MERGE);");
-        //       } else {
-        //         // Show home icon and go to Al Marina
+          document
+            .getElementById("zoomOutBtn")
+            .addEventListener("click", function () {
+              zoomOut();
+            });
 
-        //         krpano_obj.call(
-        //           "loadscene(scene_b-AL_MARINA_aerial, null, MERGE);"
-        //         );
-        //       }
-        //     } else {
-        //       console.error("krpano instance not found or not ready.");
-        //     }
-        //   });
+          document
+            .getElementById("fullScreenBtn")
+            .addEventListener("click", function () {
+              toggleFullScreen();
+            });
+        };
 
-        const krpano = document.getElementById("krpanoSWFObject");
+        window.onload = () => {
+          var krpano_obj = document.getElementById("krpanoSWFObject");
 
-        addCustomDivToHotspot("hs1"); // Replace 'hs1' with your hotspot ID
+          setTimeout(() => {
+            if (typeof krpano_obj !== "undefined" && krpano_obj !== null) {
+              console.log("setTimeout Krpano Initialized");
+              onInitalLoad();
+            }
+          }, 1000);
 
-        setTimeout(() => {
+          const currentScene = krpano_obj.get("xml.scene");
+
+          // document
+          //   .getElementById("homeIcon")
+          //   .addEventListener("click", function () {
+          //     const krpano_obj = document.getElementById("krpanoSWFObject");
+          //     const homeIcon = document.getElementById("homeIcon");
+
+          //     if (krpano_obj) {
+          //       breadcrumbTrail = [
+          //         {
+          //           scene: "scene_b-AL_MARINA_aerial",
+          //           title: "",
+          //           icon: '<img src="/skin/icons/AlMarina_white.png" width="100px" height="100px" class="breadcrumb-icon" />',
+          //         },
+          //       ];
+          //       renderBreadcrumbs();
+
+          //       if (currentScene === "scene_b-al_marina_aerial") {
+          //         // Show home icon and go to initial scene
+
+          //         krpano_obj.call("loadscene(scene_a-initial, null, MERGE);");
+          //       } else {
+          //         // Show home icon and go to Al Marina
+
+          //         krpano_obj.call(
+          //           "loadscene(scene_b-AL_MARINA_aerial, null, MERGE);"
+          //         );
+          //       }
+          //     } else {
+          //       console.error("krpano instance not found or not ready.");
+          //     }
+          //   });
+
+          const krpano = document.getElementById("krpanoSWFObject");
+
+          addCustomDivToHotspot("hs1"); // Replace 'hs1' with your hotspot ID
+
+          setTimeout(() => {
+            if (typeof krpano !== "undefined" && krpano !== null) {
+              console.log("setTimeout Krpano Initialized");
+
+              addLandHotspotsToKrpano();
+            }
+            krpano.call("set(tooltip_pos.x, 0)");
+            krpano.call("set(tooltip_pos.y, 0)");
+
+            krpano.call(
+              "lookto(0.26823401616246656, -0.08515741582446189, 90, 0)"
+            );
+
+            // Always update screen bounds first
+            krpano.call("updatescreenbounds()");
+
+            // Convert sphereto screen
+            krpano.call(
+              `spheretoscreen(0.26823401616246656, -0.08515741582446189, tooltip_pos)`
+            );
+
+            // Get screen X, Y
+            const screenX = krpano.get("tooltip_pos.x");
+            const screenY = krpano.get("tooltip_pos.y");
+          }, 1000);
+
+          // Delay to ensure Krpano loads
+          updateSearchVisibility();
+
+          const unit = getSpecificUnit();
+
+          // onSceneChange(currentScene, unit)
+
           if (typeof krpano !== "undefined" && krpano !== null) {
-            console.log("setTimeout Krpano Initialized");
+            // or however your app provides scene name
 
-            addLandHotspotsToKrpano();
+            krpano.set(
+              "events.onloadcomplete",
+              "js(enableZoomControls()); js(addLandHotspotsToKrpano()); js(updateSearchVisibility());  js(createSceneCard()); "
+            );
           }
-          krpano.call("set(tooltip_pos.x, 0)");
-          krpano.call("set(tooltip_pos.y, 0)");
-
-          krpano.call(
-            "lookto(0.26823401616246656, -0.08515741582446189, 90, 0)"
-          );
-
-          // Always update screen bounds first
-          krpano.call("updatescreenbounds()");
-
-          // Convert sphereto screen
-          krpano.call(
-            `spheretoscreen(0.26823401616246656, -0.08515741582446189, tooltip_pos)`
-          );
-
-          // Get screen X, Y
-          const screenX = krpano.get("tooltip_pos.x");
-          const screenY = krpano.get("tooltip_pos.y");
-        }, 1000);
-
-        // Delay to ensure Krpano loads
-        updateSearchVisibility();
-
-        const unit = getSpecificUnit();
-
-        // onSceneChange(currentScene, unit)
-
-        if (typeof krpano !== "undefined" && krpano !== null) {
-          // or however your app provides scene name
-
-          krpano.set(
-            "events.onloadcomplete",
-            "js(enableZoomControls()); js(addLandHotspotsToKrpano()); js(updateSearchVisibility());  js(createSceneCard()); "
-          );
-        }
-      };
-    </script>
-  </div>
-</body>
-
+        };
+      </script>
+    </div>
+  </body>
 </html>
