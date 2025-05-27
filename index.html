@@ -120,77 +120,47 @@
         <label
           for="toggleFilter"
           class="toggle-container"
-          onclick="toggleSearchFilter()"
+         
           id="toggleFilterButton"
         >
-          <span id="toggleArrow_1">▶</span>
-          <div class="vertical-connector"></div>
+          <div class="toggle-icon-wrapper">
+            <span id="toggleArrow_1"></span>
+          </div>
         </label>
 
         <div class="container mt-5">
           <div
-            class="card shadow rounded-4 compact-search-card"
+            class="card shadow rounded-1 compact-search-card"
             id="searchFilterCard"
           >
             <div class="card-body">
               <h5 class="card-title mb-4 fw-semibold">Search Filter</h5>
-
               <div class="mb-3">
                 <div class="input-group">
-                  <span class="input-group-text">
-                    <i class="fas fa-search"></i>
-                  </span>
                   <input
                     type="text"
                     class="form-control"
                     id="plotNumber"
-                    placeholder="Search by Plot Number"
+                    placeholder="Plot Number"
                   />
                 </div>
               </div>
-
               <div>
-                <div class="mt-2">
-                  <label
-                    class="form-label fw-semibold"
-                    for="availabilityDropdown"
-                    >Availability</label
-                  >
-                </div>
                 <div class="mt-1 mb-3">
                   <select
-                    class="form-select"
+                    class="form-select custom-dropdown"
                     id="availabilityDropdown"
                     name="availability"
                   >
-                    <option value="">Select Availability</option>
                     <option value="Available">Available</option>
                     <option value="Sold">Sold</option>
                     <option value="Reserved">Reserved</option>
                   </select>
                 </div>
               </div>
-
-              <!-- <div>
-              <div class="mt-2">
-                <label class="form-label fw-semibold">Availability</label>
-              </div>
-              <div class="mt-1 mb-3" id="availabilityButtons">
-                <button class="btn btn-outline-success me-2" data-value="Available">
-                  Available
-                </button>
-                <button class="btn btn-outline-danger me-2" data-value="Sold">
-                  Sold
-                </button>
-                <button class="btn btn-outline-warning" data-value="Reserved">
-                  Reserved
-                </button>
-              </div>
-            </div> -->
-
               <div class="mb-3">
                 <label for="totalArea" class="form-label">
-                  <label class="form-label fw-semibold"> Total Area: </label>
+                  <label class="form-label fw-semibold">Area Range: </label>
                   <span id="areaValue">100</span> to
                   <span id="areaMax">20000</span> sq m
                 </label>
@@ -205,14 +175,12 @@
                   oninput="updateAreaAndSearch(this.value)"
                 />
               </div>
-
               <button
                 class="btn btn-primary w-100"
                 onclick="handleSearchFilters()"
               >
                 Search
               </button>
-
               <div class="mt-3 d-flex justify-content-center my-3">
                 <button
                   class="btn btn-link p-0 ml-5 text-decoration-none"
@@ -222,7 +190,6 @@
                   <i class="fas fa-sync-alt me-2"></i> Reset Filters
                 </button>
               </div>
-
               <div id="moreOptions" style="display: none">
                 <div class="mt-2">
                   <label class="form-label fw-semibold">Availability</label>
@@ -310,26 +277,38 @@
         //var area = 500; // you can change this value dynamically later
         //document.getElementById("areaValue").textContent = `${area} sq m`;
 
-        function resetFilters() {
-          // Reset the total area slider
-          const slider = document.getElementById("totalArea");
-          const plot = document.getElementById("totalArea");
-          slider.min = "100";
-          slider.value = "100"; // or whatever your default value is
-          plot.value = "";
-
-          document.getElementById("areaValue").textContent = "100";
-          document.getElementById("areaMax").textContent = "20000";
-
-          // document.getElementById("areaValue").innerText = slider.value;
-
-          // Clear other filters here if you have them
-
-          // Call search again with reset values
-          //handleSearchFilters();
-          stopAllBlinkingHotspots();
-          blinkHotspot();
+        let sliderSearchedHouses;
+      const globalKrpano= ()=>{
+        const krpano = document.getElementById("krpanoSWFObject");
+        if (!krpano) {
+          console.error("Krpano instance not found");
+          return;
         }
+        return krpano;
+      }
+
+      
+
+        function resetFilters() {
+        // Reset the total area slider
+        let krpano = globalKrpano();
+        const slider = document.getElementById("totalArea");
+        const plot = document.getElementById("totalArea");
+        slider.min = "100";
+        slider.value = "100"; // or whatever your default value is
+        plot.value = "";
+        document.getElementById("areaValue").textContent = "100";
+        document.getElementById("areaMax").textContent = "20000";
+        // document.getElementById("areaValue").innerText = slider.value;
+        // Clear other filters here if you have them
+        // Call search again with reset values
+        //handleSearchFilters();
+        sliderSearchedHouses = []
+        stopAllBlinkingHotspots();
+        blinkHotspot();
+        displayHorizontalSlider();
+      // dynamicZoneRendering(building2houseData, '', krpano);
+      }
 
         const arialView = () => {
           const krpano = document.getElementById("krpanoSWFObject");
@@ -355,59 +334,17 @@
         let previouslyVisibleHotspots = [];
 
         let newHotspotArray = [];
-        let sliderSearchedHouses;
+       // let sliderSearchedHouses;
 
         function updateAreaAndSearch(value) {
           const krpano = document.getElementById("krpanoSWFObject");
           document.getElementById("areaValue").innerText = `${value}`;
 
           const totalHotspots = krpano.get("hotspot.count");
-          // console.log("totalHotspots", totalHotspots)
-          // for (let i = 0; i < totalHotspots; i++) {q
-          //   console.log("inside here");
-          //   krpano.set(`hotspot[${hsName}].visible`, false);
-          // }
-          // Hide previously visible hotspots
-          //       console.log("previouslyVisibleHotspots", previouslyVisibleHotspots)
-          //  previouslyVisibleHotspots.forEach((hotspotName) => {
-          //   console.log('previouslyVisibleHotspots', hotspotName)
-          //   krpano.set(`hotspot[${hotspotName.id}].visible`, false);
-          //  })
-          //   //krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
-          // //  krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
-          // });
+         
           sliderSearchedHouses = getSpeificUnitsByArea();
 
-          //currentAppearingHotpsots.push(...sliderSearchedHouses)
-          //  slidersHotspot.push(found);
-          //let initial = sliderSearchedHouses[0];
-          //const startId = parseInt(initial?.id?.replace("hs", "")); // e.g. 18
-
-          // Create a lookup map from existing hotspot IDs for quick checking
-          // const existingIds = new Set(
-          //   sliderSearchedHouses.map((house) => parseInt(house?.id?.replace("hs", "")))
-          // );
-
-          // console.log("start id", startId ,  "sliderSearchedHouses", sliderSearchedHouses);
-          // // Make a new array including only valid sequential hotspots starting from startId
-          // const missingHotspots = [];
-          // const notFound = [];
-          // for (let i = startId; i <= sliderSearchedHouses.length; i++) {
-          //   // change 100 to your max expected id
-          //   if (existingIds.has(i)) {
-          //     const found = sliderSearchedHouses.find(
-          //       (house) => parseInt(house?.id?.replace("hs", "")) === i
-          //     );
-          //     if (found) {
-          //       newHotspotArray.push(found);
-          //     }
-          //   } else {
-          //     missingHotspots.push(`hs${i}`);
-          //   }
-          // }
-
-          //let idNumber = initial?.id?.replace("hs", ""); // "18" as a string
-          //  let idInt = parseInt(idNumber);
+          
 
           if (sliderSearchedHouses) {
             let initial = sliderSearchedHouses[0];
@@ -462,7 +399,9 @@
               // hotspotName  && krpano.call(`removehotspot(${hotspotName})`);
             });
 
-            for (let i = 0; i < 30; i++) {
+
+            // to be fixed
+            for (let i = 0; i < latestArrayZone5.length; i++) {
               const hotspotName = krpano.get(`hotspot[${i}].name`);
               // console.log("INSIDE", allowedHotspots[i])
               // krpano.call(`removehotspot(${allowedHotspots[i]})`);
@@ -471,7 +410,6 @@
 
               //   If hotspot name is not in the allowed list, hide or remove it
               if (!allowedHotspots.includes(hotspotName)) {
-             
                 //Option 1: Just hide it
                 // krpano.set(`hotspot[${hotspotName}].visible`, false);
 
@@ -480,35 +418,9 @@
               }
             }
 
-            // // find minimum and maximum
-            // newHotspotArray.forEach((hotspotId) => {
+          
 
-            //   krpano.set(`hotspot[${hotspotId}].visible`, false);
-            //   krpano.call(`set(hotspot[${hotspotId}].visible, false)`);
-            //   krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0)`);
-            //   krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
-            //   krpano.call(`set(hotspot[${hotspotId}].bordercolor, 0x0039FF14)`);
-            // });
-            // //newHotspotArray = [];
-
-            console.log("missingHotspots", missingHotspots);
-            //  0.1
-            // missingHotspots.forEach((hotspotId) => {
-            //   krpano.set(`hotspot[${hotspotId}].visible`, false);
-            //   krpano.call(`set(hotspot[${hotspotId}].visible, false)`);
-            //   krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0.00000)`);
-            //   krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
-            // });
-            // for (let i = 0; i < missingHotspots.length; i++) {
-            //     const hsName = krpano.get(`hotspot[${i}].name`);
-            //  console.log("NAME ============", hsName)
-            //                 krpano.set(`hotspot[${'hs34'}].visible`, false);
-
-            //  krpano.set(`hotspot[${'hs1'}]`.borderwidth, 0);
-            //  krpano.set(`hotspot[${'hs4'}]`.borderwidth, 0);
-            //  krpano.set(`hotspot[${'hs7'}]`.borderwidth, 0);
-            //krpano.set(`hs1.visible`, false);
-            //  krpano.set(`hs1.visible`, false);
+           
           }
 
           allowedHotspots = [];
@@ -591,115 +503,6 @@
             sliderContainer.insertAdjacentHTML("beforeend", cardHTML);
           });
         };
-
-        // function updateAreaAndSearch(value) {
-        //   const krpano = document.getElementById("krpanoSWFObject");
-
-        //   document.getElementById("areaValue").innerText = value;
-
-        //   const totalHotspots = krpano.get("hotspot.count");
-        //   // console.log("totalHotspots", totalHotspots)
-        //   // for (let i = 0; i < totalHotspots; i++) {q
-        //   //   console.log("inside here");
-        //   //   krpano.set(`hotspot[${hsName}].visible`, false);
-        //   // }
-
-        //   // Hide previously visible hotspots
-        //   //       console.log("previouslyVisibleHotspots", previouslyVisibleHotspots)
-        //   //  previouslyVisibleHotspots.forEach((hotspotName) => {
-        //   //   console.log('previouslyVisibleHotspots', hotspotName)
-        //   //   krpano.set(`hotspot[${hotspotName.id}].visible`, false);
-
-        //   //  })
-
-        //   //   //krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
-        //   // //  krpano.set(`hotspot[${hsName}].visible`, hotspotsVisible);
-        //   // });
-
-        //   areaHouses = getSpeificUnitsByArea();
-
-        //   //currentAppearingHotpsots.push(...areaHouses)
-
-        //   //  slidersHotspot.push(found);
-        //   let initial = areaHouses[0];
-        //   const startId = parseInt(initial?.id?.replace("hs", "")); // e.g. 18
-
-        //   // Create a lookup map from existing hotspot IDs for quick checking
-        //   const existingIds = new Set(
-        //     areaHouses.map((house) => parseInt(house?.id?.replace("hs", "")))
-        //   );
-
-        //   // Make a new array including only valid sequential hotspots starting from startId
-
-        //   const missingHotspots = [];
-
-        //   const notFound = [];
-        //   for (let i = startId; i <= areaHouses.length; i++) {
-        //     // change 100 to your max expected id
-        //     if (existingIds.has(i)) {
-        //       const found = areaHouses.find(
-        //         (house) => parseInt(house?.id?.replace("hs", "")) === i
-        //       );
-
-        //       if (found) {
-        //         newHotspotArray.push(found.id);
-        //       }
-        //     } else {
-        //       missingHotspots.push(`hs${i}`);
-        //     }
-        //   }
-
-        //   let idNumber = initial?.id?.replace("hs", ""); // "18" as a string
-        //   let idInt = parseInt(idNumber);
-
-        //   // find minimum and maximum
-
-        //   newHotspotArray.forEach((hotspotId) => {
-        //     krpano.set(`hotspot[${hotspotId}].visible`, false);
-        //     krpano.call(`set(hotspot[${hotspotId}].visible, false)`);
-        //     krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0)`);
-        //     krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
-        //   });
-
-        //   //  0.1
-        //   // missingHotspots.forEach((hotspotId) => {
-
-        //   //   krpano.set(`hotspot[${hotspotId}].visible`, false);
-        //   //   krpano.call(`set(hotspot[${hotspotId}].visible, false)`);
-        //   //   krpano.call(`set(hotspot[${hotspotId}].fillalpha, 0.00000)`);
-        //   //   krpano.call(`set(hotspot[${hotspotId}].borderwidth, 0)`);
-        //   // });
-
-        //   // for (let i = 0; i < missingHotspots.length; i++) {
-
-        //   //     const hsName = krpano.get(`hotspot[${i}].name`);
-        //   //  console.log("NAME ============", hsName)
-
-        //   //                 krpano.set(`hotspot[${'hs34'}].visible`, false);
-        //   // krpano.set(`hotspot[${'hs37'}].visible`, false);
-        //   //                 krpano.set(`hotspot[${'hs1'}]`.fillalpha, 0.0);
-        //   //                 krpano.set(`hotspot[${'hs4'}]`.fillalpha, 0.0);
-        //   //                 krpano.set(`hotspot[${'hs7'}]`.fillalpha, 0.0);
-        //   //                 krpano.set(`hotspot[${'hs31'}]`.fillalpha, 0.0);
-        //   //                 krpano.set(`hotspot[${'hs34'}]`.fillalpha, 0.0);
-        //   //                 krpano.set(`hotspot[${'hs37'}]`.fillalpha, 0.0);
-        //   //                // krpano.set(`hotspot[${'hs1'}]`.fillalpha, 0.0);
-        //   //                 krpano.set(`hotspot[${'hs1'}]`.borderalpha, 0.0);
-        //   //                 krpano.set(`hotspot[${'hs4'}]`.borderalpha, 0.0);
-        //   //                 krpano.set(`hotspot[${'hs7'}]`.borderalpha, 0.0);
-        //   // krpano.set(`hotspot[${'hs1'}]`.bordercolor, 0x228B22);
-        //   //  krpano.set(`hotspot[${'hs1'}]`.bordercolor, 0x000000);
-        //   //  krpano.set(`hotspot[${'hs4'}]`.bordercolor, 0x000000);
-        //   //  krpano.set(`hotspot[${'hs7'}]`.bordercolor, 0x000000);
-        //   //  krpano.set(`hotspot[${'hs1'}]`.borderwidth, 0);
-        //   //  krpano.set(`hotspot[${'hs4'}]`.borderwidth, 0);
-        //   //  krpano.set(`hotspot[${'hs7'}]`.borderwidth, 0);
-        //   //krpano.set(`hs1.visible`, false);
-        //   //  krpano.set(`hs1.visible`, false);
-
-        //   displayHorizontalSlider();
-        //   handleSearchFilters();
-        // }
 
         const createSceneCard = () => {
           const krpano = document.getElementById("krpanoSWFObject");
@@ -952,6 +755,14 @@
           document.getElementById("areaMax").textContent = "-";
         }
 
+        let latestArrayZone1 = [],
+            latestArrayZone2 = [],
+            latestArrayZone3 = [],
+            latestArrayZone6 = [];
+          latestArrayZone5 = [];
+          latestArrayZone9 = [];
+          (latestArrayZone7 = []), (latestArrayZone8 = []);
+
         function getSpeificUnitsByArea() {
           const area = document.getElementById("totalArea").value;
           const unitData = localStorage.getItem("response");
@@ -962,7 +773,7 @@
           let zone;
           let filteredHouses;
           let matchedZone;
-          let latestArrayZone1 = [],
+          latestArrayZone1 = [],
             latestArrayZone2 = [],
             latestArrayZone3 = [],
             latestArrayZone6 = [];
@@ -1001,7 +812,7 @@
                   }
                 );
                 filteredHouses = latestArrayZone1.filter(
-                  (house) => parseFloat(house.total_area) <= parseFloat(area)
+                  (house) => parseInt(house.total_area) <= parseFloat(area)
                 );
 
                 console.log("filteredHouses", filteredHouses);
@@ -1398,7 +1209,7 @@
           // Update slider attributes
           const slider = document.getElementById("totalArea");
           slider.min = min;
-          slider.max = max;
+          slider.max = max + 100;
 
           //slider.value = min;
 
@@ -1425,21 +1236,29 @@
           }
         }
 
-        const blinkIndividualHotspot = (hotspotName, isShow = false, isHide = false) =>{
-        
-      
+        const blinkIndividualHotspot = (
+          hotspotName,
+          isShow = false,
+          isHide = false
+        ) => {
           const krpano = document.getElementById("krpanoSWFObject");
 
-           // Stop blinking (on close or switching to aerial scene)
-  if (isHide || !hotspotName || krpano.get("xml.scene") === "scene_b-al_marina_aerial") {
-    if (currentBlinkInterval && currentBlinkingHotspot) {
-      clearInterval(currentBlinkInterval);
-      krpano.call(`set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFFFF)`); // Reset color
-      currentBlinkInterval = null;
-      currentBlinkingHotspot = null;
-    }
-    return;
-  }
+          // Stop blinking (on close or switching to aerial scene)
+          if (
+            isHide ||
+            !hotspotName ||
+            krpano.get("xml.scene") === "scene_b-al_marina_aerial"
+          ) {
+            if (currentBlinkInterval && currentBlinkingHotspot) {
+              clearInterval(currentBlinkInterval);
+              krpano.call(
+                `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFFFF)`
+              ); // Reset color
+              currentBlinkInterval = null;
+              currentBlinkingHotspot = null;
+            }
+            return;
+          }
 
           if (isShow) {
             if (currentBlinkInterval && currentBlinkingHotspot) {
@@ -1448,8 +1267,8 @@
                 `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xE87281)`
               );
               krpano.call(
-      `set(hotspot[${currentBlinkingHotspot}].fillalpha, 0.2)` // reset to default or less visible
-    );
+                `set(hotspot[${currentBlinkingHotspot}].fillalpha, 0.2)` // reset to default or less visible
+              );
 
               currentBlinkInterval = null;
               currentBlinkingHotspot = null;
@@ -1468,10 +1287,9 @@
 
             currentBlinkingHotspot = hotspotName;
           }
-        }
+        };
 
         function blinkHotspot(hotspotName, isShow) {
-          console.log("hotspotName", hotspotName);
           const krpano = document.getElementById("krpanoSWFObject");
 
           let currentScene = krpano.get("xml.scene");
@@ -1657,7 +1475,6 @@
             }
 
             if (index !== breadcrumbTrail.length - 1) {
-       
               // Not the last one - make it a link
               const link = document.createElement("a");
               link.href = "#";
@@ -2225,8 +2042,7 @@
         }
 
         const closeCard = () => {
-        
-          blinkIndividualHotspot('', false, false); 
+          blinkIndividualHotspot("", false, false);
           let card = document.getElementById("krpano-card");
           if (card) {
             card.remove();
@@ -2234,24 +2050,23 @@
         };
 
         const toggleSearchFilter = () => {
-          const arrow = document.getElementById("toggleArrow_1");
-          const searchBarContainer =
-            document.getElementById("searchBarContainer");
-          let card = searchBarContainer.querySelector(".card-body");
+  const arrow = document.getElementById("toggleArrow_1");
+  const searchBarContainer = document.getElementById("searchBarContainer");
+  const card = searchBarContainer.querySelector(".card-body");
+  const isVisible = card.style.display === "block";
+  if (isVisible) {
+    card.style.display = "none";
+    arrow.textContent = "▶️"; // Collapsed
+  } else {
+    card.style.display = "block";
+    arrow.textContent = "◀️"; // Expanded
+  }
+};
 
-          // Check computed visibility (not just inline style)
-          //const isVisible = window.getComputedStyle(card).display !== "none";
 
-          const isHidden1 =
-            card.style.display === "none" || card.style.display === "";
-          arrow.textContent = !isHidden1 ? "▶" : "◀";
 
-          if (card.style.display === "block") {
-            card.style.display = "none";
-          } else {
-            card.style.display = "block";
-          }
-        };
+
+
 
         const toggleDetails = () => {
           const arrow = document.getElementById("toggleArrow");
@@ -2307,56 +2122,54 @@
 
         const showTooltip = (hotspotName, houseId, cords) => {
           // Convert string back to an array
-if(false){
-          // blinkHotspot(hotspotName)
-          const coordinatesString = cords;
-          const coordinatesArray = coordinatesString.split(",").map(Number);
-          const krpano = document.getElementById("krpanoSWFObject");
+          if (false) {
+            // blinkHotspot(hotspotName)
+            const coordinatesString = cords;
+            const coordinatesArray = coordinatesString.split(",").map(Number);
+            const krpano = document.getElementById("krpanoSWFObject");
 
-          let existingTooltip = document.getElementById("hotspot-tooltip");
-          if (existingTooltip) {
-            existingTooltip.remove(); // Remove existing tooltip if it exists
-          }
+            let existingTooltip = document.getElementById("hotspot-tooltip");
+            if (existingTooltip) {
+              existingTooltip.remove(); // Remove existing tooltip if it exists
+            }
 
+            if (!krpano || !krpano.get) {
+              console.error("Krpano is not ready yet.");
+              return;
+            }
+            // Convert hotspot position to screen coordinates
 
-          if (!krpano || !krpano.get) {
-            console.error("Krpano is not ready yet.");
-            return;
-          }
-          // Convert hotspot position to screen coordinates
+            const tooltip = document.createElement("div");
+            tooltip.id = "hotspot-tooltip";
+            tooltip.className = "tooltip bs-tooltip-top show"; // Bootstrap tooltip classes
+            tooltip.setAttribute("role", "tooltip");
 
-          const tooltip = document.createElement("div");
-          tooltip.id = "hotspot-tooltip";
-          tooltip.className = "tooltip bs-tooltip-top show"; // Bootstrap tooltip classes
-          tooltip.setAttribute("role", "tooltip");
-
-          // Tooltip inner content
-          tooltip.innerHTML = `
+            // Tooltip inner content
+            tooltip.innerHTML = `
 				<div class="tooltip-arrow"></div>
 				  <div class="tooltip-inner">
 				  🏠 Plot: ${houseId} <br> Click for details
 				  </div>
 			  `;
 
-          // Apply Bootstrap styles
-          tooltip.style.position = "absolute";
+            // Apply Bootstrap styles
+            tooltip.style.position = "absolute";
 
-          tooltip.style.top = "500px"; // Adjust as necessary
-          tooltip.style.left = "50%";
+            tooltip.style.top = "500px"; // Adjust as necessary
+            tooltip.style.left = "50%";
 
-          // tooltip.style.top = `${y}px`;
-          // tooltip.style.left = `${x}px`;
-          tooltip.style.transform = "translateX(-50%)";
-          tooltip.style.zIndex = "1000";
+            // tooltip.style.top = `${y}px`;
+            // tooltip.style.left = `${x}px`;
+            tooltip.style.transform = "translateX(-50%)";
+            tooltip.style.zIndex = "1000";
 
-          document.body.appendChild(tooltip);
+            document.body.appendChild(tooltip);
 
-          // Remove the tooltip after 3 seconds
-          setTimeout(() => {
-            tooltip.remove();
-          }, 3000);
-
-}
+            // Remove the tooltip after 3 seconds
+            setTimeout(() => {
+              tooltip.remove();
+            }, 3000);
+          }
         };
         // Function to hide the tooltip when the mouse leaves
         const hideTooltip = () => {

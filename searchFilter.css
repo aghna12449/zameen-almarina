@@ -8,7 +8,7 @@
     left: -300px !important; 
     z-index: 1050; 
     background-color: rgba(255, 255, 255, 0.95); 
-    border-radius: 8px; 
+    border-radius: 1px; 
     transition: left 0.3s ease-in-out;
 }
 
@@ -22,8 +22,11 @@
     margin-top: 10px;}
 
 .compact-search-card .card-title {
-    font-size: 1.1rem !important; 
-    margin-bottom: 10px !important; 
+   
+
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5rem;
 }
 
 .compact-search-card .form-label {
@@ -34,28 +37,50 @@
 .compact-search-card .input-group .form-control,
 .compact-search-card .input-group-text {
     height: 35px !important;
-    font-size: 0.9rem !important; 
+    border-width: .0625rem;
+    border-color: rgba(0, 0, 0, .2);
+    font-size: .9375rem;
+    border-radius: .1875rem;
+    padding: .5rem .75rem;
+    transition: .3s ease;
+    min-height: 2.5rem;
 }
 
-.compact-search-card #availabilityButtons .btn {
-    font-size: 0.8rem !important; 
-    padding: 5px 10px !important; 
-    margin-bottom: 5px !important; 
-}
+
+
 
 .compact-search-card .form-range {
     height: 20px !important; /* Reduce height of the slider itself */
     margin-bottom: 5px !important; /* Reduce margin below slider */
+   
+}
+
+/* Round button (thumb) - Chrome, Safari, Edge */
+.compact-search-card .form-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 80%;
+  background-color: #a65c43;
+  cursor: pointer;
+  border: 1px solid #ffffff;
+  margin-top: -6px; /* Align with track */
 }
 
 .compact-search-card .btn-primary {
     font-size: 0.9rem !important; /* Smaller font for primary button */
     padding: 8px 15px !important; /* Adjust primary button padding */
+    background-color: #a65c43;
+    border: 1px solid #a65c43;
+    border-radius: 1px;
 }
 
 .compact-search-card .btn-link {
     font-size: 0.8rem !important; /* Smaller font for link buttons */
     padding: 3px 5px !important; /* Adjust link button padding */
+    background-color: transparent !important; /* Ensure link buttons have no background */
+    color: black !important; /* Ensure link buttons are white */
 }
 
 /* Adjustments for Bootstrap's spacing utilities if they interfere */
@@ -73,39 +98,43 @@
 
 /* Toggle button styling (now a label) */
 .toggle-container {
-    position: fixed;
+     position: fixed;
     top: 190px; /* Align with the top of the card */
-    left: 0; /* Position at the very left */
-    z-index: 1060; /* Higher z-index to be above the card */
+    left: -39px;
+    z-index: 1060;
+    cursor: pointer;
+ z-index: 1060; /* Higher z-index to be above the card */
     cursor: pointer;
     font-size: 1.8em;
     font-size: 1.8em;
     line-height: 1;
-    padding: 5px 10px;
-    
+    /* padding: 5px 10px; */
+     transition: left 0.3s ease-in-out;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 20px;
     height: 372px;
-    color: white;
-    transition: left 0.3s ease-in-out; /* Smooth transition for the toggle button's left property */
-}
+    color: white;}
 
+
+/* When the checkbox is checked, move the toggle button */
 .toggle-icon-wrapper {
-    width: 30px; /* Width of the blue square */
-    height: 30px; /* Height of the blue square */
-    background-color: #007bff; /* Blue color for the square */
+    width: 20px; /* Width of the blue square */
+    height: 80px; /* Height of the blue square */
+    background-color: #a65c43; /* Blue color for the square */
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute; /* Position it absolutely within the red bar */
     top: 50%; /* Center vertically within the red bar */
-    left: -15px; /* Adjust to half of its width to align its center with the edge of the red bar */
-    transform: translateY(-50%); /* Adjust for vertical centering */
+    left: 50px; /* Adjust to half of its width to align its center with the edge of the red bar */
+    transform: translateY(-50%) translateX(-50%); /* Adjust for vertical centering */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Shadow for the blue square */
     border-radius: 2px; /* Slight border-radius for the blue square if needed */
 }
+
+
 /* When the checkbox is checked, move the toggle button */
 #toggleFilter:checked ~ .toggle-container {
     left: 280px; /* Moves the toggle button to the right of the open card (card width + offset) */
@@ -115,18 +144,37 @@
 }
 
 /* The '▶'/'▼' arrow */
-#toggleArrow {
-    display: inline-block;
+#toggleArrow_1 {
+      display: inline-block;
+    color: white; /* White color for the arrow */
+    font-size: 17px; /* Size of the arrow */
+    content: "\f0d9"; /* Unicode for fa-caret-left */
+    font-stretch: ultra-condensed;
+    transform: rotate(0deg); /* Initial state: pointing left (fa-caret-left) */
     transition: transform 0.3s ease-in-out;
-    transform: rotate(0deg); 
-    /* color: white; */
-
+    
+}
+#toggleArrow_1::after {
+    content: '>';
+    display: block;
+    font-family: 'Arial', sans-serif; /* Use a common font that supports '>' and '<' */
+    /* font-weight: 100;  */
+    color: white;
+    transition: transform 0.3s ease-in-out;
+    transform: rotate(0deg);
+    line-height: 1;
+}
+#toggleFilter:checked ~ .toggle-container .toggle-icon-wrapper #toggleArrow_1::after {
+    content: '<'; /* When checked: pointing left (to close) */
+    transform: rotate(180deg);
+    align-items: center;
+    margin-top: 20px;
 }
 
 /* Rotate '▶' to '▼' when checkbox is checked */
-#toggleFilter:checked ~ .toggle-container #toggleArrow {
+#toggleFilter:checked ~ .toggle-container #toggleArrow_1 {
     transform: rotate(180deg);
-    color: rgb(104, 99, 99);
+    color: white;;
     margin-top: 20px;
 }
 
@@ -170,4 +218,32 @@
 
 .hidden-checkbox {
     display: none;
+}
+
+/* Custom styles for the dropdowns to match the image */
+.custom-dropdown {
+    height: 48px; /* Match the height of other form fields */
+    border: 1px solid #e0e0e0; /* A very subtle light gray border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #ffffff; /* White background */
+    padding: 0.75rem 1rem; /* Adjust padding to match inputs */
+    font-size: 1rem;
+    color: #495057; /* Default text color */
+    appearance: none; /* Remove default browser styling for dropdowns */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    
+    /* Custom up/down arrow using SVG background image */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='7 15 12 20 17 15'%3E%3C/polyline%3E%3Cpolyline points='7 9 12 4 17 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center; /* Position arrow to the right, centered vertically */
+    background-size: 1.2em 1.2em; /* Adjust size of the arrow */
+    color: #495057; /* Text color inside the dropdown */
+}
+
+/* Focus state */
+.custom-dropdown:focus {
+    border-color: #80bdff; /* Standard Bootstrap focus border color */
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Standard Bootstrap focus shadow */
 }
