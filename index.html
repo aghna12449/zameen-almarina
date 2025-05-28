@@ -249,7 +249,7 @@
         </div>
       </div>
 
-      <div class="slider-container_1">
+      <div id="searchSliderFilters" class="slider-container_1">
         <div class="card-slider_1"></div>
       </div>
 
@@ -336,8 +336,54 @@
         let newHotspotArray = [];
        // let sliderSearchedHouses;
 
+
+       const totalLength = (currentScene) =>{
+       
+        
+            if (currentScene === "scene_c-zone_1") {
+              return zone1houseData.length;
+
+          
+            } else if (currentScene === "scene_d-zone_2") {
+              return zone2houseData.length;
+
+            } else if (currentScene === "scene_e-zone_3") {
+              return zone3houseData.length;
+
+            } else if (currentScene === "scene_l_al_marina_mall_day_aerial") {
+              return 0; // No houses in this scene
+
+            } else if (currentScene === "scene_f-zone_4") {
+              return zone7houseData.length;
+
+            } else if (currentScene === "scene_g-zone_5") {
+              return zone8houseData.length;
+
+            } else if (currentScene === "scene_h-building_1") {
+              return building1houseData.length;
+
+            } else if (currentScene === "scene_i-building_2") {
+              return building2houseData.length;
+
+            } else if (currentScene === "scene_k_zone_9") {
+              return zone9houseData.length;
+        
+            }else{
+              return 0; // Default to 0 if scene is unknown
+            }
+
+            
+             
+      }
+
         function updateAreaAndSearch(value) {
+         const plotInput = document.getElementById("plotNumber");
+  if (plotInput) {
+    plotInput.value = "";
+  }
+
           const krpano = document.getElementById("krpanoSWFObject");
+           const currentScene = krpano.get("xml.scene");
           document.getElementById("areaValue").innerText = `${value}`;
 
           const totalHotspots = krpano.get("hotspot.count");
@@ -347,6 +393,7 @@
           
 
           if (sliderSearchedHouses) {
+         
             let initial = sliderSearchedHouses[0];
             console.log("INITIAL", initial);
             const startId = parseInt(initial?.id?.replace("hs", "")); // e.g., 18
@@ -399,9 +446,11 @@
               // hotspotName  && krpano.call(`removehotspot(${hotspotName})`);
             });
 
+            
+            const zoneTotalLength = totalLength(currentScene)
 
             // to be fixed
-            for (let i = 0; i < latestArrayZone5.length; i++) {
+            for (let i = 0; i < zoneTotalLength; i++) {
               const hotspotName = krpano.get(`hotspot[${i}].name`);
               // console.log("INSIDE", allowedHotspots[i])
               // krpano.call(`removehotspot(${allowedHotspots[i]})`);
@@ -414,7 +463,7 @@
                 // krpano.set(`hotspot[${hotspotName}].visible`, false);
 
                 //Option 2: Remove it entirely
-                krpano.call(`removehotspot(${hotspotName})`);
+                 krpano.call(`removehotspot(${hotspotName})`);
               }
             }
 
@@ -455,7 +504,8 @@
 
         const showBlinkingOfHouses = (hotspot) => {
           console.log("showBlinkingOfHouses", hotspot);
-          blinkHotspot("hs25");
+          //blinkHotspot("hs25");
+         // blinkIndividualHotspot(hotspot, true);
         };
 
         //currentAppearingHotpsots
@@ -468,7 +518,7 @@
 
           sliderSearchedHouses.forEach((house, index) => {
             const cardHTML = `
-  <div class="card-wrapper"> <div class="top-label-box"> SAR TBD</div>
+  <div class="card-wrapper"> <div class="top-label-box"> Price: TBD</div>
         <div class="card_1" onclick="showBlinkingOfHouses('${house.id}')">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv94OIn-sX93PJMNosZCYZzXFO8Qk1FB2x3A&s" height="100px" width="100px" />
             <div class="details_1">
@@ -560,6 +610,12 @@
 
         function updateSearchVisibility() {
           const searchBar = document.getElementById("searchBarContainer");
+
+          const searchSliderFilters = document.getElementById("searchSliderFilters");
+          console.log("updateSearchVisibility");
+         sliderSearchedHouses = []
+          clearSliderRange()
+          
           const sceneCardWrapper =
             document.getElementById("scene-card-wrapper");
 
@@ -573,8 +629,10 @@
             currentScene === "scene_b-al_marina_aerial"
           ) {
             searchBar.style.display = "none";
+            searchSliderFilters.style.display = "none";
           } else {
             searchBar.style.display = "block";
+            searchSliderFilters.style.display = "block";
           }
         }
 
@@ -607,6 +665,7 @@
         let currentBlinkInterval = null;
         let currentBlinkingHotspot = null;
 
+        //sliderSearchedHouses
         function onSceneChange(currentScene, Unit) {
           const unitData = localStorage.getItem("response");
           const parsedData = JSON.parse(unitData);
@@ -750,9 +809,10 @@
           slider.min = 100;
           slider.max = 20000;
           // slider.value = 0;
-
-          document.getElementById("areaValue").textContent = "-";
-          document.getElementById("areaMax").textContent = "-";
+          sliderSearchedHouses = [];
+          displayHorizontalSlider()
+          //document.getElementById("areaValue").textContent = "-";
+          //document.getElementById("areaMax").textContent = "-";
         }
 
         let latestArrayZone1 = [],
@@ -795,7 +855,7 @@
             console.log("currentScene", currentScene);
             switch (currentScene) {
               case "scene_c-zone_1":
-                //clearSliderRange();
+      
                 updateSliderRange("1");
                 const updatedZone1houseData = zoneOneFilteredData().map(
                   (house) => {
@@ -819,7 +879,7 @@
                 break;
 
               case "scene_d-zone_2":
-                // clearSliderRange();
+             
                 updateSliderRange("2");
                 // const zone2 = parsedData.data.filter(
                 //   (house) => house.zone === "Zone 2"
@@ -844,6 +904,7 @@
                 );
                 break;
               case "scene_e-zone_3":
+  
                 updateSliderRange("3");
                 const updatedZone3houseData = zoneThreeFilteredData().map(
                   (house) => {
@@ -867,6 +928,7 @@
 
               case "scene_i-building_2":
                 console.log("building 2");
+         
                 updateSliderRange("5");
 
                 console.log(
@@ -901,6 +963,7 @@
                 break;
               case "scene_h-building_1":
                 console.log("building 1");
+               
                 updateSliderRange("6");
 
                 const updatedbuilding1houseData = zoneSixFilteredData().map(
@@ -999,7 +1062,8 @@
           const krpano = document.getElementById("krpanoSWFObject");
           // const area = document.getElementById('totalArea').value;
           // const block = document.getElementById('blockNumber').value;
-
+  // 👉 Stop previous blinking
+  blinkIndividualHotspot('', false, true);
           if (area) {
             // Stop previous blinking first
             stopAllBlinkingHotspots();
@@ -1078,7 +1142,9 @@
 
           const hotspotName = `${matchedHouse?.id}`;
           if (matchedHouse) {
-            blinkHotspot(hotspotName);
+            // blinkHotspot(hotspotName);
+
+                blinkIndividualHotspot(hotspotName, true);
 
             let center = matchedHouse.coordinates?.[0]; // Default to first
             if (
@@ -1112,7 +1178,8 @@
               );
             }
 
-            krpano.call(`lookat(${center?.ath}, ${center?.atv}, 20)`); // 70 = moderate zoom
+             krpano.call(`lookto(${center?.ath}, ${center?.atv}, 90, smooth());`);
+            
           } else {
             if (plot) {
               //document.getElementById("notFoundModal").style.display = "block";
@@ -1121,14 +1188,7 @@
             closeCard(); // Close any existing card
 
             // Stop blinking and reset color if a previous hotspot was blinking
-            if (currentBlinkInterval && currentBlinkingHotspot) {
-              clearInterval(currentBlinkInterval);
-              krpano.call(
-                `set(hotspot[${hotspotName}].fillcolor,  "0x00FF00")`
-              );
-              currentBlinkInterval = null;
-              currentBlinkingHotspot = null;
-            }
+           
           }
 
           // You can replace alert with your own search logic
@@ -1677,6 +1737,7 @@
           return "0x00FF00";
         }
         const dynamicZoneRendering = (zoneData, response, krpano) => {
+          console.log(  "zoneData =>>>", zoneData);
           zoneData.forEach((house) => {
             // Create a unique name for each house hotspot
             const hotspotName = `hs_${house.id}`;
@@ -1703,10 +1764,10 @@
 `);
             if (cords) {
               // Set the onclick action to show a Bootstrap tooltip
-              krpano.call(`
-					set(hotspot[${hotspotName}].onhover, js(showTooltip('${hotspotName}', '${house.plot_number}','${cords.ath},${cords.atv}')));
-					set(hotspot[${hotspotName}].onout, js(hideTooltip()));
-				  `);
+          //     krpano.call(`
+					// set(hotspot[${hotspotName}].onhover, js(showTooltip('${hotspotName}', '${house.plot_number}','${cords.ath},${cords.atv}')));
+					// set(hotspot[${hotspotName}].onout, js(hideTooltip()));
+				  // `);
             }
 
             krpano.call(
@@ -2005,8 +2066,8 @@
  
     <div class="details">
       <div><span>Area</span><br>${unitDetails.total_area}m²</div>
-      <div><span>Plot</span><br>${unitDetails.plot_number || "N/A"}</div>
-      <div><span>Block</span><br>${unitDetails.block_number || "N/A"}</div>
+      <div><span>Plot</span><br>${unitDetails.plot_number || "-"}</div>
+      <div><span>Block</span><br>${unitDetails.block_number || "-"}</div>
     </div>
    
  
@@ -2016,19 +2077,19 @@
   <div class="details-row_extra">
     <div class="detail-item">
       <p class="detail-label_1">South</p>
-      <p class="detail-value">${unitDetails.south || "N/A"}</p>
+      <p class="detail-value">${unitDetails.south || "-"}</p>
     </div>
     <div class="detail-item">
       <p class="detail-label_1">North</p>
-      <p class="detail-value">${unitDetails.north || "N/A"}</p>
+      <p class="detail-value">${unitDetails.north || "-"}</p>
     </div>
     <div class="detail-item">
       <p class="detail-label_1">East</p>
-      <p class="detail-value">${unitDetails.east || "N/A"}</p>
+      <p class="detail-value">${unitDetails.east || "-"}</p>
     </div>
     <div class="detail-item">
       <p class="detail-label_1">West</p>
-      <p class="detail-value">${unitDetails.west || "N/A"}</p>
+      <p class="detail-value">${unitDetails.west || "-"}</p>
     </div>
   </div>
 </div>
@@ -2122,7 +2183,7 @@
 
         const showTooltip = (hotspotName, houseId, cords) => {
           // Convert string back to an array
-          if (false) {
+        
             // blinkHotspot(hotspotName)
             const coordinatesString = cords;
             const coordinatesArray = coordinatesString.split(",").map(Number);
@@ -2169,7 +2230,7 @@
             setTimeout(() => {
               tooltip.remove();
             }, 3000);
-          }
+          
         };
         // Function to hide the tooltip when the mouse leaves
         const hideTooltip = () => {
