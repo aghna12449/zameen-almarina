@@ -1,10 +1,3 @@
-#scene-card-wrapper {
-    display: flex;
-  position: absolute;
-  top: 200px;
-  left: 500px;
-  z-index: 10000;
-}
 
 #scene-card {
   width: 220px;
@@ -47,4 +40,74 @@
   padding: 15px;
   z-index: 9999;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+}
+
+
+
+#scene-card-wrapper {
+  display: flex;
+  /* Remove absolute positioning from the base styles */
+  /* top: 200px; */
+  /* left: 500px; */
+  z-index: 10000;
+  justify-content: center; /* Center horizontally by default */
+  align-items: center; /* Center vertically by default */
+  width: 100%; /* Take full width by default */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  padding: 10px; /* Add some padding for better spacing */
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  #scene-card-wrapper {
+    flex-direction: column; /* Stack items vertically on small screens */
+    top: 150px; /* Adjust top for smaller screens */
+    left: 5%; /* Align to the left edge */
+    position: absolute; /* Use relative positioning or remove it entirely if a parent handles flow */
+    padding: 10%; /* Adjust padding for smaller screens */
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  #scene-card-wrapper {
+    flex-direction: row; /* Keep items in a row */
+    top: 150px; /* Adjust top for slightly larger screens */
+    left: 5%; /* Align to the left edge */
+    position: absolute; /* Use relative positioning */
+    padding: 20px;
+    width: auto; /* Allow content to dictate width, or let it take full width */
+    max-width: 90%; /* For example, ensure it doesn't exceed 90% of screen width */
+    margin: 0 auto; /* Center it if using max-width and not full width */
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  #scene-card-wrapper {
+    top: 150px; /* Further adjust top */
+    left: 5%; /* Use percentage for left to make it responsive */
+    position: absolute; /* Reintroduce absolute positioning for more precise control on larger screens */
+    width: 90%; /* Adjust width for medium screens */
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  #scene-card-wrapper {
+    top: 200px; /* Closer to original top */
+    left: 10%; /* Adjust left for larger screens */
+    width: 80%; /* Adjust width */
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  #scene-card-wrapper {
+    top: 200px; /* Original top */
+    left: 50%; /* Center using transform for precise centering */
+    transform: translateX(-50%);
+    width: 1000px; /* Set a max-width for very large screens */
+    max-width: 80%; /* Ensure it doesn't get too wide */
+    position: fixed; /* Consider fixed if it should stay in view while scrolling */
+  }
 }
