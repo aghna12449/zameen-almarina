@@ -180,7 +180,7 @@
     font-size: 0.875rem;
     color: rgb(190, 183, 183);
     position: absolute;
-    top: 20px;
+  
     left: 30px !important;
     z-index: 1000;
     background-color: hsl(0deg 0% 100% / 10%);

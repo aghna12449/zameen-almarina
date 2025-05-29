@@ -156,9 +156,11 @@
   }
 }
 
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
+
+
+@media only screen and (min-width: 868px)  {
   .property-card {
+    
     width: 300px;
     height: auto;
     border-radius: 10px;
@@ -170,6 +172,7 @@
     background-color: black; /* fallback if image fails */
   }
 }
+
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
