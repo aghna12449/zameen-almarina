@@ -22,6 +22,7 @@
     margin: 0 auto; /* Center the card */
     background-color: transparent !important; /* Ensure the card has a transparent background */
     margin-top: -50px; /* Add some space at the top */
+    z-index: 1050 !important; 
 }
 
 /* Card Body Padding */
