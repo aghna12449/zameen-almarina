@@ -392,14 +392,17 @@
             currentScene !== "scene_b-al_marina_aerial"
           ) {
             if (width < 935 && height < 440 && isLandscape) {
-              console.log("iPhone 14 Pro Max Landscape detected", isLandscape);
-              searchSliderFilters.style.display = "block";
+              console.log("iPhone 14 Pro Max Landscape detected",  mobileSearchFilter.style);
+              searchSliderFilters.style.display = "none";
               mobileSearchFilter.style.display = "block";
               toggleFilterButton.style.display = "none";
+               mobileSearchFilter.style.marginTop = "10px";
+               
+                mobileSearchFilter.style.marginBottom = "5px"; 
             } else if (width < 770) {
               console.log("else", isLandscape);
 
-              searchSliderFilters.style.display = "block";
+              searchSliderFilters.style.display = "none";
               mobileSearchFilter.style.display = "block";
               toggleFilterButton.style.display = "none";
             } else {

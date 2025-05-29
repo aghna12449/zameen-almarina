@@ -21,6 +21,7 @@
     max-width: 90%; /* For better responsiveness on smaller screens */
     margin: 0 auto; /* Center the card */
     background-color: transparent !important; /* Ensure the card has a transparent background */
+    margin-top: -50px; /* Add some space at the top */
 }
 
 /* Card Body Padding */
