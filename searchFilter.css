@@ -101,11 +101,8 @@
      position: fixed;
     top: 190px; /* Align with the top of the card */
     left: -39px;
-    z-index: 1060;
     cursor: pointer;
  z-index: 1060; /* Higher z-index to be above the card */
-    cursor: pointer;
-    font-size: 1.8em;
     font-size: 1.8em;
     line-height: 1;
     /* padding: 5px 10px; */

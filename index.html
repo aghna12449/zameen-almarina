@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="initalCard.css" />
     <link rel="stylesheet" href="slider.css" />
     <link rel="stylesheet" href="searchFilter.css" />
+    <link rel="stylesheet" href="mobileSearchFilter.css" />
     <link rel="stylesheet" href="houseCard.css" />
 
     <!-- Add Material-UI (MUI) CSS -->
@@ -79,7 +80,7 @@
         font-family: Arial, Helvetica, sans-serif;
         font-size: 16px;
         /* color: #ffffff; */
-        background-color: #000000;
+        background-color: transparent !important;
       }
     </style>
   </head>
@@ -115,9 +116,12 @@
       <span id="arrow-icon" class="material-icons">arrow_circle_left</span>
     </div> -->
 
-      <div id="searchBarContainer">
-        <input type="checkbox" id="toggleFilter" class="hidden-checkbox" />
+      <!-- <div id="searchSliderFilters" class="slider-container_1">
+      <div class="card-slider_1"></div>
+    </div>  -->
 
+      <div id="searchBarContainer" style="display: none">
+        <input type="checkbox" id="toggleFilter" class="hidden-checkbox" />
 
         <label
           for="toggleFilter"
@@ -130,10 +134,7 @@
         </label>
 
         <div class="container mt-5">
-          <div
-            class="card shadow rounded-1 compact-search-card"
-            id="searchFilterCard"
-          >
+          <div class="card shadow rounded-1 compact-search-card">
             <div class="card-body">
               <h5 class="card-title mb-4 fw-semibold">Search Filter</h5>
               <div class="mb-3">
@@ -218,6 +219,111 @@
         </div>
       </div>
 
+      <div id="mobileSearchFilter" style="display: none">
+        <div class="mobile-container mt-5">
+          <div class="card shadow rounded-1 mobile-compact-search-card">
+            <div class="mobile-card-body">
+              <h5
+                class="mobile-card-title mb-4 fw-semibold"
+                onclick="toggleMobileFilter()"
+              >
+                Search Filter
+              </h5>
+
+              <!-- Collapsible Content -->
+              <div id="mobileFilterBody" class="mobile-card-body">
+                <div class="mb-3">
+                  <div class="mobile-input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="plotNumber"
+                      placeholder="Plot Number"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div class="mt-1 mb-3">
+                    <select
+                      class="form-select mobile-custom-dropdown"
+                      id="availabilityDropdownMobile"
+                      name="availability"
+                    >
+                      <option value="Available">Available</option>
+                      <option value="Sold">Sold</option>
+                      <option value="Reserved">Reserved</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="totalArea">
+                    <label class="fw-semibold">Area Range: </label>
+                    <span id="mobileAreaValue">100</span> to
+                    <span id="mobileAreaMax">20000</span> sqm
+                  </label>
+                  <input
+                    type="range"
+                    class="form-range"
+                    min="100"
+                    max="20000"
+                    step="50"
+                    id="totalArea"
+                    value="100"
+                    oninput="updateAreaAndSearch(this.value)"
+                  />
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <button
+                    class="btn btn-primary"
+                    onclick="handleSearchFilters()"
+                  >
+                    Search
+                  </button>
+                </div>
+
+                <div class="mt-3 d-flex justify-content-center my-3">
+                  <button
+                    class="btn btn-link p-0 ml-5 text-decoration-none"
+                    type="button"
+                    onclick="resetFilters()"
+                  >
+                    <i class="fas fa-sync-alt me-2"></i> Reset Filters
+                  </button>
+                </div>
+                <div id="moreOptions" style="display: none">
+                  <div class="mt-2">
+                    <label class="form-label-mobile fw-semibold"
+                      >Availability</label
+                    >
+                  </div>
+                  <div class="mt-1 mb-3" id="availabilityButtons">
+                    <button
+                      class="btn btn-outline-primary me-2"
+                      data-value="Available"
+                    >
+                      Available
+                    </button>
+                    <button
+                      class="btn btn-outline-success me-2"
+                      data-value="Sold"
+                    >
+                      Sold
+                    </button>
+                    <button
+                      class="btn btn-outline-warning"
+                      data-value="Reserved"
+                    >
+                      Reserved
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Modal -->
       <div id="notFoundModal" class="modal-overlay">
         <div class="modal-box">
@@ -249,7 +355,6 @@
           <!-- Dynamic breadcrumbs addition -->
         </div>
       </div>
-      
 
       <div id="searchSliderFilters" class="slider-container_1">
         <div class="card-slider_1"></div>
@@ -266,6 +371,50 @@
       </script>
 
       <script>
+        const showSearchFilterCardsMobile = () => {
+          console.log("showSearchFilterCardsMobile");
+          const searchSliderFilters =
+            document.getElementById("searchBarContainer");
+          const mobileSearchFilter =
+            document.getElementById("mobileSearchFilter");
+          const toggleFilterButton =
+            document.getElementById("toggleFilterButton");
+
+          const krpano = document.getElementById("krpanoSWFObject");
+          const currentScene = krpano.get("xml.scene");
+
+          const width = window.innerWidth;
+          const height = window.innerHeight;
+          const isLandscape = width > height;
+
+          if (
+            currentScene !== "scene_a-initial" &&
+            currentScene !== "scene_b-al_marina_aerial"
+          ) {
+            if (width < 935 && height < 440 && isLandscape) {
+              console.log("iPhone 14 Pro Max Landscape detected", isLandscape);
+              searchSliderFilters.style.display = "block";
+              mobileSearchFilter.style.display = "block";
+              toggleFilterButton.style.display = "none";
+            } else if (width < 770) {
+              console.log("else", isLandscape);
+
+              searchSliderFilters.style.display = "block";
+              mobileSearchFilter.style.display = "block";
+              toggleFilterButton.style.display = "none";
+            } else {
+              console.log("else if", isLandscape);
+
+              searchSliderFilters.style.display = "block";
+              mobileSearchFilter.style.display = "none";
+              toggleFilterButton.style.display = "block";
+            }
+          }
+        };
+
+        window.addEventListener("load", showSearchFilterCardsMobile);
+        window.addEventListener("resize", showSearchFilterCardsMobile);
+
         document
           .querySelectorAll("#availabilityButtons button")
           .forEach((button) => {
@@ -279,6 +428,15 @@
         //var area = 500; // you can change this value dynamically later
         //document.getElementById("areaValue").textContent = `${area} sq m`;
 
+        function toggleMobileFilter() {
+          const body = document.getElementById("mobileFilterBody");
+          if (body.style.display === "none" || body.style.display === "") {
+            body.style.display = "block";
+          } else {
+            body.style.display = "none";
+          }
+        }
+
         let sliderSearchedHouses;
         const globalKrpano = () => {
           const krpano = document.getElementById("krpanoSWFObject");
@@ -290,6 +448,7 @@
         };
 
         function resetFilters() {
+          console.log("resetFilters ");
           // Reset the total area slider
           let krpano = globalKrpano();
           const slider = document.getElementById("totalArea");
@@ -299,6 +458,10 @@
           plot.value = "";
           document.getElementById("areaValue").textContent = "100";
           document.getElementById("areaMax").textContent = "20000";
+
+          document.getElementById("mobileAreaValue").textContent = "100";
+          document.getElementById("mobileAreaMax").textContent = "20000";
+
           // document.getElementById("areaValue").innerText = slider.value;
           // Clear other filters here if you have them
           // Call search again with reset values
@@ -336,62 +499,48 @@
         let newHotspotArray = [];
         // let sliderSearchedHouses;
 
-
-       const totalLength = (currentScene) =>{
-       
-        
-            if (currentScene === "scene_c-zone_1") {
-              return zone1houseData.length;
-
-          
-            } else if (currentScene === "scene_d-zone_2") {
-              return zone2houseData.length;
-
-            } else if (currentScene === "scene_e-zone_3") {
-              return zone3houseData.length;
-
-            } else if (currentScene === "scene_l_al_marina_mall_day_aerial") {
-              return 0; // No houses in this scene
-
-            } else if (currentScene === "scene_f-zone_4") {
-              return zone7houseData.length;
-
-            } else if (currentScene === "scene_g-zone_5") {
-              return zone8houseData.length;
-
-            } else if (currentScene === "scene_h-building_1") {
-              return building1houseData.length;
-
-            } else if (currentScene === "scene_i-building_2") {
-              return building2houseData.length;
-
-            } else if (currentScene === "scene_k_zone_9") {
-              return zone9houseData.length;
-        
-            }else{
-              return 0; // Default to 0 if scene is unknown
-            }
-
-            
-             
-      }
+        const totalLength = (currentScene) => {
+          if (currentScene === "scene_c-zone_1") {
+            return zone1houseData.length;
+          } else if (currentScene === "scene_d-zone_2") {
+            return zone2houseData.length;
+          } else if (currentScene === "scene_e-zone_3") {
+            return zone3houseData.length;
+          } else if (currentScene === "scene_l_al_marina_mall_day_aerial") {
+            return 0; // No houses in this scene
+          } else if (currentScene === "scene_f-zone_4") {
+            return zone7houseData.length;
+          } else if (currentScene === "scene_g-zone_5") {
+            return zone8houseData.length;
+          } else if (currentScene === "scene_h-building_1") {
+            return building1houseData.length;
+          } else if (currentScene === "scene_i-building_2") {
+            return building2houseData.length;
+          } else if (currentScene === "scene_k_zone_9") {
+            return zone9houseData.length;
+          } else {
+            return 0; // Default to 0 if scene is unknown
+          }
+        };
 
         function updateAreaAndSearch(value) {
-         const plotInput = document.getElementById("plotNumber");
-  if (plotInput) {
-    plotInput.value = "";
-  }
+          console.log("updateAreaAndSearch", value);
+          const plotInput = document.getElementById("plotNumber");
+          if (plotInput) {
+            plotInput.value = "";
+          }
 
           const krpano = document.getElementById("krpanoSWFObject");
-           const currentScene = krpano.get("xml.scene");
+          const currentScene = krpano.get("xml.scene");
           document.getElementById("areaValue").innerText = `${value}`;
+          document.getElementById("mobileAreaValue").innerText = `${value}`;
 
+          //
           const totalHotspots = krpano.get("hotspot.count");
 
           sliderSearchedHouses = getSpeificUnitsByArea();
 
           if (sliderSearchedHouses) {
-         
             let initial = sliderSearchedHouses[0];
             console.log("INITIAL", initial);
             const startId = parseInt(initial?.id?.replace("hs", "")); // e.g., 18
@@ -444,8 +593,7 @@
               // hotspotName  && krpano.call(`removehotspot(${hotspotName})`);
             });
 
-            
-            const zoneTotalLength = totalLength(currentScene)
+            const zoneTotalLength = totalLength(currentScene);
 
             // to be fixed
             for (let i = 0; i < zoneTotalLength; i++) {
@@ -461,7 +609,7 @@
                 // krpano.set(`hotspot[${hotspotName}].visible`, false);
 
                 //Option 2: Remove it entirely
-                 krpano.call(`removehotspot(${hotspotName})`);
+                krpano.call(`removehotspot(${hotspotName})`);
               }
             }
           }
@@ -499,7 +647,7 @@
         const showBlinkingOfHouses = (hotspot) => {
           console.log("showBlinkingOfHouses", hotspot);
           //blinkHotspot("hs25");
-         // blinkIndividualHotspot(hotspot, true);
+          // blinkIndividualHotspot(hotspot, true);
         };
 
         //currentAppearingHotpsots
@@ -605,11 +753,17 @@
         function updateSearchVisibility() {
           const searchBar = document.getElementById("searchBarContainer");
 
-          const searchSliderFilters = document.getElementById("searchSliderFilters");
-          console.log("updateSearchVisibility");
-         sliderSearchedHouses = []
-          clearSliderRange()
+          const searchSliderFilters = document.getElementById(
+            "searchSliderFilters"
+          );
+          const mobileSearchFilter =
+            document.getElementById("mobileSearchFilter");
+
           
+        
+          sliderSearchedHouses = [];
+          clearSliderRange();
+
           const sceneCardWrapper =
             document.getElementById("scene-card-wrapper");
 
@@ -617,16 +771,21 @@
 
           const krpano = document.getElementById("krpanoSWFObject");
           const currentScene = krpano.get("xml.scene");
-
+          const width = window.innerWidth;
           if (
             currentScene === "scene_a-initial" ||
             currentScene === "scene_b-al_marina_aerial"
           ) {
             searchBar.style.display = "none";
             searchSliderFilters.style.display = "none";
+            mobileSearchFilter.style.display = "none";
           } else {
             searchBar.style.display = "block";
             searchSliderFilters.style.display = "block";
+            if (width < 770) {
+              // mobileSearchFilter.style.display = "block";
+            }
+            //
           }
         }
 
@@ -804,7 +963,7 @@
           slider.max = 20000;
           // slider.value = 0;
           sliderSearchedHouses = [];
-          displayHorizontalSlider()
+          displayHorizontalSlider();
           //document.getElementById("areaValue").textContent = "-";
           //document.getElementById("areaMax").textContent = "-";
         }
@@ -844,12 +1003,15 @@
 
           if (area) {
             document.getElementById("areaValue").textContent = `100 sq m`;
+
             document.getElementById("areaMax").textContent = `20000`;
 
+            document.getElementById("mobileAreaValue").textContent = `100 sq m`;
+            document.getElementById("mobileAreaMax").textContent = `20000`;
+            
             console.log("currentScene", currentScene);
             switch (currentScene) {
               case "scene_c-zone_1":
-      
                 updateSliderRange("1");
                 const updatedZone1houseData = zoneOneFilteredData().map(
                   (house) => {
@@ -873,7 +1035,6 @@
                 break;
 
               case "scene_d-zone_2":
-             
                 updateSliderRange("2");
                 // const zone2 = parsedData.data.filter(
                 //   (house) => house.zone === "Zone 2"
@@ -898,7 +1059,6 @@
                 );
                 break;
               case "scene_e-zone_3":
-  
                 updateSliderRange("3");
                 const updatedZone3houseData = zoneThreeFilteredData().map(
                   (house) => {
@@ -922,7 +1082,7 @@
 
               case "scene_i-building_2":
                 console.log("building 2");
-         
+
                 updateSliderRange("5");
 
                 console.log(
@@ -957,7 +1117,7 @@
                 break;
               case "scene_h-building_1":
                 console.log("building 1");
-               
+
                 updateSliderRange("6");
 
                 const updatedbuilding1houseData = zoneSixFilteredData().map(
@@ -1056,8 +1216,8 @@
           const krpano = document.getElementById("krpanoSWFObject");
           // const area = document.getElementById('totalArea').value;
           // const block = document.getElementById('blockNumber').value;
-  // 👉 Stop previous blinking
-  blinkIndividualHotspot('', false, true);
+          // 👉 Stop previous blinking
+          blinkIndividualHotspot("", false, true);
           if (area) {
             // Stop previous blinking first
             stopAllBlinkingHotspots();
@@ -1138,7 +1298,7 @@
           if (matchedHouse) {
             // blinkHotspot(hotspotName);
 
-                blinkIndividualHotspot(hotspotName, true);
+            blinkIndividualHotspot(hotspotName, true);
 
             let center = matchedHouse.coordinates?.[0]; // Default to first
             if (
@@ -1172,8 +1332,9 @@
               );
             }
 
-             krpano.call(`lookto(${center?.ath}, ${center?.atv}, 90, smooth());`);
-            
+            krpano.call(
+              `lookto(${center?.ath}, ${center?.atv}, 90, smooth());`
+            );
           } else {
             if (plot) {
               //document.getElementById("notFoundModal").style.display = "block";
@@ -1182,7 +1343,6 @@
             closeCard(); // Close any existing card
 
             // Stop blinking and reset color if a previous hotspot was blinking
-           
           }
 
           // You can replace alert with your own search logic
@@ -1269,7 +1429,11 @@
 
           // Update labels
           document.getElementById("areaValue").textContent = `${slider.value}`;
+          document.getElementById(
+            "mobileAreaValue"
+          ).textContent = `${slider.value}`;
           document.getElementById("areaMax").textContent = `${max}`;
+          document.getElementById("mobileAreaMax").textContent = `${max}`;
         }
 
         // Globals (declare these outside your function, at top level)
@@ -1731,7 +1895,7 @@
           return "0x00FF00";
         }
         const dynamicZoneRendering = (zoneData, response, krpano) => {
-          console.log(  "zoneData =>>>", zoneData);
+          console.log("zoneData =>>>", zoneData);
           zoneData.forEach((house) => {
             // Create a unique name for each house hotspot
             const hotspotName = `hs_${house.id}`;
@@ -1758,10 +1922,10 @@
 `);
             if (cords) {
               // Set the onclick action to show a Bootstrap tooltip
-          //     krpano.call(`
-					// set(hotspot[${hotspotName}].onhover, js(showTooltip('${hotspotName}', '${house.plot_number}','${cords.ath},${cords.atv}')));
-					// set(hotspot[${hotspotName}].onout, js(hideTooltip()));
-				  // `);
+              //     krpano.call(`
+              // set(hotspot[${hotspotName}].onhover, js(showTooltip('${hotspotName}', '${house.plot_number}','${cords.ath},${cords.atv}')));
+              // set(hotspot[${hotspotName}].onout, js(hideTooltip()));
+              // `);
             }
 
             krpano.call(
@@ -2173,54 +2337,53 @@
 
         const showTooltip = (hotspotName, houseId, cords) => {
           // Convert string back to an array
-        
-            // blinkHotspot(hotspotName)
-            const coordinatesString = cords;
-            const coordinatesArray = coordinatesString.split(",").map(Number);
-            const krpano = document.getElementById("krpanoSWFObject");
 
-            let existingTooltip = document.getElementById("hotspot-tooltip");
-            if (existingTooltip) {
-              existingTooltip.remove(); // Remove existing tooltip if it exists
-            }
+          // blinkHotspot(hotspotName)
+          const coordinatesString = cords;
+          const coordinatesArray = coordinatesString.split(",").map(Number);
+          const krpano = document.getElementById("krpanoSWFObject");
 
-            if (!krpano || !krpano.get) {
-              console.error("Krpano is not ready yet.");
-              return;
-            }
-            // Convert hotspot position to screen coordinates
+          let existingTooltip = document.getElementById("hotspot-tooltip");
+          if (existingTooltip) {
+            existingTooltip.remove(); // Remove existing tooltip if it exists
+          }
 
-            const tooltip = document.createElement("div");
-            tooltip.id = "hotspot-tooltip";
-            tooltip.className = "tooltip bs-tooltip-top show"; // Bootstrap tooltip classes
-            tooltip.setAttribute("role", "tooltip");
+          if (!krpano || !krpano.get) {
+            console.error("Krpano is not ready yet.");
+            return;
+          }
+          // Convert hotspot position to screen coordinates
 
-            // Tooltip inner content
-            tooltip.innerHTML = `
+          const tooltip = document.createElement("div");
+          tooltip.id = "hotspot-tooltip";
+          tooltip.className = "tooltip bs-tooltip-top show"; // Bootstrap tooltip classes
+          tooltip.setAttribute("role", "tooltip");
+
+          // Tooltip inner content
+          tooltip.innerHTML = `
 				<div class="tooltip-arrow"></div>
 				  <div class="tooltip-inner">
 				  🏠 Plot: ${houseId} <br> Click for details
 				  </div>
 			  `;
 
-            // Apply Bootstrap styles
-            tooltip.style.position = "absolute";
+          // Apply Bootstrap styles
+          tooltip.style.position = "absolute";
 
-            tooltip.style.top = "500px"; // Adjust as necessary
-            tooltip.style.left = "50%";
+          tooltip.style.top = "500px"; // Adjust as necessary
+          tooltip.style.left = "50%";
 
-            // tooltip.style.top = `${y}px`;
-            // tooltip.style.left = `${x}px`;
-            tooltip.style.transform = "translateX(-50%)";
-            tooltip.style.zIndex = "1000";
+          // tooltip.style.top = `${y}px`;
+          // tooltip.style.left = `${x}px`;
+          tooltip.style.transform = "translateX(-50%)";
+          tooltip.style.zIndex = "1000";
 
-            document.body.appendChild(tooltip);
+          document.body.appendChild(tooltip);
 
-            // Remove the tooltip after 3 seconds
-            setTimeout(() => {
-              tooltip.remove();
-            }, 3000);
-          
+          // Remove the tooltip after 3 seconds
+          setTimeout(() => {
+            tooltip.remove();
+          }, 3000);
         };
         // Function to hide the tooltip when the mouse leaves
         const hideTooltip = () => {
@@ -2339,7 +2502,7 @@
 
           // Delay to ensure Krpano loads
           updateSearchVisibility();
-
+          showSearchFilterCardsMobile();
           const unit = getSpecificUnit();
 
           // onSceneChange(currentScene, unit)
@@ -2349,7 +2512,7 @@
 
             krpano.set(
               "events.onloadcomplete",
-              "js(enableZoomControls()); js(addLandHotspotsToKrpano()); js(updateSearchVisibility());  js(createSceneCard()); "
+              "js(enableZoomControls()); js(addLandHotspotsToKrpano()); js(updateSearchVisibility());  js(createSceneCard()); js(showSearchFilterCardsMobile); "
             );
           }
         };
