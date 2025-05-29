@@ -36,7 +36,7 @@
   
   
   .price-tag {
-    background-color: #a65c43; /* Blue */
+    background-color: #a65c43;
     color: white;
     font-weight: bold;
     padding: 4px 10px;
@@ -52,7 +52,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 200px;
+    
   }
   
   .close-btn {
@@ -137,4 +137,6 @@
     font-size: 13px;
     color: #ccc;
   }
+  
+
   
