@@ -178,7 +178,8 @@
                 />
               </div>
               <button
-                class="btn btn-primary w-100"
+                class="btn btn-primary custom-width "
+         
                 onclick="handleSearchFilters()"
               >
                 Search
@@ -224,7 +225,7 @@
           <div class="card shadow rounded-1 mobile-compact-search-card">
             <div class="mobile-card-body">
               <h5
-                class="mobile-card-title mb-4 fw-semibold"
+                class="mobile-card-title mb-4"
                 onclick="toggleMobileFilter()"
               >
                 Search Filter
@@ -257,7 +258,7 @@
                 </div>
                 <div class="mb-3">
                   <label for="totalArea">
-                    <label class="fw-semibold">Area Range: </label>
+                    <label class="area-range">Area Range: </label>
                     <span id="mobileAreaValue">100</span> to
                     <span id="mobileAreaMax">20000</span> sqm
                   </label>
@@ -405,6 +406,11 @@
               mobileSearchFilter.style.marginBottom = "5px";
               mobileSearchFilter.style.right = "";
               mobileSearchFilter.style.height = "200px";
+
+              mobileSearchFilter.style.height = "200px";
+
+
+
 
               const labelbox = document.querySelector(".top-label-box");
 
@@ -2311,11 +2317,12 @@
           cardContainer.innerHTML = `
  <div class="property-card">
    <div class="image-overlay">
-      <div class="price-tag"> Price: TBD</div>
+   
       <button class="close-btn" onclick="closeCard()">&times;</button>
    </div>
    <div class="inner-style">
    <div class="property-info">
+       <div class="price-tag"> Price: TBD</div>
       <h2>Al Marina</h2>
       <h2>
       <i class="fa fa-map-marker mr-2"></i>   

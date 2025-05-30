@@ -81,7 +81,7 @@
   #scene-card-wrapper {
     flex-direction: row; /* Keep items in a row */
     top: 150px; /* Adjust top for slightly larger screens */
-    left: 5%; /* Align to the left edge */
+    left: 10%; /* Align to the left edge */
     position: absolute; /* Use relative positioning */
     padding: 20px;
     width: auto; /* Allow content to dictate width, or let it take full width */
@@ -92,8 +92,8 @@
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   #scene-card-wrapper {
-    top: 150px; /* Further adjust top */
-    left: 5%; /* Use percentage for left to make it responsive */
+    top: 200px; /* Further adjust top */
+    left: 10%; /* Use percentage for left to make it responsive */
     position: absolute; /* Reintroduce absolute positioning for more precise control on larger screens */
     width: 90%; /* Adjust width for medium screens */
   }

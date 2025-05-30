@@ -74,6 +74,7 @@
     background-color: #a65c43;
     border: 1px solid #a65c43;
     border-radius: 1px;
+    width :100%
 }
 
 .compact-search-card .btn-link {
@@ -244,3 +245,7 @@
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Standard Bootstrap focus shadow */
 }
+
+.custom-width {
+    width: 100%;
+  }

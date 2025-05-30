@@ -26,7 +26,7 @@
 
 .card_1 {
   position: relative;
-  min-width: 230px; /* Wider card to match the reference */
+  width:18rem;
   height: 10rem;
   background-color: #fff;
   border-radius: 2px; /* Subtle border-radius */
@@ -38,6 +38,7 @@
   flex-direction: row;
   overflow: hidden;
   justify-content: space-between;
+  -webkit-overflow-scrolling: touch;
 }
 
 .card_1 img {
@@ -195,7 +196,7 @@
   z-index: 1000; /* Make sure it's above */
 
   top: 15px;
-  left: 50%;
+  left: 46%;
   width: fit-content;
   margin-left: 10px;
 }

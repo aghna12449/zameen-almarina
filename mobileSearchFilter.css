@@ -23,6 +23,7 @@
     background-color: transparent !important; /* Ensure the card has a transparent background */
     margin-top: -50px; /* Add some space at the top */
     z-index: 1050 !important; 
+
 }
 
 /* Card Body Padding */
@@ -35,12 +36,20 @@
 /* Search Filter Title */
 .mobile-card-title {
     color: black !important; /* Blue color for "Search Filter" */
-    font-size: 1.3em !important; /* Slightly larger font size */
+    font-size: 1rem !important; /* Slightly larger font size */
     margin-bottom: 10px !important; /* Adjust spacing below title */
     margin:10px;
-    text-align: center;
+    line-height: 1.5rem;
+    font-weight: 600;
+
+    
 }
 
+.area-range{
+    font-size: 1rem !important;
+    line-height: 1.5rem;
+    font-weight: 600;
+}
 /* Input Fields (Text and Selects) */
 .form-control { /* Applies to Plot Number and Availability inputs */
     padding: 12px 15px !important; /* More padding */
@@ -109,6 +118,7 @@
     background-color: #a65c43;
     border: 1px solid #a65c43;
     border-radius: 1px;
+    width: 100%
     
 }
 
