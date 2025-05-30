@@ -11,6 +11,7 @@
 }
 
 .card-slider_1 {
+ 
   display: flex;
   gap: 10px; /* Adjusted gap to match reference image more closely */
   overflow-x: scroll;
@@ -25,6 +26,7 @@
 }
 
 .card_1 {
+  cursor: pointer;
   position: relative;
   width:18rem;
   height: 10rem;

@@ -178,8 +178,7 @@
                 />
               </div>
               <button
-                class="btn btn-primary custom-width "
-         
+                class="btn btn-primary custom-width"
                 onclick="handleSearchFilters()"
               >
                 Search
@@ -224,10 +223,7 @@
         <div class="mobile-container mt-5">
           <div class="card shadow rounded-1 mobile-compact-search-card">
             <div class="mobile-card-body">
-              <h5
-                class="mobile-card-title mb-4"
-                onclick="toggleMobileFilter()"
-              >
+              <h5 class="mobile-card-title mb-4" onclick="toggleMobileFilter()">
                 Search Filter
               </h5>
 
@@ -409,9 +405,6 @@
 
               mobileSearchFilter.style.height = "200px";
 
-
-
-
               const labelbox = document.querySelector(".top-label-box");
 
               const rowExtra = document.querySelectorAll(".details-row_extra");
@@ -559,14 +552,12 @@
           return krpano;
         };
 
-        const resetFilters=()=> {
-   
-
+        const resetFilters = () => {
           const plotInput = document.getElementById("plotNumber");
           if (plotInput) {
             plotInput.value = "";
           }
-          
+
           // Reset the total area slider
           let krpano = globalKrpano();
           const slider = document.getElementById("totalArea");
@@ -589,8 +580,8 @@
           blinkHotspot();
           displayHorizontalSlider();
           // dynamicZoneRendering(building2houseData, '', krpano);
-          closeCard()
-        }
+          closeCard();
+        };
 
         const arialView = () => {
           const krpano = document.getElementById("krpanoSWFObject");
@@ -777,10 +768,11 @@
           //currentAppearingHotpsots
           //      <h4> ${house.zone ? house.zone : ""}</h4>
 
+          //
           sliderSearchedHouses.forEach((house, index) => {
             const cardHTML = `
-  <div class="card-wrapper"> <div class="top-label-box"> Price: TBD</div>
-        <div class="card_1" onclick="showBlinkingOfHouses('${house.id}')">
+  <div class="card-wrapper" > <div class="top-label-box"> Price: TBD</div>
+        <div class="card_1"  onclick="showIndividualHouseCard(${house.plot_number})">
         
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv94OIn-sX93PJMNosZCYZzXFO8Qk1FB2x3A&s" height="100px" width="100px" />
             <div class="details_1">
@@ -2036,9 +2028,7 @@
                 set(hotspot[${hotspotName}].bordercolor, 0x39FF14);
                 set(hotspot[${hotspotName}].borderwidth, 1);
           `);
-           
 
-           
             krpano.call(
               `set(hotspot[${hotspotName}].onclick, js(handleHotspotClick('${hotspotName}', '${house.plot_number}', '${cords.ath}', '${cords.atv}')));`
             );
@@ -2242,7 +2232,6 @@
           const baseUrl =
             "https://erth-al-marina.zameengeomatics.com/api/getAlMarinaData";
 
-          
           return fetch(baseUrl)
             .then((res) => res.json())
             .then((data) => {
@@ -2295,6 +2284,7 @@
         landscapeQuery.addListener(applyStyles);
 
         function createCard(title, description, imageUrl, response) {
+        
           let unitDetails = {
             zone: response[0].zone,
             plot_number: response[0].plot_number,
@@ -2311,11 +2301,11 @@
           if (existingCard) {
             // existingCard.remove();
           }
-//  <div class="inner_section">
-    
-  //  <button class="close-btn">×</button>
+          //  <div class="inner_section">
 
-          console.log("unitDetails", unitDetails);
+          //  <button class="close-btn">×</button>
+
+          
           cardContainer.id = "krpano-card";
           cardContainer.innerHTML = `
  <div class="property-card">
@@ -2330,8 +2320,8 @@
       <h2>
       <i class="fa fa-map-marker mr-2"></i>   
       ${
-      unitDetails.zone.charAt(0).toUpperCase() +
-      unitDetails.zone.slice(1).toLowerCase()
+        unitDetails.zone.charAt(0).toUpperCase() +
+        unitDetails.zone.slice(1).toLowerCase()
       }
       <h2>
       <div class="divider"></div>
@@ -2416,18 +2406,60 @@
           }
         };
 
+    
+        const showIndividualHouseCard = (house) => {
+        
+          const unitData = localStorage.getItem("response");
+
+          const parsedData = JSON.parse(unitData);
+
+          const filteredData = parsedData?.data?.filter(
+            (unit) => unit.plot_number === String(house)
+          );
+
+        
+
+          if (filteredData) {
+            createCard(
+              "Title",
+              "Description",
+              "https://via.placeholder.com/150",
+              filteredData
+            );
+          } else {
+            console.error("House details not found in the response.");
+          }
+        };
+
+
         // Function to display house details
         const showHouseDetails = (response, plot_number, total_area) => {
           let card = document.getElementById("krpano-card");
           if (card) {
             card.remove();
           }
+
           const unitData = localStorage.getItem("response");
 
           const parsedData = JSON.parse(unitData);
 
+          console.log(
+            "plot_number",
+            plot_number,
+            "total_area",
+            total_area,
+            parsedData
+          );
+
           const filteredData = parsedData?.data?.filter(
             (unit) => unit.plot_number === plot_number
+          );
+
+          console.log(
+            "unitData",
+            unitData,
+            "filteredData",
+            JSON.stringify(filteredData)
           );
 
           //   Assuming the first element in the response array corresponds to the clicked house
