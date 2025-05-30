@@ -1593,7 +1593,7 @@
             if (currentBlinkInterval && currentBlinkingHotspot) {
               clearInterval(currentBlinkInterval);
               krpano.call(
-                `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xE87281)`
+                `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0x39FF14)`
               );
               krpano.call(
                 `set(hotspot[${currentBlinkingHotspot}].fillalpha, 0.2)` // reset to default or less visible
@@ -2028,16 +2028,10 @@
                 set(hotspot[${hotspotName}].fillalpha, 0);
                 set(hotspot[${hotspotName}].bordercolor, 0x39FF14);
                 set(hotspot[${hotspotName}].borderwidth, 1);
-`);
-            if (cords) {
-              // Set the onclick action to show a Bootstrap tooltip
-              //     krpano.call(`
-              // set(hotspot[${hotspotName}].onhover, js(showTooltip('${hotspotName}', '${house.plot_number}','${cords.ath},${cords.atv}')));
-              // set(hotspot[${hotspotName}].onout, js(hideTooltip()));
-              // `);
-            }
+          `);
+           
 
-            console.log("ZONE 9", hotspotName)
+           
             krpano.call(
               `set(hotspot[${hotspotName}].onclick, js(handleHotspotClick('${hotspotName}', '${house.plot_number}', '${cords.ath}', '${cords.atv}')));`
             );
