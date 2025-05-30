@@ -128,9 +128,12 @@
 
   /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+  .inner-style{
+    bottom: 70px
+  }
   .property-card {
     width: 220px;
-    height: 270px;
+    height: 200px;
     border-radius: 1px;
     overflow: hidden;
     position: relative;
@@ -143,9 +146,12 @@
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+  .inner-style{
+    bottom: 70px
+  }
   .property-card {
     width: 220px;
-    height: 270px;
+    height: 200px;
     border-radius: 1px;
     overflow: hidden;
     position: relative;
@@ -158,7 +164,10 @@
 
 
 
-@media only screen and (min-width: 868px)  {
+@media only screen and (min-width:768px)  {
+  .inner-style{
+    bottom: 0px
+  }
   .property-card {
     
     width: 300px;
@@ -176,6 +185,10 @@
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
+  .inner-style{
+    bottom: 0px
+  }
+  
   .property-card {
     width: 300px;
     height: auto;
