@@ -559,8 +559,14 @@
           return krpano;
         };
 
-        function resetFilters() {
-          console.log("resetFilters ");
+        const resetFilters=()=> {
+   
+
+          const plotInput = document.getElementById("plotNumber");
+          if (plotInput) {
+            plotInput.value = "";
+          }
+          
           // Reset the total area slider
           let krpano = globalKrpano();
           const slider = document.getElementById("totalArea");
@@ -583,6 +589,7 @@
           blinkHotspot();
           displayHorizontalSlider();
           // dynamicZoneRendering(building2houseData, '', krpano);
+          closeCard()
         }
 
         const arialView = () => {
