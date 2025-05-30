@@ -2037,6 +2037,7 @@
               // `);
             }
 
+            console.log("ZONE 9", hotspotName)
             krpano.call(
               `set(hotspot[${hotspotName}].onclick, js(handleHotspotClick('${hotspotName}', '${house.plot_number}', '${cords.ath}', '${cords.atv}')));`
             );
@@ -2063,6 +2064,7 @@
 
         // Add this new function to your existing JavaScript code (e.g., in the same script block as flyToHouse and showHouseDetails)
         function handleHotspotClick(hotspotName, plotNumber, ath, atv) {
+          console.log("hotspotName", hotspotName);
           // First, call your showHouseDetails function
           showHouseDetails("", plotNumber, totalArea);
 
@@ -2239,7 +2241,7 @@
           const baseUrl =
             "https://erth-al-marina.zameengeomatics.com/api/getAlMarinaData";
 
-          //
+          
           return fetch(baseUrl)
             .then((res) => res.json())
             .then((data) => {
