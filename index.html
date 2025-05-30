@@ -338,14 +338,14 @@
       <button id="zoomInBtn">+</button>
       <button id="fullScreenBtn" title="Toggle Fullscreen">⛶</button>
 
-      <div class="time-toggle" onclick="toggleTimeView(this)">
+      <!-- <div class="time-toggle" onclick="toggleTimeView(this)">
         <div class="toggle-option now active">
           <span class="material-icons">access_time</span> Now
         </div>
         <div class="toggle-option future">
           <span class="material-icons">event</span> Future
         </div>
-      </div>
+      </div> -->
 
       <div id="custom-breadcrumbs" class="mui-breadcrumb-root">
         <div class="breadcrumb-wrapper" id="breadcrumb-wrapper">
@@ -2316,40 +2316,59 @@
    <div class="inner-style">
    <div class="property-info">
        <div class="price-tag"> Price: TBD</div>
-      <h2>Al Marina</h2>
-      <h2>
+      <h1 class="heading">Al Marina</h1>
+      <h2 class="zone_title">
       <i class="fa fa-map-marker mr-2"></i>   
+      <span class="display_card_zone">
       ${
         unitDetails.zone.charAt(0).toUpperCase() +
         unitDetails.zone.slice(1).toLowerCase()
       }
+        </span>
       <h2>
       <div class="divider"></div>
-      <div class="details">
-         <div><span>Area</span><br>${unitDetails.total_area}m²</div>
-         <div><span>Plot</span><br>${unitDetails.plot_number || "-"}</div>
-         <div><span>Block</span><br>${unitDetails.block_number || "-"}</div>
-      </div>
-      <div class="extra">
+      <div class="details_flex">
+
+  <div class="detail-item_flex">
+    <span class="label_flex">Area</span>
+    <span class="value_flex">${unitDetails.total_area} m²</span>
+  </div>
+  <div class="detail-item_flex">
+    <span class="label_flex">Plot</span>
+    <span class="value_flex">${unitDetails.plot_number || "-"}</span>
+  </div>
+  <div class="detail-item_flex">
+    <span class="label_flex">Block</span>
+    <span class="value_flex">${unitDetails.block_number || "-"}</span>
+  </div>
+
+   <div class="detail-item_flex">
+    <span class="label_flex"></span>
+    <span class="value_flex"></span>
+  </div>
+</div>
+
+     
+    
          <div class="details-row_extra">
             <div class="detail-item">
-               <p class="detail-label_1">South</p>
-               <p class="detail-value">${unitDetails.south || "-"}</p>
+               <span class="detail-label_1">South</span>
+               <span class="detail-value">${unitDetails.south || "-"}</span>
             </div>
             <div class="detail-item">
-               <p class="detail-label_1">North</p>
-               <p class="detail-value">${unitDetails.north || "-"}</p>
+               <span class="detail-label_1">North</span>
+               <span class="detail-value">${unitDetails.north || "-"}</span>
             </div>
             <div class="detail-item">
-               <p class="detail-label_1">East</p>
-               <p class="detail-value">${unitDetails.east || "-"}</p>
+               <span class="detail-label_1">East</span>
+               <span class="detail-value">${unitDetails.east || "-"}</span>
             </div>
             <div class="detail-item">
-               <p class="detail-label_1">West</p>
-               <p class="detail-value">${unitDetails.west || "-"}</p>
+               <span class="detail-label_1">West</span>
+               <span class="detail-value">${unitDetails.west || "-"}</span>
             </div>
          </div>
-      </div>
+   
       </div>
    </div>
 </div>
