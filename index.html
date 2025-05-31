@@ -899,14 +899,21 @@
           }
         }
 
-        // function checkRecord() {
-        //   console.log("checkRecord");
-        //   const input = document.getElementById("searchBox").value.toLowerCase();
+        const checkRecordExistence = (value) => {
+          console.log("checkRecord", value);
 
-        //   if (input === "notfound" || input === "") {
-        //     document.getElementById("notFoundModal").style.display = "block";
-        //   }
-        // }
+         
+
+          if(value){
+            const filteredData = parsedData?.data?.filter(
+              (unit) => unit.plot_number === value
+            );
+
+            if (!filteredData.length) {
+             document.getElementById("notFoundModal").style.display = "block";
+            }
+          }
+        }
 
         function closeModal() {
           document.getElementById("notFoundModal").style.display = "none";
@@ -1320,6 +1327,8 @@
           return filteredHouses;
         }
 
+
+
         function handleSearchFilters() {
           const plot = document.getElementById("plotNumber").value;
           const area = document.getElementById("totalArea").value;
@@ -1327,6 +1336,8 @@
           // const area = document.getElementById('totalArea').value;
           // const block = document.getElementById('blockNumber').value;
           // 👉 Stop previous blinking
+
+          checkRecordExistence(plot)
           blinkIndividualHotspot("", false, true);
           if (area) {
             // Stop previous blinking first
@@ -1342,6 +1353,7 @@
             });
           }
 
+          console.log("handSearch filter", plot)
           // previouslyVisibleHotspots = []
 
           const unitData = localStorage.getItem("response");
@@ -1404,6 +1416,7 @@
               break;
           }
 
+
           const hotspotName = `${matchedHouse?.id}`;
           if (matchedHouse) {
             // blinkHotspot(hotspotName);
@@ -1433,6 +1446,9 @@
               (unit) => unit.plot_number === plot
             );
 
+           
+
+            console.log("")
             if (unitData && unitData.length > 0) {
               createCard(
                 "Title",
@@ -1442,14 +1458,15 @@
               );
             }
 
+            console.log("Filtered DATA", filteredData)
+
+          
+
             krpano.call(
               `lookto(${center?.ath}, ${center?.atv}, 90, smooth());`
             );
           } else {
-            if (plot) {
-              //document.getElementById("notFoundModal").style.display = "block";
-            }
-
+           
             closeCard(); // Close any existing card
 
             // Stop blinking and reset color if a previous hotspot was blinking
