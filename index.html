@@ -902,7 +902,7 @@
         const checkRecordExistence = (value) => {
           console.log("checkRecord", value);
 
-         
+           const parsedData = getParsedData();
 
           if(value){
             const filteredData = parsedData?.data?.filter(
@@ -910,9 +910,15 @@
             );
 
             if (!filteredData.length) {
+              console.log("IF Filtered DATA ", )
              document.getElementById("notFoundModal").style.display = "block";
             }
           }
+
+         
+
+
+          
         }
 
         function closeModal() {
