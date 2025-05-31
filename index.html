@@ -941,11 +941,6 @@
 
         let currentAppearingHotpsots = [];
 
-        const showBlinkingOfHouses = (hotspot) => {
-          console.log("showBlinkingOfHouses", hotspot);
-          //blinkHotspot("hs25");
-          // blinkIndividualHotspot(hotspot, true);
-        };
 
         //currentAppearingHotpsots
         const displayHorizontalSlider = () => {
@@ -960,7 +955,7 @@
             console.log('househousehouse', house)
            
                   const cardHTML = `
-  <div class="card-wrapper" > <div class="top-label-box"> Price: TBD ${house.id}</div>
+  <div class="card-wrapper" > <div class="top-label-box"> Price: TBD </div>
         <div class="card_1"  onclick="showIndividualHouseCard(${house.plot_number})">
         
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv94OIn-sX93PJMNosZCYZzXFO8Qk1FB2x3A&s" height="100px" width="100px" />
@@ -977,7 +972,7 @@
                   </aside>
                 <div class="property-info_1">
                     <div class="info-item_1">
-                        <span class="label_1"> Total Area</span>
+                        <span class="label_1">  Area</span>
                         <span class="value">${house.total_area} m²</span>
                     </div>
                     <div class="info-item_1">
@@ -1283,6 +1278,8 @@
         latestArrayZone5 = [];
         latestArrayZone9 = [];
         (latestArrayZone7 = []), (latestArrayZone8 = []);
+      
+        
 
         function getSpeificUnitsByArea() {
           const area = document.getElementById("totalArea").value;
@@ -1301,6 +1298,8 @@
           latestArrayZone5 = [];
           latestArrayZone9 = [];
           (latestArrayZone7 = []), (latestArrayZone8 = []);
+         
+          
 
           const zone3 = parsedData.data.filter(
             (house) => house.zone === "ZONE 3"
@@ -1508,7 +1507,7 @@
                     });
                   }
                 );
-                filteredHouses = latestArrayZone8.filter(
+                filteredHouses = latestArrayZone9.filter(
                   (house) => parseFloat(house.total_area) <= parseFloat(area)
                 );
 
@@ -1784,8 +1783,11 @@
             if (currentBlinkInterval && currentBlinkingHotspot) {
               clearInterval(currentBlinkInterval);
               krpano.call(
-                `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFFFF)`
+                `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0x39FF14)`
               ); // Reset color
+              krpano.call(
+                `set(hotspot[${currentBlinkingHotspot}].fillalpha, 0.2)` // reset to default or less visible
+              );
               currentBlinkInterval = null;
               currentBlinkingHotspot = null;
             }
@@ -2274,15 +2276,16 @@
             hotspotXML += `</hotspot>`;
 
             const cords = house.coordinates[0];
-
+            
             krpano.call(`
   
             
              
 
-          set(hotspot[${hotspotName}].border, false);
-           
              
+
+            
+                set(hotspot[${hotspotName}].border, false);
                 set(hotspot[${hotspotName}].fillalpha, 0);
               
                 set(hotspot[${hotspotName}].borderwidth, 0);
@@ -2314,6 +2317,7 @@
 
         // Add this new function to your existing JavaScript code (e.g., in the same script block as flyToHouse and showHouseDetails)
         function handleHotspotClick(hotspotName, plotNumber, ath, atv) {
+          console.log("handleHotspotClick handleHotspotClick", hotspotName);
           console.log("hotspotName", hotspotName);
           // First, call your showHouseDetails function
           showHouseDetails("", plotNumber, totalArea);
