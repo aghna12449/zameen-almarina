@@ -355,13 +355,40 @@
 }
 
 
+#controls {
+ bottom: 30px;
+
+  transform: translateY(-40%);
+
+  position: fixed;
+  /* bottom: 20px; */
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  background: transparent;
+  padding: 10px;
+  border-radius: 8px;
+
+  z-index: 9999;
+}
+
+#controls button  {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 9px;
+  font-size: 18px;
+  background-color:rgb(0 0 0 / 41%);
+  color: white;
+}
 
 
 #toggle-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: none;
+  border-radius: 50%;
+  border: none;
+  
+  
     border: none;
     cursor: pointer;
     z-index: 9999;
@@ -369,9 +396,8 @@
   }
   
   #toggle-icon {
-    font-size: 60px; /* Make it BIGGER */
+    font-size: 45px; /* Make it BIGGER */
     color: #dee2e6;
-   
     line-height: 1;
   }
   
@@ -418,27 +444,27 @@
   }
 
   #zoomInBtn{
-    position: fixed;
-    bottom: 185px;
-    right: 40px;
-    width: 32px;
-    height: 32px;
+   
+    width: 60px;
+    height: 50px;
+    
     font-size: 18px;
     border-radius: 50%;
     border: none;
-    background-color: rgb(0 0 0 / 41%);
+
+    background-color:rgb(0 0 0 / 41%);
     color: white;
     cursor: pointer;
     z-index: 9999;
     margin-bottom: 5px;
+    left:20px
   }
 
   #zoomOutBtn {
-    position: fixed;
-    bottom: 227px;
-    right: 40px;
-    width: 32px;
-    height: 32px;
+   
+  
+    width: 60px;
+    height: 50px;
     font-size: 18px;
     border-radius: 50%;
     border: none;
@@ -447,14 +473,12 @@
     cursor: pointer;
     z-index: 9999;
     margin-bottom: 5px;
-  }
+  } 
   
   #fullScreenBtn {
-    position: absolute;
-    bottom: 270px;
-    right: 40px;
-    width: 32px;
-    height: 32px;
+    width: 60px;
+    height: 50px;
+
     font-size: 18px;
     border-radius: 50%;
     border: none;
@@ -462,7 +486,7 @@
     color: white;
     cursor: pointer;
     z-index: 9999;
-    margin-bottom: 5px;        /* Ensure it's above all other elements */
+     
   }
 
 
