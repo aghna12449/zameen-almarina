@@ -1056,6 +1056,7 @@
 
         function updateSearchVisibility() {
           const searchBar = document.getElementById("searchBarContainer");
+          const mobileSearchCard = document.getElementById("mobileSearchFilter");
 
           const searchSliderFilters = document.getElementById(
             "searchSliderFilters"
@@ -1081,9 +1082,11 @@
             searchBar.style.display = "none";
             searchSliderFilters.style.display = "none";
             mobileSearchFilter.style.display = "none";
+            mobileSearchCard.style.display = "none";
           } else {
             searchBar.style.display = "block";
             searchSliderFilters.style.display = "block";
+            mobileSearchCard.style.display = "block";
             if (width < 770) {
               // mobileSearchFilter.style.display = "block";
             }
@@ -1394,16 +1397,10 @@
                 break;
 
               case "scene_i-building_2":
-                console.log("building 2");
-
+               
                 updateSliderRange("5");
 
-                console.log(
-                  "zone 5 = building 2 =",
-                  building2houseData,
-                  "all data",
-                  zoneFiveFilteredData()
-                );
+               
 
                 const updatedbuilding2houseData = zoneFiveFilteredData().map(
                   (house) => {
@@ -1421,15 +1418,15 @@
                   }
                 );
 
-                console.log("latestArrayZone5", latestArrayZone5);
+              
                 filteredHouses = latestArrayZone5.filter(
                   (house) => parseFloat(house.total_area) <= parseFloat(area)
                 );
 
-                console.log("filteredHouses zone 5", filteredHouses);
+             
                 break;
               case "scene_h-building_1":
-                console.log("building 1");
+               
 
                 updateSliderRange("6");
 
@@ -1475,7 +1472,7 @@
               case "scene_g-zone_5":
                 updateSliderRange("8");
 
-                console.log("zoneEightFilteredData", zoneEightFilteredData());
+              
                 const updatedZone8houseData = zoneEightFilteredData().map(
                   (house) => {
                     matchedZone = zone8houseData.find(
@@ -1491,7 +1488,7 @@
                   }
                 );
 
-                console.log("latestArrayZone8", latestArrayZone8, "area", area);
+  
                 filteredHouses = latestArrayZone8.filter(
                   (house) => parseFloat(house.total_area) <= parseFloat(area)
                 );
@@ -1523,7 +1520,7 @@
                 break;
             }
           }
-          console.log("filteredHouses ====", filteredHouses);
+       
           return filteredHouses;
         }
 
@@ -1551,7 +1548,7 @@
             });
           }
 
-          console.log("handSearch filter", plot);
+         
           // previouslyVisibleHotspots = []
 
           const unitData = localStorage.getItem("response");
@@ -1643,7 +1640,7 @@
               (unit) => unit.plot_number === plot
             );
 
-            console.log("");
+            
             if (unitData && unitData.length > 0) {
               createCard(
                 "Title",
@@ -1653,7 +1650,6 @@
               );
             }
 
-            console.log("Filtered DATA", filteredData);
 
             krpano.call(
               `lookto(${center?.ath}, ${center?.atv}, 90, smooth());`
@@ -1669,7 +1665,7 @@
 
         const findMaximumAndMinimum = (zoneData) => {
           if (!zoneData || zoneData.length === 0) {
-            console.log("No data available.");
+        
             return;
           }
 
@@ -1736,7 +1732,7 @@
             // add more cases for other zones
           }
 
-          console.log("zone houses", zoneHouses);
+          
           const { min, max } = findMaximumAndMinimum(zoneHouses);
 
           // Update slider attributes
