@@ -357,9 +357,6 @@
 
 #controls {
  bottom: 30px;
-
-  transform: translateY(-40%);
-
   position: fixed;
   /* bottom: 20px; */
   right: 20px;
