@@ -851,7 +851,7 @@
                 allowedHotspots.includes(hotspot.id)
               );
 
-              dynamicZoneRendering(zone1houseData, "", krpano);
+              dynamicZoneRendering(filteredzone1houseData, "", krpano);
               break;
 
             case "scene_d-zone_2":
@@ -2731,13 +2731,7 @@
             (unit) => unit.plot_number === plot_number
           );
 
-          console.log(
-            "unitData",
-            unitData,
-            "filteredData",
-            JSON.stringify(filteredData)
-          );
-
+          
           //   Assuming the first element in the response array corresponds to the clicked house
           if (unitData && unitData.length > 0) {
             createCard(
