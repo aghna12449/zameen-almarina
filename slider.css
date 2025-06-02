@@ -27,6 +27,11 @@
   animation: scroll_1 7s linear infinite; /* Animation specifically for this slider */
 }
 
+.card-slider_1.active {
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
+}
+
 .card_1 {
   cursor: pointer;
   position: relative;
