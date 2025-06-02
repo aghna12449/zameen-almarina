@@ -368,7 +368,7 @@
         });
       </script>
 
-<script>
+<!-- <script>
   const container = document.getElementById('card-slider_1');
 
   let isDown = false;
@@ -399,7 +399,7 @@
     const walk = (x - startX) * 2; // Speed of scroll
     container.scrollLeft = scrollLeft - walk;
   });
-</script>
+</script> -->
 
       <script>
         const showSearchFilterCardsMobile = () => {
@@ -767,42 +767,22 @@
             for (let i = 0; i < zoneTotalLength; i++) {
               const hotspotName = krpano.get(`hotspot[${i}].name`);
               if (hotspotName) {
-                console.log(`Before ${hotspotName} settings:`, {
-                  visible: krpano.get(`hotspot[${hotspotName}].visible`),
-                  borderwidth: krpano.get(
-                    `hotspot[${hotspotName}].borderwidth`
-                  ),
-                  borderalpha: krpano.get(
-                    `hotspot[${hotspotName}].borderalpha`
-                  ),
-                });
+               
 
                 // Ensure hotspotName exists
                 //
 
-                krpano.set(`hotspot[${hotspotName}].visible`, false); // Hide all hotspots initially
                 krpano.set(`hotspot[${hotspotName}].border`, false);
-
                 krpano.set(`hotspot[${hotspotName}].borderwidth`, 0); // Hide border
                 krpano.set(`hotspot[${hotspotName}].borderalpha`, 0);
 
                 //  krpano.set(`hotspot[${hotspotName}].bordercolor`, "0x000000");
 
-                console.log(`After ${hotspotName} settings:`, {
-                  visible: krpano.get(`hotspot[${hotspotName}].visible`),
-                  borderwidth: krpano.get(
-                    `hotspot[${hotspotName}].borderwidth`
-                  ),
-                  borderalpha: krpano.get(
-                    `hotspot[${hotspotName}].borderalpha`
-                  ),
-                });
                 console.log(`Hidden hotspot: ${hotspotName}`);
               }
             }
 
             reSetHotspots();
-            console.log("allowedHotspots", allowedHotspots);
             reDrawAvailableHotspots(allowedHotspots);
           }
 
@@ -921,7 +901,9 @@
                 allowedHotspots.includes(hotspot.id)
               );
 
-              dynamicZoneRendering(filteredZone7Data, "", krpano);
+              dynamicZoneRendering(filteredZone7Data, '', krpano);
+
+             // dynamicZoneRendering(filteredZone7Data, "", krpano);
               break;
 
             case "scene_g-zone_5":
@@ -2235,10 +2217,13 @@
 
             const cords = house.coordinates[0];
             //        set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFF00);
+             // Add hotspot to Krpano dynamically
+             krpano.call(`addhotspot(${hotspotName})`);
+
             krpano.call(`
-  
+ 
+            
              
-              set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFF00);
                 set(hotspot[${hotspotName}].fillalpha, 0.2);
                 set(hotspot[${hotspotName}].bordercolor, 0x39FF14);
                 set(hotspot[${hotspotName}].borderwidth, 1);
@@ -2251,8 +2236,7 @@
             //           krpano.call(`
             //          set(hotspot[${hotspotName}].onclick, "showtext(This is some info!, textstyle_info);");
             // `);
-            // Add hotspot to Krpano dynamically
-            krpano.call(`addhotspot(${hotspotName})`);
+           
 
             // krpano.call(
             //   `set(hotspot[${hotspotName}].loadstyle, mypolygonalhotspotstylename)`
@@ -2270,7 +2254,6 @@
         };
 
         const disappearZoneData = (zoneData, response, krpano) => {
-          console.log("zoneData =>>>", zoneData);
           zoneData.forEach((house) => {
             // Create a unique name for each house hotspot
             const hotspotName = `hs_${house.id}`;
@@ -2287,15 +2270,17 @@
 
             const cords = house.coordinates[0];
 
+            
             krpano.call(`
+             
                 set(hotspot[${hotspotName}].border, false);
                 set(hotspot[${hotspotName}].fillalpha, 0); 
                 set(hotspot[${hotspotName}].borderwidth, 0);
           `);
 
-            krpano.call(
-              `set(hotspot[${hotspotName}].onclick, js(handleHotspotClick('${hotspotName}', '${house.plot_number}', '${cords.ath}', '${cords.atv}')));`
-            );
+            // krpano.call(
+            //   `set(hotspot[${hotspotName}].onclick, js(handleHotspotClick('${hotspotName}', '${house.plot_number}', '${cords.ath}', '${cords.atv}')));`
+            // );
 
             //           krpano.call(`
             //          set(hotspot[${hotspotName}].onclick, "showtext(This is some info!, textstyle_info);");
