@@ -435,11 +435,14 @@
   });
 
   
-  
-  slider.addEventListener('wheel', (e) => {
-    e.preventDefault(); // Prevent vertical scroll
-    slider.scrollLeft += e.deltaY; // Scroll horizontally instead
-  });
+
+slider.addEventListener('wheel', (e) => {
+    // Only convert vertical scroll to horizontal if there's no shift key
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      e.preventDefault(); // prevent vertical scroll
+      slider.scrollLeft += e.deltaY;
+    }
+  }, { passive: false }); // passive: false is required to call preventDefault()
 
         const showSearchFilterCardsMobile = () => {
           console.log("showSearchFilterCardsMobile");
