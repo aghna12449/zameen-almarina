@@ -228,7 +228,7 @@
               </h5>
 
               <!-- Collapsible Content -->
-              <div id="mobileFilterBody" class="mobile-card-body">
+              <div id="mobileFilterBody" class="mobile-card-body" style="display: none;">
                 <div class="mb-3">
                   <div class="mobile-input-group">
                     <input
@@ -427,7 +427,6 @@
             currentScene !== "scene_b-al_marina_aerial"
           ) {
             if (width < 935 && height < 440 && isLandscape) {
-              console.log("FIRST IF", mobileSearchFilter.style);
               searchSliderFilters.style.display = "none";
               mobileSearchFilter.style.display = "block";
               toggleFilterButton.style.display = "none";
@@ -473,7 +472,7 @@
                 }
               });
             } else if (width < 768) {
-              console.log("third ELSE");
+            
 
               searchSliderFilters.style.display = "none";
               mobileSearchFilter.style.display = "block";
@@ -783,7 +782,7 @@
             }
 
             reSetHotspots();
-            reDrawAvailableHotspots(allowedHotspots);
+           reDrawAvailableHotspots(allowedHotspots);
           }
 
           allowedHotspots = [];
@@ -920,12 +919,9 @@
                 allowedHotspots.includes(hotspot.id)
               );
 
-              console.log(
-                "filteredZone9Data filteredZone9Data",
-                filteredZone9Data
-              );
+            
 
-              dynamicZoneRendering(zone9houseData, "", krpano);
+              dynamicZoneRendering(filteredZone9Data, "", krpano);
 
               break;
 
@@ -963,6 +959,7 @@
           //      <h4> ${house.zone ? house.zone : ""}</h4>
 
           //
+          console.log("sliderSearchedHouses", sliderSearchedHouses);
           sliderSearchedHouses.forEach((house, index) => {
             console.log("househousehouse", house);
 
@@ -1021,11 +1018,7 @@
         <div id="scene-card" onclick="arialView()">
           <div class="scene-card-content">
             <img src="/skin/icons/erth_logo_white.png" width="50%" height="50%" class="breadcrumb-icon" />
-            <h4>🏙️ 
-              
-              
-              Aerial View</h4>
-            <p>Click here to explore</p>
+          
           </div>
         </div>
       `;
@@ -1364,6 +1357,7 @@
                         parseInt(house.plot_number) ===
                         parseInt(zone.plot_number)
                     );
+                    console.log("house === >>>", house );
                     latestArrayZone2.push({
                       ...house,
                       total_area: house?.total_area,
@@ -1657,10 +1651,11 @@
             return;
           }
 
+
           let maxArea = parseInt(zoneData[0].total_area);
           let minArea = parseInt(zoneData[0].total_area);
 
-          for (let i = 1; i < zoneData.length; i++) {
+          for (let i = 0; i < zoneData.length; i++) {
             const currentArea = parseInt(zoneData[i].total_area);
 
             if (currentArea > maxArea) {
@@ -1742,15 +1737,18 @@
         let currentBlinkingHotspotsByArea = [];
         let currentBlinkIntervalsByArea = [];
 
-        function stopAllBlinkingHotspots() {
+        const stopAllBlinkingHotspots=()=> {
           const krpano = document.getElementById("krpanoSWFObject");
           if (currentBlinkIntervalsByArea.length > 0) {
             currentBlinkIntervalsByArea.forEach((interval, i) => {
               clearInterval(interval);
               const hotspotName = currentBlinkingHotspotsByArea[i];
-              krpano.call(`set(hotspot[${hotspotName}].fillcolor, 0xFFFFFF)`);
+              krpano.call(`set(hotspot[${hotspotName}].fillcolor, 0x39FF14)`);
             });
 
+            krpano.call(
+                `set(hotspot[${hotspotName}].fillalpha, 0.2)` // reset to default or less visible
+              );
             currentBlinkingHotspotsByArea = [];
             currentBlinkIntervalsByArea = [];
           }
@@ -1797,8 +1795,10 @@
               currentBlinkingHotspot = null;
             }
 
+            
             // Start blinking for new hotspot
-            const blinkColors = ["0x00FFFF", "0xE87281"];
+           
+            const blinkColors = ["0x00FFFF", "0xFFA500"];
             let blinkIndex = 0;
 
             currentBlinkInterval = setInterval(() => {
@@ -1847,8 +1847,13 @@
             if (currentBlinkInterval && currentBlinkingHotspot) {
               clearInterval(currentBlinkInterval);
               krpano.call(
-                `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFFFF)`
+                `set(hotspot[${currentBlinkingHotspot}].fillcolor,  0x39FF14)`
               );
+
+              krpano.call(
+                `set(hotspot[${currentBlinkingHotspot}].fillaplha, 0.2)`
+              );
+
 
               currentBlinkingHotspot = null;
               currentBlinkInterval = null;
@@ -1877,7 +1882,7 @@
             if (currentBlinkInterval && currentBlinkingHotspot) {
               clearInterval(currentBlinkInterval);
               krpano.call(
-                `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFFFF)`
+                `set(hotspot[${currentBlinkingHotspot}].fillcolor,  0x39FF14)`
               );
 
               currentBlinkingHotspot = null;

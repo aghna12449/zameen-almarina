@@ -30,6 +30,9 @@
 .mobile-card-body {
     padding: 5px !important;
     background-color: white !important; /* Ensure the card body has a white background */
+    margin-top: 20px;
+
+
     /* Adjust padding inside the card */
 }
 
