@@ -120,7 +120,7 @@
       <div class="card-slider_1"></div>
     </div>  -->
 
-      <div id="searchBarContainer" style="display: none">
+      <div id="searchBarContainer" style="display: block">
         <input type="checkbox" id="toggleFilter" class="hidden-checkbox" />
 
         <label
@@ -368,6 +368,45 @@
       </script>
 
       <script>
+
+         const slider = document.querySelector('.card-slider_1');
+
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.classList.add('active');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 2; // Adjust scroll speed
+    slider.scrollLeft = scrollLeft - walk;
+  });
+
+  
+  
+  slider.addEventListener('wheel', (e) => {
+    e.preventDefault(); // Prevent vertical scroll
+    slider.scrollLeft += e.deltaY; // Scroll horizontally instead
+  });
+
         const showSearchFilterCardsMobile = () => {
           console.log("showSearchFilterCardsMobile");
           const searchSliderFilters =
@@ -1626,7 +1665,7 @@
             }
 
             // Start blinking for new hotspot
-            const blinkColors = ["0x00FFFF", "0xE87281"];
+            const blinkColors = ["0x39FF14", "0xE87281"];
             let blinkIndex = 0;
 
             currentBlinkInterval = setInterval(() => {
@@ -1687,7 +1726,7 @@
 
           if (area) {
             // Case 3: Start blinking for the new hotspot
-            const blinkColors = ["0x00FFFF", "0xFFA500"];
+            const blinkColors = ["0x39FF14", "0xFFA500"];
             let blinkIndex = 0;
 
             interval = setInterval(() => {
@@ -1713,7 +1752,7 @@
             }
 
             // Case 3: Start blinking for the new hotspot
-            const blinkColors = ["0x00FFFF", "0xFFA500"];
+            const blinkColors = ["0x39FF14", "0xFFA500"];
             let blinkIndex = 0;
 
             currentBlinkInterval = setInterval(() => {
