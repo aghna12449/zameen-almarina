@@ -968,7 +968,7 @@
 
             const cardHTML = `
   <div class="card-wrapper" > <div class="top-label-box"> Price: TBD </div>
-        <div class="card_1"  onclick="showIndividualHouseCard(${house.plot_number})">
+        <div class="card_1"  onclick="showIndividualHouseCard('${house.plot_number}','${house.id}' )">
         
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv94OIn-sX93PJMNosZCYZzXFO8Qk1FB2x3A&s" height="100px" width="100px" />
             <div class="details_1">
@@ -1762,7 +1762,7 @@
           isHide = false
         ) => {
           const krpano = document.getElementById("krpanoSWFObject");
-
+          console.log("blinkIndividualHotspot", hotspotName)
           // Stop blinking (on close or switching to aerial scene)
           if (
             isHide ||
@@ -2672,7 +2672,8 @@
           }
         };
 
-        const showIndividualHouseCard = (house) => {
+        const showIndividualHouseCard = (house, id) => {
+          console.log("id");
           const unitData = localStorage.getItem("response");
 
           const parsedData = JSON.parse(unitData);
@@ -2688,6 +2689,7 @@
               "https://via.placeholder.com/150",
               filteredData
             );
+            blinkIndividualHotspot(id, true);
           } else {
             console.error("House details not found in the response.");
           }
