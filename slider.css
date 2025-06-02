@@ -18,6 +18,8 @@
   scroll-behavior: smooth;
   padding: 0 10px; /* Adjusted padding */
   white-space: nowrap;
+  cursor: grab;
+  user-select: none;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -142,6 +144,11 @@
   font-size: 0.85rem;
   color: black;
 }
+
+.card-slider_1.active {
+  cursor: grabbing;
+}
+
 
 /* Ensure no border for the last info item as well */
 .card_1 .info-item_1:not(:last-child) {
