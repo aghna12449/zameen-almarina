@@ -250,6 +250,7 @@
   .property-card {
     width: 220px;
     height: 230px;
+   
     border-radius: 5px;
     overflow: hidden;
     position: relative;

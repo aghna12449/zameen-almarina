@@ -228,7 +228,11 @@
               </h5>
 
               <!-- Collapsible Content -->
-              <div id="mobileFilterBody" class="mobile-card-body" style="display: none;">
+              <div
+                id="mobileFilterBody"
+                class="mobile-card-body"
+                style="display: none"
+              >
                 <div class="mb-3">
                   <div class="mobile-input-group">
                     <input
@@ -368,7 +372,7 @@
         });
       </script>
 
-<!-- <script>
+      <!-- <script>
   const container = document.getElementById('card-slider_1');
 
   let isDown = false;
@@ -402,47 +406,48 @@
 </script> -->
 
       <script>
+        const slider = document.querySelector(".card-slider_1");
 
-         const slider = document.querySelector('.card-slider_1');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
 
-  let isDown = false;
-  let startX;
-  let scrollLeft;
+        slider.addEventListener("mousedown", (e) => {
+          isDown = true;
+          slider.classList.add("active");
+          startX = e.pageX - slider.offsetLeft;
+          scrollLeft = slider.scrollLeft;
+        });
 
-  slider.addEventListener('mousedown', (e) => {
-    isDown = true;
-    slider.classList.add('active');
-    startX = e.pageX - slider.offsetLeft;
-    scrollLeft = slider.scrollLeft;
-  });
+        slider.addEventListener("mouseleave", () => {
+          isDown = false;
+          slider.classList.remove("active");
+        });
 
-  slider.addEventListener('mouseleave', () => {
-    isDown = false;
-    slider.classList.remove('active');
-  });
+        slider.addEventListener("mouseup", () => {
+          isDown = false;
+          slider.classList.remove("active");
+        });
 
-  slider.addEventListener('mouseup', () => {
-    isDown = false;
-    slider.classList.remove('active');
-  });
+        slider.addEventListener("mousemove", (e) => {
+          if (!isDown) return;
+          e.preventDefault();
+          const x = e.pageX - slider.offsetLeft;
+          const walk = (x - startX) * 2; // Adjust scroll speed
+          slider.scrollLeft = scrollLeft - walk;
+        });
 
-  slider.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 2; // Adjust scroll speed
-    slider.scrollLeft = scrollLeft - walk;
-  });
-
-  
-
-slider.addEventListener('wheel', (e) => {
-    // Only convert vertical scroll to horizontal if there's no shift key
-    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-      e.preventDefault(); // prevent vertical scroll
-      slider.scrollLeft += e.deltaY;
-    }
-  }, { passive: false }); // passive: false is required to call preventDefault()
+        slider.addEventListener(
+          "wheel",
+          (e) => {
+            // Only convert vertical scroll to horizontal if there's no shift key
+            if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+              e.preventDefault(); // prevent vertical scroll
+              slider.scrollLeft += e.deltaY;
+            }
+          },
+          { passive: false }
+        ); // passive: false is required to call preventDefault()
 
         const showSearchFilterCardsMobile = () => {
           console.log("showSearchFilterCardsMobile");
@@ -514,8 +519,6 @@ slider.addEventListener('wheel', (e) => {
                 }
               });
             } else if (width < 768) {
-            
-
               searchSliderFilters.style.display = "none";
               mobileSearchFilter.style.display = "block";
               toggleFilterButton.style.display = "none";
@@ -808,8 +811,6 @@ slider.addEventListener('wheel', (e) => {
             for (let i = 0; i < zoneTotalLength; i++) {
               const hotspotName = krpano.get(`hotspot[${i}].name`);
               if (hotspotName) {
-               
-
                 // Ensure hotspotName exists
                 //
 
@@ -824,7 +825,7 @@ slider.addEventListener('wheel', (e) => {
             }
 
             reSetHotspots();
-           reDrawAvailableHotspots(allowedHotspots);
+            reDrawAvailableHotspots(allowedHotspots);
           }
 
           allowedHotspots = [];
@@ -942,9 +943,9 @@ slider.addEventListener('wheel', (e) => {
                 allowedHotspots.includes(hotspot.id)
               );
 
-              dynamicZoneRendering(filteredZone7Data, '', krpano);
+              dynamicZoneRendering(filteredZone7Data, "", krpano);
 
-             // dynamicZoneRendering(filteredZone7Data, "", krpano);
+              // dynamicZoneRendering(filteredZone7Data, "", krpano);
               break;
 
             case "scene_g-zone_5":
@@ -960,8 +961,6 @@ slider.addEventListener('wheel', (e) => {
               const filteredZone9Data = zone9houseData.filter((hotspot) =>
                 allowedHotspots.includes(hotspot.id)
               );
-
-            
 
               dynamicZoneRendering(filteredZone9Data, "", krpano);
 
@@ -1399,7 +1398,6 @@ slider.addEventListener('wheel', (e) => {
                         parseInt(house.plot_number) ===
                         parseInt(zone.plot_number)
                     );
-                    console.log("house === >>>", house );
                     latestArrayZone2.push({
                       ...house,
                       total_area: house?.total_area,
@@ -1693,7 +1691,6 @@ slider.addEventListener('wheel', (e) => {
             return;
           }
 
-
           let maxArea = parseInt(zoneData[0].total_area);
           let minArea = parseInt(zoneData[0].total_area);
 
@@ -1779,7 +1776,7 @@ slider.addEventListener('wheel', (e) => {
         let currentBlinkingHotspotsByArea = [];
         let currentBlinkIntervalsByArea = [];
 
-        const stopAllBlinkingHotspots=()=> {
+        const stopAllBlinkingHotspots = () => {
           const krpano = document.getElementById("krpanoSWFObject");
           if (currentBlinkIntervalsByArea.length > 0) {
             currentBlinkIntervalsByArea.forEach((interval, i) => {
@@ -1789,12 +1786,12 @@ slider.addEventListener('wheel', (e) => {
             });
 
             krpano.call(
-                `set(hotspot[${hotspotName}].fillalpha, 0.2)` // reset to default or less visible
-              );
+              `set(hotspot[${hotspotName}].fillalpha, 0.2)` // reset to default or less visible
+            );
             currentBlinkingHotspotsByArea = [];
             currentBlinkIntervalsByArea = [];
           }
-        }
+        };
 
         const blinkIndividualHotspot = (
           hotspotName,
@@ -1802,7 +1799,6 @@ slider.addEventListener('wheel', (e) => {
           isHide = false
         ) => {
           const krpano = document.getElementById("krpanoSWFObject");
-          console.log("blinkIndividualHotspot", hotspotName)
           // Stop blinking (on close or switching to aerial scene)
           if (
             isHide ||
@@ -1837,7 +1833,6 @@ slider.addEventListener('wheel', (e) => {
               currentBlinkingHotspot = null;
             }
 
-            
             // Start blinking for new hotspot
             const blinkColors = ["0x39FF14", "0xE87281"];
             let blinkIndex = 0;
@@ -1894,7 +1889,6 @@ slider.addEventListener('wheel', (e) => {
               krpano.call(
                 `set(hotspot[${currentBlinkingHotspot}].fillaplha, 0.2)`
               );
-
 
               currentBlinkingHotspot = null;
               currentBlinkInterval = null;
@@ -2041,7 +2035,6 @@ slider.addEventListener('wheel', (e) => {
                 "breadcrumb-separator mui-breadcrumb-separator";
               separator.innerHTML = "&gt;";
               wrapper.appendChild(separator);
-             
             }
 
             if (index !== breadcrumbTrail.length - 1) {
@@ -2263,8 +2256,8 @@ slider.addEventListener('wheel', (e) => {
 
             const cords = house.coordinates[0];
             //        set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFF00);
-             // Add hotspot to Krpano dynamically
-             krpano.call(`addhotspot(${hotspotName})`);
+            // Add hotspot to Krpano dynamically
+            krpano.call(`addhotspot(${hotspotName})`);
 
             krpano.call(`
  
@@ -2282,7 +2275,6 @@ slider.addEventListener('wheel', (e) => {
             //           krpano.call(`
             //          set(hotspot[${hotspotName}].onclick, "showtext(This is some info!, textstyle_info);");
             // `);
-           
 
             // krpano.call(
             //   `set(hotspot[${hotspotName}].loadstyle, mypolygonalhotspotstylename)`
@@ -2316,7 +2308,6 @@ slider.addEventListener('wheel', (e) => {
 
             const cords = house.coordinates[0];
 
-            
             krpano.call(`
              
                 set(hotspot[${hotspotName}].border, false);

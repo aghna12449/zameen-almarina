@@ -1,7 +1,7 @@
 /* Custom styles for the compact search filter card */
 .compact-search-card {
     max-width: 280px; 
-    margin-top: 20px !important; 
+    margin-top: -40px !important;
     margin-left: 20px !important; 
     position: fixed; 
     top: 190px !important; 
@@ -125,7 +125,7 @@
     justify-content: center;
     align-items: center;
     position: absolute; /* Position it absolutely within the red bar */
-    top: 50%; /* Center vertically within the red bar */
+    top: 35%; /* Center vertically within the red bar */
     left: 50px; /* Adjust to half of its width to align its center with the edge of the red bar */
     transform: translateY(-50%) translateX(-50%); /* Adjust for vertical centering */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Shadow for the blue square */
