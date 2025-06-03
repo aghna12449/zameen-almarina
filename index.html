@@ -24,12 +24,14 @@
     />
     <!-- adding style sheet -->
     <link rel="stylesheet" href="main.css" />
-    <link rel="stylesheet" href="houseCard.css" />
+
     <link rel="stylesheet" href="initalCard.css" />
     <link rel="stylesheet" href="slider.css" />
     <link rel="stylesheet" href="searchFilter.css" />
     <link rel="stylesheet" href="mobileSearchFilter.css" />
     <link rel="stylesheet" href="houseCard.css" />
+
+        <link rel="stylesheet" href="drone.css" />
 
     <!-- Add Material-UI (MUI) CSS -->
     <link
@@ -343,14 +345,17 @@
           <span id="toggle-icon" class="material-icons">toggle_off</span>
         </button>
       </div>
-      <!-- <div class="time-toggle" onclick="toggleTimeView(this)">
-        <div class="toggle-option now active">
-          <span class="material-icons">access_time</span> Now
+      <div class="time-toggle" onclick="toggleTimeView(this)">
+        <div class="toggle-option  initial active">
+          <span class="material-icons">event</span> Inital
+        </div>
+        <div class="toggle-option now ">
+          <span class="material-icons">access_time</span>Future 
         </div>
         <div class="toggle-option future">
-          <span class="material-icons">event</span> Future
+          <span class="material-icons">event</span> Now
         </div>
-      </div> -->
+      </div>
 
       <div id="custom-breadcrumbs" class="mui-breadcrumb-root">
         <div class="breadcrumb-wrapper" id="breadcrumb-wrapper">
@@ -2002,25 +2007,52 @@
             btn.innerHTML = "⛶";
           }
         }
+const toggleTimeView = (element) => {
+  const now = element.querySelector(".now");
+  const future = element.querySelector(".future");
+  const initial = element.querySelector(".initial"); // Corrected spelling
 
-        const toggleTimeView = (element) => {
-          const now = element.querySelector(".now");
-          const future = element.querySelector(".future");
+  if (!now || !future || !initial) {
+    console.error("Missing one or more buttons (now, future, initial)");
+    return;
+  }
 
-          const isNowActive = now.classList.contains("active");
 
-          if (isNowActive) {
-            now.classList.remove("active");
-            future.classList.add("active");
-            console.log("Future view");
-            // Add your future-view logic here
-          } else {
-            future.classList.remove("active");
-            now.classList.add("active");
-            console.log("Now view");
-            // Add your now-view logic here
-          }
-        };
+  const krpano = document.getElementById("krpanoSWFObject");
+  const s = krpano.get("xml.scene");
+  console.log("Current Scene: ", s);
+
+  const isNowActive = now.classList.contains("active");
+  const isFutureActive = future.classList.contains("active");
+  const isInitialActive = initial.classList.contains("active");
+
+  
+  // Clear all active states
+  now.classList.remove("active");
+  future.classList.remove("active");
+  initial.classList.remove("active");
+
+  if (isInitialActive) {
+    // Move from initial
+    now.classList.add("active");
+   krpano.call(`loadscene(scene_1, null, null, BLEND(1,2,'easeInOutSine'))`);
+    // 
+ 
+    console.log("Now view");
+  } else if (isNowActive) {
+    // Move from now 
+    future.classList.add("active");
+ 
+
+       krpano.call(`loadscene(scene_a-initial  , null, null, BLEND(1,2,'easeInOutSine'))`);
+    console.log("Future view");
+  } else {
+    // future
+    initial.classList.add("active");
+    krpano.call(`loadscene(scene_cam_001 , null, null, BLEND(1,2,'easeInOutSine'))`);
+    console.log("Initial view");
+  }
+};
 
         // Render the breadcrumbs dynamically
         const renderBreadcrumbs = () => {
@@ -2512,6 +2544,8 @@
             }
           }
         };
+
+
 
         const fetchAlMarinaData = async () => {
           // const baseUrl ="http://localhost:5001/api/getAlMarinaData";

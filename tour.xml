@@ -3,6 +3,9 @@
 	<include url="skin/vtourskin.xml" />
 	 <!-- <include url="plugins/polygon.xml" />   -->
 
+  <include url="drone.xml"/>
+   <include url="future.xml"/>
+
 
 
 	<!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
