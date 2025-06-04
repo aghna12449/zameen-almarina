@@ -1,0 +1,387 @@
+﻿<krpano version="1.20.11" title="Virtual Tour" debugmode="false" showerrors="false" logkey="false"
+	info="false">
+
+	<include url="skin/vtourskin.xml" />
+	<include url="toolbox/toolbox/toolbox.xml"></include>
+
+
+	<include url="callout.xml" />
+	<!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
+	<skin_settings maps="false"
+	               maps_type="google"
+	               maps_bing_api_key=""
+	               maps_google_api_key=""
+	               maps_zoombuttons="false"
+	               maps_loadonfirstuse="true"
+	               gyro="true"
+	               gyro_keeplookingdirection="false"
+	               webvr="true"
+	               webvr_keeplookingdirection="true"
+	               webvr_prev_next_hotspots="true"
+	               autotour="false"
+	               littleplanetintro="false"
+	               followmousecontrol="false"
+	               title="true"
+	               thumbs="true"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+	               thumbs_opened="false"
+	               thumbs_text="false"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               thumbs_loop="false"
+	               tooltips_buttons="false"
+	               tooltips_thumbs="false"
+	               tooltips_hotspots="false"
+	               tooltips_mapspots="false"
+	               deeplinking="false"
+	               loadscene_flags="MERGE"
+	               loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)"
+	               loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)"
+	               loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)"
+	               loadingtext=""
+	               layout_width="100%"
+	               layout_maxwidth="814"
+	               controlbar_width="-24"
+	               controlbar_height="40"
+	               controlbar_offset="20"
+	               controlbar_offset_closed="-40"
+	               controlbar_overlap.no-fractionalscaling="10"
+	               controlbar_overlap.fractionalscaling="0"
+	               design_skin_images="vtourskin.png"
+	               design_bgcolor="0x2D3E50"
+	               design_bgalpha="0.8"
+	               design_bgborder="0"
+	               design_bgroundedge="1"
+	               design_bgshadow="0 4 10 0x000000 0.3"
+	               design_thumbborder_bgborder="3 0xFFFFFF 1.0"
+	               design_thumbborder_padding="2"
+	               design_thumbborder_bgroundedge="0"
+	               design_text_css="color:#FFFFFF; font-family:Arial;"
+	               design_text_shadow="1"
+	               />
+
+
+				   <callout 
+	key="" 
+	size="10" 
+	color="0xffffff" 
+	rotate="45" 
+	distancepopup="3" 
+	min_fov="180" 
+	max_fov="0" 
+	line_lenght="150" 
+	line_width="1" 
+	shape="round" 
+	circle_active_width="50" 
+	animation="center_screen" 
+	text_width="auto" 
+	callout_bg_border="0,0,0,2" 
+	text_x="5" 
+	css_title="color:#fff;font-size:14px;font-family: bahnschrift, Arial, Helvetica, sans-serif;" 
+	css_text="color:#fff;font-size:12px;text-shadow: 3px 3px 8px #000000;font-family: bahnschrift, Arial, Helvetica, sans-serif;" 
+	title_background="0xa65c43" 
+	text_background="" 
+	title_padding="5" 
+	text_padding="0 0 0 5">
+    </callout>	
+
+
+	<!--
+	    For an alternative skin design either change the <skin_settings> values 
+	    from above or optionally include one of the predefined designs from below.
+	-->
+	<!-- <include url="skin/vtourskin_design_flat_light.xml"  /> -->
+	<!-- <include url="skin/vtourskin_design_glass.xml"       /> -->
+	<!-- <include url="skin/vtourskin_design_ultra_light.xml" /> -->
+	<!-- <include url="skin/vtourskin_design_117.xml"         /> -->
+	<!-- <include url="skin/vtourskin_design_117round.xml"    /> -->
+	<!-- <include url="skin/vtourskin_design_black.xml"       /> -->
+
+
+	
+	<scene name="future_scene_1" title="cam_001" onstart="" thumburl="panos/cam_001.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/cam_001.tiles/preview.jpg" />
+		
+		<image>
+			<cube url="panos/cam_001.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,640,1280,2560" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" scale="0.08" onover.addevent="tween(scale,0.08);" onout.addevent="tween(scale,0.08);" ath="1.483" atv="2.964" linkedscene="future_scene_2" />
+		<hotspot name="spot2" style="skin_hotspotstyle" onout.addevent="tween(scale,0.08);" scale="0.08" onover.addevent="tween(scale,0.08);" ath="33.605" atv="-9.060" linkedscene="scene_3" />
+
+
+		<!-- hotspots for callouts  -->
+		 <hotspot name="hs_ApartEnt(1)" callout_bg_border="0,0,0,2" width="auto" shape="circle" ath="-131.1" atv="25" rotate="50" animation="keep_opened"  line_lenght="50"  style="callout" title="Zone1" content=""  circle_active_width="0.1" text_x=""></hotspot>
+		 <hotspot name="hs_ApartEnt(1.1)" callout_bg_border="0,0,0,2" width="auto" shape="circle" ath="99.1" atv="11" rotate="50" animation="keep_opened"  line_lenght="50"  style="callout" title="Zone9" content=""  circle_active_width="0.1" text_x=""></hotspot>
+		 <hotspot name="hs_ApartEnt(1.2)" callout_bg_border="0,0,0,2" width="auto" shape="circle" ath="-6.100" atv="3.500" rotate="50" animation="keep_opened"  line_lenght="50"  style="callout" title="Zone2" content=""  circle_active_width="0.1" text_x=""></hotspot>
+		 <hotspot name="hs_ApartEnt(1.3)" callout_bg_border="0,0,0,2" width="auto" shape="circle" ath="-2.100" atv="-0.300" rotate="50" animation="keep_opened"  line_lenght="100"  style="callout" title="Zone4" content=""  circle_active_width="0.1" text_x=""></hotspot>
+	</scene>
+
+	<scene name="future_scene_2" title="cam_002" onstart="" thumburl="panos/cam_002.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/cam_002.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/cam_002.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,640,1280,2560" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" onout.addevent="tween(scale,0.08);" scale="0.08" onover.addevent="tween(scale,0.08);" ath="174.693" atv="12.291" linkedscene="future_scene_1" />
+		<hotspot name="spot2" style="skin_hotspotstyle" onout.addevent="tween(scale,0.08);" scale="0.08" onover.addevent="tween(scale,0.08);" ath="1.654" atv="6.094" linkedscene="future_scene_3" />
+
+	</scene>
+
+	<scene name="future_scene_3" title="cam_003" onstart="" thumburl="panos/cam_003.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/cam_003.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/cam_003.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,640,1280,2560" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" onout.addevent="tween(scale,0.08);" scale="0.08" onover.addevent="tween(scale,0.08);" ath="-178.600" atv="10.268" linkedscene="future_scene_2" />
+		<hotspot name="spot2" style="skin_hotspotstyle" scale="0.08" onover.addevent="tween(scale,0.08);" onout.addevent="tween(scale,0.08);" ath="3.521" atv="2.651" linkedscene="scene_cam_004_al_marina_360" />
+
+	</scene>
+
+	<scene name="future_scene_4" title="cam_004 Al marina 360" onstart="" thumburl="panos/cam_004_Al_marina_360.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/cam_004_Al_marina_360.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/cam_004_Al_marina_360.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,640,1280,2560" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" scale="0.08" onover.addevent="tween(scale,0.08);" ath="0.387" atv="3.771" linkedscene="future_scene_3" />
+		<hotspot name="spot2" style="skin_hotspotstyle" scale="0.08" onover.addevent="tween(scale,0.08);" onout.addevent="tween(scale,0.08);" ath="152.510" atv="9.871" linkedscene="scene_cam_005_al_marina_360" />
+
+	</scene>
+
+	<scene name="future_scene_5" title="cam_005 Al marina 360" onstart="" thumburl="panos/cam_005_Al_marina_360.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/cam_005_Al_marina_360.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/cam_005_Al_marina_360.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,640,1280,2560" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" scale="0.08" onover.addevent="tween(scale,0.08);" ath="-20.508" atv="12.755" linkedscene="scene_cam_004_al_marina_360" />
+		<hotspot name="spot2" style="skin_hotspotstyle" scale="0.08" onover.addevent="tween(scale,0.08);" ath="97.081" atv="27.501" linkedscene="scene_cam_006__360" />
+
+	</scene>
+
+	<scene name="future_scene_6" title="Cam_006 _360" onstart="" thumburl="panos/Cam_006__360.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Cam_006__360.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Cam_006__360.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,640,1280,2560" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" scale="0.08" onover.addevent="tween(scale,0.08);" ath="80.629" atv="7.272" linkedscene="scene_cam_005_al_marina_360" />
+		<hotspot name="spot2" style="skin_hotspotstyle" scale="0.08" onover.addevent="tween(scale,0.08);" onout.addevent="tween(scale,0.08);" ath="-24.397" atv="17.130" linkedscene="scene_cam_007_360" />
+
+	</scene>
+
+	<scene name="future_scene_7" title="Cam_007 360" onstart="" thumburl="panos/Cam_007_360.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Cam_007_360.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Cam_007_360.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,640,1280,2560" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" scale="0.08" onover.addevent="tween(scale,0.08);" onout.addevent="tween(scale,0.08);" ath="179.399" atv="7.218" linkedscene="scene_cam_006__360" />
+		<hotspot name="spot2" style="skin_hotspotstyle" onout.addevent="tween(scale,0.08);" scale="0.08" onover.addevent="tween(scale,0.08);" ath="123.568" atv="25.538" linkedscene="scene_cam_08_360" />
+		<hotspot name="spot3" style="skin_hotspotstyle" onout.addevent="tween(scale,0.08);" scale="0.08" onover.addevent="tween(scale,0.08);" ath="-19.955" atv="14.117" linkedscene="scene_cam_009_360" />
+
+	</scene>
+
+	<scene name="future_scene_9" title="Cam_009 360" onstart="" thumburl="panos/Cam_009_360.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Cam_009_360.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Cam_009_360.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,640,1280,2560" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" onout.addevent="tween(scale,0.08);" scale="0.08" onover.addevent="tween(scale,0.08);" ath="177.815" atv="4.077" linkedscene="scene_cam_007_360" />
+		<hotspot name="spot2" style="skin_hotspotstyle" onout.addevent="tween(scale,0.08);" scale="0.08" onover.addevent="tween(scale,0.08);" ath="162.530" atv="3.939" linkedscene="future_scene_10" />
+		<hotspot name="spot3" style="skin_hotspotstyle" onout.addevent="tween(scale,0.08);" scale="0.08" onover.addevent="tween(scale,0.08);" ath="-2.678" atv="3.482" linkedscene="future_scene_10" />
+		<hotspot name="spot4" style="skin_hotspotstyle" onout.addevent="tween(scale,0.08);" scale="0.08" onover.addevent="tween(scale,0.08);" ath="36.106" atv="9.607" linkedscene="future_scene_12" />
+
+	</scene>
+
+	<scene name="future_scene_10" title="cam_010" onstart="" thumburl="panos/cam_010.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/cam_010.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/cam_010.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,640,1280,2560" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" onout.addevent="tween(scale,0.08);" scale="0.08" onover.addevent="tween(scale,0.08);" ath="2.962" atv="2.656" linkedscene="scene_cam_009_360" />
+		<hotspot name="spot2" style="skin_hotspotstyle" onout.addevent="tween(scale,0.08);" scale="0.08" onover.addevent="tween(scale,0.08);" ath="172.549" atv="1.381" linkedscene="future_scene_11" />
+
+	</scene>
+
+	<scene name="future_scene_11" title="cam_011" onstart="" thumburl="panos/cam_011.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/cam_011.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/cam_011.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,640,1280,2560" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" onout.addevent="tween(scale,0.08);" scale="0.08" onover.addevent="tween(scale,0.08);" ath="12.492" atv="3.857" linkedscene="future_scene_10" />
+		
+
+	</scene>
+
+	<scene name="future_scene_8" title="Cam_08 360" onstart="" thumburl="panos/Cam_08_360.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Cam_08_360.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Cam_08_360.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,640,1280,2560" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" onout.addevent="tween(scale,0.08);" scale="0.08" onover.addevent="tween(scale,0.08);" ath="-172.879" atv="18.708" linkedscene="scene_cam_007_360" />
+		<hotspot name="spot2" style="skin_hotspotstyle" onout.addevent="tween(scale,0.08);" scale="0.08" onover.addevent="tween(scale,0.08);" ath="-15.133" atv="8.516" linkedscene="scene_cam_009_360" />
+
+	</scene>
+
+	<scene name="future_scene_12" title="cam_12" onstart="" thumburl="panos/cam_12.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/cam_12.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/cam_12.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,640,1280,2560" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" onout.addevent="tween(scale,0.08);" scale="0.08" onover.addevent="tween(scale,0.08);" ath="54.006" atv="9.408" linkedscene="scene_cam_009_360" />
+		<hotspot name="spot2" style="skin_hotspotstyle" scale="0.08" onover.addevent="tween(scale,0.08);" ath="-8.269" atv="0.239" linkedscene="scene_cam_13a__al_marina_360" />
+
+	</scene>
+
+	<scene name="future_scene_13-100m" title="cam_13a _Al marina 360" onstart="" thumburl="panos/cam_13a__Al_marina_360.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/cam_13a__Al_marina_360.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/cam_13a__Al_marina_360.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,640,1280,2560" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" onout.addevent="tween(scale,0.08);" scale="0.08" onover.addevent="tween(scale,0.08);" ath="-176.073" atv="8.354" linkedscene="future_scene_12" />
+		<hotspot name="spot2" style="skin_hotspotstyle" scale="0.08" onover.addevent="tween(scale,0.08);" ath="90.286" atv="-17.296" linkedscene="scene_cam_13b_al_marina_360_cam_13b" />
+
+	</scene>
+
+	<scene name="scene_cam_13b_Al_marina_360_cam_13b" title="cam_13b_Al marina 360 cam 13b" onstart="" thumburl="panos/cam_13b_Al_marina_360_cam_13b.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/cam_13b_Al_marina_360_cam_13b.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/cam_13b_Al_marina_360_cam_13b.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,640,1280,2560" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" onout.addevent="tween(scale,0.08);" scale="0.08" onover.addevent="tween(scale,0.08);" ath="-36.114" atv="32.736" linkedscene="scene_cam_13a__al_marina_360" />
+		<hotspot name="spot2" style="skin_hotspotstyle" scale="0.08" onover.addevent="tween(scale,0.08);" ath="61.194" atv="-17.001" linkedscene="scene_cam_14_360" />
+
+	</scene>
+
+	
+
+	<scene name="future_scene_14" title="Cam_14_360" onstart="" thumburl="panos/Cam_14_360.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Cam_14_360.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Cam_14_360.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,640,1280,2560" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" onout.addevent="tween(scale,0.08);" scale="0.08" onover.addevent="tween(scale,0.08);" ath="17.645" atv="-5.212" linkedscene="scene_cam_13b_al_marina_360_cam_13b" />
+		<hotspot name="spot2" style="skin_hotspotstyle" onout.addevent="tween(scale,0.08);" scale="0.08" onover.addevent="tween(scale,0.08);" ath="55.898" atv="9.089" linkedscene="scene_cam_15_al_marina_360_cam_15" />
+
+	</scene>
+
+	<scene name="future_scene_15" title="cam_15_Al marina 360 cam 15" onstart="" thumburl="panos/cam_15_Al_marina_360_cam_15.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/cam_15_Al_marina_360_cam_15.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/cam_15_Al_marina_360_cam_15.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,640,1280,2560" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" onout.addevent="tween(scale,0.08);" scale="0.08" onover.addevent="tween(scale,0.08);" ath="-135.255" atv="-0.958" linkedscene="scene_cam_14_360" />
+		<hotspot name="spot2" style="skin_hotspotstyle" onout.addevent="tween(scale,0.08);" scale="0.08" onover.addevent="tween(scale,0.08);" ath="-168.506" atv="-1.305" linkedscene="scene_cam_16_al_marina_360_cam_16" />
+
+	</scene>
+
+	<scene name="future_scene_16" title="cam_16_Al marina 360 cam 16" onstart="" thumburl="panos/cam_16_Al_marina_360_cam_16.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/cam_16_Al_marina_360_cam_16.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/cam_16_Al_marina_360_cam_16.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,640,1280,2560" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" scale="0.08" onover.addevent="tween(scale,0.08);" onout.addevent="tween(scale,0.08);" ath="8.509" atv="3.257" linkedscene="scene_cam_15_al_marina_360_cam_15" />
+
+	</scene>
+
+
+</krpano>

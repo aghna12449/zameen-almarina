@@ -1115,11 +1115,21 @@
           //scene-card-wrapper
 
           const krpano = document.getElementById("krpanoSWFObject");
+          if (!krpano || typeof krpano.get !== "function") return;
+
+
           const currentScene = krpano.get("xml.scene");
+          console.log("curent scene", currentScene,  currentScene.includes("_360"))
           const width = window.innerWidth;
+          if( currentScene.includes("_360"))
+        {
+           mobileSearchFilter.style.display = "none";
+            mobileSearchCard.style.display = "none";
+        }
           if (
             currentScene === "scene_a-initial" ||
-            currentScene === "scene_b-al_marina_aerial"
+            currentScene === "scene_b-al_marina_aerial" 
+           
           ) {
             searchBar.style.display = "none";
             searchSliderFilters.style.display = "none";
@@ -2022,9 +2032,20 @@
           // Clear all active states
           now.classList.remove("active");
           future.classList.remove("active");
+
+        
+const count = krpano.get("scene.count");
+for (let i = 0; i < count; i++) {
+  console.log(
+    `Scene ${i}:`,
+    krpano.get(`scene[${i}].name`)
+  );
+}
+
+
           if(true){
             
-
+            console.log("current secene aghna plz check it",  currentScene)
             if (clickedElement.classList.contains("now")) {
             // Move to Now
             now.classList.add("active");
@@ -2431,7 +2452,7 @@
 
             // // const unit = getSpeificUnitsByArea()
 
-            // if (currentScene === "scene_a-initial") {
+            // if (currentScene === "priority t") {
             //   // Hide home icon on initial screen
             //   homeIcon.style.display = "none";
             // } else if (currentScene === "scene_b-al_marina_aerial") {
@@ -2883,7 +2904,17 @@
         };
 
         window.onload = () => {
+          console.log("window on load");
           var krpano_obj = document.getElementById("krpanoSWFObject");
+
+           krpano_obj.call("loadscene(scene_a-initial, null, MERGE);");
+
+           // Preload one scene from drone/future to make sure they're active
+  // setTimeout(() => {
+  //   krpano_obj.call("preloadscene(scene_1);"); // Or a real scene name from drone.xml
+  //   krpano_obj.call("preloadscene(future_scene_1);"); // Same for future
+  // }, 100);
+
 
           setTimeout(() => {
             if (typeof krpano_obj !== "undefined" && krpano_obj !== null) {
@@ -2892,7 +2923,7 @@
             }
           }, 1000);
 
-          const currentScene = krpano_obj.get("xml.scene");
+        
 
           // document
           //   .getElementById("homeIcon")
@@ -2927,6 +2958,28 @@
           //   });
 
           const krpano = document.getElementById("krpanoSWFObject");
+
+             const mobileSearchCard =
+            document.getElementById("mobileSearchFilter");
+
+          const searchSliderFilters = document.getElementById(
+            "searchSliderFilters"
+          );
+          const mobileSearchFilter =
+            document.getElementById("mobileSearchFilter");
+
+          
+       
+
+        //    const currentScene = krpano.get("xml.scene");
+        //   console.log("curent scene", currentScene,  currentScene.includes("_360"))
+        //   const width = window.innerWidth;
+        //   if(currentScene && currentScene.includes("_360"))
+        // {
+        //    mobileSearchFilter.style.display = "none";
+        //     mobileSearchCard.style.display = "none";
+        //            searchBar.style.display = "none";
+        // }
 
           addCustomDivToHotspot("hs1"); // Replace 'hs1' with your hotspot ID
 

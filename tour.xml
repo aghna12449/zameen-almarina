@@ -3,11 +3,15 @@
 	<include url="skin/vtourskin.xml" />
 	 <!-- <include url="plugins/polygon.xml" />   -->
 
-  <include url="drone.xml"/>
-  <include url="future.xml"/>
+  <include url="vtour-drone/drone.xml"/>
+  <include url="vtour-future/future.xml"/>
 
+<action name="startup">
+  loadscene(scene_a-initial, null, MERGE);
+</action>
 
-
+<!-- <include url="drone.xml"/>
+  <include url="future.xml"/> -->
 	<!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
 	<skin_settings maps="false"
 	               maps_type="google"
@@ -110,7 +114,7 @@
 
 
 	
-	<scene name="scene_a-initial" title="a-initial" onstart="" thumburl="panos/a-initial.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_a-initial" title="a-initial" onstart="scene_a-initial" thumburl="panos/a-initial.tiles/thumb.jpg" lat="" lng="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
@@ -1924,5 +1928,5 @@
 
 	</scene>
 
-
+<krpano onstart="loadscene(scene_a-initial);" />
 </krpano>
