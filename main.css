@@ -2,7 +2,7 @@
 #krpano-card {
   position: fixed; /* Keep fixed positioning for now, adjust to absolute if needed later */
  
-  top: 14%;         /* Changed from 180px */
+  top: 20%;         /* Changed from 180px */
   right: 10px; 
   z-index: 9999;
  
