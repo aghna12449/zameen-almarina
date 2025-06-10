@@ -1,14 +1,17 @@
-﻿<krpano version="1.20.11" title="Virtual Tour" debugmode="false" showerrors="false" logkey="false" info="false">
+﻿<krpano version="1.20.11" title="Virtual Tour" debugmode="false" showerrors="false" logkey="false"
+	info="false">
 
 	<include url="skin/vtourskin.xml" />
+	<include url="toolbox/toolbox/toolbox.xml"></include>
+
+
+	<include url="callout.xml" />
 	 <!-- <include url="plugins/polygon.xml" />   -->
 
   <include url="vtour-drone/drone.xml"/>
   <include url="vtour-future/future.xml"/>
 
-<action name="startup">
-  loadscene(scene_a-initial, null, MERGE);
-</action>
+
 
 <!-- <include url="drone.xml"/>
   <include url="future.xml"/> -->
@@ -99,7 +102,40 @@
 
     </layer>
 
+	 <callout 
+	key="" 
+	size="10" 
+	color="0xffffff" 
+	rotate="45" 
+	distancepopup="3" 
+	min_fov="180" 
+	max_fov="0" 
+	line_lenght="150" 
+	line_width="1" 
+	shape="round" 
+	circle_active_width="50" 
+	animation="center_screen" 
+	text_width="auto" 
+	callout_bg_border="0,0,0,2" 
+	text_x="5" 
+	css_title="color:#fff;font-size:14px;font-family: bahnschrift, Arial, Helvetica, sans-serif;" 
+	css_text="color:#fff;font-size:12px;text-shadow: 3px 3px 8px #000000;font-family: bahnschrift, Arial, Helvetica, sans-serif;" 
+	title_background="0xa65c43" 
+	text_background="" 
+	title_padding="5" 
+	text_padding="0 0 0 5">
+    </callout>	
 	
+	<layer name="splash_screen_overlay"
+       url="some_design_element.png"
+       bgcolor="0xFFFFFF"
+       bgalpha="1.0"
+       width="100%" height="100%"
+       align="center"
+       visible="false"  zorder="10"
+       mask="false"
+       maskimg=""
+/>
 
 	<!--
 	    For an alternative skin design either change the <skin_settings> values 
@@ -125,6 +161,217 @@
 		<image hfov="1.00" vfov="0.614502" voffset="0.00">
 			<flat url="panos/a-initial.tiles/l%l/%0v/l%l_%0v_%0h.jpg" multires="512,1024x630,2048x1260,4096x2518,8192x5034" />
 		</image>
+<!-- hotspot for highlighting initial zone -->
+ <hotspot name="hs1" style="mypolygonalhotspotstylename" fillcolor="0xa65c43" fillalpha="0.7" bordercolor="0xa65c43" borderwidth="2" > <point ath="0.04446937373461424" atv="0.054559641150968376" /> <point ath="0.04405709975139871" atv="0.06143090491842938" /> <point ath="0.04405709975139871" atv="0.06143090491842938" /> <point ath="0.044331950464652436" atv="0.061568330077656754" /> <point ath="0.055051126203181866" atv="0.06239287625059852" /> <point ath="0.07813857377635713" atv="0.06404195967314186" /> <point ath="0.07923797562017398" atv="0.06404195847943596" /> <point ath="0.07937540084776629" atv="0.0640419583285648" /> <point ath="0.07951282596798137" atv="0.06390453297016868" /> <point ath="0.0799251011064257" atv="0.063217406481121" /> <point ath="0.07965024413164201" atv="0.054834468766567786" /> <point ath="0.07965024359657491" atv="0.054147342676504825" /> <point ath="0.07937539307431507" atv="0.05400991771358234" /> <point ath="0.07868826702474507" atv="0.05400991834666269" /> <point ath="0.04446937357261049" atv="0.05400994004835972" /> </hotspot>
+
+<!-- hotspots for landmarks -->
+<hotspot name="hs_ApartEnt(1)"
+         callout_bg_border="0,0,0,0"
+		 callout_bg_color="0xa65c43"
+		 callout_border_color="0xa65c43"
+         width="auto"
+         shape="circle"                ath="0.061" atv="0.057"
+         rotate="70"
+         animation="keep_opened"
+		 onclick="loadscene(scene_b-AL_MARINA_aerial, null, MERGE,BLEND(1) )"
+         line_lenght="80"
+         style="callout"
+         title=""                      content="&lt;img src=&quot;skin/icons/AlMarinaLogo_big.png&quot; style=&quot;width:100px; height:100px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+                                       url="skin/icons/AlMarinaLogo_big.png" circle_active_width="0.1"
+         text_x="">
+
+</hotspot>
+ <hotspot name="hs_ApartEnt(2.1)" callout_bg_border="0,0,0,0" width="auto" shape="circle" ath=" 0.0578063" 	atv="0.0896652" line_lenght="70" rotate="120" animation="keep_opened"  style="callout" title="Al Yamamah University " content="06 mins - 8km"  circle_active_width="0.1" text_x=""></hotspot>
+ <hotspot name="hs_ApartEnt(2.2)" callout_bg_border="0,0,0,0" width="auto" shape="circle" ath="0.071" atv="0.01" rotate="50"  line_lenght="70" animation="keep_opened"  style="callout" title="King Abdul Aziz Seaport" content="10 mins"  circle_active_width="0.1" text_x=""></hotspot>
+ <hotspot name="hs_ApartEnt(2.3)" callout_bg_border="0,0,0,0" width="auto" shape="circle" ath = "0.0368537" atv = "0.0864869" rotate="-140" line_lenght="70" animation="keep_opened"  style="callout" title="Dharan Expo Exibition Center" content="5 mins - 8km"  circle_active_width="0.1" text_x=""></hotspot>
+ <hotspot name="hs_ApartEnt(2.4)" callout_bg_border="0,0,0,0" width="auto" line_lenght="70" shape="circle" ath=" -0.2133767" 	atv=" -0.180936" rotate="-70" animation="keep_opened"  style="callout" title="King Fahd International Airport" content="35 mins - 50km"  circle_active_width="0.1" text_x=""></hotspot>
+ <hotspot name="hs_ApartEnt(2.6)" callout_bg_border="0,0,0,0" width="auto" line_lenght="70" shape="circle" ath ="0.0707721" atv ="0.1106694" rotate="130" animation="keep_opened"  style="callout" title="Seven Site" content="12 mins - 11km"  circle_active_width="0.1" text_x=""></hotspot>
+ <hotspot name="hs_ApartEnt(2.7)" callout_bg_border="0,0,0,0" width="auto" line_lenght="70" shape="circle" 	ath = "0.0234484" atv = "0.0865505" rotate="-90" animation="keep_opened"  style="callout" title="Aramco Stadium" content="10 mins - 10km"  circle_active_width="0.1" text_x=""></hotspot>
+ 
+ <hotspot name="hs_ApartEnt(2.8)" callout_bg_border="0,0,0,0" width="auto" line_lenght="70" shape="circle" 
+ ath = "0.0534239" atv = "0.0686003" rotate="110" animation="keep_opened"  style="callout" title="Imam Abdulrahman Bin Faisal University-IAFU" content="05 mins - 5km"  circle_active_width="0.1" text_x=""></hotspot>
+<hotspot name="hs_ApartEnt(2.9)" callout_bg_border="0,0,0,0" width="auto" line_lenght="70" shape="circle" 	 ath = "-0.0286215" atv = "0.1203887" rotate="170" animation="keep_opened"  style="callout" title="King Fahd University of Petroleum and Minerals - KFUPM " content="15 mins - 18km"  circle_active_width="0.1" text_x=""></hotspot>
+
+ <hotspot name="hs_ApartEnt(2.5)" callout_bg_border="0,0,0,0" width="auto" shape="circle"  ath = "0.0206909"  atv = "0.0591705" line_lenght="70" rotate="-30" animation="keep_opened"  style="callout" title="Chamber of Commerce " content="07 mins - 8km"  circle_active_width="0.1" text_x=""></hotspot>
+
+<hotspot name="hs_ApartEnt(3)"
+      
+         width="auto"
+         shape="circle"             
+		    ath="0.06" 	atv="0.02"
+         rotate="90"
+         animation="keep_opened"
+		 
+         line_lenght="0"
+         style="callout"
+		 callout_bg_border="0,0,0,0"
+         title=""                     
+		  content="&lt;img src=&quot;skin/icons/Seaport.png&quot; style=&quot;width:50px; height:60px; display:block; margin: 0 auto; padding-bottom: 20px;&quot; /&gt;"
+                                      
+		  url="skin/icons/Seaport.png" circle_active_width="0.1"
+         text_x="">
+
+</hotspot>
+
+<hotspot name="hs_ApartEnt(4)"
+      
+         width="auto"
+         shape="circle"             
+         rotate="90"
+		  ath="-0.22" 	atv="-0.18"
+         animation="keep_opened"
+		 line_lenght="0"
+         style="callout"
+		 callout_bg_border="0,0,0,0"
+         title=""                     
+		  content="&lt;img src=&quot;skin/icons/Airport.png&quot; style=&quot;width:50px; height:60px; display:block; margin: 0 auto; padding-bottom: 20px;&quot; /&gt;"
+                                      
+		  url="skin/icons/Airport.png" circle_active_width="0.1"
+         text_x="">
+
+</hotspot>
+
+<hotspot name="hs_ApartEnt(4.1)"
+      
+         width="auto"
+         shape="circle"             
+         rotate="-90"
+
+		ath = "0.0234484" atv = "0.0865505"
+         animation="keep_opened"
+		 line_lenght="0"
+         style="callout"
+		 callout_bg_border="0,0,0,0"
+         title=""                     
+		  content="&lt;img src=&quot;skin/icons/Stadium.png&quot; style=&quot;width:50px; height:60px;; display:block; margin: 0 auto; padding-bottom: 20px;&quot; /&gt;"
+                                      
+		  url="skin/icons/Stadium.png" 
+		  circle_active_width="0.1"
+         text_x="">
+
+</hotspot>
+
+<hotspot name="hs_ApartEnt(4.2)"
+      
+         width="auto"
+         shape="circle"             
+         rotate="-90"
+ ath=" 0.046294" 	atv="0.0868822"
+		
+         animation="keep_opened"
+		 line_lenght="0"
+         style="callout"
+		 callout_bg_border="0,0,0,0"
+         title=""                     
+		  content="&lt;img src=&quot;skin/icons/Expo.png&quot; style=&quot;width:50px; height:60px;; display:block; margin: 0 auto; padding-bottom: 20px;&quot; /&gt;"
+                                      
+		  url="skin/icons/Expo.png" 
+		  circle_active_width="0.1"
+         text_x="">
+
+</hotspot>
+<hotspot name="hs_ApartEnt(4.3)"
+      
+         width="auto"
+         shape="circle"             
+         rotate="120"
+ath="0.0501647" 	atv="0.088729"
+		
+         animation="keep_opened"
+		 line_lenght="0"
+         style="callout"
+		 callout_bg_border="0,0,0,0"
+         title=""                     
+		  content="&lt;img src=&quot;skin/icons/University.png&quot; style=&quot;width:50px; height:60px;; display:block; margin: 0 auto; padding-bottom: 20px;&quot; /&gt;"
+                                      
+		  url="skin/icons/University.png" 
+		  circle_active_width="0.1"
+         text_x="">
+
+</hotspot>
+<hotspot name="hs_ApartEnt(4.4)"
+      
+         width="auto"
+         shape="circle"             
+         rotate="-130"
+	ath = "0.0707721" atv = "0.1106694"
+		
+         animation="keep_opened"
+		 line_lenght="0"
+         style="callout"
+		 callout_bg_border="0,0,0,0"
+         title=""                     
+		  content="&lt;img src=&quot;skin/icons/Bay_Corniche.png&quot; style=&quot;width:50px; height:60px;; display:block; margin: 0 auto; padding-bottom: 20px;&quot; /&gt;"
+                                      
+		  url="skin/icons/Bay_Corniche.png" 
+		  circle_active_width="0.1"
+         text_x="">
+
+</hotspot>
+<hotspot name="hs_ApartEnt(4.5)"
+      
+         width="auto"
+         shape="circle"             
+         rotate="90"
+	ath = "0.0198594" 
+ 		atv = "0.0620556"
+		
+         animation="keep_opened"
+		 line_lenght="0"
+         style="callout"
+		 callout_bg_border="0,0,0,0"
+         title=""                     
+		  content="&lt;img src=&quot;skin/icons/Commerce.png&quot; style=&quot;width:50px; height:60px;; display:block; margin: 0 auto; padding-bottom: 20px;&quot; /&gt;"
+                                      
+		  url="skin/icons/Commerce.png" 
+		  circle_active_width="0.1"
+         text_x="">
+
+</hotspot>
+<hotspot name="hs_ApartEnt(4.6)"
+      
+         width="auto"
+         shape="circle"             
+         rotate="120"
+ 		ath = "0.0482606" 
+ 		atv = "0.0676495"
+		
+         animation="keep_opened"
+		 line_lenght="0"
+         style="callout"
+		 callout_bg_border="0,0,0,0"
+         title=""                     
+		  content="&lt;img src=&quot;skin/icons/University.png&quot; style=&quot;width:50px; height:60px;; display:block; margin: 0 auto; padding-bottom: 20px;&quot; /&gt;"
+                                      
+		  url="skin/icons/University.png" 
+		  circle_active_width="0.1"
+         text_x="">
+
+</hotspot>
+
+
+<hotspot name="hs_ApartEnt(4.7)"
+      
+         width="auto"
+         shape="circle"             
+         rotate="120"
+ 		 ath = "-0.0343821" atv = "0.1190362"
+		
+         animation="keep_opened"
+		 line_lenght="0"
+         style="callout"
+		 callout_bg_border="0,0,0,0"
+         title=""                     
+		  content="&lt;img src=&quot;skin/icons/University.png&quot; style=&quot;width:50px; height:60px;; display:block; margin: 0 auto; padding-bottom: 20px;&quot; /&gt;"
+                                      
+		  url="skin/icons/University.png" 
+		  circle_active_width="0.1"
+         text_x="">
+
+</hotspot>
+
+
+
 
 	
 	</scene>
@@ -489,6 +736,25 @@
  <hotspot name="hs158" style="mypolygonalhotspotstylename" fillcolor="0x00FF00" fillalpha="0.1"  > <point ath="0.21104454661372074" atv="-0.019974505915409172" /> <point ath="0.1982271513198839" atv="-0.03059463190665259" /> <point ath="0.18626425021483328" atv="-0.027664940223586162" /> <point ath="0.1996919968489692" atv="-0.01728895625833277" /> <point ath="0.1983492227339525" atv="-0.00032116681684226837" /> <point ath="0.2093355606181717" atv="-0.003494997958054864" /> <point ath="0.20957970146412208" atv="-0.00788953343163237" /> <point ath="0.21043419444151823" atv="-0.008133674291629601" /> <point ath="0.21128868747200613" atv="-0.019852435486982727" /> <point ath="0.21128868747200613" atv="-0.019852435486982727" /> <point ath="0.21128868747200613" atv="-0.019852435486982727" /> <point ath="0.21128868747200613" atv="-0.019852435486982727" /> <point ath="0.21128868747200613" atv="-0.019852435486982727" /> <point ath="0.21128868747200613" atv="-0.019852435486982727" /> <point ath="0.21128868747200613" atv="-0.019852435486982727" /> </hotspot>
 
  <hotspot name="hs159" style="mypolygonalhotspotstylename" fillcolor="0x00FF00" fillalpha="0.1"  > <point ath="0.16843614461652123" atv="-0.022523699057446493" /> <point ath="0.16721544038472302" atv="-0.010438728704234105" /> <point ath="0.1677037220248394" atv="-0.009950447087925604" /> <point ath="0.1672154403353261" atv="-0.005433841705606331" /> <point ath="0.17991076400903694" atv="0.005552496247015469" /> <point ath="0.1974889062131524" atv="0.00005932707251869333" /> <point ath="0.19883168090592562" atv="-0.01690846176230303" /> <point ath="0.1851597925959254" atv="-0.0275285872169373" /> </hotspot>
+
+
+ <hotspot name="hs_ApartEnt(1)"
+        
+		callout_bg_border="0,0,0,0"
+		 callout_border_color="0xa65c43"
+         width="auto"
+         shape="circle"               
+		  ath="-0.1359407" 
+		  atv="-0.0483945"
+         rotate="50"
+         animation="keep_opened"
+		 onclick="loadscene(scene_1_360, null, MERGE,BLEND(1) )"
+        line_lenght="0"
+         style="callout"
+         title=""                      content="&lt;img src=&quot;skin/icons/360_1.png&quot; style=&quot;width:80px; height:100px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+                                       url="skin/icons/erth_logo_white.png" circle_active_width="0.1"
+         text_x="">
+</hotspot>
  
 	</scene>
 
@@ -503,6 +769,23 @@
 		<image hfov="1.00" vfov="0.562500" voffset="0.00">
 			<flat url="panos/d-ZONE_2.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1024x578,2048x1152,4096x2304" />
 		</image>
+
+		 <hotspot name="hs_ApartEnt(1.22)"
+        
+		callout_bg_border="0,0,0,0"
+		 callout_border_color="0xa65c43"
+         width="auto"
+         shape="circle"                ath="-0.1820995" atv="-0.1527136"
+         rotate="50"
+         animation="keep_opened"
+		 onclick="loadscene(scene_2_360, null, MERGE,BLEND(1) )"
+        line_lenght="0"
+         style="callout"
+         title=""                      content="&lt;img src=&quot;skin/icons/360_1.png&quot; style=&quot;width:80px; height:100px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+                                       url="skin/icons/360_1.png" circle_active_width="0.1"
+         text_x="">
+</hotspot>
+
 		<!-- hotspots for houses in zone 2 -->
 		 <hotspot name="hs1" style="mypolygonalhotspotstylename" fillcolor="0x00FF00" fillalpha="0.1"  bordercolor="0x228B22" borderwidth="1" > <point ath="-0.14708199891896356" atv="-0.05846792536393118" /> <point ath="-0.1588007703637686" atv="-0.06725698480886945" /> <point ath="-0.15513865852312847" atv="-0.06872183299581379" /> <point ath="-0.15599316105931393" atv="-0.07751090118248342" /> <point ath="-0.14317576262624243" atv="-0.0826378702957196" /> <point ath="-0.13279976375872593" atv="-0.0769005668051148" /> <point ath="-0.13255561989399212" atv="-0.07128532709457562" /> <point ath="-0.1273065864084515" atv="-0.06835563877097603" /> <point ath="-0.12730658527488004" atv="-0.06530387802374482" /> </hotspot>
 
@@ -732,6 +1015,21 @@
 		<image hfov="1.00" vfov="0.562500" voffset="0.00">
 			<flat url="panos/e-ZONE_3.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1024x578,2048x1152,4096x2304" />
 		</image>
+			 <hotspot name="hs_ApartEnt(1.23)"
+        
+		callout_bg_border="0,0,0,0"
+		 callout_border_color="0xa65c43"
+         width="auto"
+         shape="circle"                ath="-0.1472004" atv="-0.1233342"
+         rotate="50"
+         animation="keep_opened"
+		 onclick="loadscene(scene_3_360, null, MERGE,BLEND(1) )"
+        line_lenght="0"
+         style="callout"
+         title=""                      content="&lt;img src=&quot;skin/icons/360_1.png&quot; style=&quot;width:80px; height:100px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+                                       url="skin/icons/360_1.png" circle_active_width="0.1"
+         text_x="">
+</hotspot>
 <!-- hotspots for houses  in zone 3 -->
  <hotspot name="hs1" style="mypolygonalhotspotstylename" fillcolor="0x00FF00" fillalpha="0.1" bordercolor="0x228B22" borderwidth="1" > <point ath="0.2073894521832358" atv="-0.06010709970219168" /> <point ath="0.21923027925333827" atv="-0.06877410338354645" /> <point ath="0.21923027780769644" atv="-0.07133758231804901" /> <point ath="0.21324882169170678" atv="-0.07341277541415984" /> <point ath="0.21324882085536956" atv="-0.0746334795839892" /> <point ath="0.20665701216114485" atv="-0.07695281175131498" /> <point ath="0.2053142377977224" atv="-0.07573210641496693" /> <point ath="0.2026286865518614" atv="-0.07646452614662605" /> <point ath="0.2015300534991411" atv="-0.07512175061103578" /> <point ath="0.20104177309548277" atv="-0.07353483491662133" /> <point ath="0.1946941146310337" atv="-0.06865201238181017" /> <point ath="0.20128592036894588" atv="-0.0666988927254068" /> <point ath="0.20140799115790742" atv="-0.06633268163402514" /> <point ath="0.20116385389246716" atv="-0.06242642857761431" /> </hotspot>
 
@@ -971,26 +1269,24 @@
 			<flat url="panos/f-ZONE_4.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1024x578,2048x1152,4096x2304" />
 		</image>
 
-			<action name="showtext">
-    <!-- If layer exists, just reuse it; else create it -->
-    if(isdefined(layer[infotext_layer]),
-        set(layer[infotext_layer].html, '%1'),
-        addlayer(infotext_layer);
-        set(layer[infotext_layer].parent, 'STAGE');
-        set(layer[infotext_layer].align, 'center');
-        set(layer[infotext_layer].vcenter, 'true');
-        set(layer[infotext_layer].x, '0');
-        set(layer[infotext_layer].y, '0');
-        set(layer[infotext_layer].onclick, 'tween(alpha,0,0.2,default,removelayer(infotext_layer));')
-    );
-
-   
-    set(layer[infotext_layer].html, '%1');
-    set(layer[infotext_layer].style, '%2');
-    set(layer[infotext_layer].visible, true);
-    set(layer[infotext_layer].alpha, 0);
-    set(layer[infotext_layer].onloaded, 'tween(alpha,1);');
-</action>
+		 <hotspot name="hs_ApartEnt(1.27)"
+        
+		callout_bg_border="0,0,0,0"
+		 callout_border_color="0xa65c43"
+         width="auto"
+         shape="circle"               
+		
+		 
+		 ath="-0.091" atv="0.0125477"
+         rotate="-50"
+         animation="keep_opened"
+		 onclick="loadscene(scene_7_360, null, MERGE,BLEND(1) )"
+        line_lenght="0"
+         style="callout"
+         title=""                      content="&lt;img src=&quot;skin/icons/360_1.png&quot; style=&quot;width:80px; height:100px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+                                       url="skin/icons/360_1.png" circle_active_width="0.1"
+         text_x="">
+</hotspot>
 
 <!-- hotspots for the houses in zone 4 -->
  <hotspot name="hs1" style="mypolygonalhotspotstylename"  onclick="showtext('Hello, visitor!', 'textstyle_info');"  fillcolor="0x00FF00" fillalpha="0.1" bordercolor="0x228B22" borderwidth="1" > <point ath="0.2119299041114573" atv="0.11834872854444489" /> <point ath="0.19129994234583592" atv="0.13421787402140653" /> <point ath="0.19117786994326025" atv="0.1360489302297725" /> <point ath="0.2391517065454991" atv="0.15777746139657783" /> <point ath="0.25904922142092346" atv="0.1387344493561739" /> </hotspot>
@@ -1411,6 +1707,28 @@
 		<image hfov="1.00" vfov="0.562500" voffset="0.00">
 			<flat url="panos/g-ZONE_5.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1024x578,2048x1152,4096x2304" />
 		</image>
+
+		 <hotspot name="hs_ApartEnt(1.28)"
+        
+		callout_bg_border="0,0,0,0"
+		 callout_border_color="0xa65c43"
+         width="auto"
+         shape="circle"               
+		
+		 
+		 ath="-0.0758929 " atv="0.0419277"
+         rotate="-50"
+         animation="keep_opened"
+		 onclick="loadscene(scene_7_360, null, MERGE,BLEND(1) )"
+        line_lenght="0"
+         style="callout"
+         title=""                      content="&lt;img src=&quot;skin/icons/360_1.png&quot; style=&quot;width:80px; height:100px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+                                       url="skin/icons/360_1.png" circle_active_width="0.1"
+         text_x="">
+</hotspot>
+
+		
+		
 <!-- hotspots for the houses in zone 5 -->
  <hotspot name="hs1" style="mypolygonalhotspotstylename" fillcolor="0x00FF00" fillalpha="0.1" bordercolor="0x228B22" borderwidth="1" > <point ath="-0.17892372262537037" atv="-0.20137998260659715" /> <point ath="-0.17330845314853605" atv="-0.20321105102695444" /> <point ath="-0.172942246514026" atv="-0.20687316449457105" /> <point ath="-0.16183377038493063" atv="-0.21016908449911983" /> <point ath="-0.14840593048353412" atv="-0.20516420841456845" /> <point ath="-0.15597434352127948" atv="-0.20223451264636558" /> <point ath="-0.15585226883280257" atv="-0.1982061881546276" /> <point ath="-0.16500760082305987" atv="-0.1946661348517294" /> </hotspot> 
 
@@ -1655,6 +1973,25 @@
 		<image hfov="1.00" vfov="0.537581" voffset="0.00">
 			<flat url="panos/h-building_1.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1024x550,2048x1102" />
 		</image>
+
+		 <hotspot name="hs_ApartEnt(build-1)"
+        
+		callout_bg_border="0,0,0,0"
+		 callout_border_color="0xa65c43"
+         width="auto"
+         shape="circle"               
+		
+		 
+		 ath="0.0070247" atv="0.0353905"
+         rotate="-50"
+         animation="keep_opened"
+		 onclick="loadscene(scene_6_360, null, MERGE,BLEND(1) )"
+        line_lenght="0"
+         style="callout"
+         title=""                      content="&lt;img src=&quot;skin/icons/360_1.png&quot; style=&quot;width:80px; height:100px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+                                       url="skin/icons/360_1.png" circle_active_width="0.1"
+         text_x="">
+		 </hotspot>
 <!-- hotspots for building 1 -->
  <hotspot name="hs1" style="mypolygonalhotspotstylename" fillcolor="0x00FF00" fillalpha="0.1" bordercolor="0x228B22" borderwidth="1" > <point ath="-0.43804485213030375" atv="0.010244281354605884" /> <point ath="-0.44365479037367095" atv="0.021464201554716785" /> <point ath="-0.4446304314728309" atv="0.021952023141880116" /> <point ath="-0.44658171336885744" atv="0.024878956635555498" /> <point ath="-0.4458499827052833" atv="0.02634242550002152" /> <point ath="-0.44926472531068384" atv="0.03292802452976748" /> <point ath="-0.44950863544869435" atv="0.045855317699764545" /> <point ath="-0.45170382639867057" atv="0.04585531219887072" /> <point ath="-0.4519477364716522" atv="0.04951397830665718" /> <point ath="-0.44414261093584173" atv="0.052928755804704714" /> <point ath="-0.4399961353658455" atv="0.05195312228833219" /> <point ath="-0.4309714471904158" atv="0.026342445462400263" /> <point ath="-0.43121535778789166" atv="0.012439488668289556" /> </hotspot>
 
@@ -1752,6 +2089,26 @@
 		<image hfov="1.00" vfov="0.537581" voffset="0.00">
 			<flat url="panos/i-building_2.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1024x550,2048x1102" />
 		</image>
+
+		 <hotspot name="hs_ApartEnt(build-2)"
+        
+		callout_bg_border="0,0,0,0"
+		 callout_border_color="0xa65c43"
+         width="auto"
+         shape="circle"               
+		
+		 
+		 ath="0.0584916" atv="-0.1570632"
+         rotate="-50"
+         animation="keep_opened"
+		 onclick="loadscene(scene_5_360, null, MERGE,BLEND(1) )"
+        line_lenght="0"
+         style="callout"
+         title=""                      content="&lt;img src=&quot;skin/icons/360_1.png&quot; style=&quot;width:80px; height:100px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+                                       url="skin/icons/360_1.png" circle_active_width="0.1"
+         text_x="">
+		 </hotspot>
+		
 <!-- hotspots for building 2 -->
  <hotspot name="hs1" style="mypolygonalhotspotstylename" fillcolor="0x00FF00" fillalpha="0.1" bordercolor="0x228B22" borderwidth="1" > <point ath="-0.2473991831812441" atv="-0.13831741291458363" /> <point ath="-0.22739838050205208" atv="-0.13831750890539368" /> <point ath="-0.2264227064030706" atv="-0.13148797513582836" /> <point ath="-0.22739827450482153" atv="-0.10904805876907227" /> <point ath="-0.24837470608724743" atv="-0.10953580289128735" /> <point ath="-0.24910648415334435" atv="-0.11929227625198054" /> </hotspot>
 
@@ -1840,6 +2197,27 @@
 		<image hfov="1.00" vfov="0.562500" voffset="0.00">
 			<flat url="panos/k_zone_9.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1024x578,2048x1152,4096x2304" />
 		</image>
+
+		
+		 <hotspot name="hs_ApartEnt(1.29)"
+        
+		callout_bg_border="0,0,0,0"
+		 callout_border_color="0xa65c43"
+         width="auto"
+         shape="circle"               
+		
+		 
+		 ath="0.0431185 " atv="-0.0082631"
+         rotate="-50"
+         animation="keep_opened"
+		 onclick="loadscene(scene_10_360, null, MERGE,BLEND(1) )"
+        line_lenght="0"
+         style="callout"
+         title=""                      content="&lt;img src=&quot;skin/icons/360_1.png&quot; style=&quot;width:80px; height:100px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+                                       url="skin/icons/360_1.png" circle_active_width="0.1"
+         text_x="">
+</hotspot>
+
 <!-- hotspots for palaces in zone 9 -->
  <hotspot name="hs1" style="mypolygonalhotspotstylename" fillcolor="0x00FF00" fillalpha="0.1" bordercolor="0x228B22" borderwidth="1" > <point ath="-0.39739954874164596" atv="0.08255213612556332" /> <point ath="-0.3781291090529635" atv="0.07630231350394574" /> <point ath="-0.33750466390438305" atv="0.0627608958936429" /> <point ath="-0.33698383539405086" atv="0.06276089925169827" /> <point ath="-0.3546919729387241" atv="0.020573043822649344" /> <point ath="-0.35781693145003146" atv="0.016927182449837118" /> <point ath="-0.35885858381499247" atv="0.01692718052514885" /> <point ath="-0.38177487460700377" atv="0.025781330393116957" /> <point ath="-0.4062535046632547" atv="0.03203125459730916" /> <point ath="-0.4078159654708884" atv="0.032031248391813705" /> <point ath="-0.4104200654678607" atv="0.03255207102336434" /> <point ath="-0.41250334204636374" atv="0.03307289525713901" /> <point ath="-0.4151074389352516" atv="0.03359371710430162" /> <point ath="-0.4130241610557164" atv="0.04088538506717568" /> <point ath="-0.40052447183359163" atv="0.0736979453169851" /> </hotspot>
 
@@ -1921,6 +2299,24 @@
 		<image hfov="1.00" vfov="0.562500" voffset="0.00">
 			<flat url="panos/L_AL_MARINA_MALL_DAY_AERIAL.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1024x578,2048x1152,4096x2304" />
 		</image>
+		 <hotspot name="hs_ApartEnt(zone4-mall)"
+        
+		callout_bg_border="0,0,0,0"
+		 callout_border_color="0xa65c43"
+         width="auto"
+         shape="circle"               
+		
+		 
+		 ath="-0.0844728 " atv="-0.1637316"
+         rotate="-50"
+         animation="keep_opened"
+		 onclick="loadscene(scene_4_360, null, MERGE,BLEND(1) )"
+        line_lenght="0"
+         style="callout"
+         title=""                      content="&lt;img src=&quot;skin/icons/360_1.png&quot; style=&quot;width:80px; height:100px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+                                       url="skin/icons/360_1.png" circle_active_width="0.1"
+         text_x="">
+		 </hotspot>
 		<!-- hotspot for b-AL MARINA aerial towers -->
 		 <hotspot name="hotspot1" style="mypolygonalhotspotstylename" fillcolor="0x00FF00" fillalpha="0.1" bordercolor="0x228B22" borderwidth="1" > <point ath="0.2619841083459846" atv="0.059890976617790706" /> <point ath="0.2572962106988257" atv="-0.05990239149622103" /> <point ath="0.2552128359889707" atv="-0.06979835321835802" /> <point ath="0.2541711578762147" atv="-0.07188171650975883" /> <point ath="0.25104613789295627" atv="-0.07344425221144267" /> <point ath="0.1473990335132953" atv="-0.09636177416882241" /> <point ath="0.14844067964543228" atv="-0.11667458056271653" /> <point ath="0.14791983452221302" atv="-0.11823710567289686" /> <point ath="0.14948235794935272" atv="-0.11979961932270879" /> <point ath="0.14948235794935272" atv="-0.11979961932270879" /> <point ath="0.15104488209647116" atv="-0.12084129189205196" /> <point ath="0.14427391856230543" atv="-0.12917477640190625" /> <point ath="0.14219054929367303" atv="-0.12917478814382105" /> <point ath="0.13958633717976454" atv="-0.12917480258104344" /> <point ath="0.1354195966023326" atv="-0.12917482512553646" /> 
 		 <point ath="0.13333622577374626" atv="-0.12917483614159983" /> <point ath="0.13177369654414406" atv="-0.12969568481029384" /> <point ath="0.13073200826465836" atv="-0.13125821166265753" /> <point ath="0.13073200826465836" atv="-0.13125821166265753" /> <point ath="0.1296903208029221" atv="-0.13229989795320907" />
