@@ -154,7 +154,7 @@
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="10" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
 		<preview url="panos/a-initial.tiles/preview.jpg" />
 
@@ -162,7 +162,7 @@
 			<flat url="panos/a-initial.tiles/l%l/%0v/l%l_%0v_%0h.jpg" multires="512,1024x630,2048x1260,4096x2518,8192x5034" />
 		</image>
 <!-- hotspot for highlighting initial zone -->
- <hotspot name="hs1" style="mypolygonalhotspotstylename" fillcolor="0xa65c43" fillalpha="0.7" bordercolor="0xa65c43" borderwidth="2" > <point ath="0.04446937373461424" atv="0.054559641150968376" /> <point ath="0.04405709975139871" atv="0.06143090491842938" /> <point ath="0.04405709975139871" atv="0.06143090491842938" /> <point ath="0.044331950464652436" atv="0.061568330077656754" /> <point ath="0.055051126203181866" atv="0.06239287625059852" /> <point ath="0.07813857377635713" atv="0.06404195967314186" /> <point ath="0.07923797562017398" atv="0.06404195847943596" /> <point ath="0.07937540084776629" atv="0.0640419583285648" /> <point ath="0.07951282596798137" atv="0.06390453297016868" /> <point ath="0.0799251011064257" atv="0.063217406481121" /> <point ath="0.07965024413164201" atv="0.054834468766567786" /> <point ath="0.07965024359657491" atv="0.054147342676504825" /> <point ath="0.07937539307431507" atv="0.05400991771358234" /> <point ath="0.07868826702474507" atv="0.05400991834666269" /> <point ath="0.04446937357261049" atv="0.05400994004835972" /> </hotspot>
+ <hotspot name="hs1" style="mypolygonalhotspotstylename"   onclick="loadscene(scene_b-AL_MARINA_aerial, null, MERGE,BLEND(1) )" fillcolor="0xa65c43" fillalpha="0.7" bordercolor="0xa65c43" borderwidth="2" > <point ath="0.04446937373461424" atv="0.054559641150968376" /> <point ath="0.04405709975139871" atv="0.06143090491842938" /> <point ath="0.04405709975139871" atv="0.06143090491842938" /> <point ath="0.044331950464652436" atv="0.061568330077656754" /> <point ath="0.055051126203181866" atv="0.06239287625059852" /> <point ath="0.07813857377635713" atv="0.06404195967314186" /> <point ath="0.07923797562017398" atv="0.06404195847943596" /> <point ath="0.07937540084776629" atv="0.0640419583285648" /> <point ath="0.07951282596798137" atv="0.06390453297016868" /> <point ath="0.0799251011064257" atv="0.063217406481121" /> <point ath="0.07965024413164201" atv="0.054834468766567786" /> <point ath="0.07965024359657491" atv="0.054147342676504825" /> <point ath="0.07937539307431507" atv="0.05400991771358234" /> <point ath="0.07868826702474507" atv="0.05400991834666269" /> <point ath="0.04446937357261049" atv="0.05400994004835972" /> </hotspot>
 
 <!-- hotspots for landmarks -->
 <hotspot name="hs_ApartEnt(1)"
@@ -409,7 +409,7 @@ ath="0.0501647" 	atv="0.088729"
 
 	</scene>
 
-	<scene name="scene_c-ZONE_1" title="c-ZONE 1" onstart="" thumburl="panos/c-ZONE_1.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_c-ZONE_1" title="c-ZONE 1" enabled="false" onstart="" thumburl="panos/c-ZONE_1.tiles/thumb.jpg" lat="" lng="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
