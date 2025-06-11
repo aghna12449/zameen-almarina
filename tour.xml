@@ -159,17 +159,16 @@
 
 
 	
-	<scene name="scene_a-initial" title="a-initial" onstart="scene_a-initial" thumburl="panos/a-initial.tiles/thumb.jpg" lat="" lng="" heading="">
-		
-		<control bouncinglimits="calc:image.cube ? true : false" />
+	<scene name="scene_a-initial" title="a-initial"  thumburl="panos/a-initial.tiles/thumb.jpg" lat="" lng="" heading="">
 
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="10" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+    <control bouncinglimits="calc:image.cube ? true : false" />
 
-		<preview url="panos/a-initial.tiles/preview.jpg" />
+    <view  hlookat="20.0" vlookat="10.0"  fov="10"   />
+    <preview url="panos/a-initial.tiles/preview.jpg" />
 
-		<image hfov="1.00" vfov="0.614502" voffset="0.00">
-			<flat url="panos/a-initial.tiles/l%l/%0v/l%l_%0v_%0h.jpg" multires="512,1024x630,2048x1260,4096x2518,8192x5034" />
-		</image>
+    <image hfov="1.00" vfov="0.4710" voffset="2.00"  zoomlevel="10" >
+        <flat url="panos/a-initial.tiles/l%l/%0v/l%l_%0v_%0h.jpg" multires="512,1024x630,2048x1260,4096x2518,8192x5034" />
+    </image>
 <!-- hotspot for highlighting initial zone -->
  <hotspot name="hs1" style="mypolygonalhotspotstylename"   onclick="loadscene(scene_b-AL_MARINA_aerial, null, MERGE,BLEND(1) )" fillcolor="0xa65c43" fillalpha="0.7" bordercolor="0xa65c43" borderwidth="2" > <point ath="0.04446937373461424" atv="0.054559641150968376" /> <point ath="0.04405709975139871" atv="0.06143090491842938" /> <point ath="0.04405709975139871" atv="0.06143090491842938" /> <point ath="0.044331950464652436" atv="0.061568330077656754" /> <point ath="0.055051126203181866" atv="0.06239287625059852" /> <point ath="0.07813857377635713" atv="0.06404195967314186" /> <point ath="0.07923797562017398" atv="0.06404195847943596" /> <point ath="0.07937540084776629" atv="0.0640419583285648" /> <point ath="0.07951282596798137" atv="0.06390453297016868" /> <point ath="0.0799251011064257" atv="0.063217406481121" /> <point ath="0.07965024413164201" atv="0.054834468766567786" /> <point ath="0.07965024359657491" atv="0.054147342676504825" /> <point ath="0.07937539307431507" atv="0.05400991771358234" /> <point ath="0.07868826702474507" atv="0.05400991834666269" /> <point ath="0.04446937357261049" atv="0.05400994004835972" /> </hotspot>
 
@@ -193,7 +192,7 @@
  <hotspot name="hs_ApartEnt(2.1)" callout_bg_border="0,0,0,0" width="auto" shape="circle" ath=" 0.0578063" 	atv="0.0896652" line_lenght="70" rotate="120" animation="keep_opened"  style="callout" title="Al Yamamah University " content="06 mins - 8km"  circle_active_width="0.1" text_x=""></hotspot>
  <hotspot name="hs_ApartEnt(2.2)" callout_bg_border="0,0,0,0" width="auto" shape="circle" ath="0.071" atv="0.01" rotate="50"  line_lenght="70" animation="keep_opened"  style="callout" title="King Abdul Aziz Seaport" content="10 mins"  circle_active_width="0.1" text_x=""></hotspot>
  <hotspot name="hs_ApartEnt(2.3)" callout_bg_border="0,0,0,0" width="auto" shape="circle" ath = "0.0368537" atv = "0.0864869" rotate="-140" line_lenght="70" animation="keep_opened"  style="callout" title="Dharan Expo Exibition Center" content="5 mins - 8km"  circle_active_width="0.1" text_x=""></hotspot>
- <hotspot name="hs_ApartEnt(2.4)" callout_bg_border="0,0,0,0" width="auto" line_lenght="70" shape="circle" ath=" -0.2133767" 	atv=" -0.180936" rotate="-70" animation="keep_opened"  style="callout" title="King Fahd International Airport" content="35 mins - 50km"  circle_active_width="0.1" text_x=""></hotspot>
+ <!-- <hotspot name="hs_ApartEnt(2.4)" callout_bg_border="0,0,0,0" width="auto" line_lenght="70" shape="circle" ath=" -0.2133767" 	atv=" -0.180936" rotate="-70" animation="keep_opened"  style="callout" title="King Fahd International Airport" content="35 mins - 50km"  circle_active_width="0.1" text_x=""></hotspot> -->
  <hotspot name="hs_ApartEnt(2.6)" callout_bg_border="0,0,0,0" width="auto" line_lenght="70" shape="circle" ath ="0.0707721" atv ="0.1106694" rotate="130" animation="keep_opened"  style="callout" title="Seven Site" content="12 mins - 11km"  circle_active_width="0.1" text_x=""></hotspot>
  <hotspot name="hs_ApartEnt(2.7)" callout_bg_border="0,0,0,0" width="auto" line_lenght="70" shape="circle" 	ath = "0.0234484" atv = "0.0865505" rotate="-90" animation="keep_opened"  style="callout" title="Aramco Stadium" content="10 mins - 10km"  circle_active_width="0.1" text_x=""></hotspot>
  
@@ -222,7 +221,7 @@
 
 </hotspot>
 
-<hotspot name="hs_ApartEnt(4)"
+<!-- <hotspot name="hs_ApartEnt(4)"
       
          width="auto"
          shape="circle"             
@@ -238,7 +237,7 @@
 		  url="skin/icons/Airport.png" circle_active_width="0.1"
          text_x="">
 
-</hotspot>
+</hotspot> -->
 
 <hotspot name="hs_ApartEnt(4.1)"
       

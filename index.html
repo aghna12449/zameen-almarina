@@ -124,7 +124,7 @@
       <div class="card-slider_1"></div>
     </div>  -->
 
-      <div id="searchBarContainer" style="display: none">
+      <div id="searchBarContainer" hidden>
         <input
           type="checkbox"
           id="toggleFilter"
@@ -182,7 +182,7 @@
                   max="20000"
                   step="50"
                   id="totalArea"
-                  value="100"
+                  value="50000"
                   oninput="updateAreaAndSearch(this.value)"
                 />
               </div>
@@ -772,7 +772,6 @@
         let previouslyVisibleHotspots = [];
 
         let newHotspotArray = [];
-        // let sliderSearchedHouses;
 
         const totalLength = (currentScene) => {
           if (currentScene === "scene_c-zone_1") {
@@ -1162,6 +1161,9 @@
         };
 
         const updateSearchVisibility = () => {
+        var krpano_obj = document.getElementById("krpanoSWFObject");
+          const zoomLevel = krpano_obj.get("view.fov");
+
           const searchBar = document.getElementById("searchBarContainer");
           const mobileSearchCard =
             document.getElementById("mobileSearchFilter");
@@ -1786,6 +1788,8 @@
           return { max: maxArea, min: minArea };
         };
 
+        let hasSetSliderOnce = false; // Global or outer scoped
+
         function updateSliderRange(zoneNumber) {
           let zoneHouses = [];
 
@@ -1835,14 +1839,13 @@
           slider.min = min;
           slider.max = max + 100;
 
-          //slider.value = min;
 
           // Update labels
           document.getElementById("areaValue").textContent = `${slider.value}`;
           document.getElementById(
             "mobileAreaValue"
           ).textContent = `${slider.value}`;
-          document.getElementById("areaMax").textContent = `${max}`;
+          document.getElementById("areaMax").textContent = `${slider.max}`;
           document.getElementById("mobileAreaMax").textContent = `${max}`;
         }
 
@@ -2475,13 +2478,19 @@
           const currentScene = krpano.get("xml.scene");
 
           if (String(currentScene).includes("_360")) {
-            breadcrumbTrail.push({
-              scene: "scene_1_360",
-              title: "360",
-              icon: "grain",
-            });
+            const alreadyExists = breadcrumbTrail.some((crumb) =>
+              crumb.scene.includes("_360")
+            );
 
-            renderBreadcrumbs();
+            if (!alreadyExists) {
+              breadcrumbTrail.push({
+                scene: currentScene,
+                title: "360",
+                icon: "grain",
+              });
+
+              renderBreadcrumbs();
+            }
           }
         };
 
@@ -2530,6 +2539,7 @@
                 });
                 renderBreadcrumbs();
                 dynamicZoneRendering(zone1houseData, response, krpano);
+                updateAreaAndSearch(false);
               }
 
               //onSceneChange(currentScene,unit)
@@ -2545,6 +2555,7 @@
                 });
                 renderBreadcrumbs();
                 dynamicZoneRendering(zone2houseData, response, krpano);
+                updateAreaAndSearch(false);
               }
             } else if (currentScene === "scene_e-zone_3") {
               const zone3AlreadyExists = breadcrumbTrail.some(
@@ -2558,6 +2569,7 @@
                   icon: "grain",
                 });
                 renderBreadcrumbs();
+                updateAreaAndSearch(false);
               }
             } else if (currentScene === "scene_l_al_marina_mall_day_aerial") {
               const zone4AlreadyExists = breadcrumbTrail.some(
@@ -2571,6 +2583,7 @@
                   icon: "grain",
                 });
                 renderBreadcrumbs();
+                updateAreaAndSearch(false);
               }
             } else if (currentScene === "scene_f-zone_4") {
               const zone7AlreadyExists = breadcrumbTrail.some(
@@ -2584,6 +2597,7 @@
                   icon: "grain",
                 });
                 renderBreadcrumbs();
+                updateAreaAndSearch(false);
               }
             } else if (currentScene === "scene_g-zone_5") {
               const zone8AlreadyExists = breadcrumbTrail.some(
@@ -2597,6 +2611,7 @@
                   icon: "grain",
                 });
                 renderBreadcrumbs();
+                updateAreaAndSearch(false);
               }
 
               // onSceneChange(currentScene,unit)
@@ -2613,6 +2628,7 @@
                   icon: "grain",
                 });
                 renderBreadcrumbs();
+                updateAreaAndSearch(false);
               }
             } else if (currentScene === "scene_i-building_2") {
               console.log("building2houseData", building2houseData);
@@ -2627,6 +2643,7 @@
                   icon: "grain",
                 });
                 renderBreadcrumbs();
+                updateAreaAndSearch(false);
               }
             }
 
@@ -2643,6 +2660,7 @@
                   icon: "grain",
                 });
                 renderBreadcrumbs();
+                updateAreaAndSearch(false);
               }
             } else {
               blinkHotspot(false);
@@ -2992,14 +3010,25 @@
           );
           const mobileSearchFilter =
             document.getElementById("mobileSearchFilter");
-
+          const searchBar = document.getElementById("searchBarContainer");
           //toggle-button
+
+          if (
+            currentScene === "scene_a-initial" ||
+            currentScene === "scene_b-al_marina_aerial"
+          ) {
+            searchBar.hidden = true;
+          } else if (currentScene && currentScene !== "scene_1_360") {
+            searchBar.hidden = false;
+          }
           if (currentScene === "scene_a-initial") {
-            fullScreenBtn.style.display = "none";
-            toggleButton.style.display = "none";
+            // searchBar.hidden = true;
+            // fullScreenBtn.style.display = "none";
+            // toggleButton.style.display = "none";
           } else {
             fullScreenBtn.style.display = "block";
             toggleButton.style.display = "block";
+            //
           }
 
           console.log("Current scene:", currentScene);
@@ -3041,6 +3070,15 @@
           var krpano_obj = document.getElementById("krpanoSWFObject");
 
           krpano_obj.call("loadscene(scene_a-initial, null, MERGE);");
+          if (krpano_obj) {
+            console.log("Krpano Initialized " );
+
+              // Get and log the current zoom level (FOV)
+
+              // krpano_obj.call("set(fov_moveforce,-1);");
+  
+              // krpano_obj.call("lookat(25, -5, 1);");
+  }
 
           // Preload one scene from drone/future to make sure they're active
           // setTimeout(() => {
@@ -3139,6 +3177,7 @@
           // Delay to ensure Krpano loads
           updateSearchVisibility();
           showSearchFilterCardsMobile();
+          displayHorizontalSlider();
           const unit = getSpecificUnit();
 
           // onSceneChange(currentScene, unit)
@@ -3151,7 +3190,7 @@
 
             krpano.set(
               "events.onloadcomplete",
-              "js(enableZoomControls()); js(addLandHotspotsToKrpano()); js(updateSearchVisibility());  js(createSceneCard()); js(showSearchFilterCardsMobile); "
+              "js(enableZoomControls()); js(addLandHotspotsToKrpano()); js(updateSearchVisibility());  js(displayHorizontalSlider()); js(createSceneCard()); js(showSearchFilterCardsMobile); "
             );
           }
         };
