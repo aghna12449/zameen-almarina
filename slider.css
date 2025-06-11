@@ -15,6 +15,7 @@
   display: flex;
   gap: 10px; /* Adjusted gap to match reference image more closely */
   overflow-x: scroll;
+  overflow-y: hidden; /* Hide vertical scrollbar */
   scroll-behavior: smooth;
   padding: 0 10px; /* Adjusted padding */
   white-space: nowrap;
@@ -180,9 +181,9 @@
 
 /* Styles for customizing the scrollbar (Webkit browsers) */
 .card-slider_1::-webkit-scrollbar {
-  height: 5px; /* Slightly thicker scrollbar for usability, thinner than default */
-  background-color: transparent; /* Make scrollbar background transparent */
-  scroll-behavior: smooth;
+  
+
+  display: none; /* Chrome, Safari, Edge */
 }
 
 .card-slider_1::-webkit-scrollbar-track {
@@ -213,5 +214,5 @@
   top: 15px;
   left: 37%;
   width: fit-content;
-  margin-left: 10px;
+  margin-left: 9px;
 }

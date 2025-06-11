@@ -417,7 +417,7 @@ ath="0.0501647" 	atv="0.088729"
 
 	</scene>
 
-	<scene name="scene_c-ZONE_1" title="c-ZONE 1" enabled="false" onstart="" thumburl="panos/c-ZONE_1.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_c-ZONE_1" title="c-ZONE 1" enabled="false" onstart="scene_a-initial" thumburl="panos/c-ZONE_1.tiles/thumb.jpg" lat="" lng="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 

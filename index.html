@@ -492,11 +492,13 @@
               } else {
                 console.log("mobile search filter");
                 const propertyCard =
-                  document.querySelectorAll(".property-card");
-                console.log("property card == ", propertyCard);
+                  document.getElementById("krpano-card");
+            
                 if (propertyCard) {
-                  propertyCard.style.width = "220px";
+                  propertyCard.style.width = "225px";
                   propertyCard.style.height = "230px";
+                  propertyCard.style.right = "30px";
+                  propertyCard.style.top = "22%";
                 }
 
                 searchSliderFilters.style.display = "none";
@@ -505,10 +507,11 @@
 
                 mobileSearchFilter.style.marginTop = "10px";
                 mobileSearchFilter.style.marginBottom = "5px";
-                mobileSearchFilter.style.right = "";
-                mobileSearchFilter.style.height = "200px";
+                //mobileSearchFilter.style.right = "20px";
+                
 
                 mobileSearchFilter.style.height = "200px";
+                  mobileSearchFilter.style.overflowY = "auto";
 
                 const labelbox = document.querySelector(".top-label-box");
 
@@ -538,6 +541,7 @@
                   if (card) {
                     card.style.top = "30px";
                     card.style.height = "7rem";
+                    card.style.maxHeight = "6rem";
                   }
 
                   if (labelbox) {
@@ -554,16 +558,19 @@
                 searchSliderFilters.style.display = "none";
                 mobileSearchFilter.style.display = "block";
                 toggleFilterButton.style.display = "none";
-                mobileSearchFilter.style.right = "0";
+                mobileSearchFilter.style.left = "20px";
 
                 mobileSearchFilter.style.height = "";
 
-                // const propertyCard = document.querySelectorAll(".property-card");
-                // console.log("propertyCard", propertyCard);
-                // if(propertyCard ){
-                //   propertyCard.style.width = "220px";
-                //   propertyCard.style.height = "auto";
-                // }
+                const propertyCard = document.getElementById("krpano-card");
+                console.log("propertyCard", propertyCard);
+                if(propertyCard ){
+                  propertyCard.style.width = "225px";
+                  propertyCard.style.height = "auto";
+                  
+                  propertyCard.style.right = "30px";
+                  propertyCard.style.top = "22%";
+                }
 
                 const rowExtra =
                   document.querySelectorAll(".details-row_extra");
@@ -583,7 +590,8 @@
 
                   if (card) {
                     card.style.top = "30px";
-                    card.style.height = "7rem";
+                   // card.style.height = "7rem";
+                    card.style.maxHeight = "6rem";
                   }
 
                   if (labelbox) {
@@ -605,8 +613,8 @@
 
               mobileSearchFilter.style.display = "none";
 
-              mobileSearchFilter.style.right = "0";
-              mobileSearchFilter.style.right = "0";
+             // mobileSearchFilter.style.right = "0";
+          
               mobileSearchFilter.style.height = "";
 
               const wrappers = document.querySelectorAll(".card-wrapper");
@@ -626,6 +634,13 @@
                   labelbox.style.top = "15px";
                 }
               });
+
+              const propertyCard = document.getElementById("krpano-card");
+                console.log("propertyCard", propertyCard);
+                if(propertyCard ){
+                  propertyCard.style.right = "90px";
+                  propertyCard.style.top = "14%";
+                }
 
               const rowExtra = document.querySelectorAll(".details-row_extra");
               if (rowExtra) {
@@ -1049,9 +1064,9 @@
           //      <h4> ${house.zone ? house.zone : ""}</h4>
 
           //
-          console.log("sliderSearchedHouses", sliderSearchedHouses);
+         
           sliderSearchedHouses.forEach((house, index) => {
-            console.log("househousehouse", house);
+          
 
             const cardHTML = `
   <div class="card-wrapper" > <div class="top-label-box"> Price: TBD </div>
@@ -2016,6 +2031,14 @@
           }
         }
 
+        // Must be inside a click event
+// document.getElementById("fullScreenBtn").addEventListener("click", () => {
+//   const element = document.getElementById("krpanoContainer");
+//   if (element.requestFullscreen) {
+//     element.requestFullscreen();
+//   }
+// });
+
         function toggleFullScreen() {
           const elem = document.documentElement;
           const btn = document.getElementById("fullScreenBtn");
@@ -2250,7 +2273,7 @@
             });
           });
 
-          console.log("house data", houseData);
+     
 
           return houseData;
         };
