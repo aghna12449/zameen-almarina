@@ -72,6 +72,7 @@
 
       html {
         height: 100%;
+        touch-action: none;
       }
 
       body {
@@ -83,6 +84,7 @@
         font-size: 16px;
         /* color: #ffffff; */
         background-color: transparent !important;
+        touch-action: none;
       }
     </style>
   </head>
@@ -123,7 +125,12 @@
     </div>  -->
 
       <div id="searchBarContainer" style="display: none">
-        <input type="checkbox" id="toggleFilter" class="hidden-checkbox" />
+        <input
+          type="checkbox"
+          id="toggleFilter"
+          class="hidden-checkbox"
+          checked
+        />
 
         <label
           for="toggleFilter"
@@ -478,9 +485,20 @@
             if (width < 935 && height < 440 && isLandscape) {
               if (String(currentScene).includes("_360")) {
                 searchSliderFilters.style.display = "none";
+
+                console.log("mobile search filter 360");
                 mobileSearchFilter.style.display = "none";
                 toggleFilterButton.style.display = "none";
               } else {
+                console.log("mobile search filter");
+                const propertyCard =
+                  document.querySelectorAll(".property-card");
+                console.log("property card == ", propertyCard);
+                if (propertyCard) {
+                  propertyCard.style.width = "220px";
+                  propertyCard.style.height = "230px";
+                }
+
                 searchSliderFilters.style.display = "none";
                 mobileSearchFilter.style.display = "block";
                 toggleFilterButton.style.display = "none";
@@ -1014,6 +1032,14 @@
         let slidersHotspot = [];
 
         let currentAppearingHotpsots = [];
+        function handleHoverIn(id) {
+          blinkIndividualHotspot(id, true);
+          // element.classList.add("blinking");
+        }
+
+        function handleHoverOut(element) {
+          // blinkIndividualHotspot("", false, true);
+        }
 
         //currentAppearingHotpsots
         const displayHorizontalSlider = () => {
@@ -1030,7 +1056,11 @@
 
             const cardHTML = `
   <div class="card-wrapper" > <div class="top-label-box"> Price: TBD </div>
-        <div class="card_1"  onclick="showIndividualHouseCard('${house.plot_number}','${house.id}' )">
+        <div class="card_1" 
+         onmouseover="handleHoverIn('${house.id}')" 
+  onmouseout="handleHoverOut(this)"
+        
+        onclick="showIndividualHouseCard('${house.plot_number}','${house.id}' )">
         
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv94OIn-sX93PJMNosZCYZzXFO8Qk1FB2x3A&s" height="100px" width="100px" />
             <div class="details_1">
@@ -2015,38 +2045,6 @@
           }
         }
 
-        function toggleFullScreen() {
-          const elem = document.documentElement;
-          const btn = document.getElementById("fullScreenBtn");
-
-          if (
-            !document.fullscreenElement &&
-            !document.webkitFullscreenElement &&
-            !document.msFullscreenElement
-          ) {
-            // Enter fullscreen
-            if (elem.requestFullscreen) {
-              elem.requestFullscreen();
-            } else if (elem.webkitRequestFullscreen) {
-              elem.webkitRequestFullscreen(); // Safari
-            } else if (elem.msRequestFullscreen) {
-              elem.msRequestFullscreen(); // IE11
-            }
-
-            btn.innerHTML = "🗗";
-          } else {
-            // Exit fullscreen
-            if (document.exitFullscreen) {
-              document.exitFullscreen();
-            } else if (document.webkitExitFullscreen) {
-              document.webkitExitFullscreen(); // Safari
-            } else if (document.msExitFullscreen) {
-              document.msExitFullscreen(); // IE11
-            }
-            btn.innerHTML = "⛶";
-          }
-        }
-
         const toggleTimeView = (clickedElement) => {
           const timeToggle = clickedElement.parentElement;
           const now = timeToggle.querySelector(".now");
@@ -2321,7 +2319,6 @@
         }
 
         const dynamicZoneRendering = (zoneData, response, krpano) => {
-
           zoneData.forEach((house) => {
             // Create a unique name for each house hotspot
             const hotspotName = `hs_${house.id}`;
@@ -2422,9 +2419,8 @@
 
         // Add this new function to your existing JavaScript code (e.g., in the same script block as flyToHouse and showHouseDetails)
         function handleHotspotClick(hotspotName, plotNumber, ath, atv) {
-         
           // First, call your showHouseDetails function
-         showHouseDetails("", plotNumber, totalArea);
+          showHouseDetails("", plotNumber, totalArea);
 
           // Then, call your flyToHouse function
           flyToHouse(ath, atv);
@@ -2449,9 +2445,8 @@
             return;
           }
 
-    
-const currentFov = krpano.get("view.fov");
-console.log("Current Zoom Level (FOV):", currentFov);
+          const currentFov = krpano.get("view.fov");
+          console.log("Current Zoom Level (FOV):", currentFov);
 
           // Assuming a default FOV and animation speed
           const fov = currentFov; // Or whatever default FOV you need
@@ -2461,7 +2456,9 @@ console.log("Current Zoom Level (FOV):", currentFov);
           if (krpano) {
             // Always check if krpano object exists
 
-      krpano.call(`lookto(${numericAth}, ${numericAtv}, ${fov}, smooth(${animationSpeed}));`);
+            krpano.call(
+              `lookto(${numericAth}, ${numericAtv}, ${fov}, smooth(${animationSpeed}));`
+            );
 
             console.log(
               `Attempting to fly to ATH: ${numericAth}, ATV: ${numericAtv}`
@@ -2472,6 +2469,21 @@ console.log("Current Zoom Level (FOV):", currentFov);
             );
           }
         }
+
+        const render360Breadcrumbs = () => {
+          const krpano = document.getElementById("krpanoSWFObject");
+          const currentScene = krpano.get("xml.scene");
+
+          if (String(currentScene).includes("_360")) {
+            breadcrumbTrail.push({
+              scene: "scene_1_360",
+              title: "360",
+              icon: "grain",
+            });
+
+            renderBreadcrumbs();
+          }
+        };
 
         const addLandHotspotsToKrpano = async () => {
           const krpano = document.getElementById("krpanoSWFObject");
@@ -2491,6 +2503,7 @@ console.log("Current Zoom Level (FOV):", currentFov);
 
             console.log("currentScene", currentScene);
 
+            render360Breadcrumbs();
             if (currentScene === "scene_b-al_marina_aerial") {
               const alreadyExists = breadcrumbTrail.some(
                 (crumb) => crumb.scene === "scene_b-al_marina_aerial"
@@ -2506,85 +2519,131 @@ console.log("Current Zoom Level (FOV):", currentFov);
                 renderBreadcrumbs();
               }
             } else if (currentScene === "scene_c-zone_1") {
-              breadcrumbTrail.push({
-                scene: "scene_c-zone_1",
-                title: "Zone 1",
-                icon: "grain",
-              });
-              //onSceneChange(currentScene,unit)
+              const zone1AlreadyExists = breadcrumbTrail.some(
+                (crumb) => crumb.scene === "scene_c-zone_1"
+              );
+              if (!zone1AlreadyExists) {
+                breadcrumbTrail.push({
+                  scene: "scene_c-zone_1",
+                  title: "Zone 1",
+                  icon: "grain",
+                });
+                renderBreadcrumbs();
+                dynamicZoneRendering(zone1houseData, response, krpano);
+              }
 
-              renderBreadcrumbs();
-              dynamicZoneRendering(zone1houseData, response, krpano);
+              //onSceneChange(currentScene,unit)
             } else if (currentScene === "scene_d-zone_2") {
-              breadcrumbTrail.push({
-                scene: "scene_d-zone_2",
-                title: "Zone 2",
-                icon: "grain",
-              });
-              renderBreadcrumbs();
-              dynamicZoneRendering(zone2houseData, response, krpano);
+              const zone2AlreadyExists = breadcrumbTrail.some(
+                (crumb) => crumb.scene === "scene_d-zone_2"
+              );
+              if (!zone2AlreadyExists) {
+                breadcrumbTrail.push({
+                  scene: "scene_d-zone_2",
+                  title: "Zone 2",
+                  icon: "grain",
+                });
+                renderBreadcrumbs();
+                dynamicZoneRendering(zone2houseData, response, krpano);
+              }
             } else if (currentScene === "scene_e-zone_3") {
-              dynamicZoneRendering(zone3houseData, response, krpano);
-              breadcrumbTrail.push({
-                scene: "scene_zone_3",
-                title: "Zone 3",
-                icon: "grain",
-              });
-              renderBreadcrumbs();
+              const zone3AlreadyExists = breadcrumbTrail.some(
+                (crumb) => crumb.scene === "scene_zone_3"
+              );
+              if (!zone3AlreadyExists) {
+                dynamicZoneRendering(zone3houseData, response, krpano);
+                breadcrumbTrail.push({
+                  scene: "scene_zone_3",
+                  title: "Zone 3",
+                  icon: "grain",
+                });
+                renderBreadcrumbs();
+              }
             } else if (currentScene === "scene_l_al_marina_mall_day_aerial") {
-              dynamicZoneRendering(zone4houseData, response, krpano);
-              breadcrumbTrail.push({
-                scene: "scene_l_al_marina_mall_day_aerial",
-                title: "Zone 4",
-                icon: "grain",
-              });
-              renderBreadcrumbs();
+              const zone4AlreadyExists = breadcrumbTrail.some(
+                (crumb) => crumb.scene === "scene_l_al_marina_mall_day_aerial"
+              );
+              if (!zone4AlreadyExists) {
+                dynamicZoneRendering(zone4houseData, response, krpano);
+                breadcrumbTrail.push({
+                  scene: "scene_l_al_marina_mall_day_aerial",
+                  title: "Zone 4",
+                  icon: "grain",
+                });
+                renderBreadcrumbs();
+              }
             } else if (currentScene === "scene_f-zone_4") {
-              dynamicZoneRendering(zone7houseData, response, krpano);
-              breadcrumbTrail.push({
-                scene: "scene_f-zone_4",
-                title: "Zone 7",
-                icon: "grain",
-              });
-              renderBreadcrumbs();
+              const zone7AlreadyExists = breadcrumbTrail.some(
+                (crumb) => crumb.scene === "scene_f-zone_4"
+              );
+              if (!zone7AlreadyExists) {
+                dynamicZoneRendering(zone7houseData, response, krpano);
+                breadcrumbTrail.push({
+                  scene: "scene_f-zone_4",
+                  title: "Zone 7",
+                  icon: "grain",
+                });
+                renderBreadcrumbs();
+              }
             } else if (currentScene === "scene_g-zone_5") {
-              dynamicZoneRendering(zone8houseData, response, krpano);
-              breadcrumbTrail.push({
-                scene: "scene_g-zone_5",
-                title: "Zone 8",
-                icon: "grain",
-              });
-              renderBreadcrumbs();
+              const zone8AlreadyExists = breadcrumbTrail.some(
+                (crumb) => crumb.scene === "scene_g-zone_5"
+              );
+              if (!zone8AlreadyExists) {
+                dynamicZoneRendering(zone8houseData, response, krpano);
+                breadcrumbTrail.push({
+                  scene: "scene_g-zone_5",
+                  title: "Zone 8",
+                  icon: "grain",
+                });
+                renderBreadcrumbs();
+              }
 
               // onSceneChange(currentScene,unit)
             } else if (currentScene === "scene_h-building_1") {
-              console.log("building1houseData", building1houseData);
-              dynamicZoneRendering(building1houseData, response, krpano);
-              breadcrumbTrail.push({
-                scene: "scene_h-building_1",
-                title: "Zone 6",
-                icon: "grain",
-              });
-              renderBreadcrumbs();
+              const building1AlreadyExists = breadcrumbTrail.some(
+                (crumb) => crumb.scene === "scene_h-building_1"
+              );
+              if (!building1AlreadyExists) {
+                console.log("building1houseData", building1houseData);
+                dynamicZoneRendering(building1houseData, response, krpano);
+                breadcrumbTrail.push({
+                  scene: "scene_h-building_1",
+                  title: "Zone 6",
+                  icon: "grain",
+                });
+                renderBreadcrumbs();
+              }
             } else if (currentScene === "scene_i-building_2") {
               console.log("building2houseData", building2houseData);
-              dynamicZoneRendering(building2houseData, response, krpano);
-              breadcrumbTrail.push({
-                scene: "scene_i-building_2",
-                title: "Zone 5",
-                icon: "grain",
-              });
-              renderBreadcrumbs();
+              const building2AlreadyExists = breadcrumbTrail.some(
+                (crumb) => crumb.scene === "scene_i-building_2"
+              );
+              if (!building2AlreadyExists) {
+                dynamicZoneRendering(building2houseData, response, krpano);
+                breadcrumbTrail.push({
+                  scene: "scene_i-building_2",
+                  title: "Zone 5",
+                  icon: "grain",
+                });
+                renderBreadcrumbs();
+              }
             }
+
             //
             else if (currentScene === "scene_k_zone_9") {
-              dynamicZoneRendering(zone9houseData, response, krpano);
-              breadcrumbTrail.push({
-                scene: "scene_k_zone_9",
-                title: "Zone 9",
-                icon: "grain",
-              });
-              renderBreadcrumbs();
+              const zone9AlreadyExists = breadcrumbTrail.some(
+                (crumb) => crumb.scene === "scene_k_zone_9"
+              );
+              if (!zone9AlreadyExists) {
+                dynamicZoneRendering(zone9houseData, response, krpano);
+                breadcrumbTrail.push({
+                  scene: "scene_k_zone_9",
+                  title: "Zone 9",
+                  icon: "grain",
+                });
+                renderBreadcrumbs();
+              }
             } else {
               blinkHotspot(false);
             }

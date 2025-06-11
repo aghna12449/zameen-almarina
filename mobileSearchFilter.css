@@ -5,8 +5,15 @@
   left: 0;
  
   bottom: 0;
-  z-index: 9999;
-  overflow-y: auto;
+  z-index: 1050;
+
+ touch-action: none;
+   pointer-events: none;  /* 👈 Allow clicks to pass through */
+}
+
+#mobileSearchFilter.active {
+  display: block;
+  pointer-events: auto; /* Enable interactions when active */
 }
 
 #mobileFilterBody {
@@ -101,6 +108,13 @@
     box-shadow: none !important; /* No shadow */
 }
 
+.form-range::-webkit-slider-runnable-track {
+    background: black !important;
+    border: none !important; /* Removes default border */
+  height: 4px; /* Optional: sets track thickness */
+  border-radius: 4px; /* Optional: for rounded edges */
+  }
+
 .mobile-compact-search-card .form-range::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -149,4 +163,9 @@
 
 .hidden-checkbox {
     display: none;
+}
+
+/* Only enable pointer events on interactive content */
+.mobile-container {
+  pointer-events: auto;
 }

@@ -12,6 +12,15 @@
   <include url="vtour-future/future.xml"/>
 
 
+<control
+    sensortouch="true"  
+	touch="true"
+	draggie="true"    
+	mouse="true" 
+	keyb="true"   
+	       
+/>
+
 
 <!-- <include url="drone.xml"/>
   <include url="future.xml"/> -->
