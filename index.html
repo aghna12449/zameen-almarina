@@ -3,10 +3,12 @@
   <head>
     <title>Al Marina</title>
 
-    <meta
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1024" />
+    <!-- <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover"
-    />
+    /> -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="mobile-web-app-capable" content="yes" />
@@ -123,6 +125,16 @@
       <!-- <div id="searchSliderFilters" class="slider-container_1">
       <div class="card-slider_1"></div>
     </div>  -->
+
+        <div id="zone_5_360_icon" class="zone_5_360_icon_class">
+           <img src="/skin/icons/360_1.png" width="50%" height="50%" class="" />
+          
+         </div>
+
+    <div id="top-button-360" class="top-button-360-container">
+       <button class="top-close-button" onclick="goBackToZone()">&times;</button>
+      <!-- Your content here -->
+    </div>
 
       <div id="searchBarContainer" hidden>
         <input
@@ -777,8 +789,28 @@
             sceneCardWrapper.style.display = "none";
           }
         };
+        
+          
 
-        function toggleMoreOptions() {
+        const getCurrentScene=() =>{
+            const krpano = document.getElementById("krpanoSWFObject");
+
+            const currentScene = krpano.get("xml.scene");
+           return currentScene
+
+        }  
+
+        const goBackToZone=() =>{
+           const krpano = document.getElementById("krpanoSWFObject");
+          const lastCrumb = breadcrumbTrail[breadcrumbTrail.length - 1];
+        
+
+          if (krpano) {
+            krpano.call(`loadscene(${lastCrumb.scene}, null, MERGE, BLEND(1))`);
+          }
+
+        }
+        const toggleMoreOptions= () =>{
           const moreOptions = document.getElementById("moreOptions");
           moreOptions.style.display =
             moreOptions.style.display === "none" ? "block" : "none";
@@ -876,7 +908,7 @@
 
                 //  krpano.set(`hotspot[${hotspotName}].bordercolor`, "0x000000");
 
-                console.log(`Hidden hotspot: ${hotspotName}`);
+               
               }
             }
 
@@ -1119,21 +1151,22 @@
 
           let wrapper = document.getElementById("scene-card-wrapper");
 
-          if (currentScene === "scene_c-zone_1") {
-            wrapper = document.createElement("div");
-            wrapper.id = "scene-card-wrapper";
-            wrapper.innerHTML = `
-        <div id="scene-card" onclick="arialView()">
-          <div class="scene-card-content">
-            <img src="/skin/icons/360_1.png" width="50%" height="50%" class="breadcrumb-icon" />
-          
-          </div>
-        </div>
-      `;
 
-            console.log("wrapper", wrapper);
-            document.body.appendChild(wrapper);
-          }
+      //     if (currentScene === "scene_c-zone_1") {
+      //       wrapper = document.createElement("div");
+      //       wrapper.id = "scene-card-wrapper";
+      //       wrapper.innerHTML = `
+      //   <div id="scene-card" onclick="arialView()">
+      //     <div class="scene-card-content">
+      //       <img src="/skin/icons/360_1.png" width="50%" height="50%" class="breadcrumb-icon" />
+          
+      //     </div>
+      //   </div>
+      // `;
+
+      //       console.log("wrapper", wrapper);
+      //       document.body.appendChild(wrapper);
+      //     }
           if (currentScene === "scene_a-initial") {
             if (!wrapper) {
               wrapper = document.createElement("div");
@@ -1195,6 +1228,9 @@
           const sceneCardWrapper =
             document.getElementById("scene-card-wrapper");
 
+            const topButton360 =
+            document.getElementById("top-button-360");
+
           //scene-card-wrapper
 
           const krpano = document.getElementById("krpanoSWFObject");
@@ -1203,6 +1239,13 @@
           const currentScene = krpano.get("xml.scene");
 
           const width = window.innerWidth;
+
+           if (String(currentScene).includes("_360")) 
+          {
+            topButton360.style.display = "block";
+          }else{
+          topButton360.style.display = "none";
+          }
 
           if (
             currentScene === "scene_a-initial" ||
@@ -1952,7 +1995,7 @@
 
               // Reset color of the previous hotspot
               krpano.call(
-                `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0xFFFF00)`
+                `set(hotspot[${currentBlinkingHotspot}].fillcolor, 0x39FF14)`
               );
 
               // Clear references
@@ -2050,7 +2093,13 @@
           ) {
             // Enter fullscreen
             if (elem.requestFullscreen) {
-              elem.requestFullscreen();
+              element.requestFullscreen()
+           .then(() => {
+               console.log("Fullscreen mode activated")
+           })
+            .catch((error) => {
+            console.error("Fullscreen mode failed:", error)
+             })
             } else if (elem.webkitRequestFullscreen) {
               elem.webkitRequestFullscreen(); // Safari
             } else if (elem.msRequestFullscreen) {
@@ -2482,6 +2531,8 @@
           if (krpano) {
             // Always check if krpano object exists
 
+            
+
             krpano.call(
               `lookto(${numericAth}, ${numericAtv}, ${fov}, smooth(${animationSpeed}));`
             );
@@ -2534,8 +2585,12 @@
             }
 
             console.log("currentScene", currentScene);
-
-            render360Breadcrumbs();
+            
+ const icon_360 = document.getElementById("zone_5_360_icon");
+              if (icon_360) {
+                icon_360.style.display = "block";
+              } 
+          //  render360Breadcrumbs();
             if (currentScene === "scene_b-al_marina_aerial") {
               const alreadyExists = breadcrumbTrail.some(
                 (crumb) => crumb.scene === "scene_b-al_marina_aerial"
@@ -2642,8 +2697,12 @@
               const building1AlreadyExists = breadcrumbTrail.some(
                 (crumb) => crumb.scene === "scene_h-building_1"
               );
+
+             
               if (!building1AlreadyExists) {
                 console.log("building1houseData", building1houseData);
+
+
                 dynamicZoneRendering(building1houseData, response, krpano);
                 breadcrumbTrail.push({
                   scene: "scene_h-building_1",
@@ -2813,13 +2872,14 @@
      
     
          <div class="details-row_extra">
-            <div class="detail-item">
-               <span class="detail-label_1">South</span>
-               <span class="detail-value">${unitDetails.south || "-"}</span>
-            </div>
+            
             <div class="detail-item">
                <span class="detail-label_1">North</span>
                <span class="detail-value">${unitDetails.north || "-"}</span>
+            </div>
+            <div class="detail-item">
+               <span class="detail-label_1">South</span>
+               <span class="detail-value">${unitDetails.south || "-"}</span>
             </div>
             <div class="detail-item">
                <span class="detail-label_1">East</span>
@@ -3088,6 +3148,17 @@
             });
         };
 
+
+        const flyToInitialScene = () => {
+          console.log("flyToInitialScene called");
+          const krpano = document.getElementById("krpanoSWFObject");
+          if (krpano) {
+             krpano.call("looktohotspot('hs_ApartEnt(1)')");
+          } else {
+            console.error("Krpano instance not found or not ready.");
+          }
+        };
+
         window.onload = () => {
           console.log("window on load");
           var krpano_obj = document.getElementById("krpanoSWFObject");
@@ -3096,12 +3167,19 @@
           if (krpano_obj) {
             console.log("Krpano Initialized " );
 
+            const animationSpeed = 0.1;
+
+         
+
+//  krpano_obj.call(
+//               `lookto(${-0.3510618}, ${-0.0299007}, 90, smooth(${animationSpeed}));`
+//             );
               // Get and log the current zoom level (FOV)
 
               // krpano_obj.call("set(fov_moveforce,-1);");
   
               // krpano_obj.call("lookat(25, -5, 1);");
-  }
+          }
 
           // Preload one scene from drone/future to make sure they're active
           // setTimeout(() => {
@@ -3201,6 +3279,7 @@
           updateSearchVisibility();
           showSearchFilterCardsMobile();
           displayHorizontalSlider();
+          flyToInitialScene();
           const unit = getSpecificUnit();
 
           // onSceneChange(currentScene, unit)
@@ -3213,7 +3292,7 @@
 
             krpano.set(
               "events.onloadcomplete",
-              "js(enableZoomControls()); js(addLandHotspotsToKrpano()); js(updateSearchVisibility());  js(displayHorizontalSlider()); js(createSceneCard()); js(showSearchFilterCardsMobile); "
+              "js(enableZoomControls()); js(addLandHotspotsToKrpano()); js(updateSearchVisibility());  js(displayHorizontalSlider()); js(createSceneCard()); js(showSearchFilterCardsMobile);js(flyToInitialScene); "
             );
           }
         };

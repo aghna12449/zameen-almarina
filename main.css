@@ -176,7 +176,7 @@
 #custom-breadcrumbs {
     display: flex;
     align-items: center;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-family:  "Arial";
     font-size: 0.875rem;
     color: rgb(190, 183, 183);
     position: absolute;
@@ -635,4 +635,29 @@
   #fullScreenBtn{
     top: 70%,
   }
+}
+
+.top-button-360-container {
+  position: relative; /* Ensure the button is positioned relative to this container */
+}
+
+.top-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 36px;
+  cursor: pointer;
+  color: white;
+  z-index: 9999;
+}
+
+.zone_5_360_icon_class {
+ position: fixed;
+  top: 350px;
+  right: 500px;
+  z-index: 9999; /* Ensure it's above krpano canvas */
+  cursor: pointer;
+  width: 70px; /* Adjust width */
 }
