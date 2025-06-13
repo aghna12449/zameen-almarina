@@ -5,6 +5,7 @@
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1024" />
+    <meta http-equiv="ScreenOrientation" content="autoRotate:disabled" />
     <!-- <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover"
@@ -105,6 +106,10 @@
 
     <script src="zone9.js"></script>
 
+    <div id="viewport">
+      <!-- Your krpano viewer or other content -->
+    </div>
+
     <div id="pano" style="width: 100%; height: 100%">
       <noscript>
         <table style="width: 100%; height: 100%">
@@ -126,15 +131,17 @@
       <div class="card-slider_1"></div>
     </div>  -->
 
-        <div id="zone_5_360_icon" class="zone_5_360_icon_class">
+      <!-- <div id="zone_5_360_icon" class="zone_5_360_icon_class">
            <img src="/skin/icons/360_1.png" width="50%" height="50%" class="" />
           
-         </div>
+         </div> -->
 
-    <div id="top-button-360" class="top-button-360-container">
-       <button class="top-close-button" onclick="goBackToZone()">&times;</button>
-      <!-- Your content here -->
-    </div>
+      <div id="top-button-360" class="top-button-360-container">
+        <button class="top-close-button" onclick="goBackToZone()">
+          &times;
+        </button>
+        <!-- Your content here -->
+      </div>
 
       <div id="searchBarContainer" hidden>
         <input
@@ -356,7 +363,7 @@
       </div>
 
       <div id="controls">
-        <button id="fullScreenBtn" title="Toggle Fullscreen">⛶</button>
+        <!-- <button id="fullScreenBtn" title="Toggle Fullscreen">⛶</button> -->
         <!-- <button id="zoomInBtn">+</button>
 
         <button id="zoomOutBtn">-</button> -->
@@ -470,7 +477,44 @@
           { passive: false }
         ); // passive: false is required to call preventDefault()
 
+        //             function isLandscape() {
+        //   return window.matchMedia("(orientation: landscape)").matches;
+        // }
+
         const showSearchFilterCardsMobile = () => {
+          const isLandscapeView = window.matchMedia(
+            "(orientation: landscape)"
+          ).matches;
+          const krpano = document.getElementById("krpanoSWFObject");
+          const currentScene = krpano.get("xml.scene");
+
+          const viewport = document.getElementById("viewport");
+          viewport.style.transform = "scale(0.4)";
+          viewport.style.transformOrigin = "top left";
+
+          console.log("viewport", viewport);
+
+          // krpano.call("tween(view.fov, 30, 1.0);");
+          //krpano.call("tween(view.fov, 90, 1.0);");
+          if (isLandscapeView) {
+            console.log("Landscape mode detected");
+            if (currentScene === "scene_b-al_marina_aerial") {
+              //  krpano.call("looktohotspot('hs_zone_1_360(1)')");
+              //   krpano.call("tween(view.fov, 90, 1.0);");
+              // document.body.style.zoom = "40%";
+            } else if (currentScene === "scene_a-initial") {
+              // document.body.style.zoom = "40%";
+            } else {
+              // document.body.style.zoom = "100%";
+            }
+            // Add your landscape-specific code here
+          } else {
+            console.log("Portrait mode detected");
+
+            //document.body.style.zoom = "130%";
+            // Add your portrait-specific code here
+          }
+
           console.log("showSearchFilterCardsMobile");
           const searchSliderFilters =
             document.getElementById("searchBarContainer");
@@ -483,13 +527,17 @@
 
           console.log("sliderContainer", sliderContainer);
 
-          const krpano = document.getElementById("krpanoSWFObject");
-          const currentScene = krpano.get("xml.scene");
-
           const width = window.innerWidth;
           const height = window.innerHeight;
           const isLandscape = width > height;
-
+          console.log(
+            "Width:",
+            width,
+            "Height:",
+            height,
+            "Is Landscape:",
+            isLandscape
+          );
           if (
             currentScene !== "scene_a-initial" &&
             currentScene !== "scene_b-al_marina_aerial"
@@ -503,14 +551,13 @@
                 toggleFilterButton.style.display = "none";
               } else {
                 console.log("mobile search filter");
-                const propertyCard =
-                  document.getElementById("krpano-card");
-            
+                const propertyCard = document.getElementById("krpano-card");
+
                 if (propertyCard) {
                   propertyCard.style.width = "225px";
                   propertyCard.style.height = "230px";
                   propertyCard.style.right = "30px";
-                  propertyCard.style.top = "22%";
+                 // propertyCard.style.top = "%";
                 }
 
                 searchSliderFilters.style.display = "none";
@@ -520,10 +567,9 @@
                 mobileSearchFilter.style.marginTop = "10px";
                 mobileSearchFilter.style.marginBottom = "5px";
                 //mobileSearchFilter.style.right = "20px";
-                
 
                 mobileSearchFilter.style.height = "200px";
-                  mobileSearchFilter.style.overflowY = "auto";
+                mobileSearchFilter.style.overflowY = "auto";
 
                 const labelbox = document.querySelector(".top-label-box");
 
@@ -553,7 +599,7 @@
                   if (card) {
                     card.style.top = "30px";
                     card.style.height = "7rem";
-                    card.style.maxHeight = "6rem";
+                   // card.style.maxHeight = "6rem";
                   }
 
                   if (labelbox) {
@@ -575,13 +621,13 @@
                 mobileSearchFilter.style.height = "";
 
                 const propertyCard = document.getElementById("krpano-card");
-                console.log("propertyCard", propertyCard);
-                if(propertyCard ){
+                console.log("propertyCard 768", propertyCard);
+                if (propertyCard) {
                   propertyCard.style.width = "225px";
                   propertyCard.style.height = "auto";
-                  
+
                   propertyCard.style.right = "30px";
-                  propertyCard.style.top = "22%";
+                  propertyCard.style.top = "7%";
                 }
 
                 const rowExtra =
@@ -602,8 +648,8 @@
 
                   if (card) {
                     card.style.top = "30px";
-                   // card.style.height = "7rem";
-                    card.style.maxHeight = "6rem";
+                    // card.style.height = "7rem";
+                   // card.style.maxHeight = "6rem";
                   }
 
                   if (labelbox) {
@@ -625,8 +671,8 @@
 
               mobileSearchFilter.style.display = "none";
 
-             // mobileSearchFilter.style.right = "0";
-          
+              // mobileSearchFilter.style.right = "0";
+
               mobileSearchFilter.style.height = "";
 
               const wrappers = document.querySelectorAll(".card-wrapper");
@@ -648,11 +694,21 @@
               });
 
               const propertyCard = document.getElementById("krpano-card");
-                console.log("propertyCard", propertyCard);
-                if(propertyCard ){
+              console.log("propertyCard", propertyCard);
+
+              if (width > 1025) {
+                if (propertyCard) {
+                  console.log("inital load first ");
                   propertyCard.style.right = "90px";
-                  propertyCard.style.top = "14%";
+                  propertyCard.style.top = "12%";
                 }
+              } else {
+                console.log("inital load second");
+                if (propertyCard) {
+                  propertyCard.style.right = "20px";
+                  propertyCard.style.top = "7%";
+                }
+              }
 
               const rowExtra = document.querySelectorAll(".details-row_extra");
               if (rowExtra) {
@@ -789,32 +845,28 @@
             sceneCardWrapper.style.display = "none";
           }
         };
-        
-          
 
-        const getCurrentScene=() =>{
-            const krpano = document.getElementById("krpanoSWFObject");
+        const getCurrentScene = () => {
+          const krpano = document.getElementById("krpanoSWFObject");
 
-            const currentScene = krpano.get("xml.scene");
-           return currentScene
+          const currentScene = krpano.get("xml.scene");
+          return currentScene;
+        };
 
-        }  
-
-        const goBackToZone=() =>{
-           const krpano = document.getElementById("krpanoSWFObject");
+        const goBackToZone = () => {
+          const krpano = document.getElementById("krpanoSWFObject");
           const lastCrumb = breadcrumbTrail[breadcrumbTrail.length - 1];
-        
-
+         
+          console.log("goBacktozone", lastCrumb);
           if (krpano) {
             krpano.call(`loadscene(${lastCrumb.scene}, null, MERGE, BLEND(1))`);
           }
-
-        }
-        const toggleMoreOptions= () =>{
+        };
+        const toggleMoreOptions = () => {
           const moreOptions = document.getElementById("moreOptions");
           moreOptions.style.display =
             moreOptions.style.display === "none" ? "block" : "none";
-        }
+        };
 
         let previouslyVisibleHotspots = [];
 
@@ -907,8 +959,6 @@
                 krpano.set(`hotspot[${hotspotName}].borderalpha`, 0);
 
                 //  krpano.set(`hotspot[${hotspotName}].bordercolor`, "0x000000");
-
-               
               }
             }
 
@@ -1078,13 +1128,16 @@
         let slidersHotspot = [];
 
         let currentAppearingHotpsots = [];
-        function handleHoverIn(id) {
-          blinkIndividualHotspot(id, true);
+        function handleHoverIn(id, ath, atv) {
+      
+          console.log("cords", ath, atv);
+            blinkIndividualHotspot(id, true);
+          flyToHouse(ath, atv);
           // element.classList.add("blinking");
         }
 
         function handleHoverOut(element) {
-          // blinkIndividualHotspot("", false, true);
+          blinkIndividualHotspot("", false, true);
         }
 
         //currentAppearingHotpsots
@@ -1096,14 +1149,14 @@
           //      <h4> ${house.zone ? house.zone : ""}</h4>
 
           //
-         
-          sliderSearchedHouses.forEach((house, index) => {
-          
 
+          sliderSearchedHouses.forEach((house, index) => {
+            console.log("house", house.coordinates);
+           const cords = house ? house?.coordinates[0] : '';
             const cardHTML = `
   <div class="card-wrapper" > <div class="top-label-box"> Price: TBD </div>
         <div class="card_1" 
-         onmouseover="handleHoverIn('${house.id}')" 
+         onmouseover="handleHoverIn('${house.id}', '${cords.ath}', '${cords.atv}')" 
   onmouseout="handleHoverOut(this)"
         
         onclick="showIndividualHouseCard('${house.plot_number}','${house.id}' )">
@@ -1151,22 +1204,21 @@
 
           let wrapper = document.getElementById("scene-card-wrapper");
 
+          //     if (currentScene === "scene_c-zone_1") {
+          //       wrapper = document.createElement("div");
+          //       wrapper.id = "scene-card-wrapper";
+          //       wrapper.innerHTML = `
+          //   <div id="scene-card" onclick="arialView()">
+          //     <div class="scene-card-content">
+          //       <img src="/skin/icons/360_1.png" width="50%" height="50%" class="breadcrumb-icon" />
 
-      //     if (currentScene === "scene_c-zone_1") {
-      //       wrapper = document.createElement("div");
-      //       wrapper.id = "scene-card-wrapper";
-      //       wrapper.innerHTML = `
-      //   <div id="scene-card" onclick="arialView()">
-      //     <div class="scene-card-content">
-      //       <img src="/skin/icons/360_1.png" width="50%" height="50%" class="breadcrumb-icon" />
-          
-      //     </div>
-      //   </div>
-      // `;
+          //     </div>
+          //   </div>
+          // `;
 
-      //       console.log("wrapper", wrapper);
-      //       document.body.appendChild(wrapper);
-      //     }
+          //       console.log("wrapper", wrapper);
+          //       document.body.appendChild(wrapper);
+          //     }
           if (currentScene === "scene_a-initial") {
             if (!wrapper) {
               wrapper = document.createElement("div");
@@ -1174,7 +1226,7 @@
               wrapper.innerHTML = `
         <div id="scene-card" onclick="arialView()">
           <div class="scene-card-content">
-            <img src="/skin/icons/AlMarinaLogo_big.png" width="50%" height="50%" class="breadcrumb-icon" />
+            <img src="skin/icons/AlMarinaLogo_big.png" width="50%" height="50%" class="breadcrumb-icon" />
           
           </div>
         </div>
@@ -1209,7 +1261,7 @@
         };
 
         const updateSearchVisibility = () => {
-        var krpano_obj = document.getElementById("krpanoSWFObject");
+          var krpano_obj = document.getElementById("krpanoSWFObject");
           const zoomLevel = krpano_obj.get("view.fov");
 
           const searchBar = document.getElementById("searchBarContainer");
@@ -1228,8 +1280,7 @@
           const sceneCardWrapper =
             document.getElementById("scene-card-wrapper");
 
-            const topButton360 =
-            document.getElementById("top-button-360");
+          const topButton360 = document.getElementById("top-button-360");
 
           //scene-card-wrapper
 
@@ -1240,11 +1291,10 @@
 
           const width = window.innerWidth;
 
-           if (String(currentScene).includes("_360")) 
-          {
+          if (String(currentScene).includes("_360")) {
             topButton360.style.display = "block";
-          }else{
-          topButton360.style.display = "none";
+          } else {
+            topButton360.style.display = "none";
           }
 
           if (
@@ -1505,10 +1555,12 @@
                         parseInt(house.plot_number) ===
                         parseInt(zone.plot_number)
                     );
+                    console.log("matchedZone", matchedZone);
                     latestArrayZone1.push({
                       ...house,
                       total_area: house?.total_area,
                       id: matchedZone?.id,
+                 coordinates: matchedZone?.coordinates ? matchedZone?.coordinates : [{ath:0, atv:0}],
                     });
                   }
                 );
@@ -1532,10 +1584,13 @@
                         parseInt(house.plot_number) ===
                         parseInt(zone.plot_number)
                     );
+                    console.log("matchedZone", matchedZone);
                     latestArrayZone2.push({
                       ...house,
                       total_area: house?.total_area,
                       id: matchedZone?.id,
+                      
+                   coordinates: matchedZone?.coordinates ? matchedZone?.coordinates : [{ath:0, atv:0}],
                     });
                   }
                 );
@@ -1552,10 +1607,12 @@
                         parseInt(house.plot_number) ===
                         parseInt(zone.plot_number)
                     );
+                    console.log("matchedZone", matchedZone);
                     latestArrayZone3.push({
                       ...house,
                       total_area: house?.total_area,
                       id: matchedZone?.id,
+                       coordinates: matchedZone?.coordinates ? matchedZone?.coordinates : [{ath:0, atv:0}],
                     });
                   }
                 );
@@ -1576,10 +1633,12 @@
                         parseInt(zone.plot_number)
                     );
 
+                    console.log("matchedZone", matchedZone);
                     latestArrayZone5.push({
                       ...house,
                       total_area: house?.total_area,
                       id: matchedZone?.id,
+                     coordinates: matchedZone?.coordinates ? matchedZone?.coordinates : [{ath:0, atv:0}],
                     });
                   }
                 );
@@ -1599,10 +1658,14 @@
                         parseInt(house.plot_number) ===
                         parseInt(zone.plot_number)
                     );
+
+                    console.log("matchedZone", matchedZone);
+
                     latestArrayZone6.push({
                       ...house,
                       total_area: house?.total_area,
                       id: matchedZone?.id,
+                     coordinates: matchedZone?.coordinates ? matchedZone?.coordinates : [{ath:0, atv:0}],
                     });
                   }
                 );
@@ -1620,10 +1683,12 @@
                         parseInt(house.plot_number) ===
                         parseInt(zone.plot_number)
                     );
+                    console.log("matchedZone", matchedZone);
                     latestArrayZone7.push({
                       ...house,
                       total_area: house?.total_area,
                       id: matchedZone?.id,
+                      coordinates: matchedZone?.coordinates ? matchedZone?.coordinates : [{ath:0, atv:0}],
                     });
                   }
                 );
@@ -1641,10 +1706,12 @@
                         parseInt(house.plot_number) ===
                         parseInt(zone.plot_number)
                     );
+                    console.log("matchedZone", matchedZone);
                     latestArrayZone8.push({
                       ...house,
                       total_area: house?.total_area,
                       id: matchedZone?.id,
+                     coordinates: matchedZone?.coordinates ? matchedZone?.coordinates : [{ath:0, atv:0}],
                     });
                   }
                 );
@@ -1663,10 +1730,12 @@
                         parseInt(house.plot_number) ===
                         parseInt(zone.plot_number)
                     );
+                    console.log("matchedZone", matchedZone);
                     latestArrayZone9.push({
                       ...house,
                       total_area: house?.total_area,
                       id: matchedZone?.id,
+                      coordinates: matchedZone?.coordinates ? matchedZone?.coordinates : [{ath:0, atv:0}],
                     });
                   }
                 );
@@ -1897,7 +1966,6 @@
           slider.min = min;
           slider.max = max + 100;
 
-
           // Update labels
           document.getElementById("areaValue").textContent = `${slider.value}`;
           document.getElementById(
@@ -1934,6 +2002,14 @@
           isHide = false
         ) => {
           const krpano = document.getElementById("krpanoSWFObject");
+          console.log(
+            "Blinking hotspot",
+            hotspotName,
+            "isShow:",
+            isShow,
+            "isHide:",
+            isHide
+          );
           // Stop blinking (on close or switching to aerial scene)
           if (
             isHide ||
@@ -1953,6 +2029,10 @@
             }
             return;
           }
+
+          const ath = krpano.get(`hotspot[${currentBlinkingHotspot}].ath`);
+const atv = krpano.get(`hotspot[${currentBlinkingHotspot}].atv`);
+console.log(`Blinking hotspot ATH: ${ath}, ATV: ${atv}`);
 
           if (isShow) {
             if (currentBlinkInterval && currentBlinkingHotspot) {
@@ -2075,12 +2155,12 @@
         }
 
         // Must be inside a click event
-// document.getElementById("fullScreenBtn").addEventListener("click", () => {
-//   const element = document.getElementById("krpanoContainer");
-//   if (element.requestFullscreen) {
-//     element.requestFullscreen();
-//   }
-// });
+        // document.getElementById("fullScreenBtn").addEventListener("click", () => {
+        //   const element = document.getElementById("krpanoContainer");
+        //   if (element.requestFullscreen) {
+        //     element.requestFullscreen();
+        //   }
+        // });
 
         function toggleFullScreen() {
           const elem = document.documentElement;
@@ -2093,13 +2173,14 @@
           ) {
             // Enter fullscreen
             if (elem.requestFullscreen) {
-              element.requestFullscreen()
-           .then(() => {
-               console.log("Fullscreen mode activated")
-           })
-            .catch((error) => {
-            console.error("Fullscreen mode failed:", error)
-             })
+              elem
+                .requestFullscreen()
+                .then(() => {
+                  console.log("Fullscreen mode activated");
+                })
+                .catch((error) => {
+                  console.error("Fullscreen mode failed:", error);
+                });
             } else if (elem.webkitRequestFullscreen) {
               elem.webkitRequestFullscreen(); // Safari
             } else if (elem.msRequestFullscreen) {
@@ -2322,8 +2403,6 @@
             });
           });
 
-     
-
           return houseData;
         };
 
@@ -2531,8 +2610,6 @@
           if (krpano) {
             // Always check if krpano object exists
 
-            
-
             krpano.call(
               `lookto(${numericAth}, ${numericAtv}, ${fov}, smooth(${animationSpeed}));`
             );
@@ -2585,12 +2662,12 @@
             }
 
             console.log("currentScene", currentScene);
-            
- const icon_360 = document.getElementById("zone_5_360_icon");
-              if (icon_360) {
-                icon_360.style.display = "block";
-              } 
-          //  render360Breadcrumbs();
+
+            const icon_360 = document.getElementById("zone_5_360_icon");
+            if (icon_360) {
+              icon_360.style.display = "block";
+            }
+            //  render360Breadcrumbs();
             if (currentScene === "scene_b-al_marina_aerial") {
               const alreadyExists = breadcrumbTrail.some(
                 (crumb) => crumb.scene === "scene_b-al_marina_aerial"
@@ -2637,12 +2714,12 @@
               }
             } else if (currentScene === "scene_e-zone_3") {
               const zone3AlreadyExists = breadcrumbTrail.some(
-                (crumb) => crumb.scene === "scene_zone_3"
+                (crumb) => crumb.scene === "scene_e-zone_3"
               );
               if (!zone3AlreadyExists) {
                 dynamicZoneRendering(zone3houseData, response, krpano);
                 breadcrumbTrail.push({
-                  scene: "scene_zone_3",
+                  scene: "scene_e-zone_3",
                   title: "Zone 3",
                   icon: "grain",
                 });
@@ -2698,10 +2775,8 @@
                 (crumb) => crumb.scene === "scene_h-building_1"
               );
 
-             
               if (!building1AlreadyExists) {
                 console.log("building1houseData", building1houseData);
-
 
                 dynamicZoneRendering(building1houseData, response, krpano);
                 breadcrumbTrail.push({
@@ -2895,8 +2970,22 @@
    </div>
 </div>
 `;
-
           document.body.appendChild(cardContainer);
+          const width = window.innerWidth;
+          const propertyCard = document.getElementById("krpano-card");
+
+          if (width > 1025) {
+            if (propertyCard) {
+              console.log("inital load first ");
+              propertyCard.style.right = "90px";
+              propertyCard.style.top = "12%";
+            }
+          } else {
+            if (propertyCard) {
+              propertyCard.style.right = "5%";
+              propertyCard.style.top = "8%";
+            }
+          }
         }
 
         const closeCard = () => {
@@ -3080,6 +3169,7 @@
 
         function checkSceneAndToggle() {
           const krpano = document.getElementById("krpanoSWFObject");
+         
           // Assuming krpano is available globally
           const currentScene = krpano.get("xml.scene");
 
@@ -3109,7 +3199,7 @@
             // fullScreenBtn.style.display = "none";
             // toggleButton.style.display = "none";
           } else {
-            fullScreenBtn.style.display = "block";
+            //fullScreenBtn.style.display = "block";
             toggleButton.style.display = "block";
             //
           }
@@ -3148,16 +3238,19 @@
             });
         };
 
-
         const flyToInitialScene = () => {
           console.log("flyToInitialScene called");
           const krpano = document.getElementById("krpanoSWFObject");
+          const currentScene = krpano.get("xml.scene");
+
           if (krpano) {
-             krpano.call("looktohotspot('hs_ApartEnt(1)')");
+            krpano.call("looktohotspot('hs_ApartEnt(1)')");
           } else {
             console.error("Krpano instance not found or not ready.");
           }
         };
+
+        function handleOrientation() {}
 
         window.onload = () => {
           console.log("window on load");
@@ -3165,20 +3258,18 @@
 
           krpano_obj.call("loadscene(scene_a-initial, null, MERGE);");
           if (krpano_obj) {
-            console.log("Krpano Initialized " );
+            console.log("Krpano Initialized ");
 
             const animationSpeed = 0.1;
 
-         
+            //  krpano_obj.call(
+            //               `lookto(${-0.3510618}, ${-0.0299007}, 90, smooth(${animationSpeed}));`
+            //             );
+            // Get and log the current zoom level (FOV)
 
-//  krpano_obj.call(
-//               `lookto(${-0.3510618}, ${-0.0299007}, 90, smooth(${animationSpeed}));`
-//             );
-              // Get and log the current zoom level (FOV)
+            // krpano_obj.call("set(fov_moveforce,-1);");
 
-              // krpano_obj.call("set(fov_moveforce,-1);");
-  
-              // krpano_obj.call("lookat(25, -5, 1);");
+            // krpano_obj.call("lookat(25, -5, 1);");
           }
 
           // Preload one scene from drone/future to make sure they're active

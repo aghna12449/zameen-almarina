@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE krpano [
 	<!ENTITY nbsp " ">
 ]>
+
 <krpano version="1.20.11" title="Virtual Tour" debugmode="true" showerrors="false" logkey="false"
 	info="false">
 
@@ -181,10 +182,14 @@
 
 <hotspot name="hs_Marina_Arial" style="mypolygonalhotspotstylename" 
 fillcolor="0xa65c43" fillalpha="0.7" bordercolor="0xa65c43" borderwidth="2"
-  onclick="loadscene(scene_b-AL_MARINA_aerial, null, MERGE,BLEND(1) )" 
+myscale="0.5"
+ onclick="looktohotspot(hs_zone_1_360(1), 60, linear); tween(view.fov, 30, 1.5); loadscene(scene_b-AL_MARINA_aerial, null, MERGE, BLEND(1));" 
+
+
+
  
 >
-
+<zoom value="10.0"/>
 
   <point ath="0.044542646177546885" atv="0.04163499797233991" />
     <point ath="0.07994510323430859" atv="0.04142300190474365" />
@@ -467,54 +472,41 @@ ath = "-0.0424337 " atv = "0.0877063"
  <hotspot name="hotspot1" style="mypolygonalhotspotstylename" onclick="loadscene(scene_i-building_2, null, MERGE,BLEND(1) )" fillcolor="0xE87281" fillalpha="0.2" bordercolor="0xE87281" borderwidth="2" > <point ath="0.12452247119892945" atv="-0.07169472275133788" /> <point ath="0.1129257731403186" atv="-0.07132850502992298" /> <point ath="0.11146093456966355" atv="-0.06253943463936061" /> <point ath="0.11097265696514569" atv="-0.057534548051269715" /> <point ath="0.11182715284002143" atv="-0.05423864800797169" /> <point ath="0.12256935407708625" atv="-0.051553104137936505" /> <point ath="0.1408799241787051" atv="-0.04593786968154195" /> <point ath="0.14783793983332316" atv="-0.04386267317508526" /> <point ath="0.16150982906901845" atv="-0.04313024904169079" /> <point ath="0.1816514516365828" atv="-0.0472806339773953" /> <point ath="0.20045029013550675" atv="-0.04776890264431605" /> <point ath="0.21302353266656837" atv="-0.047890961523659493" /> <point ath="0.22376571362963205" atv="-0.04715852827664115" /> <point ath="0.260020533052284" atv="-0.04715847744790036" /> <point ath="0.2806939457940416" atv="-0.047466250779412175" /> <point ath="0.30124126586338207" atv="-0.0469055803974011" /> <point ath="0.34628781502374295" atv="-0.046308652649938685" /> <point ath="0.37394802211468914" atv="-0.04574344788560828" /> <point ath="0.3827014124370862" atv="-0.04728814519319711" /> <point ath="0.3881079183084921" atv="-0.049090305928133945" /> <point ath="0.3972905625741987" atv="-0.05562318718457621" /> <point ath="0.40008604840818407" atv="-0.05925730922209535" /> <point ath="0.40064515718756866" atv="-0.06177324562844497" /> <point ath="0.400645171807696" atv="-0.06400963591367459" /> <point ath="0.40008609034941855" atv="-0.06568693153204917" /> <point ath="0.399527008794621" atv="-0.06736422732121104" /> <point ath="0.3950542939006141" atv="-0.07155748443015175" /> <point ath="0.3389906565300862" atv="-0.07033605110249276" /> <point ath="0.2795409453316893" atv="-0.06986255609449578" /> <point ath="0.2058797620256314" atv="-0.070573269640381" /> <point ath="0.14240306950125614" atv="-0.0710470168230678" /> </hotspot>
  
 
- <hotspot name="hs_ApartEnt(222.1)" 
+ <hotspot name="hs_Zone_5_label(5_label)" 
  callout_bg_border="0,0,0,0" width="auto" 
  shape="circle"
- ath="0.251347" atv=" -0.0721732"
+	ath="0.2547321" atv="-0.0618707"
  line_lenght="150"
   size="20"  
-  css_title="color:#fff;font-size:30px;font-family: Gilroy;"
-   rotate="45" animation="keep_opened" 
+  css_title="color:#fff;font-size:25px;font-family: Arial;"
+   rotate="40" animation="keep_opened" 
 style="callout" title="Zone 5" 
+
+
+	zorder="5"
 	circle_active_width="0.1" text_x=""></hotspot>
  
- <!-- <hotspot name="hs_zone5_360(1)"
-        
-		callout_bg_border="0,0,0,0"
-		 callout_border_color="0xa65c43"
-         width="auto"
-         line_lenght="0"
-		ath="0.310347" atv=" -0.081732"
-         rotate="50"
-         animation="keep_opened"
-		 onclick="loadscene(scene_1_360, null, MERGE,BLEND(1) )"
-        
-         style="callout"
-                          
-		 content="&lt;img src=&quot;skin/icons/360_1.png&quot; style=&quot;width:70px; height:90px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
-                                
-		 url="skin/icons/360_1.png" circle_active_width="0.1"
-        >
 
-
-
-</hotspot> -->
 
  <hotspot name="hs_zone5_360(1)"
-        
+       
 		callout_bg_border="0,0,0,0"
 		 callout_border_color="0xa65c43"
          width="auto"
          shape="circle"   
-		  line_lenght="50"            
-		 	ath="0.251347" atv="-0.0721732"
-         rotate="45"
+		  line_lenght="-20"            
+		 	ath="0.2547321" atv="-0.0618707"
+         rotate="-45"
          animation="keep_opened"
-		 onclick="loadscene(scene_1_360, null, MERGE,BLEND(1) )"
+		 onclick="loadscene(scene_5_360, null, MERGE,BLEND(1) )"
         text_background="" 
          style="callout"
-         title=""                      content="&lt;img src=&quot;skin/icons/360_1.png&quot; style=&quot;width:80px; height:100px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
-                                       url="skin/icons/360_1.png" circle_active_width="0.1"
+         title=""    
+		 zorder="1"
+		 
+		 content="&lt;img src=&quot;skin/icons/360_1.png&quot; style=&quot;width:80px; height:100px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+                                       url="skin/icons/360_1.png" 
+									   circle_active_width="0"
          text_x="">
 
 
@@ -524,65 +516,104 @@ style="callout" title="Zone 5"
 
  
  
- <!-- hotspot for b-AL MARINA aerial building 1 -->
+ <!-- hotspot for b-AL MARINA aerial building 1 as Zone 6 in requirement -->
   <hotspot name="hotspot2" style="mypolygonalhotspotstylename" onclick="loadscene(scene_h-building_1, null, MERGE,BLEND(1) )" fillcolor="0xE87281" fillalpha="0.2" bordercolor="0xE87281" borderwidth="2"  > <point ath="0.15185454916775143" atv="-0.003967288292099774" /> <point ath="0.14892485993232185" atv="0.00006103540461577055" /> <point ath="0.14416411433154508" atv="0.003967289013780911" /> <point ath="0.1362295373371012" atv="0.007873543026805674" /> <point ath="0.13281156543700945" atv="0.008728036176198318" /> <point ath="0.12426663529601001" atv="0.009338388528109028" /> <point ath="0.11816311364759713" atv="0.008972177220512833" /> <point ath="0.10864162010477685" atv="0.00775147268181015" /> <point ath="0.10412501442419853" atv="0.007141120368202931" /> <point ath="0.09594629656118059" atv="0.007263190418491813" /> <point ath="0.09313867718208257" atv="0.007751471942270292" /> <point ath="0.0861806645247043" atv="0.008850105152544254" /> <point ath="0.08105370851069438" atv="0.009094245448431335" /> <point ath="0.06371971965603507" atv="0.009216313485108355" /> <point ath="0.05529686960187519" atv="0.008728030603836721" /> <point ath="0.045287109819867055" atv="0.00665283311192271" /> <point ath="0.04089258255760342" atv="0.005920410515442166" /> <point ath="0.03600977559892726" atv="0.005187987976790632" /> <point ath="0.030028338752345007" atv="0.004455565451968127" /> <point ath="0.02600002529379708" atv="0.0038452136035585704" /> <point ath="0.02184964275420498" atv="0.0031127916151666305" /> <point ath="0.020995152321916066" atv="0.003112791534409921" /> <point ath="0.01953031168460484" atv="0.003112791394359107" /> <point ath="0.018553751268200358" atv="0.003356931780285306" /> <point ath="0.01782133058401314" atv="0.005065915031721687" /> <point ath="0.017821330091805976" atv="0.006896968604769523" /> <point ath="0.015501998944841944" atv="0.009216302454991844" /> <point ath="0.011229548123992572" atv="0.011901845830439049" /> <point ath="0.008421937514640376" atv="0.01605223148322413" /> <point ath="0.007079166894527589" atv="0.019714336492343613" /> <point ath="0.007445376036173457" atv="0.022155740560370115" /> <point ath="0.009764704306519434" atv="0.02593991843843814" /> <point ath="0.013182663384270654" atv="0.028381325545824468" /> <point ath="0.01855374406784449" atv="0.030334454034232353" /> <point ath="0.028075210237318515" atv="0.031921375976790727" /> <point ath="0.0710439349974763" atv="0.041442893980184844" /> <point ath="0.09655664615308979" atv="0.045715369286242605" /> <point ath="0.1196279587029494" atv="0.04534916230559514" /> <point ath="0.1428213419589497" atv="0.04229739951788559" /> <point ath="0.15539459428941882" atv="0.03887942443314448" /> <point ath="0.1700430388811469" atv="0.03338625084052262" /> <point ath="0.1862783898400835" atv="0.02484131749283121" /> <point ath="0.19482330673645265" atv="0.01861572621801823" /> <point ath="0.2006826764408629" atv="0.015075684496119807" /> <point ath="0.20641997456232275" atv="0.013122557520012224" /> <point ath="0.21581937417766994" atv="0.010681148747920916" /> <point ath="0.22509681794377912" atv="0.009216318518251155" /> <point ath="0.23217690319341955" atv="0.008728036573156107" /> <point ath="0.2369376499509599" atv="0.008850106807562902" /> <point ath="0.24560464976195817" atv="0.009216317562419701" /> <point ath="0.27381907057542776" atv="0.01313408574400214" /> <point ath="0.2879792368358949" atv="0.014965143841212433" /> <point ath="0.3095857027593638" atv="0.016552060831964626" /> <point ath="0.35898964399302713" atv="0.017616101919917686" /> <point ath="0.3830868556538576" atv="0.021789464775265926" /> <point ath="0.39785738018542816" atv="0.02349844985512808" /> <point ath="0.4043271174840015" atv="0.042053153997695186" /> <point ath="0.41726659463222404" atv="0.07305902648612055" /> <point ath="0.4195859340928223" atv="0.07525629063788261" /> <point ath="0.42044042736347365" atv="0.07550043053241356" /> <point ath="0.42337011842801076" atv="0.07623284971140021" /> <point ath="0.43447852762403727" atv="0.07708732936209785" /> <point ath="0.4606015814541706" atv="0.07696521801362234" /> <point ath="0.46560646214447843" atv="0.07696520832368331" /> <point ath="0.46731544482292975" atv="0.07611071334286937" /> <point ath="0.46841407590954987" atv="0.07489000892187496" /> <point ath="0.46926856647286286" atv="0.07366930499131145" /> <point ath="0.46926856492541447" atv="0.07171618394358326" /> <point ath="0.46926856373141845" atv="0.07025134116310121" /> <point ath="0.4686582108722632" atv="0.06805407801370462" /> <point ath="0.45620702590292694" atv="0.040710349829665614" /> <point ath="0.44973729206185453" atv="0.026428124691776817" /> <point ath="0.4447324020167116" atv="0.01275624719838695" /> <point ath="0.4367978235215446" atv="-0.0037232490020291087" /> <point ath="0.43557712006327165" atv="-0.004455671120231053" /> <point ath="0.43472262769535064" atv="-0.004821882205134589" /> <point ath="0.433623994734603" atv="-0.005066022975539949" /> <point ath="0.43118258805930054" atv="-0.005554304553655741" /> <point ath="0.4294736034981952" atv="-0.0054322343493203714" /> <point ath="0.42837497069797337" atv="-0.004943953032802032" /> <point ath="0.4269101267730093" atv="-0.004577742072319253" /> <point ath="0.4244687195337633" atv="-0.00531016437668056" /> <point ath="0.4176327782768112" atv="-0.008361923915710091" /> <point ath="0.40542572980541536" atv="-0.011657833717301452" /> <point ath="0.39724701132303153" atv="-0.01361096142537229" /> <point ath="0.3857723899173493" atv="-0.015686159643410347" /> <point ath="0.3631893569773865" atv="-0.018371709033583688" /> <point ath="0.3529354402313629" atv="-0.019470341821161658" /> <point ath="0.332793823122131" atv="-0.02044690097626354" /> <point ath="0.31436120106923227" atv="-0.02142346756903028" /> <point ath="0.2983699724068174" atv="-0.022522102855618252" /> <point ath="0.27883869974078834" atv="-0.023864876974680573" /> <point ath="0.26687579644823245" atv="-0.02496350900840238" /> <point ath="0.2513728537634279" atv="-0.026306279407820224" /> <point ath="0.23171952596067058" atv="-0.027649045237831585" /> <point ath="0.22122143860121923" atv="-0.028137344719040787" /> <point ath="0.20278879986938136" atv="-0.02911390617793373" /> <point ath="0.19461008049449902" atv="-0.029602185993611408" /> <point ath="0.19326730579638252" atv="-0.029602185618923093" /> <point ath="0.1842340958664863" atv="-0.027649056035095203" /> <point ath="0.17825264747420988" atv="-0.025940068164234234" /> <point ath="0.17129463780776177" atv="-0.023498657575075594" /> <point ath="0.16885323140149922" atv="-0.022522093528434133" /> <point ath="0.16311592787371865" atv="-0.019226191155467212" /> <point ath="0.15737862700723326" atv="-0.014099234057939572" /> <point ath="0.1550592946431948" atv="-0.00958263063834935" /> </hotspot>
 
-  <!-- <hotspot name="hs_zone_6_6_360(6_360)"
-    
-    	width="591"      
-		height="185rem"              
-		ath="0.1411347" atv="-0.0185928"
-        
+    	
+ <hotspot
+  name="hs_Zone_6_label(6__label)" 
+ callout_bg_border="0,0,0,0" width="auto" 
+ shape="circle"
+	ath="0.4213573" atv="-0.0033854"
+ line_lenght="150"
+  size="20"  
+  css_title="color:#fff;font-size:25px;font-family: Arial;"
+ rotate="15"
+animation="keep_opened" 
+style="callout"
+ title="Zone 6" 
+
+
+	zorder="5"
+	circle_active_width="0.1" 
+	text_x="">
+</hotspot>
+ 
+
+
+ <hotspot 
+     name="hs_zone_6_360(6_360)"
+       
+		callout_bg_border="0,0,0,0"
+		 callout_border_color="0xa65c43"
+         width="auto"
+         shape="circle"   
+		  line_lenght="-20"            
+			ath="0.4213573" atv="-0.0033854"
+         rotate="-45"
          animation="keep_opened"
 		 onclick="loadscene(scene_6_360, null, MERGE,BLEND(1) )"
-      
-     
-                           
-		  content="&lt;img src=&quot;skin/icons/ZONE_06.png&quot; style=&quot; width=60px  ;display:block;&quot; /&gt;"
-                                      
-		 url="skin/icons/ZONE_06.png"
+        text_background="" 
+         style="callout"
+         title=""    
+		 zorder="1"
 		 
-		 
-		
+		 content="&lt;img src=&quot;skin/icons/360_1.png&quot; style=&quot;width:80px; height:100px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+                                       
+		 url="skin/icons/360_1.png" 
+									  
+		 circle_active_width="0"
          text_x="">
-	</hotspot> -->
+
+</hotspot>
+
+
  <!-- hotspot for b-AL MARINA aerial zone 1 -->
   <hotspot name="hotspot3" style="mypolygonalhotspotstylename" onclick="loadscene(scene_c-ZONE_1, null, MERGE,BLEND(1) )" fillcolor="0xF6DA92" fillalpha="0.2" bordercolor="0xF6DA92" borderwidth="2" > <point ath="-0.40694793897483805" atv="-0.06531559363226323" /> <point ath="-0.41988740043058215" atv="-0.06519350985122692" /> <point ath="-0.42208466679119283" atv="-0.06494936658909621" /> <point ath="-0.4233053701855738" atv="-0.06470522445540004" /> <point ath="-0.4244040031745726" atv="-0.06446108245400844" /> <point ath="-0.42635712764285927" atv="-0.0627520955124353" /> <point ath="-0.4551656534410995" atv="0.003532103368670326" /> <point ath="-0.4554097929280374" atv="0.004386595031176589" /> <point ath="-0.45565393230816653" atv="0.005363156903926843" /> <point ath="-0.4556539316099588" atv="0.006217648553451147" /> <point ath="-0.455653930512824" atv="0.007560421114311476" /> <point ath="-0.455653930512824" atv="0.007560421114311476" /> <point ath="-0.455653930512824" atv="0.007560421114311476" /> <point ath="-0.4556539304130638" atv="0.0076824913451809425" /> <point ath="-0.45553186002916846" atv="0.0080487020640794" /> <point ath="-0.45553185992952194" atv="0.008170772294060942" /> <point ath="-0.4554097893466178" atv="0.008781123469758902" /> <point ath="-0.45504357855924127" atv="0.009147331696958154" /> <point ath="-0.45511240854591506" atv="0.009391475323771993" /> <point ath="-0.4525489339483215" atv="0.012443231753539376" /> <point ath="-0.4525489339483215" atv="0.012443231753539376" /> <point ath="-0.45218272323131714" atv="0.012931512783965928" /> <point ath="-0.45145030216644955" atv="0.01341979395287711" /> <point ath="-0.45071788117303413" atv="0.013786004905802115" /> <point ath="-0.45071788117303413" atv="0.013786004905802115" /> <point ath="-0.4402198466114555" atv="0.015739132729505518" /> <point ath="-0.42386243572832427" atv="0.01622741945744468" /> <point ath="-0.4027442725689525" atv="0.01354187738615274" /> <point ath="-0.38199230843861187" atv="0.010612191081172551" /> <point ath="-0.36185068996400105" atv="0.006217657666381194" /> <point ath="-0.34695809787717735" atv="0.002067263906220656" /> <point ath="-0.3268164791957133" atv="-0.0035479744147809823" /> <point ath="-0.31509772237109246" atv="-0.005745240770216466" /> <point ath="-0.2755469194999023" atv="-0.011360468287851234" /> <point ath="-0.2690772018718235" atv="-0.011848747350788174" /> <point ath="-0.265659238881085" atv="-0.011970816438802928" /> <point ath="-0.2621192061841384" atv="-0.01245909614734719" /> <point ath="-0.2617529957771012" atv="-0.012703236494428565" /> <point ath="-0.26175303451026366" atv="-0.012703237033070079" /> <point ath="-0.2616309643411796" atv="-0.012825307233666998" /> <point ath="-0.2616309638057146" atv="-0.013435658476204876" /> <point ath="-0.2615088932076901" atv="-0.014046009669624417" /> <point ath="-0.2611426824876162" atv="-0.014656360751683315" /> <point ath="-0.26004404850414176" atv="-0.018562608126512944" /> <point ath="-0.24844735502824733" atv="-0.06140923928901447" /> <point ath="-0.24844735442252386" atv="-0.0620195901100638" /> <point ath="-0.24856942382700709" atv="-0.06262994118834862" /> <point ath="-0.24869149311291494" atv="-0.06336236242503693" /> <point ath="-0.24881356215996675" atv="-0.06433892397500765" /> <point ath="-0.2495459813059142" atv="-0.06531548688412181" /> <point ath="-0.2502784010970345" atv="-0.06568169900682827" /> <point ath="-0.25259773134871466" atv="-0.06616998482919682" /> <point ath="-0.2745703543540685" atv="-0.06702452025684334" /> <point ath="-0.33975593209595445" atv="-0.06543767854011368" /> <point ath="-0.37710950168070667" atv="-0.06494939979084137" /> </hotspot>
  
-<!-- <hotspot 
 
-	name="hs_zone1_360(1.360)"           
-	ath="-0.3607053" atv="-0.0227243"
-    callout_bg_border="0,0,0,0"
-	line_lenght="120" 	
-	rotate="0" 
-	style="callout"
-	 width="auto"
+   
 
-	 animation="keep_opened"
-	
-         >
-	</hotspot> -->
+ <hotspot name="hs_Zone_1_label(1_label)" 
+ callout_bg_border="0,0,0,0" width="auto" 
+ shape="circle"
+	ath="-0.3418203" atv="-0.06168"
+ line_lenght="150"
+  size="20"  
+  css_title="color:#fff;font-size:25px;font-family: Arial;"
+   rotate="-45" animation="keep_opened" 
+style="callout" title="Zone 1" 
 
-	  <!-- <hotspot name="hs_zone1_1_360(1_360)"
-    
-    	width="591"      
-		height="185rem"              
-		ath="-0.3612955" atv="-0.0935533"
-        
+
+	zorder="5"
+	circle_active_width="0.1" text_x=""></hotspot>
+ 
+
+
+ <hotspot name="hs_zone_1_360(1)"
+       
+		callout_bg_border="0,0,0,0"
+		 callout_border_color="0xa65c43"
+         width="auto"
+         shape="circle"   
+		  line_lenght="-20"            
+		 		ath="-0.3418203" atv="-0.06168"
+         rotate="45"
          animation="keep_opened"
 		 onclick="loadscene(scene_1_360, null, MERGE,BLEND(1) )"
-      
-     
-                           
-		  content="&lt;img src=&quot;skin/icons/ZONE_01.png&quot; style=&quot; width=60px  ;display:block;&quot; /&gt;"
-                                      
-		 url="skin/icons/ZONE_01.png"
+        text_background="" 
+         style="callout"
+         title=""    
+		 zorder="1"
 		 
-		 
-		
+		 content="&lt;img src=&quot;skin/icons/360_1.png&quot; style=&quot;width:80px; height:100px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+                                       url="skin/icons/360_1.png" 
+									   circle_active_width="0"
          text_x="">
-	</hotspot> -->
+
+
+
+</hotspot>
 
 	
  
@@ -590,144 +621,299 @@ style="callout" title="Zone 5"
 
    <hotspot name="hotspot4" style="mypolygonalhotspotstylename"  onclick="loadscene(scene_d-ZONE_2, null, MERGE,BLEND(1) )" fillcolor="0xF6DA92" fillalpha="0.2" bordercolor="0xF6DA92" borderwidth="2"  > <point ath="-0.22753823579569143" atv="-0.06439210975211128" /> <point ath="-0.23779214218382094" atv="-0.06427002501619755" /> <point ath="-0.23974526668871476" atv="-0.06427002203820122" /> <point ath="-0.24108803967976655" atv="-0.06427001994750682" /> <point ath="-0.2416983910103454" atv="-0.064270018985522" /> <point ath="-0.24206460169114052" atv="-0.06414794811779902" /> <point ath="-0.24279702259121905" atv="-0.06341552523657135" /> <point ath="-0.24365151159770448" atv="-0.06036376670674017" /> <point ath="-0.25598055708087486" atv="-0.016784661990228787" /> <point ath="-0.25634676573707793" atv="-0.015197748499645185" /> <point ath="-0.25683504434164206" atv="-0.01348876477644342" /> <point ath="-0.2568350438745597" atv="-0.013244623459689974" /> <point ath="-0.2567129731341993" atv="-0.012634272264973" /> <point ath="-0.2537832897025396" atv="-0.011779781527225664" /> <point ath="-0.23242100725030923" atv="-0.011413576864583937" /> <point ath="-0.22241124460151696" atv="-0.01080322745261164" /> <point ath="-0.20727452327093943" atv="-0.009094244909760785" /> <point ath="-0.19360264035037744" atv="-0.006286627458168737" /> <point ath="-0.18102938838461569" atv="-0.004089360967387509" /> <point ath="-0.16430574062599135" atv="0.001037595347118922" /> <point ath="-0.14684967179613295" atv="0.006530762242758579" /> <point ath="-0.14404205261644165" atv="0.007019043618026651" /> <point ath="-0.14379792202134922" atv="0.007019039809261705" /> <point ath="-0.14269928849080316" atv="0.007019039767540431" /> <point ath="-0.1411123734418993" atv="0.007141110057031747" /> <point ath="-0.13781647291142463" atv="0.006774898846373334" /> <point ath="-0.13659576898038495" atv="0.006408687729955302" /> <point ath="-0.1359854170361814" atv="0.006286617348138449" /> <point ath="-0.13513092402212123" atv="0.0050659137699475614" /> <point ath="-0.13110259898775212" atv="-0.0027465896083492996" /> <point ath="-0.1284170490336578" atv="-0.007141123042729143" /> <point ath="-0.12634185134612608" atv="-0.010314952791874034" /> <point ath="-0.12133696188516296" atv="-0.019592301459739565" /> <point ath="-0.11865141011537617" atv="-0.027038594682002665" /> <point ath="-0.11755277393933738" atv="-0.032775902833093444" /> <point ath="-0.11657620721223338" atv="-0.04022219645234429" /> <point ath="-0.11450099753608356" atv="-0.05548099213741257" /> <point ath="-0.11389064283935113" atv="-0.06073001757373496" /> <point ath="-0.1140127128057884" atv="-0.06158451023615159" /> <point ath="-0.11401271261780721" atv="-0.06195072132803207" /> <point ath="-0.11401271242982602" atv="-0.06231693241777318" /> <point ath="-0.11450099375304035" atv="-0.06292728466791142" /> <point ath="-0.11498927521222413" atv="-0.06329349619104953" /> <point ath="-0.11572169745107885" atv="-0.06378177829091591" /> <point ath="-0.15234283556941364" atv="-0.06414800877079849" /> <point ath="-0.20971595537810117" atv="-0.06427005682006227" /> </hotspot>
  
-    <!-- <hotspot name="hs_zone2_360(2_360)"
-               
-	ath="-0.1928921" atv="-0.0405453"
-    callout_bg_border="0,0,0,0"
-	line_lenght="120" 	
-	rotate="0" 
-	style="callout"
-         >
-	</hotspot> -->
+  
+ <hotspot name="hs_Zone_2_label(2_label)" 
+ callout_bg_border="0,0,0,0" width="auto" 
+ shape="circle"
+	ath="-0.1848999"
+	 atv="-0.0632825"
+ line_lenght="150"
+  size="20"  
+  css_title="color:#fff;font-size:25px;font-family: Arial;"
+   rotate="-40" animation="keep_opened" 
+style="callout" title="Zone 2" 
 
 
-
-
-  <!-- <hotspot name="hs_Zone_2_2_360"
-    
-    	width="591"      
-		height="185rem"              
-		 ath="-0.1930763" 	atv="-0.1124417"
-        
-         animation="keep_opened"
-		 onclick="loadscene(scene_1_360, null, MERGE,BLEND(1) )"
-                           
-		  content="&lt;img src=&quot;skin/icons/ZONE_02.png&quot; style=&quot; width=60px  ;display:block;&quot; /&gt;"
+	zorder="5"
+	circle_active_width="0.1" text_x=""></hotspot>
  
-		 url="skin/icons/ZONE_02.png"
-         text_x="">
-	</hotspot>
-  -->
 
-	<!-- <image  	ath="-0.1924861" atv="-0.1118515" >
-			<flat url="skin/icons/ZONE_2.png" multires="512,1024x578,2048x1152,4096x2304" />
-		</image> -->
+
+ <hotspot name="hs_zone_2_360(1)"
+       
+		callout_bg_border="0,0,0,0"
+		 callout_border_color="0xa65c43"
+         width="auto"
+         shape="circle"   
+		  line_lenght="-20"            
+		ath="-0.1848999" atv="-0.0632825"
+         rotate="45"
+         animation="keep_opened"
+		 onclick="loadscene(scene_2_360, null, MERGE,BLEND(1) )"
+        text_background="" 
+         style="callout"
+         title=""    
+		 zorder="1"
+		 
+		 content="&lt;img src=&quot;skin/icons/360_1.png&quot; style=&quot;width:80px; height:100px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+                                       url="skin/icons/360_1.png" 
+									   circle_active_width="0"
+         text_x="">
+
+
+
+</hotspot>
+
+
    <!-- hotspot for b-AL MARINA aerial zone 3 -->
 	<hotspot name="hotspot5" style="mypolygonalhotspotstylename" onclick="loadscene(scene_e-ZONE_3, null, MERGE,BLEND(1) )" fillcolor="0xEAA3AC" fillalpha="0.2" bordercolor="0xEAA3AC" borderwidth="2" > <point ath="-0.08232979033687116" atv="-0.06432355865474722" /> <point ath="-0.09933042675066872" atv="-0.0644676144055205" /> <point ath="-0.10278818209781093" atv="-0.0644676101792479" /> <point ath="-0.10451705956126034" atv="-0.06432353491637413" /> <point ath="-0.10509335203460068" atv="-0.06432353417127126" /> <point ath="-0.10581371760747516" atv="-0.06432353323074158" /> <point ath="-0.10725444845843413" atv="-0.06345909298376388" /> <point ath="-0.10797481369235129" atv="-0.06245058062057649" /> <point ath="-0.10984775886390707" atv="-0.04429736890188264" /> <point ath="-0.11157663199543322" atv="-0.03118671247635961" /> <point ath="-0.12022100677631897" atv="-0.009143518234601076" /> <point ath="-0.12641614027569403" atv="0.002526404348805155" /> <point ath="-0.1274246500463505" atv="0.004687500615786056" /> <point ath="-0.12785686821848685" atv="0.0064163775734721925" /> <point ath="-0.12583984786215296" atv="0.008433401184159238" /> <point ath="-0.11042403757670627" atv="0.008721550600957853" /> <point ath="-0.10163558051294785" atv="0.007713039995767467" /> <point ath="-0.09198268168563573" atv="0.006128236172376994" /> <point ath="-0.07901609637269758" atv="0.0038230657180905758" /> <point ath="-0.06734616582355102" atv="0.001950114005961531" /> <point ath="-0.058845844390589264" atv="0.0006534548284928689" /> <point ath="-0.04789627640218441" atv="-0.00006691145817270415" /> <point ath="-0.02196308777183731" atv="-0.00021098471555358928" /> <point ath="-0.0028013468181598" atv="0.0005093815013476217" /> <point ath="0.0013767763245482456" atv="-0.00006691144240128761" /> <point ath="0.004978606454301371" atv="-0.001507643681100387" /> <point ath="0.008148216985944146" atv="-0.0042450347918033884" /> <point ath="0.011029682622506698" atv="-0.01548274555410668" /> <point ath="0.012614488987594541" atv="-0.022974552225752367" /> <point ath="0.014343369132120642" atv="-0.033347821978838295" /> <point ath="0.015928177327793946" atv="-0.04919586984519355" /> <point ath="0.016216325929690356" atv="-0.05971320806874487" /> <point ath="0.01636039956940749" atv="-0.06187430449463226" /> <point ath="0.015928180199466624" atv="-0.06259467044164084" /> <point ath="0.015495960698274303" atv="-0.06273874399101168" /> <point ath="0.014919668039908629" atv="-0.06302689078602676" /> <point ath="0.014343375339308295" atv="-0.06317096447861702" /> <point ath="0.003970104500240268" atv="-0.06345912032516031" /> <point ath="-0.05639660343433661" atv="-0.06432357411466032" /> </hotspot>
-<!-- 	
-	 <hotspot name="hs_zone3_360(3_360)"
-               
-	ath="-0.0466954" atv="-0.043383"
-    callout_bg_border="0,0,0,0"
-	line_lenght="120" 	
-	rotate="0" 
-	style="callout"
-         >
-	</hotspot>
 
- -->
+	
+ <hotspot name="hs_Zone_3_label(3_label)" 
+ callout_bg_border="0,0,0,0" width="auto" 
+ shape="circle"
+	ath="-0.0510429" atv="-0.0632828"
+ line_lenght="120"
+  size="20"  
+  css_title="color:#fff;font-size:25px;font-family: Arial;"
+   rotate="-40" animation="keep_opened" 
+style="callout" title="Zone 3" 
+
+
+	zorder="5"
+	circle_active_width="0.1" text_x=""></hotspot>
+ 
+
+
+ <hotspot name="hs_zone_3_360(1)"
+       
+		callout_bg_border="0,0,0,0"
+		 callout_border_color="0xa65c43"
+         width="auto"
+         shape="circle"   
+		  line_lenght="-20"            
+		ath="-0.0510429" atv="-0.0632828"
+         rotate="45"
+         animation="keep_opened"
+		 onclick="loadscene(scene_3_360, null, MERGE,BLEND(1) )"
+        text_background="" 
+         style="callout"
+         title=""    
+		 zorder="1"
+		 
+		 content="&lt;img src=&quot;skin/icons/360_1.png&quot; style=&quot;width:80px; height:100px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+                                       url="skin/icons/360_1.png" 
+									   circle_active_width="0"
+         text_x="">
+
+
+
+</hotspot>
+
 
 
   
 	
-	<!-- hotspot for b-AL MARINA aerial zone 4 == zone 7 in requirement -->
+	<!-- hotspot for b-AL MARINA aerial zone 4 == zone 7 in requirement DOCUMENT -->
 	 <hotspot name="hotspot6" style="mypolygonalhotspotstylename" onclick="loadscene(scene_f-ZONE_4, null, MERGE,BLEND(1) )" fillcolor="0xF6DA92" fillalpha="0.2" bordercolor="0xF6DA92" borderwidth="2" > <point ath="0.1276321019627744" atv="0.04845435284919125" /> <point ath="0.10871118096497412" atv="0.04894262687475999" /> <point ath="0.10761254705630563" atv="0.04894262626193595" /> <point ath="0.10736840619154009" atv="0.04894262612330909" /> <point ath="0.10700219483555884" atv="0.04906469633091922" /> <point ath="0.10626977194198162" atv="0.049675047984549546" /> <point ath="0.10529320780813123" atv="0.051017821950673524" /> <point ath="0.10529320582168111" atv="0.054802004731684756" /> <point ath="0.10639183090336246" atv="0.0721360023917686" /> <point ath="0.10773460508914923" atv="0.0740891296956566" /> <point ath="0.10858909811503281" atv="0.07469948233577721" /> <point ath="0.1098098027823653" atv="0.07494362411492977" /> <point ath="0.11432641061128379" atv="0.07530983873774297" /> <point ath="0.16095734897510283" atv="0.07543191762813443" /> <point ath="0.20868690055965544" atv="0.0755539449190016" /> <point ath="0.24152380830503262" atv="0.07530974434461532" /> <point ath="0.28632368686868404" atv="0.07274636946811483" /> <point ath="0.30207078236787765" atv="0.0726242938481958" /> <point ath="0.34394094633915984" atv="0.07616429287307105" /> <point ath="0.3899614221336378" atv="0.07555384834570528" /> <point ath="0.4115679595450956" atv="0.07482151589945736" /> <point ath="0.41230038163223526" atv="0.07469944449566684" /> <point ath="0.4115679567961479" atv="0.07115940623703725" /> <point ath="0.39667534435494645" atv="0.028800999950584064" /> <point ath="0.396187062617571" atv="0.028312718575620652" /> <point ath="0.39569878087854704" atv="0.027824437192829506" /> <point ath="0.39118217610842976" atv="0.025993382914075772" /> <point ath="0.38263724861292303" atv="0.02587131521499994" /> <point ath="0.3668901634443955" atv="0.02281955791173203" /> <point ath="0.34589404728194495" atv="0.020134009737950345" /> <point ath="0.3257524248450636" atv="0.02062229009214152" /> <point ath="0.3003617764252908" atv="0.019767797068191265" /> <point ath="0.26325236605276814" atv="0.015373265315024974" /> <point ath="0.2421341828873551" atv="0.012077363008339819" /> <point ath="0.21552283904264868" atv="0.014640837095524488" /> <point ath="0.20282752231355516" atv="0.020133999558423942" /> <point ath="0.19001013852545157" atv="0.027214072849709" /> <point ath="0.17621612730243896" atv="0.03502659906312322" /> <point ath="0.14813993076398901" atv="0.044792217166189335" /> </hotspot>
-	 <!-- <hotspot name="hs_zone_7_7_360(7_360)"
-    
-    	width="591"      
-		height="185rem"              
-		ath="0.2515106" atv="0.1029977"
-        
+	   	
+ <hotspot
+  name="hs_Zone_7_label(7__label)" 
+ callout_bg_border="0,0,0,0" width="auto" 
+ shape="circle"
+	ath=" 0.2822965" atv="0.0658863"
+ line_lenght="150"
+  size="20"  
+  css_title="color:#fff;font-size:25px;font-family: Arial;"
+ rotate="-130"
+animation="keep_opened" 
+style="callout"
+ title="Zone 7" 
+
+
+	zorder="5"
+	circle_active_width="0.1" 
+	text_x="">
+</hotspot>
+ 
+
+
+ <hotspot 
+     name="hs_zone_7_360(7_360)"
+       
+		callout_bg_border="0,0,0,0"
+		 callout_border_color="0xa65c43"
+         width="auto"
+         shape="circle"   
+		  line_lenght="-20"            
+		ath=" 0.2822965" atv="0.0658863"
+         rotate="45"
          animation="keep_opened"
 		 onclick="loadscene(scene_7_360, null, MERGE,BLEND(1) )"
-      
-     
-                           
-		  content="&lt;img src=&quot;skin/icons/ZONE_07.png&quot; style=&quot; width=60px  ;display:block;&quot; /&gt;"
-                                      
-		 url="skin/icons/ZONE_07.png"
+        text_background="" 
+         style="callout"
+         title=""    
+		 zorder="1"
 		 
-		 
-		
+		 content="&lt;img src=&quot;skin/icons/360_1.png&quot; style=&quot;width:80px; height:100px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+                                       
+		 url="skin/icons/360_1.png" 
+									  
+		 circle_active_width="0"
          text_x="">
-	</hotspot> -->
+
+</hotspot>
+
 	
-	 <!-- hotspot for b-AL MARINA aerial zone 5 ===zone 8 in the requirement-->
+	 <!-- hotspot for b-AL MARINA aerial zone 5 === zone 8 in the requirement-->
 	  <hotspot name="hotspot7" style="mypolygonalhotspotstylename" onclick="loadscene(scene_g-ZONE_5, null, MERGE,BLEND(1) )" fillcolor="0xF6DA92" fillalpha="0.2" bordercolor="0xF6DA92" borderwidth="2"  > <point ath="-0.12634397094433325" atv="0.018005388439268615" /> <point ath="-0.13256956237501072" atv="0.01837159884774069" /> <point ath="-0.13476682972321896" atv="0.01824952808245612" /> <point ath="-0.13635374504229958" atv="0.01837159822342876" /> <point ath="-0.13684202669861634" atv="0.018493668547342138" /> <point ath="-0.13781859033974797" atv="0.019714372468595018" /> <point ath="-0.13891722451984378" atv="0.021301287579705366" /> <point ath="-0.14050414026809221" atv="0.022766132137038594" /> <point ath="-0.15075805885317095" atv="0.03570559147741157" /> <point ath="-0.16015748461080648" atv="0.04840090582165933" /> <point ath="-0.1665051511341744" atv="0.06097414674183666" /> <point ath="-0.17028933969970694" atv="0.0723266821606826" /> <point ath="-0.17028933995226225" atv="0.07269289307998511" /> <point ath="-0.1701672699356891" atv="0.07318117447843449" /> <point ath="-0.16980105928990952" atv="0.07379152653324839" /> <point ath="-0.16858035660061432" atv="0.07513430164884295" /> <point ath="-0.15100221878549291" atv="0.0751343236995517" /> <point ath="-0.11670041410087606" atv="0.07562262786353423" /> <point ath="-0.07190053918390049" atv="0.07513433541246883" /> <point ath="-0.06421014095229793" atv="0.07513432350604242" /> <point ath="-0.04565542970004799" atv="0.07537848110820114" /> <point ath="-0.037964988017506585" atv="0.07537848579658343" /> <point ath="-0.0280772761566368" atv="0.07562263061042351" /> <point ath="-0.019532339249906272" atv="0.07489020992807119" /> <point ath="-0.0092784149740055" atv="0.07354743536690225" /> <point ath="0.013548770640284147" atv="0.07220465223405194" /> <point ath="0.036253876928412865" atv="0.07244877288306123" /> <point ath="0.047972611809314" atv="0.07293708180966371" /> <point ath="0.05700582936219689" atv="0.07403571703126631" /> <point ath="0.07763574587818312" atv="0.07586676978774683" /> <point ath="0.10095120845409156" atv="0.07635503586356579" /> <point ath="0.10266019424199158" atv="0.07525640102225246" /> <point ath="0.10363675712193299" atv="0.07391362613128893" /> <point ath="0.10375882731000274" atv="0.07342534457113278" /> <point ath="0.1037588267981846" atv="0.07244878167220371" /> <point ath="0.10375882654227553" atv="0.07196050021564229" /> <point ath="0.10131740739086581" atv="0.0512085365225884" /> <point ath="0.1007070545259694" atv="0.04962162166257422" /> <point ath="0.09997463160902953" atv="0.04876712926352182" /> <point ath="0.09850978623211404" atv="0.04803470765295247" /> <point ath="0.09619044801462451" atv="0.047668497659581005" /> <point ath="0.09045313735657601" atv="0.046936077858078865" /> <point ath="0.0815419943771758" atv="0.04595951765047815" /> <point ath="0.07275292099899389" atv="0.04449467446395298" /> <point ath="0.05602926717347145" atv="0.04119877350301093" /> <point ath="0.04746998586074369" atv="0.0396118491952989" /> <point ath="0.0353850120319521" atv="0.03692630465950154" /> <point ath="0.026473868639982356" atv="0.03497318000725048" /> <point ath="0.019759993220020533" atv="0.03387454714532039" /> <point ath="0.012069553913534037" atv="0.031677279890642576" /> <point ath="0.007064664995937164" atv="0.029235871251707565" /> <point ath="0.004257044557448353" atv="0.02716067383014301" /> <point ath="0.0024259880189561045" atv="0.02337649045248395" /> <point ath="0.0023039177560235657" atv="0.02093508194557674" /> <point ath="0.0023039180066461995" atv="0.017639180584948438" /> <point ath="0.003158411214201351" atv="0.015686053947124776" /> <point ath="0.004012904389242067" atv="0.013610856948122948" /> <point ath="0.004257045396798276" atv="0.010925307975632742" /> <point ath="0.001327355297576105" atv="0.008483899886332698" /> <point ath="0.0015714961484718515" atv="0.008483899890722813" /> <point ath="0.0005949328176484414" atv="0.007751477485635901" /> <point ath="-0.00013748967228366382" atv="0.007263195887317013" /> <point ath="-0.0017244050524709564" atv="0.006408703097878612" /> <point ath="-0.015274220741162026" atv="0.0059204211163690216" /> <point ath="-0.031509582181570295" atv="0.006408701642790404" /> <point ath="-0.051407046479425844" atv="0.0072631919917286875" /> <point ath="-0.0693514283453851" atv="0.00958253171443813" /> <point ath="-0.09571863828898586" atv="0.014099136387918342" /> </hotspot>
-	  <!-- <hotspot name="hs_zone_8_8_360(8_360)"
-    
-    	width="591"      
-		height="185rem"              
-		ath="-0.0678124" atv="0.1089003"
-        
+	
+	  
+	   	
+ <hotspot
+  name="hs_Zone_8_label(8__label)" 
+ callout_bg_border="0,0,0,0" width="auto" 
+ shape="circle"
+	ath="-0.0479179" atv="0.0700538"
+ line_lenght="150"
+  size="20"  
+  css_title="color:#fff;font-size:25px;font-family: Arial;"
+ rotate="-130"
+animation="keep_opened" 
+style="callout"
+ title="Zone 8" 
+
+
+	zorder="5"
+	circle_active_width="0.1" 
+	text_x="">
+</hotspot>
+ 
+
+
+ <hotspot 
+     name="hs_zone_8_360(8_360)"
+       
+		callout_bg_border="0,0,0,0"
+		 callout_border_color="0xa65c43"
+         width="auto"
+         shape="circle"   
+		  line_lenght="-20"            
+		ath="-0.0479179" atv="0.0700538"
+         rotate="45"
          animation="keep_opened"
 		 onclick="loadscene(scene_8_360, null, MERGE,BLEND(1) )"
-      
-     
-                           
-		  content="&lt;img src=&quot;skin/icons/ZONE_08.png&quot; style=&quot; width=60px  ;display:block;&quot; /&gt;"
-                                      
-		 url="skin/icons/ZONE_08.png"
+        text_background="" 
+         style="callout"
+         title=""    
+		 zorder="1"
 		 
-		 
-		
+		 content="&lt;img src=&quot;skin/icons/360_1.png&quot; style=&quot;width:80px; height:100px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+                                       
+		 url="skin/icons/360_1.png" 
+									  
+		 circle_active_width="0"
          text_x="">
-	</hotspot> -->
+
+</hotspot>
+
 	 
-	  <!-- hotspot for b-AL MARINA aerial zone 9 -->
+	  <!-- hotspot for b-AL MARINA aerial zone 9 Medical COmplex -->
 	   <hotspot name="hotspot8" style="mypolygonalhotspotstylename" onclick="loadscene(scene_k_zone_9, null, MERGE,BLEND(1) )" fillcolor="0xCAA5CD" fillalpha="0.2" bordercolor="0xCAA5CD" borderwidth="2" > <point ath="-0.4224768688577001" atv="0.023569921386681708" /> <point ath="-0.43294307422991096" atv="0.024467018619447067" /> <point ath="-0.4502870559252301" atv="0.024467004974199236" /> <point ath="-0.457164835980052" atv="0.024317481709004492" /> <point ath="-0.45821145492180904" atv="0.024766032448892365" /> <point ath="-0.459108557579043" atv="0.025812652180249498" /> <point ath="-0.4740602858012153" atv="0.06169674636018024" /> <point ath="-0.47435932304040307" atv="0.06453757021987849" /> <point ath="-0.47406029064438826" atv="0.06543467352623943" /> <point ath="-0.4734622262005814" atv="0.06752791430667593" /> <point ath="-0.4730136769675255" atv="0.0684250180476476" /> <point ath="-0.4727146443237302" atv="0.06917260429163069" /> <point ath="-0.4721165788103008" atv="0.07051825971467436" /> <point ath="-0.47121948074089914" atv="0.07276101848748003" /> <point ath="-0.4707709202581327" atv="0.0730600503735496" /> <point ath="-0.46434169557903715" atv="0.07350862049892566" /> <point ath="-0.42561676461178877" atv="0.07335919751840221" /> <point ath="-0.38614416452196565" atv="0.07350877640392266" /> <point ath="-0.35743678702704074" atv="0.07365831675148482" /> <point ath="-0.3051056127531524" atv="0.07365831095793678" /> <point ath="-0.24619572874416917" atv="0.07365823091712158" /> <point ath="-0.18414589684743987" atv="0.07455541810103437" /> <point ath="-0.18399637923744194" atv="0.07455541799669935" /> <point ath="-0.18369734401881033" atv="0.07455541778650616" /> <point ath="-0.1832487911939893" atv="0.0745554174674086" /> <point ath="-0.1825012031612232" atv="0.07455541692542504" /> <point ath="-0.18130505843367928" atv="0.07395734941035179" /> <point ath="-0.18100602326165927" atv="0.07380783172307827" /> <point ath="-0.17891277732923072" atv="0.07216313801827172" /> <point ath="-0.17607194604823917" atv="0.06364063969043858" /> <point ath="-0.17203497508529608" atv="0.05481910443107513" /> <point ath="-0.16485813914084702" atv="0.04211011131851376" /> <point ath="-0.1578308226369245" atv="0.03179339919868037" /> <point ath="-0.148560747696024" atv="0.022373792868076284" /> <point ath="-0.14796267878182334" atv="0.021327170315227968" /> <point ath="-0.1466170236571429" atv="0.01923392523765403" /> <point ath="-0.14646750665701802" atv="0.018635855331418625" /> <point ath="-0.1461684726644421" atv="0.01743971553728147" /> <point ath="-0.1461684734143205" atv="0.016243575870528052" /> <point ath="-0.1464675086169791" atv="0.01549598868166922" /> <point ath="-0.14691606137387225" atv="0.014449366618169321" /> <point ath="-0.14796268352910147" atv="0.013552262168313386" /> <point ath="-0.1673999509887949" atv="0.009365776573216912" /> <point ath="-0.18130507934171192" atv="0.005777357576631742" /> <point ath="-0.19730345638765812" atv="0.002338454964546317" /> <point ath="-0.21449797565213657" atv="-0.001100448222890453" /> <point ath="-0.22391758170147114" atv="-0.00214707089635059" /> <point ath="-0.25337253430461715" atv="-0.0036422453516023992" /> <point ath="-0.2716136639652973" atv="-0.002446104779475763" /> <point ath="-0.28581781469796397" atv="-0.001698517040264961" /> <point ath="-0.2973306469345971" atv="-0.000502377580113242" /> <point ath="-0.30764733557725776" atv="0.0008432785987031087" /> <point ath="-0.3205059094297553" atv="0.0032355590314360225" /> <point ath="-0.3326168283738298" atv="0.0062259079009142435" /> <point ath="-0.34801712041831934" atv="0.01026287676211623" /> <point ath="-0.3649125755481464" atv="0.014449359172855555" /> <point ath="-0.3945171073595475" atv="0.020280550493590167" /> </hotspot>
 	 
+
+	   	
+ <hotspot name="hs_Zone_9_Medical_Complex_label(9__medical_label)" 
+ callout_bg_border="0,0,0,0" width="auto" 
+ shape="circle"
+	ath="-0.3645877"
+	 atv="0.0674482"
+ line_lenght="150"
+  size="20"  
+  css_title="color:#fff;font-size:25px;font-family: Arial;"
+ rotate="-130"
+animation="keep_opened" 
+style="callout"
+ title="Zone 9" 
+
+
+	zorder="5"
+	circle_active_width="0.1" 
+	text_x=""></hotspot>
+ 
+
+
+ <hotspot name="hs_zone_9_Medical_Complex_360(9)"
+       
+		callout_bg_border="0,0,0,0"
+		 callout_border_color="0xa65c43"
+         width="auto"
+         shape="circle"   
+		  line_lenght="-20"            
+		ath="-0.3645877" atv="0.0674482"
+         rotate="45"
+         animation="keep_opened"
+		 onclick="loadscene(scene_9_360, null, MERGE,BLEND(1) )"
+        text_background="" 
+         style="callout"
+         title=""    
+		 zorder="1"
+		 
+		 content="&lt;img src=&quot;skin/icons/360_1.png&quot; style=&quot;width:80px; height:100px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+                                       
+		 url="skin/icons/360_1.png" 
+									  
+		 circle_active_width="0"
+         text_x="">
+
+</hotspot>
 	 
 	 
 	   <!-- hotszpot for b-AL MARINA aerial towers -->
 	   <hotspot name="hotspot9" style="mypolygonalhotspotstylename" onclick="loadscene(scene_L_AL_MARINA_MALL_DAY_AERIAL, null, MERGE,BLEND(1) )"  fillcolor="0xEAA3AC" fillalpha="0.2" bordercolor="0xEAA3AC" borderwidth="2"  > <point ath="0.1002209009826629" atv="-0.046447785554988144" /> <point ath="0.0898449248351767" atv="-0.06414799969719628" /> <point ath="0.08947871365876381" atv="-0.0645142111319812" /> <point ath="0.08899043196726097" atv="-0.06475835227169122" /> <point ath="0.07666131487457051" atv="-0.06524664163494599" /> <point ath="0.07580682145658102" atv="-0.06512457166475631" /> <point ath="0.07531853948404432" atv="-0.06500250150256387" /> <point ath="0.07495232803006502" atv="-0.06500250167827032" /> <point ath="0.07495232806576269" atv="-0.06512457207964648" /> <point ath="0.07470818713028393" atv="-0.06524664259689054" /> <point ath="0.07458611671466997" atv="-0.06549078345674829" /> <point ath="0.07446404633310522" atv="-0.06585699471622872" /> <point ath="0.07434197591544489" atv="-0.06610113557411691" /> <point ath="0.073975764691113" atv="-0.06695562854146347" /> <point ath="0.07385369430357969" atv="-0.06732183979363704" /> <point ath="0.07373162394861765" atv="-0.06781012144104043" /> <point ath="0.07360955352464771" atv="-0.06805426229219025" /> <point ath="0.07336541260718832" atv="-0.06829840319961991" /> <point ath="0.07336541174487365" atv="-0.06842047352312505" /> <point ath="0.07299920029754503" atv="-0.06854254408832529" /> <point ath="0.07238884779434329" atv="-0.06842047396786378" /> <point ath="0.07214470674205131" atv="-0.06817633328161052" /> <point ath="0.07190056572142112" atv="-0.0680542629903239" /> <point ath="0.07141228371034458" atv="-0.06793219280077459" /> <point ath="0.07067986058882525" atv="-0.0673218411058168" /> <point ath="0.07006950802389156" atv="-0.06695563014465344" /> <point ath="0.06933708490942081" atv="-0.06634527841065088" /> <point ath="0.06933708490942081" atv="-0.06634527841065088" /> <point ath="0.06970329988973845" atv="-0.08172614677190712" /> <point ath="0.06994744092611427" atv="-0.08172614665764885" /> <point ath="0.07055779365896342" atv="-0.08233649817733873" /> <point ath="0.0705577937169437" atv="-0.0825806388993818" /> <point ath="0.06579704381357487" atv="-0.08502204814783862" /> <point ath="0.06543083227143143" atv="-0.08526618899717749" /> <point ath="0.0648204795845686" atv="-0.0850220485090682" /> <point ath="0.06421012687860639" atv="-0.08465583765087235" /> <point ath="0.06384391521430643" atv="-0.08416755633869431" /> <point ath="0.06359977408175155" atv="-0.08367927497632095" /> <point ath="0.06372184447815243" atv="-0.08282478239893697" /> <point ath="0.06347770335003133" atv="-0.08233650101700678" /> <point ath="0.06286735066362326" atv="-0.08197029010353475" /> <point ath="0.06213492746991278" atv="-0.08172614957791217" /> <point ath="0.06140250430769356" atv="-0.08172614977378354" /> <point ath="0.061036292725304975" atv="-0.08172614986671113" /> <point ath="0.06054801061418402" atv="-0.08172614998542106" /> <point ath="0.05981558747106419" atv="-0.08197029088954673" /> <point ath="0.05932730535516839" atv="-0.08197029099372821" /> <point ath="0.05883902322648282" atv="-0.08184822072325043" /> <point ath="0.05871695262874255" atv="-0.08111579852643969" /> <point ath="0.05871695234333174" atv="-0.07806403913255153" /> <point ath="0.05859488133654622" atv="-0.07281501249913623" /> <point ath="0.05859488123542178" atv="-0.07171637894026342" /> <point ath="0.058594881165504376" atv="-0.07098395574099553" /> <point ath="0.05859488462158424" atv="-0.0706177479375359" /> <point ath="0.05859488458764872" atv="-0.07025153671491025" /> <point ath="0.0584728140460129" atv="-0.07000739591800197" /> <point ath="0.05847281312009045" atv="-0.0698853253957687" /> <point ath="0.05847281306540708" atv="-0.06927497334940105" /> <point ath="0.05847281547522698" atv="-0.06915290282632137" /> <point ath="0.0579845334231095" atv="-0.06939704371762097" /> <point ath="0.05749625138571446" atv="-0.06988532542114034" /> <point ath="0.05713003982702958" atv="-0.06988532546824772" /> <point ath="0.05651968725157985" atv="-0.07025153676576486" /> <point ath="0.056275546210599714" atv="-0.07025153679255111" /> <point ath="0.05590933464185355" atv="-0.07012946642204855" /> <point ath="0.05529898201479" atv="-0.06964118484228804" /> <point ath="0.05517691147730375" atv="-0.06927497362249568" /> <point ath="0.05493277042739919" atv="-0.06903083282055557" /> <point ath="0.054444488331512275" atv="-0.06854255120939336" /> <point ath="0.05432241779931246" atv="-0.06817633997988294" /> <point ath="0.053956206237046445" atv="-0.06793219917538583" /> <point ath="0.05383413571541951" atv="-0.06781012876846766" /> <point ath="0.0533458536449416" atv="-0.06781012879186064" /> <point ath="0.05273550013771455" atv="-0.06756598786072508" /> <point ath="0.05224721806803245" atv="-0.0675659878717661" /> <point ath="0.05224721806803245" atv="-0.0675659878717661" /> <point ath="0.05212514326530027" atv="-0.06768805815987468" /> <point ath="0.05175893082599714" atv="-0.06768805803374801" /> <point ath="0.051148578274137435" atv="-0.06768805803144365" /> <point ath="0.05090443725669047" atv="-0.0673218467872451" /> <point ath="0.05066029624293833" atv="-0.06683356512471628" /> <point ath="0.0506602962487932" atv="-0.06634528346259144" /> <point ath="0.0506602962600482" atv="-0.0654907888914061" /> <point ath="0.05053822575803224" atv="-0.06513612025018863" /> <point ath="0.050538225767922995" atv="-0.06440369773352365" /> <point ath="0.050538225796003644" atv="-0.06232850056119521" /> <point ath="0.050538225796003644" atv="-0.06232850056119521" /> <point ath="0.050538225796003644" atv="-0.06232850056119521" /> <point ath="0.0506602954001778" atv="-0.06220642918453148" /> <point ath="0.05008435063803063" atv="-0.06184021786253112" /> <point ath="0.049351930069633454" atv="-0.06171814728481569" /> <point ath="0.04227184111880433" atv="-0.061474005626847975" /> <point ath="0.04105113613331923" atv="-0.061596075814852116" /> <point ath="0.040196642659452664" atv="-0.061596075633814557" /> <point ath="0.039464219723527094" atv="-0.06135193462412463" /> <point ath="0.03873179681596639" atv="-0.06098572318289505" /> <point ath="0.038121444349371814" atv="-0.060985723029949694" /> <point ath="0.0366565983965188" atv="-0.06122986347649284" /> <point ath="0.034215188643031524" atv="-0.060985721887219485" /> <point ath="0.03262827236545718" atv="-0.06074158050459844" /> <point ath="0.03201791996821157" atv="-0.06061950986479745" /> <point ath="0.031041356095556694" atv="-0.0606195094971812" /> <point ath="0.029820651271847964" atv="-0.06061950901289636" /> <point ath="0.029332369347969234" atv="-0.06061950881147788" /> <point ath="0.02872201705253019" atv="-0.060253297304729135" /> <point ath="0.02835580579414909" atv="-0.05964294506432311" /> <point ath="0.027013030818409334" atv="-0.05878845155780943" /> <point ath="0.026036467309040745" atv="-0.05793395819672968" /> <point ath="0.0245716219265546" atv="-0.05720153501099907" /> <point ath="0.02396126968108092" atv="-0.056957393884382895" /> <point ath="0.022984706100430685" atv="-0.05659118215560104" /> <point ath="0.022252283554735186" atv="-0.05598082970867954" /> <point ath="0.021764002126644755" atv="-0.05488219571716942" /> <point ath="0.021641932034754063" atv="-0.053905632321075585" /> <point ath="0.020787441200354806" atv="-0.04780211094539211" /> <point ath="0.01871224938145133" atv="-0.02912533606023398" /> <point ath="0.016611878283811166" atv="-0.016148102850459374" /> <point ath="0.015513247545584363" atv="-0.00992251276575825" /> <point ath="0.015147037776841898" atv="-0.0068707532371333705" /> <point ath="0.015147038211296149" atv="-0.005894190239723326" /> <point ath="0.015513249857292521" atv="-0.004673486539837088" /> <point ath="0.01612360217774267" atv="-0.003574853239660376" /> <point ath="0.01685602485815707" atv="-0.002476219954569674" /> <point ath="0.01783258826827705" atv="-0.0013775866830982777" /> <point ath="0.01880915152526086" atv="-0.0006451645074018322" /> <point ath="0.020029855528264306" atv="0.00008725767013084801" /> <point ath="0.021982981523137823" atv="0.00008725767172145466" /> <point ath="0.023936107628287573" atv="0.0002093280404623112" /> <point ath="0.026133374371795526" atv="-0.0002789534356927251" /> <point ath="0.028940993273749882" atv="-0.0004010238148369661" /> <point ath="0.03126033080241086" atv="-0.0001568830708009839" /> <point ath="0.03333552764394199" atv="0.00033139842918234445" /> <point ath="0.036143146903725665" atv="0.0008196799370764987" /> <point ath="0.039072836718617054" atv="0.002040383694290891" /> <point ath="0.04139217442980225" atv="0.0026507355748914027" /> <point ath="0.04407772337060578" atv="0.0035052281939520467" /> <point ath="0.04871639873130107" atv="0.004359720806666602" /> <point ath="0.05298886283816273" atv="0.0046038615468737346" /> <point ath="0.057017186109874274" atv="0.004725931894651742" /> <point ath="0.060557227758636145" atv="0.00448179112624837" /> <point ath="0.06275449502913943" atv="0.0038714392632349776" /> <point ath="0.06544004391236058" atv="0.003139017018542938" /> <point ath="0.06641660715808939" atv="0.0027728058988296996" /> <point ath="0.06666074801978539" atv="0.002406594786291829" /> <point ath="0.06666074810914324" atv="0.0019183133016165191" /> <point ath="0.06592832586454733" atv="0.001063820692298602" /> <point ath="0.06544004434334738" atv="0.0005755391906506678" /> <point ath="0.06507383321729776" atv="0.00008725768101834135" /> <point ath="0.06397519973313592" atv="-0.0008893053612299447" /> <point ath="0.06336484780933915" atv="-0.0016217276617720895" /> <point ath="0.06324277747125961" atv="-0.0021100092020414555" /> <point ath="0.06275449595466398" atv="-0.002964501914493321" /> <point ath="0.062266214489454796" atv="-0.004307276211430224" /> <point ath="0.062022073742582506" atv="-0.004917628179299774" /> <point ath="0.061655862726411215" atv="-0.006748684127730358" /> <point ath="0.061900003817640936" atv="-0.008823880938237454" /> <point ath="0.06299863793907434" atv="-0.011387359428712902" /> <point ath="0.06336484932626263" atv="-0.012241852279726234" /> <point ath="0.06373106070225276" atv="-0.012974274728633252" /> <point ath="0.06434141296995222" atv="-0.013950837997081219" /> <point ath="0.06531797654525917" atv="-0.015049471666759073" /> <point ath="0.0672711036568785" atv="-0.01675845735039205" /> <point ath="0.06946837153208207" atv="-0.017857090910629137" /> <point ath="0.07239806191773823" atv="-0.018833653931556525" /> <point ath="0.07544982257661559" atv="-0.019444005615340373" /> <point ath="0.08033263935180912" atv="-0.020176427322460274" /> <point ath="0.08387268167859929" atv="-0.02164127156320589" /> <point ath="0.08814514663936279" atv="-0.02396060830371355" /> <point ath="0.09156311937084638" atv="-0.02762271948005106" /> <point ath="0.09400452914530888" atv="-0.03152897156445836" /> <point ath="0.09388245894376723" atv="-0.0318951828313698" /> <point ath="0.09388245894376723" atv="-0.0318951828313698" /> <point ath="0.09437074164833348" atv="-0.03409244993276986" /> <point ath="0.0943707421568547" atv="-0.03506901318449048" /> <point ath="0.09461488467030676" atv="-0.03836491405468855" /> <point ath="0.09559144882382498" atv="-0.04019596964224354" /> <point ath="0.09644594246458382" atv="-0.041782884431870296" /> <point ath="0.09730043598267457" atv="-0.043125658367753776" /> <point ath="0.09986391579218434" atv="-0.04581120553250293" /> </hotspot>
 
 
-	   <!-- <hotspot 
+ <hotspot name="hs_Zone_4_label(4_label)" 
+ callout_bg_border="0,0,0,0" width="auto" 
+ shape="circle"
+	ath="0.0767415" atv="-0.0643573"
+ line_lenght="120"
+  size="20"  
+  css_title="color:#fff;font-size:25px;font-family: Arial;"
+   rotate="20" animation="keep_opened" 
+style="callout" title="Zone 4" 
+ 
+ 	 onclick="loadscene(scene_4_360, null, MERGE,BLEND(1) )"
+	zorder="5"
+	circle_active_width="0.1" text_x=""></hotspot>
+ 
 
-	name="hs_zone_4_mall_360(4.360)"           
-	ath="0.0687636" atv="0.1148026"
-    callout_bg_border="0,0,0,0"
-	line_lenght="120" 	
-	rotate="0" 
-	style="callout"
-	 width="auto"
 
-	 animation="keep_opened"
-	
-         >
-	</hotspot>
-	 -->
-
-	  <!-- <hotspot name="hs_zone_4_mall_4_360(4_360)"
-    
-    	width="591"      
-		height="185rem"              
-		ath="0.0687636" atv="-0.1148026"
-        
+ <hotspot name="hs_zone_4_360(zone_4)"
+       
+		callout_bg_border="0,0,0,0"
+		 callout_border_color="0xa65c43"
+         width="auto"
+         shape="circle"   
+		  line_lenght="-20"            
+			ath="0.0767415" atv="-0.0643573"
+         rotate="-45"
          animation="keep_opened"
 		 onclick="loadscene(scene_4_360, null, MERGE,BLEND(1) )"
-      
-     
-                           
-		  content="&lt;img src=&quot;skin/icons/ZONE_04.png&quot; style=&quot; width=60px  ;display:block;&quot; /&gt;"
-                                      
-		 url="skin/icons/ZONE_04.png"
+        text_background="" 
+         style="callout"
+         title=""    
+		 zorder="1"
 		 
-		 
-		
+		 content="&lt;img src=&quot;skin/icons/360_1.png&quot; style=&quot;width:80px; height:100px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+                                       url="skin/icons/360_1.png" 
+									   circle_active_width="0"
          text_x="">
-	</hotspot> -->
+
+
+
+</hotspot>
+	   
 	</scene>
 
 	<scene name="scene_c-ZONE_1" title="c-ZONE 1" enabled="false" onstart="scene_a-initial" thumburl="panos/c-ZONE_1.tiles/thumb.jpg" lat="" lng="" heading="">
@@ -2642,6 +2828,10 @@ style="callout" title="Zone 5"
 		<image hfov="1.00" vfov="0.562500" voffset="0.00">
 			<flat url="panos/L_AL_MARINA_MALL_DAY_AERIAL.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1024x578,2048x1152,4096x2304" />
 		</image>
+
+		
+
+
 		 <hotspot name="hs_ApartEnt(zone4-mall)"
         
 		callout_bg_border="0,0,0,0"
