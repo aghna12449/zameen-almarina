@@ -4,7 +4,7 @@
     <title>Al Marina</title>
 
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=1024" />
+    <meta name="viewport" , initial-scale=1.0  , maximum-scale=1.0, />
     <meta http-equiv="ScreenOrientation" content="autoRotate:disabled" />
     <!-- <meta
       name="viewport"
@@ -169,9 +169,9 @@
                 <div class="input-group">
                   <input
                     type="text"
-                    class="form-control"
+                    class="form-control  custom-mobile-input"
                     id="plotNumber"
-                    placeholder="Plot Number"
+                  
                   />
                 </div>
               </div>
@@ -265,9 +265,9 @@
                   <div class="mobile-input-group">
                     <input
                       type="text"
-                      class="form-control"
+                      class="form-control    custom-mobile-input"
                       id="plotNumber"
-                      placeholder="Plot Number"
+                      
                     />
                   </div>
                 </div>
@@ -397,8 +397,13 @@
           html5: "only",
           mobilescale: 1.0,
           passQueryParameters: "startscene,startlookat",
+           onready: function(krpano) {
+    krpano.call("disableplugin(fullscreenbutton);");
+    krpano.call("contextmenu.removeitem('fullscreen');");
+  }
         });
       </script>
+
 
       <!-- <script>
   const container = document.getElementById('card-slider_1');
@@ -434,6 +439,24 @@
 </script> -->
 
       <script>
+             const flyToInitialScene = () => {
+          console.log("flyToInitialScene called");
+          const krpano = document.getElementById("krpanoSWFObject");
+            const currentFov = krpano.get("view.fov");
+        
+              const fov = currentFov; // Or whatever default FOV you need
+                    
+          const animationSpeed = 0.1;
+          const currentScene = krpano.get("xml.scene");
+
+          if (krpano) {
+ 
+          krpano.call("looktohotspot(hs_AlMarinaLogo_big);");
+          
+          } else {
+            console.error("Krpano instance not found or not ready.");
+          }
+        };
         const slider = document.querySelector(".card-slider_1");
 
         let isDown = false;
@@ -1555,7 +1578,7 @@
                         parseInt(house.plot_number) ===
                         parseInt(zone.plot_number)
                     );
-                    console.log("matchedZone", matchedZone);
+                   
                     latestArrayZone1.push({
                       ...house,
                       total_area: house?.total_area,
@@ -1584,7 +1607,7 @@
                         parseInt(house.plot_number) ===
                         parseInt(zone.plot_number)
                     );
-                    console.log("matchedZone", matchedZone);
+              
                     latestArrayZone2.push({
                       ...house,
                       total_area: house?.total_area,
@@ -1607,7 +1630,7 @@
                         parseInt(house.plot_number) ===
                         parseInt(zone.plot_number)
                     );
-                    console.log("matchedZone", matchedZone);
+                
                     latestArrayZone3.push({
                       ...house,
                       total_area: house?.total_area,
@@ -1633,7 +1656,7 @@
                         parseInt(zone.plot_number)
                     );
 
-                    console.log("matchedZone", matchedZone);
+                
                     latestArrayZone5.push({
                       ...house,
                       total_area: house?.total_area,
@@ -1659,7 +1682,7 @@
                         parseInt(zone.plot_number)
                     );
 
-                    console.log("matchedZone", matchedZone);
+                
 
                     latestArrayZone6.push({
                       ...house,
@@ -1683,7 +1706,7 @@
                         parseInt(house.plot_number) ===
                         parseInt(zone.plot_number)
                     );
-                    console.log("matchedZone", matchedZone);
+                
                     latestArrayZone7.push({
                       ...house,
                       total_area: house?.total_area,
@@ -1706,7 +1729,7 @@
                         parseInt(house.plot_number) ===
                         parseInt(zone.plot_number)
                     );
-                    console.log("matchedZone", matchedZone);
+                
                     latestArrayZone8.push({
                       ...house,
                       total_area: house?.total_area,
@@ -1730,7 +1753,7 @@
                         parseInt(house.plot_number) ===
                         parseInt(zone.plot_number)
                     );
-                    console.log("matchedZone", matchedZone);
+                
                     latestArrayZone9.push({
                       ...house,
                       total_area: house?.total_area,
@@ -1754,15 +1777,15 @@
         }
 
         const handleSearchFilters = () => {
-          const plot = document.getElementById("plotNumber").value;
-          const area = document.getElementById("totalArea").value;
-          const krpano = document.getElementById("krpanoSWFObject");
-          // const area = document.getElementById('totalArea').value;
-          // const block = document.getElementById('blockNumber').value;
-          // 👉 Stop previous blinking
+           const plot = document.getElementById("plotNumber").value;
+           const area = document.getElementById("totalArea").value;
+           const krpano = document.getElementById("krpanoSWFObject");
+          // // const area = document.getElementById('totalArea').value;
+          // // const block = document.getElementById('blockNumber').value;
+          // // 👉 Stop previous blinking
 
-          checkRecordExistence(plot);
-          blinkIndividualHotspot("", false, true);
+           checkRecordExistence(plot);
+           blinkIndividualHotspot("", false, true);
           if (area) {
             // Stop previous blinking first
             stopAllBlinkingHotspots();
@@ -2300,8 +2323,15 @@ console.log(`Blinking hotspot ATH: ${ath}, ATV: ${atv}`);
               e.preventDefault();
               const sceneName = this.getAttribute("data-scene");
               const crumbIndex = parseInt(this.getAttribute("data-index"));
-              removeBreadCrumbItem(sceneName, crumbIndex);
-            });
+              if(crumbIndex === 0){
+                console.log("INITIAL CRUMBS ")
+                  event.preventDefault();
+                  location.reload()
+              }else{
+                 removeBreadCrumbItem(sceneName, crumbIndex);
+           
+              }
+              });
           });
         };
 
@@ -2982,8 +3012,13 @@ console.log(`Blinking hotspot ATH: ${ath}, ATV: ${atv}`);
             }
           } else {
             if (propertyCard) {
-              propertyCard.style.right = "5%";
-              propertyCard.style.top = "8%";
+                propertyCard.style.position = "fixed";
+                propertyCard.style.top = "10%"
+                propertyCard.style.right = "5%";
+  
+
+ 
+ 
             }
           }
         }
@@ -3058,6 +3093,9 @@ console.log(`Blinking hotspot ATH: ${ath}, ATV: ${atv}`);
             console.error("House details not found in the response.");
           }
         };
+
+        // JS workaround for iOS keyboard issues
+
 
         // Function to display house details
         const showHouseDetails = (response, plot_number, total_area) => {
@@ -3238,17 +3276,7 @@ console.log(`Blinking hotspot ATH: ${ath}, ATV: ${atv}`);
             });
         };
 
-        const flyToInitialScene = () => {
-          console.log("flyToInitialScene called");
-          const krpano = document.getElementById("krpanoSWFObject");
-          const currentScene = krpano.get("xml.scene");
-
-          if (krpano) {
-            krpano.call("looktohotspot('hs_ApartEnt(1)')");
-          } else {
-            console.error("Krpano instance not found or not ready.");
-          }
-        };
+   
 
         function handleOrientation() {}
 

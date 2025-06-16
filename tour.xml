@@ -6,16 +6,16 @@
 	info="false">
 
 	<include url="skin/vtourskin.xml" />
-	<include url="toolbox/toolbox/toolbox.xml"></include>
+	<!-- <include url="toolbox/toolbox/toolbox.xml"></include> -->
 
 
 	<include url="callout.xml" />
-	 <include url="plugins/polygon.xml" />  
+	 <!-- <include url="plugins/polygon.xml" />   -->
 
   <include url="vtour-drone/drone.xml"/>
   <include url="vtour-future/future.xml"/>
 
-
+<autorotate enabled="false" />
 <control
     sensortouch="true"  
 	touch="true"
@@ -168,7 +168,9 @@
 
     <control bouncinglimits="calc:image.cube ? true : false" />
 
-    <view  hlookat="20.0" vlookat="10.0"  fov="100"   />
+    <!-- <view  hlookat="20.0" vlookat="10.0"  fov="100"   /> -->
+
+	
     <preview url="panos/a-initial.tiles/preview.jpg" />
 
     <image hfov="1.00" vfov="0.4710" voffset="114.000"  zoomlevel="100" >
@@ -200,7 +202,7 @@ myscale="0.5"
 </hotspot>
 
 <!-- hotspots for landmarks -->
-<hotspot name="hs_ApartEnt(1)"
+<hotspot name="hs_AlMarinaLogo_big"
          callout_bg_border="0,0,0,0"
 		 callout_bg_color="0xa65c43"
 		 callout_border_color="0xa65c43"
@@ -289,7 +291,7 @@ line_lenght="70" shape="circle" 	ath = "-0.0424337 " atv = "0.0877063"
 
 </hotspot>
 
-<hotspot name="hs_ApartEnt(4)"
+<hotspot name="hs_ApartmEnt_Airport"
       
          width="auto"
          shape="circle"             
@@ -349,7 +351,7 @@ line_lenght="70" shape="circle" 	ath = "-0.0424337 " atv = "0.0877063"
          text_x="">
 
 </hotspot>
-<hotspot name="hs_ApartEnt_KFUPM(4.3)"
+<hotspot name="hs_ApartEnt_KFUPM"
       
          width="auto"
          shape="circle"             
@@ -368,6 +370,8 @@ ath = "-0.0424337 " atv = "0.0877063"
          text_x="">
 
 </hotspot>
+
+
 <hotspot name="hs_ApartEnt(4.4)"
       
          width="auto"
@@ -387,7 +391,7 @@ ath = "-0.0424337 " atv = "0.0877063"
          text_x="">
 
 </hotspot>
-<hotspot name="hs_ApartEnt(4.5)"
+<hotspot name="hs_ApartEnt_commerce(4.5)"
       
          width="auto"
          shape="circle"             

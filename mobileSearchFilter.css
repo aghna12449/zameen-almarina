@@ -13,7 +13,7 @@
 
 #mobileSearchFilter.active {
   display: block;
-  pointer-events: auto; /* Enable interactions when active */
+
 }
 
 #mobileFilterBody {
@@ -46,7 +46,7 @@
 /* Search Filter Title */
 .mobile-card-title {
     color: black !important; /* Blue color for "Search Filter" */
-    font-size: 1rem !important; /* Slightly larger font size */
+    font-size: 2rem !important; /* Slightly larger font size */
     margin-bottom: 10px !important; /* Adjust spacing below title */
     margin:10px;
     line-height: 1.5rem;
@@ -65,8 +65,30 @@
     padding: 12px 15px !important; /* More padding */
     border: 1px solid #ced4da !important; /* Default light gray border */
     border-radius: 5px !important; /* Slightly rounded corners */
-    font-size: 1em !important; /* Consistent font size */
+    font-size: 2rem !important; /* Consistent font size */
     background-color: #fff !important; /* Ensure white background */
+    
+}
+
+.form-control  .custom-mobile-input{
+    padding: 12px 15px !important; /* More padding */
+    border: 1px solid #ced4da !important; /* Default light gray border */
+    border-radius: 5px !important; /* Slightly rounded corners */
+    font-size: 5rem !important; /* Consistent font size */
+    background-color: #fff !important; /* Ensure white background */
+    color: white;
+
+}
+
+.custom-mobile-input{
+    padding: 12px 15px !important; /* More padding */
+    border: 1px solid #ced4da !important; /* Default light gray border */
+    border-radius: 5px !important; /* Slightly rounded corners */
+    font-size: 48px !important; /* Consistent font size */
+    background-color: #fff !important; /* Ensure white background */
+    color: white  /* Ensure text is white */
+   
+
 }
 
 /* Specific styling for select elements (if you decide to use them in the future for Availability) */
@@ -75,7 +97,7 @@
     padding: 12px 15px !important;
     border: 1px solid #ced4da !important;
     border-radius: 5px !important;
-    font-size: 1em !important;
+   
     background-color: #fff !important;
     /* If you bring back custom dropdown arrows, ensure these are still removed */
     -webkit-appearance: none;
@@ -91,7 +113,7 @@
     display: block; /* Ensures it takes its own line */
     margin-bottom: 5px; /* Space between label and slider */
     color: #333; /* Darker text for readability */
-    font-size: 0.95em; /* Slightly smaller than input text */
+    font-size: 2em; /* Slightly smaller than input text */
 }
 
 .form-label-mobile .fw-semibold {
@@ -109,28 +131,30 @@
 }
 
 .form-range::-webkit-slider-runnable-track {
-    background: black !important;
+    background: rgb(94, 85, 85) !important;
     border: none !important; /* Removes default border */
-  height: 4px; /* Optional: sets track thickness */
+  height: 7px; /* Optional: sets track thickness */
   border-radius: 4px; /* Optional: for rounded edges */
+
   }
 
 .mobile-compact-search-card .form-range::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  height: 20px;
-  width: 20px;
+  height: 30px;
+  width: 30px;
   border-radius: 80%;
   background-color: #a65c43;
   cursor: pointer;
   border: 1px solid #ffffff;
   margin-top: -6px; /* Align with track */
+  scroll-behavior:smooth
 }
 
 
 /* Search Button */
 .btn-primary {
-   font-size: 0.9rem !important; /* Smaller font for primary button */
+   font-size: 2rem !important; /* Smaller font for primary button */
     padding: 8px 15px !important; /* Adjust primary button padding */
     background-color: #a65c43;
     border: 1px solid #a65c43;
@@ -144,7 +168,7 @@
     border-color: #a65c43 !important;
 }
 .mobile-compact-search-card .btn-link {
-    font-size: 0.8rem !important; /* Smaller font for link buttons */
+    font-size: 2rem !important; /* Smaller font for link buttons */
     padding: 3px 5px !important; /* Adjust link button padding */
     background-color: transparent !important; /* Ensure link buttons have no background */
     color: black !important; /* Ensure link buttons are white */
@@ -157,8 +181,8 @@
 .btn:focus,
 .form-range:focus {
     box-shadow: none !important;
-    border-color: #ced4da !important; /* Keep original border color on focus for inputs/selects */
-    outline: none !important; /* Remove outline for range */
+    border-color: #ced4da !important; 
+    outline: none !important; 
 }
 
 .hidden-checkbox {
@@ -168,4 +192,5 @@
 /* Only enable pointer events on interactive content */
 .mobile-container {
   pointer-events: auto;
+  font-size: 5rem !important; 
 }

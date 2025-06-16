@@ -2,7 +2,7 @@
 	info="false">
 
 	<include url="skin/vtourskin.xml" />
-	<include url="toolbox/toolbox/toolbox.xml"></include>
+	<!-- <include url="toolbox/toolbox/toolbox.xml"></include> -->
 
 
 	<include url="callout.xml" />

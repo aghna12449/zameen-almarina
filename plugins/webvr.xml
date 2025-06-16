@@ -40,6 +40,9 @@
 		scale="0.3"
 		depth="120"
 		/>
+		<action name="startup" autorun="onstart">
+    disableplugin(fullscreenbutton);
+</action>
 	
 	<action name="webvr_load_vr_cursor_hs" scope="local">
 		addhotspot('vr_cursor', hs);
