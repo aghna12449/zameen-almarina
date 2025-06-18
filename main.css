@@ -334,6 +334,7 @@
     text-decoration: none;
     display: flex; /* For vertical alignment */
     align-items: center; /* Vertical alignment */
+    font-size: 19px;
 }
 
 .mui-breadcrumb-link:hover {
@@ -350,6 +351,7 @@
     color: white;
     display: flex; /* For vertical alignment */
     align-items: center; /* Vertical alignment */
+    font-size: 19px;
 }
 
 .mui-breadcrumb-icon {

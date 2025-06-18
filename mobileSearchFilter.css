@@ -84,12 +84,17 @@
     padding: 12px 15px !important; /* More padding */
     border: 1px solid #ced4da !important; /* Default light gray border */
     border-radius: 5px !important; /* Slightly rounded corners */
-    font-size: 48px !important; /* Consistent font size */
+    font-size: 17px !important; /* Consistent font size */
     background-color: #fff !important; /* Ensure white background */
-    color: white  /* Ensure text is white */
-   
+   line-height: 1.5;  
 
 }
+.custom-mobile-input::placeholder {
+  font-size: 16px;
+  align-items: center;
+   line-height: 1.5;  
+}
+
 
 /* Specific styling for select elements (if you decide to use them in the future for Availability) */
 /* For now, the Availability is styled as a text input */
@@ -193,4 +198,17 @@
 .mobile-container {
   pointer-events: auto;
   font-size: 5rem !important; 
+}
+
+@supports (-webkit-overflow-scrolling: touch) {
+  input.custom-mobile-input {
+    font-size: 37px !important;  /* iOS only */
+    
+
+     
+  }
+
+  input.custom-mobile-input::placeholder {
+    font-size: 16px !important;
+  }
 }

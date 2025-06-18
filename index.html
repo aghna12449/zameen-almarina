@@ -171,6 +171,7 @@
                     type="text"
                     class="form-control  custom-mobile-input"
                     id="plotNumber"
+                    placeholder="Plot Number"
                   
                   />
                 </div>
@@ -410,6 +411,27 @@
 
 
       <script>
+
+        
+
+        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+        console.log("Is Safari:", isSafari);
+
+const input = document.getElementById("plotNumber");
+
+input.addEventListener("input", function () {
+  if (true) {
+    if (this.value.trim() !== "") {
+      console.log("FIRST IF")
+      this.style.fontSize = "60px"; // Shrink when user types
+    } else {
+      console.log("ELSE")
+      this.style.fontSize = "48px"; // Reset when cleared
+    }
+  }
+});
+   console.log("Input changed:", input);
+
 
         let zoneMaximum= 20000;
 
@@ -1236,7 +1258,7 @@
           {
             scene: "scene_a-initial",
             title: "",
-            icon: '<div><img src="skin/icons/erth_logo_white.png" width="70px" height="70px" class="breadcrumb-icon" /></div>',
+            icon: '<div><img src="skin/icons/erth_logo_white.png" width="100px" height="100px" class="breadcrumb-icon" /></div>',
           },
         ];
 
@@ -2278,7 +2300,7 @@
             } else {
               // Last one - current breadcrumb
               const current = document.createElement("span");
-              current.className = "breadcrumb-current mui-breadcrumb-current";
+              current.className = "breadcrumb-current mui-breadcrumb-current  ";
 
               current.innerHTML = `<i class="material-icons mui-breadcrumb-icon">${
                 !index ? crumb.icon : ""
