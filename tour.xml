@@ -2,17 +2,20 @@
 	<!ENTITY nbsp " ">
 ]>
 
-<krpano version="1.20.11" title="Virtual Tour" debugmode="true" showerrors="false" logkey="false"
+<krpano version="1.20.11" title="Virtual Tour" 
+startscene="scene_a-initial"
+debugmode="true" showerrors="false" logkey="false"
 	info="false">
 
 	<include url="skin/vtourskin.xml" />
-	<!-- <include url="toolbox/toolbox/toolbox.xml"></include> -->
+
 
 
 	<include url="callout.xml" />
-	 <!-- <include url="plugins/polygon.xml" />   -->
+ 	<!-- <include url="vtour_DRONE/drone.xml"/>
+  	<include url="vtour_FUTURE/future.xml"/> -->
 
-  <include url="vtour-drone/drone.xml"/>
+   <include url="vtour-drone/drone.xml"/>
   <include url="vtour-future/future.xml"/>
 
 <autorotate enabled="false" />
@@ -670,7 +673,7 @@ style="callout" title="Zone 2"
 
 
    <!-- hotspot for b-AL MARINA aerial zone 3 -->
-	<hotspot name="hotspot5" style="mypolygonalhotspotstylename" onclick="loadscene(scene_e-ZONE_3, null, MERGE,BLEND(1) )" fillcolor="0xEAA3AC" fillalpha="0.2" bordercolor="0xEAA3AC" borderwidth="2" > <point ath="-0.08232979033687116" atv="-0.06432355865474722" /> <point ath="-0.09933042675066872" atv="-0.0644676144055205" /> <point ath="-0.10278818209781093" atv="-0.0644676101792479" /> <point ath="-0.10451705956126034" atv="-0.06432353491637413" /> <point ath="-0.10509335203460068" atv="-0.06432353417127126" /> <point ath="-0.10581371760747516" atv="-0.06432353323074158" /> <point ath="-0.10725444845843413" atv="-0.06345909298376388" /> <point ath="-0.10797481369235129" atv="-0.06245058062057649" /> <point ath="-0.10984775886390707" atv="-0.04429736890188264" /> <point ath="-0.11157663199543322" atv="-0.03118671247635961" /> <point ath="-0.12022100677631897" atv="-0.009143518234601076" /> <point ath="-0.12641614027569403" atv="0.002526404348805155" /> <point ath="-0.1274246500463505" atv="0.004687500615786056" /> <point ath="-0.12785686821848685" atv="0.0064163775734721925" /> <point ath="-0.12583984786215296" atv="0.008433401184159238" /> <point ath="-0.11042403757670627" atv="0.008721550600957853" /> <point ath="-0.10163558051294785" atv="0.007713039995767467" /> <point ath="-0.09198268168563573" atv="0.006128236172376994" /> <point ath="-0.07901609637269758" atv="0.0038230657180905758" /> <point ath="-0.06734616582355102" atv="0.001950114005961531" /> <point ath="-0.058845844390589264" atv="0.0006534548284928689" /> <point ath="-0.04789627640218441" atv="-0.00006691145817270415" /> <point ath="-0.02196308777183731" atv="-0.00021098471555358928" /> <point ath="-0.0028013468181598" atv="0.0005093815013476217" /> <point ath="0.0013767763245482456" atv="-0.00006691144240128761" /> <point ath="0.004978606454301371" atv="-0.001507643681100387" /> <point ath="0.008148216985944146" atv="-0.0042450347918033884" /> <point ath="0.011029682622506698" atv="-0.01548274555410668" /> <point ath="0.012614488987594541" atv="-0.022974552225752367" /> <point ath="0.014343369132120642" atv="-0.033347821978838295" /> <point ath="0.015928177327793946" atv="-0.04919586984519355" /> <point ath="0.016216325929690356" atv="-0.05971320806874487" /> <point ath="0.01636039956940749" atv="-0.06187430449463226" /> <point ath="0.015928180199466624" atv="-0.06259467044164084" /> <point ath="0.015495960698274303" atv="-0.06273874399101168" /> <point ath="0.014919668039908629" atv="-0.06302689078602676" /> <point ath="0.014343375339308295" atv="-0.06317096447861702" /> <point ath="0.003970104500240268" atv="-0.06345912032516031" /> <point ath="-0.05639660343433661" atv="-0.06432357411466032" /> </hotspot>
+	<hotspot name="hotspot5" style="mypolygonalhotspotstylename" onclick="loadscene(scene_e-ZONE_3, null, MERGE,BLEND(1) )" fillcolor="0xF6DA92" fillalpha="0.2" bordercolor="0xF6DA92" borderwidth="2" > <point ath="-0.08232979033687116" atv="-0.06432355865474722" /> <point ath="-0.09933042675066872" atv="-0.0644676144055205" /> <point ath="-0.10278818209781093" atv="-0.0644676101792479" /> <point ath="-0.10451705956126034" atv="-0.06432353491637413" /> <point ath="-0.10509335203460068" atv="-0.06432353417127126" /> <point ath="-0.10581371760747516" atv="-0.06432353323074158" /> <point ath="-0.10725444845843413" atv="-0.06345909298376388" /> <point ath="-0.10797481369235129" atv="-0.06245058062057649" /> <point ath="-0.10984775886390707" atv="-0.04429736890188264" /> <point ath="-0.11157663199543322" atv="-0.03118671247635961" /> <point ath="-0.12022100677631897" atv="-0.009143518234601076" /> <point ath="-0.12641614027569403" atv="0.002526404348805155" /> <point ath="-0.1274246500463505" atv="0.004687500615786056" /> <point ath="-0.12785686821848685" atv="0.0064163775734721925" /> <point ath="-0.12583984786215296" atv="0.008433401184159238" /> <point ath="-0.11042403757670627" atv="0.008721550600957853" /> <point ath="-0.10163558051294785" atv="0.007713039995767467" /> <point ath="-0.09198268168563573" atv="0.006128236172376994" /> <point ath="-0.07901609637269758" atv="0.0038230657180905758" /> <point ath="-0.06734616582355102" atv="0.001950114005961531" /> <point ath="-0.058845844390589264" atv="0.0006534548284928689" /> <point ath="-0.04789627640218441" atv="-0.00006691145817270415" /> <point ath="-0.02196308777183731" atv="-0.00021098471555358928" /> <point ath="-0.0028013468181598" atv="0.0005093815013476217" /> <point ath="0.0013767763245482456" atv="-0.00006691144240128761" /> <point ath="0.004978606454301371" atv="-0.001507643681100387" /> <point ath="0.008148216985944146" atv="-0.0042450347918033884" /> <point ath="0.011029682622506698" atv="-0.01548274555410668" /> <point ath="0.012614488987594541" atv="-0.022974552225752367" /> <point ath="0.014343369132120642" atv="-0.033347821978838295" /> <point ath="0.015928177327793946" atv="-0.04919586984519355" /> <point ath="0.016216325929690356" atv="-0.05971320806874487" /> <point ath="0.01636039956940749" atv="-0.06187430449463226" /> <point ath="0.015928180199466624" atv="-0.06259467044164084" /> <point ath="0.015495960698274303" atv="-0.06273874399101168" /> <point ath="0.014919668039908629" atv="-0.06302689078602676" /> <point ath="0.014343375339308295" atv="-0.06317096447861702" /> <point ath="0.003970104500240268" atv="-0.06345912032516031" /> <point ath="-0.05639660343433661" atv="-0.06432357411466032" /> </hotspot>
 
 	
  <hotspot name="hs_Zone_3_label(3_label)" 
@@ -806,7 +809,7 @@ style="callout"
 		ath="-0.0479179" atv="0.0700538"
          rotate="45"
          animation="keep_opened"
-		 onclick="loadscene(scene_8_360, null, MERGE,BLEND(1) )"
+		 onclick="loadscene(scene_888_360, null, MERGE,BLEND(1) )"
         text_background="" 
          style="callout"
          title=""    
@@ -857,7 +860,7 @@ style="callout"
 		ath="-0.3645877" atv="0.0674482"
          rotate="45"
          animation="keep_opened"
-		 onclick="loadscene(scene_9_360, null, MERGE,BLEND(1) )"
+		 onclick="loadscene(scene_10_360, null, MERGE,BLEND(1) )"
         text_background="" 
          style="callout"
          title=""    
