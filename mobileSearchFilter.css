@@ -203,6 +203,7 @@
 @supports (-webkit-overflow-scrolling: touch) {
   input.custom-mobile-input {
     font-size: 37px !important;  /* iOS only */
+    /* font-family: Calibri !important;  */
     
 
      
