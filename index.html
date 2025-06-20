@@ -361,12 +361,15 @@
         </div>
       </div>
 
-      <div id="controls"  >
+      <div id="controls">
         <!-- <button id="fullScreenBtn" title="Toggle Fullscreen">⛶</button> -->
         <!-- <button id="zoomInBtn">+</button>
 
         <button id="zoomOutBtn">-</button> -->
-        <div  id="toggle_layer_wrapper" style="display: flex; align-items: center; gap: 8px">
+        <div
+          id="toggle_layer_wrapper"
+          style="display: flex; align-items: center; gap: 8px"
+        >
           <span id="toggle-text" style="margin-bottom: 15px">Layer</span>
           <button id="toggle-button" onclick="toggleHotspotColor()">
             <span id="toggle-icon" class="material-icons" style="color: #a65c43"
@@ -399,8 +402,7 @@
           xml: "tour.xml",
           target: "pano",
           html5: "only",
-          mobilescale: 1.0,
-          passQueryParameters: "startscene,startlookat",
+    
 
           onready: function (krpano) {},
         });
@@ -429,6 +431,16 @@
 
         let zoneMaximum = 20000;
 
+       const globalKrpano = () => {
+          const krpano = document.getElementById("krpanoSWFObject");
+          if (!krpano) {
+            console.error("Krpano instance not found");
+            return;
+          }
+          return krpano;
+        };
+
+
         const flyToInitialAlMarinaScene = () => {
           const krpano = document.getElementById("krpanoSWFObject");
           const currentFov = krpano.get("view.fov");
@@ -437,15 +449,30 @@
 
           const animationSpeed = 0.1;
           const currentScene = krpano.get("xml.scene");
+            
+          if(currentScene === "scene_a-initial") {
+            console.log("currentScene", currentScene);
+             // Smooth zoom to FOV 40 (or whatever value you want)
+     
+       // krpano.call("set(fov_moveforce,-1.8);");
+//krpano.set("view.fovmin", 0.5);
+//krpano.set("view.fovmax", 0.5);
+    
+       
+            // krpano.call("tween(view.fov, 100, 1);"); 
+          }
 
           if (krpano) {
-            //krpano.call("delayedcall(0.9, looktohotspot(hs_AlMarinaLogo_big));");
+         //   krpano.call("delayedcall(0.9, looktohotspot(hs_AlMarinaLogo_big));");
 
-            setTimeout(() => {
-              krpano.call(
-                "delayedcall(0.9, looktohotspot(hs_AlMarinaLogo_big));"
-              );
-            }, 1000);
+            //  setTimeout(() => {
+            //    krpano.call(
+            //     "delayedcall(0.9, looktohotspot(hs_AlMarinaLogo_big));"
+            //  );
+              
+              
+       
+            // }, 1000);
           } else {
             console.error("Krpano instance not found or not ready.");
           }
@@ -737,15 +764,7 @@
         }
 
         let sliderSearchedHouses;
-        const globalKrpano = () => {
-          const krpano = document.getElementById("krpanoSWFObject");
-          if (!krpano) {
-            console.error("Krpano instance not found");
-            return;
-          }
-          return krpano;
-        };
-
+       
         const resetFilters = () => {
           const plotInput = document.getElementById("plotNumber");
           if (plotInput) {
@@ -1176,9 +1195,7 @@
                 sliderContainer.insertAdjacentHTML("beforeend", cardHTML);
             });
 
-              // 🔁 Recalculate toggle margin after content is injected
-        updateToggleMarginBasedOnSlider();
-
+          // 🔁 Recalculate toggle margin after content is injected
         };
 
         const createSceneCard = () => {
@@ -2036,6 +2053,20 @@
           }
         };
 
+        const blinkInitialSateliteBlinking = () => {
+          let krpano= globalKrpano()
+           const blinkColors = ["0xD8C8B0  ", "0xa65c43"];
+            let blinkIndex = 0;
+
+            interval = setInterval(() => {
+              const color = blinkColors[blinkIndex];
+
+              krpano.call(`set(hotspot[${'hs_Marina_Arial'}].bordercolor, ${color})`);
+              blinkIndex = (blinkIndex + 1) % blinkColors.length;
+            }, 650);
+        }
+      blinkInitialSateliteBlinking()
+
         function blinkHotspot(hotspotName, isShow) {
           const krpano = document.getElementById("krpanoSWFObject");
 
@@ -2443,29 +2474,27 @@
           toggleState = !toggleState;
         }
 
-        const updateToggleMarginBasedOnSlider =() =>{
-         
-   setTimeout(() => {
-    const searchSliderFilters = document.getElementById("searchSliderFilters");
-    const toggleWrapper = document.querySelector("#controls");
+        const updateToggleMarginBasedOnSlider = () => {
+          setTimeout(() => {
+            const searchSliderFilters = document.getElementById(
+              "searchSliderFilters"
+            );
+            const toggleWrapper = document.querySelector("#controls");
 
-    console.log("Checking slider visibility:", searchSliderFilters);
+            if (
+              searchSliderFilters &&
+              window.getComputedStyle(searchSliderFilters).display !== "none"
+            ) {
+              console.log("Slider is visible, setting bottom 15%");
+              toggleWrapper.style.bottom = "15%";
+            } else {
+              console.log("Slider is hidden, setting bottom 2%");
+              toggleWrapper.style.bottom = "2%";
+            }
+          }, 1200); // Delay: 1200ms is usually enough to wait for DOM updates
+        };
 
-    if (
-      searchSliderFilters &&
-      window.getComputedStyle(searchSliderFilters).display !== "none"
-    ) {
-      console.log("Slider is visible, setting bottom 15%");
-      toggleWrapper.style.bottom = "15%";
-    } else {
-      console.log("Slider is hidden, setting bottom 2%");
-      toggleWrapper.style.bottom = "2%";
-    }
-  }, 1500); // Delay: 100ms is usually enough to wait for DOM updates
-}
-
-window.addEventListener('load', updateToggleMarginBasedOnSlider);
-//window.addEventListener('resize', updateToggleMarginBasedOnSlider);
+        window.addEventListener("load", updateToggleMarginBasedOnSlider);
 
         function getRandomColor() {
           const letters = "0123456789ABCDEF";
@@ -3210,21 +3239,22 @@ window.addEventListener('load', updateToggleMarginBasedOnSlider);
             //
           }
 
-          console.log("Current scene:", currentScene);
-          console.log(
-            "Current scene includes _360:",
-            String(currentScene).includes("_360")
-          );
-          const toggle = document.getElementById("time-toggle");
-          const toggleLayerWrapper = document.getElementById("toggle_layer_wrapper");
+          updateToggleMarginBasedOnSlider();
+
+      
           
+          const toggle = document.getElementById("time-toggle");
+          const toggleLayerWrapper = document.getElementById(
+            "toggle_layer_wrapper"
+          );
+
           if (
             String(currentScene).includes("_360") ||
             currentScene === "scene_13-180m" ||
             currentScene === "future_scene_13-180m"
           ) {
             toggle.style.display = "block";
-           toggleLayerWrapper.style.display = "none";
+            toggleLayerWrapper.style.display = "none";
           } else {
             toggle.style.display = "none";
             toggleLayerWrapper.style.display = "flex";
@@ -3254,30 +3284,35 @@ window.addEventListener('load', updateToggleMarginBasedOnSlider);
         function handleOrientation() {}
 
         window.onload = () => {
-          var krpano_obj = document.getElementById("krpanoSWFObject");
+            let krpano= globalKrpano();
+
+       
 
           if (!sessionStorage.getItem("reloaded")) {
             sessionStorage.setItem("reloaded", "true");
-            //  location.reload();
+              location.reload();
           } else {
             sessionStorage.removeItem("reloaded");
           }
 
-          krpano_obj.call("loadscene(scene_a-initial, null, MERGE);");
-          if (krpano_obj) {
+
+        
+
+          krpano.call("loadscene(scene_a-initial, null, MERGE);");
+          if (krpano) {
             console.log("Krpano Initialized ");
 
             const animationSpeed = 0.1;
           }
 
           setTimeout(() => {
-            if (typeof krpano_obj !== "undefined" && krpano_obj !== null) {
+            if (typeof krpano !== "undefined" && krpano !== null) {
               console.log("setTimeout Krpano Initialized");
               onInitalLoad();
             }
           }, 1000);
 
-          const krpano = document.getElementById("krpanoSWFObject");
+          
 
           const mobileSearchCard =
             document.getElementById("mobileSearchFilter");
@@ -3290,31 +3325,6 @@ window.addEventListener('load', updateToggleMarginBasedOnSlider);
 
           addCustomDivToHotspot("hs1");
 
-          setTimeout(() => {
-            if (typeof krpano !== "undefined" && krpano !== null) {
-              console.log("setTimeout Krpano Initialized");
-
-              addLandHotspotsToKrpano();
-            }
-            krpano.call("set(tooltip_pos.x, 0)");
-            krpano.call("set(tooltip_pos.y, 0)");
-
-            krpano.call(
-              "lookto(0.26823401616246656, -0.08515741582446189, 90, 0)"
-            );
-
-            // Always update screen bounds first
-            krpano.call("updatescreenbounds()");
-
-            // Convert sphereto screen
-            krpano.call(
-              `spheretoscreen(0.26823401616246656, -0.08515741582446189, tooltip_pos)`
-            );
-
-            // Get screen X, Y
-            const screenX = krpano.get("tooltip_pos.x");
-            const screenY = krpano.get("tooltip_pos.y");
-          }, 1000);
 
           // Delay to ensure Krpano loads
           updateSearchVisibility();
