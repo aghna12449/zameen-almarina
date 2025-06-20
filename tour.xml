@@ -173,9 +173,11 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 		lat="" lng="" heading="">
 <control bouncinglimits="calc:image.cube ? true : false" />
 
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+		<view hlookat="0.080" vlookat="0.086" fovtype="MFOV" fov="0.699" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
 		<preview url="panos/a-initial.tiles/preview.jpg" />
+
+		<image hfov="1.00" vfov="0.562500" voffset="0.00"></image>
 
 		<image hfov="1.00" vfov="0.562500" voffset="0.00">
 			<flat url="panos/a-initial.tiles/l%l/%0v/l%l_%0v_%0h.jpg" multires="512,1024x576,2048x1152,3840x2160,7680x4320" />

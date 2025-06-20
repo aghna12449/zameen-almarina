@@ -452,27 +452,27 @@
             
           if(currentScene === "scene_a-initial") {
             console.log("currentScene", currentScene);
-             // Smooth zoom to FOV 40 (or whatever value you want)
+              // Smooth zoom to FOV 40 (or whatever value you want)
      
-       // krpano.call("set(fov_moveforce,-1.8);");
-//krpano.set("view.fovmin", 0.5);
-//krpano.set("view.fovmax", 0.5);
+     //  krpano.call("set(fov_moveforce,-1.8);");
+       //  krpano.set("view.fovmin", 0.09);
+         //    krpano.set("view.fovmax", 1.9);
     
        
-            // krpano.call("tween(view.fov, 100, 1);"); 
+           //  krpano.call("tween(view.fov, 70, 1);"); 
           }
 
           if (krpano) {
-         //   krpano.call("delayedcall(0.9, looktohotspot(hs_AlMarinaLogo_big));");
+           // krpano.call("delayedcall(0.1, looktohotspot(hs_AlMarinaLogo_big));");
 
-            //  setTimeout(() => {
-            //    krpano.call(
-            //     "delayedcall(0.9, looktohotspot(hs_AlMarinaLogo_big));"
-            //  );
+           //  setTimeout(() => {
+          //  krpano.call(
+             //   "delayedcall(0.9, looktohotspot(hs_AlMarinaLogo_big));"
+             // );
               
               
        
-            // }, 1000);
+             //}, 1000);
           } else {
             console.error("Krpano instance not found or not ready.");
           }
