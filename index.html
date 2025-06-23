@@ -499,7 +499,7 @@
 
         slider.addEventListener("mouseup", () => {
           // Reset the state when mouse is released
-          console.log("Mouse up");
+          
           isDown = false;
           slider.classList.remove("active");
         });
@@ -2537,6 +2537,7 @@
                 set(hotspot[${hotspotName}].fillalpha, 0.2);
                 set(hotspot[${hotspotName}].bordercolor, 0x39FF14);
                 set(hotspot[${hotspotName}].borderwidth, 1);
+                set(hotspot[${hotspotName}].capture, false);
           `);
 
             krpano.call(
@@ -3335,6 +3336,7 @@
           showSearchFilterCardsMobile();
           displayHorizontalSlider();
           flyToInitialAlMarinaScene();
+      
 
           const unit = getSpecificUnit();
 
