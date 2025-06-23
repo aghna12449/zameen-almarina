@@ -19,19 +19,7 @@ debugmode="true" showerrors="false" logkey="false"
   <include url="vtour-future/future.xml"/>
 
 <autorotate enabled="false" />
-<control
-    sensortouch="true"  
-	touch="true"
-	draggie="true"    
-	mouse="true" 
-	keyb="true"   
-	       
-/>
- <control 
-    mousezoom="true"
-    touchzoom="true"
-    zoomtocursor="true"
-  />
+
    
 <!-- <include url="drone.xml"/>
   <include url="future.xml"/> -->
@@ -169,20 +157,29 @@ debugmode="true" showerrors="false" logkey="false"
 	<!-- <include url="skin/vtourskin_design_117round.xml"    /> -->
 	<!-- <include url="skin/vtourskin_design_black.xml"       /> -->
 
+<!-- fov controls how "zoomed in" you are. Lower values = more zoom.
 
+fovtype="MFOV" ensures it scales based on vertical and horizontal FOV.
+
+maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom in up to 2x the native resolution. -->
 	
 	<scene name="scene_a-initial" title="a-initial"  thumburl="panos/a-initial.tiles/thumb.jpg" lat="" lng="" heading="">
 
     <control bouncinglimits="calc:image.cube ? true : false" />
 
-   <view hlookat="0.073" vlookat="0.061" fovtype="MFOV" fov="0.468" maxpixelzoom="2.0" fovmin="40" fovmax="40" limitview="auto" />
+   <!-- <view hlookat="0.048" vlookat="0.086" fovtype="MFOV" fov="0.292" maxpixelzoom="2.0" fovmin="40" fovmax="40" limitview="auto" /> -->
+<!-- <view hlookat="0.043" vlookat="0.051" fovtype="MFOV" fov="20.424" maxpixelzoom="2.0" fovmin="10" fovmax="20.424" limitview="auto" /> -->
 
-	
-    <preview url="panos/a-initial.tiles/preview.jpg" />
+ <view  hlookat="0.143" vlookat="0.151" fovtype="MFOV" fov="20" maxpixelzoom="2.0" fovmin="10" fovmax="140"  limitview="auto" /> 
 
-    <image hfov="1.00" vfov="0.4710" voffset="114.000"  zoomlevel="100" >
-        <flat url="panos/a-initial.tiles/l%l/%0v/l%l_%0v_%0h.jpg" multires="512,1024x630,2048x1260,4096x2518,8192x5034" />
-    </image>
+
+<!-- <view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" -->
+
+   <preview url="panos/a-initial.tiles/preview.jpg" />
+
+    <image hfov="1.00" vfov="0.562500" voffset="" >
+			<flat url="panos/a-initial.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1024x576,2048x1152,3840x2160" />
+		</image>
 <!-- hotspot for highlighting initial zone -->
 
 
