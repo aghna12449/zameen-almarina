@@ -6,9 +6,11 @@
 	startscene="scene_a-initial"
 	debugmode="true" showerrors="false" logkey="false"
 	info="false">
+	<lensflare name="flare1" enabled="false" visible="false" />
+
 
 	<include url="skin/vtourskin.xml" />
-
+ <!-- <include url="plugins/polygon.xml" />  -->
 
 	<include url="callout.xml" />
 	<!-- <include url="vtour_DRONE/drone.xml"/>
@@ -173,35 +175,56 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 		lat="" lng="" heading="">
 <control bouncinglimits="calc:image.cube ? true : false" />
 
-		<view hlookat="0.080" vlookat="0.086" fovtype="MFOV" fov="0.699" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+			<view hlookat="0.080" vlookat="0.086" fovtype="MFOV" fov="0.699" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
 		<preview url="panos/a-initial.tiles/preview.jpg" />
-
-		<image hfov="1.00" vfov="0.562500" voffset="0.00"></image>
 
 		<image hfov="1.00" vfov="0.562500" voffset="0.00">
 			<flat url="panos/a-initial.tiles/l%l/%0v/l%l_%0v_%0h.jpg" multires="512,1024x576,2048x1152,3840x2160,7680x4320" />
 		</image>
-
 		<!-- hotspot for highlighting initial zone -->
 
 
-		<hotspot name="hs_Marina_Arial" style="mypolygonalhotspotstylename" capture="false"
-			fillcolor="0xa65c43  " fillalpha="0.83" bordercolor="0xD4A76A"   borderwidth="2.5"
+
+
+		<hotspot name="hs_Marina_Arial" style="mypolygonalhotspotstylename" capture="false"  fillcolor="0xa65c43  " fillalpha="0" bordercolor="0xD4A76A"   borderwidth="2.5"
 			myscale="0.5"
-			onclick="looktohotspot(hs_zone_1_360(1), 60, linear); tween(view.fov, 30, 1.5); loadscene(scene_b-AL_MARINA_aerial, null, MERGE, BLEND(1));"
-		>
+			onclick="looktohotspot(hs_zone_1_360(1), 60, linear); tween(view.fov, 30, 1.5); loadscene(scene_b-AL_MARINA_aerial, null, MERGE, BLEND(1));" > <point ath="0.05910472016660151" atv="0.07262108649898723" /> <point ath="0.07505525721933282" atv="0.07327213290808565" /> <point ath="0.08755527101163807" atv="0.07398827857908388" /> <point ath="0.10513341452019631" atv="0.07470441808044621" /> <point ath="0.10565424834192072" atv="0.07470441777951055" /> <point ath="0.10604487370540028" atv="0.07470441754975773" /> <point ath="0.10643549911156924" atv="0.07476952149562434" /> <point ath="0.10669591606358608" atv="0.07483462551705823" /> <point ath="0.10702144507547473" atv="0.08596744017822316" /> <point ath="0.10702144507547473" atv="0.08596744017822316" /> <point ath="0.10689123658482913" atv="0.08596744027012773" /> <point ath="0.10689123658482913" atv="0.08596744027012773" /> <point ath="0.10682613233944949" atv="0.08596744031591355" /> <point ath="0.10669592384840598" atv="0.08596744040715214" /> <point ath="0.1065657153571351" atv="0.08596744049794677" /> <point ath="0.058583880423952905" atv="0.08316796382010798" /> </hotspot>
 
 
-			<point ath="0.05905249044684524" atv="0.07243329471074891" />
-			<point ath="0.10696924587716694" atv="0.07256348485569705" />
-			<point ath="0.10670884150493976" atv="0.08636558107560408" />
-			<point ath="0.05814102843254432" atv="0.08350101585608874" />
-
-
-		</hotspot>
 
 		<!-- hotspots for landmarks -->
+		
+
+ <hotspot name="hs_AlMarinaLogo_big"
+         style="callout"
+         shape="round"
+       ath="0.0824484" atv="0.077712"
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="70"
+         animation="keep_opened"
+         line_width="1.5"
+         line_lenght="80"
+         circle_active_width="8"
+         title=""
+         text_background=""
+         onclick="loadscene(scene_b-AL_MARINA_aerial, null, MERGE,BLEND(1))"
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/AlMarinaLogo_big.png&quot; style=&quot;width:100px; height:120px; border-radius:25px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot>  
+
+
+
+
+
+
+
+
 		<hotspot name="hs_AlMarinaLogo_big"
 			callout_bg_border="0,0,0,0"
 			callout_bg_color="0xa65c43"
@@ -224,56 +247,56 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 
 
 		<hotspot name="hs_ApartEnt(2.1)" callout_bg_border="0,0,0,0"
-			width="auto" shape="circle" ath="0.0693012" atv="0.1183332"
-			line_lenght="70" rotate="120" animation="keep_opened" style="callout"
+			width="auto" shape="round" ath="0.0693012" atv="0.1183332"
+			line_lenght="70" line_width="1.5" rotate="120"  animation="keep_opened" style="callout"
 			title="Al Yamamah University " content="06 mins - 8km"
-			circle_active_width="0.1" text_x=""></hotspot>
+			circle_active_width="8" text_x=""></hotspot>
 
 
 		<hotspot name="hs_ApartEnt(2.2)" callout_bg_border="0,0,0,0"
-			width="auto" shape="circle" ath="0.0910358" atv="0.0334141" rotate="45"
-			line_lenght="100" animation="keep_opened" style="callout"
+			width="auto" shape="round" ath="0.0910358" atv="0.0334141" rotate="45"
+			line_lenght="100" line_width="1.5" animation="keep_opened" style="callout"
 			title="King Abdul Aziz Seaport"
-			content="10 mins" circle_active_width="0.1" text_x=""></hotspot>
+			content="10 mins" circle_active_width="8" text_x=""></hotspot>
 
 
 		<hotspot name="hs_ApartEnt(2.3)" callout_bg_border="0,0,0,0"
-			width="auto" shape="circle" ath="0.0612752" atv="0.1153677"
-			rotate="-170" line_lenght="70" animation="keep_opened" style="callout"
+			width="auto" shape="round" ath="0.0612752" atv="0.1153677"
+			rotate="-207" line_lenght="70" line_width="1.5"  animation="keep_opened" style="callout"
 			title="Dharan Expo Exibition Center" content="5 mins - 8km"
-			circle_active_width="0.1" text_x=""></hotspot>
+			circle_active_width="8" text_x=""></hotspot>
 
 		<hotspot name="hs_ApartEnt(2.4)" callout_bg_border="0,0,0,0" width="auto"
-			line_lenght="70" shape="circle" ath="-0.2777324" atv="-0.2178239" rotate="70"
+			line_lenght="70" line_width="1.5" shape="round" ath="-0.2777324" atv="-0.2178239" rotate="70"
 			animation="keep_opened" style="callout" title="King Fahd International Airport"
 			content="35 mins - 50km"
-			circle_active_width="0.1" text_x=""></hotspot>
-		<hotspot name="hs_ApartEnt(2.6)" callout_bg_border="0,0,0,0" width="auto" line_lenght="70"
-			shape="circle" ath="0.0957102" atv="0.1463097" rotate="130" animation="keep_opened"
-			style="callout" title="Seven Site" content="12 mins - 11km" circle_active_width="0.1"
+			circle_active_width="8" text_x=""></hotspot>
+		<hotspot name="hs_ApartEnt(2.6)" callout_bg_border="0,0,0,0" width="auto" line_lenght="90" line_width="1.5"
+			shape="round" ath="0.0957102" atv="0.1463097" rotate="138" animation="keep_opened"
+			style="callout" title="Seven Site" content="12 mins - 11km" circle_active_width="8"
 			text_x=""></hotspot>
 
 
-		<hotspot name="hs_ApartEnt(2.7)" callout_bg_border="0,0,0,0" width="auto" line_lenght="70"
-			shape="circle"
+		<hotspot name="hs_ApartEnt(2.7)" callout_bg_border="0,0,0,0" width="auto" line_lenght="70" line_width="1.5"
+			shape="round"
 			ath="0.0309812" atv="0.1152315" rotate="-90" animation="keep_opened" style="callout"
-			title="Aramco Stadium" content="10 mins - 10km" circle_active_width="0.1" text_x=""></hotspot>
+			title="Aramco Stadium" content="10 mins - 10km" circle_active_width="8" text_x=""></hotspot>
 
-		<hotspot name="hs_ApartEnt(2.8)" callout_bg_border="0,0,0,0" width="auto" line_lenght="70"
-			shape="circle"
-			ath="0.0701512" atv="0.0892284" rotate="110" animation="keep_opened" style="callout"
-			title="IAFU&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" content="05 mins - 5km"
-			circle_active_width="0.1" text_x=""></hotspot>
+		<hotspot name="hs_ApartEnt(2.8)" callout_bg_border="0,0,0,0" width="auto" line_lenght="120" line_width="1.5"
+			shape="round"
+			ath="0.0701512" atv="0.0892284" rotate="102" animation="keep_opened" style="callout"
+			title="Imam Abdulrahman Bin Faisal University&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" content="05 mins - 5km"
+			circle_active_width="8" text_x=""></hotspot>
 		<hotspot name="hs_ApartEnt(2.9)" callout_bg_border="0,0,0,0" width="auto"
-			line_lenght="70" shape="circle" ath="-0.0558943" atv="0.1511067"
-			rotate="-130" animation="keep_opened" style="callout" title="KFUPM "
+			line_lenght="70" line_width="1.5" shape="round" ath="-0.0558943" atv="0.1511067"
+			rotate="-130" animation="keep_opened" style="callout" title="King Fahd University "
 			content="15 mins - 18km" circle_active_width="0.1" text_x=""></hotspot>
 
-		<hotspot name="hs_ApartEnt(2.5)" callout_bg_border="0,0,0,0" width="auto" shape="circle"
+		<hotspot name="hs_ApartEnt(2.5)" callout_bg_border="0,0,0,0" width="auto" shape="round"
 			ath="0.031599" atv="0.0969678"
-			line_lenght="70" rotate="-30" animation="keep_opened"
+			line_lenght="70" line_width="1.5" rotate="-30" animation="keep_opened"
 			style="callout" title="Chamber of Commerce " content="07 mins - 8km"
-			circle_active_width="0.1" text_x=""></hotspot>
+			circle_active_width="8" text_x=""></hotspot>
 
 		<!-- <hotspot name="hs_ApartEnt(3)"
       
