@@ -87,6 +87,7 @@
     font-size: 17px !important; /* Consistent font size */
     background-color: #fff !important; /* Ensure white background */
    line-height: 1.5;  
+   font-size: 16px;
 
 }
 .custom-mobile-input::placeholder {
@@ -202,7 +203,7 @@
 
 @supports (-webkit-overflow-scrolling: touch) {
   input.custom-mobile-input {
-    font-size: 37px !important;  /* iOS only */
+    font-size: 18px !important;  /* iOS only */
     /* font-family: Calibri !important;  */
     
 

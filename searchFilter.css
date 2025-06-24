@@ -250,3 +250,17 @@
 .custom-width {
     width: 100%;
   }
+
+  .dropdown-wrapper {
+    position: relative;
+  }
+.dropdown-wrapper .bi {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+  .dropdown-wrapper select {
+    padding-right: 2.5rem;
+  }
