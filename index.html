@@ -421,10 +421,10 @@
         input.addEventListener("input", function () {
           if (true) {
             if (this.value.trim() !== "") {
-              console.log("FIRST IF");
+            
               this.style.fontSize = "60px"; // Shrink when user types
             } else {
-              console.log("ELSE");
+              
               this.style.fontSize = "48px"; // Reset when cleared
             }
           }
@@ -683,7 +683,7 @@
                 });
               }
             } else {
-              console.log("4 ELSE");
+             
 
               if (String(currentScene).includes("_360")) {
                 searchSliderFilters.style.display = "none";
@@ -853,7 +853,7 @@
               break;
 
             case "scene_g-zone_5":
-              console.log("HERE IT IS  ZONE 5");
+            
               updateSliderRange("8");
               slider.value = 4361;
               dynamicZoneRendering(zone8houseData, "", krpano);
@@ -1320,13 +1320,12 @@
           }
         };
 
-        const checkRecordExistence = (value) => {
-          console.log("checkRecord", value);
-
-          const parsedData = getParsedData();
+        const checkRecordExistence = (zoneData, value) => {
+        
+         
 
           if (value) {
-            const filteredData = parsedData?.data?.filter(
+            const filteredData = zoneData?.filter(
               (unit) => unit.plot_number === value
             );
 
@@ -1501,6 +1500,7 @@
         let latestArrayZone1 = [],
           latestArrayZone2 = [],
           latestArrayZone3 = [],
+          latestArrayZone4 = [],
           latestArrayZone6 = [];
         latestArrayZone5 = [];
         latestArrayZone9 = [];
@@ -1565,7 +1565,7 @@
                   (house) => parseInt(house.total_area) <= parseFloat(area)
                 );
 
-                console.log("filteredHouses", filteredHouses);
+    
                 break;
 
               case "scene_d-zone_2":
@@ -1673,6 +1673,31 @@
                 );
                 break;
 
+                case "scene_l_al_marina_mall_day_aerial":
+                updateSliderRange("4");
+                const updatedZone4houseData = zoneFourFilteredData().map(
+                  (house) => {
+                    matchedZone = zone4houseData.find(
+                      (zone) =>
+                        parseInt(house.plot_number) ===
+                        parseInt(zone.plot_number)
+                    );
+
+                    latestArrayZone4.push({
+                      ...house,
+                      total_area: house?.total_area,
+                      id: matchedZone?.id,
+                      coordinates: matchedZone?.coordinates
+                        ? matchedZone?.coordinates
+                        : [{ ath: 0, atv: 0 }],
+                    });
+                  }
+                );
+                filteredHouses = latestArrayZone4.filter(
+                  (house) => parseFloat(house.total_area) <= parseFloat(area)
+                );
+                break;
+
               case "scene_f-zone_4":
                 updateSliderRange("7");
                 const updatedZone7houseData = zoneSevenFilteredData().map(
@@ -1762,10 +1787,10 @@
           const plot = document.getElementById("plotNumber").value;
           const area = document.getElementById("totalArea").value;
           const krpano = document.getElementById("krpanoSWFObject");
-
+        
           // // 👉 Stop previous blinking
 
-          checkRecordExistence(plot);
+       
           blinkIndividualHotspot("", false, true);
           if (area) {
             // Stop previous blinking first
@@ -1799,41 +1824,69 @@
                 (house) => house.plot_number === plot
               );
 
+              checkRecordExistence(zone1houseData, plot);
+
               break;
             case "scene_d-zone_2":
               matchedHouse = zone2houseData.find(
                 (house) => house.plot_number === plot
               );
+              checkRecordExistence(zone2houseData, plot);
               break;
             case "scene_e-zone_3":
               matchedHouse = zone3houseData.find(
                 (house) => house.plot_number === plot
               );
+              checkRecordExistence(zone3houseData, plot);
               break;
 
             case "scene_f-zone_4":
               matchedHouse = zone7houseData.find(
                 (house) => house.plot_number === plot
               );
+
+              checkRecordExistence(zone7houseData, plot);
+              
               break;
 
             case "scene_g-zone_5":
               matchedHouse = zone8houseData.find(
                 (house) => house.plot_number === plot
               );
+              checkRecordExistence(zone8houseData, plot);
               break;
 
             case "scene_h-building_1":
               matchedHouse = building1houseData.find(
                 (house) => house.plot_number === plot
               );
+              checkRecordExistence(building1houseData, plot);
               break;
 
             case "scene_i-building_2":
               matchedHouse = building2houseData.find(
                 (house) => house.plot_number === plot
               );
+
+              checkRecordExistence(building2houseData, plot);
               break;
+
+              case "scene_k_zone_9":
+              matchedHouse = zone9houseData.find(
+                (house) => house.plot_number === plot
+              );
+
+              checkRecordExistence(zone9houseData, plot);
+              break;
+
+              case "scene_l_al_marina_mall_day_aerial":
+              matchedHouse = zone4houseData.find(
+                (house) => house.plot_number === plot
+              );
+
+              checkRecordExistence(zone4houseData, plot);
+              break;
+
 
             // You can add more zones here if needed
             default:
@@ -2005,14 +2058,7 @@
           isHide = false
         ) => {
           const krpano = document.getElementById("krpanoSWFObject");
-          console.log(
-            "Blinking hotspot",
-            hotspotName,
-            "isShow:",
-            isShow,
-            "isHide:",
-            isHide
-          );
+         
           // Stop blinking (on close or switching to aerial scene)
           if (
             isHide ||
@@ -2235,16 +2281,12 @@
           future.classList.remove("active");
 
           const count = krpano.get("scene.count");
-          for (let i = 0; i < count; i++) {
-            console.log(`Scene ${i}:`, krpano.get(`scene[${i}].name`));
-          }
+          // for (let i = 0; i < count; i++) {
+          //   console.log(`Scene ${i}:`, krpano.get(`scene[${i}].name`));
+          // }
 
           if (true) {
-            console.log(
-              "current secene aghna plz check it",
-              currentScene,
-              newString
-            );
+            
             if (clickedElement.classList.contains("now")) {
               // Move to Now
               now.classList.add("active");
@@ -2259,7 +2301,7 @@
                 `loadscene(future_${currentScene}, null, null, BLEND(1,2,'easeInOutSine'))`
               );
 
-              console.log("Future view");
+              
             }
           }
         };
@@ -2497,10 +2539,10 @@
               searchSliderFilters &&
               window.getComputedStyle(searchSliderFilters).display !== "none"
             ) {
-              console.log("Slider is visible, setting bottom 15%");
+   
               toggleWrapper.style.bottom = "15%";
             } else {
-              console.log("Slider is hidden, setting bottom 2%");
+              
               toggleWrapper.style.bottom = "2%";
             }
           }, 1200); // Delay: 1200ms is usually enough to wait for DOM updates
