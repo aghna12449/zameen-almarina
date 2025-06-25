@@ -1782,7 +1782,13 @@
           const area = document.getElementById("totalArea").value;
           const krpano = document.getElementById("krpanoSWFObject");
 
-          // // 👉 Stop previous blinking
+          
+
+          // Get current URL params
+          const params = new URLSearchParams(window.location.search);
+          if (plot) {
+            params.set("plotNumber", plot); // set or update
+          }
 
           blinkIndividualHotspot("", false, true);
           if (area) {
@@ -2296,6 +2302,7 @@
             }
           }
         };
+        
 
         // Render the breadcrumbs dynamically
         const renderBreadcrumbs = () => {
@@ -2310,10 +2317,8 @@
           //url.searchParams.delete("plotNumber");
 
           breadcrumbTrail.forEach((crumb, index) => {
-            if (index === 0) {
-        // 👉 If first breadcrumb, remove query string
-       // window.history.pushState({}, '', window.location.pathname);
-      } 
+          console.log("CRUMB", crumb, index)
+           
             if (index !== 0) {
               // Add separator
               const separator = document.createElement("span");
@@ -2323,25 +2328,34 @@
               wrapper.appendChild(separator);
             }
 
+            
+
             console.log("CRUMB", crumb);
 
             // Build query string if available
-            let queryString = "";
-if (crumb.scene && crumb.scene !== 'scene_a-initial') {
-  console.log("crumb", crumb.title);
-  queryString += `zone=${crumb.scene}`;
-}
-if (crumb.scene && crumb.scene !== 'scene_a-initial') {
-  queryString += (queryString ? "&" : "") + `plotNumber=${plotNumber? plotNumber : ''}`;
-}
 
-            console.log("queryString", queryString);
+            let queryString = "";
+            
+            if (crumb.scene && crumb.scene !== 'scene_a-initial') {
+              console.log("crumb", crumb.title);
+              queryString += `zone=${crumb.scene}`;
+            }
+            if (crumb.scene && crumb.scene !== 'scene_a-initial') {
+              queryString += (queryString ? "&" : "") + `plotNumber=${plotNumber? plotNumber : ''}`;
+            }
+            let krpano = globalKrpano();
+
+            if(breadcrumbTrail.length === 1){
+              krpano.call("loadscene(scene_a-initial, null, MERGE);");
+              queryString= ""
+            }
+
+           
             // Combine current URL with query string
             const href = queryString ? `?${queryString}` : "";
 
             const targetURL = href;
-            console.log("Navigating to:", targetURL);
-
+           
             // Update the browser URL without reloading
             window.history.pushState({}, "", targetURL);
             if (
@@ -2388,7 +2402,9 @@ if (crumb.scene && crumb.scene !== 'scene_a-initial') {
               const crumbIndex = parseInt(this.getAttribute("data-index"));
               if (crumbIndex === 0) {
                 event.preventDefault();
-                location.reload();
+               
+                window.location.href = 'https://www.zameengeomatics.com/public/Marina_Interactive_Masterplan/';
+                //location.reload();
               } else {
                 removeBreadCrumbItem(sceneName, crumbIndex);
               }
@@ -2665,7 +2681,12 @@ if (crumb.scene && crumb.scene !== 'scene_a-initial') {
 
         const blinkOnLoad=() =>{
          
-          const savedHotspot = localStorage.getItem("selectedHotspot");
+          const params = new URLSearchParams(window.location.search);
+        
+          const savedHotspot = params.get("hotspot");
+
+
+        
           console.log("savedHotspot", savedHotspot)
           if(savedHotspot){
             const cleanedhotspotName = savedHotspot.replace(/^hs_/, "");
@@ -2680,6 +2701,13 @@ if (crumb.scene && crumb.scene !== 'scene_a-initial') {
 
           localStorage.setItem("selectedHotspot", hotspotName);
 
+          const url = new URL(window.location);
+          url.searchParams.set("plotNumber", plotNumber);
+         
+
+          url.searchParams.set("hotspot", hotspotName);
+          window.history.pushState({}, '', url);
+
           // Then, call your flyToHouse function
           flyToHouse(ath, atv);
           blinkOnLoad()
@@ -2688,9 +2716,8 @@ if (crumb.scene && crumb.scene !== 'scene_a-initial') {
           blinkIndividualHotspot(cleanedhotspotName, true);
             // ✅ Now update the query param in the URL
 
-          const url = new URL(window.location);
-          url.searchParams.set("plotNumber", plotNumber);
-          window.history.pushState({}, '', url);
+          
+
 
         }
 
@@ -2762,16 +2789,21 @@ if (crumb.scene && crumb.scene !== 'scene_a-initial') {
 
           localStorage.setItem("response", JSON.stringify(response));
 
-          localStorage.setItem("response", JSON.stringify(response));
-
+          let card = document.getElementById("krpano-card");
+          
           if (krpano) {
             const currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
             const slider = document.getElementById("totalArea");
 
-            let card = document.getElementById("krpano-card");
+            if (currentScene === "scene_b-al_marina_aerial" || currentScene === "scene_a-initial") {
+
+             
             if (card) {
-             // card.remove();
+              card.remove();
             }
+            }
+           
+
 
             console.log("currentScene", currentScene);
 
@@ -2971,7 +3003,7 @@ if (crumb.scene && crumb.scene !== 'scene_a-initial') {
             })
             .catch((err) => console.error("Error fetching data:", err));
         };
-
+        
         // Function to show Bootstrap tooltip
 
         let cardContainer = document.createElement("div");
@@ -3032,7 +3064,7 @@ if (crumb.scene && crumb.scene !== 'scene_a-initial') {
 
           let existingCard = document.getElementById("krpano-card");
           if (existingCard) {
-            // existingCard.remove();
+             existingCard.remove();
           }
           //  <div class="inner_section">
 
@@ -3044,14 +3076,20 @@ if (crumb.scene && crumb.scene !== 'scene_a-initial') {
    <div class="image-overlay">
    
       <button class="close-btn" onclick="closeCard()">&times;</button>
-       <button class="share-btn" onclick="shareZoneAndPLot()" title="Share Property">
-    <i class="fa fa-share-alt"></i>
-  </button>
+       
    </div>
    <div class="inner-style">
    <div class="property-info">
        <div class="price-tag"> Price: TBD</div>
+        <span>
+            <button class="share-btn" onclick="copyAndSharePLot()">
+                <i class="fas fa-share"></i> Share
+            </button>
+   
+             <div id="copyTooltip" class="clipboard-tooltip">Link Copied!</div>
+          </span>
       <h1 class="heading">Al Marina</h1>
+        
       <h2 class="zone_title">
       <i class="fa fa-map-marker mr-2"></i>   
       <span class="display_card_zone">
@@ -3060,7 +3098,9 @@ if (crumb.scene && crumb.scene !== 'scene_a-initial') {
         unitDetails.zone.slice(1).toLowerCase()
       }
         </span>
-      <h2>
+     
+      </h2>
+    
       <div class="divider"></div>
       <div class="details_flex">
 
@@ -3136,16 +3176,22 @@ if (crumb.scene && crumb.scene !== 'scene_a-initial') {
           }
         };
 
-        const shareZoneAndPLot = () => {
+        const copyAndSharePLot = () => {
           const url = window.location.href;
 
-navigator.clipboard.writeText(url)
-  .then(() => {
-    console.log("roperty link copied to clipboard", url)
-  })
-  .catch((err) => {
-    console.error("Failed to copy URL: ", err);
-  });
+          navigator.clipboard.writeText(url)
+            .then(() => {
+
+              const tooltip = document.getElementById("copyTooltip");
+              tooltip.classList.add("show");
+
+              setTimeout(() => {
+                tooltip.classList.remove("show");
+              }, 2000);
+            })
+            .catch((err) => {
+              console.error("Failed to copy URL: ", err);
+            });
         };
 
         
@@ -3219,7 +3265,7 @@ navigator.clipboard.writeText(url)
         const showHouseDetails = ( plot_number) => {
           let card = document.getElementById("krpano-card");
           if (card) {
-            //card.remove();
+            card.remove();
           }
 
           const unitData = localStorage.getItem("response");
@@ -3230,7 +3276,8 @@ navigator.clipboard.writeText(url)
             (unit) => unit.plot_number === plot_number
           );
 
-          console.log("before unitData", unitData);
+         
+
           //   Assuming the first element in the response array corresponds to the clicked house
           if (unitData && unitData.length > 0) {
             blinkOnLoad()
@@ -3400,19 +3447,11 @@ navigator.clipboard.writeText(url)
 
         function handleOrientation() {}
 
-        window.addEventListener("popstate", () => {
-  const params = new URLSearchParams(window.location.search);
-  const plotNumber = params.get("plotNumber");
-
-  if (plotNumber && !document.getElementById("krpano-card")) {
-    // fetch data and createCard() here
-     showHouseDetails(plotNumber)
-  }
-});
-
-
-        window.onload = () => {
+      
+      window.onload = () => {
           let krpano = globalKrpano();
+          const currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
+           
 
           if (!sessionStorage.getItem("reloaded")) {
             sessionStorage.setItem("reloaded", "true");
@@ -3426,10 +3465,24 @@ navigator.clipboard.writeText(url)
           const plotNumber = params.get("plotNumber");
 
 
-          console.log("params", params.size, scene, plotNumber);
-          plotNumber && showHouseDetails(plotNumber)
+  
+          if (currentScene !== "scene_b-al_marina_aerial" || currentScene !== "scene_a-initial") {
+         
+
+            plotNumber && showHouseDetails(plotNumber)
+          }
+         
+
           
           if (params.size && scene)   {
+
+     
+
+            breadcrumbTrail.push({
+                  scene: "scene_b-al_marina_aerial",
+                  title: "Al Marina",
+                  icon: "grain",
+                });
 
             // Wait until krpano is ready, then load the scene
             const krpano = document.getElementById("krpanoSWFObject");
