@@ -7,7 +7,6 @@
     <meta name="viewport" , initial-scale="1.0" , maximum-scale="1.0," />
     <meta http-equiv="ScreenOrientation" content="autoRotate:disabled" />
 
-    
     <meta name="viewport" content=" user-scalable=no" />
     <!-- <meta
       name="viewport"
@@ -48,7 +47,10 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@mui/material@5.0.0-beta.4/dist/material-ui.min.css"
     />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
 
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -182,7 +184,11 @@
               </div>
               <div>
                 <div class="dropdown-wrapper mt-1 mb-3">
-                  <select class="form-select custom-dropdown" id="availabilityDropdown" name="availability">
+                  <select
+                    class="form-select custom-dropdown"
+                    id="availabilityDropdown"
+                    name="availability"
+                  >
                     <option value="Available">Available</option>
                     <option value="Sold">Sold</option>
                     <option value="Reserved">Reserved</option>
@@ -267,7 +273,9 @@
                   <div class="mobile-input-group">
                     <input
                       type="text"
-                      class="form-control custom-mobile-input" placeholder="Plot Number" onkeyup="onEnterPlotNumber(event)"
+                      class="form-control custom-mobile-input"
+                      placeholder="Plot Number"
+                      onkeyup="onEnterPlotNumber(event)"
                       id="plotNumber"
                     />
                   </div>
@@ -404,7 +412,6 @@
           xml: "tour.xml",
           target: "pano",
           html5: "only",
-    
 
           onready: function (krpano) {},
         });
@@ -421,10 +428,8 @@
         input.addEventListener("input", function () {
           if (true) {
             if (this.value.trim() !== "") {
-            
               this.style.fontSize = "60px"; // Shrink when user types
             } else {
-              
               this.style.fontSize = "48px"; // Reset when cleared
             }
           }
@@ -433,7 +438,7 @@
 
         let zoneMaximum = 20000;
 
-       const globalKrpano = () => {
+        const globalKrpano = () => {
           const krpano = document.getElementById("krpanoSWFObject");
           if (!krpano) {
             console.error("Krpano instance not found");
@@ -441,7 +446,6 @@
           }
           return krpano;
         };
-
 
         const flyToInitialAlMarinaScene = () => {
           const krpano = document.getElementById("krpanoSWFObject");
@@ -451,30 +455,25 @@
 
           const animationSpeed = 0.1;
           const currentScene = krpano.get("xml.scene");
-            
-          if(currentScene === "scene_a-initial") {
+
+          if (currentScene === "scene_a-initial") {
             console.log("currentScene", currentScene);
-              // Smooth zoom to FOV 40 (or whatever value you want)
-     
-     //  krpano.call("set(fov_moveforce,-1.8);");
-       //  krpano.set("view.fovmin", 0.09);
-         //    krpano.set("view.fovmax", 1.9);
-    
-       
-           //  krpano.call("tween(view.fov, 70, 1);"); 
+            // Smooth zoom to FOV 40 (or whatever value you want)
+
+            //  krpano.call("set(fov_moveforce,-1.8);");
+            //  krpano.set("view.fovmin", 0.09);
+            //    krpano.set("view.fovmax", 1.9);
+
+            //  krpano.call("tween(view.fov, 70, 1);");
           }
 
           if (krpano) {
-           // krpano.call("delayedcall(0.1, looktohotspot(hs_AlMarinaLogo_big));");
-
-           //  setTimeout(() => {
-          //  krpano.call(
-             //   "delayedcall(0.9, looktohotspot(hs_AlMarinaLogo_big));"
-             // );
-              
-              
-       
-             //}, 1000);
+            // krpano.call("delayedcall(0.1, looktohotspot(hs_AlMarinaLogo_big));");
+            //  setTimeout(() => {
+            //  krpano.call(
+            //   "delayedcall(0.9, looktohotspot(hs_AlMarinaLogo_big));"
+            // );
+            //}, 1000);
           } else {
             console.error("Krpano instance not found or not ready.");
           }
@@ -501,7 +500,7 @@
 
         slider.addEventListener("mouseup", () => {
           // Reset the state when mouse is released
-          
+
           isDown = false;
           slider.classList.remove("active");
         });
@@ -683,8 +682,6 @@
                 });
               }
             } else {
-             
-
               if (String(currentScene).includes("_360")) {
                 searchSliderFilters.style.display = "none";
                 mobileSearchFilter.style.display = "none";
@@ -772,11 +769,11 @@
 
         const onEnterPlotNumber = (event) => {
           if (event.key === "Enter") {
-             handleSearchFilters();
-             // You can call any function here or trigger a search, etc.
-             }
-        }
-       
+            handleSearchFilters();
+            // You can call any function here or trigger a search, etc.
+          }
+        };
+
         const resetFilters = () => {
           const plotInput = document.getElementById("plotNumber");
           if (plotInput) {
@@ -853,7 +850,6 @@
               break;
 
             case "scene_g-zone_5":
-            
               updateSliderRange("8");
               slider.value = 4361;
               dynamicZoneRendering(zone8houseData, "", krpano);
@@ -1321,9 +1317,6 @@
         };
 
         const checkRecordExistence = (zoneData, value) => {
-        
-         
-
           if (value) {
             const filteredData = zoneData?.filter(
               (unit) => unit.plot_number === value
@@ -1331,9 +1324,8 @@
 
             if (!filteredData.length) {
               document.getElementById("notFoundModal").style.display = "block";
-            }else{
+            } else {
               document.getElementById("notFoundModal").style.display = "none";
-              
             }
           }
         };
@@ -1568,7 +1560,6 @@
                   (house) => parseInt(house.total_area) <= parseFloat(area)
                 );
 
-    
                 break;
 
               case "scene_d-zone_2":
@@ -1676,7 +1667,7 @@
                 );
                 break;
 
-                case "scene_l_al_marina_mall_day_aerial":
+              case "scene_l_al_marina_mall_day_aerial":
                 updateSliderRange("4");
                 const updatedZone4houseData = zoneFourFilteredData().map(
                   (house) => {
@@ -1790,10 +1781,15 @@
           const plot = document.getElementById("plotNumber").value;
           const area = document.getElementById("totalArea").value;
           const krpano = document.getElementById("krpanoSWFObject");
-        
-          // // 👉 Stop previous blinking
 
-       
+          
+
+          // Get current URL params
+          const params = new URLSearchParams(window.location.search);
+          if (plot) {
+            params.set("plotNumber", plot); // set or update
+          }
+
           blinkIndividualHotspot("", false, true);
           if (area) {
             // Stop previous blinking first
@@ -1849,7 +1845,7 @@
               );
 
               checkRecordExistence(zone7houseData, plot);
-              
+
               break;
 
             case "scene_g-zone_5":
@@ -1874,7 +1870,7 @@
               checkRecordExistence(building2houseData, plot);
               break;
 
-              case "scene_k_zone_9":
+            case "scene_k_zone_9":
               matchedHouse = zone9houseData.find(
                 (house) => house.plot_number === plot
               );
@@ -1882,14 +1878,13 @@
               checkRecordExistence(zone9houseData, plot);
               break;
 
-              case "scene_l_al_marina_mall_day_aerial":
+            case "scene_l_al_marina_mall_day_aerial":
               matchedHouse = zone4houseData.find(
                 (house) => house.plot_number === plot
               );
 
               checkRecordExistence(zone4houseData, plot);
               break;
-
 
             // You can add more zones here if needed
             default:
@@ -2061,7 +2056,7 @@
           isHide = false
         ) => {
           const krpano = document.getElementById("krpanoSWFObject");
-         
+
           // Stop blinking (on close or switching to aerial scene)
           if (
             isHide ||
@@ -2115,18 +2110,20 @@
         };
 
         const blinkInitialSateliteBlinking = () => {
-          let krpano= globalKrpano()
-           const blinkColors = ["0xD8C8B0  ", "0xa65c43"];
-            let blinkIndex = 0;
+          let krpano = globalKrpano();
+          const blinkColors = ["0xD8C8B0  ", "0xa65c43"];
+          let blinkIndex = 0;
 
-            interval = setInterval(() => {
-              const color = blinkColors[blinkIndex];
+          interval = setInterval(() => {
+            const color = blinkColors[blinkIndex];
 
-              krpano.call(`set(hotspot[${'hs_Marina_Arial'}].bordercolor, ${color})`);
-              blinkIndex = (blinkIndex + 1) % blinkColors.length;
-            }, 650);
-        }
-      blinkInitialSateliteBlinking()
+            krpano.call(
+              `set(hotspot[${"hs_Marina_Arial"}].bordercolor, ${color})`
+            );
+            blinkIndex = (blinkIndex + 1) % blinkColors.length;
+          }, 650);
+        };
+        blinkInitialSateliteBlinking();
 
         function blinkHotspot(hotspotName, isShow) {
           const krpano = document.getElementById("krpanoSWFObject");
@@ -2289,7 +2286,6 @@
           // }
 
           if (true) {
-            
             if (clickedElement.classList.contains("now")) {
               // Move to Now
               now.classList.add("active");
@@ -2303,18 +2299,26 @@
               krpano.call(
                 `loadscene(future_${currentScene}, null, null, BLEND(1,2,'easeInOutSine'))`
               );
-
-              
             }
           }
         };
+        
 
         // Render the breadcrumbs dynamically
         const renderBreadcrumbs = () => {
           const wrapper = document.getElementById("breadcrumb-wrapper");
           wrapper.innerHTML = ""; // Clear previous breadcrumbs
 
+
+          const params = new URLSearchParams(window.location.search);
+         
+          const plotNumber = params.get("plotNumber");
+
+          //url.searchParams.delete("plotNumber");
+
           breadcrumbTrail.forEach((crumb, index) => {
+          console.log("CRUMB", crumb, index)
+           
             if (index !== 0) {
               // Add separator
               const separator = document.createElement("span");
@@ -2324,13 +2328,44 @@
               wrapper.appendChild(separator);
             }
 
+            
+
+            console.log("CRUMB", crumb);
+
+            // Build query string if available
+
+            let queryString = "";
+            
+            if (crumb.scene && crumb.scene !== 'scene_a-initial') {
+              console.log("crumb", crumb.title);
+              queryString += `zone=${crumb.scene}`;
+            }
+            if (crumb.scene && crumb.scene !== 'scene_a-initial') {
+              queryString += (queryString ? "&" : "") + `plotNumber=${plotNumber? plotNumber : ''}`;
+            }
+            let krpano = globalKrpano();
+
+            if(breadcrumbTrail.length === 1){
+              krpano.call("loadscene(scene_a-initial, null, MERGE);");
+              queryString= ""
+            }
+
+           
+            // Combine current URL with query string
+            const href = queryString ? `?${queryString}` : "";
+
+            const targetURL = href;
+           
+            // Update the browser URL without reloading
+            window.history.pushState({}, "", targetURL);
             if (
               index !== breadcrumbTrail.length - 1 ||
               breadcrumbTrail.length === 1
             ) {
               // Not the last one - make it a link
               const link = document.createElement("a");
-              link.href = "#";
+              // link.href = href;
+
               link.className = "breadcrumb-link mui-breadcrumb-link";
               link.setAttribute("data-scene", crumb.scene);
               link.setAttribute("data-index", index); // Save index for back navigation
@@ -2367,7 +2402,9 @@
               const crumbIndex = parseInt(this.getAttribute("data-index"));
               if (crumbIndex === 0) {
                 event.preventDefault();
-                location.reload();
+               
+                window.location.href = 'https://www.zameengeomatics.com/public/Marina_Interactive_Masterplan/';
+                //location.reload();
               } else {
                 removeBreadCrumbItem(sceneName, crumbIndex);
               }
@@ -2542,10 +2579,8 @@
               searchSliderFilters &&
               window.getComputedStyle(searchSliderFilters).display !== "none"
             ) {
-   
               toggleWrapper.style.bottom = "15%";
             } else {
-              
               toggleWrapper.style.bottom = "2%";
             }
           }, 1200); // Delay: 1200ms is usually enough to wait for DOM updates
@@ -2644,16 +2679,46 @@
           });
         };
 
+        const blinkOnLoad=() =>{
+         
+          const params = new URLSearchParams(window.location.search);
+        
+          const savedHotspot = params.get("hotspot");
+
+
+        
+          console.log("savedHotspot", savedHotspot)
+          if(savedHotspot){
+            const cleanedhotspotName = savedHotspot.replace(/^hs_/, "");
+            blinkIndividualHotspot(cleanedhotspotName, true);
+
+          }
+         }
         // Add this new function to your existing JavaScript code (e.g., in the same script block as flyToHouse and showHouseDetails)
         function handleHotspotClick(hotspotName, plotNumber, ath, atv) {
           // First, call your showHouseDetails function
-          showHouseDetails("", plotNumber, totalArea);
+          showHouseDetails( plotNumber);
+
+          localStorage.setItem("selectedHotspot", hotspotName);
+
+          const url = new URL(window.location);
+          url.searchParams.set("plotNumber", plotNumber);
+         
+
+          url.searchParams.set("hotspot", hotspotName);
+          window.history.pushState({}, '', url);
 
           // Then, call your flyToHouse function
           flyToHouse(ath, atv);
+          blinkOnLoad()
           const cleanedhotspotName = hotspotName.replace(/^hs_/, "");
 
           blinkIndividualHotspot(cleanedhotspotName, true);
+            // ✅ Now update the query param in the URL
+
+          
+
+
         }
 
         function flyToHouse(ath, atv) {
@@ -2724,16 +2789,21 @@
 
           localStorage.setItem("response", JSON.stringify(response));
 
-          localStorage.setItem("response", JSON.stringify(response));
-
+          let card = document.getElementById("krpano-card");
+          
           if (krpano) {
             const currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
             const slider = document.getElementById("totalArea");
 
-            let card = document.getElementById("krpano-card");
+            if (currentScene === "scene_b-al_marina_aerial" || currentScene === "scene_a-initial") {
+
+             
             if (card) {
               card.remove();
             }
+            }
+           
+
 
             console.log("currentScene", currentScene);
 
@@ -2933,7 +3003,7 @@
             })
             .catch((err) => console.error("Error fetching data:", err));
         };
-
+        
         // Function to show Bootstrap tooltip
 
         let cardContainer = document.createElement("div");
@@ -2990,9 +3060,11 @@
             east: response[0].east,
           };
 
+          console.log("CREATE CARD")
+
           let existingCard = document.getElementById("krpano-card");
           if (existingCard) {
-            // existingCard.remove();
+             existingCard.remove();
           }
           //  <div class="inner_section">
 
@@ -3004,11 +3076,20 @@
    <div class="image-overlay">
    
       <button class="close-btn" onclick="closeCard()">&times;</button>
+       
    </div>
    <div class="inner-style">
    <div class="property-info">
        <div class="price-tag"> Price: TBD</div>
+        <span>
+            <button class="share-btn" onclick="copyAndSharePLot()">
+                <i class="fas fa-share"></i> Share
+            </button>
+   
+             <div id="copyTooltip" class="clipboard-tooltip">Link Copied!</div>
+          </span>
       <h1 class="heading">Al Marina</h1>
+        
       <h2 class="zone_title">
       <i class="fa fa-map-marker mr-2"></i>   
       <span class="display_card_zone">
@@ -3017,7 +3098,9 @@
         unitDetails.zone.slice(1).toLowerCase()
       }
         </span>
-      <h2>
+     
+      </h2>
+    
       <div class="divider"></div>
       <div class="details_flex">
 
@@ -3093,6 +3176,26 @@
           }
         };
 
+        const copyAndSharePLot = () => {
+          const url = window.location.href;
+
+          navigator.clipboard.writeText(url)
+            .then(() => {
+
+              const tooltip = document.getElementById("copyTooltip");
+              tooltip.classList.add("show");
+
+              setTimeout(() => {
+                tooltip.classList.remove("show");
+              }, 2000);
+            })
+            .catch((err) => {
+              console.error("Failed to copy URL: ", err);
+            });
+        };
+
+        
+
         const toggleSearchFilter = () => {
           const arrow = document.getElementById("toggleArrow_1");
           const searchBarContainer =
@@ -3159,7 +3262,7 @@
         // JS workaround for iOS keyboard issues
 
         // Function to display house details
-        const showHouseDetails = (response, plot_number, total_area) => {
+        const showHouseDetails = ( plot_number) => {
           let card = document.getElementById("krpano-card");
           if (card) {
             card.remove();
@@ -3173,8 +3276,13 @@
             (unit) => unit.plot_number === plot_number
           );
 
+         
+
           //   Assuming the first element in the response array corresponds to the clicked house
           if (unitData && unitData.length > 0) {
+            blinkOnLoad()
+            console.log("After filteredData", filteredData);
+           
             createCard(
               "Title",
               "Description",
@@ -3299,8 +3407,6 @@
 
           updateToggleMarginBasedOnSlider();
 
-      
-          
           const toggle = document.getElementById("time-toggle");
           const toggleLayerWrapper = document.getElementById(
             "toggle_layer_wrapper"
@@ -3341,23 +3447,62 @@
 
         function handleOrientation() {}
 
-        window.onload = () => {
-            let krpano= globalKrpano();
-
-       
+      
+      window.onload = () => {
+          let krpano = globalKrpano();
+          const currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
+           
 
           if (!sessionStorage.getItem("reloaded")) {
             sessionStorage.setItem("reloaded", "true");
-              location.reload();
+            location.reload();
           } else {
             sessionStorage.removeItem("reloaded");
           }
 
+          const params = new URLSearchParams(window.location.search);
+          const scene = params.get("zone");
+          const plotNumber = params.get("plotNumber");
 
-        
 
-          krpano.call("loadscene(scene_a-initial, null, MERGE);");
+  
+          if (currentScene !== "scene_b-al_marina_aerial" || currentScene !== "scene_a-initial") {
+         
+
+            plotNumber && showHouseDetails(plotNumber)
+          }
+         
+
           
+          if (params.size && scene)   {
+
+     
+
+            breadcrumbTrail.push({
+                  scene: "scene_b-al_marina_aerial",
+                  title: "Al Marina",
+                  icon: "grain",
+                });
+
+            // Wait until krpano is ready, then load the scene
+            const krpano = document.getElementById("krpanoSWFObject");
+
+            if (krpano && krpano.call) {
+              console.log("FIRST IF");
+              krpano.call(`loadscene(${scene}, null, MERGE, BLEND(1));`);
+            
+              // createCard
+            } else {
+              console.error("krpano object not found or not ready");
+            }
+          } else {
+           // krpano.call("loadscene(scene_a-initial, null, MERGE);");
+          }
+
+
+          //scene_g-zone_5   scene_a-initial
+          //   krpano.call("loadscene(scene_a-initial, null, MERGE);");
+
           if (krpano) {
             console.log("Krpano Initialized ");
 
@@ -3367,11 +3512,10 @@
           setTimeout(() => {
             if (typeof krpano !== "undefined" && krpano !== null) {
               console.log("setTimeout Krpano Initialized");
-              onInitalLoad();
+               //onInitalLoad();
+          //   showHouseDetails(plotNumber)
             }
-          }, 1000);
-
-          
+          }, 3000);
 
           const mobileSearchCard =
             document.getElementById("mobileSearchFilter");
@@ -3384,13 +3528,11 @@
 
           addCustomDivToHotspot("hs1");
 
-
           // Delay to ensure Krpano loads
           updateSearchVisibility();
           showSearchFilterCardsMobile();
           displayHorizontalSlider();
           flyToInitialAlMarinaScene();
-      
 
           const unit = getSpecificUnit();
 

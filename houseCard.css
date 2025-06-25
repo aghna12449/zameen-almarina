@@ -79,6 +79,50 @@
   
   }
   
+  .share-btn {
+    background: #a65c43 ;
+    height: 30px;
+    width: 70px;
+    color: white;
+    font-size: .6875rem;
+    border: none;
+    border-radius: .1875rem;
+    top: 57px;
+    cursor: pointer;
+    left: 135px; /* make sure position is defined if you're using left */
+  }
+
+  .share-btn i,
+.share-btn svg {
+  color: white;
+}
+
+  .copied-message{
+    left:80px; 
+    color:white;
+  }
+
+  .clipboard-tooltip {
+    position: absolute;
+    top: 20px;
+    left: 165px;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: .6875rem;
+    display: none;
+    white-space: nowrap;
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+  
+  .clipboard-tooltip.show {
+    display: block;
+    opacity: 1;
+  }
   
 
   /* .price-tag {
