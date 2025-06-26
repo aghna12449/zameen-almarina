@@ -1153,7 +1153,7 @@
         function handleHoverOut(element) {
           blinkIndividualHotspot("", false, true);
         }
-
+       
         const displayHorizontalSlider = () => {
           const sliderContainer = document.querySelector(".card-slider_1");
           sliderContainer.innerHTML = ""; // Clear previous content if needed
@@ -1169,7 +1169,7 @@
         
         onclick="showIndividualHouseCard('${house.plot_number}','${house.id}' )">
         
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv94OIn-sX93PJMNosZCYZzXFO8Qk1FB2x3A&s" height="100px" width="100px" />
+            <img src='${dynamicSliderImage(house.total_area)}' height="100px" width="100px" />
             <div class="details_1">
                 <h4>Plot ${house.plot_number}</h4>
                  
@@ -1782,13 +1782,7 @@
           const area = document.getElementById("totalArea").value;
           const krpano = document.getElementById("krpanoSWFObject");
 
-          
-
-          // Get current URL params
-          const params = new URLSearchParams(window.location.search);
-          if (plot) {
-            params.set("plotNumber", plot); // set or update
-          }
+          // // 👉 Stop previous blinking
 
           blinkIndividualHotspot("", false, true);
           if (area) {
@@ -3278,7 +3272,23 @@
             (unit) => unit.plot_number === plot_number
           );
 
-         
+           const image = document.getElementById("mainImage");
+          // image.src = "./skin/icons/renders/Al-Marina_Villas.jpg";
+          // image.width = 400;
+
+          if (filteredData[0].total_area < 1500) {
+            console.log("residential");
+
+            updateImage("residential");
+
+            // Seperate Funciton () resiential image url upate
+            // imr src ="./residential_image _render.jpg"
+          } else if(filteredData[0].total_area > 2000){
+            // imr src ="./palaces.jpg"
+            console.log("commercial");
+          }else if(filteredData[0].total_area > 1500 && filteredData[0].total_area < 2000  ){
+              console.log("palace");
+          }
 
           //   Assuming the first element in the response array corresponds to the clicked house
           if (unitData && unitData.length > 0) {
@@ -3295,6 +3305,61 @@
             console.error("House details not found in the response.");
           }
         };
+// let sliderUrl= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv94OIn-sX93PJMNosZCYZzXFO8Qk1FB2x3A&s"
+let sliderUrl = "./skin/icons/renders/AlMarina_mall.png"
+
+        function updateImage(type) {
+          const image = document.getElementById("mainImage");
+          if (type === "residential") {
+            sliderUrl = "./skin/icons/renders/Al_Marina_Villa-1.png"
+            //image.src = "./skin/icons/renders/Al-Marina_Villas.jpg";
+          } else if (type === "palaces") {
+           sliderUrl = "./skin/icons/renders/Al_Marina_Palaces-1.png"
+          } else{
+            sliderUrl = "./skin/icons/renders/Al_Marina_mall.png"
+          }
+        }
+
+        
+// function updateImage(type) {
+//   const card = document.querySelector(".property-card"); // or use an ID or loop through multiple
+//   let sliderUrl;
+
+//   if (type === "residential") {
+//     sliderUrl = "url('./skin/icons/renders/Al_Marina_Villa-1.png')";
+//   } else if (type === "palaces") {
+//     sliderUrl = "url('./skin/icons/renders/Al_Marina_Palaces-1.png')";
+//   } else {
+//     sliderUrl = "url('./skin/icons/renders/Al_Marina_mall.png')";
+//   }
+
+//   card.style.setProperty('--bg-image-url', sliderUrl);
+// }
+
+
+
+        let sliderDynamicImageURL = ""
+
+
+           function dynamicSliderImage(area) {
+            if (area < 1500) {
+            console.log("residential");
+          sliderDynamicImageURL = "./skin/icons/renders/Al_Marina_Villa.png"
+         
+
+          } else if(area > 2000){
+           
+            console.log("commercial");
+            sliderDynamicImageURL = "./skin/icons/renders/AlMarina_mall.png"
+          }else if(area > 1500 && area < 2000  ){
+              console.log("palace");
+              sliderDynamicImageURL = "./skin/icons/renders/Al_Marina_Palaces.png"
+          }
+          return sliderDynamicImageURL;
+         
+        }
+
+
 
         const showTooltip = (hotspotName, houseId, cords) => {
           // Convert string back to an array

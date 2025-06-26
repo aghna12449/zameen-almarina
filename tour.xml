@@ -6,18 +6,19 @@
 	startscene="scene_a-initial"
 	debugmode="false" showerrors="false" logkey="false"
 	info="false">
-	<lensflare name="flare1" enabled="false" visible="false" />
+	
 
 
 	<include url="skin/vtourskin.xml" />
  <!-- <include url="plugins/polygon.xml" />  -->
 
 	<include url="callout.xml" />
-	<!-- <include url="vtour_DRONE/drone.xml"/>
-  	<include url="vtour_FUTURE/future.xml"/> -->
 
-	<include url="vtour-drone/drone.xml" />
-	<include url="vtour-future/future.xml" />
+	<include url="vtour_DRONE/drone.xml"/>
+  	<include url="vtour_FUTURE/future.xml"/>
+
+	<!-- <include url="vtour-drone/drone.xml" />
+	<include url="vtour-future/future.xml" /> -->
 
 	<autorotate enabled="false" />
 	<control
