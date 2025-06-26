@@ -2784,6 +2784,7 @@
         };
 
         const addLandHotspotsToKrpano = async () => {
+        
           const krpano = document.getElementById("krpanoSWFObject");
           const response = await onInitalLoad();
 
@@ -2795,7 +2796,7 @@
             const currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
             const slider = document.getElementById("totalArea");
 
-            if (currentScene === "scene_b-al_marina_aerial" || currentScene === "scene_a-initial") {
+            if (currentScene === "scene_b-al_marina_aerial" || currentScene === "scene_a-initial" || String(currentScene).includes("_360")) {
 
              
             if (card) {
@@ -3079,15 +3080,16 @@
        
    </div>
    <div class="inner-style">
+
    <div class="property-info">
        <div class="price-tag"> Price: TBD</div>
         <span>
-            <button class="share-btn" onclick="copyAndSharePLot()">
+            <button class="share-btn" onclick="copyAndSharePlot()">
                 <i class="fas fa-share"></i> Share
             </button>
    
              <div id="copyTooltip" class="clipboard-tooltip">Link Copied!</div>
-          </span>
+        </span>
       <h1 class="heading">Al Marina</h1>
         
       <h2 class="zone_title">
@@ -3176,7 +3178,7 @@
           }
         };
 
-        const copyAndSharePLot = () => {
+        const copyAndSharePlot = () => {
           const url = window.location.href;
 
           navigator.clipboard.writeText(url)
@@ -3466,9 +3468,9 @@
 
 
   
-          if (currentScene !== "scene_b-al_marina_aerial" || currentScene !== "scene_a-initial") {
+          if (currentScene !== "scene_b-al_marina_aerial" || currentScene !== "scene_a-initial" ) {
          
-
+            console.log("HERE IT IS ")
             plotNumber && showHouseDetails(plotNumber)
           }
          

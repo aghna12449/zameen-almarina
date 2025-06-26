@@ -90,12 +90,22 @@
     top: 57px;
     cursor: pointer;
     left: 135px; /* make sure position is defined if you're using left */
+
+    transition: background-color 0.3s ease, transform 0.15s ease;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
   }
 
   .share-btn i,
 .share-btn svg {
   color: white;
+   cursor: pointer;
 }
+
+/* Hover effect */
+.share-btn:hover {
+  transform: translateY(-0.5px);
+}
+
 
   .copied-message{
     left:80px; 
@@ -330,15 +340,15 @@
     bottom: 60px
   }
   .property-card {
-    
+    position: fixed;
     width: 300px;
-    height: 300px;
+    height: 375px;
     border-radius: 5px;
     overflow: hidden;
     position: relative;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     color: white;
-    padding-top: 125px;
+    padding-top: 175px;
     background-color: black; /* fallback if image fails */
   }
 }

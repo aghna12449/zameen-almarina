@@ -4,7 +4,7 @@
 
 <krpano version="1.20.11" title="Virtual Tour"
 	startscene="scene_a-initial"
-	debugmode="true" showerrors="false" logkey="false"
+	debugmode="false" showerrors="false" logkey="false"
 	info="false">
 	<lensflare name="flare1" enabled="false" visible="false" />
 
@@ -16,8 +16,8 @@
 	<!-- <include url="vtour_DRONE/drone.xml"/>
   	<include url="vtour_FUTURE/future.xml"/> -->
 
-	<!-- <include url="vtour-drone/drone.xml" />
-	<include url="vtour-future/future.xml" /> -->
+	<include url="vtour-drone/drone.xml" />
+	<include url="vtour-future/future.xml" />
 
 	<autorotate enabled="false" />
 	<control
@@ -142,7 +142,7 @@
 		text_padding="0 0 0 0">
 	</callout>
 
-	<layer name="splash_screen_overlay"
+	<!-- <layer name="splash_screen_overlay"
 		url="some_design_element.png"
 		bgcolor="0xFFFFFF"
 		bgalpha="1.0"
@@ -151,7 +151,7 @@
 		visible="false" zorder="10"
 		mask="false"
 		maskimg=""
-	/>
+	/> -->
 
 	<!--
 	    For an alternative skin design either change the <skin_settings> values 
