@@ -2786,7 +2786,7 @@
             const currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
             const slider = document.getElementById("totalArea");
 
-            if (currentScene === "scene_b-al_marina_aerial" || currentScene === "scene_a-initial") {
+            if (currentScene === "scene_b-al_marina_aerial" || currentScene === "scene_a-initial"  || String(currentScene).includes("_360")  ) {
 
              
             if (card) {
