@@ -2784,7 +2784,6 @@
         };
 
         const addLandHotspotsToKrpano = async () => {
-        
           const krpano = document.getElementById("krpanoSWFObject");
           const response = await onInitalLoad();
 
@@ -2796,7 +2795,7 @@
             const currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
             const slider = document.getElementById("totalArea");
 
-            if (currentScene === "scene_b-al_marina_aerial" || currentScene === "scene_a-initial" || String(currentScene).includes("_360")) {
+            if (currentScene === "scene_b-al_marina_aerial" || currentScene === "scene_a-initial") {
 
              
             if (card) {
@@ -3071,6 +3070,7 @@
 
           //  <button class="close-btn">×</button>
 
+
           cardContainer.id = "krpano-card";
           cardContainer.innerHTML = `
  <div class="property-card">
@@ -3080,16 +3080,9 @@
        
    </div>
    <div class="inner-style">
-
    <div class="property-info">
        <div class="price-tag"> Price: TBD</div>
-        <span>
-            <button class="share-btn" onclick="copyAndSharePlot()">
-                <i class="fas fa-share"></i> Share
-            </button>
-   
-             <div id="copyTooltip" class="clipboard-tooltip">Link Copied!</div>
-        </span>
+        
       <h1 class="heading">Al Marina</h1>
         
       <h2 class="zone_title">
@@ -3099,9 +3092,24 @@
         unitDetails.zone.charAt(0).toUpperCase() +
         unitDetails.zone.slice(1).toLowerCase()
       }
+
+      </span>
+       
+      
+          
+          
+
+                
+            <button class="share-btn " onclick="copyAndSharePlot()">
+                <i class="fas fa-share"></i> Share
+            </button>
+   
+             <div id="copyTooltip" class="clipboard-tooltip">Link Copied!</div>
+          
         </span>
-     
       </h2>
+
+      
     
       <div class="divider"></div>
       <div class="details_flex">
@@ -3181,19 +3189,55 @@
         const copyAndSharePlot = () => {
           const url = window.location.href;
 
-          navigator.clipboard.writeText(url)
-            .then(() => {
+          const tooltip = document.getElementById("copyTooltip");
 
-              const tooltip = document.getElementById("copyTooltip");
+          if (navigator.clipboard && window.isSecureContext) {
+  navigator.clipboard.writeText(url)
+    .then(() => { 
+     
               tooltip.classList.add("show");
 
               setTimeout(() => {
                 tooltip.classList.remove("show");
               }, 2000);
-            })
-            .catch((err) => {
-              console.error("Failed to copy URL: ", err);
-            });
+      
+       })
+    .catch(err => { 
+      console.error("Failed to copy URL: ", err);
+    
+    
+    });
+} else{
+ // fallback for iOS Safari or old Android
+ const textArea = document.createElement("textarea");
+  textArea.value = url;
+  textArea.style.position = "fixed";
+  textArea.style.top = "-1000px";
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+
+              tooltip.classList.add("show");
+
+              setTimeout(() => {
+                tooltip.classList.remove("show");
+              }, 2000);
+      
+}
+
+          // navigator.clipboard.writeText(url)
+          //   .then(() => {
+
+          //     const tooltip = document.getElementById("copyTooltip");
+          //     tooltip.classList.add("show");
+
+          //     setTimeout(() => {
+          //       tooltip.classList.remove("show");
+          //     }, 2000);
+          //   })
+          //   .catch((err) => {
+          //     console.error("Failed to copy URL: ", err);
+          //   });
         };
 
         
@@ -3468,9 +3512,9 @@
 
 
   
-          if (currentScene !== "scene_b-al_marina_aerial" || currentScene !== "scene_a-initial" ) {
+          if (currentScene !== "scene_b-al_marina_aerial" || currentScene !== "scene_a-initial") {
          
-            console.log("HERE IT IS ")
+
             plotNumber && showHouseDetails(plotNumber)
           }
          
