@@ -14,8 +14,8 @@
 
 	<include url="callout.xml" />
 
-	<include url="vtour_DRONE/drone.xml"/>
-  	<include url="vtour_FUTURE/future.xml"/>
+	<!-- <include url="vtour_DRONE/drone.xml"/>
+  	<include url="vtour_FUTURE/future.xml"/> -->
 
 	<!-- <include url="vtour-drone/drone.xml" />
 	<include url="vtour-future/future.xml" /> -->

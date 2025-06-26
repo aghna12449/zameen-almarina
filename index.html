@@ -418,10 +418,7 @@
       </script>
 
       <script>
-        const isSafari = /^((?!chrome|android).)*safari/i.test(
-          navigator.userAgent
-        );
-        console.log("Is Safari:", isSafari);
+      
 
         const input = document.getElementById("plotNumber");
 
@@ -3184,11 +3181,11 @@
           const url = window.location.href;
 
           const tooltip = document.getElementById("copyTooltip");
-
+    
           if (navigator.clipboard && window.isSecureContext) {
   navigator.clipboard.writeText(url)
     .then(() => { 
-     
+
               tooltip.classList.add("show");
 
               setTimeout(() => {
@@ -3320,19 +3317,19 @@
           // image.src = "./skin/icons/renders/Al-Marina_Villas.jpg";
           // image.width = 400;
 
-          if (filteredData[0].total_area < 1500) {
-            console.log("residential");
+          // if (filteredData && filteredData[0].total_area < 1500) {
+          //   console.log("residential");
 
-            updateImage("residential");
+          //   updateImage("residential");
 
-            // Seperate Funciton () resiential image url upate
-            // imr src ="./residential_image _render.jpg"
-          } else if(filteredData[0].total_area > 2000){
-            // imr src ="./palaces.jpg"
-            console.log("commercial");
-          }else if(filteredData[0].total_area > 1500 && filteredData[0].total_area < 2000  ){
-              console.log("palace");
-          }
+          //   // Seperate Funciton () resiential image url upate
+          //   // imr src ="./residential_image _render.jpg"
+          // } else if(filteredData[0].total_area > 2000){
+          //   // imr src ="./palaces.jpg"
+          //   console.log("commercial");
+          // }else if(filteredData[0].total_area > 1500 && filteredData[0].total_area < 2000  ){
+          //     console.log("palace");
+          // }
 
           //   Assuming the first element in the response array corresponds to the clicked house
           if (unitData && unitData.length > 0) {
