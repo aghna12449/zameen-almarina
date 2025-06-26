@@ -660,7 +660,7 @@
   position: absolute;
   top: 25px;
   right: 10px;
-  background: rgba(0, 0, 0, 0.6); /* dark semi-transparent background */
+  background: transparent;
   border-radius: 20px; /* make it round */
   border: none;
   font-size: 36px;
