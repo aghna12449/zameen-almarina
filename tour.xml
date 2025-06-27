@@ -10,7 +10,8 @@
 
 
 	<include url="skin/vtourskin.xml" />
- <!-- <include url="plugins/polygon.xml" />  -->
+<!-- <include url="plugins/polygon.xml" />  -->
+
 
 	<include url="callout.xml" />
 
@@ -120,27 +121,29 @@
 	</layer>
 
 	<callout
-		key=""
-		size="10"
-		color="0xffffff"
-		rotate="45"
-		distancepopup="1"
-		min_fov="180"
-		max_fov="0"
-		line_lenght="150"
-		line_width="1"
-		shape="round"
-		circle_active_width="50"
-		animation="center_screen"
-		text_width="auto"
-		callout_bg_border="0,0,0,2"
-		text_x="5"
-		css_title="color:#fff;font-size:14px;font-family: bahnschrift, Arial, Helvetica, sans-serif;"
-		css_text="color:#fff;font-size:14px;text-shadow: 3px 3px 8px #ffffff;font-family: bahnschrift, Arial, Helvetica, sans-serif;"
-		title_background="0xa65c43"
-		text_background="0x626060 "
-		title_padding="5"
-		text_padding="0 0 0 0">
+ size="20"
+  color="0xffffff"
+  rotate="45"
+  distancepopup="1"
+  min_fov="180"
+  max_fov="0"
+  line_lenght="200"
+  line_width="2"
+  shape="round"
+  circle_active_width="100"
+  animation="center_screen"
+  text_width="auto"
+  callout_bg_border="0,0,0,2"
+  text_x="5"
+  css_title="color:#fff;font-size:18px;font-family: bahnschrift, Arial, Helvetica, sans-serif;"
+  css_text="color:#fff;font-size:16px;text-shadow: 3px 3px 8px #ffffff;font-family: bahnschrift, Arial, Helvetica, sans-serif;"
+  title_background="0xa65c43"
+  text_background="0x626060"
+  title_padding="10"
+  text_padding="5 5 5 5"
+		
+		
+		>
 	</callout>
 
 	<!-- <layer name="splash_screen_overlay"
@@ -190,8 +193,16 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 
 
 		<hotspot name="hs_Marina_Arial" style="mypolygonalhotspotstylename" capture="false"  fillcolor="0xa65c43  " fillalpha="0" bordercolor="0xD4A76A"   borderwidth="2.5"
-			myscale="0.5"
-			onclick="looktohotspot(hs_zone_1_360(1), 60, linear); tween(view.fov, 30, 1.5); loadscene(scene_b-AL_MARINA_aerial, null, MERGE, BLEND(1));" > <point ath="0.05910472016660151" atv="0.07262108649898723" /> <point ath="0.07505525721933282" atv="0.07327213290808565" /> <point ath="0.08755527101163807" atv="0.07398827857908388" /> <point ath="0.10513341452019631" atv="0.07470441808044621" /> <point ath="0.10565424834192072" atv="0.07470441777951055" /> <point ath="0.10604487370540028" atv="0.07470441754975773" /> <point ath="0.10643549911156924" atv="0.07476952149562434" /> <point ath="0.10669591606358608" atv="0.07483462551705823" /> <point ath="0.10702144507547473" atv="0.08596744017822316" /> <point ath="0.10702144507547473" atv="0.08596744017822316" /> <point ath="0.10689123658482913" atv="0.08596744027012773" /> <point ath="0.10689123658482913" atv="0.08596744027012773" /> <point ath="0.10682613233944949" atv="0.08596744031591355" /> <point ath="0.10669592384840598" atv="0.08596744040715214" /> <point ath="0.1065657153571351" atv="0.08596744049794677" /> <point ath="0.058583880423952905" atv="0.08316796382010798" /> </hotspot>
+			myscale="0.1"
+			onclick="looktohotspot(hs_zone_1_360(1), 60, linear); tween(view.fov, 30, 1.5); loadscene(scene_b-AL_MARINA_aerial, null, MERGE, BLEND(1));" > 
+			<point ath="0.05910472016660151" atv="0.07262108649898723" /> <point ath="0.07505525721933282" atv="0.07327213290808565" /> 
+			<point ath="0.08755527101163807" atv="0.07398827857908388" /> <point ath="0.10513341452019631" atv="0.07470441808044621" />
+			 <point ath="0.10565424834192072" atv="0.07470441777951055" /> <point ath="0.10604487370540028" atv="0.07470441754975773" />
+			 <point ath="0.10702144507547473" atv="0.08596744017822316" /> <point ath="0.10702144507547473" atv="0.08596744017822316" /> 
+			 <point ath="0.10689123658482913" atv="0.08596744027012773" /> <point ath="0.10689123658482913" atv="0.08596744027012773" />
+			  <point ath="0.10682613233944949" atv="0.08596744031591355" /> <point ath="0.10669592384840598" atv="0.08596744040715214" /> 
+			  <point ath="0.1065657153571351" atv="0.08596744049794677" /> <point ath="0.058583880423952905" atv="0.08316796382010798" />
+			 </hotspot>
 
 
 
@@ -224,8 +235,6 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 
 
 
-
-
 		<hotspot name="hs_AlMarinaLogo_big"
 			callout_bg_border="0,0,0,0"
 			callout_bg_color="0xa65c43"
@@ -241,7 +250,7 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 			title=""
 			text_background=""
 			content="&lt;img src=&quot;skin/icons/AlMarinaLogo_big.png&quot; style=&quot;width:100px; height:120px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
-			url="skin/icons/AlMarinaLogo_big.png" circle_active_width="0.1"
+			url="skin/icons/AlMarinaLogo_big.png" circle_active_width="8"
 			text_x="">
 
 		</hotspot>
@@ -291,13 +300,9 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 		<hotspot name="hs_ApartEnt(2.9)" callout_bg_border="0,0,0,0" width="auto"
 			line_lenght="70" line_width="1.5" shape="round" ath="-0.0558943" atv="0.1511067"
 			rotate="-130" animation="keep_opened" style="callout" title="King Fahd University "
-			content="15 mins - 18km" circle_active_width="0.1" text_x=""></hotspot>
+			content="15 mins - 18km" circle_active_width="8" text_x=""></hotspot>
 
-		<hotspot name="hs_ApartEnt(2.5)" callout_bg_border="0,0,0,0" width="auto" shape="round"
-			ath="0.031599" atv="0.0969678"
-			line_lenght="70" line_width="1.5" rotate="-30" animation="keep_opened"
-			style="callout" title="Chamber of Commerce " content="07 mins - 8km"
-			circle_active_width="8" text_x=""></hotspot>
+	
 
 		<!-- <hotspot name="hs_ApartEnt(3)"
       
@@ -489,6 +494,8 @@ ath = "-0.0424337 " atv = "0.0877063"
          text_x="">
 
 </hotspot> -->
+
+
 
 
 	</scene>
