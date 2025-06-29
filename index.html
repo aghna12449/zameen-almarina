@@ -30,6 +30,10 @@
     <!-- adding style sheet -->
     <link rel="stylesheet" href="main.css" />
 
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="unitFilter.css" />
+
+
     <link rel="stylesheet" href="initalCard.css" />
     <link rel="stylesheet" href="slider.css" />
     <link rel="stylesheet" href="searchFilter.css" />
@@ -100,6 +104,8 @@
 
   <body>
     <script src="tour.js"></script>
+
+   
 
     <script src="zone1.js"></script>
     <script src="zone2.js"></script>
@@ -183,7 +189,36 @@
                 </div>
               </div>
               <div>
-                <div class="dropdown-wrapper mt-1 mb-3">
+           <!-- Toggle Buttons -->
+<div class="toggle-buttons mb-3">
+  <button id="typeBtn" class="toggle active" onclick="showUnitSection('type')">Type</button>
+  <button id="availabilityBtn" class="toggle" onclick="showUnitSection('availability')">Availability</button>
+</div>
+
+<!-- Property Type Dropdown -->
+<div class="dropdown-group" id="typeDropdownGroup">
+  <label for="propertyType">Property Type</label>
+  <select id="propertyType" name="propertyType">
+    <option>View All</option>
+    <option>Residential</option>
+    <option>Commercial</option>
+    <option>Palaces</option>
+  </select>
+</div>
+
+<!-- Availability Dropdown -->
+<div class="dropdown-group d-none" id="availabilityDropdownGroup">
+  <label for="availabilityDropdown">Availability</label>
+  <select id="availabilityDropdown" name="availability">
+    <option>View All</option>
+    <option value="Available">Available</option>
+    <option value="Sold">Sold</option>
+    <option value="Reserved">Reserved</option>
+  </select>
+</div>
+
+                
+                <!-- <div class="dropdown-wrapper mt-1 mb-3">
                   <select
                     class="form-select custom-dropdown"
                     id="availabilityDropdown"
@@ -194,7 +229,7 @@
                     <option value="Reserved">Reserved</option>
                   </select>
                   <i class="bi bi-caret-down-fill"></i>
-                </div>
+                </div> -->
               </div>
               <div class="mb-3">
                 <label for="totalArea_" class="form-label">
@@ -1008,6 +1043,29 @@
           // handleSearchFilters();
         };
 
+
+   const showUnitSection= ( type ) =>{
+    const typeBtn = document.getElementById("typeBtn");
+    const availabilityBtn = document.getElementById("availabilityBtn");
+    const typeDropdown = document.getElementById("typeDropdownGroup");
+    const availabilityDropdown = document.getElementById("availabilityDropdownGroup");
+
+    if (type === "type") {
+      typeBtn.classList.add("active");
+      availabilityBtn.classList.remove("active");
+
+      typeDropdown.classList.remove("d-none");
+      availabilityDropdown.classList.add("d-none");
+
+    } else if (type === "availability") {
+      typeBtn.classList.remove("active");
+      availabilityBtn.classList.add("active");
+
+      typeDropdown.classList.remove("d-none");
+      availabilityDropdown.classList.remove("d-none");
+    }
+  }
+
         const reSetHotspots = () => {
           const krpano = document.getElementById("krpanoSWFObject");
 
@@ -1054,6 +1112,8 @@
               break;
           }
         };
+
+       
 
         const reDrawAvailableHotspots = (allowedHotspots) => {
           // Filter zone8houseData by allowedHotspots
@@ -2440,10 +2500,12 @@
           }
         };
 
-        // Initial render
+        window.onload=()=>{
+           // Initial render
         document.addEventListener("DOMContentLoaded", function () {
           renderBreadcrumbs();
         });
+        } 
 
         const addCustomDivToHotspot = (hotspotName) => {
           var krpano = document.getElementById("krpanoSWFObject"); // Get krpano instance
