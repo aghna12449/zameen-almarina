@@ -148,7 +148,6 @@
     color: #ccc;
 }
 
-
 .details > div {
     flex: 1;
     text-align: center;
@@ -189,7 +188,6 @@
     background-color: #ddd;
     margin: 12px 0 16px 0;
 }
-
 
 .details-row_extra {
   display: flex;
@@ -273,18 +271,21 @@ display: flex;
     bottom: 70px
   }
   .property-card {
-    width: 225px;
-    height: 230px;
-   
+    position: fixed;
+  width: 300px;
+    height: 367px;
     border-radius: 5px;
-    overflow: hidden;
+ overflow: hidden;
     position: relative;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     color: white;
-    padding-top: 125px;
-   
-    background-color: black; /* fallback if image fails */
+    padding-top: 175px;
+    background-color: black;
   }
+  .property-info {
+      top: -10px !important;
+    }
+  
 }
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
