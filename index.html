@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Al Marina</title>
@@ -30,6 +30,8 @@
     <!-- adding style sheet -->
     <link rel="stylesheet" href="main.css" />
 
+    <link rel="stylesheet" href="index.css" />
+
     <link rel="stylesheet" href="initalCard.css" />
     <link rel="stylesheet" href="slider.css" />
     <link rel="stylesheet" href="searchFilter.css" />
@@ -58,6 +60,9 @@
     />
 
     <style>
+      .krpano_cursor_debug {
+        display: none !important;
+      }
       .icon-container {
         position: fixed;
         /* Fix the position relative to the viewport */
@@ -418,8 +423,6 @@
       </script>
 
       <script>
-      
-
         const input = document.getElementById("plotNumber");
 
         input.addEventListener("input", function () {
@@ -642,7 +645,7 @@
                 mobileSearchFilter.style.height = "";
 
                 const propertyCard = document.getElementById("krpano-card");
-             
+
                 if (propertyCard) {
                   propertyCard.style.width = "225px";
                   propertyCard.style.height = "auto";
@@ -1150,7 +1153,7 @@
         function handleHoverOut(element) {
           blinkIndividualHotspot("", false, true);
         }
-       
+
         const displayHorizontalSlider = () => {
           const sliderContainer = document.querySelector(".card-slider_1");
           sliderContainer.innerHTML = ""; // Clear previous content if needed
@@ -1161,12 +1164,18 @@
               const cardHTML = `
   <div class="card-wrapper" > <div class="top-label-box"> Price: TBD </div>
         <div class="card_1" 
-         onmouseover="handleHoverIn('${house.id}', '${cords.ath}', '${cords.atv}')" 
+         onmouseover="handleHoverIn('${house.id}', '${cords.ath}', '${
+                cords.atv
+              }')" 
   onmouseout="handleHoverOut(this)"
         
-        onclick="showIndividualHouseCard('${house.plot_number}','${house.id}' )">
+        onclick="showIndividualHouseCard('${house.plot_number}','${
+                house.id
+              }' )">
         
-            <img src='${dynamicSliderImage(house.total_area)}' height="100px" width="100px" />
+            <img src='${dynamicSliderImage(
+              house.total_area
+            )}' height="100px" width="100px" />
             <div class="details_1">
                 <h4>Plot ${house.plot_number}</h4>
                  
@@ -2293,23 +2302,21 @@
             }
           }
         };
-        
 
         // Render the breadcrumbs dynamically
         const renderBreadcrumbs = () => {
           const wrapper = document.getElementById("breadcrumb-wrapper");
           wrapper.innerHTML = ""; // Clear previous breadcrumbs
 
-
           const params = new URLSearchParams(window.location.search);
-         
+
           const plotNumber = params.get("plotNumber");
 
           //url.searchParams.delete("plotNumber");
 
           breadcrumbTrail.forEach((crumb, index) => {
-          console.log("CRUMB", crumb, index)
-           
+            console.log("CRUMB", crumb, index);
+
             if (index !== 0) {
               // Add separator
               const separator = document.createElement("span");
@@ -2319,34 +2326,33 @@
               wrapper.appendChild(separator);
             }
 
-            
-
             console.log("CRUMB", crumb);
 
             // Build query string if available
 
             let queryString = "";
-            
-            if (crumb.scene && crumb.scene !== 'scene_a-initial') {
+
+            if (crumb.scene && crumb.scene !== "scene_a-initial") {
               console.log("crumb", crumb.title);
               queryString += `zone=${crumb.scene}`;
             }
-            if (crumb.scene && crumb.scene !== 'scene_a-initial') {
-              queryString += (queryString ? "&" : "") + `plotNumber=${plotNumber? plotNumber : ''}`;
+            if (crumb.scene && crumb.scene !== "scene_a-initial") {
+              queryString +=
+                (queryString ? "&" : "") +
+                `plotNumber=${plotNumber ? plotNumber : ""}`;
             }
             let krpano = globalKrpano();
 
-            if(breadcrumbTrail.length === 1){
+            if (breadcrumbTrail.length === 1) {
               krpano.call("loadscene(scene_a-initial, null, MERGE);");
-              queryString= ""
+              queryString = "";
             }
 
-           
             // Combine current URL with query string
             const href = queryString ? `?${queryString}` : "";
 
             const targetURL = href;
-           
+
             // Update the browser URL without reloading
             window.history.pushState({}, "", targetURL);
             if (
@@ -2393,8 +2399,9 @@
               const crumbIndex = parseInt(this.getAttribute("data-index"));
               if (crumbIndex === 0) {
                 event.preventDefault();
-               
-                window.location.href = 'https://www.zameengeomatics.com/public/Marina_Interactive_Masterplan/';
+
+                window.location.href =
+                  "https://www.zameengeomatics.com/public/Marina_Interactive_Masterplan/";
                 //location.reload();
               } else {
                 removeBreadCrumbItem(sceneName, crumbIndex);
@@ -2440,10 +2447,12 @@
           }
         };
 
-        // Initial render
-        document.addEventListener("DOMContentLoaded", function () {
-          renderBreadcrumbs();
-        });
+        window.onload = () => {
+          // Initial render
+          document.addEventListener("DOMContentLoaded", function () {
+            renderBreadcrumbs();
+          });
+        };
 
         const addCustomDivToHotspot = (hotspotName) => {
           var krpano = document.getElementById("krpanoSWFObject"); // Get krpano instance
@@ -2670,46 +2679,37 @@
           });
         };
 
-        const blinkOnLoad=() =>{
-         
+        const blinkOnLoad = () => {
           const params = new URLSearchParams(window.location.search);
-        
+
           const savedHotspot = params.get("hotspot");
 
-
-        
-          console.log("savedHotspot", savedHotspot)
-          if(savedHotspot){
+          console.log("savedHotspot", savedHotspot);
+          if (savedHotspot) {
             const cleanedhotspotName = savedHotspot.replace(/^hs_/, "");
             blinkIndividualHotspot(cleanedhotspotName, true);
-
           }
-         }
+        };
         // Add this new function to your existing JavaScript code (e.g., in the same script block as flyToHouse and showHouseDetails)
         function handleHotspotClick(hotspotName, plotNumber, ath, atv) {
           // First, call your showHouseDetails function
-          showHouseDetails( plotNumber);
+          showHouseDetails(plotNumber);
 
           localStorage.setItem("selectedHotspot", hotspotName);
 
           const url = new URL(window.location);
           url.searchParams.set("plotNumber", plotNumber);
-         
 
           url.searchParams.set("hotspot", hotspotName);
-          window.history.pushState({}, '', url);
+          window.history.pushState({}, "", url);
 
           // Then, call your flyToHouse function
           flyToHouse(ath, atv);
-          blinkOnLoad()
+          blinkOnLoad();
           const cleanedhotspotName = hotspotName.replace(/^hs_/, "");
 
           blinkIndividualHotspot(cleanedhotspotName, true);
-            // ✅ Now update the query param in the URL
-
-          
-
-
+          // ✅ Now update the query param in the URL
         }
 
         function flyToHouse(ath, atv) {
@@ -2781,20 +2781,20 @@
           localStorage.setItem("response", JSON.stringify(response));
 
           let card = document.getElementById("krpano-card");
-          
+
           if (krpano) {
             const currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
             const slider = document.getElementById("totalArea");
 
-            if (currentScene === "scene_b-al_marina_aerial" || currentScene === "scene_a-initial"  || String(currentScene).includes("_360")  ) {
-
-             
-            if (card) {
-              card.remove();
+            if (
+              currentScene === "scene_b-al_marina_aerial" ||
+              currentScene === "scene_a-initial" ||
+              String(currentScene).includes("_360")
+            ) {
+              if (card) {
+                card.remove();
+              }
             }
-            }
-           
-
 
             console.log("currentScene", currentScene);
 
@@ -2994,7 +2994,7 @@
             })
             .catch((err) => console.error("Error fetching data:", err));
         };
-        
+
         // Function to show Bootstrap tooltip
 
         let cardContainer = document.createElement("div");
@@ -3051,16 +3051,25 @@
             east: response[0].east,
           };
 
-          console.log("CREATE CARD")
+          console.log("CREATE CARD");
 
           let existingCard = document.getElementById("krpano-card");
           if (existingCard) {
-             existingCard.remove();
+            existingCard.remove();
           }
-          //  <div class="inner_section">
-
-          //  <button class="close-btn">×</button>
-
+          let bgImage;
+          if (unitDetails.total_area < 1500) {
+            bgImage = "url('./skin/icons/renders/Al_Marina_Villa.png')";
+          } else if (unitDetails.total_area > 2000) {
+            bgImage = "url('./skin/icons/renders/AlMarina_mall.png')";
+          } else if (
+            unitDetails.total_area > 1500 &&
+            unitDetails.total_area < 2000
+          ) {
+            bgImage = "url('./skin/icons/renders/Al_Marina_Palaces.png')";
+          } else {
+            bgImage = "url('./skin/icons/renders/Al_Marina_mall.png')"; // default
+          }
 
           cardContainer.id = "krpano-card";
           cardContainer.innerHTML = `
@@ -3152,7 +3161,16 @@
 `;
           document.body.appendChild(cardContainer);
           const width = window.innerWidth;
+
           const propertyCard = document.getElementById("krpano-card");
+
+          const imagePropertyCard = document.querySelector(".property-card");
+
+          if (imagePropertyCard) {
+            imagePropertyCard.style.backgroundImage = `${bgImage}`;
+          } else {
+            console.error("No element with class 'property-card' found.");
+          }
 
           if (width > 1025) {
             if (propertyCard) {
@@ -3163,7 +3181,7 @@
           } else {
             if (propertyCard) {
               // propertyCard.style.position = "fixed";
-               propertyCard.style.top = "7%";
+              propertyCard.style.top = "7%";
               // propertyCard.style.right = "5%";
             }
           }
@@ -3181,40 +3199,36 @@
           const url = window.location.href;
 
           const tooltip = document.getElementById("copyTooltip");
-    
+
           if (navigator.clipboard && window.isSecureContext) {
-  navigator.clipboard.writeText(url)
-    .then(() => { 
+            navigator.clipboard
+              .writeText(url)
+              .then(() => {
+                tooltip.classList.add("show");
 
-              tooltip.classList.add("show");
+                setTimeout(() => {
+                  tooltip.classList.remove("show");
+                }, 2000);
+              })
+              .catch((err) => {
+                console.error("Failed to copy URL: ", err);
+              });
+          } else {
+            // fallback for iOS Safari or old Android
+            const textArea = document.createElement("textarea");
+            textArea.value = url;
+            textArea.style.position = "fixed";
+            textArea.style.top = "-1000px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
 
-              setTimeout(() => {
-                tooltip.classList.remove("show");
-              }, 2000);
-      
-       })
-    .catch(err => { 
-      console.error("Failed to copy URL: ", err);
-    
-    
-    });
-} else{
- // fallback for iOS Safari or old Android
- const textArea = document.createElement("textarea");
-  textArea.value = url;
-  textArea.style.position = "fixed";
-  textArea.style.top = "-1000px";
-  document.body.appendChild(textArea);
-  textArea.focus();
-  textArea.select();
+            tooltip.classList.add("show");
 
-              tooltip.classList.add("show");
-
-              setTimeout(() => {
-                tooltip.classList.remove("show");
-              }, 2000);
-      
-}
+            setTimeout(() => {
+              tooltip.classList.remove("show");
+            }, 2000);
+          }
 
           // navigator.clipboard.writeText(url)
           //   .then(() => {
@@ -3230,8 +3244,6 @@
           //     console.error("Failed to copy URL: ", err);
           //   });
         };
-
-        
 
         const toggleSearchFilter = () => {
           const arrow = document.getElementById("toggleArrow_1");
@@ -3299,43 +3311,38 @@
         // JS workaround for iOS keyboard issues
 
         // Function to display house details
-        const showHouseDetails = ( plot_number) => {
+        const showHouseDetails = (plot_number) => {
           let card = document.getElementById("krpano-card");
           if (card) {
             card.remove();
           }
 
           const unitData = localStorage.getItem("response");
-
           const parsedData = JSON.parse(unitData);
-
           const filteredData = parsedData?.data?.filter(
             (unit) => unit.plot_number === plot_number
           );
 
-           const image = document.getElementById("mainImage");
-          // image.src = "./skin/icons/renders/Al-Marina_Villas.jpg";
-          // image.width = 400;
+          if (filteredData) {
+            // Set the background based on area before creating the card
+            const area = filteredData[0].total_area;
+            setCardBackground(area);
 
-          // if (filteredData && filteredData[0].total_area < 1500) {
-          //   console.log("residential");
-
-          //   updateImage("residential");
-
-          //   // Seperate Funciton () resiential image url upate
-          //   // imr src ="./residential_image _render.jpg"
-          // } else if(filteredData[0].total_area > 2000){
-          //   // imr src ="./palaces.jpg"
-          //   console.log("commercial");
-          // }else if(filteredData[0].total_area > 1500 && filteredData[0].total_area < 2000  ){
-          //     console.log("palace");
-          // }
+            createCard(
+              "Title",
+              "Description",
+              "https://via.placeholder.com/150",
+              filteredData
+            );
+          } else {
+            console.error("House details not found in the response.");
+          }
 
           //   Assuming the first element in the response array corresponds to the clicked house
           if (unitData && unitData.length > 0) {
-            blinkOnLoad()
+            blinkOnLoad();
             console.log("After filteredData", filteredData);
-           
+
             createCard(
               "Title",
               "Description",
@@ -3346,61 +3353,43 @@
             console.error("House details not found in the response.");
           }
         };
-// let sliderUrl= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv94OIn-sX93PJMNosZCYZzXFO8Qk1FB2x3A&s"
-let sliderUrl = "./skin/icons/renders/AlMarina_mall.png"
 
-        function updateImage(type) {
-          const image = document.getElementById("mainImage");
-          if (type === "residential") {
-            sliderUrl = "./skin/icons/renders/Al_Marina_Villa-1.png"
-            //image.src = "./skin/icons/renders/Al-Marina_Villas.jpg";
-          } else if (type === "palaces") {
-           sliderUrl = "./skin/icons/renders/Al_Marina_Palaces-1.png"
-          } else{
-            sliderUrl = "./skin/icons/renders/Al_Marina_mall.png"
+        function setCardBackground(area) {
+          const card = document.querySelector(".property-card");
+          let bgImage;
+
+          if (area < 1500) {
+            bgImage = "url('./skin/icons/renders/Al_Marina_Villa.png')";
+          } else if (area > 2000) {
+            bgImage = "url('./skin/icons/renders/AlMarina_mall.png')";
+          } else if (area > 1500 && area < 2000) {
+            bgImage = "url('./skin/icons/renders/Al_Marina_Palaces.png')";
+          } else {
+            bgImage = "url('./skin/icons/renders/Al_Marina_mall.png')"; // default
+          }
+
+          if (card) {
+            card.style.setProperty("--bg-image-url", bgImage);
           }
         }
 
-        
-// function updateImage(type) {
-//   const card = document.querySelector(".property-card"); // or use an ID or loop through multiple
-//   let sliderUrl;
+        let sliderDynamicImageURL = "";
 
-//   if (type === "residential") {
-//     sliderUrl = "url('./skin/icons/renders/Al_Marina_Villa-1.png')";
-//   } else if (type === "palaces") {
-//     sliderUrl = "url('./skin/icons/renders/Al_Marina_Palaces-1.png')";
-//   } else {
-//     sliderUrl = "url('./skin/icons/renders/Al_Marina_mall.png')";
-//   }
-
-//   card.style.setProperty('--bg-image-url', sliderUrl);
-// }
-
-
-
-        let sliderDynamicImageURL = ""
-
-
-           function dynamicSliderImage(area) {
-            if (area < 1500) {
+        const dynamicSliderImage = (area) => {
+          if (area < 1500) {
             console.log("residential");
-          sliderDynamicImageURL = "./skin/icons/renders/Al_Marina_Villa.png"
-         
-
-          } else if(area > 2000){
-           
+            sliderDynamicImageURL = "./skin/icons/renders/Al_Marina_Villa.png";
+          } else if (area > 2000) {
             console.log("commercial");
-            sliderDynamicImageURL = "./skin/icons/renders/AlMarina_mall.png"
-          }else if(area > 1500 && area < 2000  ){
-              console.log("palace");
-              sliderDynamicImageURL = "./skin/icons/renders/Al_Marina_Palaces.png"
+            sliderDynamicImageURL = "./skin/icons/renders/AlMarina_mall.png";
+          } else if (area > 1500 && area < 2000) {
+            console.log("palace");
+            sliderDynamicImageURL =
+              "./skin/icons/renders/Al_Marina_Palaces.png";
           }
+          console.log("sliderDynamicImageURL", sliderDynamicImageURL);
           return sliderDynamicImageURL;
-         
-        }
-
-
+        };
 
         const showTooltip = (hotspotName, houseId, cords) => {
           // Convert string back to an array
@@ -3555,11 +3544,9 @@ let sliderUrl = "./skin/icons/renders/AlMarina_mall.png"
 
         function handleOrientation() {}
 
-      
-      window.onload = () => {
+        window.onload = () => {
           let krpano = globalKrpano();
           const currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
-           
 
           if (!sessionStorage.getItem("reloaded")) {
             sessionStorage.setItem("reloaded", "true");
@@ -3572,25 +3559,19 @@ let sliderUrl = "./skin/icons/renders/AlMarina_mall.png"
           const scene = params.get("zone");
           const plotNumber = params.get("plotNumber");
 
-
-  
-          if (currentScene !== "scene_b-al_marina_aerial" || currentScene !== "scene_a-initial") {
-         
-
-            plotNumber && showHouseDetails(plotNumber)
+          if (
+            currentScene !== "scene_b-al_marina_aerial" ||
+            currentScene !== "scene_a-initial"
+          ) {
+            plotNumber && showHouseDetails(plotNumber);
           }
-         
 
-          
-          if (params.size && scene)   {
-
-     
-
+          if (params.size && scene) {
             breadcrumbTrail.push({
-                  scene: "scene_b-al_marina_aerial",
-                  title: "Al Marina",
-                  icon: "grain",
-                });
+              scene: "scene_b-al_marina_aerial",
+              title: "Al Marina",
+              icon: "grain",
+            });
 
             // Wait until krpano is ready, then load the scene
             const krpano = document.getElementById("krpanoSWFObject");
@@ -3598,15 +3579,14 @@ let sliderUrl = "./skin/icons/renders/AlMarina_mall.png"
             if (krpano && krpano.call) {
               console.log("FIRST IF");
               krpano.call(`loadscene(${scene}, null, MERGE, BLEND(1));`);
-            
+
               // createCard
             } else {
               console.error("krpano object not found or not ready");
             }
           } else {
-           // krpano.call("loadscene(scene_a-initial, null, MERGE);");
+            // krpano.call("loadscene(scene_a-initial, null, MERGE);");
           }
-
 
           //scene_g-zone_5   scene_a-initial
           //   krpano.call("loadscene(scene_a-initial, null, MERGE);");
@@ -3620,8 +3600,8 @@ let sliderUrl = "./skin/icons/renders/AlMarina_mall.png"
           setTimeout(() => {
             if (typeof krpano !== "undefined" && krpano !== null) {
               console.log("setTimeout Krpano Initialized");
-               //onInitalLoad();
-          //   showHouseDetails(plotNumber)
+              //onInitalLoad();
+              //   showHouseDetails(plotNumber)
             }
           }, 3000);
 
@@ -3662,5 +3642,3 @@ let sliderUrl = "./skin/icons/renders/AlMarina_mall.png"
     </div>
   </body>
 </html>
-
-
