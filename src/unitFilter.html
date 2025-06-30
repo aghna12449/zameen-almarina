@@ -1,0 +1,21 @@
+<script>
+    
+    function showUnitSection(type) {
+    const typeBtn = document.getElementById("typeBtn");
+    const availabilityBtn = document.getElementById("availabilityBtn");
+    const typeDropdown = document.getElementById("typeDropdownGroup");
+    const availabilityDropdown = document.getElementById("availabilityDropdownGroup");
+
+    if (type === "type") {
+      typeBtn.classList.add("active");
+      availabilityBtn.classList.remove("active");
+      typeDropdown.classList.remove("d-none");
+      availabilityDropdown.classList.add("d-none");
+    } else {
+      typeBtn.classList.remove("active");
+      availabilityBtn.classList.add("active");
+      typeDropdown.classList.add("d-none");
+      availabilityDropdown.classList.remove("d-none");
+    }
+  }
+  </script>
