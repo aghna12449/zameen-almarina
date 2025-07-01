@@ -8,7 +8,7 @@
     
     .filter-container {
       width: 280px;
-      background: #ffffff;
+      background: rgb(139, 131, 131);
       color: black;
       border-radius: 12px;
       padding: 16px;
@@ -19,14 +19,17 @@
       margin: 0 0 16px;
       font-size: 18px;
     }
-.filter-container:not(.brown-theme) .filter-button img.icon {
-  filter: invert(0%) brightness(0%) grayscale(100%);
+
+
+    .filter-button .icon {
+  filter: brightness(0); /* Black */
+  transition: filter 0.3s ease;
 }
 
-/* When brown mode is active → show icon as white */
-.filter-container.brown-theme .filter-button img.icon {
-  filter: invert(100%) brightness(200%) grayscale(0%);
+.filter-button.active .icon {
+  filter: brightness(1000%); /* White */
 }
+
     .show-all {
       display: flex;
       justify-content: space-between;
@@ -70,7 +73,7 @@
   align-items: center;
   gap: 6px;
   transition: background-color 0.3s;
-  border: solid 1px black;
+  border: solid 0px black;
 }
 
 .filter-button.brown-theme {
@@ -93,6 +96,11 @@
     .filter-button:hover {
       background: #333;
     } */
+
+    .filter-button.active {
+  background: #a65c43; /* Highlight color */
+  color: #fff;
+}
 
     
     .filter-button i {

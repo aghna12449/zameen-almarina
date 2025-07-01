@@ -390,8 +390,9 @@
               onclick="toggleFilterTheme()"
             ></div>
           </div>
-          <div class="filter-buttons">
-            <div class="filter-button active">
+          <div class="filter-buttons" 
+           >
+            <div class="filter-button " data-filter="Landmarks">
               <img
                 src="./skin/icons/MapFilters/Landmarks.png"
                 alt="icon"
@@ -401,7 +402,8 @@
               />Landmarks
             </div>
 
-            <div class="filter-button">
+            <div class="filter-button" 
+             data-filter="Roads">
               <img
                 src="./skin/icons/MapFilters/Roads.png"
                 alt="icon"
@@ -411,7 +413,8 @@
               />
               Roads
             </div>
-            <div class="filter-button">
+            <div class="filter-button"  
+            data-filter="Parks">
               <img
                 src="./skin/icons/MapFilters/Parks.png"
                 alt="icon"
@@ -421,7 +424,8 @@
               />
               Parks
             </div>
-            <div class="filter-button">
+            <div class="filter-button"
+             data-filter="Education">
               <img
                 src="./skin/icons/MapFilters/Education.png"
                 alt="icon"
@@ -431,7 +435,8 @@
               />
               Education
             </div>
-            <div class="filter-button">
+            <div class="filter-button"
+             data-filter="Health">
               <img
                 src="./skin/icons/MapFilters/Hospitals.png"
                 alt="icon"
@@ -555,7 +560,9 @@
                   krpano.set(`hotspot[Road_${i}].visible`, false);
                 }
                 // Toggle ON = show hotspots
-
+                
+                
+              }else{
                 for (let i = 1; i <= totalRoads; i++) {
                   krpano.set(`hotspot[Road_${i}].visible`, true);
                 }
@@ -576,6 +583,34 @@
             arrow.innerText = "▼";
           }
         };
+
+         document.querySelectorAll(".filter-button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      btn.classList.toggle("active");
+
+      const filterName = btn.getAttribute("data-filter");
+      const isActive = btn.classList.contains("active");
+
+      // Show/hide hotspots of this category
+      toggleHotspotCategory(filterName, isActive);
+    });
+  });
+
+  // Function to toggle visibility of hotspot category
+  function toggleHotspotCategory(filterName, isActive) {
+    console.log("Toggling category:", filterName, "Active:", isActive);
+    const krpano = document.getElementById("krpanoSWFObject");
+    if (!krpano) return;
+
+    const hotspotCount = krpano.get("hotspot.count");
+    for (let i = 0; i < hotspotCount; i++) {
+      const name = krpano.get(`hotspot[${i}].name`);
+      if (name && name.startsWith(filterName + "_")) {
+        //krpano.set(`hotspot[${name}].visible`, isActive);
+      }
+    }
+  }
+
         const flyToInitialAlMarinaScene = () => {
           const krpano = document.getElementById("krpanoSWFObject");
           const currentFov = krpano.get("view.fov");
