@@ -105,3 +105,22 @@
       text-align: center;
       padding-top: 12px;
     }
+
+     .show-all {
+      transition: all 0.3s ease;
+     
+      align-items: center;
+      gap: 10px;
+    } 
+    
+    #showAllContainer {
+      max-height: 1000px;  /* large enough to fit content */
+      overflow: hidden;
+      opacity: 1;
+      transition: max-height 0.4s ease, opacity 0.4s ease;
+    }
+    
+    #showAllContainer.hidden {
+      max-height: 0;
+      opacity: 0;
+    }

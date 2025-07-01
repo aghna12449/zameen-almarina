@@ -381,67 +381,69 @@
         "
       >
         <h3>Map Filter</h3>
-        <div class="show-all">
-          <span>Show All</span>
-          <div
-            class="map-toggle"
-            id="mapToggle"
-            onclick="toggleFilterTheme()"
-          ></div>
-        </div>
-        <div class="filter-buttons">
-          <div class="filter-button active">
-            <img
-              src="./skin/icons/MapFilters/Landmarks.png"
-              alt="icon"
-              class="icon"
-              width="15px"
-              height="15px"
-            />Landmarks
+        <div id="showAllContainer">
+          <div class="show-all">
+            <span>Show All</span>
+            <div
+              class="map-toggle"
+              id="mapToggle"
+              onclick="toggleFilterTheme()"
+            ></div>
           </div>
+          <div class="filter-buttons">
+            <div class="filter-button active">
+              <img
+                src="./skin/icons/MapFilters/Landmarks.png"
+                alt="icon"
+                class="icon"
+                width="15px"
+                height="15px"
+              />Landmarks
+            </div>
 
-          <div class="filter-button">
-            <img
-              src="./skin/icons/MapFilters/Roads.png"
-              alt="icon"
-              class="icon"
-              width="20px"
-              height="20px"
-            />
-            Roads
-          </div>
-          <div class="filter-button">
-            <img
-              src="./skin/icons/MapFilters/Parks.png"
-              alt="icon"
-              class="icon"
-              width="20px"
-              height="20px"
-            />
-            Parks
-          </div>
-          <div class="filter-button">
-            <img
-              src="./skin/icons/MapFilters/Education.png"
-              alt="icon"
-              class="icon"
-              width="20px"
-              height="20px"
-            />
-            Education
-          </div>
-          <div class="filter-button">
-            <img
-              src="./skin/icons/MapFilters/Hospitals.png"
-              alt="icon"
-              class="icon"
-              width="20px"
-              height="20px"
-            />
-            Health
+            <div class="filter-button">
+              <img
+                src="./skin/icons/MapFilters/Roads.png"
+                alt="icon"
+                class="icon"
+                width="20px"
+                height="20px"
+              />
+              Roads
+            </div>
+            <div class="filter-button">
+              <img
+                src="./skin/icons/MapFilters/Parks.png"
+                alt="icon"
+                class="icon"
+                width="20px"
+                height="20px"
+              />
+              Parks
+            </div>
+            <div class="filter-button">
+              <img
+                src="./skin/icons/MapFilters/Education.png"
+                alt="icon"
+                class="icon"
+                width="20px"
+                height="20px"
+              />
+              Education
+            </div>
+            <div class="filter-button">
+              <img
+                src="./skin/icons/MapFilters/Hospitals.png"
+                alt="icon"
+                class="icon"
+                width="20px"
+                height="20px"
+              />
+              Health
+            </div>
           </div>
         </div>
-        <div class="arrow">▲</div>
+        <div class="arrow" onclick="toggleShowAll()">▲</div>
       </div>
 
       <!-- Modal -->
@@ -525,7 +527,6 @@
         };
 
         const toggleFilterTheme = () => {
-          console.log("Toggle filter theme clicked");
           const toggle = document.getElementById("mapToggle");
           const filterButtons = document.querySelectorAll(".filter-button");
 
@@ -538,8 +539,43 @@
               btn.classList.remove("brown-theme");
             }
           });
+
+          // Get the krpano viewer instance
+          const krpano = globalKrpano();
+
+          if (krpano) {
+            const currentScene = krpano.get("scene[get(xml.scene)].name");
+            const totalRoads = 8;
+
+            // Check if the current scene is the initial scene
+            if (currentScene === "scene_a-initial") {
+              // Toggle OFF = remove hotspots
+              if (!toggle.classList.contains("active")) {
+                for (let i = 1; i <= totalRoads; i++) {
+                  krpano.set(`hotspot[Road_${i}].visible`, false);
+                }
+                // Toggle ON = show hotspots
+
+                for (let i = 1; i <= totalRoads; i++) {
+                  krpano.set(`hotspot[Road_${i}].visible`, true);
+                }
+              }
+            }
+          }
         };
 
+        const toggleShowAll = () => {
+          const container = document.getElementById("showAllContainer");
+          const arrow = document.querySelector(".arrow");
+
+          if (container.style.display === "none") {
+            container.style.display = "block"; // Or "block" based on your layout
+            arrow.innerText = "▲";
+          } else {
+            container.style.display = "none";
+            arrow.innerText = "▼";
+          }
+        };
         const flyToInitialAlMarinaScene = () => {
           const krpano = document.getElementById("krpanoSWFObject");
           const currentFov = krpano.get("view.fov");
@@ -1358,11 +1394,10 @@
           console.log("Setting filter map container visibility");
           let krpano = globalKrpano();
           const currentScene = krpano.get("xml.scene");
-          const filterMapContainer = document.getElementById(
-            "filterMapContainer"
-          );
+          const filterMapContainer =
+            document.getElementById("filterMapContainer");
 
-          if (filterMapContainer &&  currentScene === "scene_a-initial") {
+          if (filterMapContainer && currentScene === "scene_a-initial") {
             filterMapContainer.style.display = "block";
           } else {
             filterMapContainer.style.display = "none";
