@@ -188,10 +188,11 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 		</image>
 
 <!-- Hotspots for Highlighting the roads -->
+ <!-- seaport -->
 <hotspot name="Road_1" style="mypolygonalhotspotstylename" 
 fillcolor="0xffffff" fillalpha="3" 
 visible="false"
-bordercolor="0xffffff"   borderwidth="1"
+bordercolor="0xffffff"   borderwidth="2"
 >
 
  <point ath="0.09128058906497927" atv="0.03376219043851129" />
@@ -217,7 +218,7 @@ bordercolor="0xffffff"   borderwidth="1"
     <point ath="0.0908899640294294" atv="0.034152815474208294" />
 
 </hotspot>
-
+<!-- imam abdukrahrahman bin faisal university -->
 <hotspot name="Road_2" style="mypolygonalhotspotstylename"
 fillcolor="0xffffff" fillalpha="3" 
 visible="false"
@@ -234,11 +235,11 @@ bordercolor="0xffffff"   borderwidth="1"
     <point ath="0.07776427925767848" atv="0.08450341416525269" />
 </hotspot>
 
-
+<!-- al yamamah university -->
 <hotspot name="Road_3" style="mypolygonalhotspotstylename"
 fillcolor="0xffffff" fillalpha="3" 
 visible="false"
-bordercolor="0xffffff"   borderwidth="1"
+bordercolor="0xffffff"   borderwidth="1.5"
 >
     <point ath="0.08253849630153809" atv="0.0780898429042782" />
     <point ath="0.08253849630153809" atv="0.0780898429042782" />
@@ -299,12 +300,12 @@ bordercolor="0xffffff"   borderwidth="1"
     <point ath="0.08260139066260308" atv="0.08044714338061597" />
 </hotspot>
 
-
+<!-- dharan expo -->
 
 <hotspot name="Road_4" style="mypolygonalhotspotstylename"
 fillcolor="0xffffff" fillalpha="3" 
 visible="false"
-bordercolor="0xffffff"   borderwidth="1"
+bordercolor="0xffffff"   borderwidth="2"
 >
     <point ath="0.0824745235198634" atv="0.0780247361620651" />
     <point ath="0.08403702530819146" atv="0.07835025693409334" />
@@ -328,11 +329,12 @@ bordercolor="0xffffff"   borderwidth="1"
     <point ath="0.08397192056060021" atv="0.07385806879715348" />
     <point ath="0.08390681634352859" atv="0.07398827715105287" />
 </hotspot>
+<!-- aramco stadium -->
 <hotspot name="Road_5" style="mypolygonalhotspotstylename"
 
 fillcolor="0xffffff" fillalpha="3" 
 visible="false"
-bordercolor="0xffffff"   borderwidth="1"
+bordercolor="0xffffff"   borderwidth="2"
 >
     <point ath="0.08243430525851636" atv="0.07810537150393453" />
     <point ath="0.0841270156581686" atv="0.07830068368397154" />
@@ -404,10 +406,11 @@ bordercolor="0xffffff"   borderwidth="1"
     <point ath="0.08360617382686542" atv="0.07764963747740225" />
     <point ath="0.08289002717941685" atv="0.0775845334533563" />
 </hotspot>
+<!-- seven site -->
 <hotspot name="Road_6" style="mypolygonalhotspotstylename"
 fillcolor="0xffffff" fillalpha="3" 
 visible="false"
-bordercolor="0xffffff"   borderwidth="1" >
+bordercolor="0xffffff"   borderwidth="1.5" >
     <point ath="0.08260909639102465" atv="0.07810185574832859" />
     <point ath="0.08407318022796062" atv="0.07841008371658516" />
     <point ath="0.08461257980138726" atv="0.07332432410000125" />
@@ -435,11 +438,11 @@ bordercolor="0xffffff"   borderwidth="1" >
     <point ath="0.08366669074553101" atv="0.07471074998746961" />
     <point ath="0.0834335919817022" atv="0.07727483164915466" />
 </hotspot>
-
+<!-- king fhad university -->
 <hotspot name="Road_7" style="mypolygonalhotspotstylename"
 fillcolor="0xffffff" fillalpha="3" 
 visible="false"
-bordercolor="0xffffff"   borderwidth="1" 
+bordercolor="0xffffff"   borderwidth="0.5" 
 
 >
     <point ath="0.08278859027467433" atv="0.07798990252218445" />
@@ -541,11 +544,11 @@ bordercolor="0xffffff"   borderwidth="1"
     <point ath="0.08324079813439766" atv="0.07630120816208469" />
     <point ath="0.08324079924221905" atv="0.07718615411930525" />
 </hotspot>
-
+<!-- king fahd airport -->
 <hotspot name="Road_8" style="mypolygonalhotspotstylename"
 fillcolor="0xffffff" fillalpha="3" 
 visible="false"
-bordercolor="0xffffff"   borderwidth="1"
+bordercolor="0xffffff"   borderwidth="1.5"
 >
     <point ath="0.08253849630591503" atv="0.07815494709152498" />
     <point ath="0.08253849630591503" atv="0.07815494709152498" />
@@ -907,7 +910,7 @@ bordercolor="0xffffff"   borderwidth="1"
 
 
 
-
+<!-- 
 		  <hotspot name="hs_Marina_Arial" style="mypolygonalhotspotstylename" capture="false"  fillcolor="0xa65c43  " fillalpha="0" bordercolor="0xD4A76A"   borderwidth="2.5"
 			myscale="0.1"
 			onclick="looktohotspot(hs_zone_1_360(1), 60, linear); tween(view.fov, 30, 1.5); loadscene(scene_b-AL_MARINA_aerial, null, MERGE, BLEND(1));" > 
@@ -918,7 +921,7 @@ bordercolor="0xffffff"   borderwidth="1"
 			 <point ath="0.10689123658482913" atv="0.08596744027012773" /> <point ath="0.10689123658482913" atv="0.08596744027012773" />
 			  <point ath="0.10682613233944949" atv="0.08596744031591355" /> <point ath="0.10669592384840598" atv="0.08596744040715214" /> 
 			  <point ath="0.1065657153571351" atv="0.08596744049794677" /> <point ath="0.058583880423952905" atv="0.08316796382010798" />
-			 </hotspot>
+			 </hotspot> -->
 
 
 
@@ -930,7 +933,7 @@ bordercolor="0xffffff"   borderwidth="1"
 
 
 
-	 <hotspot name="hs_AlMarinaLogo_big"
+	 <!-- <hotspot name="hs_AlMarinaLogo_big"
          style="callout"
          shape="round"
        ath="0.0824484" atv="0.077712"
@@ -949,7 +952,7 @@ bordercolor="0xffffff"   borderwidth="1"
          content="&lt;div style=&quot;text-align:center;&quot;&gt;
                     &lt;img src=&quot;skin/icons/AlMarinaLogo_big.png&quot; style=&quot;width:100px; height:120px; border-radius:25px; display:block; margin:0 auto;&quot; /&gt;
                   &lt;/div&gt;">
-</hotspot>    
+</hotspot>     -->
 
 
 
