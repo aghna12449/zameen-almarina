@@ -10,12 +10,11 @@
 
 
 	<include url="skin/vtourskin.xml" />
-<!-- <include url="plugins/polygon.xml" />  -->
+ <!-- <include url="plugins/polygon.xml" />  -->
 
 
 	<include url="callout.xml" />
-<!-- 
-	<include url="vtour_DRONE/drone.xml"/>
+	<!-- <include url="vtour_DRONE/drone.xml"/>
   	<include url="vtour_FUTURE/future.xml"/>  -->
 
 	<include url="vtour-drone/drone.xml" />
@@ -910,7 +909,7 @@ bordercolor="0xffffff"   borderwidth="1.5"
 
 
 
-<!-- 
+
 		  <hotspot name="hs_Marina_Arial" style="mypolygonalhotspotstylename" capture="false"  fillcolor="0xa65c43  " fillalpha="0" bordercolor="0xD4A76A"   borderwidth="2.5"
 			myscale="0.1"
 			onclick="looktohotspot(hs_zone_1_360(1), 60, linear); tween(view.fov, 30, 1.5); loadscene(scene_b-AL_MARINA_aerial, null, MERGE, BLEND(1));" > 
@@ -921,7 +920,7 @@ bordercolor="0xffffff"   borderwidth="1.5"
 			 <point ath="0.10689123658482913" atv="0.08596744027012773" /> <point ath="0.10689123658482913" atv="0.08596744027012773" />
 			  <point ath="0.10682613233944949" atv="0.08596744031591355" /> <point ath="0.10669592384840598" atv="0.08596744040715214" /> 
 			  <point ath="0.1065657153571351" atv="0.08596744049794677" /> <point ath="0.058583880423952905" atv="0.08316796382010798" />
-			 </hotspot> -->
+			 </hotspot> 
 
 
 

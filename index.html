@@ -374,8 +374,8 @@
         class="filter-container"
         style="
           position: absolute;
-          top: 50px;
-          left: 20px;
+          top: 80px;
+          left: 5px;
           z-index: 9999;
           display: block;
         "
@@ -390,9 +390,8 @@
               onclick="toggleFilterTheme()"
             ></div>
           </div>
-          <div class="filter-buttons" 
-           >
-            <div class="filter-button " data-filter="Landmarks">
+          <div class="filter-buttons">
+            <div class="filter-button" data-filter="Landmarks">
               <img
                 src="./skin/icons/MapFilters/Landmarks.png"
                 alt="icon"
@@ -402,8 +401,7 @@
               />Landmarks
             </div>
 
-            <div class="filter-button" 
-             data-filter="Roads">
+            <div class="filter-button" data-filter="Roads">
               <img
                 src="./skin/icons/MapFilters/Roads.png"
                 alt="icon"
@@ -413,8 +411,7 @@
               />
               Roads
             </div>
-            <div class="filter-button"  
-            data-filter="Parks">
+            <div class="filter-button" data-filter="Parks">
               <img
                 src="./skin/icons/MapFilters/Parks.png"
                 alt="icon"
@@ -424,8 +421,7 @@
               />
               Parks
             </div>
-            <div class="filter-button"
-             data-filter="Education">
+            <div class="filter-button" data-filter="Education">
               <img
                 src="./skin/icons/MapFilters/Education.png"
                 alt="icon"
@@ -435,8 +431,7 @@
               />
               Education
             </div>
-            <div class="filter-button"
-             data-filter="Health">
+            <div class="filter-button" data-filter="Health">
               <img
                 src="./skin/icons/MapFilters/Hospitals.png"
                 alt="icon"
@@ -532,8 +527,8 @@
         };
 
         const toggleFilterTheme = () => {
-        // Get the krpano viewer instance
-        const krpano = globalKrpano();
+          // Get the krpano viewer instance
+          const krpano = globalKrpano();
 
           const toggle = document.getElementById("mapToggle");
           const filterButtons = document.querySelectorAll(".filter-button");
@@ -548,8 +543,6 @@
             }
           });
 
-       
-
           if (krpano) {
             const currentScene = krpano.get("scene[get(xml.scene)].name");
             const totalRoads = 8;
@@ -562,9 +555,7 @@
                   krpano.set(`hotspot[Road_${i}].visible`, false);
                 }
                 // Toggle ON = show hotspots
-                
-                
-              }else{
+              } else {
                 for (let i = 1; i <= totalRoads; i++) {
                   krpano.set(`hotspot[Road_${i}].visible`, true);
                 }
@@ -577,7 +568,7 @@
           const container = document.getElementById("showAllContainer");
           const arrow = document.querySelector(".map-filter-arrow");
 
-          console.log("container.style.display ", container.style.display )
+          console.log("container.style.display ", container.style.display);
           if (container.style.display === "none") {
             container.style.display = "block"; // Or "block" based on your layout
             arrow.innerText = "▲";
@@ -587,59 +578,59 @@
           }
         };
 
-         document.querySelectorAll(".filter-button").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      btn.classList.toggle("active");
+        document.querySelectorAll(".filter-button").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            btn.classList.toggle("active");
 
-      const filterName = btn.getAttribute("data-filter");
-      const isActive = btn.classList.contains("active");
+            const filterName = btn.getAttribute("data-filter");
+            const isActive = btn.classList.contains("active");
 
-      // Show/hide hotspots of this category
-      toggleHotspotCategory(filterName, isActive);
-    });
-  });
+            // Show/hide hotspots of this category
+            toggleHotspotCategory(filterName, isActive);
+          });
+        });
 
-  document.querySelectorAll('.filter-button').forEach(button => {
-  button.addEventListener('click', () => {
-    const toggle = document.getElementById("mapToggle");
+        document.querySelectorAll(".filter-button").forEach((button) => {
+          button.addEventListener("click", () => {
+            const toggle = document.getElementById("mapToggle");
 
-    // Only proceed if toggle is active
-    if (toggle.classList.contains("active")) {
-      toggle.classList.remove("active");
+            // Only proceed if toggle is active
+            if (toggle.classList.contains("active")) {
+              toggle.classList.remove("active");
 
-      // Remove brown-theme from all buttons
-      document.querySelectorAll(".filter-button").forEach(btn => {
-        btn.classList.remove("brown-theme");
-      });
+              // Remove brown-theme from all buttons
+              document.querySelectorAll(".filter-button").forEach((btn) => {
+                btn.classList.remove("brown-theme");
+              });
 
-      // Optionally update hotspots visibility
-      // const krpano = globalKrpano?.();
-      // const currentScene = krpano?.get("scene[get(xml.scene)].name");
-      // const totalRoads = 8;
+              // Optionally update hotspots visibility
+              // const krpano = globalKrpano?.();
+              // const currentScene = krpano?.get("scene[get(xml.scene)].name");
+              // const totalRoads = 8;
 
-      // if (krpano && currentScene === "scene_a-initial") {
-      //   for (let i = 1; i <= totalRoads; i++) {
-      //     krpano.set(`hotspot[Road_${i}].visible`, false);
-      //   }
-      // }
-    }
-  });
-});
+              // if (krpano && currentScene === "scene_a-initial") {
+              //   for (let i = 1; i <= totalRoads; i++) {
+              //     krpano.set(`hotspot[Road_${i}].visible`, false);
+              //   }
+              // }
+            }
+          });
+        });
 
-  // Function to toggle visibility of hotspot category
-  function toggleHotspotCategory(filterName, isActive) {
-    console.log("Toggling category:", filterName, "Active:", isActive);
-    const krpano = document.getElementById("krpanoSWFObject");
-    if (!krpano) return;
+        // Function to toggle visibility of hotspot category
+        function toggleHotspotCategory(filterName, isActive) {
+          console.log("Toggling category:", filterName, "Active:", isActive);
+          const krpano = document.getElementById("krpanoSWFObject");
+          if (!krpano) return;
 
-    const hotspotCount = krpano.get("hotspot.count");
-    for (let i = 0; i < hotspotCount; i++) {
-      const name = krpano.get(`hotspot[${i}].name`);
-      if (name && name.startsWith(filterName + "_")) {
-        //krpano.set(`hotspot[${name}].visible`, isActive);
-      }
-    }
-  }
+          const hotspotCount = krpano.get("hotspot.count");
+          for (let i = 0; i < hotspotCount; i++) {
+            const name = krpano.get(`hotspot[${i}].name`);
+            if (name && name.startsWith(filterName + "_")) {
+              //krpano.set(`hotspot[${name}].visible`, isActive);
+            }
+          }
+        }
 
         const flyToInitialAlMarinaScene = () => {
           const krpano = document.getElementById("krpanoSWFObject");
@@ -2515,6 +2506,11 @@
 
         // Render the breadcrumbs dynamically
         const renderBreadcrumbs = () => {
+          if (!breadcrumbTrail || breadcrumbTrail.length === 0) {
+            console.warn("Breadcrumb trail is empty. Skipping render.");
+            return;
+          }
+
           const wrapper = document.getElementById("breadcrumb-wrapper");
           wrapper.innerHTML = ""; // Clear previous breadcrumbs
 
@@ -2656,12 +2652,9 @@
           }
         };
 
-        window.onload = () => {
-          // Initial render
-          document.addEventListener("DOMContentLoaded", function () {
-            renderBreadcrumbs();
-          });
-        };
+        setTimeout(() => {
+          renderBreadcrumbs();
+        }, 700);
 
         const addCustomDivToHotspot = (hotspotName) => {
           var krpano = document.getElementById("krpanoSWFObject"); // Get krpano instance
