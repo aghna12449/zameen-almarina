@@ -109,9 +109,10 @@
       text-align: center;
     }
     
-    .arrow {
+    .map-filter-arrow {
       text-align: center;
       padding-top: 12px;
+      cursor: pointer;
     }
 
      .show-all {

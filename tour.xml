@@ -10,7 +10,7 @@
 
 
 	<include url="skin/vtourskin.xml" />
-<include url="plugins/polygon.xml" /> 
+<!-- <include url="plugins/polygon.xml" />  -->
 
 
 	<include url="callout.xml" />

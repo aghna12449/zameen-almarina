@@ -448,7 +448,7 @@
             </div>
           </div>
         </div>
-        <div class="arrow" onclick="toggleShowAll()">▲</div>
+        <div class="map-filter-arrow" onclick="toggleShowAll()">▲</div>
       </div>
 
       <!-- Modal -->
@@ -532,6 +532,9 @@
         };
 
         const toggleFilterTheme = () => {
+        // Get the krpano viewer instance
+        const krpano = globalKrpano();
+
           const toggle = document.getElementById("mapToggle");
           const filterButtons = document.querySelectorAll(".filter-button");
 
@@ -545,8 +548,7 @@
             }
           });
 
-          // Get the krpano viewer instance
-          const krpano = globalKrpano();
+       
 
           if (krpano) {
             const currentScene = krpano.get("scene[get(xml.scene)].name");
@@ -573,8 +575,9 @@
 
         const toggleShowAll = () => {
           const container = document.getElementById("showAllContainer");
-          const arrow = document.querySelector(".arrow");
+          const arrow = document.querySelector(".map-filter-arrow");
 
+          console.log("container.style.display ", container.style.display )
           if (container.style.display === "none") {
             container.style.display = "block"; // Or "block" based on your layout
             arrow.innerText = "▲";
@@ -595,6 +598,33 @@
       toggleHotspotCategory(filterName, isActive);
     });
   });
+
+  document.querySelectorAll('.filter-button').forEach(button => {
+  button.addEventListener('click', () => {
+    const toggle = document.getElementById("mapToggle");
+
+    // Only proceed if toggle is active
+    if (toggle.classList.contains("active")) {
+      toggle.classList.remove("active");
+
+      // Remove brown-theme from all buttons
+      document.querySelectorAll(".filter-button").forEach(btn => {
+        btn.classList.remove("brown-theme");
+      });
+
+      // Optionally update hotspots visibility
+      // const krpano = globalKrpano?.();
+      // const currentScene = krpano?.get("scene[get(xml.scene)].name");
+      // const totalRoads = 8;
+
+      // if (krpano && currentScene === "scene_a-initial") {
+      //   for (let i = 1; i <= totalRoads; i++) {
+      //     krpano.set(`hotspot[Road_${i}].visible`, false);
+      //   }
+      // }
+    }
+  });
+});
 
   // Function to toggle visibility of hotspot category
   function toggleHotspotCategory(filterName, isActive) {
