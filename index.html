@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="searchFilter.css" />
     <link rel="stylesheet" href="mobileSearchFilter.css" />
     <link rel="stylesheet" href="houseCard.css" />
+    <link rel="stylesheet" href="mapFilter.css" />
 
     <link rel="stylesheet" href="drone.css" />
 
@@ -63,6 +64,7 @@
       .krpano_cursor_debug {
         display: none !important;
       }
+
       .icon-container {
         position: fixed;
         /* Fix the position relative to the viewport */
@@ -367,6 +369,81 @@
         </div>
       </div>
 
+      <div
+        id="filterMapContainer"
+        class="filter-container"
+        style="
+          position: absolute;
+          top: 50px;
+          left: 20px;
+          z-index: 9999;
+          display: block;
+        "
+      >
+        <h3>Map Filter</h3>
+        <div class="show-all">
+          <span>Show All</span>
+          <div
+            class="map-toggle"
+            id="mapToggle"
+            onclick="toggleFilterTheme()"
+          ></div>
+        </div>
+        <div class="filter-buttons">
+          <div class="filter-button active">
+            <img
+              src="./skin/icons/MapFilters/Landmarks.png"
+              alt="icon"
+              class="icon"
+              width="15px"
+              height="15px"
+            />Landmarks
+          </div>
+
+          <div class="filter-button">
+            <img
+              src="./skin/icons/MapFilters/Roads.png"
+              alt="icon"
+              class="icon"
+              width="20px"
+              height="20px"
+            />
+            Roads
+          </div>
+          <div class="filter-button">
+            <img
+              src="./skin/icons/MapFilters/Parks.png"
+              alt="icon"
+              class="icon"
+              width="20px"
+              height="20px"
+            />
+            Parks
+          </div>
+          <div class="filter-button">
+            <img
+              src="./skin/icons/MapFilters/Education.png"
+              alt="icon"
+              class="icon"
+              width="20px"
+              height="20px"
+            />
+            Education
+          </div>
+          <div class="filter-button">
+            <img
+              src="./skin/icons/MapFilters/Hospitals.png"
+              alt="icon"
+              class="icon"
+              width="20px"
+              height="20px"
+            />
+            Health
+          </div>
+        </div>
+        <div class="arrow">▲</div>
+      </div>
+
       <!-- Modal -->
       <div id="notFoundModal" class="modal-overlay">
         <div class="modal-box">
@@ -445,6 +522,22 @@
             return;
           }
           return krpano;
+        };
+
+        const toggleFilterTheme = () => {
+          console.log("Toggle filter theme clicked");
+          const toggle = document.getElementById("mapToggle");
+          const filterButtons = document.querySelectorAll(".filter-button");
+
+          toggle.classList.toggle("active");
+
+          filterButtons.forEach((btn) => {
+            if (toggle.classList.contains("active")) {
+              btn.classList.add("brown-theme");
+            } else {
+              btn.classList.remove("brown-theme");
+            }
+          });
         };
 
         const flyToInitialAlMarinaScene = () => {
@@ -727,8 +820,8 @@
               } else {
                 console.log("inital load second");
                 if (propertyCard) {
-                   propertyCard.style.right = "20px";
-                   propertyCard.style.top = "8%";
+                  propertyCard.style.right = "20px";
+                  propertyCard.style.top = "8%";
                   //  propertyCard.style.right = "90px";
                   // propertyCard.style.top = "12%";
                 }
@@ -1259,6 +1352,21 @@
           "scene_b-AL_MARINA_aerial": { title: "Al Marina", icon: "home" },
 
           // Add more mappings here
+        };
+
+        const setFilterMapContainer = () => {
+          console.log("Setting filter map container visibility");
+          let krpano = globalKrpano();
+          const currentScene = krpano.get("xml.scene");
+          const filterMapContainer = document.getElementById(
+            "filterMapContainer"
+          );
+
+          if (filterMapContainer &&  currentScene === "scene_a-initial") {
+            filterMapContainer.style.display = "block";
+          } else {
+            filterMapContainer.style.display = "none";
+          }
         };
 
         const updateSearchVisibility = () => {
@@ -2335,7 +2443,6 @@
             let queryString = "";
 
             if (crumb.scene && crumb.scene !== "scene_a-initial") {
-           
               queryString += `zone=${crumb.scene}`;
             }
             if (crumb.scene && crumb.scene !== "scene_a-initial") {
@@ -3055,8 +3162,6 @@
             east: response[0].east,
           };
 
-      
-
           let existingCard = document.getElementById("krpano-card");
           if (existingCard) {
             existingCard.remove();
@@ -3168,16 +3273,14 @@
 
           const propertyCard = document.getElementById("krpano-card");
 
-           const imagePropertyCard = document.querySelector(".property-card");
+          const imagePropertyCard = document.querySelector(".property-card");
 
           if (imagePropertyCard) {
-           imagePropertyCard.style.backgroundImage = `${bgImage}`;
+            imagePropertyCard.style.backgroundImage = `${bgImage}`;
           }
-              console.log("inital load first ", width);
+          console.log("inital load first ", width);
           if (width > 1025) {
             if (propertyCard) {
-
-             
               propertyCard.style.right = "90px";
               propertyCard.style.top = "12%";
             }
@@ -3188,6 +3291,36 @@
               // propertyCard.style.right = "5%";
             }
           }
+        };
+        let currentVisibleRoad = null;
+
+        const showRoadHotspot = (roadName) => {
+          const krpano = globalKrpano();
+          if (!krpano) return;
+
+          // If the same road is clicked again, hide it
+          if (currentVisibleRoad === roadName) {
+            krpano.call(`tween(hotspot[${roadName}].borderalpha, 0.0, 1.0);`);
+            krpano.set(`hotspot[${roadName}].visible`, false);
+
+            currentVisibleRoad = null;
+            return;
+          }
+
+          // Hide previous road (if any)
+          if (currentVisibleRoad) {
+            krpano.call(
+              `tween(hotspot[${currentVisibleRoad}].borderalpha, 0.0, 1.0);`
+            );
+            krpano.set(`hotspot[${currentVisibleRoad}].visible`, false);
+          }
+
+          // Show new road
+          krpano.set(`hotspot[${roadName}].visible`, true);
+          krpano.set(`hotspot[${roadName}].borderalpha`, 0.0);
+          krpano.call(`tween(hotspot[${roadName}].borderalpha, 1.0, 1.0);`);
+
+          currentVisibleRoad = roadName;
         };
 
         const closeCard = () => {
@@ -3384,7 +3517,8 @@
             sliderDynamicImageURL = "./skin/icons/renders/Al_Marina_Villa.png";
           } else if (area > 2000) {
             console.log("commercial");
-            sliderDynamicImageURL = "./skin/icons/renders/Commercial_Cropped.png";
+            sliderDynamicImageURL =
+              "./skin/icons/renders/Commercial_Cropped.png";
           } else if (area > 1500 && area < 2000) {
             console.log("palace");
             sliderDynamicImageURL =
@@ -3583,21 +3717,17 @@
               console.log("FIRST IF");
               krpano.call(`loadscene(${scene}, null, MERGE, BLEND(1));`);
 
-
-      const params = new URLSearchParams(window.location.search);
-            // Check if the URL contains both "ath" and "atv"
-            const ath = params.get("ath");
-            const atv = params.get("atv");
-            setTimeout(() => {
-              if (ath !== null && atv !== null) {
-                flyToHouse(ath, atv);
-              } else {
-                console.log("ath or atv not present in URL");
-              }
-            }, 1500);
-          
-              
-              
+              const params = new URLSearchParams(window.location.search);
+              // Check if the URL contains both "ath" and "atv"
+              const ath = params.get("ath");
+              const atv = params.get("atv");
+              setTimeout(() => {
+                if (ath !== null && atv !== null) {
+                  flyToHouse(ath, atv);
+                } else {
+                  console.log("ath or atv not present in URL");
+                }
+              }, 1500);
             } else {
               console.error("krpano object not found or not ready");
             }
@@ -3638,6 +3768,7 @@
           showSearchFilterCardsMobile();
           displayHorizontalSlider();
           flyToInitialAlMarinaScene();
+          setFilterMapContainer();
 
           const unit = getSpecificUnit();
 
@@ -3651,7 +3782,7 @@
 
             krpano.set(
               "events.onloadcomplete",
-              "js(enableZoomControls()); js(addLandHotspotsToKrpano()); js(updateSearchVisibility());  js(displayHorizontalSlider()); js(createSceneCard()); js(showSearchFilterCardsMobile);js(flyToInitialAlMarinaScene);) "
+              "js(enableZoomControls()); js(addLandHotspotsToKrpano()); js(updateSearchVisibility());  js(displayHorizontalSlider()); js(createSceneCard()); js(showSearchFilterCardsMobile);js(flyToInitialAlMarinaScene); js(setFilterMapContainer());) "
             );
           }
         };

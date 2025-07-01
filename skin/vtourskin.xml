@@ -151,6 +151,8 @@
 		<!-- call the original onavailable event from the webvr.xml -->
 		webvr_onavailable();
 	</action>
+
+	
 	
 	<action name="skin_set_webvr_or_gyro_startup_view">
 		if( (webvr.isenabled == true AND skin_settings.webvr_keeplookingdirection == false) OR (!webvr.isenabled AND plugin[skin_gyro].enabled == true AND skin_settings.gyro_keeplookingdirection == false),

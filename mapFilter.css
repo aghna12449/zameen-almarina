@@ -1,0 +1,107 @@
+    /* body {
+      background: url('https://i.imgur.com/4NJlV87.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    } */
+    
+    .filter-container {
+      width: 280px;
+      background: #ffffff;
+      color: black;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 40px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    }
+    .filter-container h3 {
+      margin: 0 0 16px;
+      font-size: 18px;
+    }
+.filter-container:not(.brown-theme) .filter-button img.icon {
+  filter: invert(0%) brightness(0%) grayscale(100%);
+}
+
+/* When brown mode is active → show icon as white */
+.filter-container.brown-theme .filter-button img.icon {
+  filter: invert(100%) brightness(200%) grayscale(0%);
+}
+    .show-all {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .map-toggle {
+      width: 40px;
+      height: 20px;
+      background: #333;
+      border-radius: 10px;
+      position: relative;
+      cursor: pointer;
+    }
+    .map-toggle::before {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: #ccc;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: 0.3s;
+    }
+    .map-toggle.active {
+      background: #a65c43;
+    }
+    .map-toggle.active::before {
+      left: 22px;
+      background: #fff;
+    }
+    .filter-button {
+  background-color: white;
+  color: black;
+  padding: 6px 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.3s;
+  border: solid 1px black;
+}
+
+.filter-button.brown-theme {
+  background-color: #a65c43;
+  color: white;
+}
+
+    /* .filter-button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      background: #1F1F1F;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .filter-button.active,
+    .filter-button:hover {
+      background: #333;
+    } */
+
+    
+    .filter-button i {
+      font-style: normal;
+      width: 20px;
+      text-align: center;
+    }
+    
+    .arrow {
+      text-align: center;
+      padding-top: 12px;
+    }
