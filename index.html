@@ -683,6 +683,21 @@
           if (krpano) {
             const currentScene = krpano.get("scene[get(xml.scene)].name");
 
+            if (filterName === "Roads") {
+                if (isActive) {
+
+                  
+          if (krpano) {
+            krpano.call(
+              "loadscene(scene_AlMarina_Roads, null, MERGE, BLEND(1));"
+            );
+          }
+                 
+                } else {
+               
+                }
+              } 
+
             // Check if the current scene is the initial scene
             if (currentScene === "scene_a-initial") {
               if (filterName === "Health") {
@@ -3556,6 +3571,7 @@
           }
 
           const point = krpano.spheretoscreen(hotspot.ath, hotspot.atv);
+          console.log(" ======>>>>>", point);
           const x = point.x;
           const y = point.y;
 
