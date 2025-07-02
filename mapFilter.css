@@ -1,68 +1,82 @@
-    /* body {
+/* body {
       background: url('https://i.imgur.com/4NJlV87.jpg') no-repeat center center fixed;
       background-size: cover;
       font-family: sans-serif;
       margin: 0;
       padding: 0;
     } */
-    
-    .filter-container {
-      width: 280px;
-      background: rgb(139, 131, 131);
-      color: black;
-      border-radius: 12px;
-      padding: 16px;
-      margin: 40px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.6);
-    }
-    .filter-container h3 {
-      margin: 0 0 16px;
-      font-size: 18px;
-    }
 
+.filter-container {
+  width: 280px;
+  background: rgb(139, 131, 131);
+  color: black;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+.filter-container h3 {
+  margin: 0 0 16px;
+  font-size: 18px;
+}
 
-    .filter-button .icon {
+.filter-button .icon {
   filter: brightness(0); /* Black */
   transition: filter 0.3s ease;
 }
-
-.filter-button.active .icon {
-  filter: brightness(1000%); /* White */
+/* Icon color when button is active (white) */
+.filter-button.active .icon,
+.all-active .filter-button .icon {
+  filter: brightness(1000%);
 }
 
-    .show-all {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-    }
-    .map-toggle {
-      width: 40px;
-      height: 20px;
-      background: #333;
-      border-radius: 10px;
-      position: relative;
-      cursor: pointer;
-    }
-    .map-toggle::before {
-      content: '';
-      position: absolute;
-      width: 16px;
-      height: 16px;
-      background: #ccc;
-      border-radius: 50%;
-      top: 2px;
-      left: 2px;
-      transition: 0.3s;
-    }
-    .map-toggle.active {
-      background: #a65c43;
-    }
-    .map-toggle.active::before {
-      left: 22px;
-      background: #fff;
-    }
-    .filter-button {
+/* When both Show All is active AND button is active */
+.all-active .filter-button.active .icon {
+  filter: brightness(0);
+}
+
+/* .filter-button.active .icon {
+  filter: brightness(1000%); 
+}
+
+
+.toggle-on .filter-button.active .icon {
+  filter: brightness(1000%); 
+} */
+
+.show-all {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.map-toggle {
+  width: 40px;
+  height: 20px;
+  background: #333;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+}
+.map-toggle::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #ccc;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: 0.3s;
+}
+.map-toggle.active {
+  background: #a65c43;
+}
+.map-toggle.active::before {
+  left: 22px;
+  background: #fff;
+}
+.filter-button {
   background-color: white;
   color: black;
   padding: 6px 10px;
@@ -81,7 +95,7 @@
   color: white;
 }
 
-    /* .filter-button {
+/* .filter-button {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -97,39 +111,38 @@
       background: #333;
     } */
 
-    .filter-button.active {
+.filter-button.active {
   background: #a65c43; /* Highlight color */
   color: #fff;
 }
 
-    
-    .filter-button i {
-      font-style: normal;
-      width: 20px;
-      text-align: center;
-    }
-    
-    .map-filter-arrow {
-      text-align: center;
-      padding-top: 12px;
-      cursor: pointer;
-    }
+.filter-button i {
+  font-style: normal;
+  width: 20px;
+  text-align: center;
+}
 
-     .show-all {
-      transition: all 0.3s ease;
-     
-      align-items: center;
-      gap: 10px;
-    } 
-    
-    #showAllContainer {
-      max-height: 1000px;  /* large enough to fit content */
-      overflow: hidden;
-      opacity: 1;
-      transition: max-height 0.4s ease, opacity 0.4s ease;
-    }
-    
-    #showAllContainer.hidden {
-      max-height: 0;
-      opacity: 0;
-    }
+.map-filter-arrow {
+  text-align: center;
+  padding-top: 12px;
+  cursor: pointer;
+}
+
+.show-all {
+  transition: all 0.3s ease;
+
+  align-items: center;
+  gap: 10px;
+}
+
+#showAllContainer {
+  max-height: 1000px; /* large enough to fit content */
+  overflow: hidden;
+  opacity: 1;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+#showAllContainer.hidden {
+  max-height: 0;
+  opacity: 0;
+}

@@ -532,11 +532,14 @@
         const toggleFilterTheme = () => {
           // Get the krpano viewer instance
           const krpano = globalKrpano();
+          const container = document.getElementById("showAllContainer");
 
           const toggle = document.getElementById("mapToggle");
           const filterButtons = document.querySelectorAll(".filter-button");
 
           toggle.classList.toggle("active");
+          container.classList.toggle('all-active');
+          
 
           // filterButtons.forEach((btn) => {
           //   if (toggle.classList.contains("active")) {
@@ -549,8 +552,10 @@
           filterButtons.forEach((btn) => {
   if (toggle.classList.contains("active")) {
     btn.classList.add("brown-theme");
+    
     // keep active states as is
   } else {
+      container.classList.remove("toggle-on");
     btn.classList.remove("brown-theme");
     btn.classList.remove("active"); // 👈 removes active class when toggle is OFF
 
