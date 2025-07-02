@@ -525,6 +525,9 @@
           }
           return krpano;
         };
+ const parksCount = 3;
+          const hospitalsCount = 2;
+          const educationalCount = 2;
 
         const toggleFilterTheme = () => {
           // Get the krpano viewer instance
@@ -535,14 +538,25 @@
 
           toggle.classList.toggle("active");
 
-          filterButtons.forEach((btn) => {
-            if (toggle.classList.contains("active")) {
-              btn.classList.add("brown-theme");
-            } else {
-              btn.classList.remove("brown-theme");
-            }
-          });
+          // filterButtons.forEach((btn) => {
+          //   if (toggle.classList.contains("active")) {
+          //     btn.classList.add("brown-theme");
+          //   } else {
+          //     btn.classList.remove("brown-theme");
+          //   }
+          // });
 
+          filterButtons.forEach((btn) => {
+  if (toggle.classList.contains("active")) {
+    btn.classList.add("brown-theme");
+    // keep active states as is
+  } else {
+    btn.classList.remove("brown-theme");
+    btn.classList.remove("active"); // 👈 removes active class when toggle is OFF
+
+    
+  }
+});
           if (krpano) {
             const currentScene = krpano.get("scene[get(xml.scene)].name");
             const totalRoads = 8;
@@ -554,10 +568,28 @@
                 for (let i = 1; i <= totalRoads; i++) {
                   krpano.set(`hotspot[Road_${i}].visible`, false);
                 }
+                for (let i = 1; i <= hospitalsCount; i++) {
+                  krpano.set(`hotspot[hs_M_hospitals_${i}].visible`, false);
+                }
+                for (let i = 1; i <= parksCount; i++) {
+                  krpano.set(`hotspot[hs_M_parks_${i}].visible`, false);
+                }
+                for (let i = 1; i <= educationalCount; i++) {
+                  krpano.set(`hotspot[hs_M_education_${i}].visible`, false);
+                }
                 // Toggle ON = show hotspots
               } else {
                 for (let i = 1; i <= totalRoads; i++) {
                   krpano.set(`hotspot[Road_${i}].visible`, true);
+                }
+                for (let i = 1; i <= hospitalsCount; i++) {
+                  krpano.set(`hotspot[hs_M_hospitals_${i}].visible`, true);
+                }
+                for (let i = 1; i <= parksCount; i++) {
+                  krpano.set(`hotspot[hs_M_parks_${i}].visible`, true);
+                }
+                for (let i = 1; i <= educationalCount; i++) {
+                  krpano.set(`hotspot[hs_M_education_${i}].visible`, true);
                 }
               }
             }
@@ -620,8 +652,70 @@
         // Function to toggle visibility of hotspot category
         function toggleHotspotCategory(filterName, isActive) {
           console.log("Toggling category:", filterName, "Active:", isActive);
-          const krpano = document.getElementById("krpanoSWFObject");
+          const krpano = globalKrpano()
           if (!krpano) return;
+
+         
+
+           if (krpano) {
+            const currentScene = krpano.get("scene[get(xml.scene)].name");
+      
+
+            // Check if the current scene is the initial scene
+            if (currentScene === "scene_a-initial") {
+
+              if(filterName === "Health") {
+                 if (isActive) {
+                for (let i = 1; i <= hospitalsCount; i++) {
+                  krpano.set(`hotspot[hs_M_hospitals_${i}].visible`, true);
+                }
+                // Toggle ON = show hotspots
+              } else {
+                for (let i = 1; i <= hospitalsCount; i++) {
+                  krpano.set(`hotspot[hs_M_hospitals_${i}].visible`, false);
+                }
+              }
+              }else if(filterName === "Parks") {
+                 if (isActive) {
+                for (let i = 1; i <= parksCount; i++) {
+                  krpano.set(`hotspot[hs_M_parks_${i}].visible`, true);
+                }
+                // Toggle ON = show hotspots
+              } else {
+                for (let i = 1; i <= parksCount; i++) {
+                  krpano.set(`hotspot[hs_M_parks_${i}].visible`, false);
+                }
+              }
+              }
+              else if(filterName === "Parks") {
+                 if (isActive) {
+                for (let i = 1; i <= parksCount; i++) {
+                  krpano.set(`hotspot[hs_M_parks_${i}].visible`, true);
+                }
+                // Toggle ON = show hotspots
+              } else {
+                for (let i = 1; i <= parksCount; i++) {
+                  krpano.set(`hotspot[hs_M_parks_${i}].visible`, false);
+                }
+              }
+              }
+              else if(filterName === "Education") {
+                 if (isActive) {
+                for (let i = 1; i <= educationalCount; i++) {
+                  krpano.set(`hotspot[hs_M_education_${i}].visible`, true);
+                }
+                // Toggle ON = show hotspots
+              } else {
+                for (let i = 1; i <= educationalCount; i++) {
+                  krpano.set(`hotspot[hs_M_education_${i}].visible`, false);
+                }
+              }
+            }
+
+              // Toggle OFF = remove hotspots
+             
+            }
+          }
 
           const hotspotCount = krpano.get("hotspot.count");
           for (let i = 0; i < hotspotCount; i++) {
