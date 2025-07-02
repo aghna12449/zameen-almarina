@@ -494,9 +494,20 @@
 
       <div class="info-box" id="infoBox" style="display: none">
         <div class="info-title" id="infoTitle"></div>
-        <div class="info-sub" id="infoSub"></div>
-        <div class="info-duration" id="infoDuration"></div>
-        <div class="info-footer" id="infoFooter"></div>
+
+        <div class="info-content-row">
+          <div class="dots-column">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+                   <span class="dot"></span>
+          </div>
+          <div class="info-text">
+            <div class="info-sub" id="infoSub"></div>
+            <div class="info-duration" id="infoDuration"></div>
+            <div class="info-footer" id="infoFooter"></div>
+          </div>
+        </div>
       </div>
 
       <div class="hotspot-clickable">
@@ -3551,7 +3562,7 @@
           showInfoBox(
             {
               title: hotspot.title,
-              sub: "Erth",
+              sub: "Al Marina",
               duration: hotspot.content,
               footer: hotspot.title,
             },
@@ -3577,6 +3588,7 @@
 
           document.getElementById("infoTitle").innerHTML = data.title;
 
+          document.getElementById("infoSub").innerHTML = data.sub;
           document.getElementById("infoDuration").innerHTML = data.duration;
           document.getElementById("infoFooter").innerHTML = data.footer;
 
