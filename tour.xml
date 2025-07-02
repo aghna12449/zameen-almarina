@@ -544,7 +544,7 @@ bordercolor="0xffffff"   borderwidth="0.5"
     <point ath="0.08324079924221905" atv="0.07718615411930525" />
 </hotspot>
 <!-- king fahd airport -->
-<hotspot name="Road_8" style="mypolygonalhotspotstylename"
+<hotspot name="Road_8" polyline="true"  style="mypolygonalhotspotstylename"
 fillcolor="0xffffff" fillalpha="3" 
 visible="false"
 bordercolor="0xffffff"   borderwidth="1.5"
@@ -905,7 +905,171 @@ bordercolor="0xffffff"   borderwidth="1.5"
     <point ath="0.08336667496939754" atv="0.07714654292880242" />
     <point ath="0.08328983864049633" atv="0.07776123961626862" />
 </hotspot>
-		<!-- hotspot for highlighting initial zone -->
+
+<!-- Highlighting Parks -->
+<!-- park 1 -->
+ 	  <hotspot name="hs_M_parks"
+         style="callout"
+         shape="round"
+		
+       ath="0.0523309" atv="0.1196762 "
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-275"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="0"
+         circle_active_width="0"
+         title=""
+         text_background=""
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/M_parks.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot>     
+
+ <!-- park 2 -->
+    <hotspot name="hs_M_parks_2"
+         style="callout"
+         shape="round"
+		
+       ath="-0.0074448" atv="0.048892"
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-200"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="0"
+         circle_active_width="0"
+         title=""
+         text_background=""
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/M_parks.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+			</hotspot> 	  
+   
+
+   <!-- park 3  -->
+	<hotspot name="hs_M_parks_3"
+         style="callout"
+         shape="round"
+		
+       ath="-0.0025308" atv="0.0243637"
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-200"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="0"
+         circle_active_width="0"
+         title=""
+         text_background=""
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/M_parks.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+			</hotspot> 
+	
+
+
+<!-- Hospital hotspots -->
+
+<!-- Hospital 1 -->
+ <hotspot name="hs_M_hospitals_1"
+         style="callout"
+         shape="round"
+		 
+       ath="0.0310603" atv="0.1070961"
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-200"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="0"
+         circle_active_width="0"
+         title=""
+         text_background=""
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/M_hospitals.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+			</hotspot> 
+	
+<!-- Hospital 2 -->
+  <hotspot name="hs_M_hospitals_2"
+         style="callout"
+         shape="round"
+		
+       ath=" 0.0490755" atv="0.1498998"
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-200"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="0"
+         circle_active_width="0"
+         title=""
+         text_background=""
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/M_hospitals.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+			</hotspot>
+ 
+
+<!-- highlighting educational institutions -->
+ <!-- school 1 -->
+  <hotspot name="hs_M_education_1"
+         style="callout"
+         shape="round"
+		
+       ath=" 0.0525911" atv="0.1450169"
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="45"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="0"
+         circle_active_width="0"
+         title=""
+         text_background=""
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/M_education.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+			</hotspot>
+
+   
+<!-- school 2 -->
+ <hotspot name="hs_M_education_2"
+         style="callout"
+         shape="round"
+		
+       ath="0.0417456" atv="0.1160468"
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="0"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="0"
+         circle_active_width="0"
+         title=""
+         text_background=""
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/M_education.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+			</hotspot>
+  
+<!-- hotspot for highlighting initial zone -->
 
 
 
@@ -932,7 +1096,7 @@ bordercolor="0xffffff"   borderwidth="1.5"
 
 
 
-	 <!-- <hotspot name="hs_AlMarinaLogo_big"
+	 <hotspot name="hs_AlMarinaLogo_big"
          style="callout"
          shape="round"
        ath="0.0824484" atv="0.077712"
@@ -951,7 +1115,7 @@ bordercolor="0xffffff"   borderwidth="1.5"
          content="&lt;div style=&quot;text-align:center;&quot;&gt;
                     &lt;img src=&quot;skin/icons/AlMarinaLogo_big.png&quot; style=&quot;width:100px; height:120px; border-radius:25px; display:block; margin:0 auto;&quot; /&gt;
                   &lt;/div&gt;">
-</hotspot>     -->
+</hotspot>    
 
 
 
@@ -994,7 +1158,7 @@ bordercolor="0xffffff"   borderwidth="1.5"
 
 		<hotspot name="hs_ApartEnt(2.3)" callout_bg_border="0,0,0,0"
 			width="auto" shape="round" ath="0.0612752" atv="0.1153677"
-			rotate="-207" line_lenght="70" line_width="1.5"  animation="keep_opened" style="callout" 
+			rotate="-207" line_lenght="200" line_width="1.5"  animation="keep_opened" style="callout" 
 			title="Dharan Expo Exibition Center" content="5 mins - 8km"
 			onclick="js(showRoadHotspot('Road_4'));"
 
