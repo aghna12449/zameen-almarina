@@ -1140,62 +1140,67 @@ bordercolor="0xffffff"   borderwidth="1.5"
 		</hotspot>
 
 
-		<hotspot name="hs_ApartEnt(2.1)" callout_bg_border="0,0,0,0"
+		<hotspot name="hs_Al_Yamamah_University " callout_bg_border="0,0,0,0"
 			width="auto" shape="round" ath="0.0693012" atv="0.1183332"
 			line_lenght="70" line_width="1.5" rotate="120"  animation="keep_opened" style="callout" 
 			title="Al Yamamah University " content="06 mins - 8km"
-			onclick="js(showRoadHotspot('Road_3'));"
+			onclick="js(showRoadHotspot('Road_3','hs_Al_Yamamah_University'));"
 			circle_active_width="5" text_x=""></hotspot>
 
 
-		<hotspot name="hs_ApartEnt(2.2)" callout_bg_border="0,0,0,0"
+		<hotspot name="hs_King_Abdul_Aziz_Seaport" callout_bg_border="0,0,0,0"
 			width="auto" shape="round" ath="0.0910358" atv="0.0334141" rotate="45"
 			line_lenght="100" line_width="1.5" animation="keep_opened" style="callout" 
 			title="King Abdul Aziz Seaport"
-			 onclick="js(showRoadHotspot('Road_1'));"
+			 onclick="js(showRoadHotspot('Road_1' ,'hs_King_Abdul_Aziz_Seaport'));"
 			content="10 mins" circle_active_width="8" text_x=""></hotspot>
 
 
-		<hotspot name="hs_ApartEnt(2.3)" callout_bg_border="0,0,0,0"
+		<hotspot name="hs_Dharan_Expo_Exibition_Center" callout_bg_border="0,0,0,0"
 			width="auto" shape="round" ath="0.0612752" atv="0.1153677"
 			rotate="-207" line_lenght="200" line_width="1.5"  animation="keep_opened" style="callout" 
 			title="Dharan Expo Exibition Center" content="5 mins - 8km"
-			onclick="js(showRoadHotspot('Road_4'));"
+			onclick="js(showRoadHotspot('Road_4','hs_Dharan_Expo_Exibition_Center'));"
 
 			circle_active_width="8" text_x=""></hotspot>
 
-		<hotspot name="hs_ApartEnt(2.4)" callout_bg_border="0,0,0,0" width="auto"
+		<hotspot name="hs_King_Fahd_International_Airport" callout_bg_border="0,0,0,0" width="auto"
 			line_lenght="70" line_width="1.5" shape="round" ath="-0.2777324" atv="-0.2178239" rotate="70"
 			animation="keep_opened" style="callout" 
-			 onclick="js(showRoadHotspot('Road_8'));"
+			 onclick="js(showRoadHotspot('Road_8','hs_King_Fahd_International_Airport'));"
 			title="King Fahd International Airport"
 			content="35 mins - 50km"
 			circle_active_width="8" text_x=""></hotspot>
-		<hotspot name="hs_ApartEnt(2.6)" callout_bg_border="0,0,0,0" width="auto" line_lenght="90" line_width="1.5"
+
+
+		<hotspot name="hs_Seven_Site" callout_bg_border="0,0,0,0" width="auto" line_lenght="90" line_width="1.5"
 			shape="round" ath="0.0957102" atv="0.1463097" rotate="138" animation="keep_opened"
 			style="callout"  title="Seven Site" 
-			onclick="js(showRoadHotspot('Road_6'));" content="12 mins - 11km" circle_active_width="8"
+			onclick="js(showRoadHotspot('Road_6','hs_Seven_Site'));" content="12 mins - 11km" circle_active_width="8"
 			text_x=""></hotspot>
 
 
-		<hotspot name="hs_ApartEnt(2.7)" callout_bg_border="0,0,0,0" width="auto" line_lenght="70" line_width="1.5"
+		<hotspot name="hs_Aramco_Stadium" callout_bg_border="0,0,0,0" width="auto" line_lenght="70" line_width="1.5"
 			shape="round"
 			ath="0.0309812" atv="0.1152315" rotate="-90" animation="keep_opened" style="callout" 
 			title="Aramco Stadium" content="10 mins - 10km"
-			 onclick="js(showRoadHotspot('Road_5'));"
+			 onclick="js(showRoadHotspot('Road_5', 'hs_Aramco_Stadium'));"
 			circle_active_width="8" text_x=""></hotspot>
 
-		<hotspot name="hs_ApartEnt(2.8)" callout_bg_border="0,0,0,0" width="auto" line_lenght="120" line_width="1.5"
+		<hotspot name="hs_Imam_Abdulrahman" callout_bg_border="0,0,0,0" width="auto" line_lenght="120" line_width="1.5"
 			shape="round" style="callout" 
 			ath="0.0701512" atv="0.0892284" rotate="102" animation="keep_opened"  
-			onclick="js(showRoadHotspot('Road_2'));"
+			onclick="js(showRoadHotspot('Road_2', 'hs_Imam_Abdulrahman'));"
 			title="Imam Abdulrahman Bin Faisal University&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" content="05 mins - 5km"
 			circle_active_width="8" text_x=""></hotspot>
-		<hotspot name="hs_ApartEnt(2.9)" callout_bg_border="0,0,0,0" width="auto"
+
+
+
+		<hotspot name="hs_King_Fahd_University" callout_bg_border="0,0,0,0" width="auto"
 			line_lenght="70" line_width="1.5" shape="round" ath="-0.0558943" atv="0.1511067"
 			rotate="-130" animation="keep_opened" style="callout"  title="King Fahd University "
 			content="15 mins - 18km" circle_active_width="8" 
-			 onclick="js(showRoadHotspot('Road_7'));"
+			 onclick="js(showRoadHotspot('Road_7','hs_King_Fahd_University'));"
 			text_x=""></hotspot>
 
 	

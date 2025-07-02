@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="mobileSearchFilter.css" />
     <link rel="stylesheet" href="houseCard.css" />
     <link rel="stylesheet" href="mapFilter.css" />
+    <link rel="stylesheet" href="landmarkModal.css" />
 
     <link rel="stylesheet" href="drone.css" />
 
@@ -491,6 +492,17 @@
         <div class="card-slider_1"></div>
       </div>
 
+      <div class="info-box" id="infoBox" style="display: none">
+        <div class="info-title" id="infoTitle"></div>
+        <div class="info-sub" id="infoSub"></div>
+        <div class="info-duration" id="infoDuration"></div>
+        <div class="info-footer" id="infoFooter"></div>
+      </div>
+
+      <div class="hotspot-clickable">
+        <!-- Hotspot content here -->
+      </div>
+
       <script>
         embedpano({
           xml: "tour.xml",
@@ -525,9 +537,9 @@
           }
           return krpano;
         };
- const parksCount = 3;
-          const hospitalsCount = 2;
-          const educationalCount = 2;
+        const parksCount = 3;
+        const hospitalsCount = 2;
+        const educationalCount = 2;
 
         const toggleFilterTheme = () => {
           // Get the krpano viewer instance
@@ -538,8 +550,7 @@
           const filterButtons = document.querySelectorAll(".filter-button");
 
           toggle.classList.toggle("active");
-          container.classList.toggle('all-active');
-          
+          container.classList.toggle("all-active");
 
           // filterButtons.forEach((btn) => {
           //   if (toggle.classList.contains("active")) {
@@ -550,18 +561,16 @@
           // });
 
           filterButtons.forEach((btn) => {
-  if (toggle.classList.contains("active")) {
-    btn.classList.add("brown-theme");
-    
-    // keep active states as is
-  } else {
-      container.classList.remove("toggle-on");
-    btn.classList.remove("brown-theme");
-    btn.classList.remove("active"); // 👈 removes active class when toggle is OFF
+            if (toggle.classList.contains("active")) {
+              btn.classList.add("brown-theme");
 
-    
-  }
-});
+              // keep active states as is
+            } else {
+              container.classList.remove("toggle-on");
+              btn.classList.remove("brown-theme");
+              btn.classList.remove("active"); // 👈 removes active class when toggle is OFF
+            }
+          });
           if (krpano) {
             const currentScene = krpano.get("scene[get(xml.scene)].name");
             const totalRoads = 8;
@@ -657,68 +666,61 @@
         // Function to toggle visibility of hotspot category
         function toggleHotspotCategory(filterName, isActive) {
           console.log("Toggling category:", filterName, "Active:", isActive);
-          const krpano = globalKrpano()
+          const krpano = globalKrpano();
           if (!krpano) return;
 
-         
-
-           if (krpano) {
+          if (krpano) {
             const currentScene = krpano.get("scene[get(xml.scene)].name");
-      
 
             // Check if the current scene is the initial scene
             if (currentScene === "scene_a-initial") {
-
-              if(filterName === "Health") {
-                 if (isActive) {
-                for (let i = 1; i <= hospitalsCount; i++) {
-                  krpano.set(`hotspot[hs_M_hospitals_${i}].visible`, true);
+              if (filterName === "Health") {
+                if (isActive) {
+                  for (let i = 1; i <= hospitalsCount; i++) {
+                    krpano.set(`hotspot[hs_M_hospitals_${i}].visible`, true);
+                  }
+                  // Toggle ON = show hotspots
+                } else {
+                  for (let i = 1; i <= hospitalsCount; i++) {
+                    krpano.set(`hotspot[hs_M_hospitals_${i}].visible`, false);
+                  }
                 }
-                // Toggle ON = show hotspots
-              } else {
-                for (let i = 1; i <= hospitalsCount; i++) {
-                  krpano.set(`hotspot[hs_M_hospitals_${i}].visible`, false);
+              } else if (filterName === "Parks") {
+                if (isActive) {
+                  for (let i = 1; i <= parksCount; i++) {
+                    krpano.set(`hotspot[hs_M_parks_${i}].visible`, true);
+                  }
+                  // Toggle ON = show hotspots
+                } else {
+                  for (let i = 1; i <= parksCount; i++) {
+                    krpano.set(`hotspot[hs_M_parks_${i}].visible`, false);
+                  }
                 }
-              }
-              }else if(filterName === "Parks") {
-                 if (isActive) {
-                for (let i = 1; i <= parksCount; i++) {
-                  krpano.set(`hotspot[hs_M_parks_${i}].visible`, true);
+              } else if (filterName === "Parks") {
+                if (isActive) {
+                  for (let i = 1; i <= parksCount; i++) {
+                    krpano.set(`hotspot[hs_M_parks_${i}].visible`, true);
+                  }
+                  // Toggle ON = show hotspots
+                } else {
+                  for (let i = 1; i <= parksCount; i++) {
+                    krpano.set(`hotspot[hs_M_parks_${i}].visible`, false);
+                  }
                 }
-                // Toggle ON = show hotspots
-              } else {
-                for (let i = 1; i <= parksCount; i++) {
-                  krpano.set(`hotspot[hs_M_parks_${i}].visible`, false);
-                }
-              }
-              }
-              else if(filterName === "Parks") {
-                 if (isActive) {
-                for (let i = 1; i <= parksCount; i++) {
-                  krpano.set(`hotspot[hs_M_parks_${i}].visible`, true);
-                }
-                // Toggle ON = show hotspots
-              } else {
-                for (let i = 1; i <= parksCount; i++) {
-                  krpano.set(`hotspot[hs_M_parks_${i}].visible`, false);
-                }
-              }
-              }
-              else if(filterName === "Education") {
-                 if (isActive) {
-                for (let i = 1; i <= educationalCount; i++) {
-                  krpano.set(`hotspot[hs_M_education_${i}].visible`, true);
-                }
-                // Toggle ON = show hotspots
-              } else {
-                for (let i = 1; i <= educationalCount; i++) {
-                  krpano.set(`hotspot[hs_M_education_${i}].visible`, false);
+              } else if (filterName === "Education") {
+                if (isActive) {
+                  for (let i = 1; i <= educationalCount; i++) {
+                    krpano.set(`hotspot[hs_M_education_${i}].visible`, true);
+                  }
+                  // Toggle ON = show hotspots
+                } else {
+                  for (let i = 1; i <= educationalCount; i++) {
+                    krpano.set(`hotspot[hs_M_education_${i}].visible`, false);
+                  }
                 }
               }
-            }
 
               // Toggle OFF = remove hotspots
-             
             }
           }
 
@@ -730,6 +732,15 @@
             }
           }
         }
+
+        //         // Wait for DOM to load
+        // document.addEventListener('DOMContentLoaded', function() {
+        //  getSpecificHotspot();
+        // });
+
+        // window.onload = function () {
+        //     getSpecificHotspot();
+        // }
 
         const flyToInitialAlMarinaScene = () => {
           const krpano = document.getElementById("krpanoSWFObject");
@@ -3485,8 +3496,9 @@
           }
         };
         let currentVisibleRoad = null;
+        let currentHotspot = null;
 
-        const showRoadHotspot = (roadName) => {
+        const showRoadHotspot = (roadName, hotspotName) => {
           const krpano = globalKrpano();
           if (!krpano) return;
 
@@ -3513,8 +3525,73 @@
           krpano.call(`tween(hotspot[${roadName}].borderalpha, 1.0, 1.0);`);
 
           currentVisibleRoad = roadName;
+          getSpecificHotspot(hotspotName);
         };
 
+        const getSpecificHotspot = (hotspotName) => {
+          const krpano = globalKrpano();
+
+          // Hide the previous info box if another hotspot was clicked
+          // if (currentHotspot && currentHotspot !== hotspotName) {
+          //   hideInfoBox();
+          // }
+
+          currentHotspot = hotspotName; // Update the currently active one
+
+          const hotspot = krpano.get(`hotspot[${hotspotName}]`);
+          if (!hotspot) {
+            console.log("Hotspot not found");
+            return;
+          }
+
+          const point = krpano.spheretoscreen(hotspot.ath, hotspot.atv);
+          const x = point.x;
+          const y = point.y;
+
+          showInfoBox(
+            {
+              title: hotspot.title,
+              sub: "Erth",
+              duration: hotspot.content,
+              footer: hotspot.title,
+            },
+            x,
+            y
+          );
+        };
+
+        // document.addEventListener("click", function (event) {
+        //   const infoBox = document.getElementById("infoBox");
+
+        //   // Check if the click is outside the info box and NOT on a hotspot
+        //   const clickedInsideInfoBox = infoBox.contains(event.target);
+        //   const clickedOnHotspot = event.target.closest(".hotspot-clickable") !== null;
+
+        //   if (!clickedInsideInfoBox && !clickedOnHotspot) {
+        //    // hideInfoBox();
+        //   }
+        // });
+
+        function showInfoBox(data, x = 100, y = 100) {
+          // Example data: { title, sub, duration, footer }
+
+          document.getElementById("infoTitle").innerHTML = data.title;
+
+          document.getElementById("infoDuration").innerHTML = data.duration;
+          document.getElementById("infoFooter").innerHTML = data.footer;
+
+          const box = document.getElementById("infoBox");
+
+          box.style.left = `${x - box.offsetWidth / 2}px`;
+          box.style.top = `${y - box.offsetHeight}px`;
+          box.style.display = "block";
+        }
+
+        const hideInfoBox = () => {
+          const box = document.getElementById("infoBox");
+          box.style.display = "none";
+          currentHotspot = null;
+        };
         const closeCard = () => {
           blinkIndividualHotspot("", false, false);
           let card = document.getElementById("krpano-card");

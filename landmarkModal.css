@@ -1,0 +1,40 @@
+.info-box {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  width: 190px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  line-height: 1.4;
+  position: fixed; /* If used with hotspots */
+  z-index: 9999;
+}
+
+.info-title {
+  font-weight: bold;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.info-sub {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.info-duration {
+  display: inline-block;
+  background-color: #333;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  margin-bottom: 6px;
+}
+
+.info-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 6px;
+  font-size: 11px;
+  opacity: 0.8;
+}
