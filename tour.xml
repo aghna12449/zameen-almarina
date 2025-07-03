@@ -88,7 +88,48 @@
 		design_text_shadow="1"
 	/>
 	
+	<!-- <layer name="mytext"
+       type="text"
+       align="lefttop" x="10" y="10"
+       text="Text...[br][b]Bold Text...[/b]"
+       template=""
+       rawhtml="false"
+       css="font-family:Arial; font-size:16px; color:#000000;"
+       cssclass=""
+       txtshadow=""
+       textalign="lefttop"
+       padding="2"
+       trimwhitespace="false"
+       wordwrap="true"
+       ellipsis="false"
+       interactive="false"
+       selectable="false"
+       editable="false"
+       editenterkey="stop"
+       maskchildren="false"
+       htmllinkcolor="inherit"
+       bg="true"
+       bgcolor="0xFFFFFF"
+       bgalpha="1.0"
+       bgborder="0"
+       bgroundedge="0"
+       bgshadow=""
+       onresize=""
+       ontextchanged=""
+       oneditstart=""
+       oneditchange=""
+       oneditstop=""
+       /> -->
 
+	   <layer name="mytext"
+       type="text"
+       align="lefttop" x="10" y="10"
+       text="Text...[br][b]Bold Text...[/b]"
+       rawhtml="true"
+       css="font-family:Arial; font-size:16px; color:#ffffff; background: #98a512"
+       bgcolor="0x000000"
+       bgalpha="0.0"
+/>
 	<layer name="infoLayer"
 		keep="true"
 		url="info.png"
@@ -203,17 +244,117 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 			<flat url="panos/a-initial.tiles/l%l/%0v/l%l_%0v_%0h.jpg" multires="512,1024x576,2048x1152,3840x2160,7680x4320" />
 		</image>
 
-	<hotspot name="roads_overlay"
-         url="skin/icons/MapRoads/AlMarina_Roads.png"
-         distorted="true"
-        ath="0.08249176524418544" atv="0.07858270687875374"
-         visible="true"
-         alpha="1"
-         width="100%"
-         height="100%"
-         scale="1.0"
-         zorder="10"
-         capture="false" />
+
+
+		<!-- <hotspot name="hs_Rd_AlHaramin_1"
+
+			callout_bg_border="0,0,0,0"
+			callout_bg_color="0xa65c43"
+			callout_border_color="0xa65c43"
+			width="auto"
+			shape="circle"
+			ath="-0.036282" atv="  0.1221726"
+		
+			rotate="-25"
+			animation="keep_opened"
+			line_width="0"
+			line_lenght="00"
+			style="callout"
+			title=""
+			text_background=""
+			content="&lt;img src=&quot;skin/icons/MapRoads/Rd_AlHaramin.png&quot; style=&quot;width:60px; height:180px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+			url="skin/icons/MapRoads/Rd_AlHaramin.png" circle_active_width="0.1"
+			text_x="">
+
+		</hotspot> -->
+
+		 <hotspot name="hs_Rd_AlHaramin_1"
+        	 type="text"
+          	ath="-0.0328865" atv=" 0.1591685"
+			
+		   edge="center"
+        	size="1.0"
+	   
+       
+         html=" [b] Al Haramin Rd[/b] "
+
+     
+         />
+	
+
+		<hotspot name="hs_Rd_KingFahd_horizontal_2"
+        	 type="text"
+          	ath="-0.0771463" atv="-0.0135177" edge="center"
+        	size="1.0"
+	       renderer="css3d"
+       
+         html=" [b]King Fahd Rd[/b] "
+
+      
+         />
+
+		 <hotspot name="hs_Rd_KingFahd_horizontal_3"
+        	 type="text"
+          			ath="-0.0019694" atv="-0.0082224"
+				 edge="center"
+        	size="1.0"
+	       renderer="css3d"
+       
+         html=" [b]King Fahd Rd[/b] "
+
+      
+         />
+
+	
+
+
+	
+
+		  <hotspot name="hs_Rd_KingAbdulAziz_horizontal_4"
+        	 type="text"
+          	ath=" 0.0759366" atv="0.0247447"
+			
+				 edge="center"
+        	size="1.0"
+	   
+       
+         html=" [b]King Abdul Aziz Rd[/b] "
+
+     
+         />
+
+	
+
+		 <hotspot name="hs_Rd_KingAbdulAziz_horizontal_5"
+        	 type="text"
+          	ath="-0.1795797" atv="0.1433399"
+			
+				 edge="center"
+        	size="1.0"
+	   
+       
+         html=" [b]King Abdul Aziz Rd[/b] "
+
+     
+         />
+
+		
+
+		 
+		 <hotspot name="hs_Rd_KingAbdulAziz_horizontal_6"
+        	 type="text"
+          	ath="-0.0487387" atv=" 0.0983929"
+			
+				 edge="center"
+        	size="1.0"
+	   
+       
+         html=" [b]King Abdul Aziz Rd[/b] "
+
+     
+         />
+
+	
 
 <!-- Hotspots for Highlighting the roads -->
  <!-- seaport -->
@@ -540,7 +681,7 @@ bordercolor="0xffffff"   borderwidth="4"
          text_background=""
 		   onclick="js(showRelatedHotspot('hs_M_parks_5'));"
          content="&lt;div style=&quot;text-align:center;&quot;&gt;
-                    &lt;img src=&quot;skin/icons/MapIcons/M_parks.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/parks1.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
                   &lt;/div&gt;">
 </hotspot>     
 
@@ -551,6 +692,8 @@ bordercolor="0xffffff"   borderwidth="4"
          shape="round"
 		visible="false"
 		zorder="1"
+		size="2"
+		title_background="0x41D274"
        ath="0.0523309" atv="0.1196762 "
          callout_bg_border="0,0,0,0"
          callout_bg_color="0xa65c43"
@@ -587,7 +730,7 @@ bordercolor="0xffffff"   borderwidth="4"
 		    onclick="js(showRelatedHotspot('hs_M_parks_4'));"
 	
                  content="&lt;div style=&quot;text-align:center;&quot;&gt;
-                    &lt;img src=&quot;skin/icons/MapIcons/M_parks.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/parks1.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
                   &lt;/div&gt;">
 			</hotspot> 	  
 
@@ -596,6 +739,7 @@ bordercolor="0xffffff"   borderwidth="4"
     <hotspot name="hs_M_parks_4"
          style="callout"
          shape="round"
+		 title_background="0x41D274"
 visible="false"
        ath="-0.0074448" atv="0.048892"
          callout_bg_border="0,0,0,0"
@@ -603,6 +747,7 @@ visible="false"
          callout_border_color="0xa65c43"
 		 width="auto"
          rotate="45"
+		 size="2"
          animation="keep_opened"
          line_lenght="5" line_width="1.5"
          circle_active_width="0"
@@ -633,7 +778,7 @@ visible="false"
          text_background=""
 		   onclick="js(showRelatedHotspot('hs_M_parks_6'));"
          content="&lt;div style=&quot;text-align:center;&quot;&gt;
-                    &lt;img src=&quot;skin/icons/MapIcons/M_parks.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/parks1.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
                   &lt;/div&gt;">
 			</hotspot> 
 	
@@ -648,9 +793,11 @@ visible="false"
          callout_border_color="0xa65c43"
 		 width="auto"
          rotate="45"
+		 size="2"
          animation="keep_opened"
          line_width="0"
          line_lenght="0"
+title_background="0x41D274"
          circle_active_width="0"
          title="Abdullah Fuad park"
          text_background=""
@@ -696,10 +843,12 @@ visible="false"
          callout_border_color="0xa65c43"
 		 width="auto"
          rotate="-45"
+		 size="2"
          animation="keep_opened"
          line_width="0"
          line_lenght="50"
          circle_active_width="0"
+		 title_background="0xD2416D"
          title="Gama Hospital"
          text_background=""
          >
@@ -744,6 +893,8 @@ visible="false"
          animation="keep_opened"
          line_width="0"
          line_lenght="0"
+		 size="2"
+		 title_background="0xD2416D"
          circle_active_width="0"
          title="Al Salam Hospital"
          text_background=""
@@ -792,7 +943,8 @@ visible="false"
          animation="keep_opened"
          line_width="0"
          line_lenght="50"
-		
+		size="2"
+		title_background="0xD2416D"
          circle_active_width="0"
          title="King Fahd University Hospital"
          text_background=""
@@ -840,6 +992,7 @@ visible="false"
          line_width="0"
          line_lenght="10"
 		 size="2"
+		 title_background="0xD2416D"
          circle_active_width="0"
          title="Dr. Sulaiman Al Habib Hospital"
          text_background=""
@@ -877,17 +1030,18 @@ visible="false"
 		visible="false"
        ath=" 0.0525911" atv="0.1450169"
          callout_bg_border="0,0,0,0"
-         callout_bg_color="0xa65c43"
-         callout_border_color="0xa65c43"
+         callout_bg_color="0xffffff"
+         callout_border_color="0x000000"
 		 width="auto"
          rotate="-50"
          animation="keep_opened"
          line_width="0"
          line_lenght="0"
 		 size="2"
+		 title_background="0x418CD2"
          circle_active_width="0"
          title="Al Forsan Intranational School"
-         text_background=""
+         text_background="0xffffff"
          >
 			</hotspot>
 
@@ -928,6 +1082,7 @@ visible="false"
          rotate="30"
          animation="keep_opened"
          line_width="0"
+		 title_background="0x418CD2"
          line_lenght="50"
 size="2"
          circle_active_width="0"
