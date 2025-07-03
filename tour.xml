@@ -175,7 +175,7 @@ fovtype="MFOV" ensures it scales based on vertical and horizontal FOV.
 maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom in up to 2x the
 	native resolution. -->
 
-		<!-- <scene name="scene_AlMarina_Roads" title="AlMarina_Roads" onstart="" thumburl="panos/AlMarina_Roads.tiles/thumb.jpg" lat="" lng="" heading="">
+		<scene name="scene_AlMarina_Roads" title="AlMarina_Roads" onstart="" thumburl="panos/AlMarina_Roads.tiles/thumb.jpg" lat="" lng="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
@@ -187,7 +187,7 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 			<flat url="panos/AlMarina_Roads.tiles/l%l/%0v/l%l_%0v_%0h.jpg" multires="512,1024x576,2048x1152,3840x2160,7680x4320" />
 		</image>
 
-	</scene> -->
+	</scene>
 
 	<scene name="scene_a-initial" title="a-initial" thumburl="panos/a-initial.tiles/thumb.jpg"
 		lat="" lng="" heading="">
@@ -203,20 +203,17 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 			<flat url="panos/a-initial.tiles/l%l/%0v/l%l_%0v_%0h.jpg" multires="512,1024x576,2048x1152,3840x2160,7680x4320" />
 		</image>
 
-		 <!-- <hotspot name="text_road"
-         type="image"
+	<hotspot name="roads_overlay"
          url="skin/icons/MapRoads/AlMarina_Roads.png"
          distorted="true"
-         ath="0"
-         atv="0"
-         width="90px"       
-         height="50px"     
+        ath="0.08249176524418544" atv="0.07858270687875374"
+         visible="true"
+         alpha="1"
+         width="100%"
+         height="100%"
          scale="1.0"
-         zorder="5"
-         alpha="1.0"
-         edge="center"
-/>  -->
-
+         zorder="10"
+         capture="false" />
 
 <!-- Hotspots for Highlighting the roads -->
  <!-- seaport -->
@@ -528,6 +525,7 @@ bordercolor="0xffffff"   borderwidth="4"
          shape="round"
 		visible="false"
 		zorder="1"
+		size="2"
        ath="0.0523309" atv="0.1196762 "
          callout_bg_border="0,0,0,0"
          callout_bg_color="0xa65c43"
@@ -582,6 +580,7 @@ bordercolor="0xffffff"   borderwidth="4"
          animation="keep_opened"
          line_width="0"
          line_lenght="0"
+		 size="2"
          circle_active_width="0"
          title=""
          text_background=""
@@ -625,6 +624,7 @@ visible="false"
          callout_border_color="0xa65c43"
 		 width="auto"
          rotate="-200"
+		 size="2"
          animation="keep_opened"
          line_width="1.5"
          line_lenght="5"
@@ -670,6 +670,7 @@ visible="false"
          callout_border_color="0xa65c43"
 		 width="auto"
          rotate="45"
+		 size="2"
          animation="keep_opened"
          line_width="0"
          line_lenght="0"
@@ -709,6 +710,7 @@ visible="false"
          style="callout"
          shape="round"
 		 visible="false"
+		 size="2"
        ath=" 0.0490755" atv="0.1498998"
          callout_bg_border="0,0,0,0"
          callout_bg_color="0xa65c43"
@@ -755,6 +757,7 @@ visible="false"
          style="callout"
          shape="round"
 		 visible="false"
+		 size="2"
        ath=" -0.0061078" atv="0.2021984"
          callout_bg_border="0,0,0,0"
          callout_bg_color="0xa65c43"
@@ -789,6 +792,7 @@ visible="false"
          animation="keep_opened"
          line_width="0"
          line_lenght="50"
+		
          circle_active_width="0"
          title="King Fahd University Hospital"
          text_background=""
@@ -807,6 +811,7 @@ visible="false"
          callout_border_color="0xa65c43"
 		 width="auto"
          rotate="-200"
+		 size="2"
          animation="keep_opened"
          line_width="0"
          line_lenght="0"
@@ -820,7 +825,7 @@ visible="false"
                   &lt;/div&gt;">
 			</hotspot>
 
-
+<!-- Dr. Sulaiman Al Habib Hospital is connected with hospital 4 -->
 			 <hotspot name="hs_M_hospitals_8"
          style="callout"
          shape="round"
@@ -834,6 +839,7 @@ visible="false"
          animation="keep_opened"
          line_width="0"
          line_lenght="10"
+		 size="2"
          circle_active_width="0"
          title="Dr. Sulaiman Al Habib Hospital"
          text_background=""
@@ -845,6 +851,7 @@ visible="false"
          style="callout"
          shape="round"
 		visible="false"
+		size="2"
        ath=" 0.0525911" atv="0.1450169"
          callout_bg_border="0,0,0,0"
          callout_bg_color="0xa65c43"
@@ -877,6 +884,7 @@ visible="false"
          animation="keep_opened"
          line_width="0"
          line_lenght="0"
+		 size="2"
          circle_active_width="0"
          title="Al Forsan Intranational School"
          text_background=""
@@ -895,6 +903,7 @@ visible="false"
          callout_border_color="0xa65c43"
 		 width="auto"
          rotate="0"
+		 size="2"
          animation="keep_opened"
          line_width="0"
          line_lenght="0"
@@ -920,6 +929,7 @@ visible="false"
          animation="keep_opened"
          line_width="0"
          line_lenght="50"
+size="2"
          circle_active_width="0"
          title="Rowad Al Khaleej International School"
          text_background=""
@@ -996,70 +1006,263 @@ visible="false"
 
 		</hotspot>
 
-
-	
 			<hotspot name="hs_Landmark_1" callout_bg_border="0,0,0,0"
-			width="auto" shape="round" ath="0.0716432" atv="0.119286" rotate="120"
-			line_lenght="70" line_width="1.5" animation="keep_opened" style="callout" 
-			title="Al Yamamah University"
-			 onclick="js(showRoadHotspot('Road_3','hs_Landmark_1'));"
-			content="06 mins - 8km" circle_active_width="8" text_x=""></hotspot>
-
-
-		<hotspot name="hs_Landmark_2" callout_bg_border="0,0,0,0"
 			width="auto" shape="round" ath="0.0910358" atv="0.0334141" rotate="45"
 			line_lenght="100" line_width="1.5" animation="keep_opened" style="callout" 
 			title="King Abdul Aziz Seaport"
-			 onclick="js(showRoadHotspot('Road_1' ,'hs_Landmark_2'));"
+			 onclick="js(showRoadHotspot('Road_1' ,'hs_Landmark_1', 'hs_PopUp_1'));"
 			content="10 mins" circle_active_width="8" text_x=""></hotspot>
 
-
-		<hotspot name="hs_Landmark_3" callout_bg_border="0,0,0,0"
-			width="auto" shape="round" ath="0.0612752" atv="0.1153677" 
-			rotate="-207" line_lenght="200" line_width="1.5"  animation="keep_opened" style="callout" 
-			title="Dharan Expo Exibition Center" content="5 mins - 8km"
-			onclick="js(showRoadHotspot('Road_4','hs_Landmark_3'));"
-
-			circle_active_width="8" text_x=""></hotspot>
-
-		<hotspot name="hs_Landmark_4" callout_bg_border="0,0,0,0" width="auto"
-			line_lenght="70" line_width="1.5" shape="round" ath="-0.2777324" atv="-0.2178239" rotate="70"
-			animation="keep_opened" style="callout" 
-			 onclick="js(showRoadHotspot('Road_8','hs_Landmark_4'));"
-			title="King Fahd International Airport"
-			content="35 mins - 50km"
-			circle_active_width="8" text_x=""></hotspot>
-
-
-		<hotspot name="hs_Landmark_5" callout_bg_border="0,0,0,0" width="auto" line_lenght="90" line_width="1.5"
-			shape="round" ath="0.0957102" atv="0.1463097" rotate="138" animation="keep_opened"
-			style="callout"  title="Seven Site" 
-			onclick="js(showRoadHotspot('Road_6','hs_Landmark_5'));" content="12 mins - 11km" circle_active_width="8"
-			text_x=""></hotspot>
-
-
-		<hotspot name="hs_Landmark_6" callout_bg_border="0,0,0,0" width="auto" line_lenght="70" line_width="1.5"
-			shape="round"
-			ath="0.0309812" atv="0.1152315" rotate="-90" animation="keep_opened" style="callout" 
-			title="Aramco Stadium" content="10 mins - 10km"
-			 onclick="js(showRoadHotspot('Road_5', 'hs_Landmark_6'));"
-			circle_active_width="8" text_x=""></hotspot>
-
-		<hotspot name="hs_Landmark_7" callout_bg_border="0,0,0,0" width="auto" line_lenght="120" line_width="1.5"
+			<hotspot name="hs_Landmark_2" callout_bg_border="0,0,0,0" width="auto" line_lenght="120" line_width="1.5"
 			shape="round" style="callout" 
 			ath="0.0701512" atv="0.0892284" rotate="102" animation="keep_opened"  
-			onclick="js(showRoadHotspot('Road_2', 'hs_Landmark_7'));"
+			onclick="js(showRoadHotspot('Road_2', 'hs_Landmark_2', 'hs_PopUp_2'));"
 			title="Imam Abdulrahman Bin Faisal University&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" content="05 mins - 5km"
 			circle_active_width="8" text_x=""></hotspot>
 
 
 
-		<hotspot name="hs_Landmark_8" callout_bg_border="0,0,0,0" width="auto"
+	
+			<hotspot name="hs_Landmark_3" callout_bg_border="0,0,0,0"
+			width="auto" shape="round" ath="0.0716432" atv="0.119286" rotate="120"
+			line_lenght="70" line_width="1.5" animation="keep_opened" style="callout" 
+			title="Al Yamamah University"
+			 onclick="js(showRoadHotspot('Road_3','hs_Landmark_3', 'hs_PopUp_3'));"
+			content="06 mins - 8km" circle_active_width="8" text_x=""></hotspot>
+
+
+	
+
+
+	
+
+			<hotspot name="hs_Landmark_4" callout_bg_border="0,0,0,0" width="auto" line_lenght="90" line_width="1.5" 
+			shape="round" ath="0.0957102" atv="0.1463097" rotate="138" animation="keep_opened"
+			style="callout"  title="Seven Site" 
+			onclick="js(showRoadHotspot('Road_6','hs_Landmark_4', 'hs_PopUp_4'));" content="12 mins - 11km" circle_active_width="0.1"
+			text_x=""></hotspot>
+
+		<hotspot name="hs_Landmark_5" callout_bg_border="0,0,0,0"
+			width="auto" shape="round" ath="0.0612752" atv="0.1153677" 
+			rotate="-207" line_lenght="200" line_width="1.5"  animation="keep_opened" style="callout" 
+			title="Dharan Expo Exibition Center" content="5 mins - 8km"
+			onclick="js(showRoadHotspot('Road_4','hs_Landmark_5' , 'hs_PopUp_5'));"
+
+			circle_active_width="8" text_x=""></hotspot>
+
+<hotspot name="hs_Landmark_6" callout_bg_border="0,0,0,0" width="auto" line_lenght="70" line_width="1.5"
+			shape="round"
+			ath="0.0309812" atv="0.1152315" rotate="-90" animation="keep_opened" style="callout" 
+			title="Aramco Stadium" content="10 mins - 10km"
+			 onclick="js(showRoadHotspot('Road_5', 'hs_Landmark_6' ,  'hs_PopUp_6'));"
+			circle_active_width="8" text_x=""></hotspot>
+
+
+			
+		<hotspot name="hs_Landmark_7" callout_bg_border="0,0,0,0" width="auto"
 			line_lenght="70" line_width="1.5" shape="round" ath="-0.0558943" atv="0.1511067"
 			rotate="-130" animation="keep_opened" style="callout"  title="King Fahd University "
 			content="15 mins - 18km" circle_active_width="8" 
-			 onclick="js(showRoadHotspot('Road_7','hs_Landmark_8'));"
+			 onclick="js(showRoadHotspot('Road_7','hs_Landmark_7',  'hs_PopUp_7'));"
 			text_x=""></hotspot>
+			
+
+		<hotspot name="hs_Landmark_8" callout_bg_border="0,0,0,0" width="auto"
+			line_lenght="70" line_width="1.5" shape="round" ath="-0.2777324" atv="-0.2178239" rotate="70"
+			animation="keep_opened" style="callout" 
+			 onclick="js(showRoadHotspot('Road_8','hs_Landmark_8',  'hs_PopUp_8'));"
+			title="King Fahd International Airport"
+			content="35 mins - 50km"
+			circle_active_width="8" text_x=""></hotspot>
+
+
+		
+
+		
+
+		
+
+
+
+			<!-- Pop up for seaport -->
+<hotspot name="hs_PopUp_1"
+visible="false"
+			callout_bg_border="0,0,0,0"
+			callout_bg_color="0xa65c43"
+			callout_border_color="0xa65c43"
+			width="auto"
+			shape="circle"
+			ath="0.1020959" atv="0.0269206"
+			rotate="25"
+			animation="keep_opened"
+			line_width="0"
+			line_lenght="200"
+			style="callout"
+			title=""
+			text_background=""
+			content="&lt;img src=&quot;skin/icons/MapPopUps/DT_KingAbdulAzizSeaport.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+			url="skin/icons/MapPopUps/DT_ImamAbdRahmanUni.png" circle_active_width="0.1"
+			text_x="">
+
+		</hotspot>
+
+				<!-- Pop up for  imam uni -->
+
+<hotspot name="hs_PopUp_2"
+visible="false"
+			callout_bg_border="0,0,0,0"
+			callout_bg_color="0xa65c43"
+			callout_border_color="0xa65c43"
+			width="auto"
+			shape="circle"
+			ath="0.12230959" atv="0.0269206"
+			rotate="35"
+			animation="keep_opened"
+			line_width="0"
+			line_lenght="200"
+			style="callout"
+			title=""
+			text_background=""
+			content="&lt;img src=&quot;skin/icons/MapPopUps/DT_ImamAbdRahmanUni.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+			url="skin/icons/MapPopUps/DT_ImamAbdRahmanUni.png" circle_active_width="0.1"
+			text_x="">
+
+		</hotspot>
+
+			<!-- Pop up for  yamamah -->
+<hotspot name="hs_PopUp_3"
+visible="false"
+			callout_bg_border="0,0,0,0"
+			callout_bg_color="0xa65c43"
+			callout_border_color="0xa65c43"
+			width="auto"
+			shape="circle"
+			ath="0.1440959" atv="0.0269206"
+			rotate="35"
+			animation="keep_opened"
+			line_width="0"
+			line_lenght="200"
+			style="callout"
+			title=""
+			text_background=""
+			content="&lt;img src=&quot;skin/icons/MapPopUps/DT_AlYamamah.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+			url="skin/icons/MapPopUps/DT_AlYamamah.png" circle_active_width="0.1"
+			text_x="">
+
+		</hotspot>
+
+			<!-- Pop up for  seven site -->
+<hotspot name="hs_PopUp_4"
+visible="false"
+			callout_bg_border="0,0,0,0"
+			callout_bg_color="0xa65c43"
+			callout_border_color="0xa65c43"
+			width="auto"
+			shape="circle"
+			ath="0.177959" atv="0.0269206"
+			rotate="35"
+			animation="keep_opened"
+			line_width="0"
+			line_lenght="200"
+			style="callout"
+			title=""
+			text_background=""
+			content="&lt;img src=&quot;skin/icons/MapPopUps/DT_SevenSite.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+			url="skin/icons/MapPopUps/DT_SevenSite.png" circle_active_width="0.1"
+			text_x="">
+
+		</hotspot>
+			<!-- Pop up for  expo center -->
+<hotspot name="hs_PopUp_5"
+visible="false"
+			callout_bg_border="0,0,0,0"
+			callout_bg_color="0xa65c43"
+			callout_border_color="0xa65c43"
+			width="auto"
+			shape="circle"
+			ath="0.1666959" atv="0.0269206"
+			rotate="35"
+			animation="keep_opened"
+			line_width="0"
+			line_lenght="200"
+			style="callout"
+			title=""
+			text_background=""
+			content="&lt;img src=&quot;skin/icons/MapPopUps/DT_DharanExpo.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+			url="skin/icons/MapPopUps/DT_DharanExpo.png" circle_active_width="0.1"
+			text_x="">
+
+		</hotspot>
+			<!-- Pop up for  Aramco Stadium -->
+<hotspot name="hs_PopUp_6"
+visible="false"
+			callout_bg_border="0,0,0,0"
+			callout_bg_color="0xa65c43"
+			callout_border_color="0xa65c43"
+			width="auto"
+			shape="circle"
+			ath="0.1777959" atv="0.0269206"
+			rotate="35"
+			animation="keep_opened"
+			line_width="0"
+			line_lenght="200"
+			style="callout"
+			title=""
+			text_background=""
+			content="&lt;img src=&quot;skin/icons/MapPopUps/DT_AramcoStadium.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+			url="skin/icons/MapPopUps/DT_AramcoStadium.png" circle_active_width="0.1"
+			text_x="">
+
+		</hotspot>
+			<!-- Pop up for  King Fahd Uni -->
+<hotspot name="hs_PopUp_7"
+visible="false"
+			callout_bg_border="0,0,0,0"
+			callout_bg_color="0xa65c43"
+			callout_border_color="0xa65c43"
+			width="auto"
+			shape="circle"
+			ath="0.188959" atv="0.0269206"
+			rotate="35"
+			animation="keep_opened"
+			line_width="0"
+			line_lenght="200"
+			style="callout"
+			title=""
+			text_background=""
+			content="&lt;img src=&quot;skin/icons/MapPopUps/DT_KingFahdUniversity.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+			url="skin/icons/MapPopUps/DT_KingFahdUniversity.png" circle_active_width="0.1"
+			text_x="">
+
+		</hotspot>
+			<!-- Pop up for  Airport -->
+<hotspot name="hs_PopUp_8"
+			callout_bg_border="0,0,0,0"
+			visible="false"
+			callout_bg_color="0xa65c43"
+			callout_border_color="0xa65c43"
+			width="auto"
+			shape="circle"
+			ath="0.19990959" atv="0.0269206"
+			rotate="35"
+			animation="keep_opened"
+			line_width="0"
+			line_lenght="200"
+			style="callout"
+			title=""
+			text_background=""
+			content="&lt;img src=&quot;skin/icons/MapPopUps/DT_KingFahdIntAirport.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+			url="skin/icons/MapPopUps/DT_KingFahdIntAirport.png" circle_active_width="0.1"
+			text_x="">
+
+		</hotspot>
+
+
+ 
+
+
+
+
 
 	
 <!-- Higlight Roads -->

@@ -680,7 +680,7 @@ function showRelatedHotspot(targetHotspotName) {
           // Handle Roads (scene-based logic)
           if (filterName === "Roads") {
             if (isActive) {
-              // krpano.call("loadscene(scene_AlMarina_Roads, null, MERGE, BLEND(1));");
+               krpano.call("loadscene(scene_AlMarina_Roads, null, MERGE, BLEND(1));");
               // Roads logic placeholder
             } else {
               // Possibly hide overlays or unload roads
@@ -3465,35 +3465,91 @@ function showRelatedHotspot(targetHotspotName) {
         let currentVisibleRoad = null;
         let currentHotspot = null;
 
-        const showRoadHotspot = (roadName, hotspotName) => {
-          const krpano = globalKrpano();
-          if (!krpano) return;
+        // const showRoadHotspot = (roadName, hotspotName, popUpHotspot) => {
+        //   const krpano = globalKrpano();
+        //   if (!krpano) return;
 
-          // If the same road is clicked again, hide it
-          if (currentVisibleRoad === roadName) {
-            krpano.call(`tween(hotspot[${roadName}].borderalpha, 0.0, 1.0);`);
-            krpano.set(`hotspot[${roadName}].visible`, false);
+        //   // If the same road is clicked again, hide it
+        //   if (currentVisibleRoad === roadName) {
+        //     krpano.call(`tween(hotspot[${roadName}].borderalpha, 0.0, 1.0);`);
+        //     krpano.set(`hotspot[${roadName}].visible`, false);
 
-            currentVisibleRoad = null;
-            return;
-          }
+        //     currentVisibleRoad = null;
+        //     return;
+        //   }
 
-          // Hide previous road (if any)
-          if (currentVisibleRoad) {
-            krpano.call(
-              `tween(hotspot[${currentVisibleRoad}].borderalpha, 0.0, 1.0);`
-            );
-            krpano.set(`hotspot[${currentVisibleRoad}].visible`, false);
-          }
+        //   // Hide previous road (if any)
+        //   if (currentVisibleRoad) {
+        //     krpano.call(
+        //       `tween(hotspot[${currentVisibleRoad}].borderalpha, 0.0, 1.0);`
+        //     );
+        //     krpano.set(`hotspot[${currentVisibleRoad}].visible`, false);
+        //   }
+        //   console.log("popUpHotspot", popUpHotspot)
 
-          // Show new road
-          krpano.set(`hotspot[${roadName}].visible`, true);
-          krpano.set(`hotspot[${roadName}].borderalpha`, 0.0);
-          krpano.call(`tween(hotspot[${roadName}].borderalpha, 1.0, 1.0);`);
+        //   // Show new road
+        //   krpano.set(`hotspot[${roadName}].visible`, true);
+        //   krpano.set(`hotspot[${roadName}].borderalpha`, 0.0);
+        //   krpano.call(`tween(hotspot[${roadName}].borderalpha, 1.0, 1.0);`);
 
-          currentVisibleRoad = roadName;
-          getSpecificHotspot(hotspotName);
-        };
+        //   currentVisibleRoad = roadName;
+        // //  getSpecificHotspot(hotspotName);
+
+        // showPopUp(popUpHotspot)
+        // };
+
+ let currentPopupHotspot = null;
+        const showRoadHotspot = (roadName, hotspotName, popUpHotspot) => {
+  const krpano = globalKrpano();
+  if (!krpano) return;
+
+  const isSameRoad = currentVisibleRoad === roadName;
+  const popup = krpano.get(`hotspot[${popUpHotspot}]`);
+
+  // Hide current road and popup if same road is clicked again
+  if (isSameRoad) {
+    krpano.call(`tween(hotspot[${roadName}].borderalpha, 0.0, 1.0);`);
+    krpano.set(`hotspot[${roadName}].visible`, false);
+
+    if (popup) popup.visible = false;
+    currentVisibleRoad = null;
+    currentPopupHotspot = null;
+    return;
+  }
+
+  // Hide previous road
+  if (currentVisibleRoad) {
+    krpano.call(`tween(hotspot[${currentVisibleRoad}].borderalpha, 0.0, 1.0);`);
+    krpano.set(`hotspot[${currentVisibleRoad}].visible`, false);
+  }
+
+  // Hide previously opened popup
+  if (currentPopupHotspot && currentPopupHotspot !== popUpHotspot) {
+    const prev = krpano.get(`hotspot[${currentPopupHotspot}]`);
+    if (prev) prev.visible = false;
+  }
+
+  // Show the new road
+  krpano.set(`hotspot[${roadName}].visible`, true);
+  krpano.set(`hotspot[${roadName}].borderalpha`, 0.0);
+  krpano.call(`tween(hotspot[${roadName}].borderalpha, 1.0, 1.0);`);
+  currentVisibleRoad = roadName;
+
+  // Show the associated popup
+  if (popup) {
+    popup.visible = true;
+    currentPopupHotspot = popUpHotspot;
+  }
+};
+
+
+       
+
+
+
+
+
+
 
         const getSpecificHotspot = (hotspotName) => {
           const krpano = globalKrpano();
@@ -3516,16 +3572,16 @@ function showRelatedHotspot(targetHotspotName) {
           const x = point.x;
           const y = point.y;
 
-          showInfoBox(
-            {
-              title: hotspot.title,
-              sub: "Al Marina",
-              duration: hotspot.content,
-              footer: hotspot.title,
-            },
-            x,
-            y
-          );
+          // showInfoBox(
+          //   {
+          //     title: hotspot.title,
+          //     sub: "Al Marina",
+          //     duration: hotspot.content,
+          //     footer: hotspot.title,
+          //   },
+          //   x,
+          //   y
+          // );
         };
 
         // document.addEventListener("click", function (event) {
