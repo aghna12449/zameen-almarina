@@ -752,13 +752,19 @@ bordercolor="0xffffff"   borderwidth="4"
 		</hotspot>
 
 
-		<hotspot name="hs_Al_Yamamah_University " callout_bg_border="0,0,0,0"
-	
-			width="auto" shape="round" ath="0.0693012" atv="0.1183332"
+		<!-- <hotspot name="hs_Al_Yamamah_University " callout_bg_border="0,0,0,0"
+			visible="true"
+			width="auto" shape="round" ath="0.0716432" atv="0.119286"
 			line_lenght="70" line_width="1.5" rotate="120"  animation="keep_opened" style="callout" 
 			title="Al Yamamah University " content="06 mins - 8km"
 			onclick="js(showRoadHotspot('Road_3','hs_Al_Yamamah_University'));"
-			circle_active_width="5" text_x=""></hotspot>
+			circle_active_width="5" text_x=""></hotspot> -->
+			<hotspot name="hs_Al_Yamamah_University" callout_bg_border="0,0,0,0"
+			width="auto" shape="round" ath="0.0716432" atv="0.119286" rotate="120"
+			line_lenght="70" line_width="1.5" animation="keep_opened" style="callout" 
+			title="Al Yamamah University"
+			 onclick="js(showRoadHotspot('Road_3','hs_Al_Yamamah_University'));"
+			content="06 mins - 8km" circle_active_width="8" text_x=""></hotspot>
 
 
 		<hotspot name="hs_King_Abdul_Aziz_Seaport" callout_bg_border="0,0,0,0"
