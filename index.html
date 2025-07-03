@@ -500,7 +500,7 @@
             <span class="dot"></span>
             <span class="dot"></span>
             <span class="dot"></span>
-                   <span class="dot"></span>
+            <span class="dot"></span>
           </div>
           <div class="info-text">
             <div class="info-sub" id="infoSub"></div>
@@ -548,84 +548,49 @@
           }
           return krpano;
         };
+
         const parksCount = 3;
         const hospitalsCount = 2;
         const educationalCount = 2;
         const landmarkCount = 8;
+        const totalRoads = 8;
 
         const toggleFilterTheme = () => {
-          // Get the krpano viewer instance
           const krpano = globalKrpano();
           const container = document.getElementById("showAllContainer");
-
           const toggle = document.getElementById("mapToggle");
           const filterButtons = document.querySelectorAll(".filter-button");
 
           toggle.classList.toggle("active");
           container.classList.toggle("all-active");
 
-          // filterButtons.forEach((btn) => {
-          //   if (toggle.classList.contains("active")) {
-          //     btn.classList.add("brown-theme");
-          //   } else {
-          //     btn.classList.remove("brown-theme");
-          //   }
-          // });
+          const isActive = toggle.classList.contains("active");
 
           filterButtons.forEach((btn) => {
-            if (toggle.classList.contains("active")) {
-              btn.classList.add("brown-theme");
+            btn.classList.toggle("brown-theme", isActive);
+            if (!isActive) btn.classList.remove("active");
+          });
 
-              // keep active states as is
-            } else {
-              container.classList.remove("toggle-on");
-              btn.classList.remove("brown-theme");
-              btn.classList.remove("active"); // 👈 removes active class when toggle is OFF
+          if (!krpano) return;
+
+          const currentScene = krpano.get("scene[get(xml.scene)].name");
+          if (currentScene !== "scene_a-initial") return;
+
+          // Define all categories and their counts
+          const hotspotCategories = [
+            { prefix: "Road_", count: totalRoads },
+            { prefix: "hs_M_hospitals_", count: hospitalsCount },
+            { prefix: "hs_M_parks_", count: parksCount },
+            { prefix: "hs_M_education_", count: educationalCount },
+            { prefix: "hs_Landmark_", count: landmarkCount },
+          ];
+
+          // Toggle visibility based on state
+          hotspotCategories.forEach(({ prefix, count }) => {
+            for (let i = 1; i <= count; i++) {
+              krpano.set(`hotspot[${prefix}${i}].visible`, isActive);
             }
           });
-          if (krpano) {
-            const currentScene = krpano.get("scene[get(xml.scene)].name");
-            const totalRoads = 8;
-
-            // Check if the current scene is the initial scene
-            if (currentScene === "scene_a-initial") {
-              // Toggle OFF = remove hotspots
-              if (!toggle.classList.contains("active")) {
-                for (let i = 1; i <= totalRoads; i++) {
-                  krpano.set(`hotspot[Road_${i}].visible`, false);
-                }
-                for (let i = 1; i <= hospitalsCount; i++) {
-                  krpano.set(`hotspot[hs_M_hospitals_${i}].visible`, false);
-                }
-                for (let i = 1; i <= parksCount; i++) {
-                  krpano.set(`hotspot[hs_M_parks_${i}].visible`, false);
-                }
-                for (let i = 1; i <= educationalCount; i++) {
-                  krpano.set(`hotspot[hs_M_education_${i}].visible`, false);
-                }
-                for (let i = 1; i <= landmarkCount; i++) {
-                  krpano.set(`hotspot[hs_Landmark_${i}].visible`, false);
-                }
-                // Toggle ON = show hotspots
-              } else {
-                for (let i = 1; i <= totalRoads; i++) {
-                  krpano.set(`hotspot[Road_${i}].visible`, true);
-                }
-                for (let i = 1; i <= hospitalsCount; i++) {
-                  krpano.set(`hotspot[hs_M_hospitals_${i}].visible`, true);
-                }
-                for (let i = 1; i <= parksCount; i++) {
-                  krpano.set(`hotspot[hs_M_parks_${i}].visible`, true);
-                }
-                for (let i = 1; i <= educationalCount; i++) {
-                  krpano.set(`hotspot[hs_M_education_${i}].visible`, true);
-                }
-                for (let i = 1; i <=landmarkCount; i++) {
-                  krpano.set(`hotspot[hs_landmark_${i}].visible`, true);
-                }
-              }
-            }
-          }
         };
 
         const toggleShowAll = () => {
@@ -681,101 +646,44 @@
           });
         });
 
-        // Function to toggle visibility of hotspot category
-        function toggleHotspotCategory(filterName, isActive) {
+        const toggleHotspotCategory = (filterName, isActive) => {
           console.log("Toggling category:", filterName, "Active:", isActive);
           const krpano = globalKrpano();
           if (!krpano) return;
 
-          if (krpano) {
-            const currentScene = krpano.get("scene[get(xml.scene)].name");
+          const currentScene = krpano.get("scene[get(xml.scene)].name");
 
-            if (filterName === "Roads") {
-                if (isActive) {
-
-                  
-          // if (krpano) {
-          //   krpano.call(
-          //     "loadscene(scene_AlMarina_Roads, null, MERGE, BLEND(1));"
-          //   );
-          // }
-                 
-                } else {
-               
-                }
-              } 
-
-            // Check if the current scene is the initial scene
-            if (currentScene === "scene_a-initial") {
-                if (filterName === "Landmarks") {
- // Toggle ON = show hotspots
-                if (isActive) {
-                  for (let i = 1; i <= landmarkCount; i++) {
-                    krpano.set(`hotspot[hs_Landmark_${i}].visible`, true);
-                  }
-                
-                } else {
-                  for (let i = 1; i <= landmarkCount; i++) {
-                    krpano.set(`hotspot[hs_Landmark_${i}].visible`, false);
-                  }
-                }
-              }
-             else if (filterName === "Parks") {
-                if (isActive) {
-                  for (let i = 1; i <= parksCount; i++) {
-                    krpano.set(`hotspot[hs_M_parks_${i}].visible`, true);
-                  }
-                 
-                } else {
-                  for (let i = 1; i <= parksCount; i++) {
-                    krpano.set(`hotspot[hs_M_parks_${i}].visible`, false);
-                  }
-                }
-              } else if (filterName === "Education") {
-                if (isActive) {
-                  for (let i = 1; i <= educationalCount; i++) {
-                    krpano.set(`hotspot[hs_M_education_${i}].visible`, true);
-                  }
-              
-                } else {
-                  for (let i = 1; i <= educationalCount; i++) {
-                    krpano.set(`hotspot[hs_M_education_${i}].visible`, false);
-                  }
-                }
-              } else if (filterName === "Health") {
-                if (isActive) {
-                  for (let i = 1; i <= hospitalsCount; i++) {
-                    krpano.set(`hotspot[hs_M_hospitals_${i}].visible`, true);
-                  }
-             
-                } else {
-                  for (let i = 1; i <= hospitalsCount; i++) {
-                    krpano.set(`hotspot[hs_M_hospitals_${i}].visible`, false);
-                  }
-                }
-              }
-
-              // Toggle OFF = remove hotspots
+          // Handle Roads (scene-based logic)
+          if (filterName === "Roads") {
+            if (isActive) {
+              // krpano.call("loadscene(scene_AlMarina_Roads, null, MERGE, BLEND(1));");
+              // Roads logic placeholder
+            } else {
+              // Possibly hide overlays or unload roads
             }
+            return;
           }
 
-          const hotspotCount = krpano.get("hotspot.count");
-          for (let i = 0; i < hotspotCount; i++) {
-            const name = krpano.get(`hotspot[${i}].name`);
-            if (name && name.startsWith(filterName + "_")) {
-              //krpano.set(`hotspot[${name}].visible`, isActive);
-            }
+          // Hotspot visibility toggle (scene_a-initial only)
+          if (currentScene !== "scene_a-initial") return;
+
+          const categoryMap = {
+            Landmarks: { prefix: "hs_Landmark_", count: landmarkCount },
+            Parks: { prefix: "hs_M_parks_", count: parksCount },
+            Education: { prefix: "hs_M_education_", count: educationalCount },
+            Health: { prefix: "hs_M_hospitals_", count: hospitalsCount },
+          };
+
+          const category = categoryMap[filterName];
+          if (!category) return;
+
+          for (let i = 1; i <= category.count; i++) {
+            krpano.set(
+              `${"hotspot[" + category.prefix + i + "]"}.visible`,
+              isActive
+            );
           }
-        }
-
-        //         // Wait for DOM to load
-        // document.addEventListener('DOMContentLoaded', function() {
-        //  getSpecificHotspot();
-        // });
-
-        // window.onload = function () {
-        //     getSpecificHotspot();
-        // }
+        };
 
         const flyToInitialAlMarinaScene = () => {
           const krpano = document.getElementById("krpanoSWFObject");
