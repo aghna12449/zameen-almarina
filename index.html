@@ -550,7 +550,7 @@
         };
 
         const parksCount = 3;
-        const hospitalsCount = 2;
+        const hospitalsCount = 4;
         const educationalCount = 2;
         const landmarkCount = 8;
         const totalRoads = 8;
@@ -579,9 +579,9 @@
           // Define all categories and their counts
           const hotspotCategories = [
             { prefix: "Road_", count: totalRoads },
-            { prefix: "hs_M_hospitals_", count: hospitalsCount },
-            { prefix: "hs_M_parks_", count: parksCount },
-            { prefix: "hs_M_education_", count: educationalCount },
+            { prefix: "hs_M_hospitals_", count: hospitalsCount + 4 },
+            { prefix: "hs_M_parks_", count: parksCount + 3 },
+            { prefix: "hs_M_education_", count: educationalCount + 2 },
             { prefix: "hs_Landmark_", count: landmarkCount },
           ];
 
@@ -592,6 +592,30 @@
             }
           });
         };
+
+
+      
+
+function showRelatedHotspot(targetHotspotName) {
+  console.log("showRelatedHotspot called with:", targetHotspotName);
+  const krpano = globalKrpano();
+  if (!krpano || !targetHotspotName) return;
+
+  const hotspot = krpano.get(`hotspot[${targetHotspotName}]`);
+  if (!hotspot) {
+    console.warn(`Hotspot '${targetHotspotName}' not found.`);
+    return;
+  }
+
+  // Toggle visibility
+  const currentlyVisible = hotspot.visible === true || hotspot.visible === "true";
+  hotspot.visible = !currentlyVisible;
+
+  
+}
+
+
+
 
         const toggleShowAll = () => {
           const container = document.getElementById("showAllContainer");
