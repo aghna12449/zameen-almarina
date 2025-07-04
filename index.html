@@ -685,6 +685,7 @@ function showRelatedHotspot(targetHotspotName) {
           if (currentScene !== "scene_a-initial") return;
 
           const categoryMap = {
+            Lines: { prefix: "Road_", count: totalRoads },
             Landmarks: { prefix: "hs_Landmark_", count: landmarkCount },
             Parks: { prefix: "hs_M_parks_", count: parksCount },
             Education: { prefix: "hs_M_education_", count: educationalCount },
@@ -702,6 +703,18 @@ function showRelatedHotspot(targetHotspotName) {
               isActive
             );
           }
+          // Also toggle Lines when Roads are toggled
+  if (filterName === "Roads") {
+    const linesCategory = categoryMap["Lines"];
+    if (linesCategory) {
+      for (let i = 1; i <= linesCategory.count; i++) {
+        krpano.set(
+          `${"hotspot[" + linesCategory.prefix + i + "]"}.visible`,
+          isActive
+        );
+      }
+    }
+  }
         };
 
         const flyToInitialAlMarinaScene = () => {
