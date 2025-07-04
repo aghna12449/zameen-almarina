@@ -392,7 +392,7 @@
             ></div>
           </div>
           <div class="filter-buttons">
-            <div class="filter-button" data-filter="Landmarks">
+            <div class="filter-button active" data-filter="Landmarks">
               <img
                 src="./skin/icons/MapFilters/Landmarks.png"
                 alt="icon"
@@ -549,12 +549,12 @@
           return krpano;
         };
 
-        const parksCount = 3;
-        const hospitalsCount = 4;
-        const educationalCount = 2;
+        const parksCount = 6;
+        const hospitalsCount = 8;
+        const educationalCount = 4;
         const landmarkCount = 8;
-        const totalRoads = 8;
-        const  famousRoadsCount = 9;
+        const totalRoads = 12;
+        const famousRoadsCount = 9;
 
         const toggleFilterTheme = () => {
           const krpano = globalKrpano();
@@ -587,6 +587,7 @@
             { prefix: "hs_famousRoad_", count: famousRoadsCount },
           ];
 
+          console.log("Toggling famousRoadsCount", famousRoadsCount);
           // Toggle visibility based on state
           hotspotCategories.forEach(({ prefix, count }) => {
             for (let i = 1; i <= count; i++) {

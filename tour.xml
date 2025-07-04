@@ -17,8 +17,8 @@
 	<!-- <include url="vtour_DRONE/drone.xml"/>
   	<include url="vtour_FUTURE/future.xml"/>  -->
 
-	<!-- <include url="vtour-drone/drone.xml" />
-	<include url="vtour-future/future.xml" /> -->
+	<include url="vtour-drone/drone.xml" />
+	<include url="vtour-future/future.xml" />
 
 	
 	<control
@@ -270,17 +270,18 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 
 		</hotspot> -->
 
-		<hotspot 
+		
+<hotspot 
   name="hs_famousRoad_1"
 
   type="text"
   visible="false"
-  ath="-0.032861" atv="0.1564466"
-  rotate="-270"
+  ath="-0.0399378" atv=" 0.1246637"
+  rotate="70"
   html="[b] Al Haramin Rd[/b]"
   rawhtml="true"
   renderer="css3d"
-  css="font-family:Arial; font-size:16px; color:#000000; background:#BCD8EC; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+  css="font-family:Arial; font-size:16px; color:#000000; background:#D6E5BD; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
 />
 	
 
@@ -294,7 +295,7 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
         size="1.0"
 	    renderer="css3d"
        
- css="font-family:Arial; font-size:16px; color:#000000; background:#BCD8EC; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+ css="font-family:Arial; font-size:16px; color:#000000; background:#FFCBE1; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
        
          html=" [b]King Fahd Rd[/b] "
 
@@ -305,12 +306,12 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 		  visible="false"
         	 type="text"
           			ath="0.0177446" atv="0.0435862"
-			rotate="60"
+			rotate="75"
 				 edge="center"
         	size="1.0"
 	       renderer="css3d"
 		   
-         css="font-family:Arial; font-size:16px; color:#000000; background:#BCD8EC; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+         css="font-family:Arial; font-size:16px; color:#000000; background:#FFCBE1; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
        
          html=" [b]King Fahd Rd[/b] "
 
@@ -345,7 +346,7 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
         	type="text"
 			 visible="false"
 			
-          	ath="-0.2274617" atv="0.1265819"
+          	ath="-0.3019621" atv="0.1940775"
 			rotate="0"
 			edge="center"
         	size="1.0"
@@ -380,8 +381,8 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
         	size="1.0"
 			 renderer="css3d"
 	   
-      css="font-family:Arial; font-size:16px; color:#000000; background:#BCD8EC; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
-         html=" [b]Mohammed ibn Fahd[/b] "
+      css="font-family:Arial; font-size:16px; color:#000000; background:#DCCCEC; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+         html=" [b]Mohammed ibn Fahd Rd[/b] "
          />
 
 
@@ -391,12 +392,12 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
           	ath=" 0.0568879" atv="0.1002357" edge="center"
         	size="1.0"
 	       renderer="css3d"
-		   rotate="-270"
+		   rotate="90"
 
 		   
-	    css="font-family:Arial; font-size:16px; color:#000000; background:#BCD8EC; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+	    css="font-family:Arial; font-size:16px; color:#000000; background:#ffffff; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
        
-         html=" [b]King Faisal[/b] "
+         html=" [b]King Faisal Rd[/b] "
          />
 
 
@@ -406,11 +407,11 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
           	ath=" 0.0548794" atv="0.0457706" edge="center"
         	size="1.0"
 	       renderer="css3d"
-		   css="font-family:Arial; font-size:16px; color:#000000; background:#BCD8EC; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+		   css="font-family:Arial; font-size:16px; color:#000000; background:#ffffff; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
 		   
-		   rotate="-270"
+		   rotate="72"
        
-         html=" [b]King Faisal[/b] "
+         html=" [b]King Faisal Rd[/b] "
          />
 
 	
@@ -670,6 +671,137 @@ bordercolor="0xffffff"   borderwidth="4"
 
 </hotspot>
 
+
+<hotspot name="Road_9" polyline="true"
+
+visible="false"
+bordercolor="0xBCD8EC"   borderwidth="4" >
+
+
+
+<point ath="0.12333318831122142" atv="-0.0010194580143944956" /> 
+<point ath="0.0970066035669106" atv="0.011462985005999616" /> <point ath="0.09496402243564717" atv="0.012484276334547208" /> 
+<point ath="0.09405620861048192" atv="0.013051660393728062" /> <point ath="0.09258101099987925" atv="0.013845998138778494" /> 
+<point ath="0.0898575691543897" atv="0.015548150475039506" />
+ <point ath="0.08327591700680159" atv="0.020087223803222087" /> <point ath="0.07204171399126835" atv="0.02791712657394157" /> 
+ <point ath="0.06353095307605372" atv="0.03336401602649174" /> <point ath="0.061601845027610125" atv="0.03506617051243472" /> 
+ <point ath="0.05967273847926435" atv="0.036314415976727736" /> <point ath="0.058424493030315716" atv="0.0372222308345784" /> 
+ <point ath="0.056949293780860444" atv="0.03778961516048817" /> <point ath="0.05581452510210738" atv="0.03813004575815636" /> 
+ <point ath="0.054793233271709596" atv="0.0382435226464088" /> <point ath="0.0537719414361959" atv="0.038356999522771516" /> 
+ <point ath="0.05297760334309487" atv="0.03869743007639493" /> <point ath="0.05206978836986309" atv="0.03903786062369466" /> <point ath="0.05116197338736583" atv="0.039491768008059154" /> <point ath="0.03141699480272564" atv="0.052428125222243036" /> <point ath="0.029601364330801516" atv="0.05390332347207923" /> <point ath="0.028807025875096315" atv="0.054924614687149785" /> <point ath="0.027785733514235744" atv="0.056286334627560046" /> <point ath="0.02597010257807142" atv="0.05889630092472543" /> <point ath="0.02540271762302382" atv="0.06048497623092892" /> <point ath="0.022475794191961995" atv="0.06282379984496751" /> <point ath="0.016588357256068775" atv="0.06818558785340863" /> <point ath="0.012073834930561134" atv="0.0724483534967768" /> <point ath="0.006507817070769306" atv="0.08089336154087456" /> <point ath="0.0039167393005641316" atv="0.08540376335878797" /> <point ath="0.0002700342286061641" atv="0.08972223440856397" /> <point ath="-0.00280087744016555" atv="0.09173752217750339" /> <point ath="-0.0074072458926934814" atv="0.0947124705366872" /> <point ath="-0.009134634435270073" atv="0.0956721313983552" /> <point ath="-0.01114992121222258" atv="0.09682372429826773" /> <point ath="-0.013741004857649841" atv="0.09759145371409067" /> <point ath="-0.02304971446244508" atv="0.09970270964108091" /> <point ath="-0.027464154813742425" atv="0.10008657495823156" /> <point ath="-0.03658093434148668" atv="0.0985511209990061" /> <point ath="-0.041763103512153066" atv="0.09787935892813904" /> <point ath="-0.05155164546204105" atv="0.09922287927706046" /> <point ath="-0.05404676403986741" atv="0.09970270778902948" /> <point ath="-0.05711767909764376" atv="0.10008656979596002" /> <point ath="-0.060092627954077216" atv="0.10037446562570276" /> <point ath="-0.06402723722032988" atv="0.10018253068156906" /> <point ath="-0.0670981515355038" atv="0.09999059609132198" /> <point ath="-0.07122469165909706" atv="0.0989349667230904" /> <point ath="-0.07334201521462091" atv="0.09825529333404028" /> <point ath="-0.07492774832030591" atv="0.09809608934192304" /> <point ath="-0.07560734738746078" atv="0.09832263140341484" /> <point ath="-0.07753287899146244" atv="0.09877569953596516" /> <point ath="-0.08330947376111908" atv="0.10092776869560391" /> <point ath="-0.08455540593297428" atv="0.10160736877297999" /> <point ath="-0.08580133819435787" atv="0.10228696882254681" /> <point ath="-0.0967882004829903" atv="0.10625130438578878" /> <point ath="-0.12804980980422442" atv="0.11723815314997295" /> <point ath="-0.13235394668282652" atv="0.11961674735051625" /> <point ath="-0.15206237216608542" atv="0.13298217226261816" /> <point ath="-0.15376137487351116" atv="0.13411483435786536" /> <point ath="-0.17793020581666497" atv="0.15311402022167314" /> <point ath="-0.19276815697338634" atv="0.16478048799708164" /> <point ath="-0.20160297668837757" atv="0.17123667993957953" /> <point ath="-0.2042081169223593" atv="0.17327547800006504" /> <point ath="-0.20590711857130373" atv="0.1740683434718934" /> <point ath="-0.21089086705592308" atv="0.1748612099383781" /> <point ath="-0.2151950137496783" atv="0.17520100928410778" /> <point ath="-0.22210430221684874" atv="0.17610713886746884" /> <point ath="-0.225275779087724" atv="0.17667346934552358" /> <point ath="-0.2295799262489595" atv="0.17723979826575684" /> <point ath="-0.24494416134717767" atv="0.18252014808891115" /> <point ath="-0.26085286867777313" atv="0.18693178191403587" /> <point ath="-0.2738204732795566" atv="0.1894718023620285" /> <point ath="-0.3223487213485896" atv="0.19882967733466142" /> <point ath="-0.345743867271608" atv="0.2037759307133955" /> 
+<point ath="-0.3492197138895108" atv="0.20404328143613093" /> <point ath="-0.3591124969817656" atv="0.20324110525910266" />
+
+
+ <point ath="-0.35939558352049517" atv="0.20300220260403773" /> <point ath="-0.36415438723093985" atv="0.20287001325742418" /> <point ath="-0.37036726946041654" atv="0.20247344516091487" /> <point ath="-0.3767123397112755" atv="0.2016803101348515" /> <point ath="-0.3830574096709256" atv="0.2014159252140962" /> <point ath="-0.39138531196977056" atv="0.20062278137836959" /> <point ath="-0.39495441221720284" atv="0.20022620927792809" /> <point ath="-0.3981269477458227" atv="0.19969746515534015" /> <point ath="-0.40222479746279305" atv="0.1971858804276583" /> <point ath="-0.40486857172703594" atv="0.19599618014239517" /> <point ath="-0.40804110077067435" atv="0.19480647793760417" /> <point ath="-0.41398959271515423" atv="0.19322020194498157" /> <point ath="-0.4195415179163433" atv="0.1921626779473378" /> <point ath="-0.4233749892865717" atv="0.19150172324671602" /> <point ath="-0.42786940235367865" atv="0.19057638896651274" /> <point ath="-0.43342132291684266" atv="0.18951886103421767" /> <point ath="-0.4383122949882363" atv="0.1876682064188219" /> <point ath="-0.4393698016358485" atv="0.1871394493660838" /> 
+</hotspot>
+
+<hotspot name="Road_10" polyline="true"
+
+visible="false"
+bordercolor="0xFFCBE1"   borderwidth="4" >
+
+  <point ath="-0.1636088080792888" atv="-0.018399965014954032" />
+    <point ath="-0.15916809321288383" atv="-0.016785160294017148" />
+    <point ath="-0.15593848196544968" atv="-0.015977758048855758" />
+    <point ath="-0.1478644524178776" atv="-0.014766655077883809" />
+    <point ath="-0.14073239152935457" atv="-0.013420984179789855" />
+    <point ath="-0.1267374009961486" atv="-0.011806179021641954" />
+    <point ath="-0.12000903909125782" atv="-0.011402477753582559" />
+    <point ath="-0.11247327324520029" atv="-0.011267910819582741" />
+    <point ath="-0.10991649546940607" atv="-0.011267910880401539" />
+    <point ath="-0.10695601591021386" atv="-0.012344448908235267" />
+    <point ath="-0.09861284815963245" atv="-0.013286419527224659" />
+    <point ath="-0.022986106415032737" atv="-0.008845691464178613" />
+    <point ath="-0.0032047705273043903" atv="-0.008172851391557639" />
+    <point ath="-0.001825661200768991" atv="-0.0078083111275120305" />
+    <point ath="0.0001928473551515708" atv="-0.0067317732929528355" />
+    <point ath="0.002076788699298504" atv="-0.00552066819353962" />
+    <point ath="0.003018759378392133" atv="-0.004174995828530168" />
+    <point ath="0.005037268025944286" atv="-0.0000034113572246225704" />
+    <point ath="0.006786642248869157" atv="0.0034953370358038866" />
+    <point ath="0.007997747498052377" atv="0.005244711261482286" />
+    <point ath="0.00920885280231687" atv="0.00847432525946174" />
+    <point ath="0.009747121823011184" atv="0.00941629601253366" />
+    <point ath="0.017955726210857392" atv="0.04440377840720133" />
+    <point ath="0.03235446874521131" atv="0.1080577982555597" />
+    <point ath="0.03410385288538009" atv="0.1161318301007749" />
+    <point ath="0.03450755729039656" atv="0.11828490515135053" />
+    <point ath="0.03437299464604848" atv="0.12366759374269073" />
+    <point ath="0.025895313902253747" atv="0.19077367473485032" />
+    <point ath="0.025491613417557346" atv="0.1934650201335722" />
+    <point ath="0.0249533430898623" atv="0.19481069326273193" />
+    <point ath="0.0225311225204905" atv="0.1981748772974219" />
+    <point ath="-0.0016911367784473441" atv="0.22419349772526379" />
+    <point ath="-0.002094841772247946" atv="0.22459719929751246" />
+    <point ath="-0.002094842421968224" atv="0.22580831008313917" />
+    <point ath="-0.0023639799068178036" atv="0.22796138596146448" />
+    <point ath="-0.002767686159927507" atv="0.23092186521497118" />
+    <point ath="-0.003036824441267072" atv="0.23442061340900502" />
+    <point ath="-0.006401043192340694" atv="0.24855018147204144" />
+    <point ath="-0.007343024046974733" atv="0.25043412161590667" />
+
+	</hotspot>
+
+
+	<!-- Al haramin Road line Track -->
+<hotspot name="Road_11" polyline="true"
+
+visible="false"
+bordercolor="0xD6E5BD"   borderwidth="4" >
+	<point ath="-0.053854971538100926" atv="0.10054550635121262" />
+    <point ath="-0.051159830010647056" atv="0.10276503876038054" />
+    <point ath="-0.0503671424495451" atv="0.10403334199161585" />
+    <point ath="-0.049574455098820636" atv="0.10546018305328454" />
+    <point ath="-0.04830615620568324" atv="0.10831386493674044" />
+    <point ath="-0.04703785693516238" atv="0.11116754707872899" />
+    <point ath="-0.045293942293938017" atv="0.1137041544755538" />
+    <point ath="-0.04418417840946631" atv="0.11544807203035765" />
+    <point ath="-0.04307441404381507" atv="0.11703345182015477" />
+    <point ath="-0.04164757495146887" atv="0.11972859698073296" />
+    <point ath="-0.038952433566464606" atv="0.1249603496807356" />
+    <point ath="-0.03800120763719406" atv="0.12733841891144299" />
+    <point ath="-0.036098756426042655" atv="0.13304578497209785" />
+    <point ath="-0.03467191836796246" atv="0.1381189992998572" />
+    <point ath="-0.03372069253487098" atv="0.1414482963688989" />
+    <point ath="-0.03340361960931659" atv="0.14446051695347675" />
+    <point ath="-0.03340362344238201" atv="0.1474727372045589" />
+    <point ath="-0.03292801114201893" atv="0.14985080643383197" />
+    <point ath="-0.03308655197747612" atv="0.1517532611609006" />
+    <point ath="-0.03292802184711263" atv="0.15841185357919627" />
+    <point ath="-0.03276948629729759" atv="0.16078992240731602" />
+    <point ath="-0.03292802700138964" atv="0.1625338391681405" />
+    <point ath="-0.03324510708131356" atv="0.1649119072999171" />
+    <point ath="-0.034354885289587855" atv="0.17125342160756415" />
+    <point ath="-0.03483050701936463" atv="0.17569248171337076" />
+    <point ath="-0.03530612701285918" atv="0.18013153577000254" />
+    <point ath="-0.03467197521842991" atv="0.18250959499417246" />
+
+	</hotspot>
+
+	<!-- Al ibn fahd line Track -->
+<hotspot name="Road_12" polyline="true"
+
+visible="false"
+bordercolor="0xDCCCEC"   borderwidth="4" >
+	  <point ath="-0.023401400194700273" atv="0.10008346431522008" />
+    <point ath="-0.02091891607648222" atv="0.11401300385939758" />
+    <point ath="-0.020091421495578743" atv="0.11952965320124952" />
+    <point ath="-0.018988093837037923" atv="0.12546005132555219" />
+    <point ath="-0.018712262524218204" atv="0.12787358524765313" />
+    <point ath="-0.01864330649493695" atv="0.13097669998322398" />
+    <point ath="-0.019126016637585508" atv="0.1339418979393512" />
+    <point ath="-0.019794560294030816" atv="0.1369020124840784" />
+    <point ath="-0.0213868118649998" atv="0.13999804194854573" />
+    <point ath="-0.02262522949013146" atv="0.1418556591641234" />
+    <point ath="-0.02430593954318283" atv="0.14459785588234705" />
+    <point ath="-0.02828656614542524" atv="0.1481361714210639" />
+    <point ath="-0.029701900051406938" atv="0.14910920748579373" />
+    <point ath="-0.030940317100771608" atv="0.14981686967593014" />
+    <point ath="-0.03164798425029858" atv="0.15043607459813213" />
+    <point ath="-0.03200181830220572" atv="0.15114373803828945" />
+    <point ath="-0.03270948591728029" atv="0.1521167748746621" />
+
+	</hotspot>
 <!-- Highlighting Parks -->
 <!-- park 1 -->
  
@@ -1103,12 +1235,12 @@ size="2"
          >
 			</hotspot>
 	
-<!-- hotspot for highlighting Arial initial zone -->
+<!-- hotspot for highlighting Blinking Arial initial zone -->
 
 
 
 
-		  <!-- <hotspot name="hs_Marina_Arial" style="mypolygonalhotspotstylename" capture="false"  fillcolor="0xa65c43  " fillalpha="0" bordercolor="0xD4A76A"   borderwidth="2.5"
+		  <hotspot name="hs_Marina_Arial" style="mypolygonalhotspotstylename" capture="false"  fillcolor="0xa65c43  " fillalpha="0" bordercolor="0xD4A76A"   borderwidth="2.5"
 			myscale="0.1"
 			onclick="looktohotspot(hs_zone_1_360(1), 60, linear); tween(view.fov, 30, 1.5); loadscene(scene_b-AL_MARINA_aerial, null, MERGE, BLEND(1));" > 
 			<point ath="0.05910472016660151" atv="0.07262108649898723" /> <point ath="0.07505525721933282" atv="0.07327213290808565" /> 
@@ -1118,7 +1250,7 @@ size="2"
 			 <point ath="0.10689123658482913" atv="0.08596744027012773" /> <point ath="0.10689123658482913" atv="0.08596744027012773" />
 			  <point ath="0.10682613233944949" atv="0.08596744031591355" /> <point ath="0.10669592384840598" atv="0.08596744040715214" /> 
 			  <point ath="0.1065657153571351" atv="0.08596744049794677" /> <point ath="0.058583880423952905" atv="0.08316796382010798" />
-			 </hotspot>  -->
+			 </hotspot> 
 
 
 
