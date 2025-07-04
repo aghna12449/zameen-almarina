@@ -216,7 +216,7 @@ fovtype="MFOV" ensures it scales based on vertical and horizontal FOV.
 maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom in up to 2x the
 	native resolution. -->
 
-		<scene name="scene_AlMarina_Roads" title="AlMarina_Roads" onstart="" thumburl="panos/AlMarina_Roads.tiles/thumb.jpg" lat="" lng="" heading="">
+		<!-- <scene name="scene_AlMarina_Roads" title="AlMarina_Roads" onstart="" thumburl="panos/AlMarina_Roads.tiles/thumb.jpg" lat="" lng="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
@@ -228,7 +228,7 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 			<flat url="panos/AlMarina_Roads.tiles/l%l/%0v/l%l_%0v_%0h.jpg" multires="512,1024x576,2048x1152,3840x2160,7680x4320" />
 		</image>
 
-	</scene>
+	</scene> -->
 
 	<scene name="scene_a-initial" title="a-initial" thumburl="panos/a-initial.tiles/thumb.jpg"
 		lat="" lng="" heading="">
@@ -268,11 +268,13 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 
 		</hotspot> -->
 
-		 <hotspot name="hs_Rd_AlHaramin_1"
+		 <hotspot 
+		 name="hs_famousRoad_1"
         	 type="text"
+			 visible="false"
 			
           	ath=" -0.032861" atv="0.1564466"
-			rotate="270"
+			rotate="-270"
 			
 	   
 	   
@@ -280,17 +282,11 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 
 	 
 		 />
-		   <!-- edge="center"
-        	size="1.0"
-	   
-       
-         html=" [b] Al Haramin Rd[/b] "
-
-     
-         /> -->
+		  
 	
 
-		<hotspot name="hs_Rd_KingFahd_horizontal_2"
+		<hotspot name="hs_famousRoad_2"
+		 visible="false"
         	 type="text"
           	ath="-0.0771463" atv="-0.0135177" edge="center"
         	size="1.0"
@@ -301,7 +297,8 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
       
          />
 
-		 <hotspot name="hs_Rd_KingFahd_horizontal_3"
+		 <hotspot name="hs_famousRoad_3"
+		  visible="false"
         	 type="text"
           			ath="0.0177446" atv="0.0435862"
 			rotate="60"
@@ -319,8 +316,9 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 
 	
 
-		  <hotspot name="hs_Rd_KingAbdulAziz_horizontal_4"
+		  <hotspot name="hs_famousRoad_4"
         	 type="text"
+			  visible="false"
           	ath=" 0.1054847" atv="0.0075436"
 			rotate="-30"
 				 edge="center"
@@ -334,12 +332,15 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 
 	
 
-		 <hotspot name="hs_Rd_KingAbdulAziz_horizontal_5"
-        	 type="text"
+		 <hotspot 
+		 
+		 name="hs_famousRoad_5"
+        	type="text"
+			 visible="false"
 			
           	ath="-0.2274617" atv="0.1265819"
 			rotate="0"
-				 edge="center"
+			edge="center"
         	size="1.0"
 	   
        
@@ -348,41 +349,45 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
      
          />
 
-		 <hotspot name="hs_Rd_KingAbdulAziz_horizontal_6"
+		 <hotspot name="hs_famousRoad_6"
         	 type="text"
+			  visible="false"
           	ath="-0.0487387" atv=" 0.0983929"
 				 edge="center"
         	size="1.0"
          html=" [b]King Abdul Aziz Rd[/b] "
          />
 
-		 <hotspot name="hs_Rd_MohammedIbnFahd"
+		 <hotspot name="hs_famousRoad_7"
         	 type="text"
+			  visible="false"
           	ath="-0.0191731" atv=" 0.1284443"
-			rotate="270"
+			rotate="-270"
 				 edge="center"
         	size="1.0"
          html=" [b]Mohammed ibn Fahd[/b] "
          />
 
 
-		 <hotspot name="hs_Rd_KingFaisal"
+		 <hotspot name="hs_famousRoad_8"
         	 type="text"
+			  visible="false"
           	ath=" 0.0568879" atv="0.1002357" edge="center"
         	size="1.0"
 	       renderer="css3d"
-		   rotate="270"
+		   rotate="-270"
        
          html=" [b]King Faisal[/b] "
          />
 
 
-		 <hotspot name="hs_Rd_KingFaisal_1"
+		 <hotspot name="hs_famousRoad_9"
         	 type="text"
+			  visible="false"
           	ath=" 0.0548794" atv="0.0457706" edge="center"
         	size="1.0"
 	       renderer="css3d"
-		   rotate="270"
+		   rotate="-270"
        
          html=" [b]King Faisal[/b] "
          />

@@ -554,6 +554,7 @@
         const educationalCount = 2;
         const landmarkCount = 8;
         const totalRoads = 8;
+        const  famousRoadsCount = 9;
 
         const toggleFilterTheme = () => {
           const krpano = globalKrpano();
@@ -583,6 +584,7 @@
             { prefix: "hs_M_parks_", count: parksCount + 3 },
             { prefix: "hs_M_education_", count: educationalCount + 2 },
             { prefix: "hs_Landmark_", count: landmarkCount },
+            { prefix: "hs_famousRoad_", count: famousRoadsCount },
           ];
 
           // Toggle visibility based on state
@@ -678,16 +680,7 @@ function showRelatedHotspot(targetHotspotName) {
           const currentScene = krpano.get("scene[get(xml.scene)].name");
 
           // Handle Roads (scene-based logic)
-          if (filterName === "Roads") {
-            if (isActive) {
-               krpano.call("loadscene(scene_AlMarina_Roads, null, MERGE, BLEND(1));");
-              // Roads logic placeholder
-            } else {
-              // Possibly hide overlays or unload roads
-            }
-            return;
-          }
-
+         
           // Hotspot visibility toggle (scene_a-initial only)
           if (currentScene !== "scene_a-initial") return;
 
@@ -696,10 +689,12 @@ function showRelatedHotspot(targetHotspotName) {
             Parks: { prefix: "hs_M_parks_", count: parksCount },
             Education: { prefix: "hs_M_education_", count: educationalCount },
             Health: { prefix: "hs_M_hospitals_", count: hospitalsCount },
+            Roads: { prefix: "hs_famousRoad_", count: famousRoadsCount },
           };
 
           const category = categoryMap[filterName];
           if (!category) return;
+         
 
           for (let i = 1; i <= category.count; i++) {
             krpano.set(
