@@ -1260,8 +1260,8 @@ visible="false"
 			style="callout"
 			title=""
 			text_background=""
-			content="&lt;img src=&quot;skin/icons/MapPopUps/DT_KingAbdulAzizSeaport.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
-			url="skin/icons/MapPopUps/DT_ImamAbdRahmanUni.png" circle_active_width="0.1"
+			content="&lt;img src=&quot;skin/icons/MapPopUps/DTO_KingAbdulAzizSeaport.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+			url="skin/icons/MapPopUps/DTO_ImamAbdRahmanUni.png" circle_active_width="0.1"
 			text_x="">
 
 		</hotspot>
@@ -1285,8 +1285,8 @@ visible="false"
 			style="callout"
 			title=""
 			text_background=""
-			content="&lt;img src=&quot;skin/icons/MapPopUps/DT_ImamAbdRahmanUni.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
-			url="skin/icons/MapPopUps/DT_ImamAbdRahmanUni.png" circle_active_width="0.1"
+			content="&lt;img src=&quot;skin/icons/MapPopUps/DTO_ImamAbdRahmanUni.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+			url="skin/icons/MapPopUps/DTO_ImamAbdRahmanUni.png" circle_active_width="0.1"
 			text_x="">
 
 		</hotspot>
@@ -1308,8 +1308,8 @@ visible="false"
 			style="callout"
 			title=""
 			text_background=""
-			content="&lt;img src=&quot;skin/icons/MapPopUps/DT_AlYamamah.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
-			url="skin/icons/MapPopUps/DT_AlYamamah.png" circle_active_width="0.1"
+			content="&lt;img src=&quot;skin/icons/MapPopUps/DTO_AlYamamah.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+			url="skin/icons/MapPopUps/DTO_AlYamamah.png" circle_active_width="0.1"
 			text_x="">
 
 		</hotspot>
@@ -1330,8 +1330,8 @@ visible="false"
 			style="callout"
 			title=""
 			text_background=""
-			content="&lt;img src=&quot;skin/icons/MapPopUps/DT_SevenSite.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
-			url="skin/icons/MapPopUps/DT_SevenSite.png" circle_active_width="0.1"
+			content="&lt;img src=&quot;skin/icons/MapPopUps/DTO_SevenSite.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+			url="skin/icons/MapPopUps/DTO_SevenSite.png" circle_active_width="0.1"
 			text_x="">
 
 		</hotspot>
@@ -1351,8 +1351,8 @@ visible="false"
 			style="callout"
 			title=""
 			text_background=""
-			content="&lt;img src=&quot;skin/icons/MapPopUps/transparent.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
-			url="skin/icons/MapPopUps/transparent.png" circle_active_width="0.1"
+			content="&lt;img src=&quot;skin/icons/MapPopUps/DTO_DharanExpo.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+			url="skin/icons/MapPopUps/DTO_DharanExpo.png" circle_active_width="0.1"
 			text_x="">
 
 		</hotspot>
@@ -1373,13 +1373,14 @@ visible="false"
 			style="callout"
 			title=""
 			text_background=""
-			content="&lt;img src=&quot;skin/icons/MapPopUps/DT_AramcoStadium.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
-			url="skin/icons/MapPopUps/DT_AramcoStadium.png" circle_active_width="0.1"
+			content="&lt;img src=&quot;skin/icons/MapPopUps/DTO_AramcoStadium.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+			url="skin/icons/MapPopUps/DTO_AramcoStadium.png" circle_active_width="0.1"
 			text_x="">
 
 		</hotspot>
 			<!-- Pop up for  King Fahd Uni -->
-<hotspot name="hs_PopUp_7"
+<hotspot 
+name="hs_PopUp_7"
 visible="false"
 
 			callout_bg_border="0,0,0,0"
@@ -1395,8 +1396,8 @@ visible="false"
 			style="callout"
 			title=""
 			text_background=""
-			content="&lt;img src=&quot;skin/icons/MapPopUps/DT_KingFahdUniversity.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
-			url="skin/icons/MapPopUps/DT_KingFahdUniversity.png" circle_active_width="0.1"
+			content="&lt;img src=&quot;skin/icons/MapPopUps/DTO_KingFahdUniversity.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+			url="skin/icons/MapPopUps/DTO_KingFahdUniversity.png" circle_active_width="0.1"
 			text_x="">
 
 		</hotspot>
@@ -1416,8 +1417,8 @@ visible="false"
 			style="callout"
 			title=""
 			text_background=""
-			content="&lt;img src=&quot;skin/icons/MapPopUps/DT_KingFahdIntAirport.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
-			url="skin/icons/MapPopUps/DT_KingFahdIntAirport.png" circle_active_width="0.1"
+			content="&lt;img src=&quot;skin/icons/MapPopUps/DTO_KingFahdIntAirport.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+			url="skin/icons/MapPopUps/DTO_KingFahdIntAirport.png" circle_active_width="0.1"
 			text_x="">
 
 		</hotspot>
