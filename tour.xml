@@ -270,16 +270,24 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 
 		 <hotspot name="hs_Rd_AlHaramin_1"
         	 type="text"
-          	ath="-0.0328865" atv=" 0.1591685"
 			
-		   edge="center"
+          	ath=" -0.032861" atv="0.1564466"
+			rotate="270"
+			
+	   
+	   
+		 html=" [b] Al Haramin Rd[/b] "
+
+	 
+		 />
+		   <!-- edge="center"
         	size="1.0"
 	   
        
          html=" [b] Al Haramin Rd[/b] "
 
      
-         />
+         /> -->
 	
 
 		<hotspot name="hs_Rd_KingFahd_horizontal_2"
@@ -295,7 +303,8 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 
 		 <hotspot name="hs_Rd_KingFahd_horizontal_3"
         	 type="text"
-          			ath="-0.0019694" atv="-0.0082224"
+          			ath="0.0177446" atv="0.0435862"
+			rotate="60"
 				 edge="center"
         	size="1.0"
 	       renderer="css3d"
@@ -312,8 +321,8 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 
 		  <hotspot name="hs_Rd_KingAbdulAziz_horizontal_4"
         	 type="text"
-          	ath=" 0.0759366" atv="0.0247447"
-			
+          	ath=" 0.1054847" atv="0.0075436"
+			rotate="-30"
 				 edge="center"
         	size="1.0"
 	   
@@ -327,8 +336,9 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 
 		 <hotspot name="hs_Rd_KingAbdulAziz_horizontal_5"
         	 type="text"
-          	ath="-0.1795797" atv="0.1433399"
 			
+          	ath="-0.2274617" atv="0.1265819"
+			rotate="0"
 				 edge="center"
         	size="1.0"
 	   
@@ -338,20 +348,43 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
      
          />
 
-		
-
-		 
 		 <hotspot name="hs_Rd_KingAbdulAziz_horizontal_6"
         	 type="text"
           	ath="-0.0487387" atv=" 0.0983929"
-			
 				 edge="center"
         	size="1.0"
-	   
-       
          html=" [b]King Abdul Aziz Rd[/b] "
+         />
 
-     
+		 <hotspot name="hs_Rd_MohammedIbnFahd"
+        	 type="text"
+          	ath="-0.0191731" atv=" 0.1284443"
+			rotate="270"
+				 edge="center"
+        	size="1.0"
+         html=" [b]Mohammed ibn Fahd[/b] "
+         />
+
+
+		 <hotspot name="hs_Rd_KingFaisal"
+        	 type="text"
+          	ath=" 0.0568879" atv="0.1002357" edge="center"
+        	size="1.0"
+	       renderer="css3d"
+		   rotate="270"
+       
+         html=" [b]King Faisal[/b] "
+         />
+
+
+		 <hotspot name="hs_Rd_KingFaisal_1"
+        	 type="text"
+          	ath=" 0.0548794" atv="0.0457706" edge="center"
+        	size="1.0"
+	       renderer="css3d"
+		   rotate="270"
+       
+         html=" [b]King Faisal[/b] "
          />
 
 	
@@ -1086,7 +1119,7 @@ title_background="0x41D274"
          line_lenght="50"
 size="2"
          circle_active_width="0"
-         title="Rowad Al Khaleej International School"
+         title="Rowad Al Khaleej School"
          text_background=""
          >
 			</hotspot>
