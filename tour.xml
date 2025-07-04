@@ -121,14 +121,14 @@
        oneditstop=""
        /> -->
 
-	   <layer name="mytext"
+	<layer name="mytext"
        type="text"
        align="lefttop" x="10" y="10"
        text="Text...[br][b]Bold Text...[/b]"
        rawhtml="true"
-       css="font-family:Arial; font-size:16px; color:#ffffff; background: #98a512"
-       bgcolor="0x000000"
+	   bgcolor="0x000000"
        bgalpha="0.0"
+	   	callout_bg_border="0,0,0,0"
 />
 	<layer name="infoLayer"
 		keep="true"
@@ -139,6 +139,8 @@
 		width="400"
 		height="300"
 		visible="false">
+
+
 		<textfield name="infoText"
 			align="center"
 			x="0"
@@ -268,29 +270,31 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 
 		</hotspot> -->
 
-		 <hotspot 
-		 name="hs_famousRoad_1"
-        	 type="text"
-			 visible="false"
-			
-          	ath=" -0.032861" atv="0.1564466"
-			rotate="-270"
-			
-	   
-	   
-		 html=" [b] Al Haramin Rd[/b] "
+		<hotspot 
+  name="hs_famousRoad_1"
 
-	 
-		 />
-		  
+  type="text"
+  visible="false"
+  ath="-0.032861" atv="0.1564466"
+  rotate="-270"
+  html="[b] Al Haramin Rd[/b]"
+  rawhtml="true"
+  renderer="css3d"
+  css="font-family:Arial; font-size:16px; color:#000000; background:#BCD8EC; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+/>
 	
 
-		<hotspot name="hs_famousRoad_2"
+		<hotspot 
+		name="hs_famousRoad_2"
 		 visible="false"
-        	 type="text"
-          	ath="-0.0771463" atv="-0.0135177" edge="center"
-        	size="1.0"
-	       renderer="css3d"
+         type="text"
+        ath="-0.0771463"
+		atv="-0.0135177" 
+		edge="center"
+        size="1.0"
+	    renderer="css3d"
+       
+ css="font-family:Arial; font-size:16px; color:#000000; background:#BCD8EC; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
        
          html=" [b]King Fahd Rd[/b] "
 
@@ -305,6 +309,8 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 				 edge="center"
         	size="1.0"
 	       renderer="css3d"
+		   
+         css="font-family:Arial; font-size:16px; color:#000000; background:#BCD8EC; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
        
          html=" [b]King Fahd Rd[/b] "
 
@@ -316,15 +322,16 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 
 	
 
-		  <hotspot name="hs_famousRoad_4"
+		  <hotspot 
+		     name="hs_famousRoad_4"
         	 type="text"
-			  visible="false"
+			visible="false"
           	ath=" 0.1054847" atv="0.0075436"
 			rotate="-30"
-				 edge="center"
+			edge="center"
         	size="1.0"
-	   
-       
+			  renderer="css3d"
+	    css="font-family:Arial; font-size:16px; color:#000000; background:#BCD8EC; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
          html=" [b]King Abdul Aziz Rd[/b] "
 
      
@@ -342,7 +349,9 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 			rotate="0"
 			edge="center"
         	size="1.0"
+	     renderer="css3d"
 	   
+         css="font-family:Arial; font-size:16px; color:#000000; background:#BCD8EC; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
        
          html=" [b]King Abdul Aziz Rd[/b] "
 
@@ -355,6 +364,10 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
           	ath="-0.0487387" atv=" 0.0983929"
 				 edge="center"
         	size="1.0"
+			  renderer="css3d"
+	   
+        css="font-family:Arial; font-size:16px; color:#000000; background:#BCD8EC; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+
          html=" [b]King Abdul Aziz Rd[/b] "
          />
 
@@ -365,6 +378,9 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 			rotate="-270"
 				 edge="center"
         	size="1.0"
+			 renderer="css3d"
+	   
+      css="font-family:Arial; font-size:16px; color:#000000; background:#BCD8EC; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
          html=" [b]Mohammed ibn Fahd[/b] "
          />
 
@@ -376,6 +392,9 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
         	size="1.0"
 	       renderer="css3d"
 		   rotate="-270"
+
+		   
+	    css="font-family:Arial; font-size:16px; color:#000000; background:#BCD8EC; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
        
          html=" [b]King Faisal[/b] "
          />
@@ -387,6 +406,8 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
           	ath=" 0.0548794" atv="0.0457706" edge="center"
         	size="1.0"
 	       renderer="css3d"
+		   css="font-family:Arial; font-size:16px; color:#000000; background:#BCD8EC; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+		   
 		   rotate="-270"
        
          html=" [b]King Faisal[/b] "
@@ -774,7 +795,7 @@ visible="false"
 			</hotspot> 
 	
 <!-- Abdullah Fuad park is connected with park 3 -->
-				<hotspot name="hs_M_parks_6"
+		<hotspot name="hs_M_parks_6"
          style="callout"
          shape="round"
 		visible="false"
@@ -1330,8 +1351,8 @@ visible="false"
 			style="callout"
 			title=""
 			text_background=""
-			content="&lt;img src=&quot;skin/icons/MapPopUps/DT_DharanExpo.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
-			url="skin/icons/MapPopUps/DT_DharanExpo.png" circle_active_width="0.1"
+			content="&lt;img src=&quot;skin/icons/MapPopUps/transparent.png&quot; style=&quot;width:260px; height:220px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+			url="skin/icons/MapPopUps/transparent.png" circle_active_width="0.1"
 			text_x="">
 
 		</hotspot>
