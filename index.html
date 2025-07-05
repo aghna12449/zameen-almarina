@@ -554,6 +554,9 @@
         const educationalCount = 4;
         const landmarkCount = 8;
         const totalRoads = 12;
+        const popUpCount = 8;
+
+        
         const famousRoadsCount = 9;
 
         const toggleFilterTheme = () => {
@@ -585,13 +588,25 @@
             { prefix: "hs_M_education_", count: educationalCount + 2 },
             { prefix: "hs_Landmark_", count: landmarkCount },
             { prefix: "hs_famousRoad_", count: famousRoadsCount },
+            // { prefix: "hs_PopUp_", count: popUpCount },
           ];
 
+
+
+//           const popUpCategory = hotspotCategories.find(c => c.prefix === "hs_PopUp_");
+// if (popUpCategory) {
+//   for (let i = 1; i <= popUpCategory.count; i++) {
+//     krpano.set(
+//       `hotspot[${popUpCategory.prefix + i}].visible`,
+//       false
+//     );
+//   }
+// }
           console.log("Toggling famousRoadsCount", famousRoadsCount);
           // Toggle visibility based on state
           hotspotCategories.forEach(({ prefix, count }) => {
             for (let i = 1; i <= count; i++) {
-              krpano.set(`hotspot[${prefix}${i}].visible`, isActive);
+              krpano.set(`hotspot[${prefix}${i}].visible`,  isActive);
             }
           });
         };
@@ -687,6 +702,7 @@ function showRelatedHotspot(targetHotspotName) {
 
           const categoryMap = {
             Lines: { prefix: "Road_", count: totalRoads },
+            PopUp: { prefix: "hs_PopUp_", count: popUpCount },
             Landmarks: { prefix: "hs_Landmark_", count: landmarkCount },
             Parks: { prefix: "hs_M_parks_", count: parksCount },
             Education: { prefix: "hs_M_education_", count: educationalCount },
@@ -704,6 +720,22 @@ function showRelatedHotspot(targetHotspotName) {
               isActive
             );
           }
+
+          // hs_PopUp_8
+
+          if (filterName === "Landmarks") {
+    const popUpCategory = categoryMap["PopUp"];
+    if (popUpCategory) {
+      for (let i = 1; i <= popUpCategory.count; i++) {
+        krpano.set(
+          `${"hotspot[" + popUpCategory.prefix + i + "]"}.visible`,
+          false
+        );
+      }
+    }
+  }
+
+
           // Also toggle Lines when Roads are toggled
   if (filterName === "Roads") {
     const linesCategory = categoryMap["Lines"];
