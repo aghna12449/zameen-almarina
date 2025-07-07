@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <title>Al Marina</title>
@@ -444,7 +444,7 @@
             </div>
           </div>
         </div>
-        <div class="map-filter-arrow" onclick="toggleShowAll()">▲</div>
+        <!-- <div class="map-filter-arrow" ></div> -->
       </div>
 
       <!-- Modal -->
@@ -552,12 +552,15 @@
         const parksCount = 6;
         const hospitalsCount = 8;
         const educationalCount = 4;
+
         const landmarkCount = 8;
-        const totalRoads = 12;
+        const totalLandMarkLines = 8;
+
+        const colorFulRoads= 7;
+        const famousRoadsCount = 15;
+
         const popUpCount = 8;
 
-        
-        const famousRoadsCount = 9;
 
         const toggleFilterTheme = () => {
           const krpano = globalKrpano();
@@ -582,12 +585,13 @@
 
           // Define all categories and their counts
           const hotspotCategories = [
-            { prefix: "Road_", count: totalRoads },
+            { prefix: "hs_LandMarkLine_", count: totalLandMarkLines },
             { prefix: "hs_M_hospitals_", count: hospitalsCount + 4 },
             { prefix: "hs_M_parks_", count: parksCount + 3 },
             { prefix: "hs_M_education_", count: educationalCount + 2 },
             { prefix: "hs_Landmark_", count: landmarkCount },
             { prefix: "hs_famousRoad_", count: famousRoadsCount },
+            { prefix: "hs_ColorFulRoad_", count: colorFulRoads },
             // { prefix: "hs_PopUp_", count: popUpCount },
           ];
 
@@ -677,10 +681,10 @@ function showRelatedHotspot(targetHotspotName) {
               // Optionally update hotspots visibility
               // const krpano = globalKrpano?.();
               // const currentScene = krpano?.get("scene[get(xml.scene)].name");
-              // const totalRoads = 8;
+              // const totalLandMarkLines = 8;
 
               // if (krpano && currentScene === "scene_a-initial") {
-              //   for (let i = 1; i <= totalRoads; i++) {
+              //   for (let i = 1; i <= totalLandMarkLines; i++) {
               //     krpano.set(`hotspot[Road_${i}].visible`, false);
               //   }
               // }
@@ -701,12 +705,15 @@ function showRelatedHotspot(targetHotspotName) {
           if (currentScene !== "scene_a-initial") return;
 
           const categoryMap = {
-            Lines: { prefix: "Road_", count: totalRoads },
+            Lines: { prefix: "hs_LandMarkLine_", count: totalLandMarkLines },
             PopUp: { prefix: "hs_PopUp_", count: popUpCount },
             Landmarks: { prefix: "hs_Landmark_", count: landmarkCount },
             Parks: { prefix: "hs_M_parks_", count: parksCount },
             Education: { prefix: "hs_M_education_", count: educationalCount },
             Health: { prefix: "hs_M_hospitals_", count: hospitalsCount },
+           
+           
+            ColorFulRoads: { prefix: "hs_ColorFulRoad_", count: colorFulRoads },
             Roads: { prefix: "hs_famousRoad_", count: famousRoadsCount },
           };
 
@@ -721,9 +728,30 @@ function showRelatedHotspot(targetHotspotName) {
             );
           }
 
-          // hs_PopUp_8
+          
+          if (filterName === "Roads") {
+            const colorFulRoadsCategory = categoryMap["ColorFulRoads"];
+    if (colorFulRoadsCategory) {
+      for (let i = 1; i <= colorFulRoadsCategory.count; i++) {
+        krpano.set(
+          `${"hotspot[" + colorFulRoadsCategory.prefix + i + "]"}.visible`,
+          isActive
+        );
+      }
+    }
+          }
 
           if (filterName === "Landmarks") {
+    const LinesCategory = categoryMap["Lines"];
+    if (LinesCategory) {
+      for (let i = 1; i <= LinesCategory.count; i++) {
+        krpano.set(
+          `${"hotspot[" + LinesCategory.prefix + i + "]"}.visible`,
+          false
+        );
+      }
+    }
+
     const popUpCategory = categoryMap["PopUp"];
     if (popUpCategory) {
       for (let i = 1; i <= popUpCategory.count; i++) {
@@ -734,21 +762,7 @@ function showRelatedHotspot(targetHotspotName) {
       }
     }
   }
-
-
-          // Also toggle Lines when Roads are toggled
-  if (filterName === "Roads") {
-    const linesCategory = categoryMap["Lines"];
-    if (linesCategory) {
-      for (let i = 1; i <= linesCategory.count; i++) {
-        krpano.set(
-          `${"hotspot[" + linesCategory.prefix + i + "]"}.visible`,
-          isActive
-        );
-      }
-    }
-  }
-        };
+  };
 
         const flyToInitialAlMarinaScene = () => {
           const krpano = document.getElementById("krpanoSWFObject");

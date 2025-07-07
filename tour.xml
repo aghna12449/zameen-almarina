@@ -10,7 +10,7 @@
 
 
 	<include url="skin/vtourskin.xml" />
- <!-- <include url="plugins/polygon.xml" />  -->
+   <!-- <include url="plugins/polygon.xml" />  -->
 
 
 	<include url="callout.xml" />
@@ -271,7 +271,7 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 		</hotspot> -->
 
 		
-<hotspot 
+<!-- <hotspot 
   name="hs_famousRoad_1"
 
   type="text"
@@ -282,6 +282,23 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
   rawhtml="true"
   renderer="css3d"
   css="font-family:Arial; font-size:16px; color:#000000; background:#D6E5BD; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+/>
+	 -->
+
+	 <hotspot 
+  name="hs_famousRoad_1"
+
+  type="text"
+  visible="false"
+
+ath="0.00545384276540517" atv="0.1522596106998893" 
+
+
+  rotate="115"
+  html="[b] King Saud Rd[/b]"
+  rawhtml="true"
+  renderer="css3d"
+  css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363;  border:none; outline:none; box-shadow:none; margin:0; padding:0;"
 />
 	
 
@@ -295,7 +312,7 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
         size="1.0"
 	    renderer="css3d"
        
- css="font-family:Arial; font-size:16px; color:#000000; background:#FFCBE1; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+ css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
        
          html=" [b]King Fahd Rd[/b] "
 
@@ -311,7 +328,25 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
         	size="1.0"
 	       renderer="css3d"
 		   
-         css="font-family:Arial; font-size:16px; color:#000000; background:#FFCBE1; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+         css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+       
+         html=" [b]King Fahd Rd[/b] "
+
+      
+         />
+
+		 
+
+		  <hotspot name="hs_famousRoad_4"
+		  visible="false"
+        	 type="text"
+          			ath="-0.2025867246712778" atv="-0.056850182128538596"
+			rotate="50"
+				 edge="center"
+        	size="1.0"
+	       renderer="css3d"
+		   
+         css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
        
          html=" [b]King Fahd Rd[/b] "
 
@@ -324,7 +359,7 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 	
 
 		  <hotspot 
-		     name="hs_famousRoad_4"
+		     name="hs_famousRoad_5"
         	 type="text"
 			visible="false"
           	ath=" 0.1054847" atv="0.0075436"
@@ -332,7 +367,7 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 			edge="center"
         	size="1.0"
 			  renderer="css3d"
-	    css="font-family:Arial; font-size:16px; color:#000000; background:#BCD8EC; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+	    css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
          html=" [b]King Abdul Aziz Rd[/b] "
 
      
@@ -342,7 +377,7 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 
 		 <hotspot 
 		 
-		 name="hs_famousRoad_5"
+		 name="hs_famousRoad_6"
         	type="text"
 			 visible="false"
 			
@@ -352,14 +387,14 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
         	size="1.0"
 	     renderer="css3d"
 	   
-         css="font-family:Arial; font-size:16px; color:#000000; background:#BCD8EC; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+         css="font-family:Arial; font-size:16px;color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
        
          html=" [b]King Abdul Aziz Rd[/b] "
 
      
          />
 
-		 <hotspot name="hs_famousRoad_6"
+		 <hotspot name="hs_famousRoad_7"
         	 type="text"
 			  visible="false"
           	ath="-0.0487387" atv=" 0.0983929"
@@ -367,12 +402,12 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
         	size="1.0"
 			  renderer="css3d"
 	   
-        css="font-family:Arial; font-size:16px; color:#000000; background:#BCD8EC; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+        css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
 
          html=" [b]King Abdul Aziz Rd[/b] "
          />
 
-		 <hotspot name="hs_famousRoad_7"
+		 <!-- <hotspot name="hs_famousRoad_8"
         	 type="text"
 			  visible="false"
           	ath="-0.0191731" atv=" 0.1284443"
@@ -383,10 +418,10 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 	   
       css="font-family:Arial; font-size:16px; color:#000000; background:#DCCCEC; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
          html=" [b]Mohammed ibn Fahd Rd[/b] "
-         />
+         /> -->
 
 
-		 <hotspot name="hs_famousRoad_8"
+		 <hotspot name="hs_famousRoad_9"
         	 type="text"
 			  visible="false"
           	ath=" 0.0568879" atv="0.1002357" edge="center"
@@ -395,30 +430,124 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 		   rotate="90"
 
 		   
-	    css="font-family:Arial; font-size:16px; color:#000000; background:#ffffff; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+	    css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
        
          html=" [b]King Faisal Rd[/b] "
          />
 
 
-		 <hotspot name="hs_famousRoad_9"
+		 <hotspot name="hs_famousRoad_10"
         	 type="text"
 			  visible="false"
-          	ath=" 0.0548794" atv="0.0457706" edge="center"
+          	ath=" 0.028696723326675055" atv="0.004642690867282402"
+			
+		
+
+			 edge="center"
         	size="1.0"
 	       renderer="css3d"
-		   css="font-family:Arial; font-size:16px; color:#000000; background:#ffffff; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+		   css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
 		   
-		   rotate="72"
+		   rotate="65"
        
          html=" [b]King Faisal Rd[/b] "
          />
 
-	
+
+ <!-- <hotspot name="hs_famousRoad_11"
+        	 type="text"
+			  visible="false"
+          	ath=" 0.028696723326675055" atv="0.004642690867282402"
+			
+		
+
+			 edge="center"
+        	size="1.0"
+	       renderer="css3d"
+		   css="font-family:Arial; font-size:16px; color:#000000; background:#FFDAB4; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+		   
+		   rotate="35"
+       
+         html=" [b]King Faisal Rd[/b] "
+         /> -->
+
+		 <!-- Riyadh Road -->
+
+		  <hotspot name="hs_famousRoad_12"
+        	 type="text"
+			  visible="false"
+
+			  
+ath="-0.011905709915481566" atv = "0.03922736700408265" 
+       
+			
+		
+
+			 edge="center"
+        	size="1.0"
+	       renderer="css3d"
+		   css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+		   
+		   rotate="00"
+       
+         html=" [b]Riyadh Rd[/b] "
+         />
+		 <!-- Riyadh Road -->
+
+
+	  <hotspot name="hs_famousRoad_13"
+        	 type="text"
+			  visible="false"
+          
+			ath="-0.20331673934737182" atv = "0.005557127235987968"
+
+
+
+			 edge="center"
+        	size="1.0"
+	       renderer="css3d"
+		   css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+		   
+		   rotate="20"
+       
+         html=" [b]Riyadh Rd[/b] "
+         />
+
+
+		  <hotspot name="hs_famousRoad_14"
+        	type="text"
+			visible="false"
+			ath="-0.17487726786202984" 
+			atv="0.10412395542956912"
+
+			 edge="center"
+        	size="1.0"
+	       renderer="css3d"
+		   css="font-family:Arial; font-size:16px;color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+		   
+		   rotate="-20"
+       
+         html=" [b]Al Ahsa Rd[/b] "
+         />
+
+		  <hotspot name="hs_famousRoad_15"
+        	type="text"
+			visible="false"
+		ath="-0.42148390544946324" atv="0.1836129469884559"
+
+			 edge="center"
+        	size="1.0"
+	       renderer="css3d"
+		   css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+		   
+		   rotate="-20"
+       
+         html=" [b]Al Ahsa Rd[/b] "
+         />
 
 <!-- Hotspots for Highlighting the roads -->
  <!-- seaport -->
-<hotspot name="Road_1" polyline="true" 
+<hotspot name="hs_LandMarkLine_1" polyline="true" 
 fillcolor="0xffffff" fillalpha="3" 
 visible="false"
 bordercolor="0xffffff"   borderwidth="4"
@@ -435,7 +564,7 @@ bordercolor="0xffffff"   borderwidth="4"
  
 </hotspot>
 <!-- imam abdukrahrahman bin faisal university -->
-<hotspot name="Road_2"  polyline="true" 
+<hotspot name="hs_LandMarkLine_2"  polyline="true" 
 fillcolor="0xffffff" fillalpha="3" 
 visible="false"
 bordercolor="0xffffff"   borderwidth="4"
@@ -451,7 +580,7 @@ bordercolor="0xffffff"   borderwidth="4"
 </hotspot>
 
 <!-- al yamamah university -->
-<hotspot name="Road_3" polyline="true" 
+<hotspot name="hs_LandMarkLine_3" polyline="true" 
 fillcolor="0xffffff" fillalpha="3" 
 visible="false"
 bordercolor="0xffffff"   borderwidth="4"
@@ -472,7 +601,7 @@ bordercolor="0xffffff"   borderwidth="4"
 
 
 
-<hotspot name="Road_4" polyline="true" 
+<hotspot name="hs_LandMarkLine_4" polyline="true" 
 fillcolor="0xffffff" fillalpha="3" 
 visible="false"
 bordercolor="0xffffff"   borderwidth="4"
@@ -487,7 +616,7 @@ bordercolor="0xffffff"   borderwidth="4"
 </hotspot>
  
 <!-- aramco stadium -->
-<hotspot name="Road_5" polyline="true"
+<hotspot name="hs_LandMarkLine_5" polyline="true"
 
 fillcolor="0xffffff" fillalpha="3" 
 visible="false"
@@ -519,7 +648,7 @@ bordercolor="0xffffff"   borderwidth="4"
     <point ath="0.03183836701003884" atv="0.11517342468185598" />
 </hotspot>
 <!-- seven site -->
-<hotspot name="Road_6" polyline="true"
+<hotspot name="hs_LandMarkLine_6" polyline="true"
 fillcolor="0xffffff" fillalpha="3" 
 visible="false"
 bordercolor="0xffffff"   borderwidth="4" >
@@ -537,7 +666,7 @@ bordercolor="0xffffff"   borderwidth="4" >
     <point ath="0.0946922166719446" atv="0.14677358124605736" />
 </hotspot>
 <!-- king fhad university -->
-<hotspot name="Road_7" polyline="true"
+<hotspot name="hs_LandMarkLine_7" polyline="true"
 fillcolor="0xffffff" fillalpha="3" 
 visible="false"
 bordercolor="0xffffff"   borderwidth="4" 
@@ -594,7 +723,7 @@ bordercolor="0xffffff"   borderwidth="4"
     
 </hotspot>
 <!-- king fahd airport -->
-<hotspot name="Road_8" polyline="true" 
+<hotspot name="hs_LandMarkLine_8" polyline="true" 
 fillcolor="0xffffff" fillalpha="3" 
 visible="false"
 bordercolor="0xffffff"   borderwidth="4"
@@ -672,10 +801,12 @@ bordercolor="0xffffff"   borderwidth="4"
 </hotspot>
 
 
-<hotspot name="Road_9" polyline="true"
+<!-- Roads with different COlor -->
+
+<hotspot name="hs_ColorFulRoad_1" polyline="true"
 
 visible="false"
-bordercolor="0xBCD8EC"   borderwidth="4" >
+bordercolor="0x6c6363"   borderwidth="4" >
 
 
 
@@ -695,11 +826,53 @@ bordercolor="0xBCD8EC"   borderwidth="4" >
  <point ath="-0.35939558352049517" atv="0.20300220260403773" /> <point ath="-0.36415438723093985" atv="0.20287001325742418" /> <point ath="-0.37036726946041654" atv="0.20247344516091487" /> <point ath="-0.3767123397112755" atv="0.2016803101348515" /> <point ath="-0.3830574096709256" atv="0.2014159252140962" /> <point ath="-0.39138531196977056" atv="0.20062278137836959" /> <point ath="-0.39495441221720284" atv="0.20022620927792809" /> <point ath="-0.3981269477458227" atv="0.19969746515534015" /> <point ath="-0.40222479746279305" atv="0.1971858804276583" /> <point ath="-0.40486857172703594" atv="0.19599618014239517" /> <point ath="-0.40804110077067435" atv="0.19480647793760417" /> <point ath="-0.41398959271515423" atv="0.19322020194498157" /> <point ath="-0.4195415179163433" atv="0.1921626779473378" /> <point ath="-0.4233749892865717" atv="0.19150172324671602" /> <point ath="-0.42786940235367865" atv="0.19057638896651274" /> <point ath="-0.43342132291684266" atv="0.18951886103421767" /> <point ath="-0.4383122949882363" atv="0.1876682064188219" /> <point ath="-0.4393698016358485" atv="0.1871394493660838" /> 
 </hotspot>
 
-<hotspot name="Road_10" polyline="true"
+<!-- King Fahd ROad Pink -->
+<hotspot name="hs_ColorFulRoad_2" polyline="true"
 
 visible="false"
-bordercolor="0xFFCBE1"   borderwidth="4" >
+bordercolor="0x6c6363"   borderwidth="4" >
 
+<point ath="-0.2773561585150901" atv="-0.21730974100223818" />
+<point ath="-0.2795410577873554" atv="-0.20857022433944067" />
+<point ath="-0.29890716788077043" atv="-0.2142310456432208" />
+<point ath="-0.30665355755229484" atv="-0.18923249494978897" />
+<point ath="-0.30754737386786246" atv="-0.18655105187752252" />
+<point ath="-0.3077459977267267" atv="-0.18396892215209693" />
+<point ath="-0.30744805623027105" atv="-0.18198266895849358" />
+<point ath="-0.3066535485612576" atv="-0.1795991655026665" />
+<point ath="-0.30615698180730533" atv="-0.17860603919435697" />
+<point ath="-0.3049652221161523" atv="-0.17661978667310427" />
+<point ath="-0.30307827035721857" atv="-0.17433559653409808" />
+<point ath="-0.3017871982980864" atv="-0.1727465945094269" />
+<point ath="-0.2983112362833822" atv="-0.16907202712109504" />
+<point ath="-0.2790359230253898" atv="-0.14681190925929666" />
+<point ath="-0.27099156552560544" atv="-0.13896621249958602" />
+<point ath="-0.25325373996849976" atv="-0.12262468128122564" />
+<point ath="-0.2498770999465023" atv="-0.11904942708505308" />
+<point ath="-0.24203137959324295" atv="-0.11050853898507686" />
+<point ath="-0.23577466821291182" atv="-0.10325871263497326" />
+<point ath="-0.22902139527320742" atv="-0.09441988104460917" />
+<point ath="-0.2227646896434976" atv="-0.0856803608421325" />
+<point ath="-0.20804892671242214" atv="-0.06390137909119774" />
+<point ath="-0.2025867246712778" atv="-0.056850182128538596" />
+<point ath="-0.1980183377548883" atv="-0.050990735363867244" />
+<point ath="-0.18972561263279886" atv="-0.041254092723336924" />
+<point ath="-0.18770738244000995" atv="-0.039235863535868824" />
+<point ath="-0.18523342291098288" atv="-0.03630617583246556" />
+<point ath="-0.18197821318892693" atv="-0.032855654614592916" />
+<point ath="-0.17904852460691245" atv="-0.029925966679573198" />
+<point ath="-0.17611883619889568" atv="-0.026866070326697977" />
+<point ath="-0.17364487723483535" atv="-0.02445721572277262" />
+<point ath="-0.17260321033518267" atv="-0.023545757216916107" />
+<point ath="-0.1708453974726467" atv="-0.02224367362004101" />
+<point ath="-0.16876206377673952" atv="-0.02081138165384879" />
+<point ath="-0.1658323758346114" atv="-0.019379089620763578" />
+<point ath="-0.16381414644155257" atv="-0.018467631039496866" />
+
+	   
+
+
+	   
   <point ath="-0.1636088080792888" atv="-0.018399965014954032" />
     <point ath="-0.15916809321288383" atv="-0.016785160294017148" />
     <point ath="-0.15593848196544968" atv="-0.015977758048855758" />
@@ -740,11 +913,13 @@ bordercolor="0xFFCBE1"   borderwidth="4" >
     <point ath="-0.006401043192340694" atv="0.24855018147204144" />
     <point ath="-0.007343024046974733" atv="0.25043412161590667" />
 
+
+
 	</hotspot>
 
 
 	<!-- Al haramin Road line Track -->
-<hotspot name="Road_11" polyline="true"
+<!-- <hotspot name="hs_ColorFulRoad_3" polyline="true"
 
 visible="false"
 bordercolor="0xD6E5BD"   borderwidth="4" >
@@ -776,10 +951,42 @@ bordercolor="0xD6E5BD"   borderwidth="4" >
     <point ath="-0.03530612701285918" atv="0.18013153577000254" />
     <point ath="-0.03467197521842991" atv="0.18250959499417246" />
 
+	</hotspot> -->
+
+
+	<!-- King Saud Road Track Green -->
+
+	<hotspot name="hs_ColorFulRoad_3" polyline="true"
+
+visible="false"
+bordercolor="0x6c6363"   borderwidth="5" >
+<point ath="0.057853664118169945" atv="0.07259871966854604" /> 
+<point ath="0.05279324503430871" atv="0.0727619659416964" /> 
+<point ath="0.05181381003887964" atv="0.07325168494883676" />
+ <point ath="0.050671135222160046" atv="0.07357816493163213" /> 
+ <point ath="0.04936522278467237" atv="0.074720841361146" />
+ <point ath="0.04920198522825103" atv="0.0755370378465548" />
+  <point ath="0.04871227321638116" atv="0.07831210600135657" /> 
+  <point ath="0.04822256072907294" atv="0.08092393515023284" /> 
+  <point ath="0.04593721789171923" atv="0.08533139943563743" /> 
+  <point ath="0.044304829128577694" atv="0.08826970951432948" /> 
+  <point ath="0.00545384276540517" atv="0.1522596106998893" /> 
+  <point ath="-0.006299439486156189" atv="0.17184834609752572" /> 
+  <point ath="-0.0077686010690172225" atv="0.1734807400499496" /> 
+  <point ath="-0.01625709230972916" atv="0.178377919304979" />
+   <point ath="-0.01739977316645991" atv="0.17674552506909805" /> 
+   <point ath="-0.020664575898877047" atv="0.17429693245101166" /> 
+   <point ath="-0.021970496792448557" atv="0.17331749521562903" /> 
+   <point ath="-0.024745578940041923" atv="0.1721748172252813" /> 
+   <point ath="-0.028173621220503264" atv="0.1708688987541944" /> 
+   <point ath="-0.03111194336202061" atv="0.1703791772269129" /> 
+   <point ath="-0.032581104586256515" atv="0.1703791753785313" /> 
+   <point ath="-0.03387380232095438" atv="0.17002873306847402" /> 
+
 	</hotspot>
 
 	<!-- Al ibn fahd line Track -->
-<hotspot name="Road_12" polyline="true"
+<!-- <hotspot name="hs_ColorFulRoad_4" polyline="true"
 
 visible="false"
 bordercolor="0xDCCCEC"   borderwidth="4" >
@@ -801,7 +1008,90 @@ bordercolor="0xDCCCEC"   borderwidth="4" >
     <point ath="-0.03200181830220572" atv="0.15114373803828945" />
     <point ath="-0.03270948591728029" atv="0.1521167748746621" />
 
+	</hotspot> -->
+
+
+	
+	<!-- King Faisal Road  orange-->
+<hotspot name="hs_ColorFulRoad_5" polyline="true"
+
+visible="false"
+bordercolor="0x6c6363"   borderwidth="4" >
+
+
+
+<point ath="0.04358658046913888" atv="0.1656104231600035" /> 
+<point ath="0.04603081104278317" atv="0.16011222477519774" /> 
+<point ath="0.04655164554537805" atv="0.15867993253197826" /> 
+<point ath="0.04694227139634677" atv="0.1576382654303424" /> 
+<point ath="0.04804904532852561" atv="0.1559455560418339" /> 
+<point ath="0.04889540188037245" atv="0.15483878440224852" /> 
+<point ath="0.05104384484724278" atv="0.15184399055408074" /> 
+<point ath="0.051629783467376456" atv="0.15073721906161372" /> 
+<point ath="0.052931866884364354" atv="0.14598461313617614" /> 
+<point ath="0.05429905406282387" atv="0.14123200726981033" /> 
+<point ath="0.05579644824655361" atv="0.13550283895522547" /> 
+<point ath="0.05631728128571467" atv="0.1339403384640039" /> 
+<point ath="0.05683811490723656" atv="0.13296377548345664" /> 
+<point ath="0.0572938442929285" atv="0.13211742090331882" /> 
+<point ath="0.05768446846883535" atv="0.13055492060915058" /> 
+<point ath="0.057406675786467076" atv="0.1274554613405203" /> 
+<point ath="0.057195281955046084" atv="0.1266098911987556" /> 
+<point ath="0.05677249383643357" atv="0.12435503732506836" /> 
+<point ath="0.05670202708836314" atv="0.12160693373030187" /> 
+<point ath="0.05642016655002635" atv="0.11794279574859766" /> 
+<point ath="0.05613830530620589" atv="0.11336262321492174" /> 
+<point ath="0.05613830362676708" atv="0.11138962573541468" /> 
+<point ath="0.056279227438210455" atv="0.10575249009947238" /> 
+<point ath="0.056842937178942066" atv="0.10039721119261188" /> 
+<point ath="0.05735439835126499" atv="0.09270933704714877" />
+ <point ath="0.05880689633499969" atv="0.06835781714366014" /> 
+ <point ath="0.05918913105381307" atv="0.06472309974820478" /> 
+ <point ath="0.05941847196521621" atv="0.059218855526438616" /> 
+ <point ath="0.05895978274844538" atv="0.055090672668242587" /> 
+ <point ath="0.05827175092741754" atv="0.05287368576878024" /> 
+ <point ath="0.05697213570101667" atv="0.049357085923672404" /> 
+ <point ath="0.05536672939518894" atv="0.04629917316213804" />
+  <point ath="0.05444935476242563" atv="0.045381799460217205" /> 
+  <point ath="0.05345553182689855" atv="0.04324126046396022" /> 
+  <point ath="0.05116209494508439" atv="0.03949531737265745" /> 
+  <point ath="0.04825670499371881" atv="0.035784226582240015" /> 
+  <point ath="0.0456830224096052" atv="0.032824493463259725" /> 
+  <point ath="0.04310934006423395" atv="0.030122128447767134" /> 
+  <point ath="0.040278289652576404" atv="0.026776343171023544" /> 
+  <point ath="0.037833291823972104" atv="0.024331346295877354" /> 
+  <point ath="0.035259610017874365" atv="0.019956088835105093" /> 
+  <point ath="0.034230137375629965" atv="0.017382408123127187" /> 
+  <point ath="0.03191382422988909" atv="0.012492415158143326" /> 
+  <point ath="0.030498299744749602" atv="0.00863189480474239" /> 
+  <point ath="0.028825407333670228" atv="0.005157426832348742" /> 
+  <point ath="0.028696723326675055" atv="0.004642690867282402" />
+
+
 	</hotspot>
+
+
+	<!-- Riyadh ROad Yellow-->
+<hotspot name="hs_ColorFulRoad_6" polyline="true"
+
+visible="false"
+bordercolor="0x6c6363"   borderwidth="4" >
+
+
+<point ath="-0.011905709915481566" atv = "0.03922736700408265" /> <point ath="-0.018232504172601693" atv = "0.04180495557998639" /> <point ath="-0.022801856508806395" atv = "0.04391389134527842" /> <point ath="-0.024676462975776303" atv = "0.0446168701566853" /> <point ath="-0.026082417795464607" atv = "0.04531984867717367" /> <point ath="-0.027839861787924747" atv = "0.04567133856181818" /> <point ath="-0.031471913881091496" atv = "0.04496836287319669" /> <point ath="-0.033112195839635206" atv = "0.044148223031691594" /> <point ath="-0.03451815208001108" atv = "0.04297659415007209" /> <point ath="-0.03568978244175014" atv = "0.041687802156464185" /> <point ath="-0.03733006537322581" atv = "0.03899305483092523" /> <point ath="-0.03838453352159377" atv = "0.03606398133188811" /> <point ath="-0.038853186058474876" atv = "0.034658026042966625" /> <point ath="-0.03955616455220934" atv = "0.03313490788000102" /> <point ath="-0.04096212082345119" atv = "0.031494626965276655" /> <point ath="-0.04330538112458271" atv = "0.028917042651481185" /> <point ath="-0.04527961379494627" atv = "0.02762612949911569" /> <point ath="-0.047266593886206465" atv = "0.026187282757139007" /> <point ath="-0.052953467137513144" atv = "0.024268820789335028" /> <point ath="-0.05404973180463912" atv = "0.024131787861699238" /> <point ath="-0.05699594310993916" atv = "0.02385772204912379" /> <point ath="-0.06124396871121007" atv = "0.023994755443260556" /> <point ath="-0.07841581504811757" atv = "0.025776184395589992" /> <point ath="-0.09300983954983622" atv = "0.02694096551958088" /> <point ath="-0.10058500185243702" atv = "0.027283548358010192" /> <point ath="-0.10174978314444161" atv = "0.027557614544801625" /> <point ath="-0.10469599471019819" atv = "0.0281742634358864" /> <point ath="-0.1088069877024509" atv = "0.029064978384227513" /> <point ath="-0.11250688148379595" atv = "0.029955693212107247" /> <point ath="-0.11524754351796673" atv = "0.030161242635162868" /> <point ath="-0.12106259034521827" atv = "0.02975014564277407" /> <point ath="-0.14024722392815647" atv = "0.02728355003642827" /> <point ath="-0.15065233368784448" atv = "0.026324319148251153" /> <point ath="-0.15339299539209605" atv = "0.02605025296533291" /> <point ath="-0.1603131658273469" atv = "0.024542888936900133" /> <point ath="-0.16768103298358028" atv = "0.022335977630902636" /> <point ath="-0.17391018691307636" atv = "0.019678205450645303" /> <point ath="-0.17966817105372002" atv = "0.016631570997788177" /> <point ath="-0.1812831952948386" atv = "0.015477982769414863" /> <point ath="-0.18416716704552982" atv = "0.013747600430882738" /> <point ath="-0.18682042114619435" atv = "0.012017217981178796" /> <point ath="-0.1895890339952757" atv = "0.010632912036850201" /> <point ath="-0.19512625974323328" atv = "0.008210380486863844" /> <point ath="-0.1999713321974923" atv = "0.00647999794072754" /> <point ath="-0.20181707410421268" atv = "0.005787844897688427" /> <point ath="-0.20331673934737182" atv = "0.005557127235987968" /> <point ath="-0.2050471223445811" atv = "0.005211050723554308" /> <point ath="-0.20943075929903898" atv = "0.004288179992230169" /> <point ath="-0.21219937210241824" atv = "0.0038267446196119403" /> <point ath="-0.2161215735614519" atv = "0.002788512288277936" /> <point ath="-0.21854410971030802" atv = "0.002442435752544454" /> <point ath="-0.22223559327119347" atv = "0.0012888473178663698" /> <point ath="-0.2267345886309613" atv = "-0.0003261764202994745" /> <point ath="-0.23088750719733753" atv = "-0.0015951235632244254" /> <point ath="-0.23630937252409012" atv = "-0.003902299981257205" /> <point ath="-0.2456534369697465" atv = "-0.007132346295744425" /> <point ath="-0.26779633533419656" atv = "-0.011897366225428703" /> <point ath="-0.2754100213364836" atv = "-0.013512390104801908" /> <point ath="-0.28110978011932275" atv = "-0.015427989890430475" /> <point ath="-0.28669694414065816" atv = "-0.017290377901053602" /> <point ath="-0.29228410819405326" atv = "-0.018118105916798355" /> <point ath="-0.2968366122367456" atv = "-0.01915276572836419" /> <point ath="-0.30035445624412205" atv = "-0.019152765647669358" /> <point ath="-0.30801094006181984" atv = "-0.01935969717599205" /> <point ath="-0.31297730774861066" atv = "-0.018945832814261418" /> <point ath="-0.3210476543773666" atv = "-0.020394355320457195" /> <point ath="-0.3280833401025234" atv = "-0.022463673150821626" /> <point ath="-0.3356960983375643" atv = "-0.02825776525069512" /> <point ath="-0.33900700944417395" atv = "-0.03074094887199402" /> <point ath="-0.34480110407741904" atv = "-0.03384492884956308" /> <point ath="-0.35059519902762304" atv = "-0.03570731742316562" /> <point ath="-0.35576849835263147" atv = "-0.03632811440009974" /> <point ath="-0.36114872995818814" atv = "-0.03653504741961314" /> <point ath="-0.3671497578456524" atv = "-0.03674198020307879" /> <point ath="-0.3708745339055213" atv = "-0.03715584431230027" /> <point ath="-0.3787379501313808" atv = "-0.03860436764414804" /> <point ath="-0.3857736381817176" atv = "-0.04067368579688628" /> <point ath="-0.3934301217348093" atv = "-0.04357073027410173" /> <point ath="-0.3952924879804982" atv = "-0.04419152200592891" /> <point ath="-0.40108658212454884" atv = "-0.04750242892181299" /> <point ath="-0.4122607597954584" atv = "-0.05160538901918949" /> <point ath="-0.4234350728615368" atv = "-0.05429549015336963" /> <point ath="-0.43088461283684865" atv = "-0.05574400351800218" /> <point ath="-0.4466113864321528" atv = "-0.05948478376233848" /> <point ath="-0.455302512976516" atv = "-0.06279567516173301" /> <point ath="-0.45840648588603017" atv = "-0.06383032744008292" />
+
+	</hotspot>
+
+
+		<!-- Al Ahsa Road Pink-->
+<hotspot name="hs_ColorFulRoad_7" polyline="true"
+
+visible="false"
+bordercolor="0x6c6363"   borderwidth="4" >
+
+ <point ath="-0.07706639333139265" atv="0.09732385245385414" /> <point ath="-0.08729197588729676" atv="0.09546467946614366" /> <point ath="-0.0956583647187017" atv="0.0929857683319299" /> <point ath="-0.10402475551057933" atv="0.09143645151459982" /> <point ath="-0.11146154897056704" atv="0.08957726549246262" /> <point ath="-0.12075754240936476" atv="0.08740821310916393" /> <point ath="-0.12416607358437659" atv="0.08771808148965173" /> <point ath="-0.1275746049811346" atv="0.08771808369095366" /> <point ath="-0.13284233558039205" atv="0.08833781825989888" /> <point ath="-0.1467256774113821" atv="0.09254382166229377" /> <point ath="-0.15251571773137584" atv="0.09454039939113155" /> <point ath="-0.1587050725142376" atv="0.09733560351141125" /> <point ath="-0.17487726786202984" atv="0.10412395542956912" /> <point ath="-0.1770734926658406" atv="0.10532189826309538" /> <point ath="-0.18006834538505245" atv="0.1065198421798924" /> <point ath="-0.2395661424598643" atv="0.13207590832575486" /> <point ath="-0.2774150126976451" atv="0.14683494433992955" /> <point ath="-0.2991776420979022" atv="0.15362332232680473" /> <point ath="-0.3351159779354589" atv="0.16480413709227665" /> <point ath="-0.33870981394522914" atv="0.16640139122965358" /> <point ath="-0.36646222122806194" atv="0.17239107331859393" /> <point ath="-0.40040401197444453" atv="0.17878000516684603" /> <point ath="-0.42148390544946324" atv="0.1836129469884559" /> <point ath="-0.4392072309871651" atv="0.18673353322721312" />
+
+</hotspot>
 <!-- Highlighting Parks -->
 <!-- park 1 -->
  
@@ -1309,13 +1599,13 @@ size="2"
 			width="auto" shape="round" ath="0.0910358" atv="0.0334141" rotate="45"
 			line_lenght="100" line_width="1.5" animation="keep_opened" style="callout" 
 			title="King Abdul Aziz Seaport"
-			 onclick="js(showRoadHotspot('Road_1' ,'hs_Landmark_1', 'hs_PopUp_1'));"
+			 onclick="js(showRoadHotspot('hs_LandMarkLine_1' ,'hs_Landmark_1', 'hs_PopUp_1'));"
 			 circle_active_width="8" text_x=""></hotspot>
 
 			<hotspot name="hs_Landmark_2" callout_bg_border="0,0,0,0" width="auto" line_lenght="120" line_width="1.5"
 			shape="round" style="callout" 
 			ath="0.0701512" atv="0.0892284" rotate="102" animation="keep_opened"  
-			onclick="js(showRoadHotspot('Road_2', 'hs_Landmark_2', 'hs_PopUp_2'));"
+			onclick="js(showRoadHotspot('hs_LandMarkLine_2', 'hs_Landmark_2', 'hs_PopUp_2'));"
 			title="Imam Abdulrahman Bin Faisal University&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" 
 			circle_active_width="8" text_x=""></hotspot>
 
@@ -1324,21 +1614,21 @@ size="2"
 			width="auto" shape="round" ath="0.0716432" atv="0.119286" rotate="120"
 			line_lenght="70" line_width="1.5" animation="keep_opened" style="callout" 
 			title="Al Yamamah University"
-			 onclick="js(showRoadHotspot('Road_3','hs_Landmark_3', 'hs_PopUp_3'));"
+			 onclick="js(showRoadHotspot('hs_LandMarkLine_3','hs_Landmark_3', 'hs_PopUp_3'));"
 			 circle_active_width="8" text_x=""></hotspot>
 
 
 			<hotspot name="hs_Landmark_4" callout_bg_border="0,0,0,0" width="auto" line_lenght="90" line_width="1.5" 
 			shape="round" ath="0.0957102" atv="0.1463097" rotate="138" animation="keep_opened"
 			style="callout"  title="Seven Site" 
-			onclick="js(showRoadHotspot('Road_6','hs_Landmark_4', 'hs_PopUp_4'));"  circle_active_width="0.1"
+			onclick="js(showRoadHotspot('hs_LandMarkLine_6','hs_Landmark_4', 'hs_PopUp_4'));"  circle_active_width="0.1"
 			text_x=""></hotspot>
 
 		<hotspot name="hs_Landmark_5" callout_bg_border="0,0,0,0"
 			width="auto" shape="round" ath="0.0612752" atv="0.1153677" 
 			rotate="-207" line_lenght="200" line_width="1.5"  animation="keep_opened" style="callout" 
 			title="Dharan Expo Exibition Center" 
-			onclick="js(showRoadHotspot('Road_4','hs_Landmark_5' , 'hs_PopUp_5'));"
+			onclick="js(showRoadHotspot('hs_LandMarkLine_4','hs_Landmark_5' , 'hs_PopUp_5'));"
 
 			circle_active_width="8" text_x=""></hotspot>
 
@@ -1346,7 +1636,7 @@ size="2"
 			shape="round"
 			ath="0.0309812" atv="0.1152315" rotate="-90" animation="keep_opened" style="callout" 
 			title="Aramco Stadium"
-			 onclick="js(showRoadHotspot('Road_5', 'hs_Landmark_6' ,  'hs_PopUp_6'));"
+			 onclick="js(showRoadHotspot('hs_LandMarkLine_5', 'hs_Landmark_6' ,  'hs_PopUp_6'));"
 			circle_active_width="8" text_x=""></hotspot>
 
 
@@ -1355,14 +1645,14 @@ size="2"
 			line_lenght="70" line_width="1.5" shape="round" ath="-0.0558943" atv="0.1511067"
 			rotate="-130" animation="keep_opened" style="callout"  title="King Fahd University "
 			 circle_active_width="8" 
-			 onclick="js(showRoadHotspot('Road_7','hs_Landmark_7',  'hs_PopUp_7'));"
+			 onclick="js(showRoadHotspot('hs_LandMarkLine_7','hs_Landmark_7',  'hs_PopUp_7'));"
 			text_x=""></hotspot>
 			
 
 		<hotspot name="hs_Landmark_8" callout_bg_border="0,0,0,0" width="auto"
 			line_lenght="70" line_width="1.5" shape="round" ath="-0.2777324" atv="-0.2178239" rotate="70"
 			animation="keep_opened" style="callout" 
-			 onclick="js(showRoadHotspot('Road_8','hs_Landmark_8',  'hs_PopUp_8'));"
+			 onclick="js(showRoadHotspot('hs_LandMarkLine_8','hs_Landmark_8',  'hs_PopUp_8'));"
 			title="King Fahd International Airport"
 			
 			circle_active_width="8" text_x=""></hotspot>
