@@ -21,17 +21,23 @@
   font-size: 18px;
 }
 
+/* Default: icon is black */
 .filter-button .icon {
-  filter: brightness(0); /* Black */
+  filter: brightness(0); 
   transition: filter 0.3s ease;
 }
-/* Icon color when button is active (white) */
-.filter-button.active .icon,
-.all-active .filter-button .icon {
+
+/* If filter is individually active, make icon white */
+.filter-button.active .icon {
   filter: brightness(1000%);
 }
 
-/* When both Show All is active AND button is active */
+/* If "Show All" is active, and button is NOT individually active → icon is white */
+.all-active .filter-button:not(.active) .icon {
+  filter: brightness(1000%);
+}
+
+/* If both "Show All" AND button are active → override to black */
 .all-active .filter-button.active .icon {
   filter: brightness(0);
 }

@@ -562,10 +562,15 @@
 
         const colorFulRoads= 7;
         const famousRoadsCount = 15;
-
-
-
         const popUpCount = 8;
+
+        const filterState = {
+  Landmarks: true,
+  Roads: true,
+  Parks: true,
+  Education: true,
+  Health: true
+};
 
 
         const toggleFilterTheme = () => {
@@ -582,6 +587,13 @@
           filterButtons.forEach((btn) => {
             btn.classList.toggle("brown-theme", isActive);
             if (!isActive) btn.classList.remove("active");
+
+            // Reset all filter states to true if show all is active
+    if (isActive) {
+      const key = btn.dataset.filter;
+      filterState[key] = true;
+      btn.classList.add("active");
+    }
           });
 
           if (!krpano) return;
