@@ -32,14 +32,14 @@
   filter: brightness(1000%);
 }
 
-/* If "Show All" is active, and button is NOT individually active → icon is white */
-.all-active .filter-button:not(.active) .icon {
-  filter: brightness(1000%);
+/* 3. If button is OFF individually → back to black */
+.all-active .filter-button.active .icon {
+  filter: brightness(0);  /* force it black if individually turned off */
 }
 
-/* If both "Show All" AND button are active → override to black */
-.all-active .filter-button.active .icon {
-  filter: brightness(0);
+/* 4. If not Show All, but button is active → white */
+:not(.all-active) .filter-button.active .icon {
+  filter: brightness(1000%);
 }
 
 /* .filter-button.active .icon {
