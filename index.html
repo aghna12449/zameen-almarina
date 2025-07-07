@@ -549,9 +549,9 @@
           return krpano;
         };
 
-        const parksCount = 6;
-        const hospitalsCount = 8;
-        const educationalCount = 4;
+        const parksCount = 3;
+        const hospitalsCount = 4;
+        const educationalCount = 2;
 
         const landmarkCount = 8;
         const totalLandMarkLines = 8;
@@ -586,9 +586,9 @@
           // Define all categories and their counts
           const hotspotCategories = [
             { prefix: "hs_LandMarkLine_", count: totalLandMarkLines },
-            { prefix: "hs_M_hospitals_", count: hospitalsCount + 4 },
-            { prefix: "hs_M_parks_", count: parksCount + 3 },
-            { prefix: "hs_M_education_", count: educationalCount + 2 },
+            { prefix: "hs_M_hospitals_", count: hospitalsCount  },
+            { prefix: "hs_M_parks_", count: parksCount  },
+            { prefix: "hs_M_education_", count: educationalCount  },
             { prefix: "hs_Landmark_", count: landmarkCount },
             { prefix: "hs_famousRoad_", count: famousRoadsCount },
             { prefix: "hs_ColorFulRoad_", count: colorFulRoads },
@@ -2953,15 +2953,29 @@ function showRelatedHotspot(targetHotspotName) {
             // Add hotspot to Krpano dynamically
             krpano.call(`addhotspot(${hotspotName})`);
 
-            krpano.call(`
+            if(house.plot_number === "841"){
+              krpano.call(`
  
             
              
-                set(hotspot[${hotspotName}].fillalpha, 0.2);
-                set(hotspot[${hotspotName}].bordercolor, 0x39FF14);
-                set(hotspot[${hotspotName}].borderwidth, 1);
-                set(hotspot[${hotspotName}].capture, false);
-          `);
+ set(hotspot[${hotspotName}].fillalpha, 0.2);
+ set(hotspot[${hotspotName}].bordercolor, 0xffffff);
+ set(hotspot[${hotspotName}].borderwidth, 1);
+ set(hotspot[${hotspotName}].capture, false);
+`);
+            }else{
+              krpano.call(`
+ 
+            
+             
+ set(hotspot[${hotspotName}].fillalpha, 0.2);
+ set(hotspot[${hotspotName}].bordercolor, 0x39FF14);
+ set(hotspot[${hotspotName}].borderwidth, 1);
+ set(hotspot[${hotspotName}].capture, false);
+`);
+            }
+
+           
 
             krpano.call(
               `set(hotspot[${hotspotName}].onclick, js(handleHotspotClick('${hotspotName}', '${house.plot_number}', '${cords.ath}', '${cords.atv}')));`
