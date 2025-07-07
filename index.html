@@ -375,7 +375,7 @@
         class="filter-container"
         style="
           position: absolute;
-          top: 80px;
+          top: 100px;
           left: 5px;
           z-index: 9999;
           display: block;
@@ -611,7 +611,7 @@
             { prefix: "hs_famousRoad_", count: famousRoadsCount },
             { prefix: "hs_ColorFulRoad_", count: colorFulRoads },
 
-            { prefix: "hs_Label_", count: totalLabelsCount },
+             { prefix: "hs_Label_", count: totalLabelsCount },
 
             
             // { prefix: "hs_PopUp_", count: popUpCount },
@@ -620,15 +620,21 @@
 
 
 
-          console.log("Toggling famousRoadsCount", famousRoadsCount);
-          // Toggle visibility based on state
           hotspotCategories.forEach(({ prefix, count }) => {
-            const shouldBeVisible = prefix === "hs_Label_" ? false : isActive;
+  let shouldBeVisible;
 
-            for (let i = 1; i <= count; i++) {
-              krpano.set(`hotspot[${prefix}${i}].visible`,  isActive);
-            }
-          });
+  if (prefix === "hs_Label_") {
+    // Always hide hs_Label_ regardless of toggle state
+    shouldBeVisible = false;
+  } else {
+    // For all other categories, follow toggle state
+    shouldBeVisible = isActive;
+  }
+
+  for (let i = 1; i <= count; i++) {
+    krpano.set(`hotspot[${prefix}${i}].visible`, shouldBeVisible);
+  }
+});
 
 
 
@@ -1602,6 +1608,29 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
             icon: '<div><img src="skin/icons/erth_logo_white.png" width="100px" height="100px" class="breadcrumb-icon" /></div>',
           },
         ];
+
+        const initialBreadcrumbs = () => {
+    const wrapper = document.getElementById("breadcrumb-wrapper");
+    wrapper.innerHTML = ""; // clear old breadcrumbs
+
+    breadcrumbTrail.forEach((crumb) => {
+      const item = document.createElement("div");
+      item.className = "breadcrumb-item";
+      item.innerHTML = crumb.icon || crumb.title;
+
+        // Add click event for redirection
+    item.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.location.href = "https://www.zameengeomatics.com/public/Marina_Interactive_Masterplan/";
+      // Optionally: location.reload();
+    });
+
+      wrapper.appendChild(item);
+    });
+  };
+
+  // Render on page load
+  document.addEventListener("DOMContentLoaded", initialBreadcrumbs);
 
         // Mapping scene to readable name (if needed)
         const sceneTitleMap = {
