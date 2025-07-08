@@ -1517,9 +1517,12 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
 
           sliderSearchedHouses &&
             sliderSearchedHouses.forEach((house, index) => {
+               // Skip houses where isActivePlot is false
+    if (house.isActivePlot === false) return;
+
               const cords = house ? house?.coordinates[0] : "";
               const cardHTML = `
-  <div class="card-wrapper" > <div class="top-label-box"> Price: TBD </div>
+  <div class="card-wrapper" > <div class="top-label-box"> ${setPropertyType(house.property_type ) } </div>
         <div class="card_1" 
          onmouseover="handleHoverIn('${house.id}', '${cords.ath}', '${
                 cords.atv
@@ -1531,7 +1534,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
               }' )">
         
             <img src='${dynamicSliderImage(
-              house.total_area
+              house.property_type
             )}' height="100px" width="100px" />
             <div class="details_1">
                 <h4>Plot ${house.plot_number}</h4>
@@ -3449,11 +3452,45 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
         portraitQuery.addListener(applyStyles);
         landscapeQuery.addListener(applyStyles);
 
+     
+        const setPropertyType = (property_type) => {
+  let type;
+  const normalizedType = property_type?.trim().toLowerCase();
+
+  console.log("Normalized property_type:", normalizedType);
+
+  switch (normalizedType) {
+    case 'towers':
+    case 'commercial residential':
+      type = 'Mixed Use';
+      break;
+
+    case 'palacess':
+      type = 'Palaces';
+      break;
+
+    case 'residential':
+      type = 'Residential';
+      break;
+
+    case 'eastern municipality':
+      type = 'Municipal';
+      break;
+
+    default:
+      type = '';
+  }
+
+  return type;
+};
+
+
         const createCard = (title, description, imageUrl, response) => {
           let unitDetails = {
             zone: response[0].zone,
             plot_number: response[0].plot_number,
             block_number: response[0].block_number,
+            property_type: response[0].property_type,
             total_area: response[0].total_area,
             usage: response[0].usage,
             south: response[0]["الجنوب "],
@@ -3467,19 +3504,28 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
             existingCard.remove();
           }
           let bgImage;
-          if (unitDetails.total_area < 1500) {
+
+          if(unitDetails.property_type === 'Residential'){
             bgImage = "url('./skin/icons/renders/Al_Marina_Villa.png')";
-          } else if (unitDetails.total_area > 2000) {
+          }else if (unitDetails.property_type === 'Commercial Residential'){
             bgImage = "url('./skin/icons/renders/Al_Marina_commercial.png')";
-          } else if (
-            unitDetails.total_area > 1500 &&
-            unitDetails.total_area < 2000
-          ) {
-            bgImage = "url('./skin/icons/renders/Al_Marina_Palaces.png')";
-          } else {
-            bgImage = "url('./skin/icons/renders/Al_Marina_commercial.png')"; // default
+          }
+          
+          else if (unitDetails.property_type === 'Towers'){
+            bgImage = "url('./skin/icons/renders/Al_Marina_Towers.png')";
+
+          }else if (unitDetails.property_type === 'Eastern Municipality'){
+            bgImage = "url('./skin/icons/renders/Al_Marina_Villa.png')";
+          }else if (unitDetails.property_type === 'Palaces'){
+
+          bgImage = "url('./skin/icons/renders/Al_Marina_Palaces.png')";
           }
 
+          const type = unitDetails.property_type=== 'Towers ' || "Residential COmmerical"
+
+          const propertyTitle = setPropertyType(unitDetails.property_type)
+
+          console.log('propertyTitle', propertyTitle)
           cardContainer.id = "krpano-card";
           cardContainer.innerHTML = `
  <div class="property-card">
@@ -3490,7 +3536,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
    </div>
    <div class="inner-style">
    <div class="property-info">
-       <div class="price-tag"> Price: TBD</div>
+       <div class="price-tag"> ${ propertyTitle }</div>
         
       <h1 class="heading">Al Marina</h1>
         
@@ -3935,20 +3981,29 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
 
         let sliderDynamicImageURL = "";
 
-        const dynamicSliderImage = (area) => {
-          if (area < 1500) {
-            console.log("residential");
+        const dynamicSliderImage = (property_type) => {
+        
+          if(property_type === 'Residential'){
             sliderDynamicImageURL = "./skin/icons/renders/Al_Marina_Villa.png";
-          } else if (area > 2000) {
-            console.log("commercial");
+          }else if(property_type === 'Commerciial'){
             sliderDynamicImageURL =
-              "./skin/icons/renders/Commercial_Cropped.png";
-          } else if (area > 1500 && area < 2000) {
-            console.log("palace");
-            sliderDynamicImageURL =
-              "./skin/icons/renders/Al_Marina_Palaces.png";
+                        "./skin/icons/renders/Commercial_Cropped.png";
           }
-          console.log("sliderDynamicImageURL", sliderDynamicImageURL);
+
+          else if (property_type === 'Commercial Residential'){
+            sliderDynamicImageURL = "./skin/icons/renders/Al_Marina_Villa.png";
+          }
+
+          else if (property_type === 'Towers'){
+            sliderDynamicImageURL = "";
+
+          }else if (property_type === 'Eastern Municipality'){
+            sliderDynamicImageURL = "";
+          }else if (property_type === 'Palacess'){
+
+            sliderDynamicImageURL =
+                        "./skin/icons/renders/Al_Marina_Palaces.png";
+}
           return sliderDynamicImageURL;
         };
 
