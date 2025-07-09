@@ -1,0 +1,66 @@
+.callback-form {
+      max-width: 500px;
+      margin: 40px auto;
+      background-color: #e7dfd2;
+      border-radius: 15px;
+      padding: 30px 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .callback-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #444;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .form-row input,
+    .form-row textarea {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #a9967a;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    textarea {
+      width: 100%;
+      resize: none;
+      height: 100px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .form-group {
+      flex: 1;
+    }
+
+    .send-btn {
+      display: flex;
+      justify-content: flex-end;
+
+       
+    }
+
+    .send-btn button {
+      padding: 8px 20px;
+      border: 1px solid #a9967a;
+      border-radius: 8px;
+      background-color: #f6f0e4;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .send-btn button:hover {
+      background-color: #ded2bd;
+    }

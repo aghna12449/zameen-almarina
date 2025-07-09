@@ -39,6 +39,8 @@
     <link rel="stylesheet" href="houseCard.css" />
     <link rel="stylesheet" href="mapFilter.css" />
     <link rel="stylesheet" href="landmarkModal.css" />
+    <link rel="stylesheet" href="contactForm.css" />
+    
 
     <link rel="stylesheet" href="drone.css" />
 
@@ -456,6 +458,7 @@
         </div>
       </div>
 
+  
       <div id="controls">
         <!-- <button id="fullScreenBtn" title="Toggle Fullscreen">⛶</button> -->
         <!-- <button id="zoomInBtn">+</button>
@@ -472,6 +475,67 @@
             >
           </button>
         </div>
+
+       <!-- Bootstrap Button with Envelope Icon -->
+        <div>
+        <button type="button" id="openContactFormButton" class="btn btn-custom" style="display: flex; align-items: center; gap: 8px">
+          
+            <i class="bi bi-envelope"></i>
+        </button>
+    </div>
+<div class="callback-form" id="formWrapper" style="display: none;">
+
+
+  <form action="https://formsubmit.co/aghna.faran@dubizzlelabs.com" method="POST" id="callbackForm" >
+    <h2>Request callback</h2>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="firstName1">First Name</label>
+        <input type="text" id="firstName1" name="firstName1" required>
+      </div>
+      <div class="form-group">
+        <label for="lastName">First Name</label>
+        <input type="text" id="lastName" name="LastName" required>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="email">Email</label required>
+        <input type="email" id="email" name="email">
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="residence">Residence</label>
+        <input type="text" id="residence" name="residence">
+      </div>
+      <div class="form-group">
+        <label for="nationality">Nationality</label>
+        <input type="text" id="nationality" name="nationality">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group" style="flex: 1;">
+        <label for="message">Message</label>
+        <textarea id="message" name="message"></textarea>
+      </div>
+    </div>
+
+    <div class="send-btn">
+      <button type="submit" onclick="submitForm()">Send</button>
+    </div>
+    </form>
+</div>
+ 
+
       </div>
       <div id="time-toggle" class="time-toggle" style="display: none">
         <div class="toggle-option now active" onclick="toggleTimeView(this)">
@@ -641,7 +705,7 @@
         };
 
 
-      
+   
 
 function showRelatedHotspot(targetHotspotName) {
   console.log("showRelatedHotspot called with:", targetHotspotName);
@@ -716,6 +780,65 @@ function showRelatedHotspot(targetHotspotName) {
             }
           });
         });
+
+
+        const toggleButton = document.getElementById('openContactFormButton');
+  const form = document.getElementById('formWrapper');
+
+  toggleButton.addEventListener('click', () => {
+    console.log("toggleButton clicked");
+    if (form.style.display === 'none' || form.style.display === '') {
+      form.style.display = 'block';
+    } else {
+      form.style.display = 'none';
+    }
+  });
+   function submitForm() {
+    const form = document.getElementById("callbackForm");
+    form.submit();
+  }
+
+        // const openContactFormButton = document.getElementById('openContactFormButton');
+        // const contactFormOverlay = document.getElementById('contactFormOverlay');
+        // const closeContactFormButton = document.getElementById('closeContactFormButton');
+
+        // // Function to show the contact form
+        // function showContactForm() {
+        //     if (contactFormOverlay) { // Good practice to check if element exists
+        //         contactFormOverlay.style.display = 'flex';
+        //     }
+        // }
+
+        // // Function to hide the contact form
+        // function hideContactForm() {
+        //   console.log("hideContactForm called");
+         
+        //    const krpano = globalKrpano();
+        //     if (contactFormOverlay) { // Good practice to check if element exists
+        //         contactFormOverlay.style.display = 'none';
+        //     }
+        // }
+
+        // // Event listener for opening the form
+        // if (openContactFormButton) {
+        //     openContactFormButton.addEventListener('click', showContactForm);
+        // }
+
+        // // Event listener for closing the form (using the 'x' button)
+        // if (closeContactFormButton) {
+        //     closeContactFormButton.addEventListener('click', hideContactForm);
+        // }
+
+        // // Optional: Close the form if the user clicks outside of it
+        // if (contactFormOverlay) {
+        //     contactFormOverlay.addEventListener('click', (event) => {
+        //         if (event.target === contactFormOverlay) {
+        //             hideContactForm();
+        //         }
+        //     });
+        // }
+
+ 
 
         const toggleHotspotCategory = (filterName, isActive) => {
           console.log("Toggling category:", filterName, "Active:", isActive);
@@ -3017,18 +3140,21 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
             // Add hotspot to Krpano dynamically
             krpano.call(`addhotspot(${hotspotName})`);
 
-            if(house.plot_number === "841"){
-              krpano.call(`
+//             if(house.plot_number === "841"){
+//               krpano.call(`
  
             
              
- set(hotspot[${hotspotName}].fillalpha, 0.2);
- set(hotspot[${hotspotName}].bordercolor, 0xffffff);
- set(hotspot[${hotspotName}].borderwidth, 1);
- set(hotspot[${hotspotName}].capture, false);
-`);
-            }else{
-              krpano.call(`
+//  set(hotspot[${hotspotName}].fillalpha, 0.2);
+//  set(hotspot[${hotspotName}].bordercolor, 0xffffff);
+//  set(hotspot[${hotspotName}].borderwidth, 1);
+//  set(hotspot[${hotspotName}].capture, false);
+// `);
+//             }else{
+//              ;
+//             }
+
+            krpano.call(`
  
             
              
@@ -3036,10 +3162,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
  set(hotspot[${hotspotName}].bordercolor, 0x39FF14);
  set(hotspot[${hotspotName}].borderwidth, 1);
  set(hotspot[${hotspotName}].capture, false);
-`);
-            }
-
-           
+`)
 
             krpano.call(
               `set(hotspot[${hotspotName}].onclick, js(handleHotspotClick('${hotspotName}', '${house.plot_number}', '${cords.ath}', '${cords.atv}')));`
@@ -3399,7 +3522,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
 
         const fetchAlMarinaData = async () => {
           const baseUrl =
-            "https://erth-al-marina.zameengeomatics.com/api/getAlMarinaData";
+             "https://erth-al-marina.zameengeomatics.com/api/getAlMarinaData";
 
           return fetch(baseUrl)
             .then((res) => res.json())
@@ -3515,13 +3638,13 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
             bgImage = "url('./skin/icons/renders/Al_Marina_Towers.png')";
 
           }else if (unitDetails.property_type === 'Eastern Municipality'){
-            bgImage = "url('./skin/icons/renders/Al_Marina_Villa.png')";
-          }else if (unitDetails.property_type === 'Palaces'){
+            bgImage = "url('./skin/icons/renders/Al_Marina_commercial.png')";
+          }else if (unitDetails.property_type === 'Palacess'){
 
           bgImage = "url('./skin/icons/renders/Al_Marina_Palaces.png')";
           }
 
-          const type = unitDetails.property_type=== 'Towers ' || "Residential COmmerical"
+    
 
           const propertyTitle = setPropertyType(unitDetails.property_type)
 
@@ -3995,10 +4118,11 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
           }
 
           else if (property_type === 'Towers'){
-            sliderDynamicImageURL = "";
+            sliderDynamicImageURL = "./skin/icons/renders/Al_MarinaTowers.png";
 
           }else if (property_type === 'Eastern Municipality'){
-            sliderDynamicImageURL = "";
+           sliderDynamicImageURL =
+                        "./skin/icons/renders/Commercial_Cropped.png";
           }else if (property_type === 'Palacess'){
 
             sliderDynamicImageURL =
