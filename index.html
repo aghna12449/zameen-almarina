@@ -84,6 +84,7 @@
 
       .material-icons {
         font-size: 54px;
+        font-display: block;
         /* Customize size */
         color: white;
         /* Customize color */
@@ -372,7 +373,7 @@
         </div>
       </div>
 
-      <div
+       <div
         id="filterMapContainer"
         class="filter-container"
         style="
@@ -446,8 +447,10 @@
             </div>
           </div>
         </div>
-        <!-- <div class="map-filter-arrow" ></div> -->
+       
       </div>
+
+       <!-- <div class="map-filter-arrow" ></div> -->
 
       <!-- Modal -->
       <div id="notFoundModal" class="modal-overlay">
@@ -466,7 +469,7 @@
         <button id="zoomOutBtn">-</button> -->
         <div
           id="toggle_layer_wrapper"
-          style="display: flex; align-items: center; gap: 8px"
+          style="display: none; align-items: center; gap: 8px"
         >
           <span id="toggle-text" style="margin-bottom: 15px">Layer</span>
           <button id="toggle-button" onclick="toggleHotspotColor()">
@@ -478,7 +481,7 @@
 
        <!-- Bootstrap Button with Envelope Icon -->
         <div>
-        <button type="button" id="openContactFormButton" class="btn btn-custom" style="display: flex; align-items: center; gap: 8px">
+        <button type="button" id="openContactFormButton" class="btn btn-custom" style="display: none; align-items: center; gap: 8px">
           
             <i class="bi bi-envelope"></i>
         </button>
@@ -492,7 +495,7 @@
     <div class="form-row">
       <div class="form-group">
         <label for="firstName1">First Name</label>
-        <input type="text" id="firstName1" name="firstName1" required>
+        <input type="text" id="firstName" name="firstName1" required>
       </div>
       <div class="form-group">
         <label for="lastName">First Name</label>
@@ -530,7 +533,7 @@
     </div>
 
     <div class="send-btn">
-      <button type="submit" onclick="submitForm()">Send</button>
+      <button type="submit" onclick="submitForm(event)">Send</button>
     </div>
     </form>
 </div>
@@ -782,62 +785,39 @@ function showRelatedHotspot(targetHotspotName) {
         });
 
 
-        const toggleButton = document.getElementById('openContactFormButton');
+  const toggleButton = document.getElementById('openContactFormButton');
   const form = document.getElementById('formWrapper');
 
   toggleButton.addEventListener('click', () => {
     console.log("toggleButton clicked");
+
     if (form.style.display === 'none' || form.style.display === '') {
-      form.style.display = 'block';
+
+
+        form.style.display = 'block';
+     
+    
     } else {
       form.style.display = 'none';
     }
   });
-   function submitForm() {
-    const form = document.getElementById("callbackForm");
-    form.submit();
+   function submitForm(event) {
+    // event.preventDefault(); // Stop form from submitting
+
+    // const form = document.getElementById("myForm");
+    // const formData = new FormData(form);
+
+    // console.log("Form Submission:");
+
+    // for (const [name, value] of formData.entries()) {
+    //   console.log(`${name}: ${value}`);
+    // }
+
+    // Optional: Display in alert or DOM
+    // alert([...formData.entries()].map(([k, v]) => `${k}: ${v}`).join('\n'));
   }
 
-        // const openContactFormButton = document.getElementById('openContactFormButton');
-        // const contactFormOverlay = document.getElementById('contactFormOverlay');
-        // const closeContactFormButton = document.getElementById('closeContactFormButton');
-
-        // // Function to show the contact form
-        // function showContactForm() {
-        //     if (contactFormOverlay) { // Good practice to check if element exists
-        //         contactFormOverlay.style.display = 'flex';
-        //     }
-        // }
-
-        // // Function to hide the contact form
-        // function hideContactForm() {
-        //   console.log("hideContactForm called");
-         
-        //    const krpano = globalKrpano();
-        //     if (contactFormOverlay) { // Good practice to check if element exists
-        //         contactFormOverlay.style.display = 'none';
-        //     }
-        // }
-
-        // // Event listener for opening the form
-        // if (openContactFormButton) {
-        //     openContactFormButton.addEventListener('click', showContactForm);
-        // }
-
-        // // Event listener for closing the form (using the 'x' button)
-        // if (closeContactFormButton) {
-        //     closeContactFormButton.addEventListener('click', hideContactForm);
-        // }
-
-        // // Optional: Close the form if the user clicks outside of it
-        // if (contactFormOverlay) {
-        //     contactFormOverlay.addEventListener('click', (event) => {
-        //         if (event.target === contactFormOverlay) {
-        //             hideContactForm();
-        //         }
-        //     });
-        // }
-
+       
  
 
         const toggleHotspotCategory = (filterName, isActive) => {
@@ -4259,18 +4239,25 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
           const toggleLayerWrapper = document.getElementById(
             "toggle_layer_wrapper"
           );
+       // Hide toggleLayerWrapper if scene is the initial A scene
+if (currentScene === "scene_a-initial") {
+  toggleLayerWrapper.style.display = "none";
+  toggle.style.display = "none"; // Optional: hide toggle here too
+  return;
+}
 
-          if (
-            String(currentScene).includes("_360") ||
-            currentScene === "scene_13-180m" ||
-            currentScene === "future_scene_13-180m"
-          ) {
-            toggle.style.display = "block";
-            toggleLayerWrapper.style.display = "none";
-          } else {
-            toggle.style.display = "none";
-            toggleLayerWrapper.style.display = "flex";
-          }
+          // Define scenes that should show the toggle
+const toggleScenes = ["scene_13-180m", "future_scene_13-180m"];
+const is360Scene = String(currentScene).includes("_360");
+const isToggleScene = toggleScenes.includes(currentScene) || is360Scene;
+
+if (isToggleScene) {
+  toggle.style.display = "block";
+  toggleLayerWrapper.style.display = "none";
+} else {
+  toggle.style.display = "none";
+  toggleLayerWrapper.style.display = "flex";
+}
         }
 
         const enableZoomControls = () => {
