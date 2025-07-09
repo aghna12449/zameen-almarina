@@ -3588,6 +3588,11 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
       type = 'Mixed Use';
       break;
 
+      case 'commercial':
+      type = 'Commercial';
+      break;
+
+
     case 'palacess':
       type = 'Palaces';
       break;
@@ -3628,9 +3633,15 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
           }
           let bgImage;
 
+          console.log("unit ", response[0])
+
           if(unitDetails.property_type === 'Residential'){
             bgImage = "url('./skin/icons/renders/Al_Marina_Villa.png')";
-          }else if (unitDetails.property_type === 'Commercial Residential'){
+          }
+          else if (unitDetails.property_type === 'Commercial Residential'){
+            bgImage = "url('./skin/icons/renders/Al_Marina_commercial.png')";
+          }
+          else if (unitDetails.property_type === "commercial"){
             bgImage = "url('./skin/icons/renders/Al_Marina_commercial.png')";
           }
           
