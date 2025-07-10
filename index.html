@@ -121,6 +121,8 @@
     <script src="zone8.js"></script>
 
     <script src="zone9.js"></script>
+    <script src="src/contactForm.js"></script>
+    <script type="module" src="contactForm.js"></script>
 
     <div id="viewport">
       <!-- Your krpano viewer or other content -->
@@ -158,6 +160,8 @@
         </button>
         <!-- Your content here -->
       </div>
+
+      <div id="toast" class="toast">Message Sent Successfully</div>
 
       <div id="searchBarContainer" hidden>
         <input
@@ -477,25 +481,24 @@
         </div>
 
        <!-- Bootstrap Button with Envelope Icon -->
-        <div>
-        <button type="button" id="openContactFormButton" class="btn btn-custom" style="display: flex; align-items: center; gap: 8px">
-          
-            <i class="bi bi-envelope"></i>
-        </button>
-    </div>
-<div class="callback-form" id="formWrapper" style="display: none;">
+     
+    <div class="form-overlay" id="formWrapper"  style="display: none;">
+<div class="callback-form" >
 
+<!-- ❌ Close Button -->
 
-  <form action="https://formsubmit.co/aghna.faran@dubizzlelabs.com" method="POST" id="callbackForm" >
-    <h2>Request callback</h2>
+<button type="button" class="form-close-btn" id="closeFormBtn" onclick="closeCallBackForm()">&times;</button>
+
+  <form id="callbackForm" >
+    <h2>Request Callback</h2>
     
     <div class="form-row">
       <div class="form-group">
         <label for="firstName1">First Name</label>
-        <input type="text" id="firstName1" name="firstName1" required>
+        <input type="text" id="firstName" name="firstName" required>
       </div>
       <div class="form-group">
-        <label for="lastName">First Name</label>
+        <label for="lastName">Last Name</label>
         <input type="text" id="lastName" name="LastName" required>
       </div>
     </div>
@@ -530,13 +533,17 @@
     </div>
 
     <div class="send-btn">
-      <button type="submit" onclick="submitForm()">Send</button>
+      <button type="submit" >Send</button>
     </div>
     </form>
 </div>
- 
+</div>
 
       </div>
+
+    
+
+
       <div id="time-toggle" class="time-toggle" style="display: none">
         <div class="toggle-option now active" onclick="toggleTimeView(this)">
           <span class="material-icons">access_time</span> Now
@@ -603,6 +610,9 @@
         console.log("Input changed:", input);
 
         let zoneMaximum = 20000;
+
+        let contactCallabckFormURL = ''
+
 
         const globalKrpano = () => {
           const krpano = document.getElementById("krpanoSWFObject");
@@ -782,63 +792,24 @@ function showRelatedHotspot(targetHotspotName) {
         });
 
 
-        const toggleButton = document.getElementById('openContactFormButton');
+        const openContactFormButton = document.getElementById('openContactFormButton');
   const form = document.getElementById('formWrapper');
 
-  toggleButton.addEventListener('click', () => {
-    console.log("toggleButton clicked");
-    if (form.style.display === 'none' || form.style.display === '') {
-      form.style.display = 'block';
-    } else {
-      form.style.display = 'none';
-    }
-  });
-   function submitForm() {
-    const form = document.getElementById("callbackForm");
-    form.submit();
-  }
+  // openContactFormButton.addEventListener('click', () => {
+  //   console.log("openContactFormButton clicked");
+  //   if (form.style.display === 'none' || form.style.display === '') {
+  //     form.style.display = 'block';
+  //   } else {
+  //     form.style.display = 'none';
+  //   }
+  // });
+  //  function submitForm() {
+  //   const form = document.getElementById("callbackForm");
+  //   form.submit();
+  // }
 
-        // const openContactFormButton = document.getElementById('openContactFormButton');
-        // const contactFormOverlay = document.getElementById('contactFormOverlay');
-        // const closeContactFormButton = document.getElementById('closeContactFormButton');
+  
 
-        // // Function to show the contact form
-        // function showContactForm() {
-        //     if (contactFormOverlay) { // Good practice to check if element exists
-        //         contactFormOverlay.style.display = 'flex';
-        //     }
-        // }
-
-        // // Function to hide the contact form
-        // function hideContactForm() {
-        //   console.log("hideContactForm called");
-         
-        //    const krpano = globalKrpano();
-        //     if (contactFormOverlay) { // Good practice to check if element exists
-        //         contactFormOverlay.style.display = 'none';
-        //     }
-        // }
-
-        // // Event listener for opening the form
-        // if (openContactFormButton) {
-        //     openContactFormButton.addEventListener('click', showContactForm);
-        // }
-
-        // // Event listener for closing the form (using the 'x' button)
-        // if (closeContactFormButton) {
-        //     closeContactFormButton.addEventListener('click', hideContactForm);
-        // }
-
-        // // Optional: Close the form if the user clicks outside of it
-        // if (contactFormOverlay) {
-        //     contactFormOverlay.addEventListener('click', (event) => {
-        //         if (event.target === contactFormOverlay) {
-        //             hideContactForm();
-        //         }
-        //     });
-        // }
-
- 
 
         const toggleHotspotCategory = (filterName, isActive) => {
           console.log("Toggling category:", filterName, "Active:", isActive);
@@ -3672,10 +3643,24 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
    <div class="property-info">
        <div class="price-tag"> ${ propertyTitle }</div>
         
-      <h1 class="heading">Al Marina</h1>
-        
+ 
+       <div class="heading-row">
+     <h1 class="heading">Al Marina</h1>
+
+
+  <button  id="openContactFormButton" 
+           class="contact-btn" 
+           onclick="contactFormMethod()"
+          >
+          
+            <i class="fas fa-envelope"></i> Request
+        </button>
+
+</div>
+
       <h2 class="zone_title">
       <i class="fa fa-map-marker mr-2"></i>   
+
       <span class="display_card_zone">
       ${
         unitDetails.zone.charAt(0).toUpperCase() +
@@ -3687,15 +3672,14 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
       
           
           
-
-                
+          
             <button class="share-btn " onclick="copyAndSharePlot()">
                 <i class="fas fa-share"></i> Share
             </button>
    
              <div id="copyTooltip" class="clipboard-tooltip">Link Copied!</div>
           
-        </span>
+       
       </h2>
 
       
@@ -3935,8 +3919,42 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
           }
         };
 
+        
+
+        const contactFormMethod = () => {
+
+          const openContactFormButton = document.getElementById('openContactFormButton');
+          const form = document.getElementById('formWrapper');
+
+          console.log("openContactFormButton clicked");
+
+         if (form.style.display === 'none' || form.style.display === '') {
+            form.style.display = 'block';
+        } else {
+          form.style.display = 'none';
+           }
+
+        }
+
+        
+
+        const closeCallBackForm = () => {
+
+          form.style.display = 'none';
+
+
+
+
+}
+
+
+
         const copyAndSharePlot = () => {
           const url = window.location.href;
+
+   
+
+
 
           const tooltip = document.getElementById("copyTooltip");
 
@@ -3970,21 +3988,16 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
             }, 2000);
           }
 
-          // navigator.clipboard.writeText(url)
-          //   .then(() => {
-
-          //     const tooltip = document.getElementById("copyTooltip");
-          //     tooltip.classList.add("show");
-
-          //     setTimeout(() => {
-          //       tooltip.classList.remove("show");
-          //     }, 2000);
-          //   })
-          //   .catch((err) => {
-          //     console.error("Failed to copy URL: ", err);
-          //   });
+         // Store in localStorage 
+         localStorage.setItem("sharedPlotURL", url);
+          
         };
 
+     
+
+
+
+      
         const toggleSearchFilter = () => {
           const arrow = document.getElementById("toggleArrow_1");
           const searchBarContainer =

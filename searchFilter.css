@@ -1,5 +1,6 @@
 /* Custom styles for the compact search filter card */
 .compact-search-card {
+    width:280px;
     max-width: 280px; 
     margin-top: -40px !important;
     margin-left: 20px !important; 
