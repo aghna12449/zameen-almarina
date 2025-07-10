@@ -3,4 +3,4 @@
 
 # install live server
 
-# open with live server
+# open with live server from Index.html

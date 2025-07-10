@@ -34,6 +34,7 @@
 .compact-search-card .form-label {
     font-size: 0.9rem !important; 
     margin-bottom: 5px !important; 
+    display: inline-block;
 }
 
 .compact-search-card .input-group .form-control,

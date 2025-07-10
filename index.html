@@ -84,6 +84,7 @@
 
       .material-icons {
         font-size: 54px;
+        font-display: block;
         /* Customize size */
         color: white;
         /* Customize color */
@@ -376,7 +377,7 @@
         </div>
       </div>
 
-      <div
+       <div
         id="filterMapContainer"
         class="filter-container"
         style="
@@ -450,8 +451,10 @@
             </div>
           </div>
         </div>
-        <!-- <div class="map-filter-arrow" ></div> -->
+       
       </div>
+
+       <!-- <div class="map-filter-arrow" ></div> -->
 
       <!-- Modal -->
       <div id="notFoundModal" class="modal-overlay">
@@ -470,7 +473,7 @@
         <button id="zoomOutBtn">-</button> -->
         <div
           id="toggle_layer_wrapper"
-          style="display: flex; align-items: center; gap: 8px"
+          style="display: none; align-items: center; gap: 8px"
         >
           <span id="toggle-text" style="margin-bottom: 15px">Layer</span>
           <button id="toggle-button" onclick="toggleHotspotColor()">
@@ -4272,18 +4275,25 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
           const toggleLayerWrapper = document.getElementById(
             "toggle_layer_wrapper"
           );
+       // Hide toggleLayerWrapper if scene is the initial A scene
+if (currentScene === "scene_a-initial") {
+  toggleLayerWrapper.style.display = "none";
+  toggle.style.display = "none"; // Optional: hide toggle here too
+  return;
+}
 
-          if (
-            String(currentScene).includes("_360") ||
-            currentScene === "scene_13-180m" ||
-            currentScene === "future_scene_13-180m"
-          ) {
-            toggle.style.display = "block";
-            toggleLayerWrapper.style.display = "none";
-          } else {
-            toggle.style.display = "none";
-            toggleLayerWrapper.style.display = "flex";
-          }
+          // Define scenes that should show the toggle
+const toggleScenes = ["scene_13-180m", "future_scene_13-180m"];
+const is360Scene = String(currentScene).includes("_360");
+const isToggleScene = toggleScenes.includes(currentScene) || is360Scene;
+
+if (isToggleScene) {
+  toggle.style.display = "block";
+  toggleLayerWrapper.style.display = "none";
+} else {
+  toggle.style.display = "none";
+  toggleLayerWrapper.style.display = "flex";
+}
         }
 
         const enableZoomControls = () => {

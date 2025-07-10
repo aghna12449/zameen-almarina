@@ -11,11 +11,14 @@
 
 
 	<include url="callout.xml" />
-	<!-- <include url="vtour_DRONE/drone.xml"/>
-  	<include url="vtour_FUTURE/future.xml"/>  -->
+	<include url="vtour_DRONE/drone.xml"/>
+  	<include url="vtour_FUTURE/future.xml"/> 
 
- <!-- <include url="vtour-drone/drone.xml" />
-	<include url="vtour-future/future.xml" />  -->
+
+
+	<!-- ONly for live only folders names are changed  -->
+	<!-- <include url="vtour-drone/drone.xml" />
+	<include url="vtour-future/future.xml" /> -->
 
 	
 	<control
@@ -244,10 +247,7 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 		</image>
 
 
-
-
-		
-<!-- <hotspot 
+ <hotspot 
   name="hs_famousRoad_1"
 
   type="text"
@@ -259,9 +259,23 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
   renderer="css3d"
   css="font-family:Arial; font-size:16px; color:#000000; background:#D6E5BD; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
 />
-	 -->
 
-	 <hotspot 
+		
+<hotspot 
+  name="hs_famousRoad_1"
+
+  type="text"
+  visible="false"
+  ath="-0.0399378" atv=" 0.1246637"
+  rotate="70"
+  html="[b] Al Haramin Rd[/b]"
+
+  renderer="css3d"
+  css="font-family:Arial; font-size:16px; color:#000000; background:#D6E5BD; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+/>
+	
+
+	  <hotspot 
   name="hs_famousRoad_1"
 
   type="text"
@@ -383,7 +397,7 @@ ath="0.00545384276540517" atv="0.1522596106998893"
         css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
 
          html=" [b]King Abdul Aziz Rd[/b] "
-         />
+         /> 
 
 		 <!-- <hotspot name="hs_famousRoad_8"
         	 type="text"
@@ -399,7 +413,7 @@ ath="0.00545384276540517" atv="0.1522596106998893"
          /> -->
 
 
-		 <hotspot name="hs_famousRoad_9"
+		  <hotspot name="hs_famousRoad_9"
         	 type="text"
 			  visible="false"
           	ath=" 0.0568879" atv="0.1002357" edge="center"
@@ -411,7 +425,7 @@ ath="0.00545384276540517" atv="0.1522596106998893"
 	    css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
        
          html=" [b]King Faisal Rd[/b] "
-         />
+         /> 
 
 
 		 <hotspot name="hs_famousRoad_10"
@@ -432,22 +446,7 @@ ath="0.00545384276540517" atv="0.1522596106998893"
          />
 
 
- <!-- <hotspot name="hs_famousRoad_11"
-        	 type="text"
-			  visible="false"
-          	ath=" 0.028696723326675055" atv="0.004642690867282402"
-			
-		
 
-			 edge="center"
-        	size="1.0"
-	       renderer="css3d"
-		   css="font-family:Arial; font-size:16px; color:#000000; background:#FFDAB4; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
-		   
-		   rotate="35"
-       
-         html=" [b]King Faisal Rd[/b] "
-         /> -->
 
 		 <!-- Riyadh Road -->
 
@@ -1349,6 +1348,8 @@ title_background="0x41D274"
          title=""
          text_background=""
 		 onclick="js(showRelatedHotspot('hs_Label_5'));"
+
+
          content="&lt;div style=&quot;text-align:center;&quot;&gt;
                     &lt;img src=&quot;skin/icons/MapIcons/M_education.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
                   &lt;/div&gt;">
@@ -1396,9 +1397,12 @@ title_background="0x41D274"
          title=""
          text_background=""
 		 onclick="js(showRelatedHotspot('hs_Label_4'));"
+		
          content="&lt;div style=&quot;text-align:center;&quot;&gt;
                     &lt;img src=&quot;skin/icons/MapIcons/M_education.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
                   &lt;/div&gt;">
+
+				  
 			</hotspot>
 <!-- Rowad Al Khaleej International School is connected with school 2 -->
 			 <hotspot name="hs_Label_4"
@@ -1581,14 +1585,14 @@ visible="false"
 			title=""
 			text_background=""
 			content="&lt;img src=&quot;skin/icons/MapPopUps/DTO_KingAbdulAzizSeaport.png&quot; style=&quot;width:260px; height:270px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
-			url="skin/icons/MapPopUps/DTO_ImamAbdRahmanUni.png" circle_active_width="0.1"
+			url="skin/icons/MapPopUps/DTO_KingAbdulAzizSeaport.png" circle_active_width="0.1"
 			text_x="">
 
 		</hotspot>
 
 				<!-- Pop up for  imam uni -->
 
-<hotspot name="hs_PopUp_2"
+ <hotspot name="hs_PopUp_2"
 visible="false"
 			callout_bg_border="0,0,0,0"
 			callout_bg_color="0xa65c43"
@@ -1606,11 +1610,11 @@ visible="false"
 			style="callout"
 			title=""
 			text_background=""
-			content="&lt;img src=&quot;skin/icons/MapPopUps/DTO_ImamAbdRahmanUni.png&quot; style=&quot;width:260px; height:270px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
-			url="skin/icons/MapPopUps/DTO_ImamAbdRahmanUni.png" circle_active_width="0.1"
+			content="&lt;img src=&quot;skin/icons/MapPopUps/DTO_ImamABDRahmanUni.png&quot; style=&quot;width:260px; height:270px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
+		 circle_active_width="0.1"
 			text_x="">
 
-		</hotspot>
+		</hotspot> 
 
 			<!-- Pop up for  yamamah -->
 <hotspot name="hs_PopUp_3"
@@ -1630,7 +1634,7 @@ visible="false"
 			title=""
 			text_background=""
 			content="&lt;img src=&quot;skin/icons/MapPopUps/DTO_AlYamamah.png&quot; style=&quot;width:260px; height:270px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
-			url="skin/icons/MapPopUps/DTO_AlYamamah.png" circle_active_width="0.1"
+			 circle_active_width="0.1"
 			text_x="">
 
 		</hotspot>
@@ -1652,12 +1656,12 @@ visible="false"
 			title=""
 			text_background=""
 			content="&lt;img src=&quot;skin/icons/MapPopUps/DTO_SevenSite.png&quot; style=&quot;width:260px; height:270px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
-			url="skin/icons/MapPopUps/DTO_SevenSite.png" circle_active_width="0.1"
+			 circle_active_width="0.1"
 			text_x="">
 
 		</hotspot>
 			<!-- Pop up for  expo center -->
-<hotspot name="hs_PopUp_5"
+ <hotspot name="hs_PopUp_5"
 visible="false"
 			callout_bg_border="0,0,0,0"
 			callout_bg_color="0xa65c43"
@@ -1673,10 +1677,10 @@ visible="false"
 			title=""
 			text_background=""
 			content="&lt;img src=&quot;skin/icons/MapPopUps/DTO_DharanExpo.png&quot; style=&quot;width:260px; height:270px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
-			url="skin/icons/MapPopUps/DTO_DharanExpo.png" circle_active_width="0.1"
+			 circle_active_width="0.1"
 			text_x="">
 
-		</hotspot>
+		</hotspot> 
 			<!-- Pop up for  Aramco Stadium -->
 <hotspot name="hs_PopUp_6"
 visible="false"
@@ -1695,7 +1699,7 @@ visible="false"
 			title=""
 			text_background=""
 			content="&lt;img src=&quot;skin/icons/MapPopUps/DTO_AramcoStadium.png&quot; style=&quot;width:260px; height:270px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
-			url="skin/icons/MapPopUps/DTO_AramcoStadium.png" circle_active_width="0.1"
+		 circle_active_width="0.1"
 			text_x="">
 
 		</hotspot>
@@ -1718,7 +1722,7 @@ visible="false"
 			title=""
 			text_background=""
 			content="&lt;img src=&quot;skin/icons/MapPopUps/DTO_KingFahdUniversity.png&quot; style=&quot;width:260px; height:270px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
-			url="skin/icons/MapPopUps/DTO_KingFahdUniversity.png" circle_active_width="0.1"
+			 circle_active_width="0.1"
 			text_x="">
 
 		</hotspot>
@@ -1739,7 +1743,7 @@ visible="false"
 			title=""
 			text_background=""
 			content="&lt;img src=&quot;skin/icons/MapPopUps/DTO_KingFahdIntAirport.png&quot; style=&quot;width:260px; height:270px; display:block; margin: 0 auto; padding-bottom: 25px;&quot; /&gt;"
-			url="skin/icons/MapPopUps/DTO_KingFahdIntAirport.png" circle_active_width="0.1"
+		 circle_active_width="0.1"
 			text_x="">
 
 		</hotspot>
