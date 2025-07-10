@@ -698,6 +698,14 @@
     shouldBeVisible = isActive;
   }
 
+  for (let i = 1; i <= popUpCount; i++) {
+    krpano.set(`hotspot[${'hs_PopUp_'}${i}].visible`, false);
+  }
+
+   for (let i = 1; i <= totalLandMarkLines; i++) {
+    krpano.set(`hotspot[${'hs_LandMarkLine_'}${i}].visible`, false);
+  }
+
   for (let i = 1; i <= count; i++) {
     krpano.set(`hotspot[${prefix}${i}].visible`, shouldBeVisible);
   }
@@ -728,7 +736,22 @@ function showRelatedHotspot(targetHotspotName) {
   
 }
 
+// Listen for global document clicks
 
+    // document.addEventListener("click", function (event) {
+    //   let krpano = globalKrpano();
+    //   const popupHotspot = krpano.get("hotspot[hs_PopUp_1]");
+
+    //   // Check if hotspot is visible
+    //   if (popupHotspot && popupHotspot.visible) {
+    //     const clickedInsideHotspot = event.target.closest('.krpano-hotspot');
+
+    //     // If clicked outside any .krpano-hotspot
+    //     if (!clickedInsideHotspot) {
+    //       krpano.set("hotspot[hs_PopUp_1].visible", false);
+    //     }
+    //   }
+    // });
 
 
         const toggleShowAll = () => {
