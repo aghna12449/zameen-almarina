@@ -1,5 +1,19 @@
+.form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.1); /* optional dim background */
+  z-index: 9999;
+}
+
 .callback-form {
-      max-width: 500px;
+  position: relative;
+      width: 30%;
       margin: 40px auto;
       background-color: #e7dfd2;
       border-radius: 15px;
@@ -21,7 +35,7 @@
 
     .form-row input,
     .form-row textarea {
-      flex: 1;
+      width: 100%;
       padding: 10px;
       border: 1px solid #a9967a;
       border-radius: 8px;
@@ -53,14 +67,27 @@
     }
 
     .send-btn button {
-      padding: 8px 20px;
-      border: 1px solid #a9967a;
+      padding: 8px 20px !important;
+      border: 1px solid #a9967a !important;
       border-radius: 8px;
       background-color: #f6f0e4;
-      cursor: pointer;
-      font-size: 14px;
+      cursor: pointer !important;
+      font-size: 14px !important;
     }
 
     .send-btn button:hover {
       background-color: #ded2bd;
+    }
+
+
+    .form-close-btn {
+      position: absolute;
+      top: -15px;
+      right: 0px;
+      background: transparent;
+      border: none;
+      font-size: 24px;
+      color: #444;
+      cursor: pointer;
+      z-index: 10000;
     }
