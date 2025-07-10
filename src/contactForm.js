@@ -51,9 +51,9 @@ if (storedURL) {
   
 
 
-// Function to send POST request
+// Function to send POST request 
 const sendContactRequest=(obj) => {
-    fetch("http://localhost:8000/api/contact", {
+    fetch("https://erth-al-marina.zameengeomatics.com/api/contact", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
