@@ -1,105 +1,108 @@
+const handleFormSubmit = (event) => {
+  event.preventDefault(); // Prevent default form submission
 
+  // Collect form values
+  const firstName = document.getElementById("firstName").value;
+  const lastName = document.getElementById("lastName").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+  const residence = document.getElementById("residence").value;
+  const nationality = document.getElementById("nationality").value;
+  const message = document.getElementById("message").value;
+  let propertyURL = "";
 
-const  handleFormSubmit = (event) =>{ 
-    event.preventDefault(); // Prevent default form submission
-  
-    // Collect form values
-    const firstName = document.getElementById("firstName").value;
-    const lastName = document.getElementById("lastName").value;
-    const email = document.getElementById("email").value;
-    const phone = document.getElementById("phone").value;
-    const residence = document.getElementById("residence").value;
-    const nationality = document.getElementById("nationality").value;
-    const message = document.getElementById("message").value;
-  let propertyURL = ""
+  const storedURL = localStorage.getItem("sharedPlotURL");
 
-    const storedURL = localStorage.getItem("sharedPlotURL");
+  if (storedURL) {
+    propertyURL = storedURL;
+    console.log("Retrieved URL from localStorage:", storedURL);
+  } else {
+    console.log("No URL found in localStorage.");
+    propertyURL = "N/A";
+  }
 
-if (storedURL) {
-  propertyURL = storedURL
-  console.log("Retrieved URL from localStorage:", storedURL);
-} else {
-  console.log("No URL found in localStorage.");
-  propertyURL= "N/A"
-}
-   
+  let obj = {
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+    phone: phone,
+    residence: residence,
+    nationality: nationality,
+    message: message,
+    propertyURL: propertyURL,
+  };
 
-   let obj=  {
-        "firstName": firstName,
-        "lastName": lastName,
-        "email": email,
-        "phone": phone,
-        "residence": residence,
-        "nationality": nationality,
-        "message": message,
-        "propertyURL" : propertyURL
+  // Call the post function
+  sendContactRequest(obj);
+};
+
+// Function to send POST request
+const sendContactRequest = (obj) => {
+  const formWrapper = document.getElementById("formWrapper");
+
+  fetch("https://erth-2-al-marina.zameengeomatics.com/api/contact", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(obj),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to submit form.");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      showToast((isSucces = true), (message = "Message Sent Successfully"));
+
+      // Hide the form overlay
+
+      if (formWrapper) {
+        formWrapper.style.display = "none";
       }
 
-     // Call the post function
-      sendContactRequest(obj);
-
-  }
-  
-
-
-// Function to send POST request 
-const sendContactRequest=(obj) => {
-    fetch("https://erth-al-marina.zameengeomatics.com/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(obj),
+      // Optional: Clear form inputs
+      document.getElementById("callbackForm").reset();
     })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to submit form.");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Success:", data);
+    .catch((error) => {
+      showToast(
+        (isSucces = false),
+        (message = "Failed to send message. Please try again.")
+      );
 
-    // ✅ Show toast
-   // showToast();
+      if (formWrapper) {
+        formWrapper.style.display = "none";
+      }
+    });
+};
 
-        // Hide the form overlay
-              const formWrapper = document.getElementById("formWrapper");
-              if (formWrapper) {
-               formWrapper.style.display = "none";
-              }
+const showToast = (isSucces, message) => {
+  const toastEl = document.getElementById("displayToast");
 
-          // Optional: Clear form inputs
-          document.getElementById("callbackForm").reset();
+  // Set the message text
+  const toastBody = toastEl.querySelector(".toast-body");
+  if (toastBody) toastBody.textContent = message;
 
-
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-       });
+  if (isSucces) {
+    toastEl.classList.remove("bg-danger");
+    toastEl.classList.add("bg-primary"); // Or "bg-success" if you prefer
+  } else {
+    toastEl.classList.remove("bg-primary");
+    toastEl.classList.add("bg-danger");
   }
+  const toast = new bootstrap.Toast(toastEl);
+  toast.show();
+  // Create and show the Bootstrap toast
+  setTimeout(() => {
+    toast.hide();
+  }, 3000);
+};
 
-
-  const showToast=(message = "Message Sent Successfully") =>{
-    const toast = document.getElementById("toast");
-    toast.textContent = message;
-
-    console.log("showToast", toast)
-    toast.classList.add("show");
-  
-    // Hide after 3 seconds
-
-    setTimeout(() => {
-      toast.classList.remove("show");
-    }, 3000);
+// Attach event listener when DOM is loaded
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("callbackForm");
+  if (form) {
+    form.addEventListener("submit", handleFormSubmit);
   }
-
-
-  // Attach event listener when DOM is loaded
-  document.addEventListener("DOMContentLoaded", function() {
-    const form = document.getElementById("callbackForm");
-    if (form) {
-      form.addEventListener("submit", handleFormSubmit);
-    }
-  });
-  
+});
