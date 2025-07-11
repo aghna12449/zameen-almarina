@@ -22,16 +22,7 @@ if (storedURL) {
   console.log("No URL found in localStorage.");
   propertyURL= "N/A"
 }
-    //
-    // Print values to console
-    console.log("First Name:", firstName);
-    console.log("Last Name:", lastName);
-    console.log("Email:", email);
-    console.log("Phone:", phone);
-    console.log("Residence:", residence);
-    console.log("Nationality:", nationality);
-    console.log("Message:", message);
-
+   
 
    let obj=  {
         "firstName": firstName,
