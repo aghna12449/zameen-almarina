@@ -20,6 +20,7 @@
       border-radius: 15px;
       padding: 30px 20px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      top: 8%;
     }
 
     .callback-form h2 {
