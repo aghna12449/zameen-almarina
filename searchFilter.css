@@ -128,7 +128,7 @@
     justify-content: center;
     align-items: center;
     position: absolute; /* Position it absolutely within the red bar */
-    top: 35%; /* Center vertically within the red bar */
+    top: 28%; /* Center vertically within the red bar */
     left: 50px; /* Adjust to half of its width to align its center with the edge of the red bar */
     transform: translateY(-50%) translateX(-50%); /* Adjust for vertical centering */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Shadow for the blue square */
