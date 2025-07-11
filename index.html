@@ -625,7 +625,7 @@
             }
           }
         });
-        console.log("Input changed:", input);
+      
 
         let zoneMaximum = 20000;
 
@@ -744,7 +744,7 @@
    
 
 function showRelatedHotspot(targetHotspotName) {
-  console.log("showRelatedHotspot called with:", targetHotspotName);
+  
   const krpano = globalKrpano();
   if (!krpano || !targetHotspotName) return;
 
@@ -768,7 +768,6 @@ function showRelatedHotspot(targetHotspotName) {
           const container = document.getElementById("showAllContainer");
           const arrow = document.querySelector(".map-filter-arrow");
 
-          console.log("container.style.display ", container.style.display);
           if (container.style.display === "none") {
             container.style.display = "block"; // Or "block" based on your layout
             arrow.innerText = "▲";
@@ -1196,14 +1195,14 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
               if (width > 1025) {
                 if (propertyCard) {
                   console.log("inital load first ");
-                  propertyCard.style.right = "90px";
+                  propertyCard.style.right = "40px";
                   propertyCard.style.top = "12%";
                 }
               } else {
                 console.log("inital load second");
                 if (propertyCard) {
-                  propertyCard.style.right = "20px";
-                  propertyCard.style.top = "8%";
+                  propertyCard.style.right = "40px";
+                  propertyCard.style.top = "7%";
                   //  propertyCard.style.right = "90px";
                   // propertyCard.style.top = "12%";
                 }
@@ -3220,7 +3219,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
 
           const savedHotspot = params.get("hotspot");
 
-          console.log("savedHotspot", savedHotspot);
+         
           if (savedHotspot) {
             const cleanedhotspotName = savedHotspot.replace(/^hs_/, "");
             blinkIndividualHotspot(cleanedhotspotName, true);
@@ -3267,8 +3266,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
           }
 
           const currentFov = krpano.get("view.fov");
-          console.log("Current Zoom Level (FOV):", currentFov);
-
+         
           // Assuming a default FOV and animation speed
           const fov = currentFov; // Or whatever default FOV you need
           const animationSpeed = 0.1; // Smoothness value
@@ -3281,9 +3279,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
               `lookto(${numericAth}, ${numericAtv}, ${fov}, smooth(${animationSpeed}));`
             );
 
-            console.log(
-              `Attempting to fly to ATH: ${numericAth}, ATV: ${numericAtv}`
-            );
+            
           } else {
             console.error(
               "krpano object not found. Cannot execute flyToHouse."
@@ -3334,7 +3330,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
               }
             }
 
-            console.log("currentScene", currentScene);
+           
 
             const icon_360 = document.getElementById("zone_5_360_icon");
             if (icon_360) {
@@ -3466,7 +3462,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
               );
 
               if (!building1AlreadyExists) {
-                console.log("building1houseData", building1houseData);
+             
 
                 dynamicZoneRendering(building1houseData, response, krpano);
                 breadcrumbTrail.push({
@@ -3480,7 +3476,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
                 updateAreaAndSearch(false);
               }
             } else if (currentScene === "scene_i-building_2") {
-              console.log("building2houseData", building2houseData);
+            
               const building2AlreadyExists = breadcrumbTrail.some(
                 (crumb) => crumb.scene === "scene_i-building_2"
               );
@@ -3581,7 +3577,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
   let type;
   const normalizedType = property_type?.trim().toLowerCase();
 
-  console.log("Normalized property_type:", normalizedType);
+
 
   switch (normalizedType) {
     case 'towers':
@@ -3634,7 +3630,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
           }
           let bgImage;
 
-          console.log("unit ", response[0])
+          
 
           if(unitDetails.property_type === 'Residential'){
             bgImage = "url('./skin/icons/renders/Al_Marina_Villa.png')";
@@ -3660,7 +3656,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
 
           const propertyTitle = setPropertyType(unitDetails.property_type)
 
-          console.log('propertyTitle', propertyTitle)
+      
           cardContainer.id = "krpano-card";
           cardContainer.innerHTML = `
  <div class="property-card">
@@ -3772,16 +3768,16 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
           if (imagePropertyCard) {
             imagePropertyCard.style.backgroundImage = `${bgImage}`;
           }
-          console.log("inital load first ", width);
+   
           if (width > 1025) {
             if (propertyCard) {
-              propertyCard.style.right = "90px";
+              propertyCard.style.right = "40px";
               propertyCard.style.top = "12%";
             }
           } else {
             if (propertyCard) {
               // propertyCard.style.position = "fixed";
-            
+              propertyCard.style.right = "40px";
               propertyCard.style.top = "7%";
               // propertyCard.style.right = "5%";
             }
@@ -3893,7 +3889,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
           }
 
           const point = krpano.spheretoscreen(hotspot.ath, hotspot.atv);
-          console.log(" ======>>>>>", point);
+         
           const x = point.x;
           const y = point.y;
 
@@ -3957,7 +3953,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
           const openContactFormButton = document.getElementById('openContactFormButton');
           const form = document.getElementById('formWrapper');
 
-          console.log("openContactFormButton clicked");
+          
 
          if (form.style.display === 'none' || form.style.display === '') {
             form.style.display = 'block';
@@ -4085,7 +4081,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
         };
 
         const showIndividualHouseCard = (house, id) => {
-          console.log("id");
+         
           const unitData = localStorage.getItem("response");
 
           const parsedData = JSON.parse(unitData);
@@ -4140,7 +4136,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
           //   Assuming the first element in the response array corresponds to the clicked house
           if (unitData && unitData.length > 0) {
             blinkOnLoad();
-            console.log("After filteredData", filteredData);
+         
 
             createCard(
               "Title",
@@ -4394,7 +4390,7 @@ if (isToggleScene) {
             const krpano = document.getElementById("krpanoSWFObject");
 
             if (krpano && krpano.call) {
-              console.log("FIRST IF");
+              
               krpano.call(`loadscene(${scene}, null, MERGE, BLEND(1));`);
 
               const params = new URLSearchParams(window.location.search);
