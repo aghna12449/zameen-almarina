@@ -499,7 +499,7 @@
     <div class="form-overlay" id="formWrapper"  style="display: none;">
 <div class="callback-form" >
 
-<!-- ❌ Close Button -->
+<!-- Close Button -->
 
 <button type="button" class="form-close-btn" id="closeFormBtn" onclick="closeCallBackForm()">&times;</button>
 
@@ -718,7 +718,6 @@
     // For all other categories, follow toggle state
     shouldBeVisible = isActive;
   }
-
   for (let i = 1; i <= popUpCount; i++) {
     krpano.set(`hotspot[${'hs_PopUp_'}${i}].visible`, false);
   }
@@ -757,22 +756,7 @@ function showRelatedHotspot(targetHotspotName) {
   
 }
 
-// Listen for global document clicks
 
-    // document.addEventListener("click", function (event) {
-    //   let krpano = globalKrpano();
-    //   const popupHotspot = krpano.get("hotspot[hs_PopUp_1]");
-
-    //   // Check if hotspot is visible
-    //   if (popupHotspot && popupHotspot.visible) {
-    //     const clickedInsideHotspot = event.target.closest('.krpano-hotspot');
-
-    //     // If clicked outside any .krpano-hotspot
-    //     if (!clickedInsideHotspot) {
-    //       krpano.set("hotspot[hs_PopUp_1].visible", false);
-    //     }
-    //   }
-    // });
 
 
         const toggleShowAll = () => {
@@ -1635,7 +1619,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
         let currentAppearingHotpsots = [];
         function handleHoverIn(id, ath, atv) {
           blinkIndividualHotspot(id, true);
-          flyToHouse(ath, atv);
+          // flyToHouse(ath, atv);
         }
 
         function handleHoverOut(element) {
