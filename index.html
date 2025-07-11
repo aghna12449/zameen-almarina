@@ -127,6 +127,10 @@
 
     <script src="zone9.js"></script>
     <script src="src/contactForm.js"></script>
+
+
+    <script src="config.js"></script>
+
     <script type="module" src="contactForm.js"></script>
 
     <div id="viewport">
@@ -504,7 +508,7 @@
 <button type="button" class="form-close-btn" id="closeFormBtn" onclick="closeCallBackForm()">&times;</button>
 
   <form id="callbackForm" >
-    <h2>Request Callback</h2>
+    <h2>Request Form</h2>
     
     <div class="form-row">
       <div class="form-group">
@@ -1740,8 +1744,10 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
         // Add click event for redirection
     item.addEventListener("click", (event) => {
       event.preventDefault();
-      window.location.href = "https://www.zameengeomatics.com/public/Marina_Interactive_Masterplan/";
-      // Optionally: location.reload();
+
+     // Production / Staging
+     window.location.href = currentEnvConfig.redirectURL;
+
     });
 
       wrapper.appendChild(item);
@@ -2916,10 +2922,12 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
               const crumbIndex = parseInt(this.getAttribute("data-index"));
               if (crumbIndex === 0) {
                 event.preventDefault();
+        
+                // production || staging
 
-                window.location.href =
-                  "https://www.zameengeomatics.com/public/Marina_Interactive_Masterplan/";
-                //location.reload();
+                window.location.href = currentEnvConfig.redirectURL;
+
+               
               } else {
                 removeBreadCrumbItem(sceneName, crumbIndex);
               }
@@ -3773,6 +3781,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
           } else {
             if (propertyCard) {
               // propertyCard.style.position = "fixed";
+            
               propertyCard.style.top = "7%";
               // propertyCard.style.right = "5%";
             }
