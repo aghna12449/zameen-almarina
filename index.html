@@ -707,6 +707,7 @@
     // For all other categories, follow toggle state
     shouldBeVisible = isActive;
   }
+  
   for (let i = 1; i <= popUpCount; i++) {
     krpano.set(`hotspot[${'hs_PopUp_'}${i}].visible`, false);
   }
@@ -722,7 +723,7 @@
 
 
 
-        };
+};
 
 
    
@@ -3962,11 +3963,26 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
         const copyAndSharePlot = () => {
           const url = window.location.href;
 
-   
+
+                const shareData = {
+                  title: 'Al Marina',
+                  text: 'Check out this amazing project!',
+                   url: url
+                }
+        
 
 
 
           const tooltip = document.getElementById("copyTooltip");
+        
+          if (navigator.share) {
+           navigator.share(shareData)
+           .then(() => console.log(' '))
+          .catch((err) => console.error('Error sharing:', err));
+           } else {
+            console.log("Some thing went wrong")
+          }
+
 
           if (navigator.clipboard && window.isSecureContext) {
             navigator.clipboard
