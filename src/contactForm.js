@@ -40,7 +40,7 @@ const handleFormSubmit = (event) => {
 const sendContactRequest = (obj) => {
   const formWrapper = document.getElementById("formWrapper");
 
-  fetch("https://erth-2-al-marina.zameengeomatics.com/api/contact", {
+  fetch("https://erth-al-marina.zameengeomatics.com/api/contact", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
