@@ -1,0 +1,105 @@
+#marinaFilterContainer {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  width: 100%;
+  max-width: 300px;
+}
+
+.marina-filter-container h3 {
+  margin: 0 0 16px;
+  font-size: 18px;
+  color: black;
+}
+
+/* Show All Toggle Section */
+.marina-show-all {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Filter Buttons Wrapper */
+.marina-filter-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Filter Button Styles */
+.marina-filter-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  background: #f5f5f5;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+  color: #333;
+  border: 1px solid transparent;
+}
+
+.marina-filter-button:hover {
+  background: #e0e0e0;
+  border-color: #ccc;
+}
+
+.marina-filter-button.active {
+  background: #3498db;
+  color: white;
+}
+
+.marina-filter-button.active:hover {
+  background: #2980b9;
+}
+
+/* Toggle Button */
+.marina-map-toggle {
+  width: 40px;
+  height: 20px;
+  background: #ddd;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.marina-map-toggle::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.2s;
+}
+
+.marina-map-toggle.active {
+  background: #3498db;
+}
+
+.marina-map-toggle.active::after {
+  transform: translateX(20px);
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  #marinaFilterContainer {
+    max-width: 100%;
+    padding: 12px;
+  }
+
+  .marina-filter-button {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+}

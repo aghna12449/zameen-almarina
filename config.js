@@ -1,5 +1,5 @@
 
-const ENV = "staging"; // or "production"
+const ENV = "production"; // or "staging"
 
 const CONFIG = {
   production: {

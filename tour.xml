@@ -11,14 +11,13 @@
 
 
 	<include url="callout.xml" />
-	<!-- <include url="vtour_DRONE/drone.xml"/>
-  	<include url="vtour_FUTURE/future.xml"/>  -->
+	<include url="vtour_DRONE/drone.xml"/>
+  	<include url="vtour_FUTURE/future.xml"/> 
 
 
 
 	<!-- ONly for live only folders names are changed  -->
-	<!-- <include url="vtour-drone/drone.xml" />
-	<include url="vtour-future/future.xml" /> -->
+?
 
 	
 	<control
@@ -1972,6 +1971,70 @@ ath = "-0.0424337 " atv = "0.0877063"
 				multires="512,1024x578,2048x1152,4096x2304" />
 		</image>
 
+<!-- hotspots for highlighting key areas in b-AL MARINA aerial scene -->
+
+
+
+		<hotspot name="hs_entry_b-AL_MARINA_aerial"
+			callout_bg_border="0,0,0,0"
+			callout_border_color="0xa65c43"
+			width="auto"
+			shape="circle"
+			line_lenght="30"
+			ath="-0.4541016" atv="0.017273"
+			rotate="120"
+			animation="keep_opened"
+			
+			text_background=""
+			style="callout"
+			title=" Main Entrance AL MARINA"
+			zorder="1"
+			
+			circle_active_width="0"
+			text_x="">
+
+
+		</hotspot>
+		<hotspot name="hs_shopping"
+			callout_bg_border="0,0,0,0"
+			callout_border_color="0xa65c43"
+			width="auto"
+			shape="circle"
+			line_lenght="30"
+			ath="0.034648" atv="-0.0265503"
+			rotate="120"
+			animation="keep_opened"
+			
+			text_background=""
+			style="callout"
+			title=" Shopping Mall "
+			zorder="1"
+			
+			circle_active_width="0"
+			text_x="">
+
+
+		</hotspot>
+		<hotspot name="hs_park-1"
+			callout_bg_border="0,0,0,0"
+			callout_border_color="0xa65c43"
+			width="auto"
+			shape="circle"
+			line_lenght="30"
+			ath="-0.0521241" atv="0.0269165"
+			rotate="90"
+			animation="keep_opened"
+			
+			text_background=""
+			style="callout"
+			title=" Park "
+			zorder="1"
+			
+			circle_active_width="0"
+			text_x="">
+
+
+		</hotspot>
 
 		<!-- hotspots for b-AL MARINA aerial building 2 -->
 		<hotspot name="hotspot1" style="mypolygonalhotspotstylename" capture="false"

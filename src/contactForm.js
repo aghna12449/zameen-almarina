@@ -2,13 +2,16 @@ const handleFormSubmit = (event) => {
   event.preventDefault(); // Prevent default form submission
 
   // Collect form values
-  const firstName = document.getElementById("firstName").value;
-  const lastName = document.getElementById("lastName").value;
-  const email = document.getElementById("email").value;
-  const phone = document.getElementById("phone").value;
-  const residence = document.getElementById("residence").value;
-  const nationality = document.getElementById("nationality").value;
-  const message = document.getElementById("message").value;
+const firstName = document.getElementById("firstName").value;
+const lastName = document.getElementById("lastName").value;
+const placeOfResidency = document.getElementById("placeOfResidency").value;
+const countryCode = document.getElementById("countryCodeSelect").value;
+const phoneNumber = document.getElementById("phoneNumber").value;
+const emailAddress = document.getElementById("emailAddress").value;
+const nationality = document.getElementById("nationality").value;
+const preferredLanguage = document.getElementById("preferredLanguage").value;
+
+
   let propertyURL = "";
 
   const storedURL = localStorage.getItem("sharedPlotURL");
@@ -22,16 +25,20 @@ const handleFormSubmit = (event) => {
   }
 
   let obj = {
+    plotNumber:"89",
     firstName: firstName,
     lastName: lastName,
-    email: email,
-    phone: phone,
-    residence: residence,
+    email: emailAddress,
+    phone: phoneNumber,
+    countryCode: countryCode,
+    residence: placeOfResidency,
     nationality: nationality,
-    message: message,
+    preferredLanguage: preferredLanguage,
+
     propertyURL: propertyURL,
   };
 
+  console.log("Form data to be sent:", obj);
   // Call the post function
   sendContactRequest(obj);
 };

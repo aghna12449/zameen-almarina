@@ -44,6 +44,8 @@
     <link rel="stylesheet" href="mapFilter.css" />
     <link rel="stylesheet" href="landmarkModal.css" />
     <link rel="stylesheet" href="contactForm.css" />
+    <link rel="stylesheet" href="marinaFilters.css" />
+    
     
 
     <link rel="stylesheet" href="drone.css" />
@@ -127,9 +129,11 @@
 
     <script src="zone9.js"></script>
     <script src="src/contactForm.js"></script>
+     <script src="src/countryCodes.js"></script>
 
 
     <script src="config.js"></script>
+   
 
     <script type="module" src="contactForm.js"></script>
 
@@ -285,6 +289,9 @@
         </div>
       </div>
 
+   
+
+
       <div id="mobileSearchFilter" style="display: none">
         <div class="mobile-container mt-5">
           <div class="card shadow rounded-1 mobile-compact-search-card">
@@ -404,7 +411,7 @@
         "
       >
         <h3>Map Filter</h3>
-        <div id="showAllContainer">
+        <div id="showAllContainer" >
           <div class="show-all">
             <span>Show All</span>
             <div
@@ -469,6 +476,85 @@
        
       </div>
 
+
+      <div
+  id="marinaFilterContainer"
+  class="marina-filter-container"
+  style="
+    position: absolute;
+    top: 100px;
+    left: 320px;
+    z-index: 9999;
+    display: none;
+  "
+>
+  <h3>Marina Filter</h3>
+  <div id="marinaShowAllContainer">
+    <div class="marina-show-all">
+      <span>Show All</span>
+      <div
+        class="marina-map-toggle"
+        id="marinaMapToggle"
+        onclick="marinaToggleFilterTheme()"
+      ></div>
+    </div>
+    <div class="marina-filter-buttons">
+      <div class="marina-filter-button active" data-filter="Landmarks">
+        <img
+          src="./skin/icons/MapFilters/Landmarks.png"
+          alt="icon"
+          class="icon"
+          width="15px"
+          height="15px"
+        />
+        Landmarks
+      </div>
+
+      <div class="marina-filter-button" data-filter="Roads">
+        <img
+          src="./skin/icons/MapFilters/Roads.png"
+          alt="icon"
+          class="icon"
+          width="20px"
+          height="20px"
+        />
+       Medical Complex
+      </div>
+      <div class="marina-filter-button" data-filter="Parks">
+        <img
+          src="./skin/icons/MapFilters/Parks.png"
+          alt="icon"
+          class="icon"
+          width="20px"
+          height="20px"
+        />
+        Parks
+      </div>
+      <div class="marina-filter-button" data-filter="Education">
+        <img
+          src="./skin/icons/MapFilters/Education.png"
+          alt="icon"
+          class="icon"
+          width="20px"
+          height="20px"
+        />
+        Education
+      </div>
+      <div class="marina-filter-button" data-filter="Health">
+        <img
+          src="./skin/icons/MapFilters/Hospitals.png"
+          alt="icon"
+          class="icon"
+          width="20px"
+          height="20px"
+        />
+        Shopping Center
+      </div>
+    </div>
+  </div>
+</div>
+
+
        <!-- <div class="map-filter-arrow" ></div> -->
 
       <!-- Modal -->
@@ -501,78 +587,64 @@
        <!-- Bootstrap Button with Envelope Icon -->
      
     <div class="form-overlay" id="formWrapper"  style="display: none;">
+      <button type="button" class="form-close-btn" id="closeFormBtn" onclick="closeCallBackForm()">&times;</button>
       <div class="callback-form-container">
         <div class="form-left">
           <img src="skin/icons/renders/Al_Marina_commercial.png" alt="Floor Plan" class="plan-image" />
           <div class="unit-info">
-            <p>Floor 7</p>
-            <h3>1 Bedroom Apartment </h3>
-            <ul>
+            <p>Block 12</p>
+            <h3>Plot 89</h3>
+            <ul class="two-column-list">
               <li><strong>North:</strong> 1</li>
               <li><strong>South:</strong> 1</li>
-              <li><strong>Total Area:</strong> 68.48 m²</li>
-              <li><strong>Down payment:</strong> 0%</li>
+
+              <li><strong>East:</strong> 3</li>
+              <li><strong>West:</strong> 2</li>
+
+           <li><strong> Area:</strong> 68.48 m²</li>
+                 <li><strong> Type:</strong> Tower</li>
             </ul>
-          </div>
+           
+              </div>
         </div>
       
         <form id="callbackForm" class="form-right">
-          <h2>Request Callback</h2>
+          <h2 style="text-align: center;"> Query Form</h2>
       
           <div class="form-row">
-            <input type="text" placeholder="First Name" required />
-            <input type="text" placeholder="Last Name" required />
+            <input type="text"  id="firstName" placeholder="First Name" required />
+            <input type="text"   id="lastName" placeholder="Last Name" required />
           </div>
       
           <div class="form-row">
-            <select required>
-              <option value="" disabled selected>Residency</option>
-              <option value="UAE">UAE</option>
-              <option value="Other">Other</option>
-            </select>
+           <input type="text"  id="placeOfResidency" placeholder="Place of Residency" required />
           </div>
       
           <div class="form-row">
             <div class="phone-field">
-              <select>
-                <option>+971</option>
-                <option>+92</option>
-                <option>+1</option>
-              </select>
-              <input type="tel" placeholder="Phone Number" required />
+                <select id="countryCodeSelect" class="scrollable-select"></select>
+              <input type="tel"  id="phoneNumber" class="phone-input" placeholder="Phone Number" required />
             </div>
           </div>
       
           <div class="form-row">
-            <input type="email" placeholder="Email Address" required />
+            <input type="email"  id="emailAddress" placeholder="Email Address" required />
           </div>
       
           <div class="form-row">
-            <select required>
-              <option value="" disabled selected>Nationality</option>
-              <option value="Pakistani">Pakistani</option>
-              <option value="Indian">Indian</option>
-              <option value="Emirati">Emirati</option>
-            </select>
+              <input type="text" id="nationality"  placeholder="Nationality" required />
           </div>
       
           <div class="form-row">
-            <select required>
-              <option value="" disabled selected>Preferred Language</option>
-              <option>English</option>
-              <option>Arabic</option>
-              <option>Urdu</option>
+         
+               <input type="text" id="preferredLanguage" placeholder="Preferred Language" required />
+            
             </select>
           </div>
       
-          <div class="form-row checkbox">
-            <label>
-              <input type="checkbox" required />
-              I agree to the <a href="#">Privacy Policy</a> and <a href="#">Terms and Conditions</a>.
-            </label>
-          </div>
+         
       
-          <button  class="submit-btn">Submit</button>
+          <button type="submit" class="submit-btn">Submit</button>
         </form>
       </div>
  
@@ -637,6 +709,19 @@
       </script>
 
       <script>
+
+        
+
+        const select = document.getElementById("countryCodeSelect");
+
+  countryDialCodes.forEach((country) => {
+    const option = document.createElement("option");
+    option.style.maxHeight   = "50px"; // Set font size for the dropdown options
+    option.value = country.code;
+    option.textContent = `${country.name} (${country.code})`;
+    select.appendChild(option);
+  });
+
         const input = document.getElementById("plotNumber");
 
         input.addEventListener("input", function () {
@@ -762,6 +847,62 @@
 
 
 };
+
+   const marinaToggleFilterTheme = () => {
+  const krpano = globalKrpano();
+  const container = document.getElementById("marinaShowAllContainer");
+  const toggle = document.getElementById("marinaMapToggle");
+  const filterButtons = document.querySelectorAll(".marina-filter-button");
+
+  toggle.classList.toggle("active");
+  container.classList.toggle("all-active");
+
+  const isActive = toggle.classList.contains("active");
+
+  filterButtons.forEach((btn) => {
+    btn.classList.toggle("brown-theme", isActive);
+
+    if (!isActive) {
+      btn.classList.remove("active");
+    } else {
+      const key = btn.dataset.filter;
+      if (filterState) filterState[key] = true;  // optional: track filter state
+      btn.classList.add("active");
+    }
+  });
+
+  if (!krpano) return;
+
+  const currentScene = krpano.get("scene[get(xml.scene)].name");
+  if (currentScene !== "scene_b-AL_MARINA_aerial") return;
+
+  const hotspotCategories = [
+    { prefix: "hs_M_hospitals_", count: hospitalsCount },
+    { prefix: "hs_M_parks_", count: parksCount },
+    { prefix: "hs_M_education_", count: educationalCount },
+    { prefix: "hs_Landmark_", count: landmarkCount },
+    { prefix: "hs_famousRoad_", count: famousRoadsCount },
+    { prefix: "hs_ColorFulRoad_", count: colorFulRoads },
+    { prefix: "hs_Label_", count: totalLabelsCount },
+  ];
+
+  hotspotCategories.forEach(({ prefix, count }) => {
+    let shouldBeVisible = prefix === "hs_Label_" ? false : isActive;
+
+    for (let i = 1; i <= popUpCount; i++) {
+      krpano.set(`hotspot[hs_PopUp_${i}].visible`, false);
+    }
+
+    for (let i = 1; i <= totalLandMarkLines; i++) {
+      krpano.set(`hotspot[hs_LandMarkLine_${i}].visible`, false);
+    }
+
+    for (let i = 1; i <= count; i++) {
+      krpano.set(`hotspot[${prefix}${i}].visible`, shouldBeVisible);
+    }
+  });
+};
+
 
 
    
@@ -2972,7 +3113,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
               title: sceneInfo.title,
               icon: sceneInfo.icon,
             });
-            // renderBreadcrumbs();
+             renderBreadcrumbs();
           } else {
             console.warn("Scene title not found for:", sceneName);
           }
@@ -3697,12 +3838,13 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
      <h1 class="heading">Al Marina</h1>
 
 
-     <button  id="openContactFormButton" 
-        class="contact-btn" 
-        onclick="contactFormMethod()"
-      >
-        <i class="fas fa-envelope"></i> Request
-      </button>
+  <button  id="openContactFormButton" 
+           class="contact-btn" 
+           onclick="contactFormMethod()"
+          >
+          
+            <i class="fas fa-envelope"></i> Query
+        </button>
 
 </div>
 
