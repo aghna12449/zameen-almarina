@@ -501,65 +501,88 @@
        <!-- Bootstrap Button with Envelope Icon -->
      
     <div class="form-overlay" id="formWrapper"  style="display: none;">
-<div class="callback-form" >
+      <div class="callback-form-container">
+        <div class="form-left">
+          <img src="skin/icons/renders/Al_Marina_commercial.png" alt="Floor Plan" class="plan-image" />
+          <div class="unit-info">
+            <p>Floor 7</p>
+            <h3>1 Bedroom Apartment <span>Unit 07–03</span></h3>
+            <ul>
+              <li><strong>North:</strong> 1</li>
+              <li><strong>South:</strong> 1</li>
+              <li><strong>Total Area:</strong> 68.48 m²</li>
+              <li><strong>Down payment:</strong> 0%</li>
+            </ul>
+          </div>
+        </div>
+      
+        <form id="callbackForm" class="form-right">
+          <h2>Request Callback</h2>
+      
+          <div class="form-row">
+            <input type="text" placeholder="First Name" required />
+            <input type="text" placeholder="Last Name" required />
+          </div>
+      
+          <div class="form-row">
+            <select required>
+              <option value="" disabled selected>Residency</option>
+              <option value="UAE">UAE</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+      
+          <div class="form-row">
+            <div class="phone-field">
+              <select>
+                <option>+971</option>
+                <option>+92</option>
+                <option>+1</option>
+              </select>
+              <input type="tel" placeholder="Phone Number" required />
+            </div>
+          </div>
+      
+          <div class="form-row">
+            <input type="email" placeholder="Email Address" required />
+          </div>
+      
+          <div class="form-row">
+            <select required>
+              <option value="" disabled selected>Nationality</option>
+              <option value="Pakistani">Pakistani</option>
+              <option value="Indian">Indian</option>
+              <option value="Emirati">Emirati</option>
+            </select>
+          </div>
+      
+          <div class="form-row">
+            <select required>
+              <option value="" disabled selected>Preferred Language</option>
+              <option>English</option>
+              <option>Arabic</option>
+              <option>Urdu</option>
+            </select>
+          </div>
+      
+          <div class="form-row checkbox">
+            <label>
+              <input type="checkbox" required />
+              I agree to the <a href="#">Privacy Policy</a> and <a href="#">Terms and Conditions</a>.
+            </label>
+          </div>
+      
+          <button  class="submit-btn">Submit</button>
+        </form>
+      </div>
+ 
+    </div>
+      </div>
 
-<!-- Close Button -->
+      </div>
 
-<button type="button" class="form-close-btn" id="closeFormBtn" onclick="closeCallBackForm()">&times;</button>
-
-  <form id="callbackForm" >
-    <h2>Request Form</h2>
     
-    <div class="form-row">
-      <div class="form-group">
-        <label for="firstName1">First Name</label>
-        <input type="text" id="firstName" name="firstName" required>
-      </div>
-      <div class="form-group">
-        <label for="lastName">Last Name</label>
-        <input type="text" id="lastName" name="LastName" required>
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-group">
-        <label for="email">Email</label required>
-        <input type="email" id="email" name="email">
-      </div>
-      <div class="form-group">
-        <label for="phone">Phone</label>
-        <input type="tel" id="phone" name="phone">
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-group">
-        <label for="residence">Residence</label>
-        <input type="text" id="residence" name="residence">
-      </div>
-      <div class="form-group">
-        <label for="nationality">Nationality</label>
-        <input type="text" id="nationality" name="nationality">
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-group" style="flex: 1;">
-        <label for="message">Message</label>
-        <textarea id="message" name="message"></textarea>
-      </div>
-    </div>
-
-    <div class="send-btn">
-      <button type="submit" >Send</button>
-    </div>
-    </form>
-</div>
-</div>
-
-      </div>
-
-    
+      
 
 
       <div id="time-toggle" class="time-toggle" style="display: none">
@@ -3674,13 +3697,12 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
      <h1 class="heading">Al Marina</h1>
 
 
-  <button  id="openContactFormButton" 
-           class="contact-btn" 
-           onclick="contactFormMethod()"
-          >
-          
-            <i class="fas fa-envelope"></i> Request
-        </button>
+     <button  id="openContactFormButton" 
+        class="contact-btn" 
+        onclick="contactFormMethod()"
+      >
+        <i class="fas fa-envelope"></i> Request
+      </button>
 
 </div>
 
