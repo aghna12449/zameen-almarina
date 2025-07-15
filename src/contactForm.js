@@ -24,8 +24,9 @@ const preferredLanguage = document.getElementById("preferredLanguage").value;
     propertyURL = "N/A";
   }
 
+  let unitDetails = window.unitDetails
   let obj = {
-    plotNumber:"89",
+    plotNumber:unitDetails.plot_number,
     firstName: firstName,
     lastName: lastName,
     email: emailAddress,
@@ -34,11 +35,10 @@ const preferredLanguage = document.getElementById("preferredLanguage").value;
     residence: placeOfResidency,
     nationality: nationality,
     preferredLanguage: preferredLanguage,
-
+    unitDetails: unitDetails,
     propertyURL: propertyURL,
   };
 
-  console.log("Form data to be sent:", obj);
   // Call the post function
   sendContactRequest(obj);
 };

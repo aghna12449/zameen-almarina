@@ -587,23 +587,18 @@
        <!-- Bootstrap Button with Envelope Icon -->
      
     <div class="form-overlay" id="formWrapper"  style="display: none;">
-      <button type="button" class="form-close-btn" id="closeFormBtn" onclick="closeCallBackForm()">&times;</button>
+      
       <div class="callback-form-container">
+        <button type="button" class="form-close-btn" id="closeFormBtn" onclick="closeCallBackForm()">&times;</button>
         <div class="form-left">
-          <img src="skin/icons/renders/Al_Marina_commercial.png" alt="Floor Plan" class="plan-image" />
-          <div class="unit-info">
-            <p>Block 12</p>
-            <h3>Plot 89</h3>
-            <ul class="two-column-list">
-              <li><strong>North:</strong> 1</li>
-              <li><strong>South:</strong> 1</li>
-
-              <li><strong>East:</strong> 3</li>
-              <li><strong>West:</strong> 2</li>
-
-           <li><strong> Area:</strong> 68.48 m²</li>
-                 <li><strong> Type:</strong> Tower</li>
-            </ul>
+         <img id="dynamicPlanImage" src="" alt="Floor Plan" class="plan-image" />
+       
+         <div class="unit-info">
+            <p id="blockNumberText">Block</p>
+  <h3 id="plotNumberText">Plot</h3>
+  <ul class="two-column-list" id="unitDetailsList">
+    <!-- List will be dynamically generated -->
+  </ul>
            
               </div>
         </div>
@@ -710,7 +705,7 @@
 
       <script>
 
-        
+        console.log("UNit details", window.unitDetails )
 
         const select = document.getElementById("countryCodeSelect");
 
@@ -3680,7 +3675,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
             }
           }
         };
-
+ 
         const fetchAlMarinaData = async () => {
           const baseUrl =
              "https://erth-al-marina.zameengeomatics.com/api/getAlMarinaData";
@@ -3754,7 +3749,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
       break;
 
 
-    case 'palacess':
+    case 'palaces':
       type = 'Palaces';
       break;
 
@@ -3788,6 +3783,8 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
             east: response[0].east,
           };
 
+          window.unitDetails = unitDetails
+
           let existingCard = document.getElementById("krpano-card");
           if (existingCard) {
             existingCard.remove();
@@ -3811,7 +3808,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
 
           }else if (unitDetails.property_type === 'Eastern Municipality'){
             bgImage = "url('./skin/icons/renders/Al_Marina_commercial.png')";
-          }else if (unitDetails.property_type === 'Palacess'){
+          }else if (unitDetails.property_type === 'Palaces'){
 
           bgImage = "url('./skin/icons/renders/Al_Marina_Palaces.png')";
           }
@@ -4113,11 +4110,84 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
         
 
         const contactFormMethod = () => {
+    const unit = window.unitDetails;
 
-          const openContactFormButton = document.getElementById('openContactFormButton');
-          const form = document.getElementById('formWrapper');
+   
 
-          
+    const propertyType = unit.property_type?.trim();
+  const imgEl = document.getElementById("dynamicPlanImage");
+
+
+  let dynamicImageURL = "";
+
+  if (propertyType === "Residential") {
+    dynamicImageURL = "./skin/icons/renders/Al_Marina_Villa.png";
+  } else if (propertyType === "Commercial") {
+    dynamicImageURL = "./skin/icons/renders/Al_Marina_commercial.png.png";
+  } else if (propertyType === "Commercial Residential") {
+    dynamicImageURL = "./skin/icons/renders/Al_Marina_commercial.png";
+  } else if (propertyType === "Towers") {
+    dynamicImageURL = "./skin/icons/renders/Al_MarinaTowers.png";
+  } else if (propertyType === "Eastern Municipality") {
+    dynamicImageURL = "./skin/icons/renders/Al_Marina_commercial.png";
+  } else if (propertyType === "Palaces") {
+    dynamicImageURL = "./skin/icons/renders/Al_Marina_Palaces.png";
+  } else {
+    // fallback image
+    dynamicImageURL = "./skin/icons/renders/Al_Marina_commercial.png";
+  }
+
+  // D:\Aghna zameen\zameen-almarina\skin\icons\renders\
+  if (imgEl) {
+    imgEl.src = dynamicImageURL;
+  }
+
+        // Set main headings
+    document.getElementById("blockNumberText").textContent = `Block ${unit.block_number}`;
+    document.getElementById("plotNumberText").textContent = `Plot ${unit.plot_number}`;
+
+    const list = document.getElementById("unitDetailsList");
+    list.innerHTML = ""; // Clear any existing list
+
+    // Side boundaries
+    const sides = ["North", "South", "East", "West"];
+    sides.forEach(side => {
+      const li = document.createElement("li");
+      li.innerHTML = `<strong>${side}:</strong> ${unit[side.toLowerCase()]}`;
+      list.appendChild(li);
+    });
+
+    // Add Area
+    const areaLi = document.createElement("li");
+    areaLi.innerHTML = `<strong>Area:</strong> ${unit.total_area} m²`;
+    list.appendChild(areaLi);
+
+    // Add Type
+    let setType = unit.property_type
+
+    console.log("type", setType)
+
+    if(setType === "Commercial Residential" || setType === "Eastern Municipality"){
+      setType = "Mixed Use"
+    }else{
+      setType = unit.property_type
+    }
+
+    // Commercial Residential  || eastern municipality
+    const typeLi = document.createElement("li");
+    typeLi.innerHTML = `<strong>Type:</strong> ${setType}`;
+    list.appendChild(typeLi);
+
+    // Add Usage
+    const usageLi = document.createElement("li");
+    usageLi.innerHTML = `<strong>Usage:</strong> ${unit.usage}`;
+    list.appendChild(usageLi);
+
+    // Optional: Zone
+    const [zoneLabel, zoneNumber] = unit.zone.split(" ");
+    const zoneLi = document.createElement("li");
+    zoneLi.innerHTML = `<strong>Zone:</strong> ${zoneNumber}`;
+    list.appendChild(zoneLi);
 
          if (form.style.display === 'none' || form.style.display === '') {
             form.style.display = 'block';
@@ -4338,7 +4408,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
         
           if(property_type === 'Residential'){
             sliderDynamicImageURL = "./skin/icons/renders/Al_Marina_Villa.png";
-          }else if(property_type === 'Commerciial'){
+          }else if(property_type === 'Commercial'){
             sliderDynamicImageURL =
                         "./skin/icons/renders/Commercial_Cropped.png";
           }
@@ -4353,7 +4423,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
           }else if (property_type === 'Eastern Municipality'){
            sliderDynamicImageURL =
                         "./skin/icons/renders/Commercial_Cropped.png";
-          }else if (property_type === 'Palacess'){
+          }else if (property_type === 'Palaces'){
 
             sliderDynamicImageURL =
                         "./skin/icons/renders/Al_Marina_Palaces.png";

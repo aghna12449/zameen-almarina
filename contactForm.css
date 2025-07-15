@@ -1,9 +1,9 @@
 .form-overlay {
   position: fixed;
   top: 10%;
-  left: 0;
+  left: 3%;
   width: 51vw;
-  height: 100vh;
+  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,7 +20,8 @@ margin-left: 25%
   display: flex;
   flex-wrap: wrap;
   background-color: rgba(255, 255, 255, 0.95);
-  
+  width: 90vh;
+    height: 65vh;
   color: black;
   padding: 20px;
   border-radius: 10px;
@@ -32,13 +33,15 @@ margin-left: 25%
 
 
 .form-left {
-width: 37%;
+  width: 37%;
+  height: 47vh;
 }
 
 .plan-image {
   width: 100%;
   border-radius: 10px;
   background: #eee;
+  height: 50%;
 }
 
 .unit-info {
@@ -174,9 +177,9 @@ width: 37%;
     
 
     .form-close-btn {
-      position: absolute;
+    position: absolute;
       top: -15px;
-      right: 0px;
+      right: 3%;
       background: transparent;
       border: none;
       font-size: 24px;
@@ -190,8 +193,9 @@ width: 37%;
   .form-overlay {
     align-items: center;  /* Center vertically */
     justify-content: center; /* Center horizontally */
-    width: 71vw;
-    margin-left: 15%;
+    width: 90vw;
+    height: 100vh;
+    margin-left: 10%;
   }
 
   
@@ -209,9 +213,16 @@ width: 37%;
    
   }
 
+  .plan-image {
+  width: 100%;
+  border-radius: 10px;
+  background: #eee;
+  height: 20%;
+}
+
   .callback-form-container{
     width: 90%;
-    margin-top: 80%;
+    margin-top: 60%;
     height: 30%;
 
 
@@ -235,5 +246,17 @@ width: 37%;
     color: #444;
     
 }
+
+ .form-close-btn {
+      position: absolute !important;
+      top: 24% !important;
+      right: 11% !important;
+      background: transparent !important;
+      border: none !important;
+      font-size: 40px !important;
+      color: #444 !important;
+      cursor: pointer !important;
+      z-index: 1000 !important;
+    }
 }
 
