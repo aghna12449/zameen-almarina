@@ -1,7 +1,7 @@
 .form-overlay {
   position: fixed;
   top: 10%;
-  left: 3%;
+  left: 0;
   width: 51vw;
   height: 90vh;
   display: flex;
@@ -9,7 +9,7 @@
   align-items: center;
   /* background-color: rgba(0, 0, 0, 0.1); */
   z-index: 1000;
-margin-left: 25%
+  margin-left: 28%
 
 }
 
@@ -17,6 +17,7 @@ margin-left: 25%
 
 
 .callback-form-container {
+    position: relative;
   display: flex;
   flex-wrap: wrap;
   background-color: rgba(255, 255, 255, 0.95);
@@ -177,9 +178,9 @@ margin-left: 25%
     
 
     .form-close-btn {
-    position: absolute;
+      position: absolute;
       top: -15px;
-      right: 3%;
+      right: 2%;
       background: transparent;
       border: none;
       font-size: 24px;
@@ -247,16 +248,5 @@ margin-left: 25%
     
 }
 
- .form-close-btn {
-      position: absolute !important;
-      top: 24% !important;
-      right: 11% !important;
-      background: transparent !important;
-      border: none !important;
-      font-size: 40px !important;
-      color: #444 !important;
-      cursor: pointer !important;
-      z-index: 1000 !important;
-    }
 }
 
