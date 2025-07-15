@@ -177,6 +177,12 @@
 
 /* styling for breadcrumbs */
 #custom-breadcrumbs {
+
+    top: 10px;
+  
+
+
+
     display: flex;
     align-items: center;
     font-family:  "Arial";

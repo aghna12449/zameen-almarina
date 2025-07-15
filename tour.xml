@@ -2015,7 +2015,7 @@ ath = "-0.0424337 " atv = "0.0877063"
 
 
 		</hotspot>
-		<hotspot name="hs_park-1"
+		<!-- <hotspot name="hs_park-1"
 			callout_bg_border="0,0,0,0"
 			callout_border_color="0xa65c43"
 			width="auto"
@@ -2034,7 +2034,7 @@ ath = "-0.0424337 " atv = "0.0877063"
 			text_x="">
 
 
-		</hotspot>
+		</hotspot> -->
 
 		<!-- hotspots for b-AL MARINA aerial building 2 -->
 		<hotspot name="hotspot1" style="mypolygonalhotspotstylename" capture="false"
