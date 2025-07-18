@@ -4,6 +4,9 @@
     <title>Al Marina</title>
 
     <meta charset="UTF-8" />
+    <!-- <meta name="viewport" content="width=1024, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> -->
+
+
     <meta name="viewport" , initial-scale="1.0" , maximum-scale="1.0," />
     <meta http-equiv="ScreenOrientation" content="autoRotate:disabled" />
 
@@ -589,22 +592,32 @@
     <div class="form-overlay" id="formWrapper"  style="display: none;">
       
       <div class="callback-form-container">
-        <button type="button" class="form-close-btn" id="closeFormBtn" onclick="closeCallBackForm()">&times;</button>
+
+         <!-- Form Header -->
+  <div class="form-header">
+    <h2 class="query-form">Query Form</h2>
+    <button type="button" class="form-close-btn" id="closeFormBtn" onclick="closeCallBackForm()">&times;</button>
+  </div>
+
+
+       <div class="form-body">
+     
+      
         <div class="form-left">
          <img id="dynamicPlanImage" src="" alt="Floor Plan" class="plan-image" />
        
          <div class="unit-info">
             <p id="blockNumberText">Block</p>
-  <h3 id="plotNumberText">Plot</h3>
-  <ul class="two-column-list" id="unitDetailsList">
-    <!-- List will be dynamically generated -->
-  </ul>
+            <h3 id="plotNumberText">Plot</h3>
+            <ul class="two-column-list" id="unitDetailsList">
+              <!-- List will be dynamically generated -->
+            </ul>
            
               </div>
         </div>
       
         <form id="callbackForm" class="form-right">
-          <h2 style="text-align: center;"> Query Form</h2>
+        
       
           <div class="form-row">
             <input type="text"  id="firstName" placeholder="First Name" required />
@@ -641,6 +654,7 @@
       
           <button type="submit" class="submit-btn">Submit</button>
         </form>
+      </div>
       </div>
  
     </div>
@@ -977,7 +991,7 @@ function showRelatedHotspot(targetHotspotName) {
 
 
         const openContactFormButton = document.getElementById('openContactFormButton');
-  const form = document.getElementById('formWrapper');
+  const formWrapper = document.getElementById('formWrapper');
 
   // openContactFormButton.addEventListener('click', () => {
   //   console.log("openContactFormButton clicked");
@@ -1709,10 +1723,18 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
               break;
 
             case "scene_d-zone_2":
-              const filteredzone2houseData = zone2houseData.filter((hotspot) =>
+            let hfDataSet = [];
+            console.log("zone2houseData",  zone2houseData)
+             if(zone2houseData.length){
+            hfDataSet = zone2houseData
+          }
+              console.log("hfDataSet", hfDataSet, zone2houseData)
+
+              const filteredzone2houseData = zone2houseData && zone2houseData.filter((hotspot) =>
                 allowedHotspots.includes(hotspot.id)
               );
 
+          
               dynamicZoneRendering(filteredzone2houseData, "", krpano);
 
               break;
@@ -1988,10 +2010,12 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
             searchSliderFilters.style.display = "none";
             mobileSearchFilter.style.display = "none";
             mobileSearchCard.style.display = "none";
+             formWrapper.style.display = 'none';
           } else {
             searchBar.style.display = "block";
             searchSliderFilters.style.display = "block";
             mobileSearchCard.style.display = "block";
+           
             if (width < 770) {
               // mobileSearchFilter.style.display = "block";
             }
@@ -2129,7 +2153,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
 
         const zoneTwoFilteredData = () => {
           const parsedData = getParsedData();
-          return parsedData.data.filter((house) => house.zone === "ZONE 2");
+          return parsedData.data.filter((house) => house.zone === "ZONE 2" || house.zone === "Zone 2" );
         };
         const zoneThreeFilteredData = () => {
           const parsedData = getParsedData();
@@ -2250,7 +2274,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
 
                 const updatedZone2houseData = zoneTwoFilteredData().map(
                   (house) => {
-                    matchedZone = zone2houseData.find(
+                    matchedZone = zone2houseData && zone2houseData.find(
                       (zone) =>
                         parseInt(house.plot_number) ===
                         parseInt(zone.plot_number)
@@ -2267,6 +2291,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
                     });
                   }
                 );
+               
                 filteredHouses = latestArrayZone2.filter(
                   (house) => parseFloat(house.total_area) <= parseFloat(area)
                 );
@@ -2483,7 +2508,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
           }
 
           const unitData = localStorage.getItem("response");
-          const parsedData = JSON.parse(unitData);
+          const parsedData =  unitData && JSON.parse(unitData);
 
           let matchedHouse;
 
@@ -3199,6 +3224,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
         let zone4houseData = parseHotspots(zoneMallhotspotXML);
         let zone8houseData = parseHotspots(zone8hotspotXML);
 
+        console.log(" zone2houseData parseHotspots", zone2houseData )
         let building1houseData = parseHotspots(zone6_building_1_hotspotXML);
 
         let zone7houseData = parseHotspots(zone7hotspotXML);
@@ -3278,6 +3304,8 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
         }
 
         const dynamicZoneRendering = (zoneData, response, krpano) => {
+         
+         
           resetTimelineState();
 
           zoneData.forEach((house) => {
@@ -3539,7 +3567,9 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
                   icon: "grain",
                 });
                 renderBreadcrumbs();
-                dynamicZoneRendering(zone2houseData, response, krpano);
+              
+                const resetData = zone2houseData =zone2houseData
+                dynamicZoneRendering( zone2houseData, response, krpano);
 
                 slider.value = 2485;
                 updateSliderRange("2");
@@ -4123,23 +4153,24 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
   if (propertyType === "Residential") {
     dynamicImageURL = "./skin/icons/renders/Al_Marina_Villa.png";
   } else if (propertyType === "Commercial") {
-    dynamicImageURL = "./skin/icons/renders/Al_Marina_commercial.png.png";
+    dynamicImageURL = "./skin/icons/renders/almarina_commercial_480.png";
   } else if (propertyType === "Commercial Residential") {
-    dynamicImageURL = "./skin/icons/renders/Al_Marina_commercial.png";
+    dynamicImageURL = "./skin/icons/renders/almarina_commercial_480.png";
   } else if (propertyType === "Towers") {
-    dynamicImageURL = "./skin/icons/renders/Al_MarinaTowers.png";
+    dynamicImageURL = "./skin/icons/renders/al_marinatowers_480.png";
   } else if (propertyType === "Eastern Municipality") {
-    dynamicImageURL = "./skin/icons/renders/Al_Marina_commercial.png";
+    dynamicImageURL = "./skin/icons/renders/almarina_commercial_480.png";
   } else if (propertyType === "Palaces") {
-    dynamicImageURL = "./skin/icons/renders/Al_Marina_Palaces.png";
+    dynamicImageURL = "./skin/icons/renders/al_marina_palaces_480.png";
   } else {
     // fallback image
-    dynamicImageURL = "./skin/icons/renders/Al_Marina_commercial.png";
+    dynamicImageURL = "./skin/icons/renders/almarina_commercial_480.png";
   }
 
   // D:\Aghna zameen\zameen-almarina\skin\icons\renders\
   if (imgEl) {
     imgEl.src = dynamicImageURL;
+    
   }
 
         // Set main headings
@@ -4189,10 +4220,10 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
     zoneLi.innerHTML = `<strong>Zone:</strong> ${zoneNumber}`;
     list.appendChild(zoneLi);
 
-         if (form.style.display === 'none' || form.style.display === '') {
-            form.style.display = 'block';
+         if (formWrapper.style.display === 'none' || formWrapper.style.display === '') {
+            formWrapper.style.display = 'block';
         } else {
-          form.style.display = 'none';
+          formWrapper.style.display = 'none';
            }
 
         }
@@ -4201,7 +4232,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
 
         const closeCallBackForm = () => {
 
-          form.style.display = 'none';
+          formWrapper.style.display = 'none';
 
 
 
@@ -4347,7 +4378,7 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
           }
 
           const unitData = localStorage.getItem("response");
-          const parsedData = JSON.parse(unitData);
+          const parsedData =  unitData && JSON.parse(unitData);
           const filteredData = parsedData?.data?.filter(
             (unit) => unit.plot_number === plot_number
           );

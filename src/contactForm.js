@@ -18,7 +18,7 @@ const preferredLanguage = document.getElementById("preferredLanguage").value;
 
   if (storedURL) {
     propertyURL = storedURL;
-    console.log("Retrieved URL from localStorage:", storedURL);
+    console.log("Retrieved URL from localStorage::", storedURL);
   } else {
     console.log("No URL found in localStorage.");
     propertyURL = "N/A";

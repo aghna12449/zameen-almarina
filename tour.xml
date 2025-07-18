@@ -11,14 +11,15 @@
 
 
 	<include url="callout.xml" />
-	<!-- <include url="vtour_DRONE/drone.xml"/>
-  	<include url="vtour_FUTURE/future.xml"/>  -->
+	<include url="vtour_DRONE/drone.xml"/>
+  	<include url="vtour_FUTURE/future.xml"/> 
 
 
 
 	<!-- ONly for live only folders names are changed  -->
-
-
+<!-- <include url="vtour_drone/drone.xml"> -->
+	<!-- />
+  	<include url="vtour_future/future.xml"/>  -->
 	
 	<control
 		sensortouch="true"
