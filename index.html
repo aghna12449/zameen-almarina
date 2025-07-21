@@ -47,7 +47,7 @@
     <link rel="stylesheet" href="mapFilter.css" />
     <link rel="stylesheet" href="landmarkModal.css" />
     <link rel="stylesheet" href="contactForm.css" />
-    <link rel="stylesheet" href="marinaFilters.css" />
+    <!-- <link rel="stylesheet" href="marinaFilters.css" /> -->
     
     
 
@@ -587,7 +587,7 @@
           </button>
         </div>
 
-       <!-- Bootstrap Button with Envelope Icon -->
+       <!-- Bootstrap Button with Envelope Icon --->
      
     <div class="form-overlay" id="formWrapper"  style="display: none;">
       
@@ -2965,6 +2965,203 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
           future.classList.remove("active");
         };
 
+
+        const set360Symmetry = () => {
+           const krpano = globalKrpano();
+           const currentScene = krpano.get("xml.scene");
+ 
+    
+           if(currentScene.includes("360") &&  !currentScene.includes("future")){
+
+     
+        krpano.set("events.onviewchange", function () {
+
+    const hlookat = krpano.get("view.hlookat");
+    const vlookat = krpano.get("view.vlookat");
+    const fov = krpano.get("view.fov");
+
+
+    console.log("hlookat", hlookat, "vlook", vlookat , "fov", fov)
+
+
+        localStorage.setItem("krpano_view", JSON.stringify({
+          hlookat: hlookat,
+          vlookat: vlookat,
+          fov: fov
+        }));
+  });
+
+           } 
+        }
+
+
+          const presentZoneSymmtery = () =>{
+
+                 const savedView = JSON.parse(localStorage.getItem("krpano_view"));
+
+
+          const krpano = globalKrpano();
+
+
+            const zoneMatch = breadcrumbTrail.some(item =>
+             ["Zone 5", "Zone 6", "Zone 7", "Zone 8"].includes(item.title)
+              );
+
+
+    const zoneOneMatch = breadcrumbTrail.some(item =>
+  ["Zone 1"].includes(item.title)
+);
+
+ const zoneTwoMatch = breadcrumbTrail.some(item =>
+  ["Zone 2"].includes(item.title)
+);
+        const zoneThreeMatch = breadcrumbTrail.some(item =>
+  ["Zone 3"].includes(item.title)
+);
+
+
+ const zoneFourMatch = breadcrumbTrail.some(item =>
+  ["Zone 4"].includes(item.title)
+);
+
+const zoneNineMatch = breadcrumbTrail.some(item =>
+  ["Zone 9"].includes(item.title)
+);
+
+            if(zoneMatch){
+
+            krpano.set("view.hlookat", savedView.hlookat- 70);
+            krpano.set("view.vlookat", savedView.vlookat);
+            krpano.set("view.fov", savedView.fov);
+
+              setTimeout(() => {
+                krpano.call(`lookat(${savedView.hlookat - 70 }, ${
+              savedView.vlookat - 1}, ${savedView.fov});`);
+              }, 100);
+              
+         }
+
+              if(zoneOneMatch){
+                setTimeout(() => {
+                krpano.call(`lookat(${savedView.hlookat + 85 }, ${
+              savedView.vlookat - 1}, ${savedView.fov});`);
+              }, 100);
+              }
+
+
+               if(zoneTwoMatch){
+            setTimeout(() => {
+                krpano.call(`lookat(${savedView.hlookat - 160 }, ${
+              savedView.vlookat - 1}, ${savedView.fov});`);
+              }, 100);
+              }
+
+      
+
+
+               if(zoneThreeMatch){
+            setTimeout(() => {
+                krpano.call(`lookat(${savedView.hlookat  }, ${
+              savedView.vlookat - 1}, ${savedView.fov});`);
+              }, 100);
+              }
+
+                if(zoneFourMatch){
+            setTimeout(() => {
+                krpano.call(`lookat(${savedView.hlookat - 30 }, ${
+              savedView.vlookat - 1}, ${savedView.fov});`);
+              }, 100);
+              }
+
+
+               if(zoneNineMatch){
+            setTimeout(() => {
+                krpano.call(`lookat(${savedView.hlookat + 80 }, ${
+              savedView.vlookat - 1}, ${savedView.fov});`);
+              }, 100);
+              }
+      }
+
+
+        const futureZoneSymmtery = () =>{
+          console.log(breadcrumbTrail)
+          const krpano = globalKrpano();
+       
+          const savedView = JSON.parse(localStorage.getItem("krpano_view"));
+
+       
+
+        const zoneMatch = breadcrumbTrail.some(item =>
+  ["Zone 5", "Zone 6", "Zone 7", "Zone 8"].includes(item.title)
+);
+
+
+    const zoneOneMatch = breadcrumbTrail.some(item =>
+  ["Zone 1"].includes(item.title)
+);
+const zoneTwoMatch = breadcrumbTrail.some(item =>
+  ["Zone 2"].includes(item.title)
+);
+const zoneThreeMatch = breadcrumbTrail.some(item =>
+  ["Zone 3"].includes(item.title)
+);
+
+ const zoneFourMatch = breadcrumbTrail.some(item =>
+  ["Zone 4"].includes(item.title)
+);
+
+ const zoneNineMatch = breadcrumbTrail.some(item =>
+  ["Zone 9"].includes(item.title)
+);
+
+
+if(zoneMatch){
+ krpano.set("view.hlookat", savedView.hlookat + 70 );
+    krpano.set("view.vlookat", savedView.vlookat  -3 );
+    krpano.set("view.fov", savedView.fov);
+
+    setTimeout(() => {
+      krpano.call(`lookat(${savedView.hlookat + 70}, ${
+savedView.vlookat  -3}, ${savedView.fov});`);
+    }, 100);
+}
+        if(zoneOneMatch){
+ setTimeout(() => {
+      krpano.call(`lookat(${savedView.hlookat - 85}, ${
+savedView.vlookat  -3}, ${savedView.fov});`);
+    }, 100);
+        }
+
+            if(zoneTwoMatch){
+            setTimeout(() => {
+                krpano.call(`lookat(${savedView.hlookat + 160 }, ${
+              savedView.vlookat - 1}, ${savedView.fov});`);
+              }, 100);
+              }
+     if(zoneThreeMatch){
+            setTimeout(() => {
+                krpano.call(`lookat(${savedView.hlookat  }, ${
+              savedView.vlookat - 1}, ${savedView.fov});`);
+              }, 100);
+              }
+
+
+                 if(zoneFourMatch){
+            setTimeout(() => {
+                krpano.call(`lookat(${savedView.hlookat + 30 }, ${
+              savedView.vlookat - 1}, ${savedView.fov});`);
+              }, 100);
+              }
+
+                if(zoneNineMatch){
+            setTimeout(() => {
+                krpano.call(`lookat(${savedView.hlookat - 80 }, ${
+              savedView.vlookat - 1}, ${savedView.fov});`);
+              }, 100);
+              }
+          
+        }
+
         const toggleTimeView = (clickedElement) => {
           const timeToggle = clickedElement.parentElement;
           const now = timeToggle.querySelector(".now");
@@ -2973,10 +3170,12 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
           const krpano = document.getElementById("krpanoSWFObject");
           const currentScene = krpano.get("xml.scene");
           console.log("Current Scene: ", currentScene);
-
+  
           let originalString = currentScene;
 
           let newString = originalString.replace("future_", "");
+
+           
 
           // Clear all active states
           now.classList.remove("active");
@@ -2995,12 +3194,24 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
                 `loadscene(${newString}, null, null, BLEND(1,2,'easeInOutSine'))`
               );
               console.log("Now view");
+
+              presentZoneSymmtery();
+
+
             } else if (clickedElement.classList.contains("future")) {
               // Move to Future
               future.classList.add("active");
+
+     
+
+           
+
               krpano.call(
                 `loadscene(future_${currentScene}, null, null, BLEND(1,2,'easeInOutSine'))`
               );
+
+              futureZoneSymmtery();
+
             }
           }
         };
@@ -4723,7 +4934,9 @@ if (isToggleScene) {
 
             krpano.set(
               "events.onloadcomplete",
-              "js(enableZoomControls()); js(addLandHotspotsToKrpano()); js(updateSearchVisibility());  js(displayHorizontalSlider()); js(createSceneCard()); js(showSearchFilterCardsMobile);js(flyToInitialAlMarinaScene); js(setFilterMapContainer());) "
+              "js(enableZoomControls());  js(set360Symmetry()); js(addLandHotspotsToKrpano()); js(updateSearchVisibility());  js(displayHorizontalSlider()); js(createSceneCard()); js(showSearchFilterCardsMobile);js(flyToInitialAlMarinaScene); js(setFilterMapContainer());) ",
+                
+           
             );
           }
         };
