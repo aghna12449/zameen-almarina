@@ -14,11 +14,14 @@ const preferredLanguage = document.getElementById("preferredLanguage").value;
 
   let propertyURL = "";
 
-  const storedURL = localStorage.getItem("sharedPlotURL");
+  const path =  window.location.href; 
 
-  if (storedURL) {
-    propertyURL = storedURL;
-    console.log("Retrieved URL from localStorage::", storedURL);
+
+  //const storedURL = localStorage.getItem("sharedPlotURL");
+
+  if (path) {
+    propertyURL = path;
+   
   } else {
     console.log("No URL found in localStorage.");
     propertyURL = "N/A";
