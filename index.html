@@ -2999,36 +2999,23 @@ if (["Parks", "Health", "Education"].includes(filterName)) {
 
                  const savedView = JSON.parse(localStorage.getItem("krpano_view"));
 
-
+  
           const krpano = globalKrpano();
+          const currentScene = krpano.get("xml.scene");
+
+            
 
 
-            const zoneMatch = breadcrumbTrail.some(item =>
-             ["Zone 5", "Zone 6", "Zone 7", "Zone 8"].includes(item.title)
-              );
+
+            if(
+currentScene  === "scene_5_360"
+|| currentScene  === "scene_6_360"
+|| currentScene  === "scene_7_360"
+|| currentScene  === "scene_8_360"
 
 
-    const zoneOneMatch = breadcrumbTrail.some(item =>
-  ["Zone 1"].includes(item.title)
-);
 
- const zoneTwoMatch = breadcrumbTrail.some(item =>
-  ["Zone 2"].includes(item.title)
-);
-        const zoneThreeMatch = breadcrumbTrail.some(item =>
-  ["Zone 3"].includes(item.title)
-);
-
-
- const zoneFourMatch = breadcrumbTrail.some(item =>
-  ["Zone 4"].includes(item.title)
-);
-
-const zoneNineMatch = breadcrumbTrail.some(item =>
-  ["Zone 9"].includes(item.title)
-);
-
-            if(zoneMatch){
+            ){
 
             krpano.set("view.hlookat", savedView.hlookat- 70);
             krpano.set("view.vlookat", savedView.vlookat);
@@ -3041,7 +3028,7 @@ const zoneNineMatch = breadcrumbTrail.some(item =>
               
          }
 
-              if(zoneOneMatch){
+              if( currentScene === 'scene_1_360'){
                 setTimeout(() => {
                 krpano.call(`lookat(${savedView.hlookat + 85 }, ${
               savedView.vlookat - 1}, ${savedView.fov});`);
@@ -3049,7 +3036,7 @@ const zoneNineMatch = breadcrumbTrail.some(item =>
               }
 
 
-               if(zoneTwoMatch){
+               if(currentScene === "scene_2_360"){
             setTimeout(() => {
                 krpano.call(`lookat(${savedView.hlookat - 160 }, ${
               savedView.vlookat - 1}, ${savedView.fov});`);
@@ -3059,22 +3046,23 @@ const zoneNineMatch = breadcrumbTrail.some(item =>
       
 
 
-               if(zoneThreeMatch){
+               if( currentScene === "scene_3_360"){
             setTimeout(() => {
                 krpano.call(`lookat(${savedView.hlookat  }, ${
               savedView.vlookat - 1}, ${savedView.fov});`);
               }, 100);
               }
 
-                if(zoneFourMatch){
+             
+                if(currentScene === 'scene_4_360'){
             setTimeout(() => {
-                krpano.call(`lookat(${savedView.hlookat - 30 }, ${
+                krpano.call(`lookat(${savedView.hlookat  }, ${
               savedView.vlookat - 1}, ${savedView.fov});`);
               }, 100);
               }
 
 
-               if(zoneNineMatch){
+               if(currentScene ===  "scene_10_360"){
             setTimeout(() => {
                 krpano.call(`lookat(${savedView.hlookat + 80 }, ${
               savedView.vlookat - 1}, ${savedView.fov});`);
@@ -3087,35 +3075,24 @@ const zoneNineMatch = breadcrumbTrail.some(item =>
           console.log(breadcrumbTrail)
           const krpano = globalKrpano();
        
+           const currentScene = krpano.get("xml.scene");
+
+        
           const savedView = JSON.parse(localStorage.getItem("krpano_view"));
 
        
 
-        const zoneMatch = breadcrumbTrail.some(item =>
-  ["Zone 5", "Zone 6", "Zone 7", "Zone 8"].includes(item.title)
-);
+      
 
 
-    const zoneOneMatch = breadcrumbTrail.some(item =>
-  ["Zone 1"].includes(item.title)
-);
-const zoneTwoMatch = breadcrumbTrail.some(item =>
-  ["Zone 2"].includes(item.title)
-);
-const zoneThreeMatch = breadcrumbTrail.some(item =>
-  ["Zone 3"].includes(item.title)
-);
-
- const zoneFourMatch = breadcrumbTrail.some(item =>
-  ["Zone 4"].includes(item.title)
-);
-
- const zoneNineMatch = breadcrumbTrail.some(item =>
-  ["Zone 9"].includes(item.title)
-);
+if( currentScene  === "future_scene_5_360"
+|| currentScene  === "future_scene_6_360"
+|| currentScene  === "future_scene_7_360"
+|| currentScene  === "future_scene_8_360"
 
 
-if(zoneMatch){
+
+){
  krpano.set("view.hlookat", savedView.hlookat + 70 );
     krpano.set("view.vlookat", savedView.vlookat  -3 );
     krpano.set("view.fov", savedView.fov);
@@ -3125,35 +3102,36 @@ if(zoneMatch){
 savedView.vlookat  -3}, ${savedView.fov});`);
     }, 100);
 }
-        if(zoneOneMatch){
+        if(currentScene === 'future_scene_1_360'){
  setTimeout(() => {
       krpano.call(`lookat(${savedView.hlookat - 85}, ${
 savedView.vlookat  -3}, ${savedView.fov});`);
     }, 100);
         }
 
-            if(zoneTwoMatch){
+            if( currentScene === "future_scene_2_360"){
             setTimeout(() => {
                 krpano.call(`lookat(${savedView.hlookat + 160 }, ${
               savedView.vlookat - 1}, ${savedView.fov});`);
               }, 100);
               }
-     if(zoneThreeMatch){
+     if(currentScene === "future_scene_3_360"){
             setTimeout(() => {
                 krpano.call(`lookat(${savedView.hlookat  }, ${
               savedView.vlookat - 1}, ${savedView.fov});`);
               }, 100);
               }
 
+              console.log("zone 4", savedView.hlookat )
 
-                 if(zoneFourMatch){
+                 if( currentScene === 'future_scene_4_360'){
             setTimeout(() => {
-                krpano.call(`lookat(${savedView.hlookat + 30 }, ${
+                krpano.call(`lookat(${savedView.hlookat  }, ${
               savedView.vlookat - 1}, ${savedView.fov});`);
               }, 100);
               }
 
-                if(zoneNineMatch){
+                if(  currentScene ===  "future_scene_10_360"){
             setTimeout(() => {
                 krpano.call(`lookat(${savedView.hlookat - 80 }, ${
               savedView.vlookat - 1}, ${savedView.fov});`);
