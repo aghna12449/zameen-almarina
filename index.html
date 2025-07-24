@@ -519,15 +519,17 @@
             <!-- <button id="zoomInBtn">+</button>
                <button id="zoomOutBtn">-</button> -->
             <div
-               id="toggle_layer_wrapper"
+               id="toggle_layer_wrapper" class="toggle_layer_wrapper"
                style="display: none; align-items: center; gap: 8px"
                >
+               <div class="inner-layer-style">
                <span id="toggle-text" style="margin-bottom: 15px">Layer</span>
                <button id="toggle-button" onclick="toggleHotspotColor()">
                <span id="toggle-icon" class="material-icons" style="color: #a65c43"
                   >toggle_on</span
                   >
                </button>
+              </div>
             </div>
             <!-- Bootstrap Button with Envelope Icon --->
             <div class="form-overlay" id="formWrapper"  style="display: none;">
@@ -626,6 +628,8 @@
          console.log("UNit details", window.unitDetails )
          
          const select = document.getElementById("countryCodeSelect");
+
+          let  isLandscapeCheck;
          
          countryDialCodes.forEach((country) => {
          const option = document.createElement("option");
@@ -1075,6 +1079,36 @@
            },
            { passive: false }
          );
+
+         /*
+           isLandscapeMode Function
+         */
+         
+         const isLandscapeModeMethod = () => {
+
+          const isMobileOrTablet = /android|iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase());
+
+          const widthCheck = window.innerWidth > window.innerHeight;
+           console.log("isMobileOrTablet", isMobileOrTablet, widthCheck);
+
+          //  const fullScreenBtn = document.getElementById("fullScreenBtn");
+          //   const currentScene = krpano.get("xml.scene");
+
+          //       if (currentScene === "scene_a-initial") {
+        
+          //    fullScreenBtn.style.display = "none";
+         
+          //  } else {
+          //    fullScreenBtn.style.display = "none";
+          
+             
+          //  }
+
+           // now set global varaible / state 
+
+            isLandscapeCheck = isMobileOrTablet && widthCheck  
+           return  isLandscapeCheck;
+         }
          
          const showSearchFilterCardsMobile = () => {
            const isLandscapeView = window.matchMedia(
@@ -1082,6 +1116,9 @@
            ).matches;
            const krpano = document.getElementById("krpanoSWFObject");
            const currentScene = krpano.get("xml.scene");
+
+
+
          
            const viewport = document.getElementById("viewport");
            viewport.style.transform = "scale(0.4)";
@@ -1120,12 +1157,16 @@
            const height = window.innerHeight;
            const isLandscape = width > height;
          
+
            if (
              currentScene !== "scene_a-initial" &&
              currentScene !== "scene_b-al_marina_aerial"
            ) {
+
              if (width < 935 && height < 440 && isLandscape) {
-               if (String(currentScene).includes("_360")) {
+
+            console.log("FIRST IF");
+              if (String(currentScene).includes("_360")) {
                  searchSliderFilters.style.display = "none";
          
                  console.log("mobile search filter 360");
@@ -1183,12 +1224,15 @@
                  });
                }
              } else if (width < 768) {
+
+              
+            console.log("Second IF");
                if (String(currentScene).includes("_360")) {
                  searchSliderFilters.style.display = "none";
                  mobileSearchFilter.style.display = "none";
                  toggleFilterButton.style.display = "none";
                } else {
-                 searchSliderFilters.style.display = "none";
+                 searchSliderFilters.style.display = "block";
                  mobileSearchFilter.style.display = "block";
                  toggleFilterButton.style.display = "none";
                  mobileSearchFilter.style.left = "20px";
@@ -1197,13 +1241,13 @@
          
                  const propertyCard = document.getElementById("krpano-card");
          
-                 if (propertyCard) {
-                   propertyCard.style.width = "225px";
-                   propertyCard.style.height = "auto";
+                //  if (propertyCard) {
+                //    propertyCard.style.width = "225px";
+                //    propertyCard.style.height = "auto";
          
-                   propertyCard.style.right = "30px";
-                   propertyCard.style.top = "8%";
-                 }
+                //    propertyCard.style.right = "40px";
+                //    propertyCard.style.top = "8%";
+                //  }
          
                  const rowExtra =
                    document.querySelectorAll(".details-row_extra");
@@ -1269,6 +1313,8 @@
                const propertyCard = document.getElementById("krpano-card");
                console.log("propertyCard", propertyCard);
          
+               
+            console.log("THIRD IF");
                if (width > 1025) {
                  if (propertyCard) {
                    console.log("inital load first ");
@@ -1298,6 +1344,11 @@
          window.addEventListener("load", showSearchFilterCardsMobile);
          window.addEventListener("resize", showSearchFilterCardsMobile);
          
+
+                window.addEventListener("load", isLandscapeModeMethod);
+         window.addEventListener("resize", isLandscapeModeMethod);
+ 
+         // 
          document
            .querySelectorAll("#availabilityButtons button")
            .forEach((button) => {
@@ -1730,9 +1781,14 @@
          
          const displayHorizontalSlider = () => {
            const sliderContainer = document.querySelector(".card-slider_1");
+         
+
+   
+
+          console.log("Slider disabled on mobile/tablet landscape.", isLandscapeCheck);
            sliderContainer.innerHTML = ""; // Clear previous content if needed
          
-           sliderSearchedHouses &&
+           !isLandscapeCheck &&  sliderSearchedHouses &&
              sliderSearchedHouses.forEach((house, index) => {
                 // Skip houses where isActivePlot is false
          if (house.isActivePlot === false) return;
@@ -1861,6 +1917,11 @@
            // Add more mappings here
          };
          
+
+          window.addEventListener("resize", displayHorizontalSlider);
+
+         window.addEventListener("load", displayHorizontalSlider);
+
          const setFilterMapContainer = () => {
            console.log("Setting filter map container visibility");
            let krpano = globalKrpano();
@@ -1878,6 +1939,10 @@
          const updateSearchVisibility = () => {
            var krpano_obj = document.getElementById("krpanoSWFObject");
            const zoomLevel = krpano_obj.get("view.fov");
+
+           console.log("updateSearchVisibility");
+
+      
          
            const searchBar = document.getElementById("searchBarContainer");
            const mobileSearchCard =
@@ -3397,10 +3462,11 @@
          
            if (!toggleState) {
              icon.textContent = "toggle_on"; // icon change
-             icon.style.color = "#a65c43"; // green
+             icon.style.color = "#a65c43"; // brown
              // button.style.backgroundColor = "#e0f2f1"; // optional
            } else {
              icon.textContent = "toggle_off";
+               icon.style.color = "#dee2e6"; 
              button.style.backgroundColor = "transparent"; // reset
            }
          
@@ -3414,20 +3480,34 @@
                "searchSliderFilters"
              );
              const toggleWrapper = document.querySelector("#controls");
-         
+
+              const widthCheck = window.innerWidth > window.innerHeight;
+
+              /*
+                if portrait              
+              */
+            if(!widthCheck){
+               toggleWrapper.style.bottom = "13%";
+               return
+            } else if(isLandscapeCheck){
+              toggleWrapper.style.bottom = "2%";
+                return
+          }
+
              if (
                searchSliderFilters &&
                window.getComputedStyle(searchSliderFilters).display !== "none"
              ) {
-               toggleWrapper.style.bottom = "15%";
+               toggleWrapper.style.bottom = "19%";
              } else {
                toggleWrapper.style.bottom = "2%";
              }
-           }, 1200); // Delay: 1200ms is usually enough to wait for DOM updates
+           }, 100); // Delay: 1200ms is usually enough to wait for DOM updates
          };
          
          window.addEventListener("load", updateToggleMarginBasedOnSlider);
-         
+            window.addEventListener("resize", updateToggleMarginBasedOnSlider);
+
          function getRandomColor() {
            const letters = "0123456789ABCDEF";
            let color = "#";
@@ -3632,6 +3712,9 @@
          const addLandHotspotsToKrpano = async () => {
            const krpano = document.getElementById("krpanoSWFObject");
            const response = await onInitalLoad();
+
+            
+
          
            localStorage.setItem("response", JSON.stringify(response));
          
@@ -3978,7 +4061,7 @@
            bgImage = "url('./skin/icons/renders/Al_Marina_Palaces.png')";
            }
          
-         console.log("zoooooooooonnnnnnnnnnnnnnneeeeeeeeee", unitDetails.zone)
+
          
            const propertyTitle = setPropertyType(unitDetails.property_type)
          
@@ -4318,6 +4401,7 @@ const amenitiesTime = (zoneKey) => {
          };
          const closeCard = () => {
            blinkIndividualHotspot("", false, false);
+           console.log("close card")
            let card = document.getElementById("krpano-card");
            if (card) {
              card.remove();
@@ -4757,15 +4841,7 @@ const amenitiesTime = (zoneKey) => {
            } else if (currentScene && currentScene !== "scene_1_360") {
              searchBar.hidden = false;
            }
-           if (currentScene === "scene_a-initial") {
-             // searchBar.hidden = true;
-             // fullScreenBtn.style.display = "none";
-             // toggleButton.style.display = "none";
-           } else {
-             //fullScreenBtn.style.display = "block";
-             toggleButton.style.display = "block";
-             //
-           }
+          
          
            updateToggleMarginBasedOnSlider();
          

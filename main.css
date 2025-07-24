@@ -442,7 +442,35 @@
     background:rgb(0 0 0 / 45%);
     transition: background-color 0.3s, color 0.3s;
 
+
   }
+
+   .toggle_layer_wrapper{
+
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 16px;
+    background:rgb(0 0 0 / 45%);
+    transition: background-color 0.3s, color 0.3s;
+         width: 130PX;
+        border-radius: 1px;
+        height: 50px;
+
+  }
+
+  .inner-layer-style {
+  display: flex;
+  align-items: center;      /* Vertical alignment */
+  justify-content: center;  /* Horizontal alignment */
+               
+  gap: 10px;                
+
+  text-align: center;
+      margin-top: 10px;
+    margin-left: 5px;
+}
   
   .time-toggle .active {
     background: #a65c43;
