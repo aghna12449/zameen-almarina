@@ -517,7 +517,7 @@
          <div id="controls">
             <!-- <button id="fullScreenBtn" title="Toggle Fullscreen">⛶</button> -->
             <!-- <button id="zoomInBtn">+</button>
-               <button id="zoomOutBtn">-</button> -->
+               <button id="zoomOutBtn">-</button>    -->
             <div
                id="toggle_layer_wrapper" class="toggle_layer_wrapper"
                style="display: none; align-items: center; gap: 8px"
@@ -824,7 +824,8 @@
          
          
          
-         function showRelatedHotspot(targetHotspotName) {
+         function showRelatedHotspot(targetHotspotName, onHoverOut) {
+          console.log("targetHotspotName", targetHotspotName, onHoverOut)
          
          const krpano = globalKrpano();
          if (!krpano || !targetHotspotName) return;
@@ -832,12 +833,41 @@
          const hotspot = krpano.get(`hotspot[${targetHotspotName}]`);
          if (!hotspot) {
          console.warn(`Hotspot '${targetHotspotName}' not found.`);
+      
          return;
          }
          
          // Toggle visibility
-         const currentlyVisible = hotspot.visible === true || hotspot.visible === "true";
-         hotspot.visible = !currentlyVisible;
+    //      const currentlyVisible = hotspot.visible === true || hotspot.visible === "true";
+    //      hotspot.visible = !currentlyVisible;
+
+    //        // Check if it's a mobile or desktop device
+     
+    const isMobileOrTablet = /android|iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase());
+
+    const isMobile = window.innerWidth <= 768;
+
+
+     console.log("is mobile", isMobileOrTablet)
+    // For mobile, use click (onclick)
+    if (isMobileOrTablet) {
+        // Toggle visibility for mobile on click (i.e., when clicked/touched)
+        const currentlyVisible = hotspot.visible === true || hotspot.visible === "true";
+        hotspot.visible = !currentlyVisible;
+    } 
+    // For desktop, use hover (on hover or mouseout)
+    else {
+        // Check the onHoverOut argument to toggle visibility accordingly
+        if (onHoverOut === 'true') {
+            hotspot.visible = true; // Show the hotspot when mouse hovers over
+      
+      
+        } else {
+          hotspot.visible = false; // Hide the hotspot when mouse leaves
+      
+      
+        }
+    }
          
          
          }
