@@ -515,14 +515,29 @@
             </div>
          </div>
          <div id="controls">
-            <!-- <button id="fullScreenBtn" title="Toggle Fullscreen">⛶</button> -->
+           <div   id="full_screen_wrapper" 
+                 style="display: none; "
+           
+           >
+                    <!-- <span id="toggle-text" class ="full_screen_wrapper" style="margin-bottom: 15px"></span>
+                      <butto id="fullScreenBtn" title="Toggle Fullscreen">⛶ </button> -->
+
+                  </div>
             <!-- <button id="zoomInBtn">+</button>
                <button id="zoomOutBtn">-</button>    -->
             <div
                id="toggle_layer_wrapper" class="toggle_layer_wrapper"
                style="display: none; align-items: center; gap: 8px"
                >
+
+                 <!-- Fullscreen Button -->
+                 
+
                <div class="inner-layer-style">
+
+             
+
+
                <span id="toggle-text" style="margin-bottom: 15px">Layer</span>
                <button id="toggle-button" onclick="toggleHotspotColor()">
                <span id="toggle-icon" class="material-icons" style="color: #a65c43"
@@ -582,12 +597,16 @@
          </div>
       </div>
       <div id="time-toggle" class="time-toggle" style="display: none">
-         <div class="toggle-option now active" onclick="toggleTimeView(this)">
+            <div class="toggle-option now " onclick="toggleTimeView(this)">
             <span class="material-icons">access_time</span> Now
          </div>
-         <div class="toggle-option future" onclick="toggleTimeView(this)">
+        
+        <div class="toggle-option future active" onclick="toggleTimeView(this)">
             <span class="material-icons">event</span> Future
          </div>
+
+     
+      
       </div>
       <div id="custom-breadcrumbs" class="mui-breadcrumb-root">
          <div class="breadcrumb-wrapper" id="breadcrumb-wrapper">
@@ -3180,7 +3199,17 @@
            
          }
          
+         // Set the "Future" view as the default active state on page load
+window.onload = function() {
+    // Simulate a click on the Future toggle to set it as active by default
+      
+
+};
+
+
+
          const toggleTimeView = (clickedElement) => {
+          console.log("toggleTimeView", clickedElement)
            const timeToggle = clickedElement.parentElement;
            const now = timeToggle.querySelector(".now");
            const future = timeToggle.querySelector(".future");
@@ -4879,6 +4908,11 @@ const amenitiesTime = (zoneKey) => {
            const toggleLayerWrapper = document.getElementById(
              "toggle_layer_wrapper"
            );
+
+  const fullScreenWrapper = document.getElementById(
+             "full_screen_wrapper"
+           );
+           full_screen_wrapper
          // Hide toggleLayerWrapper if scene is the initial A scene
          if (currentScene === "scene_a-initial") {
          toggleLayerWrapper.style.display = "none";
@@ -4894,9 +4928,11 @@ const amenitiesTime = (zoneKey) => {
          if (isToggleScene) {
          toggle.style.display = "block";
          toggleLayerWrapper.style.display = "none";
+         fullScreenWrapper.style.display= "none"
          } else {
          toggle.style.display = "none";
          toggleLayerWrapper.style.display = "flex";
+             fullScreenWrapper.style.display= "flex"
          }
          }
          
@@ -4921,6 +4957,48 @@ const amenitiesTime = (zoneKey) => {
          };
          
          function handleOrientation() {}
+
+
+
+        const showMobileIcons = () => {
+    // Check if the device is mobile or tablet
+    const isMobileOrTablet = /android|iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase());
+    
+    // Access the global Krpano instance
+    let krpano = globalKrpano();
+    
+    // Get the total number of hotspots
+    const totalKrnpanoHotspots = krpano.get("hotspot.count");
+
+    // Loop through each hotspot to check its name
+    for (let i = 0; i < totalKrnpanoHotspots; i++) {
+        const hsName = krpano.get(`hotspot[${i}].name`);
+        
+        // Check if the device is mobile or tablet
+        if (isMobileOrTablet) {
+            // If it's a mobile device, show mobile-specific hotspots and hide others
+            if (hsName.includes("hs_mobile")) {
+                console.log("Showing mobile hotspot:", hsName);
+                krpano.set(`hotspot[${hsName}].visible`, true);
+            } else if (hsName.includes("hs_desktop_icons")) {
+                // Hide other 360-specific hotspots
+                console.log("Hiding 360 hotspot:", hsName);
+                krpano.set(`hotspot[${hsName}].visible`, false);
+            }
+        } else {
+            // If it's not a mobile device, show 360 hotspots and hide mobile ones
+            if (hsName.includes("hs_desktop_icons")) {
+                console.log("Showing 360 future hotspot:", hsName);
+                krpano.set(`hotspot[${hsName}].visible`, true);
+            } else if (hsName.includes("hs_mobile")) {
+                // Hide mobile-specific hotspots
+                console.log("Hiding mobile hotspot:", hsName);
+                krpano.set(`hotspot[${hsName}].visible`, false);
+            }
+        }
+    }
+};
+
          
          window.onload = () => {
            let krpano = globalKrpano();
@@ -5010,6 +5088,7 @@ const amenitiesTime = (zoneKey) => {
            displayHorizontalSlider();
            flyToInitialAlMarinaScene();
            setFilterMapContainer();
+           showMobileIcons();
          
            const unit = getSpecificUnit();
          
@@ -5023,7 +5102,7 @@ const amenitiesTime = (zoneKey) => {
          
              krpano.set(
                "events.onloadcomplete",
-               "js(enableZoomControls());  js(set360Symmetry()); js(addLandHotspotsToKrpano()); js(updateSearchVisibility());  js(displayHorizontalSlider()); js(createSceneCard()); js(showSearchFilterCardsMobile);js(flyToInitialAlMarinaScene); js(setFilterMapContainer());) ",
+               "js(enableZoomControls());  js(set360Symmetry()); js(addLandHotspotsToKrpano()); js(updateSearchVisibility());  js(displayHorizontalSlider()); js(createSceneCard()); js(showSearchFilterCardsMobile);js(flyToInitialAlMarinaScene); js(setFilterMapContainer()); js(showMobileIcons());) ",
                  
             
              );

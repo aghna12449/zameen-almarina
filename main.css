@@ -445,6 +445,21 @@
 
   }
 
+   .full_screen_wrapper{
+
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 16px;
+    background:rgb(0 0 0 / 45%);
+    transition: background-color 0.3s, color 0.3s;
+         width: 130PX;
+        border-radius: 1px;
+        height: 50px;
+
+  }
+
    .toggle_layer_wrapper{
 
     padding: 8px 16px;
@@ -476,6 +491,13 @@
     background: #a65c43;
     color: white;
   }
+
+  .toggle-option.active {
+  background: #a65c43;
+    color: white;
+  }
+
+
   .toggle-option .material-icons {
     font-size: 24px;             /* Smaller icon */
   }
@@ -523,15 +545,14 @@
   } 
   
   #fullScreenBtn {
-    width: 60px;
-    height: 55px;
-    font-size: 18px;
-    border-radius: 50%;
-    border: none;
-    background-color:rgb(0 0 0 / 41%);
+  
+    font-size: 25px;
+  
+
    color: white !important;
     cursor: pointer;
     z-index: 9999;
+        margin-left: 30%;
      
   }
 

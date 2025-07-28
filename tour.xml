@@ -2009,6 +2009,8 @@ ath = "-0.0424337 " atv = "0.0877063"
 
 	</scene>
 
+	<!-- MAIN VIEW OF SOCIERTY -->
+
 	<scene name="scene_b-AL_MARINA_aerial" title="b-AL MARINA aerial" onstart=""
 		thumburl="panos/b-AL_MARINA_aerial.tiles/thumb.jpg" lat="" lng="" heading="">
 
@@ -2421,37 +2423,13 @@ ath = "-0.0424337 " atv = "0.0877063"
 
 		
 
-		 <!-- <hotspot name="hs_Zone1_park"
+	
+<!-- Zone 1 PARk 1 -->
+
+		 <hotspot name="hs_desktop_icons_zone1_park2"
         	 style="callout"
        		  shape="round"
-			visible="true"
-			zorder="1"
-			size="2"
-      	 ath="-0.2974113" atv=" -0.0491108"
-         callout_bg_border="0,0,0,0"
-         callout_bg_color="0xa65c43"
-         callout_border_color="0xa65c43"
-		 width="auto"
-         rotate="-275"
-         animation="keep_opened"
-         line_width="0"
-         line_lenght="-20"
-         circle_active_width="0"
-         title=""
-         text_background=""
-		 
-		
-         content="&lt;div style=&quot;text-align:center;&quot;&gt;
-                    &lt;img src=&quot;skin/icons/MapIcons/parks1.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
-                  &lt;/div&gt;">
-</hotspot>   -->
-
-
-
-		 <hotspot name="hs_zone1_park2"
-        	 style="callout"
-       		  shape="round"
-			visible="true"
+			visible="false"
 			zorder="1"
 			size="2"
       	 ath="-0.3383354" atv="-0.0505147"
@@ -2477,6 +2455,37 @@ ath = "-0.0424337 " atv = "0.0877063"
                     &lt;img src=&quot;skin/icons/MapIcons/parks1.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
                   &lt;/div&gt;">
 </hotspot>  
+
+
+<!-- MObile Icon -->
+ <hotspot name="hs_mobile_zone1_park2"
+        	 style="callout"
+       		  shape="round"
+			visible="false"
+			zorder="1"
+			size="2"
+      	 ath="-0.3383354" atv="-0.0505147"
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-275"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="-20"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+		 
+
+		 onclick="js(showRelatedHotspot('hs_zone1_park2_label'));"
+		 
+		
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/parks1.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot> 
 
 
 	<hotspot name="hs_zone1_park2_label"
@@ -2593,11 +2602,11 @@ ath = "-0.0424337 " atv = "0.0877063"
 
 		</hotspot>
 
-
-		 <hotspot name="hs_zone2_park2"
+<!-- Zone 2 park  -->
+		 <hotspot name="hs_desktop_icons_zone2_park2"
         	 style="callout"
        		  shape="round"
-			visible="true"
+			visible="false"
 			zorder="1"
 			size="2"
       	 ath="-0.2020658" atv="-0.0477835"
@@ -2617,6 +2626,40 @@ ath = "-0.0424337 " atv = "0.0877063"
          onout="js(showRelatedHotspot('hs_zone2_park_label', 'false'));"
 
 		 onclick="js(showRelatedHotspot());"
+
+		 
+		
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/parks1.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot>  
+
+
+
+
+<!-- Mobile Icon Zone 2 park  -->
+		 <hotspot name="hs_mobile_zone2_park2"
+        	 style="callout"
+       		  shape="round"
+			visible="false"
+			zorder="1"
+			size="2"
+      	 ath="-0.2020658" atv="-0.0477835"
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-275"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="-20"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+		 	 
+
+		 onclick="js(showRelatedHotspot('hs_zone2_park_label'));"
 
 		 
 		
@@ -2732,11 +2775,11 @@ ath = "-0.0424337 " atv = "0.0877063"
 
 		</hotspot>
 
-		
-		 <hotspot name="hs_zone3_park"
+		<!-- Zone 3 PARk  -->
+		 <hotspot name="hs_desktop_icons_zone3_park"
         	 style="callout"
        		  shape="round"
-			visible="true"
+			visible="false"
 			zorder="1"
 			size="2"
       	ath=" -0.0645448 "
@@ -2757,6 +2800,40 @@ ath = "-0.0424337 " atv = "0.0877063"
          onout="js(showRelatedHotspot('hs_zone3_park_label', 'false'));"
 
 		 onclick="js(showRelatedHotspot());"
+
+		 
+		
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/parks1.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot>  
+
+
+
+		<!-- Mobile Zone 3 PARk  -->
+		 <hotspot name="hs_mobile_zone3_park"
+        	 style="callout"
+       		  shape="round"
+			visible="false"
+			zorder="1"
+			size="2"
+      	ath=" -0.0645448 "
+		 atv="-0.0481745"
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-275"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="-20"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+		
+
+		 onclick="js(showRelatedHotspot('hs_zone3_park_label'));"
 
 		 
 		
@@ -2876,12 +2953,12 @@ ath = "-0.0424337 " atv = "0.0877063"
 		</hotspot>
 
 
+		<!-- Zone 7 Park  -->
 		
-		
-		 <hotspot name="hs_zone7_park"
+		 <hotspot name="hs_desktop_icons_zone7_park"
         	 style="callout"
        		  shape="round"
-			visible="true"
+			visible="false"
 			zorder="1"
 			size="2"
      	ath="0.2511722"
@@ -2902,6 +2979,39 @@ ath = "-0.0424337 " atv = "0.0877063"
          onout="js(showRelatedHotspot('hs_zone7_park_label', 'false'));"
 
 		 onclick="js(showRelatedHotspot());"
+
+		 
+		
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/parks1.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot>  
+
+	<!-- MObile Icon  -->
+		
+		 <hotspot name="hs_mobile_zone7_park"
+        	 style="callout"
+       		  shape="round"
+			visible="false"
+			zorder="1"
+			size="2"
+     	ath="0.2511722"
+		 atv="0.0494683"
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-275"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="-20"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+		 	
+
+		 onclick="js(showRelatedHotspot('hs_zone7_park_label'));"
 
 		 
 		
@@ -3056,11 +3166,11 @@ ath = "-0.0424337 " atv = "0.0877063"
 
 		
 		
-		
-		 <hotspot name="hs_zone8_park"
+		<!-- Zone 8 park -->
+		 <hotspot name="hs_desktop_icons_zone8_park"
         	 style="callout"
        		  shape="round"
-			visible="true"
+			visible="false"
 			zorder="1"
 			size="2"
      	ath="-0.045713"
@@ -3081,6 +3191,39 @@ ath = "-0.0424337 " atv = "0.0877063"
          onout="js(showRelatedHotspot('hs_zone8_park_label', 'false'));"
 
 		 onclick="js(showRelatedHotspot());"
+
+		 
+		
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/parks1.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot>  
+
+
+	<!-- Mobile Icons park -->
+		 <hotspot name="hs_mobile_zone8_park"
+        	 style="callout"
+       		  shape="round"
+			visible="false"
+			zorder="1"
+			size="2"
+     	ath="-0.045713"
+		 atv="0.0251321"
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-275"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="-20"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+		
+
+		 onclick="js(showRelatedHotspot('hs_zone8_park_label'));"
 
 		 
 		
@@ -3221,10 +3364,12 @@ ath = "-0.0424337 " atv = "0.0877063"
 
 		</hotspot>
 
-		<hotspot name="hs_zone9_health"
+
+		<!-- Zone 9 Desktop -->
+		<hotspot name="hs_desktop_icons_health"
          style="callout"
          shape="round"
-		 visible="true"
+		 visible="false"
        ath=" -0.2646943" atv="0.0155402"
 
 	  
@@ -3258,6 +3403,42 @@ ath = "-0.0424337 " atv = "0.0877063"
 			</hotspot>
 
 
+				<!-- Zone 9 Mobile -->
+		<hotspot name="hs_mobile_health"
+         style="callout"
+         shape="round"
+		 visible="false"
+       ath=" -0.2646943" atv="0.0155402"
+
+	  
+
+
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-200"
+		 size="0"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="0"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+		 
+		     
+
+		 onclick="js(showRelatedHotspot('hs_zone9_health_label'));"
+
+
+		  
+		 
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/M_hospitals.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+			</hotspot>
+
 			 <hotspot name="hs_zone9_health_label"
          style="callout"
          shape="round"
@@ -3280,7 +3461,7 @@ ath = "-0.0424337 " atv = "0.0877063"
 			</hotspot>
 
 
-		<!-- hotspot for b-AL MARINA aerial towers -->
+		<!-- hotspot for  MARINA MALL ZONE 4 aerial towers -->
 		<hotspot name="hotspot9" style="mypolygonalhotspotstylename" capture="false"
 			onclick="loadscene(scene_L_AL_MARINA_MALL_DAY_AERIAL, null, MERGE,BLEND(1) )"
 			fillcolor="0xEAA3AC" fillalpha="0.2" bordercolor="0xEAA3AC" borderwidth="2">
@@ -3354,10 +3535,11 @@ ath = "-0.0424337 " atv = "0.0877063"
 		</hotspot>
 
 
-		 <hotspot name="hs_outside_zone4_mall"
+		<!-- Zone 4 mall desktop -->
+		 <hotspot name="hs_desktop_icons_zone4_mall"
         	 style="callout"
        		
-			visible="true"
+			visible="false"
 			zorder="1"
 			size="0"
 
@@ -3394,6 +3576,48 @@ ath = "-0.0424337 " atv = "0.0877063"
                     &lt;img src=&quot;skin/icons/MapIcons/ShoppingCart.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
                   &lt;/div&gt;">
 </hotspot>  
+
+
+	<!-- Zone 4 mall mobile-->
+		 <hotspot name="hs_mobile_outside_zone4_mall"
+        	 style="callout"
+       		
+			visible="false"
+			zorder="1"
+			size="0"
+
+			
+
+
+     
+
+
+		ath="0.0597774" atv="-0.0139346"
+		 
+
+	
+
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-275"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="-20"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+		
+
+		 onclick="js(showRelatedHotspot('hs_outside_zone4_cart_label'));"
+		 
+		
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/ShoppingCart.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot>
 
 
 	<hotspot name="hs_outside_zone4_cart_label"
@@ -6167,10 +6391,11 @@ ath = "-0.0424337 " atv = "0.0877063"
 		</hotspot>
 
 		
-		 <hotspot name="hs_inside_zone1_park1"
+		<!-- Zone 1 PArk Desktop -->
+		 <hotspot name="hs_desktop_icons_inside_zone1_park1"
         	 style="callout"
        		
-			visible="true"
+			visible="false"
 			zorder="1"
 			size="0"
       	 ath="0.0717237" 
@@ -6202,6 +6427,40 @@ ath = "-0.0424337 " atv = "0.0877063"
                   &lt;/div&gt;">
 </hotspot>  
 
+<!-- Zone 1 PArk MObile -->
+		 <hotspot name="hs_mobile_inside_zone1_park1"
+        	 style="callout"
+       		
+			visible="false"
+			zorder="1"
+			size="0"
+      	 ath="0.0717237" 
+		atv=" -0.1086446"
+
+
+	
+
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-275"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="-20"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+		
+
+		 onclick="js(showRelatedHotspot('hs_inside_zone1_park1_label'));"
+		 
+		
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/parks1.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot>  
 
 
 	<hotspot name="hs_inside_zone1_park1_label"
@@ -6217,7 +6476,7 @@ ath = "-0.0424337 " atv = "0.0877063"
          callout_border_color="0xa65c43"
 		 width="auto"
          rotate="-45"
-		 size="2"
+		 size="0"
          animation="keep_opened"
          line_width="0"
          line_lenght="50"
@@ -6229,10 +6488,11 @@ ath = "-0.0424337 " atv = "0.0877063"
 			</hotspot>
 
 
-			 <hotspot name="hs_inside_zone1_mosque"
+			<!-- Desktop Mosque -->
+			 <hotspot name="hs_desktop_icons_inside_zone1_mosque"
         	 style="callout"
        		
-			visible="true"
+			visible="false"
 			zorder="1"
 			size="0"
 
@@ -6261,6 +6521,46 @@ ath = "-0.0424337 " atv = "0.0877063"
          onout="js(showRelatedHotspot('hs_inside_zone1_mosque_label', 'false'));"
 
 		 onclick="js(showRelatedHotspot());"
+		 
+		
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/Mosque.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot>  
+
+
+<!-- Desktop Mobile -->
+			 <hotspot name="hs_mobile_inside_zone1_mosque"
+        	 style="callout"
+       		
+			visible="false"
+			zorder="1"
+			size="0"
+
+			
+
+
+      	 ath="-0.1088804" 
+		atv=" -0.0458352"
+
+
+	
+
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-275"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="-20"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+		
+
+		 onclick="js(showRelatedHotspot('hs_inside_zone1_mosque_label'));"
 		 
 		
          content="&lt;div style=&quot;text-align:center;&quot;&gt;
@@ -6298,11 +6598,11 @@ ath = "-0.0424337 " atv = "0.0877063"
 
 
 
-
-			 <hotspot name="hs_inside_zone1_mosque2"
+<!-- Desktop mosque 2 -->
+			 <hotspot name="hs_desktop_icons_inside_zone1_mosque2"
         	 style="callout"
        
-			visible="true"
+			visible="false"
 			zorder="1"
 			size="0"
 
@@ -6338,6 +6638,44 @@ ath = "-0.0424337 " atv = "0.0877063"
                   &lt;/div&gt;">
 </hotspot>  
 
+<!-- Mobile mosque 2 -->
+			 <hotspot name="hs_mobile_inside_zone1_mosque2"
+        	 style="callout"
+       
+			visible="false"
+			zorder="1"
+			size="0"
+
+			
+
+
+      	 ath="0.2319991" 
+		atv=" 0.015824"
+
+
+	
+
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-275"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="-20"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+		 
+
+		 onclick="js(showRelatedHotspot('hs_inside_zone1_mosque2_label'));"
+		 
+		
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/Mosque.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot>  
 
 
 	<hotspot name="hs_inside_zone1_mosque2_label"
@@ -6383,10 +6721,12 @@ ath = "-0.0424337 " atv = "0.0877063"
 				multires="512,1024x578,2048x1152,4096x2304" />
 		</image>
 
-		 <hotspot name="hs_inside_zone2_park1"
+
+		<!-- Zone 2  DESKTOP -->
+		 <hotspot name="hs_desktop_icons_inside_zone2_park1"
         	 style="callout"
        	
-			visible="true"
+			visible="false"
 			zorder="1"
 			size="0"
       	 ath=" 0.0007483" 
@@ -6413,6 +6753,43 @@ ath = "-0.0424337 " atv = "0.0877063"
          onout="js(showRelatedHotspot('hs_inside_zone2_park1_label', 'false'));"
 
 		 onclick="js(showRelatedHotspot());"
+		 
+		
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/parks1.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot>  
+
+	<!-- Zone 2  Mobile -->
+		 <hotspot name="hs_mobile_inside_zone2_park1"
+        	 style="callout"
+       	
+			visible="false"
+			zorder="1"
+			size="0"
+      	 ath=" 0.0007483" 
+		atv="  -0.1090735"
+
+		
+
+
+	
+
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-275"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="-20"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+		 
+
+		 onclick="js(showRelatedHotspot('hs_inside_zone2_park1_label'));"
 		 
 		
          content="&lt;div style=&quot;text-align:center;&quot;&gt;
@@ -6447,7 +6824,8 @@ ath = "-0.0424337 " atv = "0.0877063"
 			</hotspot>
 
 
-		<hotspot name="hs_inside_zone2_mosque1"
+			<!-- DEsktop -->
+		<hotspot name="hs_desktop_icons_inside_zone2_mosque1"
         	 style="callout"
        		
 			visible="true"
@@ -6486,6 +6864,45 @@ ath = "-0.0424337 " atv = "0.0877063"
 </hotspot>  
 
 
+	<!-- MObile -->
+		<hotspot name="hs_mobile_inside_zone2_mosque1"
+        	 style="callout"
+       		
+			visible="false"
+			zorder="1"
+			size="0"
+
+			
+
+
+      	 ath="-0.0746399" 
+		atv=" -0.0477589"
+
+
+	
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-275"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="-20"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+		  
+
+		 onclick="js(showRelatedHotspot('hs_inside_zone2_mosque1_label'));"
+		 
+		
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/Mosque.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot>  
+
+
 
 	<hotspot name="hs_inside_zone2_mosque1_label"
          style="callout"
@@ -6513,11 +6930,11 @@ ath = "-0.0424337 " atv = "0.0877063"
          >
 			</hotspot>
 
-
-			<hotspot name="hs_inside_zone2_mosque2"
+<!-- Desktop -->
+			<hotspot name="hs_desktop_icons_inside_zone2_mosque2"
         	 style="callout"
        	
-			visible="true"
+			visible="false"
 			zorder="1"
 			size="0"
 
@@ -6552,6 +6969,43 @@ ath = "-0.0424337 " atv = "0.0877063"
                   &lt;/div&gt;">
 </hotspot>  
 
+
+<!-- Mobile -->
+			<hotspot name="hs_mobile_inside_zone2_mosque2"
+        	 style="callout"
+       	
+			visible="false"
+			zorder="1"
+			size="0"
+
+			
+
+
+      	 ath="-0.0399876" 
+		atv="  0.1607265"
+
+ 
+	
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-275"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="-20"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+		 
+		 onclick="js(showRelatedHotspot('hs_inside_zone2_mosque2_label'));"
+		 
+		
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/Mosque.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot>  
 
 
 	<hotspot name="hs_inside_zone2_mosque2_label"
@@ -8163,10 +8617,13 @@ ath = "-0.0424337 " atv = "0.0877063"
 				multires="512,1024x578,2048x1152,4096x2304" />
 		</image>
 
-		 <hotspot name="hs_inside_zone3_park1"
+
+		<!-- Desktop -->
+
+		 <hotspot name="hs_desktop_icons_inside_zone3_park1"
         	 style="callout"
        		
-			visible="true"
+			visible="false"
 			zorder="1"
 			size="0"
       	 ath="0.0631964" 
@@ -8198,7 +8655,39 @@ ath = "-0.0424337 " atv = "0.0877063"
                   &lt;/div&gt;">
 </hotspot>  
 
+	<!-- MObile -->
 
+		 <hotspot name="hs_mobile_inside_zone3_park1"
+        	 style="callout"
+       		
+			visible="false"
+			zorder="1"
+			size="0"
+      	 ath="0.0631964" 
+		atv=" -0.0888102"
+
+
+	
+
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-275"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="-20"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+		 onclick="js(showRelatedHotspot('hs_inside_zone3_park1_label'));"
+		 
+		
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/parks1.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot>  
 
 	<hotspot name="hs_inside_zone3_park1_label"
          style="callout"
@@ -8213,7 +8702,7 @@ ath = "-0.0424337 " atv = "0.0877063"
          callout_border_color="0xa65c43"
 		 width="auto"
          rotate="-45"
-		 size="2"
+		 size="0"
          animation="keep_opened"
          line_width="0"
          line_lenght="50"
@@ -8226,10 +8715,12 @@ ath = "-0.0424337 " atv = "0.0877063"
 
 
 
-			 <hotspot name="hs_inside_zone3_park2"
+			<!-- Desktop  -->
+
+			 <hotspot name="hs_desktop_icons_inside_zone3_park2"
         	 style="callout"
        		
-			visible="true"
+			visible="false"
 			zorder="1"
 			size="0"
       
@@ -8262,6 +8753,40 @@ ath = "-0.0424337 " atv = "0.0877063"
                   &lt;/div&gt;">
 </hotspot>  
 
+<!-- Mobile  -->
+
+			 <hotspot name="hs_mobile_inside_zone3_park2"
+        	 style="callout"
+       		
+			visible="false"
+			zorder="1"
+			size="0"
+      
+     	 	 ath="-0.011465" 
+		atv="  0.0077503"
+
+
+	
+
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-275"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="-20"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+		 onclick="js(showRelatedHotspot('hs_inside_zone3_park2_label'));"
+		 
+		
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/parks1.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot>  
 
 
 	<hotspot name="hs_inside_zone3_park2_label"
@@ -8291,10 +8816,12 @@ ath = "-0.0424337 " atv = "0.0877063"
          >
 			</hotspot>
 
-			 <hotspot name="hs_inside_zone3_mosque"
+
+			<!-- DEsktop Mosque -->
+			 <hotspot name="hs_desktop_icons_inside_zone3_mosque"
         	 style="callout"
        		
-			visible="true"
+			visible="false"
 			zorder="1"
 			size="0"
 
@@ -8331,6 +8858,48 @@ ath = "-0.0424337 " atv = "0.0877063"
                     &lt;img src=&quot;skin/icons/MapIcons/Mosque.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
                   &lt;/div&gt;">
 </hotspot>  
+
+
+<!-- MObile Mosque -->
+			 <hotspot name="hs_mobile_inside_zone3_mosque"
+        	 style="callout"
+       		
+			visible="true"
+			zorder="1"
+			size="0"
+
+			
+
+
+      	 ath="0.1567727" 
+		atv=" -0.0556893"
+
+
+		 
+
+	
+
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-275"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="-20"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+		
+		 onclick="js(showRelatedHotspot('hs_inside_zone3_mosque_label'));"
+		 
+		
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/Mosque.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot>  
+
 
 
 
@@ -10445,6 +11014,8 @@ ath = "-0.0424337 " atv = "0.0877063"
 		</hotspot>
 	</scene>
 
+
+	<!-- ZONE 7 in document -->
 	<scene name="scene_f-ZONE_4" title="f-ZONE 4" onstart=""
 		thumburl="panos/f-ZONE_4.tiles/thumb.jpg" lat="" lng="" heading="">
 
@@ -10460,6 +11031,7 @@ ath = "-0.0424337 " atv = "0.0877063"
 				multires="512,1024x578,2048x1152,4096x2304" />
 		</image>
 
+		<!-- Zone 7 Desktop -->
 		
 		 <hotspot name="hs_inside_zone7_park1"
         	 style="callout"
@@ -10497,6 +11069,79 @@ ath = "-0.0424337 " atv = "0.0877063"
 </hotspot>  
 
 
+<!-- Zone 7 Desktop -->
+		
+		 <hotspot name="hs_desktop_icons_zone7_park1"
+        	 style="callout"
+       		
+			visible="false"
+			zorder="1"
+			size="0"
+      	ath="0.0708881" 
+		atv="0.011579"
+
+
+	
+
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-275"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="-20"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+		  onover="js(showRelatedHotspot('hs_inside_zone7_park1_label', 'true'));"
+         onout="js(showRelatedHotspot('hs_inside_zone7_park1_label', 'false'));"
+
+		 onclick="js(showRelatedHotspot());"
+		 
+		
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/parks1.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot>  
+
+
+<!-- Zone 7 Mobile -->
+		
+		 <hotspot name="hs_mobile_zone7_park1"
+        	 style="callout"
+       		
+			visible="false"
+			zorder="1"
+			size="0"
+      	ath="0.0708881" 
+		atv="0.011579"
+
+
+	
+
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-275"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="-20"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+	
+		 onclick="js(showRelatedHotspot('hs_inside_zone7_park1_label'));"
+		 
+		
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/parks1.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot>  
+
 
 	<hotspot name="hs_inside_zone7_park1_label"
          style="callout"
@@ -10526,11 +11171,12 @@ ath = "-0.0424337 " atv = "0.0877063"
          >
 			</hotspot>
 
+			<!-- Desktop Park 2 -->
 
-			 <hotspot name="hs_inside_zone7_park2"
+			 <hotspot name="hs_desktop_icons_inside_zone7_park2"
         	 style="callout"
        		
-			visible="true"
+			visible="false"
 			zorder="1"
 			size="0"
       	ath="-0.1357549" 
@@ -10557,6 +11203,45 @@ ath = "-0.0424337 " atv = "0.0877063"
          onout="js(showRelatedHotspot('hs_inside_zone7_park2_label', 'false'));"
 
 		 onclick="js(showRelatedHotspot());"
+		 
+		
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/parks1.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot>  
+
+
+	<!-- Mobile Park 2 -->
+
+			 <hotspot name="hs_mobile_inside_zone7_park2"
+        	 style="callout"
+       		
+			visible="false"
+			zorder="1"
+			size="0"
+      	ath="-0.1357549" 
+		atv="-0.0868353"
+
+
+		
+
+	
+
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-275"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="-20"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+		 
+
+		 onclick="js(showRelatedHotspot('hs_inside_zone7_park2_label'));"
 		 
 		
          content="&lt;div style=&quot;text-align:center;&quot;&gt;
@@ -10594,10 +11279,13 @@ ath = "-0.0424337 " atv = "0.0877063"
          >
 			</hotspot>
 			
-	<hotspot name="hs_inside_zone7_mosque"
+
+
+			<!-- Desktop MOSQUE -->
+	<hotspot name="hs_desktop_icons_inside_zone7_mosque"
         	 style="callout"
        		
-			visible="true"
+			visible="false"
 			zorder="1"
 			size="0"
 
@@ -10627,6 +11315,47 @@ ath = "-0.0424337 " atv = "0.0877063"
          onout="js(showRelatedHotspot('hs_inside_zone7_mosque_label', 'false'));"
 
 		 onclick="js(showRelatedHotspot());"
+		 
+		
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/Mosque.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot>  
+
+
+<!-- Mobile MOSQUE -->
+	<hotspot name="hs_mobile_inside_zone7_mosque"
+        	 style="callout"
+       		
+			visible="false"
+			zorder="1"
+			size="0"
+
+			
+
+			
+
+      	 ath=" 0.1563345" 
+		atv="0.0409079"
+
+
+	
+
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-275"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="-20"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+		
+
+		 onclick="js(showRelatedHotspot('hs_inside_zone7_mosque_label'));"
 		 
 		
          content="&lt;div style=&quot;text-align:center;&quot;&gt;
@@ -14104,6 +14833,8 @@ ath = "-0.0424337 " atv = "0.0877063"
 		</hotspot>
 	</scene>
 
+	<!-- ZOne 8 in the document -->
+
 	<scene name="scene_g-ZONE_5" title="g-ZONE 5" onstart=""
 		thumburl="panos/g-ZONE_5.tiles/thumb.jpg" lat="" lng="" heading="">
 
@@ -14120,10 +14851,13 @@ ath = "-0.0424337 " atv = "0.0877063"
 		</image>
 
 
-			 <hotspot name="hs_inside_zone8_park"
+
+		<!-- Desktop Icon -->
+
+			 <hotspot name="hs_desktop_icons_inside_zone8_park"
         	 style="callout"
        		
-			visible="true"
+			visible="false"
 			zorder="1"
 			size="0"
 
@@ -14161,6 +14895,48 @@ ath = "-0.0424337 " atv = "0.0877063"
 </hotspot>  
 
 
+<!-- Mobile Icon -->
+
+			 <hotspot name="hs_mobile_inside_zone8_park"
+        	 style="callout"
+       		
+			visible="false"
+			zorder="1"
+			size="0"
+
+			
+
+      	ath="0.0161396 " 
+		atv=" -0.1228563"
+
+
+		
+
+	
+
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-275"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="-20"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+		 
+
+		 onclick="js(showRelatedHotspot('hs_inside_zone8_park_label'));"
+		 
+		
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/parks1.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot>  
+
+
 
 	<hotspot name="hs_inside_zone8_park_label"
          style="callout"
@@ -14190,19 +14966,23 @@ ath = "-0.0424337 " atv = "0.0877063"
          >
 			</hotspot>
 			
-	<hotspot name="hs_inside_zone8_mosque"
+
+
+			<!-- Desktop MOsque -->
+	<hotspot name="hs_desktop_icons_inside_zone8_mosque"
         	 style="callout"
        		
-			visible="true"
+			visible="false"
 			zorder="1"
 			size="0"
 
 			
 
+      	 ath=" -0.2017036" 
+		atv="-0.1276998"
 			
 
-      	 ath=" 0.1563345" 
-		atv="0.0409079"
+      	
 
 
 	
@@ -14231,10 +15011,81 @@ ath = "-0.0424337 " atv = "0.0877063"
 </hotspot>  
 
 
-<hotspot name="hs_inside_zone8_park2"
+	<!-- Mobile MOsque -->
+	<hotspot name="hs_mobile_inside_zone8_mosque"
         	 style="callout"
        		
-			visible="true"
+			visible="false"
+			zorder="1"
+			size="0"
+
+			
+
+			
+
+      	 ath=" -0.2017036" 
+		atv="-0.1276998"
+			
+
+
+	
+
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-275"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="-20"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+		 
+
+		 onclick="js(showRelatedHotspot('hs_inside_zone8_mosque_label'));"
+		 
+		
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/Mosque.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot>  
+
+<hotspot name="hs_inside_zone8_mosque_label"
+         style="callout"
+     
+		 visible="false"
+     	
+      	
+      	
+      	 ath=" -0.2017036" 
+		atv="-0.1276998"
+
+		title_background="0xd9ab5d"
+
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-45"
+		 size="0"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="50"
+         circle_active_width="0"
+		
+         title="Mosque"
+         text_background=""
+         >
+			</hotspot>
+
+
+<!-- Desktp Park 2 -->
+<hotspot name="hs_desktop_icons_inside_zone8_park2"
+        	 style="callout"
+       		
+			visible="false"
 			zorder="1"
 			size="0"
 
@@ -14271,6 +15122,46 @@ ath = "-0.0424337 " atv = "0.0877063"
                   &lt;/div&gt;">
 </hotspot>  
 
+<!-- Desktp Park 2 -->
+<hotspot name="hs_mobile_inside_zone8_park2"
+        	 style="callout"
+       		
+			visible="false"
+			zorder="1"
+			size="0"
+
+			
+
+    	ath=" -0.1360655" 
+		atv="  -0.0900871"
+
+
+		
+
+	
+
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-275"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="-20"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+	
+
+		 onclick="js(showRelatedHotspot('hs_inside_zone8_park2_label'));"
+		 
+		
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/parks1.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot>  
+
 	<hotspot name="hs_inside_zone8_park2_label"
          style="callout"
      
@@ -14299,77 +15190,11 @@ ath = "-0.0424337 " atv = "0.0877063"
          >
 			</hotspot>
 			
-	<hotspot name="hs_inside_zone8_mosque"
-        	 style="callout"
-       		
-			visible="true"
-			zorder="1"
-			size="0"
+	
 
-			
-
-			
-
-
-      	 ath=" -0.2017036" 
-		atv="-0.1276998"
 
 
 	
-
-         callout_bg_border="0,0,0,0"
-         callout_bg_color="0xa65c43"
-         callout_border_color="0xa65c43"
-		 width="auto"
-         rotate="-275"
-         animation="keep_opened"
-         line_width="0"
-         line_lenght="-20"
-         circle_active_width="0"
-         title=""
-         text_background=""
-
-		  onover="js(showRelatedHotspot('hs_inside_zone8_mosque_label', 'true'));"
-         onout="js(showRelatedHotspot('hs_inside_zone8_mosque_label', 'false'));"
-
-		 onclick="js(showRelatedHotspot());"
-		 
-		
-         content="&lt;div style=&quot;text-align:center;&quot;&gt;
-                    &lt;img src=&quot;skin/icons/MapIcons/Mosque.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
-                  &lt;/div&gt;">
-</hotspot> 
-
-
-
-
-	<hotspot name="hs_inside_zone8_mosque_label"
-         style="callout"
-     
-		 visible="false"
-     	
-      	
-      	
-      	 ath=" -0.2017036" 
-		atv="-0.1276998"
-
-		title_background="0xd9ab5d"
-
-         callout_bg_border="0,0,0,0"
-         callout_bg_color="0xa65c43"
-         callout_border_color="0xa65c43"
-		 width="auto"
-         rotate="-45"
-		 size="0"
-         animation="keep_opened"
-         line_width="0"
-         line_lenght="50"
-         circle_active_width="0"
-		
-         title="Mosque"
-         text_background=""
-         >
-			</hotspot>
 
 
 
@@ -17943,10 +18768,11 @@ ath = "-0.0424337 " atv = "0.0877063"
 				multires="512,1024x578,2048x1152,4096x2304" />
 		</image>
 
-		<hotspot name="hs_zone9_health"
+		<!-- Desktop HEalth Zone 9 -->
+		<hotspot name="hs_desktop_icons_zone9_health"
          style="callout"
          shape="round"
-		 visible="true"
+		 visible="false"
            ath="   0.1160198" atv="-0.0823145"
 
 	  
@@ -17979,6 +18805,41 @@ ath = "-0.0424337 " atv = "0.0877063"
                   &lt;/div&gt;">
 			</hotspot>
 
+
+
+			<!-- Mobile HEalth Zone 9 -->
+		<hotspot name="hs_mobile_zone9_health"
+         style="callout"
+         shape="round"
+		 visible="false"
+           ath="   0.1160198" atv="-0.0823145"
+
+	  
+
+
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-200"
+		 size="0"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="0"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+		 
+		 onclick="js(showRelatedHotspot('hs_zone9_health_label'));"
+
+
+		  
+		 
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/M_hospitals.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+			</hotspot>
 
 			 <hotspot name="hs_zone9_health_label"
          style="callout"
@@ -18714,11 +19575,11 @@ ath = "-0.0424337 " atv = "0.0877063"
 
 		
 
-
-		 <hotspot name="hs_inside_zone4_cart"
+<!-- Desktop Shopping -->
+		 <hotspot name="hs_desktop_icons_inside_zone4_cart"
         	 style="callout"
        		
-			visible="true"
+			visible="false"
 			zorder="1"
 			size="0"
 
@@ -18749,6 +19610,46 @@ ath = "-0.0424337 " atv = "0.0877063"
          onout="js(showRelatedHotspot('hs_inside_zone4_cart_label', 'false'));"
 
 		 onclick="js(showRelatedHotspot());"
+		 
+		
+         content="&lt;div style=&quot;text-align:center;&quot;&gt;
+                    &lt;img src=&quot;skin/icons/MapIcons/ShoppingCart.png&quot; style=&quot;width:35px; height:35px; border-radius:2px; display:block; margin:0 auto;&quot; /&gt;
+                  &lt;/div&gt;">
+</hotspot>  
+<!-- MObile Shopping -->
+		 <hotspot name="hs_mobile_inside_zone4_cart"
+        	 style="callout"
+       		
+			visible="false"
+			zorder="1"
+			size="0"
+
+			
+
+
+      	 ath="0.0302961" 
+		atv="  -0.0151454"
+
+
+		 
+
+	
+
+         callout_bg_border="0,0,0,0"
+         callout_bg_color="0xa65c43"
+         callout_border_color="0xa65c43"
+		 width="auto"
+         rotate="-275"
+         animation="keep_opened"
+         line_width="0"
+         line_lenght="-20"
+         circle_active_width="0"
+         title=""
+         text_background=""
+
+		
+
+		 onclick="js(showRelatedHotspot('hs_inside_zone4_cart_label'));"
 		 
 		
          content="&lt;div style=&quot;text-align:center;&quot;&gt;
