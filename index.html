@@ -4,26 +4,21 @@
       <title>Al Marina </title>
       <meta charset="UTF-8" />
       <!-- <meta name="viewport" content="width=1024px, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> -->
-
-
       <meta name="viewport" , initial-scale="1.0" , maximum-scale="1.0," />
       <meta http-equiv="ScreenOrientation" content="autoRotate:disabled" />
       <meta name="viewport" content=" user-scalable=no" />
-
-      
-
       <!-- <meta
          name="viewport"
          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover"
          /> -->
       <!-- <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-      <meta name="mobile-web-app-capable" content="yes" />
-      <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-      <meta http-equiv="x-ua-compatible" content="IE=edge" />
-
-
-       -->
+         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+         <meta name="mobile-web-app-capable" content="yes" />
+         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+         <meta http-equiv="x-ua-compatible" content="IE=edge" />
+         
+         
+          -->
       <link
          rel="stylesheet"
          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -89,12 +84,11 @@
          /* Customize color */
          }
          html {
-              touch-action: pan-y;
+         touch-action: pan-y;
          height: 100%;
          touch-action: none;
          }
          body {
-    
          height: 100%;
          overflow: hidden;
          margin: 0;
@@ -103,8 +97,8 @@
          font-size: 16px;
          /* color: #ffffff; */
          background-color: transparent !important;
-          touch-action: manipulation;
-          zoom: reset
+         touch-action: manipulation;
+         zoom: reset
          }
       </style>
    </head>
@@ -121,12 +115,9 @@
       <script src="zone9.js"></script>
       <script src="src/contactForm.js"></script>
       <script src="src/countryCodes.js"></script>
-          <script src="src/zoneAmenities.js"></script>
+      <script src="src/zoneAmenities.js"></script>
       <script src="config.js"></script>
       <script type="module" src="contactForm.js"></script>
-
-     
-
       <div id="viewport">
          <!-- Your krpano viewer or other content -->
       </div>
@@ -176,16 +167,14 @@
                class="toggle-container"
                id="toggleFilterButton"
                >
-              <div class="toggle-icon-wrapper">
+               <div class="toggle-icon-wrapper">
                   <span id="toggleArrow_1"></span>
-               </div> 
+               </div>
             </label>
             <div class="container mt-5">
-           
                <div id="search_card_transition" class="card shadow rounded-1 compact-search-card">
-                        <span class="card-title mb-4 fw-semibold">Search Filter</span> 
-                <div class="card-body">
-                
+                  <span class="card-title mb-4 fw-semibold">Search Filter</span> 
+                  <div class="card-body">
                      <div class="mb-3">
                         <div class="input-group">
                            <input
@@ -242,7 +231,6 @@
                            >
                         <i class="fas fa-sync-alt me-2"></i> Reset Filters
                         </button>
-                          
                      </div>
                      <div id="moreOptions" style="display: none">
                         <div class="mt-2">
@@ -532,103 +520,84 @@
             </div>
          </div>
          <div id="controls">
-           <div  class ="full_screen_wrapper"   id="full_screen_wrapper" 
-                 style="display: none; "
-           
-           >
-
-          
-
-          <button id="fullScreenBtn" title="Toggle Fullscreen"> <i id="fullscreen-icon" class="fas fa-expand"></i></button>
-
+            <div  class ="full_screen_wrapper"   id="full_screen_wrapper" 
+               style="display: none; "
+               >
+               <button id="fullScreenBtn" title="Toggle Fullscreen"> <i id="fullscreen-icon" class="fas fa-expand"></i></button>
             </div>
-                    
-            
-                
             <!-- <button id="zoomInBtn">+</button>
                <button id="zoomOutBtn">-</button>    -->
             <div
                id="toggle_layer_wrapper" class="toggle_layer_wrapper"
                style="display: none; align-items: center; gap: 8px"
                >
-
-                 <!-- Fullscreen Button -->
-                 
-
+               <!-- Fullscreen Button -->
                <div class="inner-layer-style">
-
-             
-
-
-               <span id="toggle-text" style="margin-bottom: 15px">Layer</span>
-               <button id="toggle-button" onclick="toggleHotspotColor()">
-               <span id="toggle-icon" class="material-icons" style="color: #a65c43"
-                  >toggle_on</span
-                  >
-               </button>
-              </div>
-            </div>
-            <!-- Bootstrap Button with Envelope Icon --->
-            <div class="form-overlay" id="formWrapper"  style="display: none;">
-               <div class="callback-form-container">
-                  <!-- Form Header -->
-                  <div class="form-header">
-                     <h2 class="query-form">Query Form</h2>
-                     <button type="button" class="form-close-btn" id="closeFormBtn" onclick="closeCallBackForm()">&times;</button>
-                  </div>
-                  <div class="form-body">
-                     <div class="form-left">
-                        <img id="dynamicPlanImage" src="" alt="Floor Plan" class="plan-image" />
-                        <div class="unit-info">
-                           <p id="blockNumberText">Block</p>
-                           <h3 id="plotNumberText">Plot</h3>
-                           <ul class="two-column-list" id="unitDetailsList">
-                              <!-- List will be dynamically generated -->
-                           </ul>
-                        </div>
-                     </div>
-                     <form id="callbackForm" class="form-right">
-                        <div class="form-row">
-                           <input type="text"  id="firstName" placeholder="First Name" required />
-                           <input type="text"   id="lastName" placeholder="Last Name" required />
-                        </div>
-                        <div class="form-row">
-                           <input type="text"  id="placeOfResidency" placeholder="Place of Residency" required />
-                        </div>
-                        <div class="form-row">
-                           <div class="phone-field">
-                              <select id="countryCodeSelect" class="scrollable-select"></select>
-                              <input type="tel"  id="phoneNumber" class="phone-input" placeholder="Phone Number" required />
-                           </div>
-                        </div>
-                        <div class="form-row">
-                           <input type="email"  id="emailAddress" placeholder="Email Address" required />
-                        </div>
-                        <div class="form-row">
-                           <input type="text" id="nationality"  placeholder="Nationality" required />
-                        </div>
-                        <div class="form-row">
-                           <input type="text" id="preferredLanguage" placeholder="Preferred Language" required />
-                           </select>
-                        </div>
-                        <button type="submit" class="submit-btn">Submit</button>
-                     </form>
-                  </div>
+                  <span id="toggle-text" style="margin-bottom: 15px">Layer</span>
+                  <button id="toggle-button" onclick="toggleHotspotColor()">
+                  <span id="toggle-icon" class="material-icons" style="color: #a65c43"
+                     >toggle_on</span
+                     >
+                  </button>
                </div>
             </div>
          </div>
       </div>
       <div id="time-toggle" class="time-toggle" style="display: none">
-            <div class="toggle-option now active" onclick="toggleTimeView(this)">
+         <div class="toggle-option now active" onclick="toggleTimeView(this)">
             <span class="material-icons">access_time</span> Now
          </div>
-        
-        <div class="toggle-option future " onclick="toggleTimeView(this)">
+         <div class="toggle-option future " onclick="toggleTimeView(this)">
             <span class="material-icons">event</span> Future
          </div>
-
-     
-      
+      </div>
+      <!-- Bootstrap Button with Envelope Icon --->
+      <div class="form-overlay" id="formWrapper"  style="display: none;">
+         <div class="callback-form-container">
+            <!-- Form Header -->
+            <div class="form-header">
+               <h2 class="query-form">Query Form</h2>
+               <button type="button" class="form-close-btn" id="closeFormBtn" onclick="closeCallBackForm()">&times;</button>
+            </div>
+            <div class="form-body">
+               <div class="form-left">
+                  <img id="dynamicPlanImage" src="" alt="Floor Plan" class="plan-image" />
+                  <div class="unit-info">
+                     <p id="blockNumberText">Block</p>
+                     <h3 id="plotNumberText">Plot</h3>
+                     <ul class="two-column-list" id="unitDetailsList">
+                        <!-- List will be dynamically generated -->
+                     </ul>
+                  </div>
+               </div>
+               <form id="callbackForm" class="form-right">
+                  <div class="form-row">
+                     <input type="text"  id="firstName" placeholder="First Name" required />
+                     <input type="text"   id="lastName" placeholder="Last Name" required />
+                  </div>
+                  <div class="form-row">
+                     <input type="text"  id="placeOfResidency" placeholder="Place of Residency" required />
+                  </div>
+                  <div class="form-row">
+                     <div class="phone-field">
+                        <select id="countryCodeSelect" class="scrollable-select"></select>
+                        <input type="tel"  id="phoneNumber" class="phone-input" placeholder="Phone Number" required />
+                     </div>
+                  </div>
+                  <div class="form-row">
+                     <input type="email"  id="emailAddress" placeholder="Email Address" required />
+                  </div>
+                  <div class="form-row">
+                     <input type="text" id="nationality"  placeholder="Nationality" required />
+                  </div>
+                  <div class="form-row">
+                     <input type="text" id="preferredLanguage" placeholder="Preferred Language" required />
+                     </select>
+                  </div>
+                  <button type="submit" class="submit-btn">Submit</button>
+               </form>
+            </div>
+         </div>
       </div>
       <div id="custom-breadcrumbs" class="mui-breadcrumb-root">
          <div class="breadcrumb-wrapper" id="breadcrumb-wrapper">
@@ -666,23 +635,21 @@
          });
       </script>
       <script>
-        
-         
          const select = document.getElementById("countryCodeSelect");
-
-
-        /* 
+         
+         
+         /* 
           Global Variable
-
-        */
-
+         
+         */
+         
           let isLandscapeCheck;
           
           let isFullScreenEnabled = false; 
-
+         
           let isMobileEnabled = true; 
           let isMobileOrTabletEnabled =false
-
+         
          
          countryDialCodes.forEach((country) => {
          const option = document.createElement("option");
@@ -886,41 +853,41 @@
          const hotspot = krpano.get(`hotspot[${targetHotspotName}]`);
          if (!hotspot) {
          console.warn(`Hotspot '${targetHotspotName}' not found.`);
-      
+         
          return;
          }
          
          // Toggle visibility
-    //      const currentlyVisible = hotspot.visible === true || hotspot.visible === "true";
-    //      hotspot.visible = !currentlyVisible;
-
-    //        // Check if it's a mobile or desktop device
-     
-    const isMobileOrTablet = /android|iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase());
-
-    const isMobile = window.innerWidth <= 768;
-
-
-     console.log("is mobile", isMobileOrTablet)
-    // For mobile, use click (onclick)
-    if (isMobileOrTablet) {
-        // Toggle visibility for mobile on click (i.e., when clicked/touched)
-        const currentlyVisible = hotspot.visible === true || hotspot.visible === "true";
-        hotspot.visible = !currentlyVisible;
-    } 
-    // For desktop, use hover (on hover or mouseout)
-    else {
-        // Check the onHoverOut argument to toggle visibility accordingly
-        if (onHoverOut === 'true') {
+         //      const currentlyVisible = hotspot.visible === true || hotspot.visible === "true";
+         //      hotspot.visible = !currentlyVisible;
+         
+         //        // Check if it's a mobile or desktop device
+         
+         const isMobileOrTablet = /android|iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase());
+         
+         const isMobile = window.innerWidth <= 768;
+         
+         
+         console.log("is mobile", isMobileOrTablet)
+         // For mobile, use click (onclick)
+         if (isMobileOrTablet) {
+         // Toggle visibility for mobile on click (i.e., when clicked/touched)
+         const currentlyVisible = hotspot.visible === true || hotspot.visible === "true";
+         hotspot.visible = !currentlyVisible;
+         } 
+         // For desktop, use hover (on hover or mouseout)
+         else {
+         // Check the onHoverOut argument to toggle visibility accordingly
+         if (onHoverOut === 'true') {
             hotspot.visible = true; // Show the hotspot when mouse hovers over
-      
-      
-        } else {
+         
+         
+         } else {
           hotspot.visible = false; // Hide the hotspot when mouse leaves
-      
-      
-        }
-    }
+         
+         
+         }
+         }
          
          
          }
@@ -1154,9 +1121,9 @@
          slider.addEventListener(
            "wheel",
            (e) => {
-
+         
                const scrollSpeed = 10; // Adjust scroll speed as needed
-
+         
              // Only convert vertical scroll to horizontal if there's no shift key
              if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
                e.preventDefault(); // prevent vertical scroll
@@ -1165,23 +1132,23 @@
            },
            { passive: false }
          );
-
+         
          /*
            isLandscapeMode Function
          */
          
          const isLandscapeModeMethod = () => {
-
+         
           const isMobileOrTablet = /android|iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase());
-
+         
           const widthCheck = window.innerWidth > window.innerHeight;
            console.log("isMobileOrTablet", isMobileOrTablet, widthCheck);
-
+         
           //  const fullScreenBtn = document.getElementById("fullScreenBtn");
           //   const currentScene = krpano.get("xml.scene");
-
+         
           //       if (currentScene === "scene_a-initial") {
-        
+         
           //    fullScreenBtn.style.display = "none";
          
           //  } else {
@@ -1189,9 +1156,9 @@
           
              
           //  }
-
+         
            // now set global varaible / state 
-
+         
             isLandscapeCheck = isMobileOrTablet && widthCheck  
            return  isLandscapeCheck;
          }
@@ -1202,9 +1169,9 @@
            ).matches;
            const krpano = document.getElementById("krpanoSWFObject");
            const currentScene = krpano.get("xml.scene");
-
-
-
+         
+         
+         
          
            const viewport = document.getElementById("viewport");
            viewport.style.transform = "scale(0.4)";
@@ -1243,24 +1210,30 @@
            const height = window.innerHeight;
            const isLandscape = width > height;
          
-
+         
            if (
              currentScene !== "scene_a-initial" &&
              currentScene !== "scene_b-al_marina_aerial"
            ) {
-
+         
              if (width < 935 && height < 440 && isLandscape) {
-
+         
             console.log("FIRST IF");
               if (String(currentScene).includes("_360")) {
                  searchSliderFilters.style.display = "none";
          
-                 console.log("mobile search filter 360");
+              
                  mobileSearchFilter.style.display = "none";
                  toggleFilterButton.style.display = "none";
                } else {
-                 console.log("mobile search filter");
+              
                  const propertyCard = document.getElementById("krpano-card");
+                if(isLandscapeModeMethod()){
+                   propertyCard.style.right = "1%";
+                    propertyCard.style.top = "-2%";
+                       searchSliderFilters.style.left = "-36%";
+                    return
+                }
          
                  if (propertyCard) {
                    propertyCard.style.width = "225px";
@@ -1310,7 +1283,7 @@
                  });
                }
              } else if (width < 768) {
-
+         
               
             console.log("Second IF");
                if (String(currentScene).includes("_360")) {
@@ -1327,13 +1300,12 @@
          
                  const propertyCard = document.getElementById("krpano-card");
          
-                //  if (propertyCard) {
-                //    propertyCard.style.width = "225px";
-                //    propertyCard.style.height = "auto";
+                 if (propertyCard) {
+              
          
-                //    propertyCard.style.right = "40px";
-                //    propertyCard.style.top = "8%";
-                //  }
+                   propertyCard.style.right = "2%";
+                   propertyCard.style.top = "2%";
+                 }
          
                  const rowExtra =
                    document.querySelectorAll(".details-row_extra");
@@ -1397,10 +1369,31 @@
                });
          
                const propertyCard = document.getElementById("krpano-card");
-               console.log("propertyCard", propertyCard);
+              
          
                
+         
             console.log("THIRD IF");
+          
+               if(isLandscapeModeMethod()){
+                 toggleFilterButton.style.display = "none";
+                  crossBrowserFullScreenFuntionality();
+                  
+               }else{
+                
+                 toggleFilterButton.style.display = "block";
+                exitFullscreen();
+                
+               }
+         
+         
+               if(isLandscapeModeMethod()){
+                      propertyCard.style.right = "0%";
+                   propertyCard.style.top = "1%";
+                  return
+                }
+         
+         
                if (width > 1025) {
                  if (propertyCard) {
                    console.log("inital load first ");
@@ -1410,13 +1403,14 @@
                } else {
                  console.log("inital load second");
                  if (propertyCard) {
-                   propertyCard.style.right = "9%";
-                   propertyCard.style.top = "7%";
+                   propertyCard.style.right = "6%";
+                   propertyCard.style.top = "6%";
                    //  propertyCard.style.right = "90px";
                    // propertyCard.style.top = "12%";
                  }
                }
          
+             
                const rowExtra = document.querySelectorAll(".details-row_extra");
                if (rowExtra) {
                  rowExtra.forEach((row) => {
@@ -1430,10 +1424,10 @@
          window.addEventListener("load", showSearchFilterCardsMobile);
          window.addEventListener("resize", showSearchFilterCardsMobile);
          
-
+         
           window.addEventListener("load", isLandscapeModeMethod);
          window.addEventListener("resize", isLandscapeModeMethod);
- 
+         
          // 
          document
            .querySelectorAll("#availabilityButtons button")
@@ -1581,18 +1575,18 @@
          
          const goBackToZone = () => {
              const timeToggle = document.getElementById("time-toggle");
-    const now = timeToggle.querySelector(".now");
-    const future = timeToggle.querySelector(".future");
+         const now = timeToggle.querySelector(".now");
+         const future = timeToggle.querySelector(".future");
                      // Move to Now
                   // Clear all active states
            // Clear all active states
-    now.classList.remove("active");
-    future.classList.remove("active");
-
-    // Set the "Now" option to active again
-    now.classList.add("active");
-
-
+         now.classList.remove("active");
+         future.classList.remove("active");
+         
+         // Set the "Now" option to active again
+         now.classList.add("active");
+         
+         
            const krpano = document.getElementById("krpanoSWFObject");
            const lastCrumb = breadcrumbTrail[breadcrumbTrail.length - 1];
            const slider = document.getElementById("totalArea");
@@ -1778,7 +1772,7 @@
          
              case "scene_d-zone_2":
              let hfDataSet = [];
-      
+         
               if(zone2houseData.length){
              hfDataSet = zone2houseData
            }
@@ -1868,13 +1862,12 @@
          const displayHorizontalSlider = () => {
            const sliderContainer = document.querySelector(".card-slider_1");
          
-
-   
-
-          console.log("Slider disabled on mobile/tablet landscape.", isLandscapeCheck);
+         
+         
+         
            sliderContainer.innerHTML = ""; // Clear previous content if needed
          
-           !isLandscapeCheck &&  sliderSearchedHouses &&
+             sliderSearchedHouses &&
              sliderSearchedHouses.forEach((house, index) => {
                 // Skip houses where isActivePlot is false
          if (house.isActivePlot === false) return;
@@ -1926,6 +1919,15 @@
          
                house &&
                  sliderContainer.insertAdjacentHTML("beforeend", cardHTML);
+         
+                  const controlTransition = document.getElementById("controls");
+         
+                if (controlTransition && isLandscapeModeMethod()) {
+                   controlTransition.style.right = "-2%"; // Hide controls
+                }else{
+                     controlTransition.style.right = "0%"; // Hide controls
+                  
+                }
              });
          
            // 🔁 Recalculate toggle margin after content is injected
@@ -2003,11 +2005,11 @@
            // Add more mappings here
          };
          
-
+         
           window.addEventListener("resize", displayHorizontalSlider);
-
+         
          window.addEventListener("load", displayHorizontalSlider);
-
+         
          const setFilterMapContainer = () => {
            console.log("Setting filter map container visibility");
            let krpano = globalKrpano();
@@ -2025,10 +2027,10 @@
          const updateSearchVisibility = () => {
            var krpano_obj = document.getElementById("krpanoSWFObject");
            const zoomLevel = krpano_obj.get("view.fov");
-
+         
            console.log("updateSearchVisibility");
-
-      
+         
+         
          
            const searchBar = document.getElementById("searchBarContainer");
            const mobileSearchCard =
@@ -2987,40 +2989,40 @@
          }
          
          document.getElementById("fullScreenBtn").addEventListener("click", (e) => {
-  console.log("User clicked fullscreen button");
-  toggleFullScreen();
-});
-
-
-
-
-
-
-const realTimeDeviceUpdate = () => {
-  isMobileOrTabletEnabled = /android|iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase());
-if(isMobileOrTabletEnabled){
-     isMobileEnabled = true 
-}else{
-  isMobileEnabled =false
-}
-}
-
- 
-
+         console.log("User clicked fullscreen button");
+         toggleFullScreen();
+         });
+         
+         
+         
+         
+         
+         
+         const realTimeDeviceUpdate = () => {
+         isMobileOrTabletEnabled = /android|iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase());
+         if(isMobileOrTabletEnabled){
+         isMobileEnabled = true 
+         }else{
+         isMobileEnabled =false
+         }
+         }
+         
+         
+         
          const toggleFullScreen = () => {
            const elem = document.documentElement;
            const btn = document.getElementById("fullScreenBtn");
-
+         
           const icon = document.getElementById("fullscreen-icon");
           
           const searchBar = document.getElementById("searchBarContainer");
-
-
-      
-
+         
+         
+         
+         
               
              
-
+         
          console.log("Toggling fullscreen mode", searchBar);
            if (
              !document.fullscreenElement &&
@@ -3028,16 +3030,16 @@ if(isMobileOrTabletEnabled){
              !document.msFullscreenElement
            ) {
              // Enter fullscreen
-
-
+         
+         
            
-
+         
              if (elem.requestFullscreen) {
                elem
                  .requestFullscreen()
                  .then(() => {
                   isFullScreenEnabled = true;
-
+         
            
                     crossBrowserFullScreenFuntionality();   
                
@@ -3047,12 +3049,12 @@ if(isMobileOrTabletEnabled){
                    console.error("Fullscreen mode failed:", error);
                  });
              } else if (elem.webkitRequestFullscreen) {
-
+         
               // safari 
                    
                elem.webkitRequestFullscreen() .then(() => {
                   isFullScreenEnabled = true;
-
+         
            
                     crossBrowserFullScreenFuntionality();   
                
@@ -3061,14 +3063,14 @@ if(isMobileOrTabletEnabled){
                  .catch((error) => {
                    console.error("Fullscreen mode failed:", error);
                  });
-
+         
                crossBrowserFullScreenFuntionality
              } else if (elem.msRequestFullscreen) {
                    // IE11
                elem.msRequestFullscreen()
                 .then(() => {
                   isFullScreenEnabled = true;
-
+         
            
                     crossBrowserFullScreenFuntionality();   
                
@@ -3077,12 +3079,12 @@ if(isMobileOrTabletEnabled){
                  .catch((error) => {
                    console.error("Fullscreen mode failed:", error);
                  });
-
+         
                crossBrowserFullScreenFuntionality
              }
          
           
-
+         
               icon.className = "fas fa-compress"; 
            } else {
              // Exit fullscreen
@@ -3090,9 +3092,9 @@ if(isMobileOrTabletEnabled){
              if (document.exitFullscreen) {
                      isFullScreenEnabled = false
                document.exitFullscreen();
-
+         
                 exitFullscreen()
-
+         
              } else if (document.webkitExitFullscreen) {
                   isFullScreenEnabled = false
                document.webkitExitFullscreen(); // Safari
@@ -3102,118 +3104,193 @@ if(isMobileOrTabletEnabled){
                document.msExitFullscreen(); // IE11
                exitFullscreen()
              }
-    
-   icon.className = "fas fa-expand";
+         
+         icon.className = "fas fa-expand";
              // <i class="fas fa-expand"></i>
            }
          }
-
-
+         
+         
          const crossBrowserFullScreenFuntionality = ()=> {
               const breadcrumb_wrapper_transition = document.getElementById("breadcrumb-wrapper");
           
                const search_card_transition = document.getElementById("search_card_transition");     
                const property_card_transition = document.getElementById("property_card_transition");
-
-   console.log("is fullscreen enabled", isMobileEnabled, isMobileOrTabletEnabled)
+         
+                const sliderFiltersTransition = document.getElementById(
+             "searchSliderFilters"
+           );
+         
+            const propertyCard = document.getElementById("krpano-card");
+         
+            const controlTransition = document.getElementById("controls");
+         
+         
+         
+              
+         
+         
                 if(  isMobileOrTabletEnabled){
+         
+                  if(controlTransition){
+                    controlTransition.style.transform = "scale(0.5)"; 
+                    !isLandscapeCheck ?    controlTransition.style.right = "-4%" : controlTransition.style.right = "1%"; 
+                    }
              
-
+         
                     if(breadcrumb_wrapper_transition){
-                      breadcrumb_wrapper_transition.style.transform= "scale(0.5)";
-                     breadcrumb_wrapper_transition.style.marginLeft= "-90px";
+                      breadcrumb_wrapper_transition.style.transform = "scale(0.5)";
+                     breadcrumb_wrapper_transition.style.marginLeft = "-90px";
+                     breadcrumb_wrapper_transition.style.marginTop = "-30px";
+                     
                     }
                     
-
-
+                    if(sliderFiltersTransition){
+                  sliderFiltersTransition.style.transform= "scale(0.6)";
+         
+                  sliderFiltersTransition.style.bottom= "-35px";
+         
+                  sliderFiltersTransition.style.width= "180%";
+              
+         sliderFiltersTransition.style.left= "-36%";
+                 
+                 
+         
+                    }
+         
+                  
+         
+         
                     if(search_card_transition){
                       search_card_transition.style.transform= "scale(0.4)";
-                      search_card_transition.style.marginTop= "-175px";
+                      search_card_transition.style.marginTop= "-200px";
                       search_card_transition.style.marginLeft= "-80px";
                     }
-
+         
                     
                      const isLandscapeTransform = isLandscapeModeMethod()
-
+         
+                     if(isLandscapeTransform){
+                        sliderFiltersTransition.style.left= "-36%";
+                      
+                    controlTransition.style.bottom = "21%"; 
+                     }
                     if(property_card_transition){
-                      property_card_transition.style.transform= "scale(0.4)";
-
-                       property_card_transition.style.bottom= "105px";
-
+         
+                      
+                      // property_card_transition.style.transform= "scale(0.4)";
+         
+                      propertyCard.style.transform= "scale(0.5)";
+         
+         
+                       property_card_transition.style.bottom= "130px";
+         
                        if(isLandscapeTransform){
                         property_card_transition.style.left= "40px";
-
+                      
+                  
+         
                        }
                        else{
                         
-                        property_card_transition.style.left= "90px";
+                        property_card_transition.style.left= "100px";
                        }
                     }
-
+         
                       
              
                 } 
                   
-
+         
          }
          
               /*
                 Reset the scale and margins of the elements
                 after exiting fullscreen mode
-
+         
               */
-
+         
          const exitFullscreen = () => {
-
-console.log("Exiting fullscreen mode", isMobileEnabled, isMobileOrTabletEnabled);  
+         
+         console.log("Exiting fullscreen mode", isMobileEnabled, isMobileOrTabletEnabled);  
           if(  isMobileEnabled){}
          
             const breadcrumb_wrapper_transition = document.getElementById("breadcrumb-wrapper");
                const search_card_transition = document.getElementById("search_card_transition");     
                const property_card_transition = document.getElementById("property_card_transition");
-
-
+         
+            const propertyCard = document.getElementById("krpano-card");
                
-
-
-
+                  const controlTransition = document.getElementById("controls");
+                  
+                  
+                  if(controlTransition){
+                    controlTransition.style.transform = "scale(0.9)"; 
+                  }
+         
+         
                      if(breadcrumb_wrapper_transition){
                   
                     breadcrumb_wrapper_transition.style.transform= "scale(1)";
                     breadcrumb_wrapper_transition.style.marginLeft= "0px"; 
+                            breadcrumb_wrapper_transition.style.marginTop = "0px";
                      }
-
-
+         
+         
                  if(search_card_transition){
                     search_card_transition.style.transform= "scale(1)";
                     search_card_transition.style.marginTop= "0px";
                     search_card_transition.style.marginLeft= "20px";     
                  }
+         
+         
+                   const sliderFiltersTransition = document.getElementById(
+             "searchSliderFilters"
+           );
+         
+                     if(sliderFiltersTransition){
+         sliderFiltersTransition.style.transform= "scale(1)";
+         
+         sliderFiltersTransition.style.bottom= "0px";
+         
+         sliderFiltersTransition.style.width= "100%";
+         
+         sliderFiltersTransition.style.left= "0px";
+         
+                    }
+         
+         
+                    if(propertyCard){
+                       propertyCard.style.transform= "scale(1)";
+         
+                    }
                 if(property_card_transition){
-                    property_card_transition.style.transform= "scale(1)";
-
+                 
+         
+                  //  property_card_transition.style.transform= "scale(1)";
+         
                     property_card_transition.style.bottom= "0px";
                     property_card_transition.style.left= "40px";
                 }
-
+         
                       
           
-
+         
            
-
+         
                 
          }
-
-        // window.addEventListener("load", exitFullscreen);
-        //  window.addEventListener("resize", exitFullscreen);
-
-
          
-        window.addEventListener("load", realTimeDeviceUpdate);
+         // window.addEventListener("load", exitFullscreen);
+         //  window.addEventListener("resize", exitFullscreen);
+         
+         
+         
+         window.addEventListener("load", realTimeDeviceUpdate);
          window.addEventListener("resize", realTimeDeviceUpdate);
-
+         
          //
-       
+         
          
          const resetTimelineState = () => {
            const timeToggle = document.querySelector(".time-toggle");
@@ -3263,7 +3340,7 @@ console.log("Exiting fullscreen mode", isMobileEnabled, isMobileOrTabletEnabled)
          
              
            
-
+         
          
              if(
          currentScene  === "scene_5_360"
@@ -3323,16 +3400,16 @@ console.log("Exiting fullscreen mode", isMobileEnabled, isMobileOrTabletEnabled)
                savedView.vlookat - 1}, ${savedView.fov});`);
                }, 100);
                }
-
-
-
+         
+         
+         
                   if(currentScene ===  "scene_888_360"){
              setTimeout(() => {
                  krpano.call(`lookat(${savedView.hlookat + 175 }, ${
                savedView.vlookat - 1}, ${savedView.fov});`);
                }, 100);
                }
-
+         
                 if(currentScene ===  "scene_13-180m"){
              setTimeout(() => {
                  krpano.call(`lookat(${savedView.hlookat - 60 }, ${
@@ -3344,7 +3421,7 @@ console.log("Exiting fullscreen mode", isMobileEnabled, isMobileOrTabletEnabled)
          
          
          const futureZoneSymmtery = () =>{
-
+         
            const krpano = globalKrpano();
          
             const currentScene = krpano.get("xml.scene");
@@ -3356,7 +3433,7 @@ console.log("Exiting fullscreen mode", isMobileEnabled, isMobileOrTabletEnabled)
          if( currentScene  === "future_scene_5_360"
          || currentScene  === "future_scene_6_360"
          || currentScene  === "future_scene_7_360"
-      
+         
          
          
          
@@ -3405,7 +3482,7 @@ console.log("Exiting fullscreen mode", isMobileEnabled, isMobileOrTabletEnabled)
                savedView.vlookat - 1}, ${savedView.fov});`);
                }, 100);
                }
-
+         
                
                  if(  currentScene ===  "future_scene_888_360"){
              setTimeout(() => {
@@ -3413,10 +3490,10 @@ console.log("Exiting fullscreen mode", isMobileEnabled, isMobileOrTabletEnabled)
                savedView.vlookat - 1}, ${savedView.fov});`);
                }, 100);
                }
-
-
          
-
+         
+         
+         
                   if(  currentScene ===  "future_scene_13-180m"){
              setTimeout(() => {
                  krpano.call(`lookat(${savedView.hlookat + 60 }, ${
@@ -3427,14 +3504,14 @@ console.log("Exiting fullscreen mode", isMobileEnabled, isMobileOrTabletEnabled)
          }
          
          // Set the "Future" view as the default active state on page load
-window.onload = function() {
-    // Simulate a click on the Future toggle to set it as active by default
-      
-
-};
-
-
-
+         window.onload = function() {
+         // Simulate a click on the Future toggle to set it as active by default
+         
+         
+         };
+         
+         
+         
          const toggleTimeView = (clickedElement) => {
           console.log("toggleTimeView", clickedElement)
            const timeToggle = clickedElement.parentElement;
@@ -3709,7 +3786,7 @@ window.onload = function() {
          let zone4houseData = parseHotspots(zoneMallhotspotXML);
          let zone8houseData = parseHotspots(zone8hotspotXML);
          
-      
+         
          let building1houseData = parseHotspots(zone6_building_1_hotspotXML);
          
          let zone7houseData = parseHotspots(zone7hotspotXML);
@@ -3766,11 +3843,11 @@ window.onload = function() {
                "searchSliderFilters"
              );
              const toggleWrapper = document.querySelector("#controls");
-
+         
                  const full_screen_wrapper = document.querySelector("#full_screen_wrapper");
-
+         
               const widthCheck = window.innerWidth > window.innerHeight;
-
+         
                if (
           
                window.getComputedStyle(searchSliderFilters).display === "none"
@@ -3785,10 +3862,10 @@ window.onload = function() {
                toggleWrapper.style.bottom = "14%";
                return
             } else if(isLandscapeCheck){
-              toggleWrapper.style.bottom = "6%";
+              toggleWrapper.style.bottom = "21%";
                 return
           }
-
+         
           console.log("searchSliderFilters", searchSliderFilters);
              if (
                searchSliderFilters &&
@@ -3803,7 +3880,7 @@ window.onload = function() {
          
          window.addEventListener("load", updateToggleMarginBasedOnSlider);
             window.addEventListener("resize", updateToggleMarginBasedOnSlider);
-
+         
          function getRandomColor() {
            const letters = "0123456789ABCDEF";
            let color = "#";
@@ -4006,12 +4083,12 @@ window.onload = function() {
          };
          
          const addLandHotspotsToKrpano = async () => {
-        
+         
            const krpano = document.getElementById("krpanoSWFObject");
            const response = await onInitalLoad();
-
+         
             
-
+         
          
            localStorage.setItem("response", JSON.stringify(response));
          
@@ -4358,7 +4435,7 @@ window.onload = function() {
            bgImage = "url('./skin/icons/renders/Al_Marina_Palaces.png')";
            }
          
-
+         
          
            const propertyTitle = setPropertyType(unitDetails.property_type)
          
@@ -4464,11 +4541,11 @@ window.onload = function() {
                 <span class="detail-value">${unitDetails.west || "-"}</span>
              </div>
           </div>
-
-
-       
-
-      <span>
+         
+         
+         
+         
+         <span>
               <div class="amenities-section">
                     <div class="amenity-icons">
                       <div class="amenity-item">
@@ -4479,33 +4556,33 @@ window.onload = function() {
                             <img src="skin/icons/Amenities/mosque.png" alt="mosque" width="30px" height="30px" class="amenity-png-icon"> 
                                <span> ${amenitiesTime(unitDetails.zone)?.[1]?.mosqueTime || '--'}</span>
                         </div>
-
+         
                        
                         <div class="amenity-item">
-  
+         
                            <img src="skin/icons/Amenities/shoppingCart.png" alt="shopiing Court" width="30px" height="30px" class="amenity-png-icon"> 
-   
+         
                                     <span> ${amenitiesTime(unitDetails.zone)?.[2]?.mallTime || '--'}</span>
                         </div>
              
                         <div class="amenity-item">
                            <img src="skin/icons/Amenities/pharmacy.png" alt="Basketball Court" width="30px" height="30px" class="amenity-png-icon"> 
-   
+         
                                      <span> ${amenitiesTime(unitDetails.zone)?.[3]?.pharmacyTime || '--'}</span>
                         </div>
                     </div>
               
                 </div>
          </span>
-
-    
-
+         
+         
+         
          
               </div>
          </div>
          </div>
          `;
-
+         
           
            document.body.appendChild(cardContainer);
            const width = window.innerWidth;
@@ -4517,22 +4594,26 @@ window.onload = function() {
            if (imagePropertyCard) {
              imagePropertyCard.style.backgroundImage = `${bgImage}`;
            }
-
+         
             const property_card_transition = document.getElementById("property_card_transition");
-
-
+         
+         
              const isLandscapeTransform = isLandscapeModeMethod()
             
              if(isFullScreenEnabled && isMobileOrTabletEnabled){
                   if(property_card_transition){
                   
-                      property_card_transition.style.transform= "scale(0.4)";
-
+                     // property_card_transition.style.transform= "scale(0.4)";
+         
+                    if(propertyCard){
+                       propertyCard.style.transform= "scale(0.5)";
+         
+                    }
                       property_card_transition.style.bottom= "105px";
-
+         
                        if(isLandscapeTransform){
                         property_card_transition.style.left= "40px";
-
+         
                        }
                        else{
                         
@@ -4540,22 +4621,13 @@ window.onload = function() {
                        }
                   }
              }
-
-                  
          
-           if (width > 1025) {
-             if (propertyCard) {
-               propertyCard.style.right = "40px";
-               propertyCard.style.top = "12%";
-             }
-           } else {
-             if (propertyCard) {
-               // propertyCard.style.position = "fixed";
-               propertyCard.style.right = "40px";
-               propertyCard.style.top = "7%";
-               // propertyCard.style.right = "5%";
-             }
-           }
+                  if(isFullScreenEnabled && isMobileOrTabletEnabled && propertyCard){
+                     propertyCard.style.right = "-2%";
+               propertyCard.style.top = "0%";
+                  }
+         
+         
          };
          let currentVisibleRoad = null;
          let currentHotspot = null;
@@ -4640,18 +4712,18 @@ window.onload = function() {
          
          
          
-const amenitiesTime = (zoneKey) => {
-  const  zoneAmenities = window.zoneAmenities 
- const amenities = zoneAmenities[zoneKey];
-
-
-  return amenities
-}
-
-
-
+         const amenitiesTime = (zoneKey) => {
+         const  zoneAmenities = window.zoneAmenities 
+         const amenities = zoneAmenities[zoneKey];
          
-   
+         
+         return amenities
+         }
+         
+         
+         
+         
+         
          
          
          
@@ -4971,13 +5043,13 @@ const amenitiesTime = (zoneKey) => {
            }
          
            const unitData = localStorage.getItem("response");
-
+         
             // ✅ Validate JSON string before parsing
-  if (!unitData || unitData === "undefined") {
-    console.warn("No valid data found in localStorage under key 'response'");
-    return;
-  }
-
+         if (!unitData || unitData === "undefined") {
+         console.warn("No valid data found in localStorage under key 'response'");
+         return;
+         }
+         
            const parsedData =  unitData && JSON.parse(unitData);
            const filteredData = parsedData?.data?.filter(
              (unit) => unit.plot_number === plot_number
@@ -5171,8 +5243,8 @@ const amenitiesTime = (zoneKey) => {
            const toggleLayerWrapper = document.getElementById(
              "toggle_layer_wrapper"
            );
-
-  const fullScreenWrapper = document.getElementById(
+         
+         const fullScreenWrapper = document.getElementById(
              "full_screen_wrapper"
            );
            full_screen_wrapper
@@ -5220,25 +5292,25 @@ const amenitiesTime = (zoneKey) => {
          };
          
          function handleOrientation() {}
-
-
-
-        const showMobileIcons = () => {
-    // Check if the device is mobile or tablet
-    const isMobileOrTablet = /android|iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase());
-    
-    // Access the global Krpano instance
-    let krpano = globalKrpano();
-    
-    // Get the total number of hotspots
-    const totalKrnpanoHotspots = krpano.get("hotspot.count");
-
-    // Loop through each hotspot to check its name
-    for (let i = 0; i < totalKrnpanoHotspots; i++) {
-        const hsName = krpano.get(`hotspot[${i}].name`);
-        
-        // Check if the device is mobile or tablet
-        if (isMobileOrTablet) {
+         
+         
+         
+         const showMobileIcons = () => {
+         // Check if the device is mobile or tablet
+         const isMobileOrTablet = /android|iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase());
+         
+         // Access the global Krpano instance
+         let krpano = globalKrpano();
+         
+         // Get the total number of hotspots
+         const totalKrnpanoHotspots = krpano.get("hotspot.count");
+         
+         // Loop through each hotspot to check its name
+         for (let i = 0; i < totalKrnpanoHotspots; i++) {
+         const hsName = krpano.get(`hotspot[${i}].name`);
+         
+         // Check if the device is mobile or tablet
+         if (isMobileOrTablet) {
             // If it's a mobile device, show mobile-specific hotspots and hide others
             if (hsName.includes("hs_mobile")) {
                 console.log("Showing mobile hotspot:", hsName);
@@ -5248,7 +5320,7 @@ const amenitiesTime = (zoneKey) => {
                 console.log("Hiding 360 hotspot:", hsName);
                 krpano.set(`hotspot[${hsName}].visible`, false);
             }
-        } else {
+         } else {
             // If it's not a mobile device, show 360 hotspots and hide mobile ones
             if (hsName.includes("hs_desktop_icons")) {
                 console.log("Showing 360 future hotspot:", hsName);
@@ -5258,10 +5330,10 @@ const amenitiesTime = (zoneKey) => {
                 console.log("Hiding mobile hotspot:", hsName);
                 krpano.set(`hotspot[${hsName}].visible`, false);
             }
-        }
-    }
-};
-
+         }
+         }
+         };
+         
          
          window.onload = () => {
            let krpano = globalKrpano();
