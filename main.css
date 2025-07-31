@@ -413,7 +413,7 @@
   .time-toggle {
 
     position: fixed;
-    bottom: 10%;
+    bottom: 8.5%;
     right: 20px;
     background: none;
     border: none;
@@ -447,22 +447,23 @@
 
    .full_screen_wrapper{
 
-    padding: 8px 16px;
+    padding: 0px 0px;
     display: flex;
     align-items: center;
-    gap: 6px;
+    margin-left: 80px;
     font-size: 16px;
     background:rgb(0 0 0 / 45%);
     transition: background-color 0.3s, color 0.3s;
-         width: 130PX;
-        border-radius: 1px;
+         width: 50PX;
+        border-radius: 5px;
         height: 50px;
+            
 
   }
 
    .toggle_layer_wrapper{
 
-    padding: 8px 16px;
+    padding: 0px 10px;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -470,7 +471,7 @@
     background:rgb(0 0 0 / 45%);
     transition: background-color 0.3s, color 0.3s;
          width: 130PX;
-        border-radius: 1px;
+        border-radius: 5px;
         height: 50px;
 
   }
@@ -543,7 +544,18 @@
     z-index: 9999;
     margin-bottom: 5px;
   } 
+
+  #fullscreen-icon{
+    font-size: 25px;
+   margin-bottom: 25px; 
+  }
   
+  /* 1024px centered content */
+#fixed-1024-content {
+ 
+}
+
+
   #fullScreenBtn {
   
     font-size: 25px;
@@ -552,7 +564,7 @@
    color: white !important;
     cursor: pointer;
     z-index: 9999;
-        margin-left: 30%;
+        margin-left: 10%;
      
   }
 
@@ -638,9 +650,7 @@
   .card-header {
     border-bottom: none !important;
   }
-  .card-title {
-    display: none !important;
-  }
+ 
   .hideDetails {
     display:  inline-block !important;
   } 
@@ -741,4 +751,21 @@
   z-index: 9999; /* Ensure it's above krpano canvas */
   cursor: pointer;
   width: 500px; /* Adjust width */
+}
+
+
+
+.content-box {
+  
+ 
+  
+  padding: 20px;
+}
+
+/* When in fullscreen */
+#fullscreen-container:fullscreen {
+
+  
+ 
+  background: white;
 }

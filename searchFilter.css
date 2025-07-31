@@ -2,8 +2,8 @@
 .compact-search-card {
     width:280px;
     max-width: 280px; 
-    margin-top: -40px !important;
-    margin-left: 20px !important; 
+    margin-top: -40px ;
+    margin-left: 20px ; 
     position: fixed; 
     top: 165px !important; 
     left: -300px !important; 
@@ -25,10 +25,12 @@
 .compact-search-card .card-title {
    
 
-    font-size: 1rem;
-    font-weight: 600;
+   color: black !important; /* Blue color for "Search Filter" */
+    font-size: 1rem !important; /* Slightly larger font size */
+    margin-bottom: 10px !important; /* Adjust spacing below title */
+    margin:10px;
     line-height: 1.5rem;
-        cursor: context-menu;
+    font-weight: 600;
 }
 
 .compact-search-card .form-label {

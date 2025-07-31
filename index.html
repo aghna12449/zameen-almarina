@@ -3,19 +3,27 @@
    <head>
       <title>Al Marina </title>
       <meta charset="UTF-8" />
-      <!-- <meta name="viewport" content="width=1024, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> -->
+      <!-- <meta name="viewport" content="width=1024px, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> -->
+
+
       <meta name="viewport" , initial-scale="1.0" , maximum-scale="1.0," />
       <meta http-equiv="ScreenOrientation" content="autoRotate:disabled" />
       <meta name="viewport" content=" user-scalable=no" />
+
+      
+
       <!-- <meta
          name="viewport"
          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover"
          /> -->
-      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <!-- <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="black" />
       <meta name="mobile-web-app-capable" content="yes" />
       <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
       <meta http-equiv="x-ua-compatible" content="IE=edge" />
+
+
+       -->
       <link
          rel="stylesheet"
          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -81,10 +89,12 @@
          /* Customize color */
          }
          html {
+              touch-action: pan-y;
          height: 100%;
          touch-action: none;
          }
          body {
+    
          height: 100%;
          overflow: hidden;
          margin: 0;
@@ -93,7 +103,8 @@
          font-size: 16px;
          /* color: #ffffff; */
          background-color: transparent !important;
-         touch-action: none;
+          touch-action: manipulation;
+          zoom: reset
          }
       </style>
    </head>
@@ -113,6 +124,9 @@
           <script src="src/zoneAmenities.js"></script>
       <script src="config.js"></script>
       <script type="module" src="contactForm.js"></script>
+
+     
+
       <div id="viewport">
          <!-- Your krpano viewer or other content -->
       </div>
@@ -162,14 +176,16 @@
                class="toggle-container"
                id="toggleFilterButton"
                >
-               <div class="toggle-icon-wrapper">
+              <div class="toggle-icon-wrapper">
                   <span id="toggleArrow_1"></span>
-               </div>
+               </div> 
             </label>
             <div class="container mt-5">
-               <div class="card shadow rounded-1 compact-search-card">
-                  <div class="card-body">
-                     <h5 class="card-title mb-4 fw-semibold">Search Filter</h5>
+           
+               <div id="search_card_transition" class="card shadow rounded-1 compact-search-card">
+                        <span class="card-title mb-4 fw-semibold">Search Filter</span> 
+                <div class="card-body">
+                
                      <div class="mb-3">
                         <div class="input-group">
                            <input
@@ -226,6 +242,7 @@
                            >
                         <i class="fas fa-sync-alt me-2"></i> Reset Filters
                         </button>
+                          
                      </div>
                      <div id="moreOptions" style="display: none">
                         <div class="mt-2">
@@ -515,14 +532,19 @@
             </div>
          </div>
          <div id="controls">
-           <div   id="full_screen_wrapper" 
+           <div  class ="full_screen_wrapper"   id="full_screen_wrapper" 
                  style="display: none; "
            
            >
-                    <!-- <span id="toggle-text" class ="full_screen_wrapper" style="margin-bottom: 15px"></span>
-                      <butto id="fullScreenBtn" title="Toggle Fullscreen">⛶ </button> -->
 
-                  </div>
+          
+
+          <button id="fullScreenBtn" title="Toggle Fullscreen"> <i id="fullscreen-icon" class="fas fa-expand"></i></button>
+
+            </div>
+                    
+            
+                
             <!-- <button id="zoomInBtn">+</button>
                <button id="zoomOutBtn">-</button>    -->
             <div
@@ -597,11 +619,11 @@
          </div>
       </div>
       <div id="time-toggle" class="time-toggle" style="display: none">
-            <div class="toggle-option now " onclick="toggleTimeView(this)">
+            <div class="toggle-option now active" onclick="toggleTimeView(this)">
             <span class="material-icons">access_time</span> Now
          </div>
         
-        <div class="toggle-option future active" onclick="toggleTimeView(this)">
+        <div class="toggle-option future " onclick="toggleTimeView(this)">
             <span class="material-icons">event</span> Future
          </div>
 
@@ -644,11 +666,23 @@
          });
       </script>
       <script>
-         console.log("UNit details", window.unitDetails )
+        
          
          const select = document.getElementById("countryCodeSelect");
 
-          let  isLandscapeCheck;
+
+        /* 
+          Global Variable
+
+        */
+
+          let isLandscapeCheck;
+          
+          let isFullScreenEnabled = false; 
+
+          let isMobileEnabled = true; 
+          let isMobileOrTabletEnabled =false
+
          
          countryDialCodes.forEach((country) => {
          const option = document.createElement("option");
@@ -1113,17 +1147,20 @@
            if (!isDown) return;
            e.preventDefault();
            const x = e.pageX - slider.offsetLeft;
-           const walk = (x - startX) * 2; // Adjust scroll speed
+           const walk = (x - startX) * 1; // Adjust scroll speed
            slider.scrollLeft = scrollLeft - walk;
          });
          
          slider.addEventListener(
            "wheel",
            (e) => {
+
+               const scrollSpeed = 10; // Adjust scroll speed as needed
+
              // Only convert vertical scroll to horizontal if there's no shift key
              if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
                e.preventDefault(); // prevent vertical scroll
-               slider.scrollLeft += e.deltaY;
+            slider.scrollLeft += e.deltaY * scrollSpeed;
              }
            },
            { passive: false }
@@ -1228,11 +1265,11 @@
                  if (propertyCard) {
                    propertyCard.style.width = "225px";
                    propertyCard.style.height = "230px";
-                   propertyCard.style.right = "30px";
+                   propertyCard.style.right = "90px";
                    // propertyCard.style.top = "%";
                  }
          
-                 searchSliderFilters.style.display = "none";
+                searchSliderFilters.style.display = "block";
                  mobileSearchFilter.style.display = "block";
                  toggleFilterButton.style.display = "none";
          
@@ -1347,7 +1384,7 @@
                  const card = wrapper.querySelector(".card_1");
                  const labelbox = wrapper.querySelector(".top-label-box");
          
-                 console.log("CARD", card, "labelbox", labelbox);
+          
          
                  if (card) {
                    card.style.top = "0rem";
@@ -1367,13 +1404,13 @@
                if (width > 1025) {
                  if (propertyCard) {
                    console.log("inital load first ");
-                   propertyCard.style.right = "40px";
+                   propertyCard.style.right = "5%";
                    propertyCard.style.top = "12%";
                  }
                } else {
                  console.log("inital load second");
                  if (propertyCard) {
-                   propertyCard.style.right = "40px";
+                   propertyCard.style.right = "9%";
                    propertyCard.style.top = "7%";
                    //  propertyCard.style.right = "90px";
                    // propertyCard.style.top = "12%";
@@ -1394,7 +1431,7 @@
          window.addEventListener("resize", showSearchFilterCardsMobile);
          
 
-                window.addEventListener("load", isLandscapeModeMethod);
+          window.addEventListener("load", isLandscapeModeMethod);
          window.addEventListener("resize", isLandscapeModeMethod);
  
          // 
@@ -1857,7 +1894,7 @@
          
              <img src='${dynamicSliderImage(
                house.property_type
-             )}' height="100px" width="100px" />
+             )}' height="100px" width="100px"   draggable="false"/>
              <div class="details_1">
                  <h4>Plot ${house.plot_number}</h4>
                   
@@ -2949,44 +2986,234 @@
            }
          }
          
-         function toggleFullScreen() {
+         document.getElementById("fullScreenBtn").addEventListener("click", (e) => {
+  console.log("User clicked fullscreen button");
+  toggleFullScreen();
+});
+
+
+
+
+
+
+const realTimeDeviceUpdate = () => {
+  isMobileOrTabletEnabled = /android|iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase());
+if(isMobileOrTabletEnabled){
+     isMobileEnabled = true 
+}else{
+  isMobileEnabled =false
+}
+}
+
+ 
+
+         const toggleFullScreen = () => {
            const elem = document.documentElement;
            const btn = document.getElementById("fullScreenBtn");
-         
+
+          const icon = document.getElementById("fullscreen-icon");
+          
+          const searchBar = document.getElementById("searchBarContainer");
+
+
+      
+
+              
+             
+
+         console.log("Toggling fullscreen mode", searchBar);
            if (
              !document.fullscreenElement &&
              !document.webkitFullscreenElement &&
              !document.msFullscreenElement
            ) {
              // Enter fullscreen
+
+
+           
+
              if (elem.requestFullscreen) {
                elem
                  .requestFullscreen()
                  .then(() => {
+                  isFullScreenEnabled = true;
+
+           
+                    crossBrowserFullScreenFuntionality();   
+               
                    console.log("Fullscreen mode activated");
                  })
                  .catch((error) => {
                    console.error("Fullscreen mode failed:", error);
                  });
              } else if (elem.webkitRequestFullscreen) {
-               elem.webkitRequestFullscreen(); // Safari
+
+              // safari 
+                   
+               elem.webkitRequestFullscreen() .then(() => {
+                  isFullScreenEnabled = true;
+
+           
+                    crossBrowserFullScreenFuntionality();   
+               
+                   console.log("Fullscreen mode activated");
+                 })
+                 .catch((error) => {
+                   console.error("Fullscreen mode failed:", error);
+                 });
+
+               crossBrowserFullScreenFuntionality
              } else if (elem.msRequestFullscreen) {
-               elem.msRequestFullscreen(); // IE11
+                   // IE11
+               elem.msRequestFullscreen()
+                .then(() => {
+                  isFullScreenEnabled = true;
+
+           
+                    crossBrowserFullScreenFuntionality();   
+               
+                   console.log("Fullscreen mode activated");
+                 })
+                 .catch((error) => {
+                   console.error("Fullscreen mode failed:", error);
+                 });
+
+               crossBrowserFullScreenFuntionality
              }
          
-             btn.innerHTML = "🗗";
+          
+
+              icon.className = "fas fa-compress"; 
            } else {
              // Exit fullscreen
+                     searchBar.style.display = "block";
              if (document.exitFullscreen) {
+                     isFullScreenEnabled = false
                document.exitFullscreen();
+
+                exitFullscreen()
+
              } else if (document.webkitExitFullscreen) {
+                  isFullScreenEnabled = false
                document.webkitExitFullscreen(); // Safari
+               exitFullscreen()
              } else if (document.msExitFullscreen) {
+                  isFullScreenEnabled = false
                document.msExitFullscreen(); // IE11
+               exitFullscreen()
              }
-             btn.innerHTML = "⛶";
+    
+   icon.className = "fas fa-expand";
+             // <i class="fas fa-expand"></i>
            }
          }
+
+
+         const crossBrowserFullScreenFuntionality = ()=> {
+              const breadcrumb_wrapper_transition = document.getElementById("breadcrumb-wrapper");
+          
+               const search_card_transition = document.getElementById("search_card_transition");     
+               const property_card_transition = document.getElementById("property_card_transition");
+
+   console.log("is fullscreen enabled", isMobileEnabled, isMobileOrTabletEnabled)
+                if(  isMobileOrTabletEnabled){
+             
+
+                    if(breadcrumb_wrapper_transition){
+                      breadcrumb_wrapper_transition.style.transform= "scale(0.5)";
+                     breadcrumb_wrapper_transition.style.marginLeft= "-90px";
+                    }
+                    
+
+
+                    if(search_card_transition){
+                      search_card_transition.style.transform= "scale(0.4)";
+                      search_card_transition.style.marginTop= "-175px";
+                      search_card_transition.style.marginLeft= "-80px";
+                    }
+
+                    
+                     const isLandscapeTransform = isLandscapeModeMethod()
+
+                    if(property_card_transition){
+                      property_card_transition.style.transform= "scale(0.4)";
+
+                       property_card_transition.style.bottom= "105px";
+
+                       if(isLandscapeTransform){
+                        property_card_transition.style.left= "40px";
+
+                       }
+                       else{
+                        
+                        property_card_transition.style.left= "90px";
+                       }
+                    }
+
+                      
+             
+                } 
+                  
+
+         }
+         
+              /*
+                Reset the scale and margins of the elements
+                after exiting fullscreen mode
+
+              */
+
+         const exitFullscreen = () => {
+
+console.log("Exiting fullscreen mode", isMobileEnabled, isMobileOrTabletEnabled);  
+          if(  isMobileEnabled){}
+         
+            const breadcrumb_wrapper_transition = document.getElementById("breadcrumb-wrapper");
+               const search_card_transition = document.getElementById("search_card_transition");     
+               const property_card_transition = document.getElementById("property_card_transition");
+
+
+               
+
+
+
+                     if(breadcrumb_wrapper_transition){
+                  
+                    breadcrumb_wrapper_transition.style.transform= "scale(1)";
+                    breadcrumb_wrapper_transition.style.marginLeft= "0px"; 
+                     }
+
+
+                 if(search_card_transition){
+                    search_card_transition.style.transform= "scale(1)";
+                    search_card_transition.style.marginTop= "0px";
+                    search_card_transition.style.marginLeft= "20px";     
+                 }
+                if(property_card_transition){
+                    property_card_transition.style.transform= "scale(1)";
+
+                    property_card_transition.style.bottom= "0px";
+                    property_card_transition.style.left= "40px";
+                }
+
+                      
+          
+
+           
+
+                
+         }
+
+        // window.addEventListener("load", exitFullscreen);
+        //  window.addEventListener("resize", exitFullscreen);
+
+
+         
+        window.addEventListener("load", realTimeDeviceUpdate);
+         window.addEventListener("resize", realTimeDeviceUpdate);
+
+         //
+       
          
          const resetTimelineState = () => {
            const timeToggle = document.querySelector(".time-toggle");
@@ -3540,19 +3767,29 @@ window.onload = function() {
              );
              const toggleWrapper = document.querySelector("#controls");
 
+                 const full_screen_wrapper = document.querySelector("#full_screen_wrapper");
+
               const widthCheck = window.innerWidth > window.innerHeight;
 
+               if (
+          
+               window.getComputedStyle(searchSliderFilters).display === "none"
+             ) {
+               toggleWrapper.style.bottom = "2%";
+              return
+              }
               /*
                 if portrait              
               */
-            if(!widthCheck){
-               toggleWrapper.style.bottom = "13%";
+            if(!widthCheck ){
+               toggleWrapper.style.bottom = "14%";
                return
             } else if(isLandscapeCheck){
-              toggleWrapper.style.bottom = "2%";
+              toggleWrapper.style.bottom = "6%";
                 return
           }
 
+          console.log("searchSliderFilters", searchSliderFilters);
              if (
                searchSliderFilters &&
                window.getComputedStyle(searchSliderFilters).display !== "none"
@@ -3769,6 +4006,7 @@ window.onload = function() {
          };
          
          const addLandHotspotsToKrpano = async () => {
+        
            const krpano = document.getElementById("krpanoSWFObject");
            const response = await onInitalLoad();
 
@@ -3792,7 +4030,7 @@ window.onload = function() {
                  card.remove();
                }
              }
-         
+           
             
          
              const icon_360 = document.getElementById("zone_5_360_icon");
@@ -4127,7 +4365,7 @@ window.onload = function() {
          
            cardContainer.id = "krpano-card";
            cardContainer.innerHTML = `
-         <div class="property-card">
+         <div  id="property_card_transition" class="property-card">
          <div class="image-overlay">
          
          <button class="close-btn" onclick="closeCard()">&times;</button>
@@ -4279,6 +4517,31 @@ window.onload = function() {
            if (imagePropertyCard) {
              imagePropertyCard.style.backgroundImage = `${bgImage}`;
            }
+
+            const property_card_transition = document.getElementById("property_card_transition");
+
+
+             const isLandscapeTransform = isLandscapeModeMethod()
+            
+             if(isFullScreenEnabled && isMobileOrTabletEnabled){
+                  if(property_card_transition){
+                  
+                      property_card_transition.style.transform= "scale(0.4)";
+
+                      property_card_transition.style.bottom= "105px";
+
+                       if(isLandscapeTransform){
+                        property_card_transition.style.left= "40px";
+
+                       }
+                       else{
+                        
+                        property_card_transition.style.left= "90px";
+                       }
+                  }
+             }
+
+                  
          
            if (width > 1025) {
              if (propertyCard) {
@@ -4381,7 +4644,7 @@ const amenitiesTime = (zoneKey) => {
   const  zoneAmenities = window.zoneAmenities 
  const amenities = zoneAmenities[zoneKey];
 
- console.log("zoneAmenities",zoneKey, zoneAmenities,amenities)
+
   return amenities
 }
 
@@ -4928,7 +5191,7 @@ const amenitiesTime = (zoneKey) => {
          if (isToggleScene) {
          toggle.style.display = "block";
          toggleLayerWrapper.style.display = "none";
-         fullScreenWrapper.style.display= "none"
+         //fullScreenWrapper.style.display= "none"
          } else {
          toggle.style.display = "none";
          toggleLayerWrapper.style.display = "flex";
@@ -4949,11 +5212,11 @@ const amenitiesTime = (zoneKey) => {
            //     zoomOut();
            //   });
          
-           document
-             .getElementById("fullScreenBtn")
-             .addEventListener("click", function () {
-               toggleFullScreen();
-             });
+          //  document
+          //    .getElementById("fullScreenBtn")
+          //    .addEventListener("click", function () {
+          //      toggleFullScreen();
+          //    });
          };
          
          function handleOrientation() {}
@@ -5089,6 +5352,7 @@ const amenitiesTime = (zoneKey) => {
            flyToInitialAlMarinaScene();
            setFilterMapContainer();
            showMobileIcons();
+           updateToggleMarginBasedOnSlider();
          
            const unit = getSpecificUnit();
          
@@ -5102,7 +5366,7 @@ const amenitiesTime = (zoneKey) => {
          
              krpano.set(
                "events.onloadcomplete",
-               "js(enableZoomControls());  js(set360Symmetry()); js(addLandHotspotsToKrpano()); js(updateSearchVisibility());  js(displayHorizontalSlider()); js(createSceneCard()); js(showSearchFilterCardsMobile);js(flyToInitialAlMarinaScene); js(setFilterMapContainer()); js(showMobileIcons());) ",
+               "js(enableZoomControls()); js(updateToggleMarginBasedOnSlider()); js(set360Symmetry()); js(addLandHotspotsToKrpano()); js(updateSearchVisibility());  js(displayHorizontalSlider()); js(createSceneCard()); js(showSearchFilterCardsMobile);js(flyToInitialAlMarinaScene); js(setFilterMapContainer()); js(showMobileIcons());) ",
                  
             
              );
