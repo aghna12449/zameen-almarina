@@ -413,7 +413,7 @@
   .time-toggle {
 
     position: fixed;
-    bottom: 8.5%;
+    bottom: 9.5%;
     right: 20px;
     background: none;
     border: none;
@@ -448,6 +448,7 @@
    .full_screen_wrapper{
 
     padding: 0px 0px;
+    padding-top: 20%;
     display: flex;
     align-items: center;
     margin-left: 80px;
