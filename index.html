@@ -1183,6 +1183,7 @@
            //krpano.call("tween(view.fov, 90, 1.0);");
            if (isLandscapeView) {
              console.log("Landscape mode detected");
+             setQueryForm();
              if (currentScene === "scene_b-al_marina_aerial") {
                //  krpano.call("looktohotspot('hs_zone_1_360(1)')");
              } else if (currentScene === "scene_a-initial") {
@@ -1193,6 +1194,11 @@
              // Add your landscape-specific code here
            } else {
              console.log("Portrait mode detected");
+
+             setQueryForm();
+
+           
+
          
              // Add your portrait-specific code here
            }
@@ -1388,9 +1394,11 @@
          
          
                if(isLandscapeModeMethod()){
+                if (propertyCard) {
                       propertyCard.style.right = "0%";
                    propertyCard.style.top = "1%";
                   return
+                }
                 }
          
          
@@ -1926,7 +1934,7 @@
                 if (controlTransition && isLandscapeModeMethod()) {
                    controlTransition.style.right = "-2%"; // Hide controls
                 }else{
-                     controlTransition.style.right = "0%"; // Hide controls
+                    // controlTransition.style.right = "0%"; // Hide controls
                   
                 }
              });
@@ -3000,6 +3008,7 @@
          
          
          const realTimeDeviceUpdate = () => {
+         // setQueryForm();
          isMobileOrTabletEnabled = /android|iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase());
          if(isMobileOrTabletEnabled){
          isMobileEnabled = true 
@@ -3110,30 +3119,43 @@
              // <i class="fas fa-expand"></i>
            }
          }
-
-     
+         
          const setQueryForm = () => {
-   
-          const formWrapper = document.getElementById("formWrapper");     
-          const callbackFormContainer = document.getElementById("callbackFormContainer");
+    const formWrapper = document.getElementById("formWrapper");
+    const callbackFormContainer = document.getElementById("callbackFormContainer");
+  
+
+    // Reset styles first
+    formWrapper.style.transform = "";
+    callbackFormContainer.style.marginTop = "";
+    callbackFormContainer.style.maxHeight = "";
+    callbackFormContainer.style.height = "";
+    callbackFormContainer.style.width = "";
+    callbackFormContainer.style.marginLeft = "";
+    callbackFormContainer.style.flexDirection = "";
+
+    // Check landscape mode or other conditions
+    if (isLandscapeModeMethod()) {
+        formWrapper.style.transform = "scale(0.4)";
+        callbackFormContainer.style.marginTop = "-35%";
+        callbackFormContainer.style.maxHeight = "130%";
+        callbackFormContainer.style.height = "135%";
+        callbackFormContainer.style.width = "100%";
+    } else if (isMobileOrTabletEnabled && formWrapper) {
+        formWrapper.style.transform = "scale(0.5)";
+        callbackFormContainer.style.marginTop = "60%";
+        callbackFormContainer.style.flexDirection = "row";
+        callbackFormContainer.style.width = "175%";
+        callbackFormContainer.style.marginLeft = "-12%";
+        callbackFormContainer.style.maxHeight = "75%";
+        callbackFormContainer.style.height = "71%";
+    }
+}
 
 
-          if( isMobileOrTabletEnabled && formWrapper){
-            formWrapper.style.transform = "scale(0.5)"; 
-
-          //  formWrapper.style.marginLeft = "-16%"; 
 
 
-            callbackFormContainer.style.flexDirection = "row"; 
-            callbackFormContainer.style.width = "175%"; 
-            callbackFormContainer.style.marginLeft = "-12%"; 
-            callbackFormContainer.style.maxHeight = "65%"
 
-    
-            
-          }
-
-         }
 
          const exitQueryForm = () => {
 
@@ -3145,13 +3167,13 @@
           console.log("exitQueryForm", isMobileOrTabletEnabled,  widthCheck)
           if(isMobileOrTabletEnabled  && formWrapper){
             formWrapper.style.transform = "scale(1)"; 
-         //   formWrapper.style.marginLeft = "-7%"; 
+     
 
             callbackFormContainer.style.flexDirection = "row"; 
             callbackFormContainer.style.width = "90%"; 
             callbackFormContainer.style.marginLeft = "12%"; 
 
-            
+
             widthCheck ? callbackFormContainer.style.maxHeight = "80%" 
 
             : callbackFormContainer.style.maxHeight = "30%" 
@@ -3187,7 +3209,7 @@
          
                   if(controlTransition){
                     controlTransition.style.transform = "scale(0.5)"; 
-                    !isLandscapeCheck ?    controlTransition.style.right = "-4%" : controlTransition.style.right = "1%"; 
+                    !isLandscapeCheck ?    controlTransition.style.right = "-7%" : controlTransition.style.right = "1%"; 
                     }
              
          
@@ -3283,6 +3305,9 @@
 
                   if(controlTransition){
                     controlTransition.style.transform = "scale(0.9)"; 
+
+                    !isLandscapeCheck ?    controlTransition.style.right = "-1%" : controlTransition.style.right = "1%"; 
+                   
                   }
          
          
