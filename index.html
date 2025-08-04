@@ -1192,14 +1192,9 @@
               timeToggle.style.bottom= "14.5%"
              }
 
-               if(filterMapContainer){
-                    console.log("filterMapContainer", filterMapContainer)
-                      filterMapContainer.style.transform = "scale(0.8)";
-                     filterMapContainer.style.marginLeft = "-5%";
-                     filterMapContainer.style.marginTop = "-10%";
-                  }
+               
               
-
+              setInitialCard();
               
              setQueryForm();
           
@@ -1211,7 +1206,7 @@
                  timeToggle.style.bottom= "5.5%"
               }
 
-              
+              setInitialCard()     
 
              setQueryForm();
 
@@ -3137,6 +3132,10 @@
              // <i class="fas fa-expand"></i>
            }
          }
+
+       
+          
+
          
          const setQueryForm = () => {
     const formWrapper = document.getElementById("formWrapper");
@@ -3171,6 +3170,72 @@
 }
 
 
+
+  const setInitialCard = () => {
+      
+      
+      
+          const filterMapContainer = document.getElementById("filterMapContainer");
+
+              
+
+              if( isFullScreenEnabled  && isLandscapeModeMethod() && filterMapContainer){
+            filterMapContainer.style.transform = "scale(0.6)"; 
+            filterMapContainer.style.marginLeft = "-4%"; 
+            filterMapContainer.style.marginTop = "-10%";
+            return
+
+          }
+            if(isLandscapeModeMethod() && filterMapContainer){
+            filterMapContainer.style.transform = "scale(0.6)"; 
+            filterMapContainer.style.marginLeft = "-2%"; 
+            filterMapContainer.style.marginTop = "-4%";
+            return
+
+          }
+          
+
+          // Deafult Portarait Case
+          
+                      if(isFullScreenEnabled  && isMobileOrTabletEnabled){
+                      filterMapContainer.style.transform = "scale(0.8)";
+                     filterMapContainer.style.marginLeft = "-4%";
+                     filterMapContainer.style.marginTop = "-15%";
+                     return
+                  }
+
+
+                  
+                      if(filterMapContainer && isMobileOrTabletEnabled){
+                      filterMapContainer.style.transform = "scale(1.3)";
+                     filterMapContainer.style.marginLeft = "8%";
+                     filterMapContainer.style.marginTop = "10%";
+                  }
+
+         }
+
+      const  exitInitialCard = () => {
+      const filterMapContainer = document.getElementById("filterMapContainer");
+
+           const widthCheck = window.innerWidth > window.innerHeight;
+
+        
+          if(isLandscapeModeMethod() && filterMapContainer){
+            filterMapContainer.style.transform = "scale(0.6)"; 
+            filterMapContainer.style.marginLeft = "-2%"; 
+            filterMapContainer.style.marginTop = "-4%";
+            return
+
+          }
+
+
+                  
+                      if(filterMapContainer && isMobileOrTabletEnabled){
+                      filterMapContainer.style.transform = "scale(1)";
+                     filterMapContainer.style.marginLeft = "5%";
+                     filterMapContainer.style.marginTop = "5%";
+                  }
+ }
 
 
 
@@ -3208,8 +3273,7 @@
                const search_card_transition = document.getElementById("search_card_transition");     
                const property_card_transition = document.getElementById("property_card_transition");
 
-                    const filterMapContainer = document.getElementById("filterMapContainer");
-
+            
                const timeToggle = document.getElementById("time-toggle");
 
 
@@ -3230,14 +3294,11 @@
                  
 
                   setQueryForm();
-          
 
-                  if(filterMapContainer){
-                    console.log("filterMapContainer", filterMapContainer)
-                      filterMapContainer.style.transform = "scale(0.8)";
-                     filterMapContainer.style.marginLeft = "-5%";
-                     filterMapContainer.style.marginTop = "-10%";
-                  }
+                  setInitialCard();
+
+      
+
               
          
                   if(controlTransition){
@@ -3248,7 +3309,7 @@
          
                     if(breadcrumb_wrapper_transition){
                       breadcrumb_wrapper_transition.style.transform = "scale(0.5)";
-                     breadcrumb_wrapper_transition.style.marginLeft = "-40%";
+                     breadcrumb_wrapper_transition.style.marginLeft = "-30%";
                      breadcrumb_wrapper_transition.style.marginTop = "-30px";
                      
                     }
@@ -3331,7 +3392,9 @@
          console.log("Exiting fullscreen mode", isMobileEnabled, isMobileOrTabletEnabled);  
           if(  isMobileOrTabletEnabled){
             exitQueryForm();
+            exitInitialCard();
           }
+          
          
             const breadcrumb_wrapper_transition = document.getElementById("breadcrumb-wrapper");
                const search_card_transition = document.getElementById("search_card_transition");     
@@ -3340,13 +3403,7 @@
             const propertyCard = document.getElementById("krpano-card");
                
                   const controlTransition = document.getElementById("controls");
-                   const filterMapContainer = document.getElementById("filterMapContainer");
-                  
-                      if(filterMapContainer){
-                      filterMapContainer.style.transform = "scale(1.5)";
-                     filterMapContainer.style.marginLeft = "10%";
-                     filterMapContainer.style.marginTop = "15%";
-                  }
+                   
                  
 
                   if(controlTransition){
@@ -4752,7 +4809,7 @@
          
                   if(isFullScreenEnabled && isMobileOrTabletEnabled && propertyCard){
                      propertyCard.style.right = "-2%";
-               propertyCard.style.top = "0%";
+               propertyCard.style.top = "-2%";
                   }
          
          
