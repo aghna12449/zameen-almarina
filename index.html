@@ -1170,7 +1170,7 @@
            const krpano = document.getElementById("krpanoSWFObject");
            const currentScene = krpano.get("xml.scene");
          
-         
+         const timeToggle= document.getElementById("time-toggle");
          
          
            const viewport = document.getElementById("viewport");
@@ -1181,8 +1181,21 @@
          
            // krpano.call("tween(view.fov, 30, 1.0);");
            //krpano.call("tween(view.fov, 90, 1.0);");
+
+               if(timeToggle){
+
+                        
+                      }else{
+                          
+                      }
+
+
            if (isLandscapeView) {
              console.log("Landscape mode detected");
+             if(timeToggle){
+              timeToggle.style.bottom= "12.5%"
+             }
+              timeToggle.style.bottom= "12.5%"
              setQueryForm();
              if (currentScene === "scene_b-al_marina_aerial") {
                //  krpano.call("looktohotspot('hs_zone_1_360(1)')");
@@ -1194,6 +1207,12 @@
              // Add your landscape-specific code here
            } else {
              console.log("Portrait mode detected");
+
+              if(timeToggle){
+                 timeToggle.style.bottom= "5.5%"
+              }
+
+              
 
              setQueryForm();
 
@@ -3189,6 +3208,12 @@
           
                const search_card_transition = document.getElementById("search_card_transition");     
                const property_card_transition = document.getElementById("property_card_transition");
+
+                
+
+               const timeToggle = document.getElementById("time-toggle");
+
+
          
                 const sliderFiltersTransition = document.getElementById(
              "searchSliderFilters"
@@ -3199,10 +3224,11 @@
             const controlTransition = document.getElementById("controls");
          
          
-        
+             
          
          
                 if(  isMobileOrTabletEnabled){
+                 
 
                   setQueryForm();
               
@@ -3241,14 +3267,18 @@
                       search_card_transition.style.marginTop= "-200px";
                       search_card_transition.style.marginLeft= "-80px";
                     }
+
+                       
          
                     
                      const isLandscapeTransform = isLandscapeModeMethod()
-         
+                    console.log("is landscape transform", isLandscapeTransform)
                      if(isLandscapeTransform){
                         sliderFiltersTransition.style.left= "-36%";
                       
-                    controlTransition.style.bottom = "21%"; 
+                      controlTransition.style.bottom = "21%"; 
+                 
+                     
                      }
                     if(property_card_transition){
          
@@ -3257,12 +3287,16 @@
          
                       propertyCard.style.transform= "scale(0.5)";
          
-         
                        property_card_transition.style.bottom= "130px";
          
                        if(isLandscapeTransform){
                         property_card_transition.style.left= "40px";
-                      
+                        if(timeToggle){
+
+                         timeToggle.style.bottom= "14.5%"
+                      }else{
+                            timeToggle.style.bottom= "9.5%"
+                      }
                   
          
                        }
