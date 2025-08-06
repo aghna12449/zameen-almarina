@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="ar" >
    <head>
       <title>Al Marina </title>
       <meta charset="UTF-8" />
@@ -582,8 +582,22 @@
                   <div class="form-row">
                      <div class="phone-field">
                         <select id="countryCodeSelect" class="scrollable-select"></select>
-                        <input type="tel"  id="phoneNumber" class="phone-input" placeholder="Phone Number" required />
+                        <input type="number"  id="phoneNumber"
+                         class="phone-input"
+                     
+                          
+                          placeholder="0xxxxxxxxx (Ten Digits)"
+                           pattern="0[0-9]{9}"
+                            maxlength="10"
+                          
+                          required />
+
+                        
+
                      </div>
+                       <span id="phoneError" style="color: red; font-size: 14px; display: none;">
+                            Phone number must be 10 digits and start with 0
+                          </span>
                   </div>
                   <div class="form-row">
                      <input type="email"  id="emailAddress" placeholder="Email Address" required />
@@ -636,13 +650,29 @@
          });
       </script>
 
-    
+    <script>
+  const phoneInput = document.getElementById("phoneNumber");
+  const phoneError = document.getElementById("phoneError");
+
+  phoneInput.addEventListener("input", function () {
+    const value = phoneInput.value;
+
+    // Remove non-numeric characters
+    phoneInput.value = value.replace(/\D/g, '');
+
+    if (!/^0\d{9}$/.test(phoneInput.value)) {
+      phoneInput.setCustomValidity("Please enter a 10-digit phone number starting with 0");
+      phoneError.style.display = "inline";
+    } else {
+      phoneInput.setCustomValidity("");
+      phoneError.style.display = "none";
+    }
+  });
+</script>
 
 
       <script>
-         const select = document.getElementById("countryCodeSelect");
-         
-         
+
          /* 
           Global Variable
          
@@ -654,15 +684,18 @@
          
           let isMobileEnabled = true; 
           let isMobileOrTabletEnabled =false
+
+
+
+         const select = document.getElementById("countryCodeSelect");
          
-         
-         countryDialCodes.forEach((country) => {
-         const option = document.createElement("option");
-         option.style.maxHeight   = "50px"; // Set font size for the dropdown options
-         option.value = country.code;
-         option.textContent = `${country.name} (${country.code})`;
-         select.appendChild(option);
-         });
+            countryDialCodes.forEach((country) => {
+            const option = document.createElement("option");
+            option.style.maxHeight   = "50px"; // Set font size for the dropdown options
+            option.value = country.code;
+            option.textContent = `${country.name} (${country.code})`;
+            select.appendChild(option);
+          });
          
          const input = document.getElementById("plotNumber");
          
