@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="ar" >
+<html lang="ar">
    <head>
       <title>Al Marina </title>
       <meta charset="UTF-8" />
@@ -38,6 +38,11 @@
       <link rel="stylesheet" href="mobileSearchFilter.css" />
       <link rel="stylesheet" href="houseCard.css" />
       <link rel="stylesheet" href="mapFilter.css" />
+
+
+    
+
+
       <link rel="stylesheet" href="landmarkModal.css" />
       <link rel="stylesheet" href="contactForm.css" />
       <!-- <link rel="stylesheet" href="marinaFilters.css" /> -->
@@ -114,6 +119,11 @@
       <script src="zone8.js"></script>
       <script src="zone9.js"></script>
       <script src="src/contactForm.js"></script>
+      
+     
+      <script src="src/switchLanguage.js"></script>
+
+
       <script src="src/countryCodes.js"></script>
        <script src="src/plotBoundaries.js"></script>
       <script src="src/zoneAmenities.js"></script>
@@ -122,6 +132,18 @@
       <div id="viewport">
          <!-- Your krpano viewer or other content -->
       </div>
+        <!-- Language Switch -->
+
+          <button id="langBtn" class="lang-toggle">EN</button>
+
+         
+<!-- <select id="languageSwitcher">
+  <option value="en">English</option>
+  <option value="ar">عربي</option>
+</select> -->
+
+
+
       <div id="pano" style="width: 100%; height: 100%">
          <noscript>
             <table style="width: 100%; height: 100%">
@@ -156,6 +178,9 @@
                </div>
             </div>
          </div>
+       
+
+
          <div id="searchBarContainer" hidden>
             <input
                type="checkbox"
@@ -174,12 +199,12 @@
             </label>
             <div class="container mt-5">
                <div id="search_card_transition" class="card shadow rounded-1 compact-search-card">
-                  <span class="card-title mb-4 fw-semibold">Search Filter</span> 
+                  <span   id="englishSearchFilter" class="card-title mb-4 fw-semibold">Search Filter</span> 
                   <div class="card-body">
                      <div class="mb-3">
                         <div class="input-group">
                            <input
-                              type="text"
+                              type="number"
                               class="form-control custom-mobile-input"
                               id="plotNumber"
                               placeholder="Plot Number"
@@ -194,18 +219,18 @@
                               id="availabilityDropdown"
                               name="availability"
                               >
-                              <option value="Available">Available</option>
-                              <option value="Sold">Sold</option>
-                              <option value="Reserved">Reserved</option>
+                              <option  id="englishAvailable" value="Available">Available</option>
+                              <option id="englishSold"  value="Sold">Sold</option>
+                              <option id="englishReserved" value="Reserved">Reserved</option>
                            </select>
                            <i class="bi bi-caret-down-fill"></i>
                         </div>
                      </div>
-                     <div class="mb-3">
+                     <div class="mb-3" id="areaRangeContainer">
                         <label for="totalArea_" class="form-label">
-                        <label class="form-label fw-semibold">Area Range: </label>
+                        <label id="englishAreaRange" class="form-label fw-semibold">Area Range: </label>
                         <span id="areaValue">100</span> to
-                        <span id="areaMax">20000</span> sq m
+                        <span id="areaMax">20000</span> <span id="englishSquareMeter"> sq m <span>
                         </label>
                         <input
                            type="range"
@@ -219,6 +244,7 @@
                            />
                      </div>
                      <button
+                        id="englishSearchBtn"
                         class="btn btn-primary custom-width"
                         onclick="handleSearchFilters()"
                         >
@@ -226,6 +252,7 @@
                      </button>
                      <div class="mt-3 d-flex justify-content-center my-3">
                         <button
+                        id="englishResetFilters"
                            class="btn btn-link p-0 ml-5 text-decoration-none"
                            type="button"
                            onclick="resetFilters()"
@@ -373,10 +400,11 @@
             display: block;
             "
             >
-            <h3>Map Filter</h3>
+            <h3  id="englishMapFilter">Map Filter</h3>
+      
             <div id="showAllContainer" >
                <div class="show-all">
-                  <span>Show All</span>
+                  <span id="englishShowAll">Show All</span>
                   <div
                      class="map-toggle"
                      id="mapToggle"
@@ -384,14 +412,15 @@
                      ></div>
                </div>
                <div class="filter-buttons">
-                  <div class="filter-button active" data-filter="Landmarks">
+                  <div    class="filter-button active" data-filter="Landmarks">
                      <img
                         src="./skin/icons/MapFilters/Landmarks.png"
                         alt="icon"
                         class="icon"
                         width="15px"
                         height="15px"
-                        />Landmarks
+                        />
+                        <span id="englishLandmarks">Landmarks</span>
                   </div>
                   <div class="filter-button" data-filter="Roads">
                      <img
@@ -401,7 +430,8 @@
                         width="20px"
                         height="20px"
                         />
-                     Roads
+                        <span id="englishRoads">Roads</span>
+                     
                   </div>
                   <div class="filter-button" data-filter="Parks">
                      <img
@@ -411,7 +441,8 @@
                         width="20px"
                         height="20px"
                         />
-                     Parks
+                     
+                      <span id="englishParks">Parks</span>
                   </div>
                   <div class="filter-button" data-filter="Education">
                      <img
@@ -421,7 +452,10 @@
                         width="20px"
                         height="20px"
                         />
-                     Education
+
+                        <span id="englishEducation">Education</span>
+
+                     
                   </div>
                   <div class="filter-button" data-filter="Health">
                      <img
@@ -431,7 +465,10 @@
                         width="20px"
                         height="20px"
                         />
-                     Health
+                     
+
+                       <span id="englishHealth">Health</span>
+
                   </div>
                </div>
             </div>
@@ -546,10 +583,10 @@
       </div>
       <div id="time-toggle" class="time-toggle" style="display: none">
          <div class="toggle-option now active" onclick="toggleTimeView(this)">
-            <span class="material-icons">access_time</span> Now
+            <span class="material-icons" >access_time</span> <span id="englishNow">Now </span>
          </div>
          <div class="toggle-option future " onclick="toggleTimeView(this)">
-            <span class="material-icons">event</span> Future
+            <span class="material-icons" >event</span> <span id="englishFuture"> Future</span> 
          </div>
       </div>
       <!-- Bootstrap Button with Envelope Icon --->
@@ -557,15 +594,15 @@
          <div class="callback-form-container" id="callbackFormContainer">
             <!-- Form Header -->
             <div class="form-header">
-               <h2 class="query-form">Query Form</h2>
+               <h2 class="query-form" > <span id="englishQueryForm">Query Form </span> </h2>
                <button type="button" class="form-close-btn" id="closeFormBtn" onclick="closeCallBackForm()">&times;</button>
             </div>
             <div class="form-body">
                <div class="form-left">
                   <img id="dynamicPlanImage" src="" alt="Floor Plan" class="plan-image" />
                   <div class="unit-info">
-                     <p id="blockNumberText">Block</p>
-                     <h3 id="plotNumberText">Plot</h3>
+                     <p id="blockNumberText"></p>
+                     <h3 id="plotNumberText"> </h3>
                      <ul class="two-column-list" id="unitDetailsList">
                         <!-- List will be dynamically generated -->
                      </ul>
@@ -573,7 +610,7 @@
                </div>
                <form id="callbackForm" class="form-right">
                   <div class="form-row">
-                     <input type="text"  id="firstName" placeholder="First Name" required />
+                     <input type="text"   id="firstName" placeholder="First Name" required />
                      <input type="text"   id="lastName" placeholder="Last Name" required />
                   </div>
                   <div class="form-row">
@@ -609,7 +646,7 @@
                      <input type="text" id="preferredLanguage" placeholder="Preferred Language" required />
                      </select>
                   </div>
-                  <button type="submit" class="submit-btn">Submit</button>
+                  <button type="submit" class="submit-btn" > <span id="englishSubmit">Submit </span></button>
                </form>
             </div>
          </div>
@@ -648,6 +685,44 @@
          
            onready: function (krpano) {},
          });
+      </script>
+
+      <script>
+
+        let currentLanguage= ""
+
+        document.getElementById("langBtn").addEventListener("click", () => {
+    currentLanguage = (currentLanguage === "en") ? "ar" : "en";
+    
+  
+    
+    // Update button label
+    document.getElementById("langBtn").textContent = currentLanguage.toUpperCase();
+
+    // Call your functions
+    switchLanguage(currentLanguage);
+
+});
+
+
+
+
+ // Now safe to access elements
+  const languageSwitcher = document.getElementById("languageSwitcher");
+    console.log("languageSwitcher Script Loaded");
+
+  if (languageSwitcher) {
+    languageSwitcher.addEventListener("change", function () {
+      console.log("Language changed to: " + this.value);
+      currentLanguage = this.value;
+      switchLanguage(this.value);
+      
+      setHotspotLanguage(this.value);
+    });
+  } else {
+    console.warn("languageSwitcher element not found");
+  }
+
       </script>
 
     <script>
@@ -1170,6 +1245,15 @@
            },
            { passive: false }
          );
+
+         const toArabicDigits = (num) => {
+
+        
+              return num.toString().replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+         }
+
+// Example:
+console.log(toArabicDigits(1234567890));
          
          /*
            isLandscapeMode Function
@@ -1254,6 +1338,9 @@
              // Add your portrait-specific code here
            }
          
+            
+
+
            const searchSliderFilters =
              document.getElementById("searchBarContainer");
            const mobileSearchFilter =
@@ -1960,7 +2047,7 @@
   });
 
          
- 
+            const status = "Available"
            sliderContainer.innerHTML = ""; // Clear previous content if needed
          
              sortedHouses &&
@@ -1985,7 +2072,7 @@
                house.property_type
              )}' height="100px" width="100px"   draggable="false"/>
              <div class="details_1">
-                 <h4>Plot ${house.plot_number}</h4>
+                 <h4 > <span class="slider-plot-label">Plot </span> <span class="slider-plot-number"> ${house.plot_number} </span></h4>
                   
                  <aside>
                    <i class="fa fa-map-marker mr-2"></i>  
@@ -1997,12 +2084,12 @@
                    </aside>
                  <div class="property-info_1">
                      <div class="info-item_1">
-                         <span class="label_1">  Area</span>
-                         <span class="value">${house.total_area} m²</span>
+                         <span class="label_1 slider-area-label" >  Area</span>
+                         <span class="value"><span class="slider-total_area"> ${house.total_area} </span> m²</span>
                      </div>
                      <div class="info-item_1">
-                         <span class="label_1">Availibility</span>
-                         <span class="value">Available</span>
+                         <span class="label_1 slider-availability-label" >Availability</span>
+                         <span class="value"> <span class="slider-status"> ${status} </span> </span>
                      </div>
                      <div class="info-item_1">
                          </div>
@@ -4720,6 +4807,15 @@
            const propertyTitle = setPropertyType(unitDetails.property_type)
          
          
+           console.log(" unitDetails",
+         unitDetails.zone)
+
+         const zoneNumber = unitDetails.zone.split(" ")[1];
+
+         window.zoneKey = unitDetails.zone
+         const amenitiesTimeValue =  amenitiesTime()
+
+
            cardContainer.id = "krpano-card";
            cardContainer.innerHTML = `
          <div  id="property_card_transition" class="property-card">
@@ -4730,11 +4826,11 @@
          </div>
          <div class="inner-style">
          <div class="property-info">
-         <div class="price-tag"> ${ propertyTitle }</div>
+         <div class="price-tag" id="dynamicTitle"> ${ propertyTitle }</div>
          
          
          <div class="heading-row">
-         <h1 class="heading">Al Marina</h1>
+          <h1 class="heading" id="englishHeading">Al Marina</h1>
          
          
          <button  id="openContactFormButton" 
@@ -4742,7 +4838,7 @@
             onclick="contactFormMethod()"
            >
            
-             <i class="fas fa-envelope"></i> Query
+             <i class="fas fa-envelope"></i> <span id="englishQuery"> Query </span>
          </button>
          
          </div>
@@ -4751,10 +4847,8 @@
          <i class="fa fa-map-marker mr-2"></i>   
          
          <span class="display_card_zone">
-         ${
-         unitDetails.zone.charAt(0).toUpperCase() +
-         unitDetails.zone.slice(1).toLowerCase()
-         }
+         
+          <span id="cardZone"> Zone </span>  <span id="cardZoneNumber">${ zoneNumber }</span>
          
          </span>
          
@@ -4763,7 +4857,7 @@
            
            
              <button class="share-btn " onclick="copyAndSharePlot()">
-                 <i class="fas fa-share"></i> Share
+                 <i class="fas fa-share"></i>  <span id="englishShare">Share </span>
              </button>
          
               <div id="copyTooltip" class="clipboard-tooltip">Link Copied!</div>
@@ -4777,21 +4871,21 @@
          <div class="details_flex">
          
          <div class="detail-item_flex">
-         <span class="label_flex">Area</span>
-         <span class="value_flex">${unitDetails.total_area} m²</span>
+         <span class="label_flex" id="englishArea">Area</span>
+         <span class="value_flex" id="englishTotalAreaDigit" >${unitDetails.total_area} m²</span>
          </div>
          <div class="detail-item_flex">
-         <span class="label_flex">Plot</span>
-         <span class="value_flex">${unitDetails.plot_number || "-"}</span>
+         <span class="label_flex" id="englishPlotNumber">Plot</span>
+         <span class="value_flex" id="englishPlotDigit">${unitDetails.plot_number || "-"}</span>
          </div>
          <div class="detail-item_flex">
-         <span class="label_flex">Block</span>
-         <span class="value_flex">${unitDetails.block_number || "-"}</span>
+         <span class="label_flex" id="englishBlockNumber">Block</span>
+         <span class="value_flex" id="englishBlockNumberDigit">${unitDetails.block_number || "-"}</span>
          </div>
          
          <div class="detail-item_flex">
-         <span class="label_flex">GC</span>
-         <span class="value_flex">${'50 %'}</span>
+         <span class="label_flex"  id="englishGC" >GC</span>
+         <span class="value_flex" id="englishGCDigit">${'50 %'}</span>
          </div>
          
          <div class="detail-item_flex">
@@ -4805,20 +4899,20 @@
           <div class="details-row_extra">
              
              <div class="detail-item">
-                <span class="detail-label_1">North</span>
-                <span class="detail-value">${unitDetails.north || "-"}</span>
+                <span class="detail-label_1" id="englishNorth">North</span>
+                <span class="detail-value" id="englishNorthNumber">${unitDetails.north || "-"}</span>
              </div>
              <div class="detail-item">
-                <span class="detail-label_1">South</span>
-                <span class="detail-value">${unitDetails.south || "-"}</span>
+                <span class="detail-label_1" id="englishSouth">South</span>
+                <span class="detail-value" id="englishSouthNumber">${unitDetails.south || "-"}</span>
              </div>
              <div class="detail-item">
-                <span class="detail-label_1">East</span>
-                <span class="detail-value">${unitDetails.east || "-"}</span>
+                <span class="detail-label_1" id="englishEast">East</span>
+                <span class="detail-value" id="englishEastNumber">${unitDetails.east || "-"}</span>
              </div>
              <div class="detail-item">
-                <span class="detail-label_1">West</span>
-                <span class="detail-value">${unitDetails.west || "-"}</span>
+                <span class="detail-label_1" id="englishWest">West</span>
+                <span class="detail-value" id="englishWestNumber">${unitDetails.west || "-"}</span>
              </div>
           </div>
          
@@ -4830,11 +4924,11 @@
                     <div class="amenity-icons">
                       <div class="amenity-item">
                             <img src="skin/icons/Amenities/park.png" alt="Basketball Court" width="30px" height="30px" class="amenity-png-icon"> 
-                            <span> ${amenitiesTime(unitDetails.zone)?.[0]?.parkTime || '--'}</span>
+                            <span id="parkValue"> ${amenitiesTimeValue?.[0]?.time || '--'}</span>
                         </div>
                           <div class="amenity-item">
                             <img src="skin/icons/Amenities/mosque.png" alt="mosque" width="30px" height="30px" class="amenity-png-icon"> 
-                               <span> ${amenitiesTime(unitDetails.zone)?.[1]?.mosqueTime || '--'}</span>
+                               <span id="mosqueValue"> ${amenitiesTimeValue?.[1]?.time || '--'}</span>
                         </div>
          
                        
@@ -4842,13 +4936,13 @@
          
                            <img src="skin/icons/Amenities/shoppingCart.png" alt="shopiing Court" width="30px" height="30px" class="amenity-png-icon"> 
          
-                                    <span> ${amenitiesTime(unitDetails.zone)?.[2]?.mallTime || '--'}</span>
+                                    <span  id="shoppingCartValue"> ${amenitiesTimeValue?.[2]?.time || '--'}</span>
                         </div>
              
                         <div class="amenity-item">
                            <img src="skin/icons/Amenities/pharmacy.png" alt="Basketball Court" width="30px" height="30px" class="amenity-png-icon"> 
          
-                                     <span> ${amenitiesTime(unitDetails.zone)?.[3]?.pharmacyTime || '--'}</span>
+                                     <span   id="pharmacyValue"> ${amenitiesTimeValue?.[3]?.time || '--'}</span>
                         </div>
                     </div>
               
@@ -5005,14 +5099,7 @@
          
          
          
-         const amenitiesTime = (zoneKey) => {
-         const  zoneAmenities = window.zoneAmenities 
-         const amenities = zoneAmenities[zoneKey];
-         
-         
-         return amenities
-         }
-         
+      
          
          
          
@@ -5095,13 +5182,19 @@
            }
          };
          
-         
+  
+
+         let isArabicLanguage = window.currentLanguage === 'ar';
          
          const contactFormMethod = () => {
          const unit = window.unitDetails;
+        
+
          
+    
+
          
-         
+
          const propertyType = unit.property_type?.trim();
          const imgEl = document.getElementById("dynamicPlanImage");
          
@@ -5130,27 +5223,42 @@
          imgEl.src = dynamicImageURL;
          
          }
+        
          
+         
+
          // Set main headings
-         document.getElementById("blockNumberText").textContent = `Block ${unit.block_number}`;
-         document.getElementById("plotNumberText").textContent = `Plot ${unit.plot_number}`;
+         document.getElementById("blockNumberText").innerHTML = ` <strong id="queryBlock">Block:</strong>  <span  id="queryBlockNumber"> ${unit.block_number} </span>`;
+         document.getElementById("plotNumberText").innerHTML = `<strong id="queryPlot">Plot:</strong> <span  id="queryPlotNumber">  ${unit.plot_number} </span> `;
          
          const list = document.getElementById("unitDetailsList");
          list.innerHTML = ""; // Clear any existing list
          
+
          // Side boundaries
          const sides = ["North", "South", "East", "West"];
          sides.forEach(side => {
          const li = document.createElement("li");
-         li.innerHTML = `<strong>${side}:</strong> ${unit[side.toLowerCase()]}`;
+         li.innerHTML = `<strong id="side${side}">${side}:</strong>  <span  class="queryDirections"> ${unit[side.toLowerCase()]} </span>`;
          list.appendChild(li);
          });
+
+       
+
          
-         // Add Area
+         
          const areaLi = document.createElement("li");
-         areaLi.innerHTML = `<strong>Area:</strong> ${unit.total_area} m²`;
-         list.appendChild(areaLi);
+      //   areaLi.innerHTML = `<strong  id="queryTotalArea">Area:</strong> ${ isArabicLanguage ? toArabicDigits( unit.total_area) :   unit.total_area} m²`;
+  areaLi.innerHTML = `<strong  id="queryTotalArea">Area:</strong>  <span  id="queryTotalAreaNumber">  ${   unit.total_area} <span> m²`;
+ 
+      
+          
+     
+
+      list.appendChild(areaLi);
          
+
+       
          // Add Type
          let setType = unit.property_type
          
@@ -5164,18 +5272,18 @@
          
          // Commercial Residential  || eastern municipality
          const typeLi = document.createElement("li");
-         typeLi.innerHTML = `<strong>Type:</strong> ${setType}`;
+         typeLi.innerHTML = `<strong id="queryType">Type:</strong> <span id="querySetDynamicType"> ${setType}</span>`;
          list.appendChild(typeLi);
          
          // Add Usage
          const usageLi = document.createElement("li");
-         usageLi.innerHTML = `<strong>Usage:</strong> ${unit.usage}`;
+         usageLi.innerHTML = `<strong id="queryUsage">Usage:</strong> ${unit.usage}`;
          list.appendChild(usageLi);
          
          // Optional: Zone
          const [zoneLabel, zoneNumber] = unit.zone.split(" ");
          const zoneLi = document.createElement("li");
-         zoneLi.innerHTML = `<strong>Zone:</strong> ${zoneNumber}`;
+         zoneLi.innerHTML = `<strong id="queryZone">Zone:</strong> <span  id="queryZoneNumber"> ${zoneNumber} </span >`;
          list.appendChild(zoneLi);
          
           if (formWrapper.style.display === 'none' || formWrapper.style.display === '') {

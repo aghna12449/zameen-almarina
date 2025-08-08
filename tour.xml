@@ -1577,7 +1577,7 @@ size="2"
 		<hotspot name="hs_Landmark_5" callout_bg_border="0,0,0,0"
 			width="auto" shape="round" ath="0.0612752" atv="0.1153677" 
 			rotate="-207" line_lenght="200" line_width="1.5"  animation="keep_opened" style="callout" 
-			title="Dharan Expo Exibition Center" 
+			title="Dharan Expo Exhibition Center" 
 			onclick="js(showRoadHotspot('hs_LandMarkLine_4','hs_Landmark_5' , 'hs_PopUp_5'));"
 
 			circle_active_width="8" text_x=""></hotspot>

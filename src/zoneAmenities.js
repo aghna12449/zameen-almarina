@@ -1,60 +1,58 @@
 const zoneAmenities = {
   'ZONE 1': [
-    {  label: 'Park', parkTime: '2 mins' },
-    {  label: 'Mosque', mosqueTime: '2 mins' },
-    { label: 'Shopping', mallTime: '7 mins' },
-    {  label: 'Pharmacy', pharmacyTime: '4 mins' }
+    { label: { en: "Park", ar: "حديقة" }, time: { en: "2 mins", ar: "٢ دقيقة" } },
+    { label: { en: "Mosque", ar: "مسجد" }, time: { en: "2 mins", ar: "٢ دقيقة" } },
+    { label: { en: "Shopping", ar: "تسوق" }, time: { en: "7 mins", ar: "٧ دقائق" } },
+    { label: { en: "Pharmacy", ar: "صيدلية" }, time: { en: "4 mins", ar: "٤ دقائق" } },
   ],
-  'Zone 2' : [
-    {  label: 'Park', parkTime: '2 min' },
-    { label: 'Mosque', mosqueTime: '2 mins' },
-    {  label: 'Shopping', mallTime: '6 mins' },
-    {  label: 'Pharmacy', pharmacyTime: '4 mins' }
+  'ZONE 2': [
+    { label: { en: "Park", ar: "حديقة" }, time: { en: "2 mins", ar: "٢ دقيقة" } },
+    { label: { en: "Mosque", ar: "مسجد" }, time: { en: "2 mins", ar: "٢ دقيقة" } },
+    { label: { en: "Shopping", ar: "تسوق" }, time: { en: "6 mins", ar: "٦ دقائق" } },
+    { label: { en: "Pharmacy", ar: "صيدلية" }, time: { en: "4 mins", ar: "٤ دقائق" } },
   ],
-   'ZONE 3' : [
-    {  label: 'Park', parkTime: '2 min' },
-    { label: 'Mosque', mosqueTime: '2 mins' },
-    {  label: 'Shopping', mallTime: '3 mins' },
-    {  label: 'Pharmacy', pharmacyTime: '5 mins' }
+  'ZONE 3': [
+    { label: { en: "Park", ar: "حديقة" }, time: { en: "2 mins", ar: "٢ دقيقة" } },
+    { label: { en: "Mosque", ar: "مسجد" }, time: { en: "2 mins", ar: "٢ دقيقة" } },
+    { label: { en: "Shopping", ar: "تسوق" }, time: { en: "3 mins", ar: "٣ دقائق" } },
+    { label: { en: "Pharmacy", ar: "صيدلية" }, time: { en: "5 mins", ar: "٥ دقائق" } },
   ],
-   'ZONE 4' : [
-    {  label: 'Park', parkTime: '2 min' },
-    { label: 'Mosque', mosqueTime: '2 mins' },
-    {  label: 'Shopping', mallTime: '1 mins' },
-    {  label: 'Pharmacy', pharmacyTime: '6 mins' }
+  'ZONE 4': [
+    { label: { en: "Park", ar: "حديقة" }, time: { en: "2 mins", ar: "٢ دقيقة" } },
+    { label: { en: "Mosque", ar: "مسجد" }, time: { en: "2 mins", ar: "٢ دقيقة" } },
+    { label: { en: "Shopping", ar: "تسوق" }, time: { en: "1 min", ar: "١ دقيقة" } },
+    { label: { en: "Pharmacy", ar: "صيدلية" }, time: { en: "6 mins", ar: "٦ دقائق" } },
   ],
-   'ZONE 5' : [
-    {  label: 'Park', parkTime: '2 min' },
-    { label: 'Mosque', mosqueTime: '4 mins' },
-    {  label: 'Shopping', mallTime: '3 mins' },
-    {  label: 'Pharmacy', pharmacyTime: '8 mins' }
+  'ZONE 5': [
+    { label: { en: "Park", ar: "حديقة" }, time: { en: "2 mins", ar: "٢ دقيقة" } },
+    { label: { en: "Mosque", ar: "مسجد" }, time: { en: "4 mins", ar: "٤ دقائق" } },
+    { label: { en: "Shopping", ar: "تسوق" }, time: { en: "3 mins", ar: "٣ دقائق" } },
+    { label: { en: "Pharmacy", ar: "صيدلية" }, time: { en: "8 mins", ar: "٨ دقائق" } },
   ],
-   'ZONE 6' : [
-    {  label: 'Park', parkTime: '2 min' },
-    { label: 'Mosque', mosqueTime: '3 mins' },
-    {  label: 'Shopping', mallTime: '3 mins' },
-    {  label: 'Pharmacy', pharmacyTime: '7 mins' }
+  'ZONE 6': [
+    { label: { en: "Park", ar: "حديقة" }, time: { en: "2 mins", ar: "٢ دقيقة" } },
+    { label: { en: "Mosque", ar: "مسجد" }, time: { en: "3 mins", ar: "٣ دقائق" } },
+    { label: { en: "Shopping", ar: "تسوق" }, time: { en: "3 mins", ar: "٣ دقائق" } },
+    { label: { en: "Pharmacy", ar: "صيدلية" }, time: { en: "7 mins", ar: "٧ دقائق" } },
   ],
-   'ZONE 7' : [
-    {  label: 'Park', parkTime: '2 min' },
-    { label: 'Mosque', mosqueTime: '2 mins' },
-    {  label: 'Shopping', mallTime: '5 mins' },
-    {  label: 'Pharmacy', pharmacyTime: '5 mins' }
+  'ZONE 7': [
+    { label: { en: "Park", ar: "حديقة" }, time: { en: "2 mins", ar: "٢ دقيقة" } },
+    { label: { en: "Mosque", ar: "مسجد" }, time: { en: "2 mins", ar: "٢ دقيقة" } },
+    { label: { en: "Shopping", ar: "تسوق" }, time: { en: "5 mins", ar: "٥ دقائق" } },
+    { label: { en: "Pharmacy", ar: "صيدلية" }, time: { en: "5 mins", ar: "٥ دقائق" } },
   ],
-   'ZONE 8' : [
-    {  label: 'Park', parkTime: '2 min' },
-    { label: 'Mosque', mosqueTime: '2 mins' },
-    {  label: 'Shopping', mallTime: '6 mins' },
-    {  label: 'Pharmacy', pharmacyTime: '3 mins' }
+  'ZONE 8': [
+    { label: { en: "Park", ar: "حديقة" }, time: { en: "2 mins", ar: "٢ دقيقة" } },
+    { label: { en: "Mosque", ar: "مسجد" }, time: { en: "2 mins", ar: "٢ دقيقة" } },
+    { label: { en: "Shopping", ar: "تسوق" }, time: { en: "6 mins", ar: "٦ دقائق" } },
+    { label: { en: "Pharmacy", ar: "صيدلية" }, time: { en: "3 mins", ar: "٣ دقائق" } },
   ],
-   'ZONE 9' : [
-    {  label: 'Park', parkTime: '1 min' },
-    { label: 'Mosque', mosqueTime: '2 mins' },
-    {  label: 'Shopping', mallTime: '10 mins' },
-    {  label: 'Pharmacy', pharmacyTime: '1 mins' }
+  'ZONE 9': [
+    { label: { en: "Park", ar: "حديقة" }, time: { en: "1 min", ar: "١ دقيقة" } },
+    { label: { en: "Mosque", ar: "مسجد" }, time: { en: "2 mins", ar: "٢ دقيقة" } },
+    { label: { en: "Shopping", ar: "تسوق" }, time: { en: "10 mins", ar: "١٠ دقائق" } },
+    { label: { en: "Pharmacy", ar: "صيدلية" }, time: { en: "1 min", ar: "١ دقيقة" } },
   ],
-  
 };
-
 
 window.zoneAmenities = zoneAmenities;

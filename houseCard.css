@@ -388,7 +388,7 @@ display: flex;
 @media only screen and (min-width: 600px) and (orientation: landscape) {
    .property-card {
     width: 296px;
-    height: 380px;
+    height: 390px;
    
     border-radius: 5px;
     overflow: hidden;
