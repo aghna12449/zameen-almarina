@@ -96,9 +96,10 @@
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  border: 1px solid #ccc;
   border-radius: 6px;
-  background: #f4f4f4;
+
+  background: rgb(0 0 0 / 55%);
+    color: white;
 }
 
 .details-row1 {

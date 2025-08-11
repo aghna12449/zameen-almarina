@@ -129,6 +129,8 @@
       <script src="src/zoneAmenities.js"></script>
       <script src="config.js"></script>
       <script type="module" src="contactForm.js"></script>
+
+
       <div id="viewport">
          <!-- Your krpano viewer or other content -->
       </div>
@@ -689,20 +691,21 @@
 
       <script>
 
-        let currentLanguage= ""
+        let currentLanguage= "en"
 
         document.getElementById("langBtn").addEventListener("click", () => {
-    currentLanguage = (currentLanguage === "en") ? "ar" : "en";
+          console.log("lang btn", currentLanguage)
+          currentLanguage = (currentLanguage === "en") ? "ar" : "en";
     
   
     
-    // Update button label
-    document.getElementById("langBtn").textContent = currentLanguage.toUpperCase();
+            // Update button label
+            document.getElementById("langBtn").textContent = currentLanguage.toUpperCase();
 
-    // Call your functions
-    switchLanguage(currentLanguage);
+           // Call your functions
+            switchLanguage(currentLanguage);
 
-});
+      });
 
 
 
@@ -1293,6 +1296,10 @@ console.log(toArabicDigits(1234567890));
            const currentScene = krpano.get("xml.scene");
          
          const timeToggle= document.getElementById("time-toggle");
+
+         switchLanguage(currentLanguage)
+          
+
          
          
            const viewport = document.getElementById("viewport");
@@ -2035,6 +2042,8 @@ console.log(toArabicDigits(1234567890));
          }
          
          const displayHorizontalSlider = () => {
+    
+
            const sliderContainer = document.querySelector(".card-slider_1");
          
  
@@ -2103,6 +2112,7 @@ console.log(toArabicDigits(1234567890));
                house &&
                  sliderContainer.insertAdjacentHTML("beforeend", cardHTML);
          
+                         switchLanguage(currentLanguage)
                   const controlTransition = document.getElementById("controls");
          
                 if (controlTransition && isLandscapeModeMethod()) {
@@ -3919,6 +3929,11 @@ console.log(toArabicDigits(1234567890));
              console.warn("Breadcrumb trail is empty. Skipping render.");
              return;
            }
+
+              const krpano = document.getElementById("krpanoSWFObject");
+        
+         
+       
          
            const wrapper = document.getElementById("breadcrumb-wrapper");
            wrapper.innerHTML = ""; // Clear previous breadcrumbs
@@ -4445,11 +4460,12 @@ console.log(toArabicDigits(1234567890));
          };
          
          const addLandHotspotsToKrpano = async () => {
+          
          
            const krpano = document.getElementById("krpanoSWFObject");
            const response = await onInitalLoad();
          
-            
+          
          
          
            localStorage.setItem("response", JSON.stringify(response));
@@ -4959,6 +4975,10 @@ console.log(toArabicDigits(1234567890));
          
           
            document.body.appendChild(cardContainer);
+
+           // persist default state 
+
+            switchLanguage(currentLanguage)
            const width = window.innerWidth;
          
            const propertyCard = document.getElementById("krpano-card");

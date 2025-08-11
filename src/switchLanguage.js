@@ -154,10 +154,11 @@ const translations = {
 };
 
 const switchLanguage = (lang) => {
+  console.log("displayHorizontalSlider", lang)
   window.currentLanguage = lang; // Store the current language in a global variable
 
  
-
+   setHotspotLanguage(lang);
   const t = translations[lang];
   document.getElementById("englishMapFilter").textContent = t.mapFilter;
   document.getElementById("englishShowAll").textContent = t.showAll;
@@ -542,23 +543,69 @@ const setQueryDynamicType = (type) => {
   }
 };
 
-function setHotspotLanguage(lang) {
+const setHotspotLanguage =(lang) => {
 
+    console.log("lang", lang)
   const krpano = document.getElementById("krpanoSWFObject");
 
   if (!krpano) {
     console.error("Krpano viewer not found.");
     return;
   }
+ // Your translations mapping
+ 
 
-  const titles = {
-    en: "King Abdul Aziz Seaport",
-    ar: "ميناء الملك عبد العزيز",
-  };
 
-  const hotspot = krpano.get(`hotspot[${"hs_Landmark_1"}]`);
+
+
+ 
+
+
+ if (lang === "ar") {
+  // Loop through all hotspots
+  const hotspotCount = krpano.get("hotspot.count");
+
+  for (let i = 0; i < hotspotCount; i++) {
+    const hsName = krpano.get(`hotspot[${i}].name`);
+
+    if (hsName.includes("_arabic")) {
+        console.log("arabic", hsName)
+      // Show Arabic hotspots
+      krpano.set(`hotspot[${hsName}].visible`, true);
+    } 
+    else if (hsName.includes("_english")) {
+      // Hide English hotspots
+      
+        console.log("_english", hsName)
+
+      krpano.set(`hotspot[${hsName}].visible`, false);
+    }
+    else {
+      // Leave all other hotspots unchanged
+    }
   
 
+  } 
+ }else if (lang === "en"){
+    const hotspotCount = krpano.get("hotspot.count");
+ for (let i = 0; i < hotspotCount; i++) {
+    const hsName = krpano.get(`hotspot[${i}].name`);
+
+    if (hsName.includes("_english")) {
+      // Show Arabic hotspots
+      krpano.set(`hotspot[${hsName}].visible`, true);
+    } 
+    else if (hsName.includes("_arabic")) {
+      // Hide English hotspots
+      krpano.set(`hotspot[${hsName}].visible`, false);
+    }
+    else {
+      // Leave all other hotspots unchanged
+    }
+  
+
+  }
+  }
   //
 }
 

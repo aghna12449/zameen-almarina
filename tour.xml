@@ -1545,36 +1545,87 @@ size="2"
 
 		</hotspot>
 
-			<hotspot name="hs_Landmark_1" callout_bg_border="0,0,0,0"
+			<hotspot name="hs_Landmark_1_english" callout_bg_border="0,0,0,0"
+			
+
 			width="auto" shape="round" ath="0.0910358" atv="0.0334141" rotate="45"
 			line_lenght="100" line_width="1.5" animation="keep_opened" style="callout" 
-			title="King Abdul Aziz Seaport"
+			title="King Abdul Aziz Seaport" visible="true"
 			 onclick="js(showRoadHotspot('hs_LandMarkLine_1' ,'hs_Landmark_1', 'hs_PopUp_1'));"
 			 circle_active_width="8" text_x=""></hotspot>
 
-			<hotspot name="hs_Landmark_2" callout_bg_border="0,0,0,0" width="auto" line_lenght="120" line_width="1.5"
-			shape="round" style="callout" 
+
+			 
+			<hotspot name="hs_Landmark_1_arabic" callout_bg_border="0,0,0,0"
+		
+
+			width="auto" shape="round" ath="0.0910358" atv="0.0334141" rotate="45"
+			line_lenght="100" line_width="1.5" animation="keep_opened" style="callout" 
+			title="ميناء الملك عبد العزيز" visible="false"
+			 onclick="js(showRoadHotspot('hs_LandMarkLine_1' ,'hs_Landmark_1', 'hs_PopUp_1'));"
+			 circle_active_width="8" text_x=""></hotspot>
+
+
+			 <hotspot name="hs_Landmark_2_english" callout_bg_border="0,0,0,0" width="auto" line_lenght="120" line_width="1.5"
+			shape="round" style="callout"  visible="true"
 			ath="0.0701512" atv="0.0892284" rotate="102" animation="keep_opened"  
 			onclick="js(showRoadHotspot('hs_LandMarkLine_2', 'hs_Landmark_2', 'hs_PopUp_2'));"
 			title="Imam Abdulrahman Bin Faisal University" 
 			circle_active_width="8" text_x=""></hotspot>
 
+
+
+			<hotspot name="hs_Landmark_2_arabic" callout_bg_border="0,0,0,0" width="auto" line_lenght="120" line_width="1.5"
+			shape="round" style="callout" visible="false"
+			ath="0.0701512" atv="0.0892284" rotate="102" animation="keep_opened"  
+			onclick="js(showRoadHotspot('hs_LandMarkLine_2', 'hs_Landmark_2', 'hs_PopUp_2'));"
+			title="جامعة الإمام عبد الرحمن بن فيصل" 
+			circle_active_width="8" text_x=""></hotspot>
+
+			
+
 	
-			<hotspot name="hs_Landmark_3" callout_bg_border="0,0,0,0"
+			<hotspot name="hs_Landmark_3_english" callout_bg_border="0,0,0,0"
 			width="auto" shape="round" ath="0.0716432" atv="0.119286" rotate="120"
 			line_lenght="70" line_width="1.5" animation="keep_opened" style="callout" 
 			title="Al Yamamah University"
 			 onclick="js(showRoadHotspot('hs_LandMarkLine_3','hs_Landmark_3', 'hs_PopUp_3'));"
 			 circle_active_width="8" text_x=""></hotspot>
 
+			 		<hotspot name="hs_Landmark_3_arabic" callout_bg_border="0,0,0,0"
+			width="auto" shape="round" ath="0.0716432" atv="0.119286" rotate="120"
+			line_lenght="70" line_width="1.5" animation="keep_opened" style="callout" 
+			title=" جامعة اليمامة" visible="false"
+			 onclick="js(showRoadHotspot('hs_LandMarkLine_3','hs_Landmark_3', 'hs_PopUp_3'));"
+			 circle_active_width="8" text_x=""></hotspot>
 
-			<hotspot name="hs_Landmark_4" callout_bg_border="0,0,0,0" width="auto" line_lenght="90" line_width="1.5" 
+
+			<hotspot name="hs_Landmark_4_english" callout_bg_border="0,0,0,0" width="auto" line_lenght="90" line_width="1.5" 
 			shape="round" ath="0.0957102" atv="0.1463097" rotate="138" animation="keep_opened"
 			style="callout"  title="Seven Site" 
 			onclick="js(showRoadHotspot('hs_LandMarkLine_6','hs_Landmark_4', 'hs_PopUp_4'));"  circle_active_width="0.1"
 			text_x=""></hotspot>
 
-		<hotspot name="hs_Landmark_5" callout_bg_border="0,0,0,0"
+			<hotspot name="hs_Landmark_4_arabic" callout_bg_border="0,0,0,0" width="auto" line_lenght="90" line_width="1.5" 
+			shape="round" ath="0.0957102" atv="0.1463097" rotate="138" animation="keep_opened"
+			style="callout"  title=" موقع سيفين"  visible="false"
+			onclick="js(showRoadHotspot('hs_LandMarkLine_6','hs_Landmark_4', 'hs_PopUp_4'));"  circle_active_width="0.1"
+			text_x=""></hotspot>
+
+
+
+
+
+		<hotspot name="hs_Landmark_5_arabic" callout_bg_border="0,0,0,0"
+			width="auto" shape="round" ath="0.0612752" atv="0.1153677" 
+			rotate="-207" line_lenght="200" line_width="1.5"  animation="keep_opened" style="callout" 
+			title="مركز معارض الظهران إكسبو" 
+			onclick="js(showRoadHotspot('hs_LandMarkLine_4','hs_Landmark_5' , 'hs_PopUp_5'));"
+
+			circle_active_width="8" text_x=""></hotspot>
+
+					
+		<hotspot name="hs_Landmark_5_english" callout_bg_border="0,0,0,0"
 			width="auto" shape="round" ath="0.0612752" atv="0.1153677" 
 			rotate="-207" line_lenght="200" line_width="1.5"  animation="keep_opened" style="callout" 
 			title="Dharan Expo Exhibition Center" 
@@ -1582,7 +1633,9 @@ size="2"
 
 			circle_active_width="8" text_x=""></hotspot>
 
-<hotspot name="hs_Landmark_6" callout_bg_border="0,0,0,0" width="auto" line_lenght="70" line_width="1.5"
+
+
+<hotspot name="hs_Landmark_6_english" callout_bg_border="0,0,0,0" width="auto" line_lenght="70" line_width="1.5"
 			shape="round"
 			ath="0.0309812" atv="0.1152315" rotate="-90" animation="keep_opened" style="callout" 
 			title="Aramco Stadium"
@@ -1591,15 +1644,33 @@ size="2"
 
 
 			
-		<hotspot name="hs_Landmark_7" callout_bg_border="0,0,0,0" width="auto"
+
+<hotspot name="hs_Landmark_6_arabic" callout_bg_border="0,0,0,0" width="auto" line_lenght="70" line_width="1.5"
+			shape="round"
+			ath="0.0309812" atv="0.1152315" rotate="-90" animation="keep_opened" style="callout" 
+			title="ملعب أرامكو"
+			 onclick="js(showRoadHotspot('hs_LandMarkLine_5', 'hs_Landmark_6' ,  'hs_PopUp_6'));"
+			circle_active_width="8" text_x=""></hotspot>
+
+
+			
+		<hotspot name="hs_Landmark_7_english" callout_bg_border="0,0,0,0" width="auto"
 			line_lenght="70" line_width="1.5" shape="round" ath="-0.0558943" atv="0.1511067"
 			rotate="-130" animation="keep_opened" style="callout"  title="King Fahd University "
 			 circle_active_width="8" 
 			 onclick="js(showRoadHotspot('hs_LandMarkLine_7','hs_Landmark_7',  'hs_PopUp_7'));"
 			text_x=""></hotspot>
+
+			<hotspot name="hs_Landmark_7_arabic" callout_bg_border="0,0,0,0" width="auto"
+			line_lenght="70" line_width="1.5" shape="round" ath="-0.0558943" atv="0.1511067"
+			rotate="-130" animation="keep_opened" style="callout"  title="جامعة الملك فهد"
+			 circle_active_width="8" 
+			 onclick="js(showRoadHotspot('hs_LandMarkLine_7','hs_Landmark_7',  'hs_PopUp_7'));"
+			text_x=""></hotspot>
+			
 			
 
-		<hotspot name="hs_Landmark_8" callout_bg_border="0,0,0,0" width="auto"
+		<hotspot name="hs_Landmark_8_english" callout_bg_border="0,0,0,0" width="auto"
 			line_lenght="70" line_width="1.5" shape="round" ath="-0.2777324" atv="-0.2178239" rotate="70"
 			animation="keep_opened" style="callout" 
 			 onclick="js(showRoadHotspot('hs_LandMarkLine_8','hs_Landmark_8',  'hs_PopUp_8'));"
@@ -1608,7 +1679,13 @@ size="2"
 			circle_active_width="8" text_x=""></hotspot>
 
 
-		
+			<hotspot name="hs_Landmark_8_arabic" callout_bg_border="0,0,0,0" width="auto"
+			line_lenght="70" line_width="1.5" shape="round" ath="-0.2777324" atv="-0.2178239" rotate="70"
+			animation="keep_opened" style="callout" 
+			 onclick="js(showRoadHotspot('hs_LandMarkLine_8','hs_Landmark_8',  'hs_PopUp_8'));"
+			title="King Fahd International Airport"
+			
+			circle_active_width="8" text_x=""></hotspot>
 
 		
 
@@ -2019,15 +2096,14 @@ ath = "-0.0424337 " atv = "0.0877063"
 		<preview url="panos/b-AL_MARINA_aerial.tiles/preview.jpg" />
 
 		<image hfov="1.00" vfov="0.562500" voffset="0.00">
-			<flat url="panos/b-AL_MARINA_aerial.tiles/l%l/%v/l%l_%v_%h.jpg"
-				multires="512,1024x578,2048x1152,4096x2304" />
+			<flat url="panos/b-AL_MARINA_aerial.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1024x578,2048x1152,4096x2304" />
 		</image>
 
 <!-- hotspots for highlighting key areas in b-AL MARINA aerial scene -->
 
 
 
-		<hotspot name="hs_entry_b-AL_MARINA_aerial"
+		<hotspot name="hs_english_entry_b-AL_MARINA_aerial"
 			callout_bg_border="0,0,0,0"
 			callout_border_color="0xa65c43"
 			width="auto"
@@ -2041,13 +2117,34 @@ ath = "-0.0424337 " atv = "0.0877063"
 			style="callout"
 			title=" Main Entrance AL MARINA"
 			zorder="1"
-			
+			visible="true"
 			circle_active_width="0"
 			text_x="">
 
 
 		</hotspot>
 
+
+		<hotspot name="hs_arabic_entry_b-AL_MARINA_aerial"
+			callout_bg_border="0,0,0,0"
+			callout_border_color="0xa65c43"
+			width="auto"
+			shape="circle"
+			line_lenght="30"
+			ath="-0.4541016" atv="0.017273"
+			rotate="120"
+			animation="keep_opened"
+			visible="false"
+			text_background=""
+			style="callout"
+			title=" المدخل الرئيسي المارينا"
+			zorder="1"
+			
+			circle_active_width="0"
+			text_x="">
+
+
+		</hotspot>
 	
 
 
@@ -2130,7 +2227,7 @@ ath = "-0.0424337 " atv = "0.0877063"
 		</hotspot>
 
 
-		<hotspot name="hs_Zone_5_label(5_label)"
+		<hotspot name="hs_english_Zone_5_label(5_label)"
 			callout_bg_border="0,0,0,0" width="auto"
 			shape="circle"
 			ath="0.2547321" atv="-0.0618707"
@@ -2140,6 +2237,18 @@ ath = "-0.0424337 " atv = "0.0877063"
 			rotate="40" animation="keep_opened"
 			style="callout" title="Zone 5"
 			zorder="5"
+			circle_active_width="0.1" text_x=""></hotspot>
+
+			<hotspot name="hs_arabic_Zone_5_label(5_label)"
+			callout_bg_border="0,0,0,0" width="auto"
+			shape="circle"
+			ath="0.2547321" atv="-0.0618707"
+			line_lenght="150"
+			size="20"
+			css_title="color:#fff;font-size:25px;font-family: Arial;"
+			rotate="40" animation="keep_opened"
+			style="callout" title="المنطقة ٥"
+			zorder="5" visible="false"
 			circle_active_width="0.1" text_x=""></hotspot>
 
 
@@ -2280,7 +2389,7 @@ ath = "-0.0424337 " atv = "0.0877063"
 
 
 		<hotspot
-			name="hs_Zone_6_label(6__label)"
+			name="hs_english_Zone_6_label(6__label)"
 			callout_bg_border="0,0,0,0" width="auto"
 			shape="circle"
 			ath="0.4213573" atv="-0.0033854"
@@ -2292,6 +2401,23 @@ ath = "-0.0424337 " atv = "0.0877063"
 			style="callout"
 			title="Zone 6"
 			zorder="5"
+			circle_active_width="0.1"
+			text_x="">
+		</hotspot>
+
+			<hotspot
+			name="hs_arabic_Zone_6_label(6__label)"
+			callout_bg_border="0,0,0,0" width="auto"
+			shape="circle"
+			ath="0.4213573" atv="-0.0033854"
+			line_lenght="150"
+			size="20"
+			css_title="color:#fff;font-size:25px;font-family: Arial;"
+			rotate="15"
+			animation="keep_opened"
+			style="callout"
+			title="المنطقة ٦"
+			zorder="5" visible="false"
 			circle_active_width="0.1"
 			text_x="">
 		</hotspot>
@@ -2382,7 +2508,7 @@ ath = "-0.0424337 " atv = "0.0877063"
 		</hotspot>
 
 
-		<hotspot name="hs_Zone_1_label(1_label)"
+		<hotspot name="hs_english_Zone_1_label(1_label)"
 			callout_bg_border="0,0,0,0" width="auto"
 			shape="circle"
 			ath="-0.3418203" atv="-0.06168"
@@ -2391,6 +2517,19 @@ ath = "-0.0424337 " atv = "0.0877063"
 			css_title="color:#fff;font-size:25px;font-family: Arial;"
 			rotate="-45" animation="keep_opened"
 			style="callout" title="Zone 1"
+			zorder="5"
+			circle_active_width="0.1" text_x=""></hotspot>
+
+			<hotspot name="hs_arabic_Zone_1_label(1_label)"
+			callout_bg_border="0,0,0,0" width="auto"
+			shape="circle"
+			ath="-0.3418203" atv="-0.06168"
+			line_lenght="150"
+			size="20"
+			css_title="color:#fff;font-size:25px;font-family: Arial;"
+			rotate="-45" animation="keep_opened"
+			style="callout" title="المنطقة ١"
+
 			zorder="5"
 			circle_active_width="0.1" text_x=""></hotspot>
 
@@ -2563,7 +2702,7 @@ ath = "-0.0424337 " atv = "0.0877063"
 		</hotspot>
 
 
-		<hotspot name="hs_Zone_2_label(2_label)"
+		<hotspot name="hs_english_Zone_2_label(2_label)"
 			callout_bg_border="0,0,0,0" width="auto"
 			shape="circle"
 			ath="-0.1848999"
@@ -2574,6 +2713,20 @@ ath = "-0.0424337 " atv = "0.0877063"
 			rotate="-40" animation="keep_opened"
 			style="callout" title="Zone 2"
 			zorder="5"
+			circle_active_width="0.1" text_x=""></hotspot>
+
+				<hotspot name="hs_arabic_Zone_2_label(2_label)"
+			callout_bg_border="0,0,0,0" width="auto"
+			shape="circle"
+			ath="-0.1848999"
+			atv="-0.0632825"
+			line_lenght="150"
+			size="20"
+			css_title="color:#fff;font-size:25px;font-family: Arial;"
+			rotate="-40" animation="keep_opened"
+			style="callout" title="المنطقة ٢"
+
+			zorder="5" visible="false"
 			circle_active_width="0.1" text_x=""></hotspot>
 
 
@@ -2737,7 +2890,7 @@ ath = "-0.0424337 " atv = "0.0877063"
 		</hotspot>
 
 
-		<hotspot name="hs_Zone_3_label(3_label)"
+		<hotspot name="hs_english_Zone_3_label(3_label)"
 			callout_bg_border="0,0,0,0" width="auto"
 			shape="circle"
 			ath="-0.0510429" atv="-0.0632828"
@@ -2748,6 +2901,20 @@ ath = "-0.0424337 " atv = "0.0877063"
 			style="callout" title="Zone 3"
 			zorder="5"
 			circle_active_width="0.1" text_x=""></hotspot>
+
+			<hotspot name="hs_arabic_Zone_3_label(3_label)"
+			callout_bg_border="0,0,0,0" width="auto"
+			shape="circle"
+			ath="-0.0510429" atv="-0.0632828"
+			line_lenght="120"
+			size="20"
+			css_title="color:#fff;font-size:25px;font-family: Arial;"
+			rotate="-40" animation="keep_opened"
+			style="callout" title="المنطقة ٣"
+
+			zorder="5" visible="false"
+			circle_active_width="0.1" text_x=""></hotspot>
+
 
 
 		<hotspot name="hs_zone_3_360(1)"
@@ -2863,6 +3030,8 @@ ath = "-0.0424337 " atv = "0.0877063"
          >
 			</hotspot>
 
+			
+
 
 		<!-- hotspot for b-AL MARINA aerial zone 4 == zone 7 in requirement DOCUMENT -->
 		<hotspot name="hotspot6" style="mypolygonalhotspotstylename" capture="false"
@@ -2910,7 +3079,7 @@ ath = "-0.0424337 " atv = "0.0877063"
 		</hotspot>
 
 		<hotspot
-			name="hs_Zone_7_label(7__label)"
+			name="hs_english_Zone_7_label(7__label)"
 			callout_bg_border="0,0,0,0" width="auto"
 			shape="circle"
 			ath=" 0.2822965" atv="0.0658863"
@@ -2921,6 +3090,24 @@ ath = "-0.0424337 " atv = "0.0877063"
 			animation="keep_opened"
 			style="callout"
 			title="Zone 7"
+			zorder="5"
+			circle_active_width="0.1"
+			text_x="">
+		</hotspot>
+
+	<hotspot
+			name="hs_arabic_Zone_7_label(7__label)"
+			callout_bg_border="0,0,0,0" width="auto"
+			shape="circle"
+			ath=" 0.2822965" atv="0.0658863"
+			line_lenght="150"
+			size="20"
+			css_title="color:#fff;font-size:25px;font-family: Arial;"
+			rotate="-130"
+			animation="keep_opened"
+			style="callout"
+	    	title="المنطقة ٧"
+			visible="false"
 			zorder="5"
 			circle_active_width="0.1"
 			text_x="">
@@ -3122,7 +3309,7 @@ ath = "-0.0424337 " atv = "0.0877063"
 
 
 		<hotspot
-			name="hs_Zone_8_label(8__label)"
+			name="hs_english_Zone_8_label(8__label)"
 			callout_bg_border="0,0,0,0" width="auto"
 			shape="circle"
 			ath="-0.0479179" atv="0.0700538"
@@ -3133,6 +3320,25 @@ ath = "-0.0424337 " atv = "0.0877063"
 			animation="keep_opened"
 			style="callout"
 			title="Zone 8"
+			zorder="5"
+			circle_active_width="0.1"
+			text_x="">
+		</hotspot>
+
+
+		<hotspot
+			name="hs_arabic_Zone_8_label(8__label)"
+			callout_bg_border="0,0,0,0" width="auto"
+			shape="circle"
+			ath="-0.0479179" atv="0.0700538"
+			line_lenght="150"
+			size="20"
+			css_title="color:#fff;font-size:25px;font-family: Arial;"
+			rotate="-130"
+			animation="keep_opened"
+			style="callout"
+			title="المنطقة ٨"
+			visible="false"
 			zorder="5"
 			circle_active_width="0.1"
 			text_x="">
@@ -3323,7 +3529,7 @@ ath = "-0.0424337 " atv = "0.0877063"
 		</hotspot>
 
 
-		<hotspot name="hs_Zone_9_Medical_Complex_label(9__medical_label)"
+		<hotspot name="hs_Zone_english_9_Medical_Complex_label(9__medical_label)"
 			callout_bg_border="0,0,0,0" width="auto"
 			shape="circle"
 			ath="-0.3645877"
@@ -3339,6 +3545,23 @@ ath = "-0.0424337 " atv = "0.0877063"
 			circle_active_width="0.1"
 			text_x=""></hotspot>
 
+
+			<hotspot name="hs_arabic_Zone_9_Medical_Complex_label(9__medical_label)"
+			callout_bg_border="0,0,0,0" width="auto"
+			shape="circle"
+			ath="-0.3645877"
+			atv="0.0674482"
+			line_lenght="150"
+			size="20"
+			css_title="color:#fff;font-size:25px;font-family: Arial;"
+			rotate="-130"
+			animation="keep_opened"
+			style="callout"
+			title="المنطقة ٩"
+
+			zorder="5"
+			circle_active_width="0.1"
+			text_x=""></hotspot>
 
 		<hotspot name="hs_zone_9_Medical_Complex_360(9)"
 			callout_bg_border="0,0,0,0"
@@ -3647,7 +3870,7 @@ ath = "-0.0424337 " atv = "0.0877063"
 			</hotspot>
 
 
-		<hotspot name="hs_Zone_4_label(4_label)"
+		<hotspot name="hs_english_Zone_4_label(4_label)"
 			callout_bg_border="0,0,0,0" width="auto"
 			shape="circle"
 			ath="0.0767415" atv="-0.0643573"
@@ -3659,6 +3882,21 @@ ath = "-0.0424337 " atv = "0.0877063"
 			onclick="loadscene(scene_4_360, null, MERGE,BLEND(1) )"
 			zorder="5"
 			circle_active_width="0.1" text_x=""></hotspot>
+
+			<hotspot name="hs_arabic_Zone_4_label(4_label)"
+			callout_bg_border="0,0,0,0" width="auto"
+			shape="circle"
+			ath="0.0767415" atv="-0.0643573"
+			line_lenght="120"
+			size="20"
+			css_title="color:#fff;font-size:25px;font-family: Arial;"
+			rotate="20" animation="keep_opened"
+			visible="false"
+			style="callout" title="المنطقة ٤"
+			onclick="loadscene(scene_4_360, null, MERGE,BLEND(1) )"
+			zorder="5"
+			circle_active_width="0.1" text_x=""></hotspot>
+
 
 
 		<hotspot name="hs_zone_4_360(zone_4)"
@@ -3695,9 +3933,12 @@ ath = "-0.0424337 " atv = "0.0877063"
 
 		<preview url="panos/c-ZONE_1.tiles/preview.jpg" />
 
-		<image hfov="1.00" vfov="0.562500" voffset="0.00">
+		<!-- <image hfov="1.00" vfov="0.562500" voffset="0.00">
 			<flat url="panos/c-ZONE_1.tiles/l%l/%v/l%l_%v_%h.jpg"
 				multires="512,1024x578,2048x1152,4096x2304" />
+		</image> -->
+		<image hfov="1.00" vfov="0.562500" voffset="0.00">
+			<flat url="panos/c-ZONE_1.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1024x578,2048x1152,4096x2304" />
 		</image>
 		<!-- hotspots for plots in zone 1  -->
 		<hotspot name="hs1" style="mypolygonalhotspotstylename" capture="false" fillcolor="0x00FF00" fillalpha="0.1">
