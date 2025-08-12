@@ -322,6 +322,8 @@ const switchLanguage = (lang) => {
         document.getElementById("englishWestNumber").textContent
       );
   }
+  
+  
 
   /**
    * Horizontal Slider

@@ -875,6 +875,20 @@
          
            hotspotCategories.forEach(({ prefix, count }) => {
          let shouldBeVisible;
+
+         // ✅ Show only the current language hotspot
+for (let i = 1; i <= landmarkCount; i++) {
+  console.log("currentLanguage", currentLanguage);
+    if (currentLanguage === "en") {
+      krpano.set(`hotspot[hs_Landmark_${i}_english].visible`, isActive);
+      krpano.set(`hotspot[hs_Landmark_${i}_arabic].visible`, false);
+    } else {
+      krpano.set(`hotspot[hs_Landmark_${i}_english].visible`, false);
+      krpano.set(`hotspot[hs_Landmark_${i}_arabic].visible`, isActive);
+    }
+  }
+
+  
          
          if (prefix === "hs_Label_") {
          // Always hide hs_Label_ regardless of toggle state
@@ -1165,7 +1179,25 @@
                    );
                  }
                }
+
+            
+
+// ✅ Show only the current language hotspot
+for (let i = 1; i <= landmarkCount; i++) {
+  console.log("currentLanguage", currentLanguage);
+    if (currentLanguage === "en") {
+      krpano.set(`hotspot[hs_Landmark_${i}_english].visible`, isActive);
+      krpano.set(`hotspot[hs_Landmark_${i}_arabic].visible`, false);
+    } else {
+      krpano.set(`hotspot[hs_Landmark_${i}_english].visible`, false);
+      krpano.set(`hotspot[hs_Landmark_${i}_arabic].visible`, isActive);
+    }
+  }
+
+  
              }
+
+            
          };
          
          const flyToInitialAlMarinaScene = () => {
