@@ -704,6 +704,7 @@
 
            // Call your functions
             switchLanguage(currentLanguage);
+          //  setFamousRoadLanguage(currentLanguage)
 
       });
 
@@ -1148,6 +1149,7 @@ for (let i = 1; i <= landmarkCount; i++) {
          
            
            if (filterName === "Roads") {
+            window.areRoadsEnabled= isActive
              const colorFulRoadsCategory = categoryMap["ColorFulRoads"];
              if (colorFulRoadsCategory) {
                for (let i = 1; i <= colorFulRoadsCategory.count; i++) {
@@ -1179,7 +1181,18 @@ for (let i = 1; i <= landmarkCount; i++) {
                    );
                  }
                }
+// ✅ Show only the current language hotspot
+// for (let i = 1; i <= famousRoadsCount; i++) {
 
+//   console.log("currentLanguage", currentLanguage);
+//     if (currentLanguage === "en") {
+//       krpano.set(`hotspot[hs_famousRoad_${i}_english].visible`, isActive);
+//       krpano.set(`hotspot[hs_famousRoad_${i}_arabic].visible`, false);
+//     } else {
+//       krpano.set(`hotspot[hs_famousRoad_${i}_english].visible`, false);
+//       krpano.set(`hotspot[hs_famousRoad_${i}_arabic].visible`, isActive);
+//     }
+//   }
             
 
 // ✅ Show only the current language hotspot
@@ -5338,6 +5351,8 @@ console.log(toArabicDigits(1234567890));
          zoneLi.innerHTML = `<strong id="queryZone">Zone:</strong> <span  id="queryZoneNumber"> ${zoneNumber} </span >`;
          list.appendChild(zoneLi);
          
+         switchLanguage(currentLanguage);
+
           if (formWrapper.style.display === 'none' || formWrapper.style.display === '') {
              formWrapper.style.display = 'block';
          } else {
@@ -5787,11 +5802,37 @@ console.log(toArabicDigits(1234567890));
          }
          };
          
-         
+ function hideFamousRoadOnLoad() {
+  console.log("hide famous  on load");
+    const krpano = document.getElementById("krpanoSWFObject");
+    if (!krpano) return;
+
+    const hotspotCount = krpano.get("hotspot.count");
+    for (let i = 0; i < hotspotCount; i++) {
+          
+        const hsName = krpano.get(`hotspot[${i}].name`);
+        krpano.set(`hotspot[hs_famousRoad_1_english].visible`, false);
+
+        if (hsName.includes("hs_famousRoad")) {
+      console.log("check pass")
+            
+        }
+    }
+}
+         // Run right after Krpano finishes loading the scene
+document.addEventListener("DOMContentLoaded", () => {
+    const krpano = document.getElementById("krpanoSWFObject");
+
+    // Attach to Krpano's load complete event
+    setTimeout(()=>{
+       //hideFamousRoadOnLoad()
+    },1000)
+  
+});
          window.onload = () => {
            let krpano = globalKrpano();
            const currentScene = krpano.get("xml.scene"); // Gets the currently loaded scene name
-         
+        
            if (!sessionStorage.getItem("reloaded")) {
              sessionStorage.setItem("reloaded", "true");
              location.reload();

@@ -113,13 +113,13 @@ const translations = {
 
     residential: "سكني",
     alMarina: "المارينا",
-    query: "تسجيل اهتمام",
+    query: "الحجز",
     share: "مشاركة",
     zone: "منطقة",
     area: "المساحة",
     plot: "القطعة",
     block: "بلوك",
-    gc: "حد التغطية",
+    gc: "حد ",
     north: "شمال",
     south: "جنوب",
     east: "شرق",
@@ -569,9 +569,14 @@ const setHotspotLanguage =(lang) => {
 
   for (let i = 0; i < hotspotCount; i++) {
     const hsName = krpano.get(`hotspot[${i}].name`);
+    console.log("hsName hsName", hsName)
+   // Skip famousRoad hotspots unless manually triggered
+    if (hsName.includes("hs_famousroad_")) continue;
+
 
     if (hsName.includes("_arabic")) {
         console.log("arabic", hsName)
+         console.log("ARABICCCC")
       // Show Arabic hotspots
       krpano.set(`hotspot[${hsName}].visible`, true);
     } 
@@ -593,12 +598,16 @@ const setHotspotLanguage =(lang) => {
  for (let i = 0; i < hotspotCount; i++) {
     const hsName = krpano.get(`hotspot[${i}].name`);
 
+     // Skip famousRoad hotspots unless manually triggered
+    if (hsName.includes("hs_famousroad_")) continue;
+
     if (hsName.includes("_english")) {
-      // Show Arabic hotspots
+      console.log("ENGGGGGGGGGGGGGGGGGLISSSSSSSSSSSH")
+     
       krpano.set(`hotspot[${hsName}].visible`, true);
     } 
     else if (hsName.includes("_arabic")) {
-      // Hide English hotspots
+    
       krpano.set(`hotspot[${hsName}].visible`, false);
     }
     else {
@@ -610,6 +619,83 @@ const setHotspotLanguage =(lang) => {
   }
   //
 }
+
+
+const setFamousRoadLanguage =(lang) => {
+
+
+const areRoadsEnabled = window.areRoadsEnabled
+    console.log("lang", lang)
+  const krpano = document.getElementById("krpanoSWFObject");
+
+  if (!krpano) {
+    console.error("Krpano viewer not found.");
+    return;
+  }
+ // Your translations mapping
+ 
+
+
+
+
+ 
+
+
+ if (lang === "ar" && areRoadsEnabled) {
+  // Loop through all hotspots
+  const hotspotCount = krpano.get("hotspot.count");
+
+  for (let i = 0; i < hotspotCount; i++) {
+    const hsName = krpano.get(`hotspot[${i}].name`);
+    console.log("hsName hsName", hsName)
+ 
+
+
+    if (hsName.includes("hs_famousroad_") && hsName.includes("_arabic")) {
+        console.log("arabic", hsName)
+         console.log("setFamousRoadLanguage IF ARABIC")
+      // Show Arabic hotspots
+      krpano.set(`hotspot[${hsName}].visible`, true);
+    } 
+    else if (hsName.includes("hs_famousroad_") && hsName.includes("_english")) {
+      // Hide English hotspots
+      
+        console.log("setFamousRoadLanguage ELSE", hsName)
+
+      krpano.set(`hotspot[${hsName}].visible`, false);
+    }
+    else {
+      // Leave all other hotspots unchanged
+    }
+  
+
+  } 
+ }else if (lang === "en" && areRoadsEnabled){
+    const hotspotCount = krpano.get("hotspot.count");
+ for (let i = 0; i < hotspotCount; i++) {
+    const hsName = krpano.get(`hotspot[${i}].name`);
+
+    if (hsName.includes("hs_famousroad_") && hsName.includes("_english")) {
+        console.log("setFamousRoadLanguage IF ENGLISH")
+     
+      krpano.set(`hotspot[${hsName}].visible`, true);
+    } 
+    else if (hsName.includes("hs_famousroad_") && hsName.includes("_arabic")) {
+       console.log("setFamousRoadLanguage IF ARABIC")
+     
+      krpano.set(`hotspot[${hsName}].visible`, false);
+    }
+    else {
+      // Leave all other hotspots unchanged
+    }
+  
+
+  }
+  }
+  //
+}
+
+
 
 const amenitiesTime = () => {
   const zoneAmenities = window.zoneAmenities;

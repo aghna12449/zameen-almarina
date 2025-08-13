@@ -258,7 +258,7 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 />
 
 		
-<hotspot 
+<!-- <hotspot 
   name="hs_famousRoad_1"
 
   type="text"
@@ -269,8 +269,41 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 
   renderer="css3d"
   css="font-family:Arial; font-size:16px; color:#000000; background:#D6E5BD; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
-/>
+/> -->
 	
+
+ <hotspot 
+  name="hs_famousRoad_1_english"
+
+  type="text"
+  visible="false"
+
+  ath="0.00545384276540517" atv="0.1522596106998893" 
+
+
+  rotate="115"
+  html="[b] King Saud Rd[/b]"
+
+  renderer="css3d"
+  css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363;  border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+/>
+
+ <hotspot 
+  name="hs_famousRoad_1_arabic"
+
+  type="text"
+  visible="false"
+
+  ath="0.00545384276540517" atv="0.1522596106998893" 
+
+
+  rotate="-55"
+html="[b] طريق الملك سعود [/b]"
+
+
+  renderer="css3d"
+  css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363;  border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+/>
 
 	  <hotspot 
   name="hs_famousRoad_1"
@@ -287,10 +320,12 @@ ath="0.00545384276540517" atv="0.1522596106998893"
   renderer="css3d"
   css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363;  border:none; outline:none; box-shadow:none; margin:0; padding:0;"
 />
+
+
 	
 
 		<hotspot 
-		name="hs_famousRoad_2"
+		name="hs_famousRoad_2_INITIAL"
 		 visible="false"
          type="text"
         ath="-0.0771463"
@@ -308,6 +343,27 @@ ath="0.00545384276540517" atv="0.1522596106998893"
       
          />
 
+
+		 <hotspot 
+		name="hs_22_famousRoad_2_SECOND"
+		 visible="false"
+         type="text"
+        ath="-0.0771463"
+		atv="-0.0135177" 
+		edge="center"
+        size="1.0"
+	    renderer="css3d"
+       
+
+
+ css="font-family: bahnschrift, Arial, Helvetica, sans-serif; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+       
+         html=" [b]طريق الملك فهد[/b] "
+	
+      
+         />
+
+
 		 <hotspot name="hs_famousRoad_3"
 		  visible="false"
         	 type="text"
@@ -320,6 +376,22 @@ ath="0.00545384276540517" atv="0.1522596106998893"
        css="font-family: bahnschrift, Arial, Helvetica, sans-serif; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
   
          html=" [b]King Fahd Rd[/b] "
+
+      
+         />
+
+		  <hotspot name="hs_22_famousRoad_3"
+		  visible="false"
+        	 type="text"
+          			ath="0.0177446" atv="0.0435862"
+			rotate="75"
+				 edge="center"
+        	size="1.0"
+	       renderer="css3d"
+		   
+       css="font-family: bahnschrift, Arial, Helvetica, sans-serif; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+  
+         html="[b]طريق الملك فهد[/b]  "
 
       
          />
@@ -342,7 +414,20 @@ ath="0.00545384276540517" atv="0.1522596106998893"
       
          />
 
-	
+	 <hotspot name="hs_22_famousRoad_4"
+		  visible="false"
+        	 type="text"
+          			ath="-0.2025867246712778" atv="-0.056850182128538596"
+			rotate="50"
+				 edge="center"
+        	size="1.0"
+	       renderer="css3d"
+		   
+       css="font-family: bahnschrift, Arial, Helvetica, sans-serif; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+   html="[b]طريق الملك فهد[/b]  "
+
+      
+         />
 
 
 	
