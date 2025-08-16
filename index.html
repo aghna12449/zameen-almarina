@@ -704,7 +704,7 @@
 
            // Call your functions
             switchLanguage(currentLanguage);
-          //  setFamousRoadLanguage(currentLanguage)
+            setFamousRoadLanguage(currentLanguage)
 
       });
 
@@ -815,7 +815,7 @@
          const totalLandMarkLines = 8;
          
          const colorFulRoads= 7;
-         const famousRoadsCount = 15;
+         const famousRoadsCount = 30;
          const popUpCount = 8;
          
          const filterState = {
@@ -889,6 +889,7 @@ for (let i = 1; i <= landmarkCount; i++) {
     }
   }
 
+  
   
          
          if (prefix === "hs_Label_") {
@@ -1146,10 +1147,23 @@ for (let i = 1; i <= landmarkCount; i++) {
                isActive
              );
            }
-         
+         // ✅ Show only the current language hotspot
+
            
            if (filterName === "Roads") {
-            window.areRoadsEnabled= isActive
+            for (let i = 1; i <= famousRoadsCount; i++) {
+
+
+        if (currentLanguage === "en") {
+          krpano.set(`hotspot[hs_famousRoad_${i}_english].visible`, isActive);
+          krpano.set(`hotspot[hs_famousRoad_${i}_arabic].visible`, false);
+        } else {
+        krpano.set(`hotspot[hs_famousRoad_${i}_english].visible`, false);
+          krpano.set(`hotspot[hs_famousRoad_${i}_arabic].visible`, isActive);
+        }
+      }
+
+            window.areRoadsEnabled = isActive
              const colorFulRoadsCategory = categoryMap["ColorFulRoads"];
              if (colorFulRoadsCategory) {
                for (let i = 1; i <= colorFulRoadsCategory.count; i++) {
@@ -1181,19 +1195,18 @@ for (let i = 1; i <= landmarkCount; i++) {
                    );
                  }
                }
-// ✅ Show only the current language hotspot
-// for (let i = 1; i <= famousRoadsCount; i++) {
 
-//   console.log("currentLanguage", currentLanguage);
-//     if (currentLanguage === "en") {
-//       krpano.set(`hotspot[hs_famousRoad_${i}_english].visible`, isActive);
-//       krpano.set(`hotspot[hs_famousRoad_${i}_arabic].visible`, false);
-//     } else {
-//       krpano.set(`hotspot[hs_famousRoad_${i}_english].visible`, false);
-//       krpano.set(`hotspot[hs_famousRoad_${i}_arabic].visible`, isActive);
-//     }
-//   }
-            
+      // ✅ Show only the current language hotspot
+for (let i = 1; i <= landmarkCount; i++) {
+  console.log("currentLanguage", currentLanguage);
+    if (currentLanguage === "en") {
+      krpano.set(`hotspot[hs_Landmark_${i}_english].visible`, isActive);
+      krpano.set(`hotspot[hs_Landmark_${i}_arabic].visible`, false);
+    } else {
+      krpano.set(`hotspot[hs_Landmark_${i}_english].visible`, false);
+      krpano.set(`hotspot[hs_Landmark_${i}_arabic].visible`, isActive);
+    }
+  }      
 
 // ✅ Show only the current language hotspot
 for (let i = 1; i <= landmarkCount; i++) {

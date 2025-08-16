@@ -243,7 +243,7 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 			<flat url="panos/a-initial.tiles/l%l/%0v/l%l_%0v_%0h.jpg" multires="512,1024x576,2048x1152,3840x2160,7680x4320" />
 		</image>
 
-
+<!-- 
  <hotspot 
   name="hs_famousRoad_1"
 
@@ -255,11 +255,11 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
 
   renderer="css3d"
   css="font-family:Arial; font-size:16px; color:#000000; background:#D6E5BD; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
-/>
+/> -->
 
 		
 <!-- <hotspot 
-  name="hs_famousRoad_1"
+  name="hs_no_famousRoad_1"
 
   type="text"
   visible="false"
@@ -297,15 +297,15 @@ maxpixelzoom limits zoom level based on image resolution. 2.0 means you can zoom
   ath="0.00545384276540517" atv="0.1522596106998893" 
 
 
-  rotate="-55"
-html="[b] طريق الملك سعود [/b]"
+  rotate="-65"
+html="[b] طريق الملك سعود   [/b]"
 
 
   renderer="css3d"
   css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363;  border:none; outline:none; box-shadow:none; margin:0; padding:0;"
 />
 
-	  <hotspot 
+	  <!-- <hotspot 
   name="hs_famousRoad_1"
 
   type="text"
@@ -319,13 +319,32 @@ ath="0.00545384276540517" atv="0.1522596106998893"
 
   renderer="css3d"
   css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363;  border:none; outline:none; box-shadow:none; margin:0; padding:0;"
-/>
+/> -->
 
 
 	
 
 		<hotspot 
-		name="hs_famousRoad_2_INITIAL"
+		name="hs_famousRoad_2_english"
+		 visible="false"
+         type="text"
+        ath="-0.0771463"
+		atv="-0.0135177" 
+		edge="center"
+        size="1.0"
+	    renderer="css3d"
+       
+
+
+      css="font-family: bahnschrift, Arial, Helvetica, sans-serif; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+       
+         html=" [b]King Fahd Rd[/b] "
+	
+      
+         />
+
+		 <hotspot 
+		name="hs_famousRoad_2_arabic"
 		 visible="false"
          type="text"
         ath="-0.0771463"
@@ -338,13 +357,13 @@ ath="0.00545384276540517" atv="0.1522596106998893"
 
  css="font-family: bahnschrift, Arial, Helvetica, sans-serif; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
        
-         html=" [b]King Fahd Rd[/b] "
+         html=" [b]شارع الملك فهد[/b] "
 	
       
          />
 
 
-		 <hotspot 
+		 <!-- <hotspot 
 		name="hs_22_famousRoad_2_SECOND"
 		 visible="false"
          type="text"
@@ -361,10 +380,10 @@ ath="0.00545384276540517" atv="0.1522596106998893"
          html=" [b]طريق الملك فهد[/b] "
 	
       
-         />
+         /> -->
 
 
-		 <hotspot name="hs_famousRoad_3"
+		 <hotspot name="hs_famousRoad_3_english"
 		  visible="false"
         	 type="text"
           			ath="0.0177446" atv="0.0435862"
@@ -380,7 +399,7 @@ ath="0.00545384276540517" atv="0.1522596106998893"
       
          />
 
-		  <hotspot name="hs_22_famousRoad_3"
+		  <hotspot name="hs_famousRoad_3_arabic"
 		  visible="false"
         	 type="text"
           			ath="0.0177446" atv="0.0435862"
@@ -398,7 +417,7 @@ ath="0.00545384276540517" atv="0.1522596106998893"
 
 		 
 
-		  <hotspot name="hs_famousRoad_4"
+		  <hotspot name="hs_famousRoad_4_english"
 		  visible="false"
         	 type="text"
           			ath="-0.2025867246712778" atv="-0.056850182128538596"
@@ -414,14 +433,14 @@ ath="0.00545384276540517" atv="0.1522596106998893"
       
          />
 
-	 <hotspot name="hs_22_famousRoad_4"
-		  visible="false"
-        	 type="text"
-          			ath="-0.2025867246712778" atv="-0.056850182128538596"
-			rotate="50"
-				 edge="center"
-        	size="1.0"
-	       renderer="css3d"
+	 <hotspot name="hs_famousRoad_4_arabic"
+		visible="false"
+        type="text"
+        ath="-0.2025867246712778" atv="-0.056850182128538596"
+		rotate="50"
+		edge="center"
+        size="1.0"
+	    renderer="css3d"
 		   
        css="font-family: bahnschrift, Arial, Helvetica, sans-serif; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
    html="[b]طريق الملك فهد[/b]  "
@@ -433,7 +452,7 @@ ath="0.00545384276540517" atv="0.1522596106998893"
 	
 
 		  <hotspot 
-		     name="hs_famousRoad_5"
+		     name="hs_famousRoad_5_english"
         	 type="text"
 			visible="false"
           	ath=" 0.1054847" atv="0.0075436"
@@ -448,10 +467,26 @@ ath="0.00545384276540517" atv="0.1522596106998893"
          />
 
 	
+	
+		  <hotspot 
+		     name="hs_famousRoad_5_arabic"
+        	 type="text"
+			visible="false"
+          	ath=" 0.1054847" atv="0.0075436"
+			rotate="-30"
+			edge="center"
+        	size="1.0"
+			  renderer="css3d"
+	    css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+         html="[b]شارع الملك عبدالعزيز[/b]"
+
+
+     
+         />
 
 		 <hotspot 
 		 
-		 name="hs_famousRoad_6"
+		 name="hs_famousRoad_6_english"
         	type="text"
 			 visible="false"
 			
@@ -468,7 +503,25 @@ ath="0.00545384276540517" atv="0.1522596106998893"
      
          />
 
-		 <hotspot name="hs_famousRoad_7"
+ <hotspot 
+		 
+		 name="hs_famousRoad_6_arabic"
+        	type="text"
+			 visible="false"
+			
+          	ath="-0.3019621" atv="0.1940775"
+			rotate="0"
+			edge="center"
+        	size="1.0"
+	     renderer="css3d"
+	   
+         css="font-family:Arial; font-size:16px;color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+       
+         html="[b]شارع الملك عبدالعزيز[/b]"
+
+     
+         />
+		 <hotspot name="hs_famousRoad_7_english"
         	 type="text"
 			  visible="false"
           	ath="-0.0487387" atv=" 0.0983929"
@@ -479,6 +532,20 @@ ath="0.00545384276540517" atv="0.1522596106998893"
         css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
 
          html=" [b]King Abdul Aziz Rd[/b] "
+         /> 
+
+		  <hotspot name="hs_famousRoad_7_arabic"
+        	 type="text"
+			  visible="false"
+          	ath="-0.0487387" atv=" 0.0983929"
+				 edge="center"
+        	size="1.0"
+			  renderer="css3d"
+	   
+          css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+
+          html="[b]شارع الملك عبدالعزيز[/b]"
+
          /> 
 
 		 <!-- <hotspot name="hs_famousRoad_8"
@@ -495,7 +562,7 @@ ath="0.00545384276540517" atv="0.1522596106998893"
          /> -->
 
 
-		  <hotspot name="hs_famousRoad_9"
+		  <hotspot name="hs_famousRoad_9_english"
         	 type="text"
 			  visible="false"
           	ath=" 0.0568879" atv="0.1002357" edge="center"
@@ -509,8 +576,40 @@ ath="0.00545384276540517" atv="0.1522596106998893"
          html=" [b]King Faisal Rd[/b] "
          /> 
 
+		  <hotspot name="hs_famousRoad_9_arabic"
+        	 type="text"
+			  visible="false"
+          	ath=" 0.0568879" atv="0.1002357" edge="center"
+        	size="1.0"
+	       renderer="css3d"
+		   rotate="90"
 
-		 <hotspot name="hs_famousRoad_10"
+		   
+	    css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+       
+         html="[b]شارع الملك فيصل[/b]"
+
+         /> 
+
+
+		 <hotspot name="hs_famousRoad_10_arabic"
+        	 type="text"
+			  visible="false"
+          	ath=" 0.028696723326675055" atv="0.004642690867282402"
+			
+		
+
+			 edge="center"
+        	size="1.0"
+	       renderer="css3d"
+		   css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+		   
+		   rotate="65"
+       
+          html="[b]شارع الملك فيصل[/b]"
+         />
+
+		  <hotspot name="hs_famousRoad_10_english"
         	 type="text"
 			  visible="false"
           	ath=" 0.028696723326675055" atv="0.004642690867282402"
@@ -530,9 +629,10 @@ ath="0.00545384276540517" atv="0.1522596106998893"
 
 
 
+
 		 <!-- Riyadh Road -->
 
-		  <hotspot name="hs_famousRoad_12"
+		  <hotspot name="hs_famousRoad_12_english"
         	 type="text"
 			  visible="false"
 
@@ -551,10 +651,32 @@ ath="-0.011905709915481566" atv = "0.03922736700408265"
        
          html=" [b]Riyadh Rd[/b] "
          />
+
+		 <!-- Riyadh Road -->
+
+		  <hotspot name="hs_famousRoad_12_arabic"
+        	 type="text"
+			  visible="false"
+
+			  
+ath="-0.011905709915481566" atv = "0.03922736700408265" 
+       
+			
+		
+
+			 edge="center"
+        	size="1.0"
+	       renderer="css3d"
+		   css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+		   
+		   rotate="00"
+       
+         html="[b]شارع الرياض[/b]"
+         />
 		 <!-- Riyadh Road -->
 
 
-	  <hotspot name="hs_famousRoad_13"
+	  <hotspot name="hs_famousRoad_13_english"
         	 type="text"
 			  visible="false"
           
@@ -572,8 +694,27 @@ ath="-0.011905709915481566" atv = "0.03922736700408265"
          html=" [b]Riyadh Rd[/b] "
          />
 
+		  <hotspot name="hs_famousRoad_13_arabic"
+        	 type="text"
+			  visible="false"
+          
+			ath="-0.20331673934737182" atv = "0.005557127235987968"
 
-		  <hotspot name="hs_famousRoad_14"
+
+
+			 edge="center"
+        	size="1.0"
+	       renderer="css3d"
+		   css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+		   
+		   rotate="20"
+       
+         html="[b]شارع الرياض[/b]"
+         />
+
+
+
+		  <hotspot name="hs_famousRoad_14_english"
         	type="text"
 			visible="false"
 			ath="-0.17487726786202984" 
@@ -589,7 +730,23 @@ ath="-0.011905709915481566" atv = "0.03922736700408265"
          html=" [b]Al Ahsa Rd[/b] "
          />
 
-		  <hotspot name="hs_famousRoad_15"
+		   <hotspot name="hs_famousRoad_14_arabic"
+        	type="text"
+			visible="false"
+			ath="-0.17487726786202984" 
+			atv="0.10412395542956912"
+
+			 edge="center"
+        	size="1.0"
+	       renderer="css3d"
+		   css="font-family:Arial; font-size:16px;color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+		   
+		   rotate="-20"
+       
+         html=" [b]شارع الأحساء[/b]"
+         />
+
+		  <hotspot name="hs_famousRoad_15_english"
         	type="text"
 			visible="false"
 		ath="-0.42148390544946324" atv="0.1836129469884559"
@@ -602,6 +759,21 @@ ath="-0.011905709915481566" atv = "0.03922736700408265"
 		   rotate="-20"
        
          html=" [b]Al Ahsa Rd[/b] "
+         />
+
+		   <hotspot name="hs_famousRoad_15_arabic"
+        	type="text"
+			visible="false"
+		ath="-0.42148390544946324" atv="0.1836129469884559"
+
+			 edge="center"
+        	size="1.0"
+	       renderer="css3d"
+		   css="font-family:Arial; font-size:16px; color:#ffffff; background:#6c6363; border:none; outline:none; box-shadow:none; margin:0; padding:0;"
+		   
+		   rotate="-20"
+       
+         html=" [b]شارع الأحساء[/b]"
          />
 
 <!-- Hotspots for Highlighting the roads -->
@@ -1768,7 +1940,7 @@ size="2"
 			line_lenght="70" line_width="1.5" shape="round" ath="-0.2777324" atv="-0.2178239" rotate="70"
 			animation="keep_opened" style="callout" 
 			 onclick="js(showRoadHotspot('hs_LandMarkLine_8','hs_Landmark_8',  'hs_PopUp_8'));"
-			title="King Fahd International Airport"
+			title="مطار الملك فهد الدولي"
 			
 			circle_active_width="8" text_x=""></hotspot>
 

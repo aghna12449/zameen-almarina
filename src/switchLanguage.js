@@ -578,6 +578,7 @@ const setHotspotLanguage =(lang) => {
         console.log("arabic", hsName)
          console.log("ARABICCCC")
       // Show Arabic hotspots
+      
       krpano.set(`hotspot[${hsName}].visible`, true);
     } 
     else if (hsName.includes("_english")) {
@@ -589,8 +590,10 @@ const setHotspotLanguage =(lang) => {
     }
     else {
       // Leave all other hotspots unchanged
+
+      
     }
-  
+  // 
 
   } 
  }else if (lang === "en"){
@@ -646,7 +649,7 @@ const areRoadsEnabled = window.areRoadsEnabled
   const hotspotCount = krpano.get("hotspot.count");
 
   for (let i = 0; i < hotspotCount; i++) {
-    const hsName = krpano.get(`hotspot[${i}].name`);
+    const hsName = krpano.get(`hotspot[${i}].name`).toLowerCase();
     console.log("hsName hsName", hsName)
  
 
@@ -673,7 +676,7 @@ const areRoadsEnabled = window.areRoadsEnabled
  }else if (lang === "en" && areRoadsEnabled){
     const hotspotCount = krpano.get("hotspot.count");
  for (let i = 0; i < hotspotCount; i++) {
-    const hsName = krpano.get(`hotspot[${i}].name`);
+     const hsName = krpano.get(`hotspot[${i}].name`).toLowerCase();
 
     if (hsName.includes("hs_famousroad_") && hsName.includes("_english")) {
         console.log("setFamousRoadLanguage IF ENGLISH")
