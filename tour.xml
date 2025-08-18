@@ -4179,7 +4179,132 @@ ath = "-0.0424337 " atv = "0.0877063"
 		</hotspot>
 
 	</scene>
+	<scene name="scene_top_view_zone_01" title="top_view_zone 01" onstart="" thumburl="panos/top_view_zone_01.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
 
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/top_view_zone_01.tiles/preview.jpg" />
+
+		<image hfov="1.00" vfov="0.562500" voffset="0.00">
+			<flat url="panos/top_view_zone_01.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1024x578,2048x1152,4096x2304" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_top_view_zone_02" title="top_view_zone 02" onstart="" thumburl="panos/top_view_zone_02.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/top_view_zone_02.tiles/preview.jpg" />
+
+		<image hfov="1.00" vfov="0.562500" voffset="0.00">
+			<flat url="panos/top_view_zone_02.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1024x578,2048x1152,4096x2304" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_top_view_zone_03" title="top_view_zone 03" onstart="" thumburl="panos/top_view_zone_03.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/top_view_zone_03.tiles/preview.jpg" />
+
+		<image hfov="1.00" vfov="0.562500" voffset="0.00">
+			<flat url="panos/top_view_zone_03.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1024x578,2048x1152,4096x2304" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_top_view_zone_04" title="top_view_zone 04" onstart="" thumburl="panos/top_view_zone_04.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/top_view_zone_04.tiles/preview.jpg" />
+
+		<image hfov="1.00" vfov="0.562500" voffset="0.00">
+			<flat url="panos/top_view_zone_04.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1024x578,2048x1152,4096x2304" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_top_view_zone_05" title="top_view_zone 05" onstart="" thumburl="panos/top_view_zone_05.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/top_view_zone_05.tiles/preview.jpg" />
+
+		<image hfov="1.00" vfov="0.562500" voffset="0.00">
+			<flat url="panos/top_view_zone_05.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1024x576,2048x1152" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_top_view_zone_06" title="top_view_zone 06" onstart="" thumburl="panos/top_view_zone_06.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/top_view_zone_06.tiles/preview.jpg" />
+
+		<image hfov="1.00" vfov="0.562500" voffset="0.00">
+			<flat url="panos/top_view_zone_06.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1024x576,2048x1152" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_top_view_zone_07" title="top_view_zone 07" onstart="" thumburl="panos/top_view_zone_07.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/top_view_zone_07.tiles/preview.jpg" />
+
+		<image hfov="1.00" vfov="0.562500" voffset="0.00">
+			<flat url="panos/top_view_zone_07.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1024x576,2048x1152" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_top_view_zone_08" title="top_view_zone 08" onstart="" thumburl="panos/top_view_zone_08.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/top_view_zone_08.tiles/preview.jpg" />
+
+		<image hfov="1.00" vfov="0.562500" voffset="0.00">
+			<flat url="panos/top_view_zone_08.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1024x576,2048x1152" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_top_view_zone_09" title="top_view_zone 09" onstart="" thumburl="panos/top_view_zone_09.tiles/thumb.jpg" lat="" lng="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/top_view_zone_09.tiles/preview.jpg" />
+
+		<image hfov="1.00" vfov="0.562500" voffset="0.00">
+			<flat url="panos/top_view_zone_09.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1024x576,2048x1152" />
+		</image>
+
+	</scene>
+	
 	<scene name="scene_c-ZONE_1" title="c-ZONE 1" enabled="false" onstart="scene_a-initial"
 		thumburl="panos/c-ZONE_1.tiles/thumb.jpg" lat="" lng="" heading="">
 

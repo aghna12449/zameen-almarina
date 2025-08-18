@@ -38,8 +38,7 @@
       <link rel="stylesheet" href="mobileSearchFilter.css" />
       <link rel="stylesheet" href="houseCard.css" />
       <link rel="stylesheet" href="mapFilter.css" />
-
-
+      <link rel="stylesheet" href="topView.css" />
     
 
 
@@ -120,7 +119,8 @@
       <script src="zone9.js"></script>
       <script src="src/contactForm.js"></script>
       
-     
+         <script src="src/topView.js"></script>
+
       <script src="src/switchLanguage.js"></script>
 
 
@@ -550,6 +550,15 @@
                </div>
             </div>
          </div>
+
+         
+<!-- Fullscreen Modal -->
+<div id="topViewModal" class="modal">
+  <span class="modalClose" onclick="closeTopViewModal()">&times;</span>
+  <div id="krpanoModal" class="modal-content"></div>
+      <img id="topViewImage" draggable="false" style="max-width:120%; display:block; margin:0 auto;" />
+</div>
+
          <!-- <div class="map-filter-arrow" ></div> -->
          <!-- Modal -->
          <div id="notFoundModal" class="modal-overlay">
@@ -559,20 +568,34 @@
                <button onclick="closeModal()">Close</button>
             </div>
          </div>
+         
          <div id="controls">
+        
+
+
             <div  class ="full_screen_wrapper"   id="full_screen_wrapper" 
                style="display: none; "
                >
                <button id="fullScreenBtn" title="Toggle Fullscreen"> <i id="fullscreen-icon" class="fas fa-expand"></i></button>
             </div>
+
+             <!-- Toggle Wrapper -->
+            <div class="normal-view-toggle" id="topImage" style="display: none;">
+              <span id="toggleLabel" class="toggleLabel"  onclick="toggleView()">Top Image</span>
+
+
+          </div>
             <!-- <button id="zoomInBtn">+</button>
                <button id="zoomOutBtn">-</button>    -->
+                  
             <div
                id="toggle_layer_wrapper" class="toggle_layer_wrapper"
                style="display: none; align-items: center; gap: 8px"
                >
+               
                <!-- Fullscreen Button -->
                <div class="inner-layer-style">
+                
                   <span id="toggle-text" style="margin-bottom: 15px">Layer</span>
                   <button id="toggle-button" onclick="toggleHotspotColor()">
                   <span id="toggle-icon" class="material-icons" style="color: #a65c43"
@@ -580,7 +603,11 @@
                      >
                   </button>
                </div>
+               
             </div>
+
+             
+           
          </div>
       </div>
       <div id="time-toggle" class="time-toggle" style="display: none">
@@ -2307,6 +2334,12 @@ console.log(toArabicDigits(1234567890));
            if (!krpano || typeof krpano.get !== "function") return;
          
            const currentScene = krpano.get("xml.scene");
+
+
+           const topImage =
+             document.getElementById("topImage");
+
+           
          
            const width = window.innerWidth;
          
@@ -2332,11 +2365,12 @@ console.log(toArabicDigits(1234567890));
              mobileSearchFilter.style.display = "none";
              mobileSearchCard.style.display = "none";
               formWrapper.style.display = 'none';
+              topImage.style.display="none"
            } else {
              searchBar.style.display = "block";
              searchSliderFilters.style.display = "block";
              mobileSearchCard.style.display = "block";
-            
+             topImage.style.display="block"
              if (width < 770) {
                // mobileSearchFilter.style.display = "block";
              }
@@ -3980,6 +4014,8 @@ console.log(toArabicDigits(1234567890));
              }
            }
          };
+
+         
          
          // Render the breadcrumbs dynamically
          const renderBreadcrumbs = () => {
@@ -4219,6 +4255,23 @@ console.log(toArabicDigits(1234567890));
          let toggleColorOn = false;
          
          let hotspotsVisible = true;
+
+         
+
+        //  const toggleTopView = () => {
+            
+        //   const krpano = globalKrpano();
+        //   const currentScene = krpano.get("scene[get(xml.scene)].name");
+        //   let topView= ""
+        //      if(currentScene === "scene_c-zone_1"){
+        //       topView = "scene_top_view_zone_01"
+        //       }else if(currentScene === "scene_d-zone_2"){
+
+        //       }
+          
+        //    krpano.call(`loadscene(${topView}, null, MERGE);`);
+        //   console.log("toggleTopView")
+        //  }
          
          function toggleHotspotColor(color1 = "0xFF0000", color2 = "0x00FF00") {
            toggleColorOn = !toggleColorOn;

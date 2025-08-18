@@ -1,0 +1,79 @@
+.normal-view-toggle {
+  display: flex;
+  flex-direction: row;     /* put text + icon side by side */
+  align-items: center;     /* align vertically in middle */
+  gap: 10px;               /* space between text and icon */
+  background: rgb(0 0 0 / 45%);
+  padding: 8px 12px;       /* optional: add spacing */
+  border-radius: 6px;      /* optional: rounded background */
+  height : 50px;
+}
+
+.normal-view-toggle span {
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff; /* adjust based on bg */
+      margin-left: 14px;
+}
+
+.normal-view-toggle button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 28px;
+}
+
+.toggleLabel{
+    cursor: pointer;
+}
+
+
+
+/* Modal (fullscreen background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 100000;
+ top: 5%;
+  left: 5%;
+  width: 92%;
+  height: 90%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Modal content (fullscreen container for krpano) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 100%;
+  
+}
+
+/* Close button */
+
+
+.modalClose {
+  position: absolute;
+   top: 20px;
+  right: 15px;
+  transform: translateX(-50%); /* moves it back by half of its width */
+  
+  z-index: 10000;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+
+  border-radius: 6px;
+  background: rgb(0 0 0 / 55%);
+  color: white;
+  width: 40px;
+  height: 40px; /* optional: make it square */
+  text-align: center; /* keeps × centered inside */
+  line-height: 40px;  /* vertically centers × */
+}
+
+
+.close:hover {
+/* // color: black; */
+}
