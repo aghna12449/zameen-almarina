@@ -73,7 +73,32 @@
   line-height: 40px;  /* vertically centers × */
 }
 
+/* Landscape mode (tablets/mobiles turned sideways) */
+/* @media screen and (orientation: landscape) {
+  .modal {
+    height: 58%;
+    top: 15%;
+    bottom: 0;
+    width: 60%;
+    left: 20%;
+  }
+} */
 
-.close:hover {
-/* // color: black; */
+/* Tablets and below (portrait only) */
+@media (max-width: 1024px) and (orientation: portrait) {
+  .modal {
+   height: 29%;
+   top: 30%;
+   bottom: 0;
+  }
 }
+
+/* Mobile only (portrait only) */
+@media (max-width: 768px) and (orientation: portrait) {
+  .modal {
+   height: 29%;
+        top: 30%;
+        bottom: 0;
+  }
+}
+

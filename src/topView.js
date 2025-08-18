@@ -42,27 +42,27 @@ const toggleTopView = () => {
 
 
 
-//   let krpanoModalInstance = document.getElementById("krpanoModal").getObject
-//     ? document.getElementById("krpanoModal").getObject()
-//     : null;
+  // let krpanoModalInstance = document.getElementById("krpanoModal").getObject
+  //   ? document.getElementById("krpanoModal").getObject()
+  //   : null;
 
-//   if (krpanoModalInstance) {
-//     // ✅ Already embedded → just load new scene
-//     krpanoModalInstance.call(`loadscene(${topView}, null, MERGE);`);
-//   } else {
-//     // ✅ First time → embed pano
-//     embedpano({
-//       swf: "krpano.swf",
-//       xml: "tour.xml",
-//       target: "krpanoModal",
-//       html5: "always",
-//       mobilescale: 1.0,
-//       passQueryParameters: true,
-//       onready: function (instance) {
-//         instance.call(`loadscene(${topView}, null, MERGE);`);
-//       }
-//     });
-//   }
+  // if (krpanoModalInstance) {
+  //   // ✅ Already embedded → just load new scene
+  //   krpanoModalInstance.call(`loadscene(${mapping.scene}, null, MERGE);`);
+  // } else {
+  //   // ✅ First time → embed pano
+  //   embedpano({
+  //     swf: "krpano.swf",
+  //     xml: "tour.xml",
+  //     target: "krpanoModal",
+  //     html5: "always",
+  //     mobilescale: 1.0,
+  //     passQueryParameters: true,
+  //     onready: function (instance) {
+  //       instance.call(`loadscene(${mapping.scene}, null, MERGE);`);
+  //     }
+  //   });
+  // }
 };
 
   function closeTopViewModal() {
