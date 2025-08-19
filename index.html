@@ -556,7 +556,7 @@
 <div id="topViewModal" class="modal">
   <span class="modalClose" onclick="closeTopViewModal()">&times;</span>
   <div id="krpanoModal" class="modal-content"></div>
-      <img id="topViewImage" class="image-scroll" draggable="false" style="max-width:120%; display:block; margin:0 auto;" />
+      <img id="topViewImage"  draggable="false" style=" display:block; margin:0 auto;" />
 </div>
 
          <!-- <div class="map-filter-arrow" ></div> -->
@@ -1384,11 +1384,11 @@ console.log(toArabicDigits(1234567890));
 
          switchLanguage(currentLanguage)
           
-       
+               const languageVersion = document.getElementById("langBtn");
          
          
            const viewport = document.getElementById("viewport");
-           viewport.style.transform = "scale(0.4)";
+           viewport.style.transform = "scale(0.5)";
            viewport.style.transformOrigin = "top left";
          
            console.log("viewport", viewport);
@@ -1415,12 +1415,13 @@ console.log(toArabicDigits(1234567890));
              // Add your landscape-specific code here
            } else {
              console.log("Portrait mode detected");
+     languageVersion.style.transform = "scale(0.8)";
 
               if(timeToggle){
                  timeToggle.style.bottom= "5.5%"
               }
 
-              l
+              
               setInitialCard()     
 
              setQueryForm();
@@ -3561,7 +3562,7 @@ console.log(toArabicDigits(1234567890));
                   setQueryForm();
 
                   setInitialCard();
-
+                  console.log("languageVersion", languageVersion)
                   languageVersion.style.transform = "scale(0.4)";
 
               

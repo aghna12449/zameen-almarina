@@ -74,6 +74,7 @@ const translations = {
 
     now: "Now",
     future: "Future",
+    topImage: "Top Image"
 
     // Add more translations as needed
   },
@@ -150,6 +151,7 @@ const translations = {
 
     now: "الآن",
     future: "المستقبل",
+    topImage: "الصورة العلوية"
   },
 };
 
@@ -192,6 +194,10 @@ const switchLanguage = (lang) => {
   /*
     House Card / Property Card Translations
 */
+if (document.getElementById("toggleLabel")) {
+    document.getElementById("toggleLabel").textContent = t.topImage;
+  }
+
   if (document.getElementById("toggle-text")) {
     document.getElementById("toggle-text").textContent = t.layer;
   }

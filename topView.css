@@ -10,10 +10,12 @@
 }
 
 .normal-view-toggle span {
+   display: inline-block; 
   font-size: 16px;
   font-weight: 500;
   color: #fff; /* adjust based on bg */
       margin-left: 14px;
+   
 }
 
 .normal-view-toggle button {
@@ -21,28 +23,18 @@
   border: none;
   cursor: pointer;
   font-size: 28px;
+  
 }
+
+
 
 .toggleLabel{
     cursor: pointer;
+    margin-top: 5px  !important;
 }
 
 
-.image-scroll {
-  display: flex;
-  gap: 10px; 
-  overflow-x: auto; /* horizontal scroll by default */
-  height: 100%;
-  scroll-behavior: smooth;
-  padding: 10px;
-}
 
-.image-scroll img {
-  max-height: 100%;
-  border-radius: 8px;
-  flex-shrink: 0; /* prevent images from shrinking */
-  cursor: pointer;
-}
 
 
 /* Landscape mode: horizontal scroll */
@@ -70,15 +62,23 @@
   position: fixed;
   z-index: 100000;
  top: 5%;
-  left: 5%;
-  width: 92%;
-  height: 90%;
+  left: 10%;
+  width: 78%;
+  height: 95%;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.9);
+  /* background-color: rgba(0, 0, 0, 0.9); */
+}
+.modal img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* keeps aspect ratio */
+  display: block;
 }
 
 /* Modal content (fullscreen container for krpano) */
+
 .modal-content {
+  position: relative;
   margin: auto;
   display: block;
   width: 100%;
@@ -90,9 +90,9 @@
 
 .modalClose {
   position: absolute;
-   top: 20px;
-  right: 15px;
-  transform: translateX(-50%); /* moves it back by half of its width */
+   top: 3%;
+  right: 2%;
+ 
   
   z-index: 10000;
   font-size: 40px;
@@ -106,6 +106,8 @@
   height: 40px; /* optional: make it square */
   text-align: center; /* keeps × centered inside */
   line-height: 40px;  /* vertically centers × */
+  
+
 }
 
 /* Landscape mode (tablets/mobiles turned sideways) */
@@ -122,18 +124,90 @@
 /* Tablets and below (portrait only) */
 @media (max-width: 1024px) and (orientation: portrait) {
   .modal {
-   height: 29%;
+   height: 20%;
    top: 30%;
    bottom: 0;
+   left: 12%
   }
+  .modalClose {
+  position: absolute;
+   top: 3%;
+  right: 10%;
+ 
+  
+  z-index: 10000;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+
+  border-radius: 6px;
+  background: rgb(0 0 0 / 55%);
+  color: white;
+  width: 40px;
+  height: 40px; /* optional: make it square */
+  text-align: center; /* keeps × centered inside */
+  line-height: 40px;  /* vertically centers × */
+  
+
+
+}
 }
 
+/* Tablets and below (portrait only) */
+@media (max-width: 1024px) and (orientation: landscape) {
+  
+  .modalClose {
+  position: absolute;
+   top: 3%;
+  right: 10%;
+ 
+  
+  z-index: 10000;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+
+  border-radius: 6px;
+  background: rgb(0 0 0 / 55%);
+  color: white;
+  width: 40px;
+  height: 40px; /* optional: make it square */
+  text-align: center; /* keeps × centered inside */
+  line-height: 40px;  /* vertically centers × */
+  
+
+
+}
+}
 /* Mobile only (portrait only) */
 @media (max-width: 768px) and (orientation: portrait) {
   .modal {
-   height: 29%;
+   height: 20%;
         top: 30%;
         bottom: 0;
+        
+   left: 12%
   }
+  .modalClose {
+  position: absolute;
+   top: 3%;
+  right: 12%;
+ 
+  
+  z-index: 10000;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+
+  border-radius: 6px;
+  background: rgb(0 0 0 / 55%);
+  color: white;
+  width: 40px;
+  height: 40px; /* optional: make it square */
+  text-align: center; /* keeps × centered inside */
+  line-height: 40px;  /* vertically centers × */
+  
+
+}
 }
 
