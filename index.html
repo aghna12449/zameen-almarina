@@ -1467,7 +1467,7 @@ console.log(toArabicDigits(1234567890));
               
                  const propertyCard = document.getElementById("krpano-card");
                 if(isLandscapeModeMethod()){
-                   propertyCard.style.right = "1%";
+                   propertyCard.style.right = "5%";
                     propertyCard.style.top = "-2%";
                     searchSliderFilters.style.left = "-36%";
                     return
@@ -1541,8 +1541,8 @@ console.log(toArabicDigits(1234567890));
                  if (propertyCard) {
               
          
-                   propertyCard.style.right = "2%";
-                   propertyCard.style.top = "2%";
+                   propertyCard.style.right = "0%";
+                   propertyCard.style.top = "3%";
                  }
          
                  const rowExtra =
@@ -1626,31 +1626,38 @@ console.log(toArabicDigits(1234567890));
          
          
                if(isLandscapeModeMethod()){
+                console.log("isLandscapeModeMethod")
                 if (propertyCard) {
-                      propertyCard.style.right = "0%";
+                   propertyCard.style.right = "0%";
                    propertyCard.style.top = "1%";
                   return
                 }
                 }
          
          
-                 
-               if (width > 1025) {
-                 if (propertyCard) {
-                   console.log("inital load first ");
-                   propertyCard.style.right = "5%";
-                   propertyCard.style.top = "10%";
-                 }
-               } else {
-                 console.log("inital load second");
-                 if (propertyCard) {
-                   propertyCard.style.right = "6%";
-                   propertyCard.style.top = "6%";
-                   //  propertyCard.style.right = "90px";
-                   // propertyCard.style.top = "12%";
-                 }
-               }
-         
+                 console.log("width", width)
+              if (width > 1025) {
+  // Desktop
+  if (propertyCard) {
+    console.log("initial load desktop > 1025");
+    propertyCard.style.right = "5%";
+    propertyCard.style.top = "10%";
+  }
+} else if (width === 1024) {
+  // Exactly 1024px
+  if (propertyCard) {
+    console.log("initial load width = 1024");
+    propertyCard.style.right = "20px";
+    propertyCard.style.top = "15px";
+  }
+} else {
+  // All other sizes (mobile/tablet < 1024)
+  if (propertyCard) {
+    console.log("initial load mobile/tablet < 1024");
+    propertyCard.style.right = "5%";
+    propertyCard.style.top = "5%";
+  }
+}
              
                const rowExtra = document.querySelectorAll(".details-row_extra");
                if (rowExtra) {
@@ -5110,7 +5117,7 @@ console.log(toArabicDigits(1234567890));
              if(isLandscapeTransform && !isFullScreenEnabled){
                propertyCard.style.transform= "scale(0.5)";
                propertyCard.style.right= "1%";
-               propertyCard.style.top= "-20                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    %";
+               propertyCard.style.top = "-15%"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
                
                return
              }
@@ -5128,7 +5135,7 @@ console.log(toArabicDigits(1234567890));
          
                        if(isLandscapeTransform){
                         property_card_transition.style.left= "40px";
-                        property_card_transition.style.transform= "scale(0.4)";
+                       // property_card_transition.style.transform= "scale(0.4)";
          
                        }
                        else{
@@ -5139,8 +5146,8 @@ console.log(toArabicDigits(1234567890));
              }
          
                   if(isFullScreenEnabled && isMobileOrTabletEnabled && propertyCard){
-                     propertyCard.style.right = "-2%";
-               propertyCard.style.top = "-2%";
+                     propertyCard.style.right = "0%";
+               propertyCard.style.top = "3%";
                   }
          
          
