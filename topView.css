@@ -28,6 +28,41 @@
 }
 
 
+.image-scroll {
+  display: flex;
+  gap: 10px; 
+  overflow-x: auto; /* horizontal scroll by default */
+  height: 100%;
+  scroll-behavior: smooth;
+  padding: 10px;
+}
+
+.image-scroll img {
+  max-height: 100%;
+  border-radius: 8px;
+  flex-shrink: 0; /* prevent images from shrinking */
+  cursor: pointer;
+}
+
+
+/* Landscape mode: horizontal scroll */
+@media screen and (orientation: landscape) {
+  .image-scroll {
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+}
+
+/* Portrait mode: vertical scroll */
+@media screen and (orientation: portrait) {
+  .image-scroll {
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+  }
+}
 
 /* Modal (fullscreen background) */
 .modal {

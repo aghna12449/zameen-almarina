@@ -556,7 +556,7 @@
 <div id="topViewModal" class="modal">
   <span class="modalClose" onclick="closeTopViewModal()">&times;</span>
   <div id="krpanoModal" class="modal-content"></div>
-      <img id="topViewImage" draggable="false" style="max-width:120%; display:block; margin:0 auto;" />
+      <img id="topViewImage" class="image-scroll" draggable="false" style="max-width:120%; display:block; margin:0 auto;" />
 </div>
 
          <!-- <div class="map-filter-arrow" ></div> -->
@@ -1384,7 +1384,7 @@ console.log(toArabicDigits(1234567890));
 
          switchLanguage(currentLanguage)
           
-
+       
          
          
            const viewport = document.getElementById("viewport");
@@ -1420,6 +1420,7 @@ console.log(toArabicDigits(1234567890));
                  timeToggle.style.bottom= "5.5%"
               }
 
+              l
               setInitialCard()     
 
              setQueryForm();
@@ -1467,7 +1468,7 @@ console.log(toArabicDigits(1234567890));
                 if(isLandscapeModeMethod()){
                    propertyCard.style.right = "1%";
                     propertyCard.style.top = "-2%";
-                       searchSliderFilters.style.left = "-36%";
+                    searchSliderFilters.style.left = "-36%";
                     return
                 }
          
@@ -3550,7 +3551,8 @@ console.log(toArabicDigits(1234567890));
             const controlTransition = document.getElementById("controls");
          
          
-             
+            const languageVersion = document.getElementById("langBtn");
+        
          
          
                 if(  isMobileOrTabletEnabled){
@@ -3560,7 +3562,7 @@ console.log(toArabicDigits(1234567890));
 
                   setInitialCard();
 
-      
+                  languageVersion.style.transform = "scale(0.4)";
 
               
          
@@ -3652,7 +3654,6 @@ console.log(toArabicDigits(1234567890));
          
          const exitFullscreen = () => {
          
-         console.log("Exiting fullscreen mode", isMobileEnabled, isMobileOrTabletEnabled);  
           if(  isMobileOrTabletEnabled){
             exitQueryForm();
             exitInitialCard();
@@ -4576,7 +4577,7 @@ console.log(toArabicDigits(1234567890));
            const krpano = document.getElementById("krpanoSWFObject");
            const response = await onInitalLoad();
          
-          
+         
          
          
            localStorage.setItem("response", JSON.stringify(response));
