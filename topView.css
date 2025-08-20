@@ -28,11 +28,12 @@
 
 
 
+
+
 .toggleLabel{
     cursor: pointer;
     margin-top: 5px  !important;
 }
-
 
 
 
@@ -44,13 +45,38 @@
   display: none; /* Hidden by default */
   position: fixed;
   z-index: 100000;
- top: 5%;
-  left: 10%;
-  width: 78%;
-  height: 95%;
-  overflow: hidden;
-  /* background-color: rgba(0, 0, 0, 0.9); */
+ overflow: hidden;
+
+ width: 100%;
+ height: 100%;
+   background: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s ease-in-out;
+
 }
+
+.top-modal-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+   height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Modal Box */
+.top-modal-box {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+ 
+  padding: 30px;
+  width: 90%;
+  border-radius: 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
 .modal img {
   max-width: 100%;
   max-height: 100%;
@@ -73,8 +99,8 @@
 
 .modalClose {
   position: absolute;
-   top: 3%;
-  right: 2%;
+   top: 5%;
+  right: 4%;
  
   
   z-index: 10000;
@@ -103,39 +129,107 @@
     left: 20%;
   }
 } */
+ 
+ /* Modal Overlay */
 
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
 
 /* Landscape mode: horizontal scroll */
 @media screen and (orientation: landscape) {
-  .image-scroll {
-    flex-direction: row;
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
+ 
 }
 
 /* Portrait mode: vertical scroll */
 @media screen and (orientation: portrait) {
-  .image-scroll {
-    flex-direction: column;
-    overflow-y: auto;
-    overflow-x: hidden;
-    height: 100%;
-  }
+
 }
 
 /* Tablets and below (portrait only) */
 @media (max-width: 1024px) and (orientation: portrait) {
-  .modal {
-   height: 20%;
-   top: 30%;
-   bottom: 0;
-   left: 12%
-  }
+
+
+.top-modal-overlay {
+  position: absolute;
+  
+  top: 0;
+  
+  left: 0;
+  width: 100%;
+   height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+
   .modalClose {
   position: absolute;
-   top: 3%;
-  right: 10%;
+   top: 8%;
+  right: 6%;
+ 
+  
+  z-index: 10000;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+
+  border-radius: 6px;
+  background: rgb(0 0 0 / 55%);
+  color: white;
+  width: 40px;
+  height: 40px; /* optional: make it square */
+  text-align: center; /* keeps × centered inside */
+  line-height: 40px;  /* vertically centers × */
+  
+}
+}
+
+.top-modal-box {
+    position: absolute;
+    top: 50%;
+    
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    width: 85%;
+    
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+
+
+}
+
+/* Tablets and below (portrait only) */
+@media (max-width: 1024px) and (orientation: landscape) {
+  
+  .top-modal-box {
+    position: absolute;
+    top: 50%;
+    
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    width: 75%;
+    height: 90%;
+    
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+
+
+}
+
+  .modalClose {
+  position: absolute;
+   top: 10%;
+  right: 18%;
  
   
   z-index: 10000;
@@ -157,12 +251,28 @@
 }
 
 /* Tablets and below (portrait only) */
-@media (max-width: 1024px) and (orientation: landscape) {
+@media (max-width: 768px) and (orientation: landscape) {
   
+  .top-modal-box {
+    position: absolute;
+    top: 50%;
+    
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    width: 80%;
+    height: 90%;
+    
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+
+
+}
+
   .modalClose {
   position: absolute;
-   top: 3%;
-  right: 10%;
+   top: 10%;
+  right: 6%;
  
   
   z-index: 10000;
@@ -184,17 +294,36 @@
 }
 /* Mobile only (portrait only) */
 @media (max-width: 768px) and (orientation: portrait) {
-  .modal {
-   height: 20%;
-        top: 30%;
-        bottom: 0;
-        
-   left: 12%
-  }
+  
+
+  .top-modal-overlay {
+  position: absolute;
+  
+  top: 0;
+  
+  left: 0;
+  width: 100%;
+   height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s ease-in-out;
+}
+.top-modal-box {
+    position: absolute;
+    top: 52%;
+
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    width: 100%;
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+
   .modalClose {
   position: absolute;
-   top: 3%;
-  right: 12%;
+    top: 6%;
+  right: 4%;
  
   
   z-index: 10000;

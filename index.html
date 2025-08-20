@@ -553,11 +553,18 @@
 
          
 <!-- Fullscreen Modal -->
+<!-- Fullscreen Modal -->
 <div id="topViewModal" class="modal">
-  <span class="modalClose" onclick="closeTopViewModal()">&times;</span>
-  <div id="krpanoModal" class="modal-content"></div>
-      <img id="topViewImage"  draggable="false" style=" display:block; margin:0 auto;" />
+  <div class="top-modal-overlay" ></div>
+  
+  <div class="top-modal-box ">
+    <span class="modalClose" onclick="closeTopViewModal()">&times;</span>
+    <div id="krpanoModal" class="modal-content"></div>
+    <img id="topViewImage" draggable="false" style="display:block; margin:0 auto; border-radius: 7 px;" />
+  </div>
 </div>
+
+
 
          <!-- <div class="map-filter-arrow" ></div> -->
          <!-- Modal -->
@@ -5820,7 +5827,7 @@ console.log(toArabicDigits(1234567890));
          } else {
          toggle.style.display = "none";
          toggleLayerWrapper.style.display = "flex";
-             fullScreenWrapper.style.display= "flex" // to be changed later
+             fullScreenWrapper.style.display= "none" // to be changed later
          }
          }
          
