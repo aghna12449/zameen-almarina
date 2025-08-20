@@ -37,24 +37,7 @@
 
 
 
-/* Landscape mode: horizontal scroll */
-@media screen and (orientation: landscape) {
-  .image-scroll {
-    flex-direction: row;
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
-}
 
-/* Portrait mode: vertical scroll */
-@media screen and (orientation: portrait) {
-  .image-scroll {
-    flex-direction: column;
-    overflow-y: auto;
-    overflow-x: hidden;
-    height: 100%;
-  }
-}
 
 /* Modal (fullscreen background) */
 .modal {
@@ -120,6 +103,26 @@
     left: 20%;
   }
 } */
+
+
+/* Landscape mode: horizontal scroll */
+@media screen and (orientation: landscape) {
+  .image-scroll {
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+}
+
+/* Portrait mode: vertical scroll */
+@media screen and (orientation: portrait) {
+  .image-scroll {
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+  }
+}
 
 /* Tablets and below (portrait only) */
 @media (max-width: 1024px) and (orientation: portrait) {

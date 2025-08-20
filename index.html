@@ -916,7 +916,17 @@ for (let i = 1; i <= landmarkCount; i++) {
     }
   }
 
-  
+   for (let i = 1; i <= famousRoadsCount; i++) {
+
+
+        if (currentLanguage === "en") {
+          krpano.set(`hotspot[hs_famousRoad_${i}_english].visible`, isActive);
+          krpano.set(`hotspot[hs_famousRoad_${i}_arabic].visible`, false);
+        } else {
+        krpano.set(`hotspot[hs_famousRoad_${i}_english].visible`, false);
+          krpano.set(`hotspot[hs_famousRoad_${i}_arabic].visible`, isActive);
+        }
+      }
   
          
          if (prefix === "hs_Label_") {
@@ -1382,10 +1392,10 @@ console.log(toArabicDigits(1234567890));
          
          const timeToggle= document.getElementById("time-toggle");
 
-         switchLanguage(currentLanguage)
+          switchLanguage(currentLanguage)
           
-               const languageVersion = document.getElementById("langBtn");
-         
+          const languageVersion = document.getElementById("langBtn");
+             
          
            const viewport = document.getElementById("viewport");
            viewport.style.transform = "scale(0.5)";
